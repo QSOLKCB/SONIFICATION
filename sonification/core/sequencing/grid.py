@@ -30,8 +30,16 @@ def events_from_steps(
     if isinstance(repeats, bool) or not isinstance(repeats, Integral):
         raise TypeError("repeats must be an integer")
     repeats = int(repeats)
-    if step_beats <= 0.0 or duration_beats <= 0.0:
-        raise ValueError("step_beats and duration_beats must be positive")
+    for name, value in (("step_beats", step_beats), ("duration_beats", duration_beats)):
+        if isinstance(value, bool) or not isinstance(value, Real):
+            raise TypeError(f"{name} must be a real number")
+        normalized = float(value)
+        if not (-float("inf") < normalized < float("inf")):
+            raise ValueError(f"{name} must be finite")
+        if normalized <= 0.0:
+            raise ValueError("step_beats and duration_beats must be positive")
+    step_beats = float(step_beats)
+    duration_beats = float(duration_beats)
     if not velocity_pattern or not pan_pattern:
         raise ValueError("velocity_pattern and pan_pattern must not be empty")
     if repeats < 1:
