@@ -78,7 +78,7 @@ $$
 The SCL operator is
 
 $$
-D_3=\operatorname{diag}(1,-2,1),
+D_3=\mathrm{diag}(1,-2,1),
 $$
 
 and the phase-twisted cycle
