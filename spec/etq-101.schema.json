@@ -186,6 +186,8 @@
         "epsilonMu",
         "eigenvalueAbsoluteTolerance",
         "eigenvalueRelativeTolerance",
+        "eigenvalueGroupingId",
+        "groupEigenvalueId",
         "durationSeconds",
         "sampleRateHz",
         "channels",
@@ -218,6 +220,10 @@
         "epsilonMu": { "const": 1e-12 },
         "eigenvalueAbsoluteTolerance": { "const": 1e-10 },
         "eigenvalueRelativeTolerance": { "const": 1e-10 },
+        "eigenvalueGroupingId": {
+          "const": "sorted-adjacent-connected-v1"
+        },
+        "groupEigenvalueId": { "const": "arithmetic-mean-v1" },
         "durationSeconds": { "const": 20 },
         "sampleRateHz": { "const": 48000 },
         "channels": { "const": 2 },
@@ -295,7 +301,7 @@
           "const": "29ae0af5b1090c9de30f1efc25789060fb1791eb175d2afcd6888847f7fe6324"
         },
         "contractPayloadSha256": {
-          "const": "9c6d8c5bc5b630d0ad276e9d0970a8d2da2d11455eb9877ee01d23cf1f17835c"
+          "const": "6577443641be02609c045ee0afc423c2be37bbe5ae83f671cbae304c0e9cb930"
         }
       }
     },
