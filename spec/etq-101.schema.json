@@ -1,0 +1,312 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/QSOLKCB/SONIFICATION/main/spec/etq-101.schema.json",
+  "title": "ETQ-101 v1.0.0 Canonical Model Contract",
+  "description": "Exact schema for the canonical compact ETQ-101 model instance. This is not a generic profile schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "modelId",
+    "modelVersion",
+    "profile",
+    "stateSpace",
+    "dimensions",
+    "constants",
+    "selection",
+    "dynamics",
+    "sonification",
+    "fixtures",
+    "determinism",
+    "claimBoundary"
+  ],
+  "properties": {
+    "$schema": { "const": "../spec/etq-101.schema.json" },
+    "modelId": { "const": "ETQ-101" },
+    "modelVersion": { "const": "1.0.0" },
+    "profile": { "const": "compact-101" },
+    "stateSpace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "basisInnerProduct",
+        "decomposition",
+        "qutritBlockSemantics"
+      ],
+      "properties": {
+        "type": { "const": "root-indexed-graph-hilbert-space" },
+        "basisInnerProduct": { "const": "<r|s>=kronecker-delta" },
+        "decomposition": { "const": "C^2 direct-sum (C^33 tensor C^3)" },
+        "qutritBlockSemantics": {
+          "const": "33-mutually-exclusive-direct-sum-blocks"
+        }
+      }
+    },
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "fixedSinglets", "qutritOrbits", "qutritSubspace"],
+      "properties": {
+        "total": { "const": 101 },
+        "fixedSinglets": { "const": 2 },
+        "qutritOrbits": { "const": 33 },
+        "qutritSubspace": { "const": 99 }
+      }
+    },
+    "constants": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phaseThetaRad",
+        "goldenRatio",
+        "referenceFrequencyHz",
+        "referenceAngularFrequencyRadPerSecond"
+      ],
+      "properties": {
+        "phaseThetaRad": { "const": 1.5707963267948966 },
+        "goldenRatio": { "const": 1.618033988749895 },
+        "referenceFrequencyHz": { "const": 432 },
+        "referenceAngularFrequencyRadPerSecond": {
+          "const": 2714.336052701581
+        }
+      }
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "coordinateEncoding",
+        "algorithm",
+        "hilbertSpaceConstruction",
+        "fixedRoots",
+        "completeTrialityOrbits"
+      ],
+      "properties": {
+        "coordinateEncoding": { "const": "doubled-integer-e8-roots" },
+        "algorithm": { "const": "lexicographic-triality-closed-v1" },
+        "hilbertSpaceConstruction": {
+          "const": "ell2-of-selected-root-labels"
+        },
+        "fixedRoots": { "const": 2 },
+        "completeTrialityOrbits": { "const": 33 }
+      }
+    },
+    "dynamics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "form",
+        "continuousGenerator",
+        "floquetOperator",
+        "graphNormalization",
+        "dimensionlessStepTau",
+        "dimensionlessStepTauExpression",
+        "timeStepSeconds",
+        "timeStepSecondsExpression",
+        "initialStateRecipe",
+        "weights",
+        "phaseDrive"
+      ],
+      "properties": {
+        "form": { "const": "floquet" },
+        "continuousGenerator": {
+          "const": "K=0.55*L_E_bar+0.25*L_Q_bar+0.20*V_phi"
+        },
+        "floquetOperator": { "const": "U_F=exp(-i*tau*K)*F_Q" },
+        "graphNormalization": {
+          "const": "two-times-maximum-degree"
+        },
+        "dimensionlessStepTau": { "const": 0.020736585172209856 },
+        "dimensionlessStepTauExpression": { "const": "2*pi/303" },
+        "timeStepSeconds": { "const": 0.000007639652854174307 },
+        "timeStepSecondsExpression": { "const": "1/(303*432)" },
+        "initialStateRecipe": { "const": "ouroboros-golden-scl-v1" },
+        "weights": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "e8RootGraph",
+            "qutritHopping",
+            "goldenOrbitPotential",
+            "sclStatic",
+            "qutritNumber",
+            "ouroborosRing"
+          ],
+          "properties": {
+            "e8RootGraph": { "const": 0.55 },
+            "qutritHopping": { "const": 0.25 },
+            "goldenOrbitPotential": { "const": 0.2 },
+            "sclStatic": { "const": 0 },
+            "qutritNumber": { "const": 0 },
+            "ouroborosRing": { "const": 0 }
+          }
+        },
+        "phaseDrive": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "operator",
+            "thetaRad",
+            "stepOrder",
+            "trialityCovariantOrbit"
+          ],
+          "properties": {
+            "operator": { "const": "diag(1,-2,1)" },
+            "thetaRad": { "const": 1.5707963267948966 },
+            "stepOrder": {
+              "const": [
+                "scl-phase-kick",
+                "triality-shift",
+                "continuous-generator"
+              ]
+            },
+            "trialityCovariantOrbit": { "const": [0, 1, 2] }
+          }
+        }
+      }
+    },
+    "sonification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mappingId",
+        "renderStatus",
+        "spectralSource",
+        "trajectoryUsed",
+        "initialStateRecipe",
+        "referenceFrequencyHz",
+        "pitchMapId",
+        "pitchMap",
+        "normalizedSpectralDomain",
+        "amplitudeMapId",
+        "amplitudeMap",
+        "oscillatorPhaseMapId",
+        "stereoMapId",
+        "epsilonMu",
+        "eigenvalueAbsoluteTolerance",
+        "eigenvalueRelativeTolerance",
+        "durationSeconds",
+        "sampleRateHz",
+        "channels",
+        "windowId",
+        "edgeFadeSeconds",
+        "peakCeiling",
+        "silencePolicy",
+        "pcmFormat",
+        "quantizer",
+        "dither",
+        "numericRuntimeId",
+        "eigensolverId",
+        "renderManifestPayloadSha256",
+        "pcmSha256"
+      ],
+      "properties": {
+        "mappingId": { "const": "generator-spectrum-v1" },
+        "renderStatus": { "const": "specified-not-implemented" },
+        "spectralSource": { "const": "dimensionless-generator-K" },
+        "trajectoryUsed": { "const": false },
+        "initialStateRecipe": { "const": "ouroboros-golden-scl-v1" },
+        "referenceFrequencyHz": { "const": 432 },
+        "pitchMapId": { "const": "golden-band-v1" },
+        "pitchMap": { "const": "f_l=f0*2^(goldenRatio*xi_l)" },
+        "normalizedSpectralDomain": { "const": [-1, 1] },
+        "amplitudeMapId": { "const": "spectral-projector-sqrt-v1" },
+        "amplitudeMap": { "const": "a_l=sqrt(Tr(rho0*P_l))" },
+        "oscillatorPhaseMapId": { "const": "zero-v1" },
+        "stereoMapId": { "const": "triality-equal-power-v1" },
+        "epsilonMu": { "const": 1e-12 },
+        "eigenvalueAbsoluteTolerance": { "const": 1e-10 },
+        "eigenvalueRelativeTolerance": { "const": 1e-10 },
+        "durationSeconds": { "const": 20 },
+        "sampleRateHz": { "const": 48000 },
+        "channels": { "const": 2 },
+        "windowId": { "const": "raised-cosine-edge-v1" },
+        "edgeFadeSeconds": { "const": 0.02 },
+        "peakCeiling": { "const": 0.98 },
+        "silencePolicy": { "const": "emit-zero-pcm" },
+        "pcmFormat": { "const": "s16le" },
+        "quantizer": { "const": "nearest-ties-away-from-zero-v1" },
+        "dither": { "const": "none" },
+        "numericRuntimeId": { "const": null },
+        "eigensolverId": { "const": null },
+        "renderManifestPayloadSha256": { "const": null },
+        "pcmSha256": { "const": null }
+      }
+    },
+    "fixtures": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "e8RootCount",
+        "trialityFixedRoots",
+        "trialityThreeCycles",
+        "selectedGraph"
+      ],
+      "properties": {
+        "e8RootCount": { "const": 240 },
+        "trialityFixedRoots": { "const": 12 },
+        "trialityThreeCycles": { "const": 76 },
+        "selectedGraph": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vertices",
+            "edges",
+            "minimumDegree",
+            "maximumDegree",
+            "connected"
+          ],
+          "properties": {
+            "vertices": { "const": 101 },
+            "edges": { "const": 1687 },
+            "minimumDegree": { "const": 22 },
+            "maximumDegree": { "const": 55 },
+            "connected": { "const": true }
+          }
+        }
+      }
+    },
+    "determinism": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fixtureSerialization",
+        "contractCanonicalization",
+        "contractPayloadRule",
+        "basisSha256",
+        "adjacencySha256",
+        "contractPayloadSha256"
+      ],
+      "properties": {
+        "fixtureSerialization": {
+          "const": "UTF-8(JSON.stringify(value)); compact; no BOM; no trailing newline"
+        },
+        "contractCanonicalization": {
+          "const": "recursive-lexicographic-object-keys-json-v1"
+        },
+        "contractPayloadRule": {
+          "const": "remove $schema and determinism.contractPayloadSha256 before canonicalization"
+        },
+        "basisSha256": {
+          "const": "97cfd1f087745422fd66d3640c7b86c3209593c4b53741018c08a5e9cdb15f6f"
+        },
+        "adjacencySha256": {
+          "const": "29ae0af5b1090c9de30f1efc25789060fb1791eb175d2afcd6888847f7fe6324"
+        },
+        "contractPayloadSha256": {
+          "const": "9c6d8c5bc5b630d0ad276e9d0970a8d2da2d11455eb9877ee01d23cf1f17835c"
+        }
+      }
+    },
+    "claimBoundary": {
+      "const": "A deterministic 101-dimensional root-indexed Hilbert space built from an E8 root-graph truncation closed under an embedded D4 triality. It is not a 101-dimensional representation of E8, and 432 Hz is a declared sonification scale."
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}
