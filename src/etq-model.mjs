@@ -227,8 +227,49 @@ export function trialityPermutation() {
   return permutation;
 }
 
+/**
+ * Apply an integer power of a finite permutation to one index.
+ *
+ * The orbit length is derived from the validated permutation and selected
+ * index, so this helper is correct for fixed points and cycles of any length.
+ */
 export function applyPermutationIndex(permutation, index, power = 1) {
-  const normalizedPower = ((power % 3) + 3) % 3;
+  if (!Array.isArray(permutation) || permutation.length === 0) {
+    throw new TypeError("permutation must be a non-empty array");
+  }
+  if (!Number.isSafeInteger(index) || index < 0 || index >= permutation.length) {
+    throw new RangeError(`index ${index} is outside the permutation domain`);
+  }
+  if (!Number.isSafeInteger(power)) {
+    throw new TypeError("power must be a safe integer");
+  }
+
+  const targets = new Set();
+  for (const target of permutation) {
+    if (
+      !Number.isSafeInteger(target) ||
+      target < 0 ||
+      target >= permutation.length
+    ) {
+      throw new RangeError("permutation targets must stay within its domain");
+    }
+    if (targets.has(target)) {
+      throw new RangeError("permutation must be a bijection");
+    }
+    targets.add(target);
+  }
+
+  let orbitLength = 1;
+  let orbitIndex = permutation[index];
+  while (orbitIndex !== index) {
+    orbitIndex = permutation[orbitIndex];
+    orbitLength += 1;
+    if (orbitLength > permutation.length) {
+      throw new RangeError("permutation orbit did not close");
+    }
+  }
+
+  const normalizedPower = ((power % orbitLength) + orbitLength) % orbitLength;
   let result = index;
   for (let step = 0; step < normalizedPower; step += 1) {
     result = permutation[result];
@@ -375,10 +416,36 @@ export function complexScale(value, scalar) {
   return complex(value.re * scalar, value.im * scalar);
 }
 
+function complexMatrixShape(matrix, label) {
+  if (!Array.isArray(matrix) || matrix.length === 0) {
+    throw new TypeError(`${label} must be a non-empty matrix`);
+  }
+  if (!Array.isArray(matrix[0]) || matrix[0].length === 0) {
+    throw new TypeError(`${label} must contain non-empty rows`);
+  }
+
+  const columns = matrix[0].length;
+  for (const row of matrix) {
+    if (!Array.isArray(row) || row.length !== columns) {
+      throw new RangeError(`${label} must be rectangular`);
+    }
+  }
+  return { rows: matrix.length, columns };
+}
+
 export function complexMatrixMultiply(left, right) {
-  const rows = left.length;
-  const columns = right[0].length;
-  const shared = right.length;
+  const leftShape = complexMatrixShape(left, "left matrix");
+  const rightShape = complexMatrixShape(right, "right matrix");
+  if (leftShape.columns !== rightShape.rows) {
+    throw new RangeError(
+      `incompatible matrix dimensions ${leftShape.rows}x${leftShape.columns} ` +
+        `and ${rightShape.rows}x${rightShape.columns}`,
+    );
+  }
+
+  const rows = leftShape.rows;
+  const columns = rightShape.columns;
+  const shared = leftShape.columns;
   const output = Array.from({ length: rows }, () =>
     Array.from({ length: columns }, () => complex()),
   );
@@ -448,13 +515,15 @@ export function qutritOperators() {
 /** Local F_3 = X exp(-i theta D), which has exact order three. */
 export function twistedQutritStep(theta = PHASE_THETA_RAD) {
   const { X } = qutritOperators();
-  const localCurvature = [1, -2, 1];
-  const phase = Array.from({ length: 3 }, (_, row) =>
-    Array.from({ length: 3 }, (_, column) => {
+  if (SCL_STENCIL.length !== QUTRIT_DIMENSION) {
+    throw new Error("SCL_STENCIL must define exactly one value per qutrit state");
+  }
+  const phase = Array.from({ length: QUTRIT_DIMENSION }, (_, row) =>
+    Array.from({ length: QUTRIT_DIMENSION }, (_, column) => {
       if (row !== column) {
         return complex();
       }
-      const angle = -theta * localCurvature[row];
+      const angle = -theta * SCL_STENCIL[row];
       return complex(Math.cos(angle), Math.sin(angle));
     }),
   );
