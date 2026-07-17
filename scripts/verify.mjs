@@ -1,5 +1,8 @@
-// SPDX-License-Identifier: LicenseRef-QSOL-IMC-Core-Proprietary-1.0
-// Copyright (c) 2026 Trent Slade. All Rights Reserved.
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this file,
+// You can obtain one at https://mozilla.org/MPL/2.0/.
+// SPDX-License-Identifier: MPL-2.0
+// Copyright (c) 2026 Trent Slade / QSOL-IMC.
 
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
@@ -116,6 +119,8 @@ const expected = {
     epsilonMu: 1e-12,
     eigenvalueAbsoluteTolerance: 1e-10,
     eigenvalueRelativeTolerance: 1e-10,
+    eigenvalueGroupingId: "sorted-adjacent-connected-v1",
+    groupEigenvalueId: "arithmetic-mean-v1",
     durationSeconds: 20,
     sampleRateHz: 48000,
     channels: 2,
@@ -154,7 +159,7 @@ const expected = {
     adjacencySha256:
       "29ae0af5b1090c9de30f1efc25789060fb1791eb175d2afcd6888847f7fe6324",
     contractPayloadSha256:
-      "9c6d8c5bc5b630d0ad276e9d0970a8d2da2d11455eb9877ee01d23cf1f17835c",
+      "6577443641be02609c045ee0afc423c2be37bbe5ae83f671cbae304c0e9cb930",
   },
   claimBoundary:
     "A deterministic 101-dimensional root-indexed Hilbert space built from an E8 root-graph truncation closed under an embedded D4 triality. It is not a 101-dimensional representation of E8, and 432 Hz is a declared sonification scale.",
