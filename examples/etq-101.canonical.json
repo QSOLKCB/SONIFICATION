@@ -74,6 +74,8 @@
     "epsilonMu": 1e-12,
     "eigenvalueAbsoluteTolerance": 1e-10,
     "eigenvalueRelativeTolerance": 1e-10,
+    "eigenvalueGroupingId": "sorted-adjacent-connected-v1",
+    "groupEigenvalueId": "arithmetic-mean-v1",
     "durationSeconds": 20,
     "sampleRateHz": 48000,
     "channels": 2,
@@ -107,7 +109,7 @@
     "contractPayloadRule": "remove $schema and determinism.contractPayloadSha256 before canonicalization",
     "basisSha256": "97cfd1f087745422fd66d3640c7b86c3209593c4b53741018c08a5e9cdb15f6f",
     "adjacencySha256": "29ae0af5b1090c9de30f1efc25789060fb1791eb175d2afcd6888847f7fe6324",
-    "contractPayloadSha256": "9c6d8c5bc5b630d0ad276e9d0970a8d2da2d11455eb9877ee01d23cf1f17835c"
+    "contractPayloadSha256": "6577443641be02609c045ee0afc423c2be37bbe5ae83f671cbae304c0e9cb930"
   },
   "claimBoundary": "A deterministic 101-dimensional root-indexed Hilbert space built from an E8 root-graph truncation closed under an embedded D4 triality. It is not a 101-dimensional representation of E8, and 432 Hz is a declared sonification scale."
 }
