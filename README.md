@@ -162,12 +162,13 @@ The ETQ-101 static generator-spectrum PCM renderer is formally specified in
 marked **not yet implemented**. This repository does not claim an ETQ-101 WAV
 artifact that it does not ship.
 
-The repository also contains a separate, complete Python synthesis laboratory
-for deterministic mathematical loop creation. It implements additive, FM, and
-Karplus-Strong synthesis, canonical WAV export, manifests, and exact replay
-verification.
+The repository also contains two separate, runnable music-first synthesis
+interfaces. Neither is presented as the not-yet-implemented ETQ-101 renderer:
 
-**[Open the music-first synthesis laboratory ->](sonification/README.md)**
+- **[Offline browser app ->](APP/README.md)** — zero-dependency local rendering,
+  playback, WAV export, and provenance receipts;
+- **[Python synthesis laboratory ->](sonification/README.md)** — additive, FM,
+  and Karplus-Strong synthesis with exact replay verification.
 
 ## Scientific boundary
 

@@ -131,3 +131,22 @@ def test_seeded_noise_source_is_repeatable_and_seed_sensitive() -> None:
 
     np.testing.assert_array_equal(first, replay)
     assert not np.array_equal(first, changed)
+
+
+def test_fractal_noise_rejects_lattice_without_uint64_right_neighbor() -> None:
+    source = FractalNoiseSource(seed=0, octaves=1, base_period_samples=1.0)
+
+    with pytest.raises(ValueError, match="no uint64 right neighbor"):
+        source.render(1, 8_000, start_sample=(1 << 64) - 1)
+
+
+def test_fractal_noise_accepts_last_exactly_addressable_float_lattice() -> None:
+    source = FractalNoiseSource(seed=0, octaves=1, base_period_samples=1.0)
+    # binary64 spacing is 2048 at this magnitude.  This is the largest
+    # representable coordinate below 2**64 and still has a uint64 neighbor.
+    start_sample = int(np.nextafter(float(1 << 64), 0.0))
+
+    rendered = source.render(1, 8_000, start_sample=start_sample)
+
+    assert rendered.shape == (1,)
+    assert np.all(np.isfinite(rendered))

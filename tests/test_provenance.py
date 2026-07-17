@@ -135,3 +135,22 @@ def test_fingerprint_rejects_unrelated_pcm_or_wav_bytes() -> None:
             sample_rate=8_000,
             bit_depth=16,
         )
+
+
+@pytest.mark.parametrize("frame_count", [1, 4])
+def test_fingerprint_clamps_envelope_bins_to_pcm_frames(frame_count: int) -> None:
+    audio = np.linspace(-0.5, 0.5, frame_count, dtype=np.float64)[:, np.newaxis]
+    wav, pcm_bytes, pcm = encode_wav(audio, 8_000, 16)
+
+    fingerprint = build_fingerprint(
+        pcm,
+        pcm_bytes=pcm_bytes,
+        wav_bytes=wav,
+        sample_rate=8_000,
+        bit_depth=16,
+        envelope_bins=32,
+    )
+
+    envelope = fingerprint["rms_envelope_ppm"]
+    assert len(envelope) == frame_count
+    assert all(isinstance(value, int) and value >= 0 for value in envelope)

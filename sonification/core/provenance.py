@@ -124,10 +124,20 @@ def build_fingerprint(
     else:
         correlation = 1.0
 
-    frame_splits = np.linspace(0, values.shape[0], envelope_bins + 1, dtype=np.int64)
+    # Treat envelope_bins as an upper bound.  A fingerprint must not create
+    # more RMS buckets than there are PCM frames: doing so duplicates samples
+    # for short inputs and can produce empty slices with alternate split
+    # implementations.  The one-frame minimum therefore yields one finite bin.
+    effective_envelope_bins = min(envelope_bins, int(values.shape[0]))
+    frame_splits = np.linspace(
+        0,
+        values.shape[0],
+        effective_envelope_bins + 1,
+        dtype=np.int64,
+    )
     envelope_ppm: list[int] = []
     for start, stop in pairwise(frame_splits):
-        segment = normalized[int(start) : max(int(start) + 1, int(stop))]
+        segment = normalized[int(start) : int(stop)]
         segment_rms = float(np.sqrt(np.mean(segment * segment)))
         envelope_ppm.append(round(segment_rms * 1_000_000.0))
 

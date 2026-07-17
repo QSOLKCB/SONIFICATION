@@ -1,0 +1,16 @@
+:root { color-scheme: dark; font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #090a0b; color: #eee9dc; }
+main { width: min(880px, calc(100% - 32px)); margin: 0 auto; padding: 4rem 0; }
+a { color: #c5ff67; }
+.eyebrow { margin-top: 4rem; color: #c5ff67; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; }
+h1 { margin: .6rem 0; font-family: ui-sans-serif, system-ui, sans-serif; font-size: clamp(2.4rem, 8vw, 5rem); letter-spacing: -.055em; }
+p { max-width: 700px; color: #9a9d97; line-height: 1.6; }
+.summary { margin-top: 2rem; border: 1px solid #303438; padding: 1rem; }
+.summary[data-state="pass"] { border-color: #57752c; color: #c5ff67; }
+.summary[data-state="fail"] { border-color: #ff8c7a; color: #ff8c7a; }
+ol { margin-top: 1rem; padding: 0; list-style: none; border-top: 1px solid #303438; }
+li { display: grid; grid-template-columns: 5rem 1fr; gap: 1rem; padding: .8rem 0; border-bottom: 1px solid #22262a; font-size: .78rem; }
+li span:first-child { color: #c5ff67; text-transform: uppercase; }
+li.fail span:first-child { color: #ff8c7a; }
+li code { color: #969993; white-space: pre-wrap; overflow-wrap: anywhere; }
