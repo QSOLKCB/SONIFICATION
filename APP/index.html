@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <meta name="description" content="QSOL-IMC deterministic, sample-free sonification that runs entirely offline in your browser.">
+    <title>QSOL-IMC Offline Sonification</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="js/namespace.js"></script>
+    <script defer src="js/sha256.js"></script>
+    <script defer src="js/math64.js"></script>
+    <script defer src="js/audio.js"></script>
+    <script defer src="js/provenance.js"></script>
+    <script defer src="js/synthesis.js"></script>
+    <script defer src="js/composition.js"></script>
+    <script defer src="js/visualization.js"></script>
+    <script defer src="js/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#workbench">Skip to workbench</a>
+
+    <header class="masthead">
+      <a class="brand" href="#top" aria-label="QSOL-IMC Offline App home">
+        <span class="brand-mark" aria-hidden="true"><i>Q</i></span>
+        <span>
+          <strong>QSOL-IMC</strong>
+          <small>Offline Sonification</small>
+        </span>
+      </a>
+      <div class="system-badges" role="list" aria-label="Application properties">
+        <span role="listitem"><i aria-hidden="true"></i> Local only</span>
+        <span role="listitem">No network</span>
+        <span role="listitem">Browser ABI v1</span>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <p class="eyebrow">Procedural audio instrument / artifact laboratory</p>
+          <h1 id="hero-title">Build a loop from <em>mathematics alone.</em></h1>
+          <p class="hero-copy">
+            Additive harmonics, frequency modulation, and a deterministic virtual string—rendered
+            locally, with no samples, uploads, accounts, or hidden entropy.
+          </p>
+        </div>
+        <dl class="hero-readout" aria-label="Default render profile">
+          <div><dt>Reference</dt><dd>432.00 Hz</dd></div>
+          <div><dt>Engine</dt><dd>Float64 / JS</dd></div>
+          <div><dt>Export</dt><dd>PCM WAV + JSON</dd></div>
+        </dl>
+      </section>
+
+      <section class="workbench" id="workbench" aria-label="Sonification workbench">
+        <form class="rack control-rack" id="config-form" novalidate>
+          <div class="panel-heading">
+            <div>
+              <p class="panel-index">01 / Configure</p>
+              <h2>Render contract</h2>
+            </div>
+            <button class="text-button" type="button" id="reset-button">Reset</button>
+          </div>
+
+          <fieldset>
+            <legend>Voice architecture</legend>
+            <div class="segmented" role="radiogroup" aria-label="Voice architecture">
+              <label><input type="radio" name="voice" value="hybrid" checked><span>Hybrid</span></label>
+              <label><input type="radio" name="voice" value="additive"><span>Additive</span></label>
+              <label><input type="radio" name="voice" value="fm"><span>FM</span></label>
+              <label><input type="radio" name="voice" value="karplus"><span>Wire</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field-grid">
+            <label class="field field-wide">
+              <span>Unsigned 64-bit seed</span>
+              <input id="seed" name="seed" type="text" value="2026" inputmode="text" spellcheck="false" autocomplete="off" aria-describedby="seed-help">
+              <small id="seed-help">Decimal or 0x-prefixed hexadecimal. Never parsed through a floating-point number.</small>
+            </label>
+
+            <label class="field">
+              <span>Tempo <output id="tempo-output" for="tempo">128 BPM</output></span>
+              <input id="tempo" name="tempo" type="range" min="40" max="220" step="1" value="128">
+            </label>
+
+            <label class="field">
+              <span>Bars</span>
+              <select id="bars" name="bars">
+                <option value="1">1 bar</option>
+                <option value="2">2 bars</option>
+                <option value="4" selected>4 bars</option>
+                <option value="8">8 bars</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>A4 reference <output id="tuning-output" for="tuning">432.00 Hz</output></span>
+              <input id="tuning" name="tuning" type="range" min="400" max="460" step="0.01" value="432">
+            </label>
+
+            <label class="field">
+              <span>Sample rate</span>
+              <select id="sample-rate" name="sampleRate">
+                <option value="32000">32,000 Hz</option>
+                <option value="44100" selected>44,100 Hz</option>
+                <option value="48000">48,000 Hz</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>WAV depth</span>
+              <select id="bit-depth" name="bitDepth">
+                <option value="16">16-bit PCM</option>
+                <option value="24" selected>24-bit PCM</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Output peak <output id="peak-output" for="peak">−3.0 dBFS</output></span>
+              <input id="peak" name="peak" type="range" min="-18" max="-0.5" step="0.5" value="-3">
+            </label>
+          </div>
+
+          <div class="estimate" aria-live="polite">
+            <span>Preflight</span>
+            <strong id="preflight">7.50 s · 330,750 frames</strong>
+          </div>
+
+          <button class="render-button" id="render-button" type="submit">
+            <span>Render offline loop</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+          <p class="error-message" id="form-error" role="alert" hidden></p>
+        </form>
+
+        <section class="rack output-rack" aria-labelledby="output-title">
+          <div class="panel-heading">
+            <div>
+              <p class="panel-index">02 / Inspect</p>
+              <h2 id="output-title">Signal field</h2>
+            </div>
+            <span class="status-pill" id="status-pill" data-state="idle">Ready</span>
+          </div>
+
+          <div class="visual-tabs" role="tablist" aria-label="Signal visualization">
+            <button type="button" role="tab" id="waveform-tab" aria-controls="waveform-panel" aria-selected="true">Waveform</button>
+            <button type="button" role="tab" id="spectrum-tab" aria-controls="spectrum-panel" aria-selected="false" tabindex="-1">Spectrum</button>
+          </div>
+
+          <div class="visual-stage">
+            <div id="waveform-panel" role="tabpanel" aria-labelledby="waveform-tab">
+              <canvas id="waveform" width="960" height="360" role="img" aria-label="Rendered left and right channel waveform; exact frame and level measurements follow"></canvas>
+            </div>
+            <div id="spectrum-panel" role="tabpanel" aria-labelledby="spectrum-tab" hidden>
+              <canvas id="spectrum" width="960" height="360" role="img" aria-label="Rendered logarithmic magnitude spectrum; exact frame and level measurements follow"></canvas>
+            </div>
+            <p class="canvas-fallback" id="canvas-fallback">Render a loop to inspect its signal.</p>
+          </div>
+
+          <div class="transport" role="group" aria-label="Playback controls">
+            <button class="transport-primary" type="button" id="play-button" disabled aria-label="Play rendered loop">▶</button>
+            <button type="button" id="stop-button" disabled>Stop</button>
+            <label class="toggle"><input type="checkbox" id="loop-playback" checked><span>Loop playback</span></label>
+            <div class="transport-time"><span id="position">0:00.000</span><span id="duration">0:00.000</span></div>
+          </div>
+
+          <div class="progress-track" aria-hidden="true"><i id="progress-bar"></i></div>
+          <p class="sr-status" id="render-status" role="status" aria-live="polite">Ready to render locally.</p>
+
+          <dl class="metrics" aria-label="Rendered signal measurements">
+            <div><dt>Frames</dt><dd id="metric-frames">—</dd></div>
+            <div><dt>Peak</dt><dd id="metric-peak">—</dd></div>
+            <div><dt>RMS</dt><dd id="metric-rms">—</dd></div>
+            <div><dt>WAV</dt><dd id="metric-size">—</dd></div>
+          </dl>
+        </section>
+      </section>
+
+      <section class="artifact-section" aria-labelledby="artifact-title">
+        <div class="section-heading">
+          <div>
+            <p class="panel-index">03 / Preserve</p>
+            <h2 id="artifact-title">Artifact receipt</h2>
+          </div>
+          <p>Each download is derived from the same immutable render snapshot.</p>
+        </div>
+
+        <div class="artifact-grid">
+          <article>
+            <span>Audio</span>
+            <h3>Canonical WAV</h3>
+            <code id="wav-hash">No render yet</code>
+            <button type="button" id="download-wav" disabled>Download .wav</button>
+          </article>
+          <article>
+            <span>Identity</span>
+            <h3>Render manifest</h3>
+            <code id="manifest-hash">No render yet</code>
+            <button type="button" id="download-manifest" disabled>Download manifest</button>
+          </article>
+          <article>
+            <span>Inputs</span>
+            <h3>Canonical recipe</h3>
+            <code id="recipe-hash">No render yet</code>
+            <button type="button" id="download-recipe" disabled>Download recipe</button>
+          </article>
+          <article>
+            <span>Observations</span>
+            <h3>PCM fingerprint</h3>
+            <code id="fingerprint-hash">No render yet</code>
+            <button type="button" id="download-fingerprint" disabled>Download fingerprint</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="contract-section" aria-label="Scientific and determinism boundaries">
+        <details>
+          <summary><span>Determinism contract</span><small>What “replay safe” means in a browser</small></summary>
+          <div>
+            <p>
+              The seed, event plan, DSP constants, summation order, quantizer, and WAV writer are explicit.
+              Immediate replays in this app produce identical bytes. JavaScript engines may implement transcendental
+              functions differently, so the receipt records a browser-specific ABI and does not promise byte parity
+              with the Python/NumPy renderer or every future browser.
+            </p>
+            <p>Playback resampling, device output, filenames, and interface state are excluded from artifact identity.</p>
+          </div>
+        </details>
+        <details>
+          <summary><span>Scientific boundary</span><small>Audible mappings, not physical claims</small></summary>
+          <div>
+            <p>
+              This is a mathematical composition instrument. Phase 1 uses explicit musical patterns and procedural DSP.
+              It does not claim that E8, quantum computation, or any mapped geometry is physically present in the sound
+              or in nature. More advanced mappings require their own versioned contracts.
+            </p>
+          </div>
+        </details>
+        <details>
+          <summary><span>Offline guarantee</span><small>Inspectable by construction</small></summary>
+          <div>
+            <p>
+              The app uses local classic scripts, bundled hashing, system fonts, Blob downloads, and the Web Audio API.
+              It contains no fetch calls, analytics, service worker, CDN resource, upload path, or account dependency.
+            </p>
+          </div>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <span>QSOL-IMC / SONIFICATION</span>
+      <span>MIT · Browser edition 1.0.0</span>
+      <a href="tests/index.html">Run offline self-tests</a>
+    </footer>
+
+    <noscript>This application needs JavaScript for local audio synthesis. It never needs a network connection.</noscript>
+  </body>
+</html>

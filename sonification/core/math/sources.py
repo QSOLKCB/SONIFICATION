@@ -224,8 +224,17 @@ class FractalNoiseSource(MathSource):
                 raise ValueError("octave period overflowed float64")
             coordinate = absolute_samples / period
             left_float = np.floor(coordinate)
-            if left_float.size and float(left_float[-1]) > UINT64_MASK - 1:
-                raise ValueError("fractal lattice index exceeds the uint64 domain")
+            if left_float.size:
+                last_left = float(left_float[-1])
+                # Convert the binary64 lattice coordinate to a Python integer
+                # before comparing it with the uint64 boundary.  Python's
+                # integer comparison makes the actual invariant explicit:
+                # both ``left`` and the interpolation neighbor ``left + 1``
+                # must fit in the unsigned 64-bit domain.  In particular,
+                # coordinates rounded to 2**64 are rejected before NumPy can
+                # cast or wrap them.
+                if not math.isfinite(last_left) or int(last_left) >= UINT64_MASK:
+                    raise ValueError("fractal lattice index has no uint64 right neighbor")
             left = left_float.astype(np.uint64)
             right = left + np.uint64(1)
             fraction = coordinate - left_float

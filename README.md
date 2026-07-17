@@ -12,10 +12,11 @@ recorded excitations. Oscillators, modulation, noise-like material, string
 excitation, envelopes, rhythm, panning, and mixing are all explicit procedural
 functions.
 
-Phase 1 is a complete, runnable deterministic kernel: additive synthesis, FM
-synthesis, Karplus-Strong string modeling, a dark 432 Hz hybrid factory groove,
+Phase 1 is available both as a Python kernel and as a zero-dependency offline
+browser app. Both editions provide additive synthesis, FM synthesis,
+Karplus-Strong string modeling, a dark 432 Hz hybrid factory groove,
 PCM16/PCM24 WAV export, canonical recipes, fingerprints, manifests, and replay
-verification.
+verification within their documented runtime boundaries.
 
 > This is audible geometry and mathematical composition. It is not a claim
 > that E8—or any other mapped structure—is physically present in nature.
@@ -31,7 +32,37 @@ building, and later DAW/MIDI workflows.
 contracts, replayable state, deterministic event mappings, and honest claim
 boundaries. SONIFICATION does not present classical DSP as quantum computation.
 
-## Phase 1 quick start
+## Offline browser app
+
+The browser edition needs no install, local server, account, upload, or network
+connection:
+
+1. Open [`APP/index.html`](APP/index.html) directly in a current desktop browser.
+2. Choose a voice, seed, loop length, tuning, sample rate, and WAV depth.
+3. Select **Render offline loop**.
+4. Play the result locally or download its WAV, manifest, recipe, and
+   fingerprint.
+
+Everything used by the app is committed under [`APP/`](APP/): classic local
+scripts, bundled SHA-256, procedural DSP, PCM16/PCM24 RIFF packing, canvas
+visualizers, and an offline self-test page. There are no `fetch` calls, remote
+fonts, CDN assets, service workers, analytics, or upload paths.
+
+Open [`APP/tests/index.html`](APP/tests/index.html) to run the browser checks, or
+run the same engine suite with Node (no packages required):
+
+```bash
+node APP/tests/run.cjs
+node APP/tests/dom-smoke.cjs
+```
+
+The browser ABI is `qsol-imc.browser-float64/v1`. Same inputs replay to the same
+WAV bytes in the same app version and browser runtime. Browser and Python WAV
+hashes are not promised to match because JavaScript engines and NumPy may
+evaluate transcendental DSP differently. See
+[`APP/README.md`](APP/README.md) for the exact boundary.
+
+## Python kernel quick start
 
 Requires Python 3.11 or newer.
 
@@ -244,6 +275,11 @@ JSON is UTF-8, key-sorted, compact, finite-only, and newline-terminated.
 ```text
 SONIFICATION/
 ├── .github/workflows/tests.yml
+├── APP/
+│   ├── index.html
+│   ├── styles.css
+│   ├── js/                     # DSP, WAV, hashing, provenance, UI
+│   └── tests/                  # direct-file and Node self-tests
 ├── docs/
 │   ├── DETERMINISM.md
 │   ├── ROADMAP.md
@@ -372,12 +408,15 @@ SONIFICATION/
 python -m pip install -e .[dev]
 python -m pytest
 python -m ruff check .
+node APP/tests/run.cjs
+node APP/tests/dom-smoke.cjs
 ```
 
 The suite checks PRNG known answers, chunked math-source equivalence,
 instrument repeatability, seed isolation, WAV layout and quantization,
 canonical hashing, tamper detection, exact repeated renders, CLI generation,
-and manifest replay.
+manifest replay, browser uint64 boundaries, short-PCM fingerprints, offline WAV
+packing, and deterministic browser replays.
 
 ## Extending Phase 1
 

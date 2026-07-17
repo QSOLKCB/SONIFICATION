@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <title>QSOL-IMC Offline Self-Tests</title>
+    <link rel="stylesheet" href="tests.css">
+    <script defer src="../js/namespace.js"></script>
+    <script defer src="../js/sha256.js"></script>
+    <script defer src="../js/math64.js"></script>
+    <script defer src="../js/audio.js"></script>
+    <script defer src="../js/provenance.js"></script>
+    <script defer src="../js/synthesis.js"></script>
+    <script defer src="../js/composition.js"></script>
+    <script defer src="tests.js"></script>
+    <script defer src="browser-runner.js"></script>
+  </head>
+  <body>
+    <main>
+      <a href="../index.html">← Return to app</a>
+      <p class="eyebrow">Local verification surface</p>
+      <h1>Offline self-tests</h1>
+      <p>
+        These checks execute the same scripts used by the app. No network, test framework,
+        package install, or server is involved.
+      </p>
+      <div class="summary" id="summary" data-state="working" role="status" aria-live="polite">Running…</div>
+      <ol id="results"></ol>
+    </main>
+  </body>
+</html>
