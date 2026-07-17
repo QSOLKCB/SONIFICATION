@@ -50,7 +50,7 @@ $$
 where \(P_\ell\) projects onto the full eigenspace of \(\lambda_\ell\). For an initial state \(\rho_0\), define
 
 $$
-\mu_\ell=\operatorname{Tr}(\rho_0P_\ell).
+\mu_\ell=\mathrm{Tr}(\rho_0P_\ell).
 $$
 
 Then
@@ -133,8 +133,8 @@ The canonical generator commutes with triality, so each spectral projector
 \(D_a=U_\tau^aDU_\tau^{-a}\) and \(D_0+D_1+D_2=0\),
 
 $$
-\operatorname{Tr}(P_\ell D)
-=\frac13\sum_{a=0}^2\operatorname{Tr}(P_\ell D_a)
+\mathrm{Tr}(P_\ell D)
+=\frac13\sum_{a=0}^2\mathrm{Tr}(P_\ell D_a)
 =0.
 $$
 
@@ -160,7 +160,7 @@ $$
 
 All canonical oscillator phases are zero after this state-to-weight reduction.
 A later time-dependent profile may use
-\(\kappa(t)=\operatorname{Tr}(\rho(t)D)\) only after declaring a normalization,
+\(\kappa(t)=\mathrm{Tr}(\rho(t)D)\) only after declaring a normalization,
 modulation depth, and a distinct mapping identifier.
 
 ## 7. Stereo mapping
@@ -176,14 +176,14 @@ Define the sector weights for mode \(\ell\):
 
 $$
 t_{\ell,r}=
-\frac{\operatorname{Tr}(P_\ell P_r)}
-{\operatorname{Tr}(P_\ell)}.
+\frac{\mathrm{Tr}(P_\ell P_r)}
+{\mathrm{Tr}(P_\ell)}.
 $$
 
 The canonical pan coordinate is
 
 $$
-p_\ell=\operatorname{clip}
+p_\ell=\mathrm{clip}
 \left(t_{\ell,2}-t_{\ell,0},-1,1\right).
 $$
 
@@ -255,9 +255,9 @@ Flatten both output channels to compute the global pre-normalization peak
 zero:
 
 $$
-q_c[n]=\operatorname{clip}
+q_c[n]=\mathrm{clip}
 \left(
-\operatorname{sgn}(y_c[n])
+\mathrm{sgn}(y_c[n])
 \left\lfloor32767|y_c[n]|+\frac12\right\rfloor,
 -32768,
 32767
