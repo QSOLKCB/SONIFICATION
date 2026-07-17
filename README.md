@@ -167,7 +167,7 @@ interfaces. Neither is presented as the not-yet-implemented ETQ-101 renderer:
 
 - **[Offline browser app ->](APP/README.md)** — zero-dependency local rendering,
   playback, WAV export, and provenance receipts;
-- **[Python synthesis laboratory ->](sonification/README.md)** — additive, FM,
+- **[Python synthesis laboratory ->](sonification/)** — additive, FM,
   and Karplus-Strong synthesis with exact replay verification.
 
 ## Scientific boundary
