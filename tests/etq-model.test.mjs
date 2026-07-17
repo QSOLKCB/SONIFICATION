@@ -1,5 +1,8 @@
-// SPDX-License-Identifier: LicenseRef-QSOL-IMC-Core-Proprietary-1.0
-// Copyright (c) 2026 Trent Slade. All Rights Reserved.
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this file,
+// You can obtain one at https://mozilla.org/MPL/2.0/.
+// SPDX-License-Identifier: MPL-2.0
+// Copyright (c) 2026 Trent Slade / QSOL-IMC.
 
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
