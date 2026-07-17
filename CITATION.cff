@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use or discuss this work, please cite it using this metadata and preserve the repository attribution."
+title: "QSOL SONIFICATION and the ETQ-101 Mathematical Sonification Model"
+type: software
+authors:
+  - family-names: "Slade"
+    given-names: "Trent"
+    affiliation: "QSOL-IMC"
+repository-code: "https://github.com/QSOLKCB/SONIFICATION"
+url: "https://github.com/QSOLKCB/SONIFICATION"
+version: 1.0.0
+date-released: 2026-07-17
+license: MPL-2.0
+keywords:
+  - sonification
+  - E8 root system
+  - D4 triality
+  - qutrit algebra
+  - ternary curvature
+  - mathematical music
+preferred-citation:
+  type: software
+  authors:
+    - family-names: "Slade"
+      given-names: "Trent"
+      affiliation: "QSOL-IMC"
+  title: "QSOL SONIFICATION and the ETQ-101 Mathematical Sonification Model"
+  version: 1.0.0
+  year: 2026
+  url: "https://github.com/QSOLKCB/SONIFICATION"
