@@ -199,9 +199,9 @@ Represent each E8 root by its doubled integer coordinate vector and order the ve
 3. Sort the 76 representatives and retain the first 33 complete orbits.
 4. Order each retained orbit as \((r,\tau r,\tau^2r)\).
 5. Put the two fixed roots first, followed by the 33 ordered triples. Call the
-   resulting selected root set (S_{101}).
+   resulting selected root set $S_{101}$.
 
-The roots in (S_{101}\subset\mathbb R^8) are **labels**, not a linearly
+The roots in $S_{101}\subset\mathbb R^8$ are **labels**, not a linearly
 independent vector basis of \(\mathbb R^8\). Define the model Hilbert space as
 
 $$
