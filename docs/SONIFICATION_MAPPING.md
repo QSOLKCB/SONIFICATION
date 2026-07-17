@@ -63,7 +63,17 @@ $$
 
 Projector weights are normative because they do not depend on an arbitrary choice of eigenvectors inside a degenerate eigenspace.
 
-Normalize the occupied spectral range by
+Let
+
+$$
+\lambda_{\min}=\min\sigma(K),
+\qquad
+\lambda_{\max}=\max\sigma(K),
+$$
+
+over the complete 101-dimensional spectrum, including eigenspaces whose
+projector weight is at or below the activity threshold. This keeps a mode's
+pitch independent of which initial state is observed. Normalize by
 
 $$
 \xi_\ell=
@@ -217,22 +227,38 @@ For sample index \(n\), evaluate at
 
 $$
 t_n=\frac{n}{f_s},
-\qquad n=0,\ldots,\lfloor Tf_s\rfloor-1.
+\qquad n=0,\ldots,N-1,
+\qquad N=Tf_s=960000.
 $$
+
+For channel \(c\in\{L,R\}\), the canonical pre-normalization sample is
+
+$$
+x_c[n]
+=\frac{w(t_n)}{C_A}
+\sum_{\ell\in\mathcal A}
+a_\ell g_{c,\ell}\cos(2\pi f_\ell t_n).
+$$
+
+All oscillator phases are zero in this mapping profile. These two equations,
+together with the definitions of \(a_\ell\), \(g_{c,\ell}\), \(w\), and
+\(f_\ell\), fully specify the floating-point stereo signal before peak
+normalization.
 
 Do not use the wall clock, browser animation frames, or an unseeded random generator.
 
 ## 9. Quantization
 
 Flatten both output channels to compute the global pre-normalization peak
-\(M=\max_n|x_n|\). If \(M=0\), emit zero-valued PCM. Otherwise set
-\(y_n=0.98x_n/M\), then quantize with round-to-nearest, ties away from zero:
+\(M=\max_{c,n}|x_c[n]|\). If \(M=0\), emit zero-valued PCM. Otherwise set
+\(y_c[n]=0.98x_c[n]/M\), then quantize with round-to-nearest, ties away from
+zero:
 
 $$
-q_n=\operatorname{clip}
+q_c[n]=\operatorname{clip}
 \left(
-\operatorname{sgn}(y_n)
-\left\lfloor32767|y_n|+\frac12\right\rfloor,
+\operatorname{sgn}(y_c[n])
+\left\lfloor32767|y_c[n]|+\frac12\right\rfloor,
 -32768,
 32767
 \right).
@@ -246,13 +272,29 @@ the model version.
 
 ## 10. Degeneracy and ordering
 
-Numerical eigensolvers may rotate eigenvectors inside a degenerate eigenspace. A conforming renderer therefore:
+Numerical eigensolvers may rotate eigenvectors inside a degenerate eigenspace.
+Let the solver output, after ascending sort, be
+\(\widehat\lambda_0,\ldots,\widehat\lambda_{100}\). Adjacent values are linked
+when
+
+$$
+|\widehat\lambda_{i+1}-\widehat\lambda_i|
+\le
+\varepsilon_{\mathrm{abs}}
++\varepsilon_{\mathrm{rel}}
+\max(|\widehat\lambda_i|,|\widehat\lambda_{i+1}|).
+$$
+
+The eigenspaces are the maximal contiguous connected groups under this rule,
+identified as sorted-adjacent-connected-v1. For each group, use the arithmetic
+mean of its raw eigenvalues as \(\lambda_\ell\) and the sum of its numerical
+eigenvector outer products as \(P_\ell\). A conforming renderer therefore:
 
 1. sorts eigenvalues in ascending order;
 2. groups values within a declared absolute and relative tolerance;
 3. constructs or accumulates the projector for each group;
 4. derives weights from the projector, not a single arbitrary eigenvector; and
-5. orders equal-valued groups by a declared deterministic secondary key if needed.
+5. orders groups by ascending arithmetic-mean eigenvalue.
 
 The canonical grouping tolerances are absolute \(10^{-10}\) and relative
 \(10^{-10}\). The eigensolver name, version, numeric precision, and runtime
@@ -281,11 +323,14 @@ A render manifest should contain at least:
   "epsilon_mu": 1e-12,
   "eigenvalue_absolute_tolerance": 1e-10,
   "eigenvalue_relative_tolerance": 1e-10,
+  "eigenvalue_grouping_id": "sorted-adjacent-connected-v1",
+  "group_eigenvalue_id": "arithmetic-mean-v1",
   "sample_rate_hz": 48000,
   "duration_seconds": 20,
   "channels": 2,
   "edge_fade_seconds": 0.02,
   "peak_ceiling": 0.98,
+  "silence_policy": "emit-zero-pcm",
   "pcm": "s16le",
   "quantizer": "nearest-ties-away-from-zero-v1",
   "dither": "none",
