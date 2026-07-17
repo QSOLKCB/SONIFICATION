@@ -15,7 +15,7 @@ This document separates exact mathematics, declared design choices, numerical re
 | \(\theta=\pi/2\) | “A declared quadrature phase” | “The golden ratio equals \(\pi/2\)” |
 | \(\varphi\) | “The optional golden-ratio modulation parameter” | “All E8 spectra are golden-ratio spectra” |
 | 432 Hz | “A declared time and sonification reference” | “A frequency predicted or privileged by E8” |
-| Density operator | “A mathematical simulation state satisfying \(\rho\succeq0\) and \(\operatorname{Tr}\rho=1\)” | “Evidence that quantum hardware was used” |
+| Density operator | “A mathematical simulation state satisfying \(\rho\succeq0\) and \(\mathrm{Tr}\rho=1\)” | “Evidence that quantum hardware was used” |
 | Audio | “A deterministic observation map from model quantities” | “Physical validation of the model” |
 
 ## Exact layer

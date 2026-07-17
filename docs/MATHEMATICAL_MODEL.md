@@ -44,7 +44,7 @@ The supplied expression has the form
 
 $$
 \theta^2\left[
-\operatorname{Tr}(\rho)-\frac12(1-2+1)
+\mathrm{Tr}(\rho)-\frac12(1-2+1)
 \right]
 +\frac{\Omega_0}{101}
 \left(\frac{2\pi}{\theta}\right)^2=0.
@@ -56,7 +56,7 @@ $$
 1-2+1=0
 $$
 
-and a density operator is normalized by \(\operatorname{Tr}(\rho)=1\), the expression becomes
+and a density operator is normalized by \(\mathrm{Tr}(\rho)=1\), the expression becomes
 
 $$
 \theta^2+
@@ -78,9 +78,9 @@ If a scalar zero condition is aesthetically useful, a dimensionless calibration 
 $$
 \begin{aligned}
 \mathcal R(\rho,\Omega)
-={}&\theta^2\bigl(\operatorname{Tr}\rho-1\bigr)^2
-+\frac16\bigl(\operatorname{Tr}(\rho D)\bigr)^2\\
-&+\frac12\bigl(\operatorname{Tr}(\rho Q)\bigr)^2
+={}&\theta^2\bigl(\mathrm{Tr}\rho-1\bigr)^2
++\frac16\bigl(\mathrm{Tr}(\rho D)\bigr)^2\\
+&+\frac12\bigl(\mathrm{Tr}(\rho Q)\bigr)^2
 +\frac1{101}\left(\frac{\Omega}{\Omega_0}-1\right)^2
 \ge 0.
 \end{aligned}
@@ -206,7 +206,7 @@ independent vector basis of \(\mathbb R^8\). Define the model Hilbert space as
 
 $$
 \mathcal H_{101}=\ell^2(S_{101})
-=\operatorname{span}_{\mathbb C}\{|r\rangle:r\in S_{101}\},
+=\mathrm{span}_{\mathbb C}\{|r\rangle:r\in S_{101}\},
 \qquad
 \langle r|s\rangle=\delta_{r,s}.
 $$
@@ -255,7 +255,7 @@ There is no nontrivial 101-dimensional E8 representation behind this constructio
 On one qutrit with computational basis \(|0\rangle,|1\rangle,|2\rangle\), define
 
 $$
-N_3=\operatorname{diag}(0,1,2),
+N_3=\mathrm{diag}(0,1,2),
 $$
 
 $$
@@ -297,7 +297,7 @@ and its centered form is
 $$
 Q=N-\Pi_Q
 =0_2\oplus
-\left(I_{33}\otimes\operatorname{diag}(-1,0,1)\right).
+\left(I_{33}\otimes\mathrm{diag}(-1,0,1)\right).
 $$
 
 ## 7. The SCL ternary-curvature operator
@@ -313,7 +313,7 @@ $$
 As a qutrit observable,
 
 $$
-D_3=\operatorname{diag}(1,-2,1).
+D_3=\mathrm{diag}(1,-2,1).
 $$
 
 The compact global operator is
@@ -343,7 +343,7 @@ $$
 The bare identity \(1-2+1=0\) says that each local \(D_3\) is traceless. The state-dependent curvature is instead
 
 $$
-\kappa(\rho)=\operatorname{Tr}(\rho D).
+\kappa(\rho)=\mathrm{Tr}(\rho D).
 $$
 
 For orbit \(m\) with populations \(p_{m,0},p_{m,1},p_{m,2}\),
@@ -364,7 +364,7 @@ At \(\theta=\pi/2\), each qutrit block is
 
 $$
 U_{D_3}\!\left(\frac\pi2\right)
-=\operatorname{diag}(-i,-1,-i).
+=\mathrm{diag}(-i,-1,-i).
 $$
 
 A fixed nonzero \(D\) does not commute with \(U_\tau\). It is therefore a controlled triality-symmetry-breaking probe, not a triality-invariant static field.
@@ -418,7 +418,7 @@ $$
 Let
 
 $$
-L_E=\operatorname{diag}(W\mathbf1)-W.
+L_E=\mathrm{diag}(W\mathbf1)-W.
 $$
 
 This is a real symmetric positive-semidefinite graph Laplacian. Since \(\tau\) preserves inner products and the selector retains complete triality orbits,
@@ -474,8 +474,8 @@ Then
 
 $$
 \rho_0\succeq0,\qquad
-\operatorname{Tr}(\rho_0)=1,\qquad
-\operatorname{Tr}(\rho_0^2)=1.
+\mathrm{Tr}(\rho_0)=1,\qquad
+\mathrm{Tr}(\rho_0^2)=1.
 $$
 
 If an exactly triality-invariant initial state is required, use the twirl
@@ -624,13 +624,13 @@ where \(\gamma_\ell\) has units s\(^{-1}\). Such a run must be labeled a GKSL/Li
 For the two fixed roots and 33 qutrit orbits, define projectors \(\Pi_{\mathrm{fix},s}\) and \(\Pi_{m,q}\). Then
 
 $$
-p_{m,q}(t)=\operatorname{Tr}(\rho(t)\Pi_{m,q})
+p_{m,q}(t)=\mathrm{Tr}(\rho(t)\Pi_{m,q})
 $$
 
 are qutrit populations and
 
 $$
-\kappa(t)=\operatorname{Tr}(\rho(t)D)
+\kappa(t)=\mathrm{Tr}(\rho(t)D)
 $$
 
 is aggregate SCL curvature.
@@ -638,11 +638,11 @@ is aggregate SCL curvature.
 Other useful observables are
 
 $$
-q_N(t)=\operatorname{Tr}(\rho(t)Q),
+q_N(t)=\mathrm{Tr}(\rho(t)Q),
 $$
 
 $$
-e_E(t)=\operatorname{Tr}(\rho(t)\overline L_E),
+e_E(t)=\mathrm{Tr}(\rho(t)\overline L_E),
 $$
 
 and triality projectors
@@ -655,7 +655,7 @@ $$
 If \([K,U_\tau]=0\), the sector weights
 
 $$
-w_r(t)=\operatorname{Tr}(\rho(t)P_r)
+w_r(t)=\mathrm{Tr}(\rho(t)P_r)
 $$
 
 are conserved under the continuous unitary dynamics.
@@ -677,7 +677,7 @@ $$
 The original 101-dimensional state is then the reduced state
 
 $$
-\rho_{101}=\operatorname{Tr}_3(\rho_{303}).
+\rho_{101}=\mathrm{Tr}_3(\rho_{303}).
 $$
 
 With a 101-cycle \(R_{101}\) and the phase-twisted qutrit cycle \(F_3\), define
@@ -707,16 +707,16 @@ whose dimension is \(3^{101}\); that is a different and vastly larger model.
 For the continuous time-independent unitary dynamics
 \(\dot\rho=-i\Omega_0[K,\rho]\), the following are preserved:
 
-- \(\operatorname{Tr}(\rho)\);
+- \(\mathrm{Tr}(\rho)\);
 - Hermiticity and positive semidefiniteness of \(\rho\);
-- purity \(\operatorname{Tr}(\rho^2)\);
+- purity \(\mathrm{Tr}(\rho^2)\);
 - von Neumann entropy;
-- expected generator value \(\operatorname{Tr}(\rho K)\); and
+- expected generator value \(\mathrm{Tr}(\rho K)\); and
 - triality-sector weights when \([K,U_\tau]=0\).
 
 For the discrete Floquet update \(\rho\mapsto U_F\rho U_F^\dagger\), trace,
 Hermiticity, positivity, purity, and von Neumann entropy are preserved because
-\(U_F\) is unitary. However, \(\operatorname{Tr}(\rho K)\) is conserved only
+\(U_F\) is unitary. However, \(\mathrm{Tr}(\rho K)\) is conserved only
 when \([U_F,K]=0\), and triality-sector weights are conserved only when
 \([U_F,U_\tau]=0\). The spectral-projector weights of \(U_F\), rather than
 those of \(K\), are the natural invariants of a fixed Floquet step.
