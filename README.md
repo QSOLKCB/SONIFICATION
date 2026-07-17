@@ -1,10 +1,11 @@
-# QSOL SONIFICATION
+# ETQ-101: E8-Root-Derived, D4-Triality Qutrit Sonification Model
 
-**Music-first deterministic sonification laboratory for mathematical loop creation.**
+**A deterministic mathematical model for E8-root-indexed, triality-structured
+qutrit sonification.**
 
 [![Tests](https://github.com/QSOLKCB/SONIFICATION/actions/workflows/tests.yml/badge.svg)](https://github.com/QSOLKCB/SONIFICATION/actions/workflows/tests.yml)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB.svg)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: MPL-2.0](https://img.shields.io/badge/License-MPL--2.0-blue.svg)](LICENSE)
 
 SONIFICATION creates DAW-ready musical loops entirely from code and
 mathematics. There are no samples, SoundFonts, SF2 files, hidden downloads, or
@@ -104,361 +105,196 @@ python -m sonification generate \
 
 Phase 1 voice choices are:
 
-- `hybrid` — FM bass, harmonic-glass additive voice, and deterministic wire;
-- `additive` — guard-banded harmonic partial synthesis;
-- `fm` — oversampled two-operator FM with deterministic FIR decimation;
-- `karplus` — fractional-delay Karplus-Strong with mathematical excitation.
+ETQ-101 v1.0.0 formalizes an E8-root-derived graph model with an embedded
+order-three D4 triality, 33 orbit-labelled direct-sum qutrit blocks plus two
+fixed singlets, the ternary-curvature observable `[1, -2, 1]`, qutrit labels
+`[0, 1, 2]`, phase `theta = pi/2`, optional golden-ratio modulation, and a
+declared 432 Hz reference scale.
 
-`--name` changes filenames only. It never enters render identity. Use
-`--verbose` to expose track-level render logging.
+The construction is exact, deterministic, machine-verifiable, and explicit
+about which parts are mathematical consequences and which are authored
+sonification choices.
 
-## Verify a render
+## Model at a glance
 
-The manifest contains every identity-bearing parameter and the event plan.
-Check its internal hash chain, re-render it, and compare exact output:
-
-```bash
-python -m sonification verify artifacts/e8_foundry_seed.manifest.json
-```
-
-A successful replay reports:
-
-```text
-PASS verified <64-character WAV SHA-256>
-```
-
-Verification fails closed if the manifest core, recipe, runtime contract, or
-re-rendered WAV identity differs.
-
-Named artifacts are not overwritten by default. Add `--force` only when you
-intend to atomically replace files with the same names.
-
-## Python API
-
-```python
-from pathlib import Path
-
-from sonification.config import LoopConfig
-from sonification.core.provenance import canonical_json_bytes
-from sonification.renderer import render_loop
-
-config = LoopConfig(
-    tempo_bpm=128.0,
-    bars=4,
-    sample_rate=48_000,
-    bit_depth=24,
-    tuning_a4_hz=432.0,
-    seed=0x2026,
-    voice_mode="hybrid",
-)
-result = render_loop(config)
-
-Path("loop.wav").write_bytes(result.wav_bytes)
-Path("loop.manifest.json").write_bytes(canonical_json_bytes(result.manifest))
-print(result.wav_sha256)
-```
-
-Every public instrument is also independently usable:
-
-```python
-from sonification.core.synthesis import KarplusStrong
-
-pluck = KarplusStrong().synthesize(
-    frequency_hz=108.0,
-    duration_seconds=0.5,
-    velocity=0.8,
-    sample_rate=48_000,
-    seed=42,
-)
-```
-
-## What Phase 1 actually synthesizes
-
-### Additive voice
-
-The additive instrument sums an explicit partial set:
-
-```text
-x(t) = envelope(t) * sum_k a_k sin(2 pi f r_k t + phase_k)
-```
-
-Partials outside the configured Nyquist guard band are dropped. Seed-derived
-phases give each event a reproducible onset without accessing global entropy.
-
-### FM voice
-
-The FM instrument uses a bounded two-operator phase equation:
-
-```text
-x(t) = envelope(t) * sin(2 pi f_c t + I(t) sin(2 pi f_m t + phi_m) + phi_c)
-```
-
-It renders at a fixed oversampling factor, bounds deviation against the
-internal Nyquist guard, applies a versioned windowed-sinc FIR, and decimates to
-the requested rate.
-
-### Karplus-Strong wire
-
-The string model uses a fractional delay, stable feedback below unity, a
-brightness-weighted two-point loop filter, pick-position comb, and DC blocker.
-Its excitation is generated from indexed SplitMix64 values and mathematical
-tones—not from a stored pluck, noise sample, or external file.
-
-### Loop construction
-
-Events are measured in quarter-note beats and converted into integer frame
-positions. Release tails are folded into the loop buffer circularly. The tail
-of the last event therefore becomes the mathematically correct contribution at
-the beginning of the next repetition instead of being silently truncated.
-
-The Phase 1 patterns are deliberately explicit musical fixtures. Phi,
-Fibonacci, Euclidean, qutrit, attractor, cellular-automata, and E8-driven rhythm
-generation arrive behind the same event contract in later phases.
-
-## Determinism and provenance
-
-Phase 1 uses `sonification.float64-numpy/v1`.
-
-```text
-same SONIFICATION version and recorded Python/NumPy/OS/machine identity
-+ same normalized parameters and event plan
-+ same unsigned 64-bit seed
-= same PCM, WAV, hashes, fingerprint, contract, and manifest
-```
-
-The renderer never places timestamps, output paths, filenames, playback state,
-audio devices, process IDs, or global random state in the identity path.
-Unsigned 64-bit seeds are stored as fixed-width hexadecimal strings so no bits
-are lost when a manifest crosses into JavaScript.
-
-Identity is domain-separated:
-
-```text
-SONIFICATION/RECIPE/v1\0
-SONIFICATION/FINGERPRINT/v1\0
-SONIFICATION/CONTRACT/v1\0
-SONIFICATION/MANIFEST-CORE/v1\0
-```
-
-The chain is acyclic:
-
-```text
-configuration + event plan + instrument contracts
-  -> recipe
-  -> float64 render
-  -> explicit PCM quantization + canonical WAV
-  -> fingerprint
-  -> observation contract
-  -> manifest core
-  -> manifest-core receipt
-```
-
-These unkeyed hashes establish integrity and internal consistency; they are not
-digital signatures and do not prove who created an artifact. The manifest does
-not pretend to contain an ordinary hash of all its own final
-bytes. See [the determinism contract](docs/DETERMINISM.md) for exact scope and
-cross-runtime limits.
-
-## Exported artifacts
-
-| Artifact | Purpose |
+| Element | ETQ-101 definition |
 |---|---|
-| `*.wav` | Mono/stereo little-endian PCM16 or PCM24 audio; Phase 1 composer exports stereo. |
-| `*.manifest.json` | Complete recipe, fingerprint, render contract, lineage, claim boundary, and manifest-core receipt. |
-| `*.recipe.json` | Identity-bearing render inputs without observations. |
-| `*.fingerprint.json` | PCM/WAV hashes, level observations, stereo correlation, RMS envelope, and chunk hashes. |
+| E8 | Exact standard set of 240 roots in doubled integer coordinates |
+| Triality | Explicit order-three D4 action preserving the E8 root set |
+| 101-state sector | Canonical triality-closed root-indexed graph space |
+| Ternary curvature | `D3 = diag(1, -2, 1)` |
+| Qutrit logic | Computational labels `[0, 1, 2]` with generalized Pauli operators `X3` and `Z3` |
+| Phase | `theta = pi/2` |
+| Golden ratio | `varphi = (1 + sqrt(5)) / 2`, kept distinct from the phase |
+| Reference scale | `f0 = 432 Hz`, declared rather than derived from E8 |
 
-JSON is UTF-8, key-sorted, compact, finite-only, and newline-terminated.
+The compact state space is
 
-## Current repository tree
+$$
+\boxed{
+\mathcal H_{101}
+=\mathbb C^2
+\oplus
+\left(\mathbb C^{33}\otimes\mathbb C^3\right).
+}
+$$
 
-```text
-SONIFICATION/
-├── .github/workflows/tests.yml
-├── APP/
-│   ├── index.html
-│   ├── styles.css
-│   ├── js/                     # DSP, WAV, hashing, provenance, UI
-│   └── tests/                  # direct-file and Node self-tests
-├── docs/
-│   ├── DETERMINISM.md
-│   ├── ROADMAP.md
-│   └── SCIENTIFIC_BOUNDARIES.md
-├── examples/
-│   └── generate_basic_loop.py
-├── sonification/
-│   ├── __init__.py
-│   ├── __main__.py
-│   ├── cli.py
-│   ├── composition.py
-│   ├── config.py
-│   ├── renderer.py
-│   └── core/
-│       ├── audio.py
-│       ├── provenance.py
-│       ├── tuning.py
-│       ├── math/
-│       │   ├── base.py
-│       │   ├── constants.py
-│       │   ├── prng.py
-│       │   └── sources.py
-│       ├── sequencing/
-│       │   ├── base.py
-│       │   ├── events.py
-│       │   └── grid.py
-│       └── synthesis/
-│           ├── additive.py
-│           ├── base.py
-│           ├── envelopes.py
-│           ├── fm.py
-│           ├── karplus_strong.py
-│           └── oscillators.py
-├── tests/
-│   ├── conftest.py
-│   ├── test_audio.py
-│   ├── test_cli.py
-│   ├── test_config.py
-│   ├── test_prng_and_sources.py
-│   ├── test_provenance.py
-│   ├── test_renderer.py
-│   └── test_synthesis.py
-├── CHANGELOG.md
-├── LICENSE
-├── pyproject.toml
-├── requirements.txt
-└── requirements-dev.txt
-```
+This resolves the central arithmetic constraint: 101 is not divisible by
+three, so the space cannot globally factor as `something x qutrit`. Instead it
+contains **33 complete qutrit/triality orbits and two fixed singlets**.
 
-`__init__.py` files are omitted from the diagram where they add no visual
-information.
+The selected E8 roots label formal orthonormal graph states in
+`ell^2(S_101)`. They are not claimed to be 101 linearly independent vectors in
+R8 or a 101-dimensional representation of E8. The 33 qutrit blocks form a
+direct sum, not 33 independent tensor-factor qutrits.
 
-## Complete proposed mature tree
+If every mode must carry a full qutrit, the model provides the tensor extension
 
-This is the intended architecture through Phase 4. Items marked **later** are
-design commitments, not claims that empty placeholder modules already exist.
+$$
+\mathcal H_{303}=\mathcal H_{101}\otimes\mathbb C^3.
+$$
 
-```text
-SONIFICATION/
-├── sonification/
-│   ├── core/
-│   │   ├── math/
-│   │   │   ├── e8.py                 # later: exact 240-root registry
-│   │   │   ├── projections.py        # later: 2D/3D/4D/custom maps
-│   │   │   ├── triality.py           # later
-│   │   │   ├── sequences.py          # later: Phi/Fibonacci/primes/Collatz
-│   │   │   ├── attractors.py         # later: fixed-step dynamical systems
-│   │   │   ├── cellular.py           # later: cellular automata
-│   │   │   ├── lsystems.py           # later
-│   │   │   └── expressions.py        # later: restricted expression AST
-│   │   ├── synthesis/
-│   │   │   ├── additive.py
-│   │   │   ├── fm.py
-│   │   │   ├── karplus_strong.py
-│   │   │   ├── virtual_analog.py     # later
-│   │   │   ├── modal.py              # later: drums/metal/membranes
-│   │   │   ├── waveguide.py          # later
-│   │   │   ├── filters.py            # later
-│   │   │   └── effects.py            # later
-│   │   ├── sequencing/
-│   │   │   ├── events.py
-│   │   │   ├── euclidean.py          # later
-│   │   │   ├── polyrhythm.py         # later
-│   │   │   ├── attractor_rhythm.py   # later
-│   │   │   └── qutrit.py             # later
-│   │   ├── audio.py
-│   │   ├── composer.py               # later: general multi-track graph
-│   │   ├── mixer.py                  # later
-│   │   ├── midi.py                   # later
-│   │   ├── provenance.py
-│   │   └── tuning.py
-│   ├── lab/
-│   │   ├── app.py                    # later: Gradio laboratory
-│   │   ├── cache.py                  # later
-│   │   ├── transport.py              # later
-│   │   └── visualizers.py            # later
-│   ├── presets/
-│   │   ├── schema.json               # later
-│   │   ├── e8_industrial_groove.json # later
-│   │   └── phi_fibonacci_wire.json   # later
-│   ├── cli.py
-│   ├── composition.py
-│   ├── config.py
-│   └── renderer.py
-├── examples/
-│   ├── generate_basic_loop.py
-│   ├── custom_instrument.py           # later
-│   ├── qec_event_mapping.py           # later
-│   └── batch_render.py                # later
-├── tests/
-│   ├── fixtures/                      # later known-answer contracts
-│   ├── test_prng_and_sources.py
-│   ├── test_synthesis.py
-│   ├── test_determinism.py
-│   ├── test_provenance.py
-│   ├── test_cli.py
-│   └── test_midi.py                   # later
-├── docs/
-├── pyproject.toml
-└── README.md
-```
+## Core qutrit and SCL algebra
 
-## Run the tests
+For `zeta = exp(2 pi i / 3)`, the generalized Pauli operators satisfy
+
+$$
+X_3|q\rangle=|q+1\!\!\pmod 3\rangle,
+\qquad
+Z_3|q\rangle=\zeta^q|q\rangle,
+$$
+
+and
+
+$$
+X_3^3=Z_3^3=I,
+\qquad
+Z_3X_3=\zeta X_3Z_3.
+$$
+
+The SCL operator is
+
+$$
+D_3=\operatorname{diag}(1,-2,1),
+$$
+
+and the phase-twisted cycle
+
+$$
+F_3=X_3e^{-i\theta D_3}
+$$
+
+obeys `F3^3 = I` for every `theta`, including `theta = pi/2`, because the
+accumulated three-step curvature is `1 - 2 + 1 = 0`.
+
+## Dimensionally correct dynamics
+
+Structural terms are assembled into a dimensionless Hermitian generator `K`.
+The physical time scale is introduced only through
+
+$$
+\boxed{
+H=\hbar\Omega_0K,
+\qquad
+\Omega_0=2\pi(432)\ \mathrm{s}^{-1}.
+}
+$$
+
+Closed evolution is therefore
+
+$$
+\dot\rho=-i\Omega_0[K,\rho].
+$$
+
+This replaces the original scalar expression, which mixed a dimensionless
+quantity with a term measured in inverse seconds. Only `1 - 2 + 1` vanishes in
+that expression; the normalized trace term does not.
+
+## ETQ-101 resources
+
+| Resource | Purpose |
+|---|---|
+| [Mathematical model](docs/MATHEMATICAL_MODEL.md) | Normative construction, operators, dynamics, observables, and 303-state extension |
+| [Sonification mapping](docs/SONIFICATION_MAPPING.md) | Static generator-spectrum mapping and deterministic render contract |
+| [Claim boundaries](docs/CLAIM_BOUNDARIES.md) | Exact results, authored choices, and excluded physical claims |
+| [Canonical contract](examples/etq-101.canonical.json) | Fixed v1.0.0 parameters and regression hashes |
+| [JSON Schema](spec/etq-101.schema.json) | Machine-readable canonical schema |
+| [Reference construction](src/etq-model.mjs) | Dependency-free E8, triality, graph, and qutrit implementation |
+| [Model tests](tests/etq-model.test.mjs) | Algebraic, graph, phase, hash, and normalization tests |
+| [Verifier](scripts/verify.mjs) | Canonical-contract and fixture verification |
+
+## Canonical deterministic fixtures
+
+| Fixture | Value |
+|---|---:|
+| Standard E8 roots | 240 |
+| Triality-fixed roots | 12 |
+| Triality three-cycles | 76 |
+| Selected states | 101 |
+| Selected qutrit orbits | 33 |
+| Selected graph edges | 1,687 |
+| Selected graph degree range | 22-55 |
+| Basis SHA-256 | `97cfd1f087745422fd66d3640c7b86c3209593c4b53741018c08a5e9cdb15f6f` |
+| Adjacency SHA-256 | `29ae0af5b1090c9de30f1efc25789060fb1791eb175d2afcd6888847f7fe6324` |
+| Contract SHA-256 | `6577443641be02609c045ee0afc423c2be37bbe5ae83f671cbae304c0e9cb930` |
+
+## Verify the model
+
+The reference implementation has no runtime dependencies. Node.js 20 or newer
+is used for its test runner and SHA-256 verification.
 
 ```bash
-python -m pip install -e .[dev]
-python -m pytest
-python -m ruff check .
-node APP/tests/run.cjs
-node APP/tests/dom-smoke.cjs
+npm test
+npm run verify
 ```
 
-The suite checks PRNG known answers, chunked math-source equivalence,
-instrument repeatability, seed isolation, WAV layout and quantization,
-canonical hashing, tamper detection, exact repeated renders, CLI generation,
-manifest replay, browser uint64 boundaries, short-PCM fingerprints, offline WAV
-packing, and deterministic browser replays.
+The verifier reconstructs the E8 roots, triality orbits, 101 selected labels,
+and adjacency matrix from first principles, then checks the fixed fields and
+cross-field relations in the canonical contract.
 
-## Extending Phase 1
+## Sonification status
 
-New instruments implement:
+The ETQ-101 static generator-spectrum PCM renderer is formally specified in
+[the mapping document](docs/SONIFICATION_MAPPING.md), but is intentionally
+marked **not yet implemented**. This repository does not claim an ETQ-101 WAV
+artifact that it does not ship.
 
-```python
-from sonification.core.synthesis import Instrument
+The repository also contains a separate, complete Python synthesis laboratory
+for deterministic mathematical loop creation. It implements additive, FM, and
+Karplus-Strong synthesis, canonical WAV export, manifests, and exact replay
+verification.
 
-class MyInstrument(Instrument):
-    def synthesize(
-        self,
-        *,
-        frequency_hz: float,
-        duration_seconds: float,
-        velocity: float,
-        sample_rate: int,
-        seed: int,
-    ):
-        ...
+**[Open the music-first synthesis laboratory ->](sonification/README.md)**
 
-    def to_identity_dict(self):
-        ...
-```
+## Scientific boundary
 
-New rhythm systems implement `RhythmGenerator` and return ordered
-`NoteEvent` values. Every DSP-affecting constant belongs in the identity
-contract; caches, plots, UI state, and filenames do not.
+A precise description of ETQ-101 is:
 
-## Performance notes
+> A deterministic 101-dimensional E8-root-indexed graph truncation closed
+> under an embedded D4 triality, with direct-sum qutrit blocks and an explicit
+> sonification map.
 
-Phase 1 uses NumPy vectorization for oscillators and envelopes. The
-Karplus-Strong recurrence is intentionally scalar and inspectable. A default
-four-bar loop generally renders in a few seconds; 8–16 bar hybrid loops can take
-longer depending on CPU and sample rate. Later profiling will identify stable
-Numba acceleration points; Numba is not required for correctness.
+ETQ-101 does **not** claim:
 
-Explicit frame and note-work budgets reject pathological configurations before
-their largest arrays are allocated. These are safety limits, not musical
-recommendations.
+- a 101-dimensional representation of E8;
+- that triality is an intrinsic outer symmetry of E8 rather than D4/Spin(8);
+- that 432 Hz is physically selected by E8;
+- that a mathematical qutrit simulation implies qutrit hardware; or
+- that sonification validates a physical theory.
 
-## License
+See [Claim Boundaries](docs/CLAIM_BOUNDARIES.md) for the complete distinction
+between exact results, model definitions, sonification choices, and excluded
+claims.
 
-MIT. See [LICENSE](LICENSE).
+## Authorship, citation, and license
 
-Created by **Trent Slade / QSOL-IMC**.
+Created by **Trent Slade / QSOL-IMC**. Preferred citation metadata is provided
+in [CITATION.cff](CITATION.cff), with archival metadata in
+[.zenodo.json](.zenodo.json).
+
+Licensed under the [Mozilla Public License 2.0](LICENSE). Covered source files
+and modifications must remain available under MPL-2.0 when distributed, and
+copyright and licence notices may not be removed or altered. See
+[NOTICE](NOTICE), [AUTHORS.md](AUTHORS.md),
+[CONTRIBUTING.md](CONTRIBUTING.md), and
+[Rights and Archiving](docs/RIGHTS_AND_ARCHIVING.md).

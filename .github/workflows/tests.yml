@@ -25,13 +25,12 @@ jobs:
       - run: python -m pytest
       - run: python -m ruff check .
 
-  offline-browser:
+  etq:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "22"
-      - run: find APP -type f -name '*.js' -print0 | xargs -0 -n1 node --check
-      - run: node APP/tests/run.cjs
-      - run: node APP/tests/dom-smoke.cjs
+          node-version: "20"
+      - run: npm test
+      - run: npm run verify
