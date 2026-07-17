@@ -4,106 +4,9 @@
 qutrit sonification.**
 
 [![Tests](https://github.com/QSOLKCB/SONIFICATION/actions/workflows/tests.yml/badge.svg)](https://github.com/QSOLKCB/SONIFICATION/actions/workflows/tests.yml)
-[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB.svg)](https://www.python.org/)
+[![Node.js 20+](https://img.shields.io/badge/Node.js-20%2B-339933.svg)](https://nodejs.org/)
 [![License: MPL-2.0](https://img.shields.io/badge/License-MPL--2.0-blue.svg)](LICENSE)
-
-SONIFICATION creates DAW-ready musical loops entirely from code and
-mathematics. There are no samples, SoundFonts, SF2 files, hidden downloads, or
-recorded excitations. Oscillators, modulation, noise-like material, string
-excitation, envelopes, rhythm, panning, and mixing are all explicit procedural
-functions.
-
-Phase 1 is available both as a Python kernel and as a zero-dependency offline
-browser app. Both editions provide additive synthesis, FM synthesis,
-Karplus-Strong string modeling, a dark 432 Hz hybrid factory groove,
-PCM16/PCM24 WAV export, canonical recipes, fingerprints, manifests, and replay
-verification within their documented runtime boundaries.
-
-> This is audible geometry and mathematical composition. It is not a claim
-> that E8—or any other mapped structure—is physically present in nature.
-
-## Why this project exists
-
-[SPECTRAL](https://github.com/QSOLKCB/SPECTRAL) is the broader deterministic
-sonification and provenance workbench. SONIFICATION complements it by putting
-musical usefulness first: short loops, instruments, groove, tuning, layer
-building, and later DAW/MIDI workflows.
-
-[QEC](https://github.com/QSOLKCB/QEC) informs the insistence on explicit
-contracts, replayable state, deterministic event mappings, and honest claim
-boundaries. SONIFICATION does not present classical DSP as quantum computation.
-
-## Offline browser app
-
-The browser edition needs no install, local server, account, upload, or network
-connection:
-
-1. Open [`APP/index.html`](APP/index.html) directly in a current desktop browser.
-2. Choose a voice, seed, loop length, tuning, sample rate, and WAV depth.
-3. Select **Render offline loop**.
-4. Play the result locally or download its WAV, manifest, recipe, and
-   fingerprint.
-
-Everything used by the app is committed under [`APP/`](APP/): classic local
-scripts, bundled SHA-256, procedural DSP, PCM16/PCM24 RIFF packing, canvas
-visualizers, and an offline self-test page. There are no `fetch` calls, remote
-fonts, CDN assets, service workers, analytics, or upload paths.
-
-Open [`APP/tests/index.html`](APP/tests/index.html) to run the browser checks, or
-run the same engine suite with Node (no packages required):
-
-```bash
-node APP/tests/run.cjs
-node APP/tests/dom-smoke.cjs
-```
-
-The browser ABI is `qsol-imc.browser-float64/v1`. Same inputs replay to the same
-WAV bytes in the same app version and browser runtime. Browser and Python WAV
-hashes are not promised to match because JavaScript engines and NumPy may
-evaluate transcendental DSP differently. See
-[`APP/README.md`](APP/README.md) for the exact boundary.
-
-## Python kernel quick start
-
-Requires Python 3.11 or newer.
-
-```bash
-git clone https://github.com/QSOLKCB/SONIFICATION.git
-cd SONIFICATION
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -e .
-```
-
-Render the default four-bar, 128 BPM, 432 Hz hybrid loop:
-
-```bash
-python -m sonification generate
-```
-
-The default command writes a 24-bit WAV and its integrity-bound manifest to
-`artifacts/`. The output stem contains the first twelve characters of the WAV
-SHA-256, so exact replays are immediately recognizable.
-
-Render all Phase 1 artifact types:
-
-```bash
-python -m sonification generate \
-  --voice hybrid \
-  --bpm 128 \
-  --bars 8 \
-  --a4 432 \
-  --seed 2026 \
-  --sample-rate 48000 \
-  --bit-depth 24 \
-  --peak-dbfs -6 \
-  --export all \
-  --output-dir artifacts \
-  --name e8_foundry_seed
-```
-
-Phase 1 voice choices are:
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21404224.svg)](https://doi.org/10.5281/zenodo.21404224)
 
 ETQ-101 v1.0.0 formalizes an E8-root-derived graph model with an embedded
 order-three D4 triality, 33 orbit-labelled direct-sum qutrit blocks plus two
@@ -259,12 +162,13 @@ The ETQ-101 static generator-spectrum PCM renderer is formally specified in
 marked **not yet implemented**. This repository does not claim an ETQ-101 WAV
 artifact that it does not ship.
 
-The repository also contains a separate, complete Python synthesis laboratory
-for deterministic mathematical loop creation. It implements additive, FM, and
-Karplus-Strong synthesis, canonical WAV export, manifests, and exact replay
-verification.
+The repository also contains two separate, runnable music-first synthesis
+interfaces. Neither is presented as the not-yet-implemented ETQ-101 renderer:
 
-**[Open the music-first synthesis laboratory ->](sonification/README.md)**
+- **[Offline browser app ->](APP/README.md)** — zero-dependency local rendering,
+  playback, WAV export, and provenance receipts;
+- **[Python synthesis laboratory ->](sonification/README.md)** — additive, FM,
+  and Karplus-Strong synthesis with exact replay verification.
 
 ## Scientific boundary
 
