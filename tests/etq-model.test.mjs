@@ -13,6 +13,7 @@ import {
   OUROBOROS_DIMENSION,
   PHASE_THETA_RAD,
   QUTRIT_ROOT_OF_UNITY,
+  SCL_STENCIL,
   applyPermutationIndex,
   applyTriality,
   buildGraphLaplacian,
@@ -109,6 +110,22 @@ test("triality decomposition and canonical 101-state selector are stable", () =>
   }
 });
 
+test("permutation powers derive the selected orbit length and reject invalid input", () => {
+  const fourCycle = [1, 2, 3, 0];
+  assert.equal(applyPermutationIndex(fourCycle, 0, 3), 3);
+  assert.equal(applyPermutationIndex(fourCycle, 0, 4), 0);
+  assert.equal(applyPermutationIndex(fourCycle, 0, -1), 3);
+
+  const mixedCycles = [1, 0, 3, 4, 2];
+  assert.equal(applyPermutationIndex(mixedCycles, 0, 7), 1);
+  assert.equal(applyPermutationIndex(mixedCycles, 2, 7), 3);
+
+  assert.throws(() => applyPermutationIndex([], 0), /non-empty array/);
+  assert.throws(() => applyPermutationIndex([1, 1], 0), /bijection/);
+  assert.throws(() => applyPermutationIndex([1, 0], 2), /outside/);
+  assert.throws(() => applyPermutationIndex([1, 0], 0, 0.5), /safe integer/);
+});
+
 test("selected E8 root graph matches the canonical fixtures", () => {
   const basis = selectEtq101Basis();
   const adjacency = buildRootAdjacency(basis);
@@ -157,6 +174,7 @@ test("selected E8 root graph matches the canonical fixtures", () => {
 });
 
 test("qutrit number and SCL curvature operators obey the declared identity", () => {
+  assert.deepEqual(SCL_STENCIL, [1, -2, 1]);
   const number = qutritNumberDiagonal();
   const centered = centeredQutritNumberDiagonal();
   const curvature = curvatureDiagonal();
@@ -189,6 +207,19 @@ test("qutrit number and SCL curvature operators obey the declared identity", () 
   for (let index = 0; index < 101; index += 1) {
     assert.equal(orbitZero[index] + orbitOne[index] + orbitTwo[index], 0);
   }
+});
+
+test("complex matrix multiplication rejects malformed and incompatible shapes", () => {
+  const one = { re: 1, im: 0 };
+  assert.throws(() => complexMatrixMultiply([], [[one]]), /non-empty matrix/);
+  assert.throws(
+    () => complexMatrixMultiply([[one], [one, one]], [[one]]),
+    /rectangular/,
+  );
+  assert.throws(
+    () => complexMatrixMultiply([[one, one]], [[one]]),
+    /incompatible matrix dimensions 1x2 and 1x1/,
+  );
 });
 
 test("qutrit Weyl operators satisfy X^3=Z^3=I and ZX=zeta XZ", () => {
