@@ -4,7 +4,7 @@
 
 [![Tests](https://github.com/QSOLKCB/SONIFICATION/actions/workflows/tests.yml/badge.svg)](https://github.com/QSOLKCB/SONIFICATION/actions/workflows/tests.yml)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB.svg)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: MPL-2.0](https://img.shields.io/badge/License-MPL--2.0-blue.svg)](LICENSE)
 
 SONIFICATION creates DAW-ready musical loops entirely from code and
 mathematics. There are no samples, SoundFonts, SF2 files, hidden downloads, or
@@ -30,6 +30,37 @@ building, and later DAW/MIDI workflows.
 [QEC](https://github.com/QSOLKCB/QEC) informs the insistence on explicit
 contracts, replayable state, deterministic event mappings, and honest claim
 boundaries. SONIFICATION does not present classical DSP as quantum computation.
+
+## ETQ-101 core mathematical model
+
+The repository now includes **ETQ-101 v1.0.0**, a formal E8-root-derived
+sonification model with an embedded order-three D4 triality, 33 orbit-labelled
+direct-sum qutrit blocks plus two fixed singlets, the ternary-curvature
+observable `[1, -2, 1]`, qutrit labels `[0, 1, 2]`, phase `theta = pi/2`,
+golden-ratio modulation, and a declared 432 Hz reference scale.
+
+The 101 selected E8 roots are graph labels for formal orthonormal states in
+`ell^2(S_101)`; they are not claimed to be 101 independent vectors in R8 or a
+101-dimensional representation of E8. The 33 qutrit blocks form a direct sum,
+not 33 independent tensor-factor qutrits.
+
+| ETQ-101 resource | Purpose |
+|---|---|
+| [Mathematical model](docs/MATHEMATICAL_MODEL.md) | Normative construction, operators, dynamics, and 303-state extension |
+| [Sonification mapping](docs/SONIFICATION_MAPPING.md) | Static generator-spectrum mapping and deterministic render contract |
+| [Claim boundaries](docs/CLAIM_BOUNDARIES.md) | Exact results, authored choices, and excluded physical claims |
+| [Canonical contract](examples/etq-101.canonical.json) | Fixed v1.0.0 parameters and regression hashes |
+| [JSON Schema](spec/etq-101.schema.json) | Exact machine-readable canonical schema |
+| [Reference construction](src/etq-model.mjs) | Dependency-free E8/triality/qutrit implementation |
+
+The static PCM renderer is specified but intentionally marked not yet
+implemented; the repository does not claim a WAV artifact that it does not
+ship. Verify the implemented ETQ algebra, graph, schema, and hashes with:
+
+```bash
+npm test
+npm run verify
+```
 
 ## Phase 1 quick start
 
@@ -245,10 +276,15 @@ JSON is UTF-8, key-sorted, compact, finite-only, and newline-terminated.
 SONIFICATION/
 ├── .github/workflows/tests.yml
 ├── docs/
+│   ├── CLAIM_BOUNDARIES.md
 │   ├── DETERMINISM.md
+│   ├── MATHEMATICAL_MODEL.md
+│   ├── RIGHTS_AND_ARCHIVING.md
 │   ├── ROADMAP.md
-│   └── SCIENTIFIC_BOUNDARIES.md
+│   ├── SCIENTIFIC_BOUNDARIES.md
+│   └── SONIFICATION_MAPPING.md
 ├── examples/
+│   ├── etq-101.canonical.json
 │   └── generate_basic_loop.py
 ├── sonification/
 │   ├── __init__.py
@@ -285,9 +321,22 @@ SONIFICATION/
 │   ├── test_prng_and_sources.py
 │   ├── test_provenance.py
 │   ├── test_renderer.py
+│   ├── etq-model.test.mjs
 │   └── test_synthesis.py
+├── scripts/
+│   └── verify.mjs
+├── spec/
+│   └── etq-101.schema.json
+├── src/
+│   └── etq-model.mjs
+├── .zenodo.json
+├── AUTHORS.md
 ├── CHANGELOG.md
+├── CITATION.cff
+├── CONTRIBUTING.md
 ├── LICENSE
+├── NOTICE
+├── package.json
 ├── pyproject.toml
 ├── requirements.txt
 └── requirements-dev.txt
@@ -418,8 +467,12 @@ Explicit frame and note-work budgets reject pathological configurations before
 their largest arrays are allocated. These are safety limits, not musical
 recommendations.
 
-## License
+## Authorship and license
 
-MIT. See [LICENSE](LICENSE).
+Created by **Trent Slade / QSOL-IMC** and licensed under the
+[Mozilla Public License 2.0](LICENSE). Reuse is welcome, but covered source
+files and modifications must remain available under MPL-2.0 when distributed,
+and copyright and license notices may not be removed or altered.
 
-Created by **Trent Slade / QSOL-IMC**.
+See [NOTICE](NOTICE), [AUTHORS.md](AUTHORS.md), and [CITATION.cff](CITATION.cff)
+for explicit provenance and preferred citation.
