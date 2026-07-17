@@ -1,88 +1,67 @@
-# Rights, Public Hosting, and Archiving
+# Authorship, Licensing, and Archiving
 
-**Status:** Operational guidance, not legal advice  
-**Licence:** QSOL-IMC Core Model Proprietary Source-Viewing Licence 1.0
+## Authorship goal
 
-## What the repository licence does
+This project permits reuse while keeping origin and changes visible. Trent
+Slade / QSOL-IMC is identified as the original creator in [`NOTICE`](../NOTICE),
+[`AUTHORS.md`](../AUTHORS.md), and [`CITATION.cff`](../CITATION.cff).
 
-The current `LICENSE` reserves all rights in the protectable original code,
-text, diagrams, selections, arrangements, fixtures, audio mappings, and other
-expression added under it. It grants only narrow source-viewing permission and
-does not grant a general right to execute, research, copy, modify, redistribute,
-commercialise, or use the materials for AI or machine-learning purposes.
+The repository uses the
+[Mozilla Public License 2.0](https://www.mozilla.org/MPL/2.0/). MPL-2.0 allows
+use, modification, and commercial distribution, but distribution of covered
+source files and modifications must remain under MPL-2.0, their Source Code
+Form must be available, and the substance of copyright and licence notices may
+not be removed or altered. Separate files in a larger work may use other terms.
 
-The initial repository revision was published under MIT. A later licence
-change cannot retract MIT rights already granted in that earlier MIT-covered
-revision. The proprietary licence applies prospectively to the newly added
-ETQ-101 model and other material first published under it.
+This strikes the intended balance: other people may build on the work, but they
+must preserve the original notices and cannot honestly present Trent Slade's
+covered source or text as solely their own creation.
 
-## Public GitHub is source-visible, not secret
+## What the licence cannot monopolise
 
-A custom repository licence does not override rights separately granted by the
-owner through GitHub's terms. In particular, public-repository hosting carries
-service-level rights relating to access and forking, and GitHub's current terms
-contain separate provisions for GitHub and its affiliates to process hosted
-content, including for AI and machine-learning purposes. See the
-[GitHub Terms of Service](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service)
-and [GitHub's repository-licensing guidance](https://docs.github.com/articles/licensing-a-repository).
+Copyright protects original expression, not abstract ideas, facts,
+mathematical truths, scientific principles, or independently created methods.
+The project claims authorship of its original specification, code, concrete
+selector, compilation, fixtures, audio mappings, and documentation—not private
+ownership of E8, D4 triality, qutrit algebra, the golden ratio, pi, or 432 Hz.
 
-Accordingly:
-
-- the repository is proprietary and source-visible, not confidential;
-- the repository licence restricts downstream permissions to the extent the
-  owner controls them;
-- it cannot cancel GitHub's separate platform rights; and
-- a private repository plus signed access agreements is materially stronger if
-  secrecy is the primary goal.
-
-No repository-visibility change is implied by this document.
-
-## Copyright does not monopolise mathematics
-
-Australian copyright arises automatically in qualifying original expression,
-but it does not confer ownership of abstract ideas, facts, mathematical truths,
-scientific principles, or independently created methods. ETQ-101's original
-specification, code, concrete selector, compilation, fixtures, and mapping may
-be protected to the extent the law permits; E8, D4 triality, qutrit algebra,
-the golden ratio, pi, and 432 Hz are not privately owned by this project.
-
-See the Australian Attorney-General's
+Australian copyright generally arises automatically in qualifying original
+expression. See the Australian Attorney-General's
 [copyright basics](https://www.ag.gov.au/rights-and-protections/copyright/copyright-basics)
 and the [Copyright Act 1968 (Cth)](https://www.legislation.gov.au/C1968A00063/latest/text).
-Statutory exceptions and non-excludable rights remain unaffected.
 
-## Patent and trade-secret boundary
+## Licence history
 
-Public disclosure is generally inconsistent with trade-secret treatment and
-can affect patent strategy and filing deadlines. This licence grants no patent
-rights, but a copyright licence alone does not create patent protection. If
-patentability, confidential know-how, ownership-chain evidence, or commercial
-exclusivity matters, obtain advice from a qualified Australian IP lawyer before
-making additional technical disclosure.
+An earlier repository revision was released under the MIT License. Rights
+already granted for that revision remain valid. The branch introducing ETQ-101
+changes the current project to MPL-2.0 prospectively; it does not attempt to
+withdraw the earlier MIT grant.
+
+## Citation and provenance
+
+When using the repository in research, software, recordings, articles, or
+presentations:
+
+1. retain `LICENSE` and applicable source notices as MPL-2.0 requires;
+2. retain `NOTICE` when redistributing the project as a whole;
+3. identify modifications accurately; and
+4. cite the project using `CITATION.cff` and, once available, the archived DOI.
+
+Git hashes, ETQ contract hashes, basis hashes, adjacency hashes, release tags,
+and archive DOIs should be recorded together. Hashes show artifact identity;
+they do not by themselves prove legal authorship.
 
 ## Zenodo record policy
 
-The repository includes [`.zenodo.json`](../.zenodo.json) configured for a
-`restricted` file deposit and the `other-closed` rights label. A future Zenodo
-record should keep file access restricted, require a separately signed written
-agreement, and include the repository `LICENSE` in the deposit.
+The repository includes [`.zenodo.json`](../.zenodo.json) for a future open
+software deposit under MPL-2.0. Before publishing the record:
 
-Restricted files do not make the record private: Zenodo exposes bibliographic
-metadata publicly, and metadata has separate reuse terms. Keep confidential or
-patent-sensitive implementation detail out of the title, abstract, keywords,
-and public notes. Review Zenodo's current
-[access controls](https://help.zenodo.org/docs/deposit/about-records/),
-[licences and rights guidance](https://help.zenodo.org/docs/deposit/describe-records/licenses/),
-and [`.zenodo.json` guidance](https://help.zenodo.org/docs/github/describe-software/zenodo-json/)
-before publishing a deposit.
+1. archive an immutable release tag, not a moving branch;
+2. confirm creator spelling and affiliation;
+3. add an ORCID only if Trent Slade supplies and verifies it;
+4. confirm the DOI back into `CITATION.cff` and the release notes; and
+5. verify Zenodo's current rights field in the draft interface.
 
-## Before a formal release
-
-1. Confirm that `Trent Slade` is the correct legal copyright-owner name and
-   record any assignment to a company or other entity.
-2. Obtain provenance confirmations for every third-party contribution.
-3. Have Australian IP counsel review the licence, patent-disclosure position,
-   and any contributor or access agreement.
-4. Tag the exact release and archive that tag, not a moving branch.
-5. Record the Git commit, ETQ contract hash, basis hash, adjacency hash, and the
-   archive DOI together.
+Zenodo record metadata remains separately reusable under Zenodo's metadata
+terms. Keep the public record accurate and avoid claiming that the archive DOI
+validates the model's scientific interpretation.
