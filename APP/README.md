@@ -43,4 +43,5 @@ The source contains no `fetch`, XMLHttpRequest, WebSocket, analytics, remote
 font, CDN, or upload code. Audio and provenance are generated in memory. Files
 leave the app only when the user presses a download button.
 
-MIT licensed with the repository. Created by Trent Slade / QSOL-IMC.
+Licensed under the Mozilla Public License 2.0 with the repository. Created by
+Trent Slade / QSOL-IMC.
