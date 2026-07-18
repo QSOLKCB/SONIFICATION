@@ -1,0 +1,197 @@
+{
+  "schema": "qsol.qec-reuse-index/v1",
+  "purpose": "Compact source map from SONIFICATION to reviewed QEC releases, tests, experiments, and reusable implementation ideas.",
+  "sourceRepository": "https://github.com/QSOLKCB/QEC",
+  "reviewedMainCommit": "f136075d75d9019c5a28f086396b926e66dca71e",
+  "releaseHistory": "https://github.com/QSOLKCB/QEC/blob/main/release_history.json",
+  "reviewedReleases": [
+    {
+      "tag": "v57.0.0",
+      "title": "Spectral Ridge Detection",
+      "url": "https://github.com/QSOLKCB/QEC/releases/tag/v57.0.0"
+    },
+    {
+      "tag": "v58.0.0",
+      "title": "Automatic Spectral Phase-Map Reconstruction",
+      "url": "https://github.com/QSOLKCB/QEC/releases/tag/v58.0.0"
+    },
+    {
+      "tag": "v61.0.0",
+      "title": "Automatic Phase Characterization",
+      "url": "https://github.com/QSOLKCB/QEC/releases/tag/v61.0.0"
+    },
+    {
+      "tag": "v62.0.0",
+      "title": "Automated Spectral Theory Synthesis",
+      "url": "https://github.com/QSOLKCB/QEC/releases/tag/v62.0.0"
+    },
+    {
+      "tag": "v66.0.0",
+      "title": "Graph-Decoder Co-Evolution",
+      "url": "https://github.com/QSOLKCB/QEC/releases/tag/v66.0.0"
+    }
+  ],
+  "usedForTannerTuningFork": [
+    {
+      "id": "nonbacktracking_edge_order_and_flow",
+      "source": "src/qec/analysis/nonbacktracking_flow.py",
+      "url": "https://github.com/QSOLKCB/QEC/blob/main/src/qec/analysis/nonbacktracking_flow.py",
+      "usedFor": [
+        "numeric lexicographic directed-edge ordering",
+        "correct Hashimoto transition (u->v)->(v->w), w!=u",
+        "directed-to-undirected edge projection concept"
+      ],
+      "adaptation": "Reimplemented as dependency-free ESM; QEC eigensolver and optimizer behavior were not copied."
+    },
+    {
+      "id": "archived_nonbacktracking_goldens",
+      "source": "archive/v3_tests/test_nonbacktracking_eigenvector_flow.py",
+      "url": "https://github.com/QSOLKCB/QEC/blob/main/archive/v3_tests/test_nonbacktracking_eigenvector_flow.py",
+      "usedFor": [
+        "C8 Tanner-cycle fixture",
+        "global phase and edge-pairing test ideas",
+        "degree-preserving lexicographic mutation reference"
+      ],
+      "warning": "The C8 fixture lies exactly on the bulk-radius boundary; its existing allclose test is not replay determinism. SONIFICATION uses exact matrix-power goldens instead."
+    },
+    {
+      "id": "degenerate_mode_projectors",
+      "source": "tests/test_eigenmode_subspace.py",
+      "url": "https://github.com/QSOLKCB/QEC/blob/main/tests/test_eigenmode_subspace.py",
+      "usedFor": [
+        "basis-rotation-invariant projector golden",
+        "grouped eigenspace semantics"
+      ]
+    },
+    {
+      "id": "tanner_spectral_fixtures",
+      "source": "tests/test_tanner_spectral_analysis.py",
+      "url": "https://github.com/QSOLKCB/QEC/blob/main/tests/test_tanner_spectral_analysis.py",
+      "usedFor": [
+        "Tanner adjacency and Laplacian sanity patterns",
+        "empty and deterministic graph fixtures"
+      ]
+    },
+    {
+      "id": "canonical_event_hashing",
+      "source": "tests/sonify/test_canonical_event_hashing.py",
+      "url": "https://github.com/QSOLKCB/QEC/blob/main/tests/sonify/test_canonical_event_hashing.py",
+      "usedFor": [
+        "domain-separated canonical identity",
+        "input-order-independent hashing",
+        "tamper and runtime-seed regression ideas"
+      ]
+    }
+  ],
+  "candidatesForLater": [
+    {
+      "id": "symbolic_sonification_events",
+      "sources": [
+        "src/qec/sonify/canonical.py",
+        "src/qec/sonify/events.py",
+        "src/qec/sonify/mapping.py"
+      ],
+      "url": "https://github.com/QSOLKCB/QEC/tree/main/src/qec/sonify",
+      "possibleUse": "Canonical mode-event tables before deterministic PCM rendering.",
+      "note": "Reuse the event and hashing primitives, not repeated governance fields."
+    },
+    {
+      "id": "spectral_ridges",
+      "source": "src/qec/analysis/spectral_ridges.py",
+      "release": "v57.0.0",
+      "url": "https://github.com/QSOLKCB/QEC/blob/main/src/qec/analysis/spectral_ridges.py",
+      "possibleUse": "Mode-trajectory segmentation and section boundaries.",
+      "warning": "Correct the np.lexsort key priority and add input-permutation tests before reuse."
+    },
+    {
+      "id": "spectral_phase_map",
+      "source": "src/qec/analysis/spectral_phase_map.py",
+      "release": "v58.0.0",
+      "url": "https://github.com/QSOLKCB/QEC/blob/main/src/qec/analysis/spectral_phase_map.py",
+      "possibleUse": "Form, section, or timbre-state maps; not primary pitch calibration."
+    },
+    {
+      "id": "phase_characterization",
+      "source": "src/qec/analysis/phase_characterization.py",
+      "release": "v61.0.0",
+      "url": "https://github.com/QSOLKCB/QEC/blob/main/src/qec/analysis/phase_characterization.py",
+      "possibleUse": "Named timbre and stability states after metrics are revalidated."
+    },
+    {
+      "id": "theory_synthesis",
+      "source": "src/qec/analysis/theory_synthesis.py",
+      "release": "v62.0.0",
+      "url": "https://github.com/QSOLKCB/QEC/blob/main/src/qec/analysis/theory_synthesis.py",
+      "possibleUse": "Offline comparison of candidate spectral-to-audio relationships; never automatic truth claims."
+    },
+    {
+      "id": "ternary_control_lane",
+      "release": "v66.0.0",
+      "url": "https://github.com/QSOLKCB/QEC/releases/tag/v66.0.0",
+      "possibleUse": "Three-state control or event-lane experiments.",
+      "warning": "QEC ternary decoder messages {-1,0,+1} are not labelled GF(3) Tanner coefficients or qutrit algebra."
+    },
+    {
+      "id": "invariant_sonification_renderer",
+      "source": "src/qec/experiments/invariant_sonification.py",
+      "url": "https://github.com/QSOLKCB/QEC/blob/main/src/qec/experiments/invariant_sonification.py",
+      "possibleUse": "Oscillator, envelope, and WAV scaffolding after replacing authored pitch tables.",
+      "warning": "Its final peak normalization cancels the current global stability-to-amplitude mapping."
+    },
+    {
+      "id": "spectral_repair_experiment",
+      "source": "src/qec/experiments/spectral_repair_experiment.py",
+      "url": "https://github.com/QSOLKCB/QEC/blob/main/src/qec/experiments/spectral_repair_experiment.py",
+      "possibleUse": "Before-and-after graph retuning demonstrations using a corrected operator path."
+    },
+    {
+      "id": "experiment_identity",
+      "source": "src/qec/experiments/experiment_hash.py",
+      "url": "https://github.com/QSOLKCB/QEC/blob/main/src/qec/experiments/experiment_hash.py",
+      "possibleUse": "Canonical JSON and SHA helpers for run caches.",
+      "warning": "Environment, dirty-state, and timestamp fields must not define the instrument hash."
+    }
+  ],
+  "doNotReuseAsAuthority": [
+    {
+      "source": "src/qec/diagnostics/non_backtracking_spectrum.py",
+      "reason": "Builds destination-to-destination transitions instead of the Hashimoto (u->v)->(v->w) rule; a tree incorrectly reports nonzero spectral radius."
+    },
+    {
+      "sources": [
+        "src/qec/experiments/spectral_graph_optimizer.py",
+        "src/qec/experiments/spectral_graph_repair_loop.py",
+        "the spectral branch of src/qec/experiments/tanner_graph_repair.py"
+      ],
+      "reason": "These paths inherit or depend on the incorrect legacy nonbacktracking construction."
+    },
+    {
+      "sources": [
+        "src/qec/experiments/spectral_phase_diagram.py",
+        "experiments/run_nb_mutation_ablation.py"
+      ],
+      "reason": "They label normalized max_flow, normally 1, as spectral_radius."
+    },
+    {
+      "sources": [
+        "src/qec/modules/sonification/e8_baseline.py",
+        "src/qec/modules/sonification/e8_multidim.py",
+        "sonify_triality.py"
+      ],
+      "reason": "Their musical ratios and E8/triality labels are authored or mathematically inconsistent; SONIFICATION remains the E8 authority."
+    },
+    {
+      "sources": [
+        "src/qec/experiments/midi_cube_bridge.py",
+        "src/midi_export.py"
+      ],
+      "reason": "Not suitable as a microtonal tuning exporter without timing, mapping, and pitch-bend redesign."
+    }
+  ],
+  "identityBoundary": {
+    "tannerInstrumentHash": "Hash the exact labelled sparse matrix, including GF(3) coefficients and fixed row/column labels.",
+    "codeEquivalenceHash": "A future GF(3) row-space/RREF hash is a separate identity and must not replace the Tanner matrix before spectral construction.",
+    "eigenspaces": "Serialize grouped eigenvalues and projectors, not arbitrary individual eigenvectors inside degenerate spaces."
+  },
+  "licenseNote": "Check the SPDX header and repository license of each source before copying code. This index records technical provenance and is not a license grant."
+}

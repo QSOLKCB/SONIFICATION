@@ -1,12 +1,11 @@
 {
-  "name": "@qsol-imc/sonification-etq-101",
-  "version": "1.0.0",
+  "name": "@qsol-imc/tanner-tuning-fork-review",
+  "version": "0.1.0",
   "private": true,
-  "description": "Deterministic E8-root-derived, D4-triality-embedded qutrit sonification model",
   "type": "module",
   "scripts": {
     "test": "node --test",
-    "verify": "node scripts/verify.mjs"
+    "test:tuning": "node --test tests/tanner-tuning-fork.test.mjs"
   },
   "engines": {
     "node": ">=20"
