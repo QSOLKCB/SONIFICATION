@@ -7,7 +7,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { deriveEtq101ClockTuning } from "../src/etq101-tuning-fork.mjs";
+import {
+  deriveEtq101ClockTuning,
+  ETQ101_CLOCK_TUNING_PROFILE,
+} from "../src/etq101-tuning-fork.mjs";
 
 import {
   buildHashimoto,
@@ -285,7 +288,22 @@ test("GF(3) coefficient labels change instrument hash without changing topology"
   assert.notEqual(hashOne, hashTwo);
 });
 
-test("ETQ-101 E8 root graph derives a calibrated spectrum without a 432 anchor", () => {
+test("ETQ-101 selected-root calibration is explicitly auxiliary and noncanonical", () => {
+  assert.deepEqual(ETQ101_CLOCK_TUNING_PROFILE, {
+    profileId: "etq101-e8-root-laplacian-frame-bin-v1",
+    status: "auxiliary-noncanonical-calibration",
+    sourceModel: "ETQ-101@2.0.0",
+    semanticScope: "auxiliary-e8-root-graph-calibration-experiment",
+    canonicalEtq101Mapping: false,
+    replacesCanonicalEtq101GeneratorSpectrum: false,
+    replacesCanonicalEtq101MidiCodebook: false,
+    rootEtq101Clock: "none-symbolic-midi-v2",
+    pitchOperator: "etq101-selected-e8-root-graph-laplacian-v1",
+    pitchRatioMap: "sqrt-positive-eigenvalue-v1",
+    zeroModePolicy: "omit-dc-v1",
+    absoluteUnit: "declared-nominal-frame-bin-auxiliary-v1",
+  });
+
   const tuning = deriveEtq101ClockTuning({
     sampleRateHz: 48_000,
     calibrationFrameCount: 960_000,

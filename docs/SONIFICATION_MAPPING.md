@@ -1,363 +1,277 @@
-# ETQ-101 Sonification Mapping
+# ETQ-101 v2 Ternary MIDI Mapping
 
-**Version:** 1.0.0  
-**Status:** Normative mapping specification; reference PCM renderer not yet implemented
+**Version:** 2.0.0
+**Mapping ID:** `centered-101-state-ternary-register-v1`
+**Status:** Symbolic codebook implemented; dynamics-to-event mapping and MIDI
+file exporter not yet implemented
 
 ## 1. Separation rule
 
-The mathematical dynamics and the audio renderer are separate layers:
+The implemented v2 mapping path is
+
+$$
+\text{canonical basis identity}
+\longrightarrow
+\text{symbolic MIDI note-number code}.
+$$
+
+A future dynamic profile may add
 
 $$
 \text{model state}
 \longrightarrow
-\text{declared observables}
+\text{declared observable}
 \longrightarrow
-\text{audio parameters}
+\text{scheduled MIDI events}
 \longrightarrow
-\text{WAV samples}.
+\text{external receiver}.
 $$
 
-Audio does not feed back into the mathematical state unless a later model version explicitly defines that coupling. A sonification is an observation of a declared model run; it is not evidence that the model is physically realized.
+That additional path is not yet specified or implemented. In either case, the
+external receiver determines acoustic tuning, timbre, loudness, and rendered
+sound. Those properties are not part of the canonical root contract.
 
-The canonical `generator-spectrum-v1` profile is a **static spectral
-fingerprint of the continuous generator \(K\)**. It does not sonify a Floquet
-trajectory or the eigenphases of \(U_F\). Those would require a separately
-named time-series or Floquet-render profile.
+Root ETQ workflows never construct PCM, render audio, or claim a canonical
+sound. They may emit only `.mid`, `.csv`, and `.json` runtime artifacts.
 
-## 2. Required inputs
+## 2. Display task
 
-A conforming render records:
-
-- the ETQ model version and profile;
-- the canonical 101 root-label hash;
-- the canonical adjacency hash;
-- all generator coefficients;
-- the initial density operator or a reproducible state recipe;
-- the phase \(\theta\), golden ratio parameter \(\varphi\), and reference frequency \(f_0\);
-- the generator coefficients and the fact that this profile uses the static spectrum of \(K\);
-- numerical tolerances and eigensolver identity when spectral rendering is used;
-- sample rate, duration, channel count, window, limiter, and quantizer; and
-- a hash of the final PCM byte sequence.
-
-## 3. Spectral coordinates
-
-Let the dimensionless Hermitian generator have the spectral resolution
+The first v2 mapping has one deliberately narrow task: provide a reversible
+symbolic note code for every state in the declared decomposition
 
 $$
-K=\sum_\ell\lambda_\ell P_\ell,
+\mathcal H_{101}
+=\mathbb C^2\oplus(\mathbb C^{33}\otimes\mathbb C^3).
 $$
 
-where \(P_\ell\) projects onto the full eigenspace of \(\lambda_\ell\). For an initial state \(\rho_0\), define
+It is a **basis codebook**, not yet a dynamic auditory display. It does not map
+state populations, time steps, graph spectra, or curvature magnitude to
+velocity, onset, duration, or pitch. Those choices require separately named
+profiles and perceptual evaluation.
+
+## 3. Explicit parameter map
+
+The mapping follows a parameter-mapping discipline: identify the data class,
+target symbol, transfer function, polarity, quantization, and claim boundary.
+
+| ETQ feature | MIDI field | Transfer | Status |
+|---|---|---|---|
+| Fixed-singlet index | Note number | Two codebook bookends | Authored identity code |
+| Qutrit label \(q\in\{0,1,2\}\) | Register lane | `0→low`, `1→mid`, `2→high` | Authored linear display of a cyclic label |
+| Orbit index \(m\in\{0,\ldots,32\}\) | Offset inside lane | One integer note-number step per canonical orbit index | Authored enumeration code |
+| Receiver tuning | Acoustic pitch | Not defined | External and non-normative |
+| Dynamics step | Onset/duration | Not defined | Future profile |
+| Population or projector weight | Velocity | Not defined | Future profile |
+| Timbre/program/channel | Receiver realization | Not defined | Future profile |
+
+There is no clipping or rounding: the finite source set is mapped exactly to
+integer note numbers.
+
+## 4. Canonical basis indexing
+
+The selected basis order is
 
 $$
-\mu_\ell=\mathrm{Tr}(\rho_0P_\ell).
+j=0,1
 $$
 
-Then
+for the two triality-fixed singlets, followed by
 
 $$
-\mu_\ell\ge0,
+j=2+3m+q,
 \qquad
-\sum_\ell\mu_\ell=1.
+m=0,\ldots,32,
+\quad
+q=0,1,2.
 $$
 
-Projector weights are normative because they do not depend on an arbitrary choice of eigenvectors inside a degenerate eigenspace.
+The orbit order is the same numeric lexicographic order used by the canonical
+root selector. It is deterministic but not a physical magnitude.
 
-Let
+## 5. Exact note codebook
+
+MIDI note numbers occupy the integer domain \(0,\ldots,127\). A contiguous
+101-note window can start at either 13 or 14 with margins differing by one.
+The canonical lower-start tie break chooses notes 13–113.
+
+The fixed singlets are
 
 $$
-\lambda_{\min}=\min\sigma(K),
+M(s_0)=13,
 \qquad
-\lambda_{\max}=\max\sigma(K),
+M(s_1)=113.
 $$
 
-over the complete 101-dimensional spectrum, including eigenspaces whose
-projector weight is at or below the activity threshold. This keeps a mode's
-pitch independent of which initial state is observed. Normalize by
-
-$$
-\xi_\ell=
-2\frac{\lambda_\ell-\lambda_{\min}}
-{\lambda_{\max}-\lambda_{\min}}-1.
-$$
-
-Thus \(\xi_\ell\in[-1,1]\). If \(\lambda_{\max}=\lambda_{\min}\), set every \(\xi_\ell=0\).
-
-## 4. Golden-band pitch map
-
-The canonical pitch map is
+For each qutrit-orbit state,
 
 $$
 \boxed{
-f_\ell
-=f_0\,2^{\varphi\xi_\ell},
-\qquad
-f_0=432\ \mathrm{Hz},
-\qquad
-\varphi=\frac{1+\sqrt5}{2}.
+M(m,q)=14+33q+m.
 }
 $$
 
-For \(\xi_\ell\in[-1,1]\), the frequencies lie approximately between 141 Hz and 1.33 kHz. This range is an authored musical mapping. It is not an E8-predicted energy spectrum and does not make 432 Hz physically privileged.
+| \(q\) | Centered value \(q-1\) | SCL value \(d_q\) | Display lane | MIDI range |
+|---:|---:|---:|---|---:|
+| 0 | -1 | +1 | low | 14–46 |
+| 1 | 0 | -2 | mid | 47–79 |
+| 2 | +1 | +1 | high | 80–112 |
 
-Alternative pitch maps are allowed only when assigned a different mapping identifier and fully recorded. A render using another map is not byte-equivalent to the canonical mapping.
+The SCL values are recorded to keep the two ternary operators distinct.
+`diag(-1,0,1)` supplies an ordered coordinate; `diag(1,-2,1)` supplies
+curvature. The latter is not misrepresented as an ordered low/mid/high scale.
 
-## 5. Amplitude map
+## 6. Exact inverse and triality action
 
-Use
-
-$$
-a_\ell=\sqrt{\mu_\ell}.
-$$
-
-For a finite active set \(\mathcal A=\{\ell:\mu_\ell>\varepsilon_\mu\}\), define the safe normalization
-
-$$
-C_A=\max\left(1,\sum_{\ell\in\mathcal A}a_\ell\right).
-$$
-
-This gives the unwindowed mono signal
+For notes 14–112, set
 
 $$
-x(t)=\frac1{C_A}
-\sum_{\ell\in\mathcal A}
-a_\ell\cos(2\pi f_\ell t).
-$$
-
-Negative entries of `[1, -2, 1]` are never interpreted as negative loudness. Audible amplitude remains nonnegative.
-
-## 6. SCL contribution in the canonical profile
-
-The canonical generator commutes with triality, so each spectral projector
-\(P_\ell\) commutes with \(U_\tau\). With
-\(D_a=U_\tau^aDU_\tau^{-a}\) and \(D_0+D_1+D_2=0\),
-
-$$
-\mathrm{Tr}(P_\ell D)
-=\frac13\sum_{a=0}^2\mathrm{Tr}(P_\ell D_a)
-=0.
-$$
-
-Consequently, a projector-trace SCL phase would be identically zero and is
-**not** used.
-
-Instead, SCL curvature and \(\theta=\pi/2\) enter the phase-prepared initial
-state
-
-$$
-|\Omega_{\varphi,\theta}\rangle
-=\frac1{\sqrt{101}}\sum_{j=0}^{100}
-e^{2\pi i j/\varphi-i\theta d_j}|j\rangle,
-$$
-
-so they influence the projector weights
-
-$$
-\mu_\ell
-=\langle\Omega_{\varphi,\theta}|P_\ell|
-\Omega_{\varphi,\theta}\rangle.
-$$
-
-All canonical oscillator phases are zero after this state-to-weight reduction.
-A later time-dependent profile may use
-\(\kappa(t)=\mathrm{Tr}(\rho(t)D)\) only after declaring a normalization,
-modulation depth, and a distinct mapping identifier.
-
-## 7. Stereo mapping
-
-Let the triality-sector projectors be
-
-$$
-P_r=\frac13\sum_{a=0}^2\zeta^{-ra}U_\tau^a,
-\qquad r=0,1,2.
-$$
-
-Define the sector weights for mode \(\ell\):
-
-$$
-t_{\ell,r}=
-\frac{\mathrm{Tr}(P_\ell P_r)}
-{\mathrm{Tr}(P_\ell)}.
-$$
-
-The canonical pan coordinate is
-
-$$
-p_\ell=\mathrm{clip}
-\left(t_{\ell,2}-t_{\ell,0},-1,1\right).
-$$
-
-Use equal-power stereo gains
-
-$$
-g_{L,\ell}=\cos\left(\frac\pi4(p_\ell+1)\right),
+r=M-14,
 \qquad
-g_{R,\ell}=\sin\left(\frac\pi4(p_\ell+1)\right).
+q=\left\lfloor\frac r{33}\right\rfloor,
+\qquad
+m=r\bmod33,
 $$
 
-The \(r=1\) sector is centered. The mapping is deterministic but is still a sonification convention.
-
-## 8. Window and sampling
-
-For duration \(T\), the canonical edge window uses a raised cosine over \(T_f\) seconds at each edge:
+then recover
 
 $$
-w(t)=
-\begin{cases}
-\tfrac12\left[1-\cos(\pi t/T_f)\right],&0\le t<T_f,\\
-1,&T_f\le t\le T-T_f,\\
-\tfrac12\left[1-\cos(\pi(T-t)/T_f)\right],&T-T_f<t\le T.
-\end{cases}
+j=2+3m+q.
 $$
 
-The canonical example uses:
+Notes 13 and 113 recover fixed singlets 0 and 1. All other MIDI notes lie
+outside this codebook.
 
-| Parameter | Value |
-|---|---:|
-| Renderer profile | `generator-spectrum-v1` |
-| Duration | 20 s |
-| Sample rate | 48,000 Hz |
-| Channels | 2 |
-| Edge fade | 20 ms |
-| PCM format | signed 16-bit little-endian |
-| Peak ceiling | 0.98 |
-| Dither | none |
-
-For sample index \(n\), evaluate at
+Within the 99-note qutrit interior, triality \(q\mapsto q+1\pmod3\) becomes
 
 $$
-t_n=\frac{n}{f_s},
-\qquad n=0,\ldots,N-1,
-\qquad N=Tf_s=960000.
+(M-14)\mapsto(M-14+33)\bmod99.
 $$
 
-For channel \(c\in\{L,R\}\), the canonical pre-normalization sample is
+This covariance is exact. Calling the three results low, mid, and high is
+still an authored observation convention because a cyclic qutrit label set has
+no intrinsic first-to-last energy order.
 
-$$
-x_c[n]
-=\frac{w(t_n)}{C_A}
-\sum_{\ell\in\mathcal A}
-a_\ell g_{c,\ell}\cos(2\pi f_\ell t_n).
-$$
+## 7. What MIDI means here
 
-All oscillator phases are zero in this mapping profile. These two equations,
-together with the definitions of \(a_\ell\), \(g_{c,\ell}\), \(w\), and
-\(f_\ell\), fully specify the floating-point stereo signal before peak
-normalization.
+A MIDI note number is a symbolic key in the ETQ contract. It is not a hertz
+value. A receiving synthesizer may apply equal temperament, another tuning,
+pitch bend, a tuning table, transposition, or instrument-specific behavior.
 
-Do not use the wall clock, browser animation frames, or an unseeded random generator.
+Consequently, v2 defines no:
 
-## 9. Quantization
+- A4 reference;
+- acoustic frequency;
+- pitch-bend range;
+- MIDI Tuning Standard table;
+- soundfont or instrument program;
+- loudness calibration; or
+- rendered-audio hash.
 
-Flatten both output channels to compute the global pre-normalization peak
-\(M=\max_{c,n}|x_c[n]|\). If \(M=0\), emit zero-valued PCM. Otherwise set
-\(y_c[n]=0.98x_c[n]/M\), then quantize with round-to-nearest, ties away from
-zero:
+A listening experiment must freeze and report those receiver settings as a
+**noncanonical observation setup**. They never become E8-derived constants.
 
-$$
-q_c[n]=\mathrm{clip}
-\left(
-\mathrm{sgn}(y_c[n])
-\left\lfloor32767|y_c[n]|+\frac12\right\rfloor,
--32768,
-32767
-\right).
-$$
+## 8. Perceptual boundary
 
-The canonical profile uses no dither. Trigonometric evaluation,
-eigendecomposition, and floating-point reduction can vary across runtimes, so a
-PCM hash is a replay guarantee only when the manifest also records the numeric
-runtime and eigensolver. Cross-runtime byte identity is not claimed merely from
-the model version.
+The codebook is mathematically reversible, but reversibility does not establish
+perceptual effectiveness. In particular:
 
-## 10. Degeneracy and ordering
+- adjacent lane boundaries may fuse into fewer perceived streams;
+- listener interpretation of ascending polarity cannot be assumed;
+- timbre and loudness vary across receivers;
+- velocity is not a calibrated loudness scale;
+- playback rate and simultaneous note density affect masking and cognition;
+- the designer's familiarity can make distinctions seem more obvious than
+  they are to a naive listener.
 
-Numerical eigensolvers may rotate eigenvectors inside a degenerate eigenspace.
-Let the solver output, after ascending sort, be
-\(\widehat\lambda_0,\ldots,\widehat\lambda_{100}\). Adjacent values are linked
-when
+These issues follow established parameter-mapping sonification practice. A
+future perceptual profile should first pilot the display, then freeze its
+mapping and test it with listeners rather than continually tuning it against
+the evaluation set.
 
-$$
-|\widehat\lambda_{i+1}-\widehat\lambda_i|
-\le
-\varepsilon_{\mathrm{abs}}
-+\varepsilon_{\mathrm{rel}}
-\max(|\widehat\lambda_i|,|\widehat\lambda_{i+1}|).
-$$
+## 9. Recommended listener evaluation
 
-The eigenspaces are the maximal contiguous connected groups under this rule,
-identified as sorted-adjacent-connected-v1. For each group, use the arithmetic
-mean of its raw eigenvalues as \(\lambda_\ell\) and the sum of its numerical
-eigenvector outer products as \(P_\ell\). A conforming renderer therefore:
+A confirmatory study should preregister at least:
 
-1. sorts eigenvalues in ascending order;
-2. groups values within a declared absolute and relative tolerance;
-3. constructs or accumulates the projector for each group;
-4. derives weights from the projector, not a single arbitrary eigenvector; and
-5. orders groups by ascending arithmetic-mean eigenvalue.
+1. isolated low/mid/high identification;
+2. balanced accuracy and a three-class confusion matrix;
+3. reaction time;
+4. short ternary-sequence reconstruction or edit distance;
+5. held-out motif or same/different detection;
+6. delayed recall, confidence, and workload; and
+7. musician status only as a prespecified subgroup.
 
-The canonical grouping tolerances are absolute \(10^{-10}\) and relative
-\(10^{-10}\). The eigensolver name, version, numeric precision, and runtime
-belong in the completed render manifest.
+Useful counterbalanced ablations include ascending versus inverted polarity,
+register spacing, reference phrase present versus absent, tempo, sequential
+versus simultaneous presentation, and receiver/instrument choice.
 
-## 11. Canonical render manifest
+The study would establish task performance for a specific playback setup. It
+would not validate E8, qutrit ontology, or a physical theory.
 
-A render manifest should contain at least:
+## 10. Dynamics-to-event extension requirements
+
+A later dynamic mapping must define, hash, and test:
+
+- the observed state or projector quantity;
+- dimensionless model-step traversal;
+- onset tick, duration, and note-off convention;
+- velocity transfer function and clipping;
+- channel allocation and overlapping-note policy;
+- tempo and pulses per quarter note;
+- program changes or the decision to omit them;
+- deterministic event ordering at equal ticks;
+- CSV and JSON field schemas;
+- Standard MIDI format and byte serialization; and
+- event-table, MIDI, and manifest SHA-256 receipts.
+
+The ternary phase in \(|\Omega_{3,\theta}\rangle\) affects only complex
+amplitudes initially. A dynamic sonification may claim an audible phase effect
+only after a noncommuting evolution produces a tested change in the mapped
+observable. The static codebook makes no such claim.
+
+## 11. Required provenance
+
+Every codebook or future MIDI artifact must identify:
 
 ```json
 {
-  "model": "ETQ-101@1.0.0",
-  "profile": "compact-101",
-  "mapping_id": "generator-spectrum-v1",
-  "render_status": "specified-not-implemented",
+  "model": "ETQ-101@2.0.0",
+  "profile": "compact-101-ternary-midi",
+  "mapping_id": "centered-101-state-ternary-register-v1",
   "basis_sha256": "97cfd1f087745422fd66d3640c7b86c3209593c4b53741018c08a5e9cdb15f6f",
   "adjacency_sha256": "29ae0af5b1090c9de30f1efc25789060fb1791eb175d2afcd6888847f7fe6324",
-  "theta_rad": 1.5707963267948966,
-  "golden_ratio": 1.618033988749895,
-  "reference_hz": 432,
-  "pitch_map": "golden-band-v1",
-  "amplitude_map": "spectral-projector-sqrt-v1",
-  "initial_state_recipe": "ouroboros-golden-scl-v1",
-  "oscillator_phase_map": "zero-v1",
-  "stereo_map": "triality-equal-power-v1",
-  "epsilon_mu": 1e-12,
-  "eigenvalue_absolute_tolerance": 1e-10,
-  "eigenvalue_relative_tolerance": 1e-10,
-  "eigenvalue_grouping_id": "sorted-adjacent-connected-v1",
-  "group_eigenvalue_id": "arithmetic-mean-v1",
-  "sample_rate_hz": 48000,
-  "duration_seconds": 20,
-  "channels": 2,
-  "edge_fade_seconds": 0.02,
-  "peak_ceiling": 0.98,
-  "silence_policy": "emit-zero-pcm",
-  "pcm": "s16le",
-  "quantizer": "nearest-ties-away-from-zero-v1",
-  "dither": "none",
-  "numeric_runtime_id": null,
-  "eigensolver_id": null,
-  "render_manifest_payload_sha256": null,
-  "pcm_sha256": null
+  "midi_codebook_sha256": "9a3196255e92bbc6857576e410a852dc66cd0354f27185fb2bede5b99f76e304",
+  "absolute_frequency_hz": null,
+  "receiver_tuning": "external-and-nonnormative",
+  "rendered_audio_status": "permanently-disabled"
 }
 ```
 
-The `null` hash and `specified-not-implemented` status are deliberate: this
-repository version specifies the renderer contract but does not claim to ship a
-completed spectral eigensolver or WAV artifact. A conforming implementation
-replaces those placeholders and records its provenance.
+The canonical codebook hash covers the 101 entries in basis-index order using
+compact `JSON.stringify` UTF-8 bytes with no BOM or trailing newline.
 
-## 12. Interpretation boundary
+## 12. Claim boundary
 
-The renderer supports these statements:
+Supported:
 
-- the sound is a deterministic mapping of declared ETQ observables;
-- the E8 root labels and graph are reproducible from exact coordinates;
-- qutrit/triality and SCL quantities influence declared audio parameters; and
-- two artifacts rendered with the same fully recorded numeric environment can be checked by hash.
+- the codebook is an exact bijection of the declared 101 basis states;
+- the three qutrit labels occupy explicitly declared register lanes;
+- triality acts as the stated modular note-offset transformation;
+- the mapping and its inverse are deterministic and hashable; and
+- receiver assumptions are excluded from ETQ structural identity.
 
-It does not support these statements:
+Not supported:
 
-- the sound is the literal sound of E8, a qutrit, or a quantum system;
-- 432 Hz is selected by E8 mathematics;
-- a pleasing or stable sound validates the mathematical model; or
-- a sonification alone establishes a physical theory.
+- low/mid/high is an intrinsic qutrit energy order;
+- the singlet notes are spectral extrema;
+- MIDI note number is an E8-predicted frequency;
+- a pleasant realization validates the mapping; or
+- listener success validates a physical ETQ theory.
+
+## 13. Method references
+
+- Florian Grond and Jonathan Berger, “Parameter Mapping Sonification,” in
+  Thomas Hermann, Andy Hunt, and John G. Neuhoff (eds.), *The Sonification
+  Handbook*, Chapter 15, pp. 363–397, Logos, 2011.
+- Elvira Pirondini et al., “A Spectral Method for Generating Surrogate Graph
+  Signals,” *IEEE Signal Processing Letters* 23 (2016), 1275–1278,
+  DOI: `10.1109/LSP.2016.2594072`.

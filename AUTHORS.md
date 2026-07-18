@@ -13,4 +13,6 @@ changes.
 
 Authorship credit does not imply ownership of pre-existing mathematical
 structures such as E8, D4 triality, qutrit algebra, the golden ratio, pi, or
-432 Hz.
+conventional reference-frequency values. The golden-ratio and 432 Hz choices
+occur in legacy or separate-laboratory material; they are not forward ETQ-101
+v2 model anchors.

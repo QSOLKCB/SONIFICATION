@@ -1,13 +1,13 @@
 {
-  "title": "ETQ-101: E8-Root-Derived, D4-Triality Qutrit Sonification Model",
+  "title": "ETQ-101 v2: E8-Root-Derived, D4-Triality Ternary MIDI Model",
   "creators": [
     {
       "name": "Slade, Trent",
       "affiliation": "QSOL-IMC"
     }
   ],
-  "description": "<p>ETQ-101 v1.0.0 is a deterministic mathematical sonification specification combining an E8-root-derived graph, an explicit order-three D4 triality action, 33 three-state direct-sum orbit blocks plus two fixed singlets, ternary-curvature and qutrit algebra, and a declared 432 Hz reference scale.</p><p>The deposit contains the formal specification, canonical fixtures, dependency-free reference construction, verification scripts, and claim-boundary documentation. The software is distributed under the Mozilla Public License 2.0 with explicit authorship and citation metadata.</p>",
-  "version": "1.0.0",
+  "description": "<p>ETQ-101 v2.0.0 is a deterministic mathematical sonification specification combining an E8-root-derived selected graph, an explicit order-three D4 triality action, 33 three-state direct-sum orbit blocks plus two fixed singlets, a selected-graph degree potential, dimensionless dynamics, and a bijective low/mid/high ternary MIDI note codebook.</p><p>The root ETQ profile defines symbolic MIDI notes, not canonical frequencies, timbre, loudness, PCM, or rendered audio. The deposit contains the formal specification, canonical fixtures, dependency-free reference construction, verification scripts, and claim-boundary documentation. The DOI-linked v1.0.0 contract remains preserved as a legacy specification-identity fixture; its renderer was not implemented. The software is distributed under the Mozilla Public License 2.0 with explicit authorship and citation metadata.</p>",
+  "version": "2.0.0",
   "upload_type": "software",
   "access_right": "open",
   "license": "MPL-2.0",
@@ -19,9 +19,10 @@
     "qutrit algebra",
     "ternary curvature",
     "spectral graph model",
+    "symbolic MIDI",
     "music computation"
   ],
-  "notes": "Copyright (c) 2026 Trent Slade / QSOL-IMC. Distributed under the Mozilla Public License 2.0. Preserve copyright and licence notices, identify modifications, and use the repository CITATION.cff for scholarly citation.",
+  "notes": "Copyright (c) 2026 Trent Slade / QSOL-IMC. Distributed under the Mozilla Public License 2.0. Preserve copyright and licence notices, identify modifications, and use the repository CITATION.cff for scholarly citation. This metadata describes v2.0.0; the existing DOI badge identifies the archived v1.0.0 release until a v2 archive is deposited.",
   "related_identifiers": [
     {
       "identifier": "https://github.com/QSOLKCB/SONIFICATION",

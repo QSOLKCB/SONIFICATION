@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use or discuss this work, please cite it using this metadata and preserve the repository attribution."
-title: "QSOL SONIFICATION and the ETQ-101 Mathematical Sonification Model"
+title: "QSOL SONIFICATION and the ETQ-101 v2 Ternary MIDI Model"
 type: software
 authors:
   - family-names: "Slade"
@@ -8,8 +8,8 @@ authors:
     affiliation: "QSOL-IMC"
 repository-code: "https://github.com/QSOLKCB/SONIFICATION"
 url: "https://github.com/QSOLKCB/SONIFICATION"
-version: 1.0.0
-date-released: 2026-07-17
+version: 2.0.0
+date-released: 2026-07-19
 license: MPL-2.0
 keywords:
   - sonification
@@ -17,14 +17,15 @@ keywords:
   - D4 triality
   - qutrit algebra
   - ternary curvature
-  - mathematical music
+  - symbolic MIDI
+  - spectral graph model
 preferred-citation:
   type: software
   authors:
     - family-names: "Slade"
       given-names: "Trent"
       affiliation: "QSOL-IMC"
-  title: "QSOL SONIFICATION and the ETQ-101 Mathematical Sonification Model"
-  version: 1.0.0
+  title: "QSOL SONIFICATION and the ETQ-101 v2 Ternary MIDI Model"
+  version: 2.0.0
   year: 2026
   url: "https://github.com/QSOLKCB/SONIFICATION"

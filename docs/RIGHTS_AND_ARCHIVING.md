@@ -22,8 +22,11 @@ covered source or text as solely their own creation.
 Copyright protects original expression, not abstract ideas, facts,
 mathematical truths, scientific principles, or independently created methods.
 The project claims authorship of its original specification, code, concrete
-selector, compilation, fixtures, audio mappings, and documentation—not private
-ownership of E8, D4 triality, qutrit algebra, the golden ratio, pi, or 432 Hz.
+selector, compilation, fixtures, symbolic mappings, separate-laboratory audio
+mappings, and documentation—not private ownership of E8, D4 triality, qutrit
+algebra, the golden ratio, pi, or conventional reference-frequency values.
+The golden ratio and 432 Hz appear only in legacy or separate-laboratory
+material, not as forward ETQ-101 v2 anchors.
 
 Australian copyright generally arises automatically in qualifying original
 expression. See the Australian Attorney-General's
@@ -45,7 +48,8 @@ presentations:
 1. retain `LICENSE` and applicable source notices as MPL-2.0 requires;
 2. retain `NOTICE` when redistributing the project as a whole;
 3. identify modifications accurately; and
-4. cite the project using `CITATION.cff` and, once available, the archived DOI.
+4. cite the project using `CITATION.cff` and a DOI for the same released
+   version, once available.
 
 Git hashes, ETQ contract hashes, basis hashes, adjacency hashes, release tags,
 and archive DOIs should be recorded together. Hashes show artifact identity;
@@ -53,8 +57,10 @@ they do not by themselves prove legal authorship.
 
 ## Zenodo record policy
 
-The repository includes [`.zenodo.json`](../.zenodo.json) for a future open
-software deposit under MPL-2.0. Before publishing the record:
+The repository includes [`.zenodo.json`](../.zenodo.json) for a future ETQ-101
+v2 open-software deposit under MPL-2.0. The displayed DOI currently identifies
+the immutable v1.0.0 release and must not be cited as the v2 artifact. Before
+publishing a v2 record:
 
 1. archive an immutable release tag, not a moving branch;
 2. confirm creator spelling and affiliation;

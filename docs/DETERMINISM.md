@@ -1,6 +1,11 @@
 # Determinism contract
 
-Phase 1 uses the render ABI `sonification.float64-numpy/v1`.
+> **Scope:** this document describes the separate `sonification/` Python audio
+> laboratory. It does not define the root ETQ-101 v2 contract, which is
+> MIDI-only and has no PCM/WAV render identity.
+
+The audio laboratory's Phase 1 uses the render ABI
+`sonification.float64-numpy/v1`.
 
 Within the same released SONIFICATION version, recorded Python and NumPy
 versions, OS family, machine architecture, parameters, seed, and source tree, a
