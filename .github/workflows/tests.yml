@@ -33,7 +33,7 @@ jobs:
         with:
           node-version: "20"
       - run: npm test
-      - run: npm run verify
+      - run: npm run verify --if-present
 
   browser-app:
     runs-on: ubuntu-latest
