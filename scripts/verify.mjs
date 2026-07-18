@@ -11,9 +11,12 @@ import { readFileSync } from "node:fs";
 import {
   CANONICAL_GENERATOR_WEIGHTS,
   DIMENSIONLESS_STEP_DELTA,
+  DIMENSIONLESS_STEP_DENOMINATOR,
   MODEL_ID,
   MODEL_VERSION,
+  OUROBOROS_DIMENSION,
   PHASE_THETA_RAD,
+  TERNARY_MIDI_LAYOUT,
   basisIndexFromMidiNote,
   buildRootAdjacency,
   buildTernaryMidiCodebook,
@@ -118,26 +121,28 @@ assert.equal(contract.fixtures.e8RootCount, observed.e8.rootCount);
 assert.equal(contract.fixtures.trialityFixedRoots, observed.e8.trialityFixedRoots);
 assert.equal(contract.fixtures.trialityThreeCycles, observed.e8.trialityThreeCycles);
 assert.deepEqual(contract.fixtures.selectedGraph, observed.selectedGraph);
+assert.deepEqual(contract.fixtures.degreePotential, observed.degreePotential);
+assert.deepEqual(contract.fixtures.midiCodebook, observed.midiCodebook);
+assert.equal(contract.dynamics.degreePotential, degreePotential.expression);
+assert.equal(
+  contract.dynamics.dimensionlessStepDeltaExpression,
+  `2*pi/${DIMENSIONLESS_STEP_DENOMINATOR}`,
+);
 assert.deepEqual(
-  {
-    degreeSum: contract.fixtures.degreePotential.degreeSum,
-    meanDegree: contract.fixtures.degreePotential.meanDegree,
-    normalizationDenominator:
-      contract.fixtures.degreePotential.normalizationDenominator,
-    traceNumerator: contract.fixtures.degreePotential.traceNumerator,
-    maximumAbsoluteNumerator:
-      contract.fixtures.degreePotential.maximumAbsoluteNumerator,
-  },
-  observed.degreePotential,
+  contract.sonification.midiNoteDomain,
+  TERNARY_MIDI_LAYOUT.midiNoteDomain,
 );
 assert.deepEqual(
   contract.sonification.occupiedNoteRange,
-  observed.midiCodebook.occupiedNoteRange,
+  TERNARY_MIDI_LAYOUT.occupiedNoteRange,
 );
 assert.deepEqual(
   contract.sonification.fixedSingletNotes,
-  observed.midiCodebook.fixedSingletNotes,
+  TERNARY_MIDI_LAYOUT.fixedSingletNotes,
 );
+assert.deepEqual(contract.sonification.lanes, TERNARY_MIDI_LAYOUT.lanes);
+assert.equal(contract.sonification.basisMap, TERNARY_MIDI_LAYOUT.basisMap);
+assert.equal(contract.sonification.inverseMap, TERNARY_MIDI_LAYOUT.inverseMap);
 
 assert.equal(
   contract.determinism.basisSha256,
@@ -173,7 +178,10 @@ assert.equal(
   Object.values(contract.dynamics.weights).reduce((sum, value) => sum + value, 0),
   1,
 );
-assert.equal(contract.dynamics.dimensionlessStepDelta, (2 * Math.PI) / 303);
+assert.equal(
+  contract.dynamics.dimensionlessStepDelta,
+  (2 * Math.PI) / DIMENSIONLESS_STEP_DENOMINATOR,
+);
 assert.equal(contract.dynamics.physicalTimeScale, null);
 assert.equal(contract.sonification.absoluteFrequencyHz, null);
 assert.deepEqual(contract.sonification.allowedArtifactExtensions, [
@@ -197,8 +205,11 @@ for (let row = 0; row < generator.length; row += 1) {
   }
 }
 
-assert.equal(midiCodebook.length, 101);
-assert.equal(new Set(midiCodebook.map((entry) => entry.midiNote)).size, 101);
+assert.equal(midiCodebook.length, OUROBOROS_DIMENSION);
+assert.equal(
+  new Set(midiCodebook.map((entry) => entry.midiNote)).size,
+  OUROBOROS_DIMENSION,
+);
 for (const entry of midiCodebook) {
   assert.equal(basisIndexFromMidiNote(entry.midiNote), entry.basisIndex);
 }

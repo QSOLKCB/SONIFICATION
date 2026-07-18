@@ -18,12 +18,19 @@
 
 export const MODEL_ID = "ETQ-101";
 export const MODEL_VERSION = "2.0.0";
-export const OUROBOROS_DIMENSION = 101;
 export const QUTRIT_DIMENSION = 3;
 export const SELECTED_FIXED_ROOTS = 2;
 export const SELECTED_TRIALITY_ORBITS = 33;
+export const QUTRIT_SUBSPACE_DIMENSION =
+  SELECTED_TRIALITY_ORBITS * QUTRIT_DIMENSION;
+export const OUROBOROS_DIMENSION =
+  SELECTED_FIXED_ROOTS + QUTRIT_SUBSPACE_DIMENSION;
 export const PHASE_THETA_RAD = Math.PI / 2;
-export const DIMENSIONLESS_STEP_DELTA = (2 * Math.PI) / 303;
+// Authored v2 step denominator. Its current numerical coincidence with the
+// basis size times qutrit order does not make it E8- or selector-derived.
+export const DIMENSIONLESS_STEP_DENOMINATOR = 303;
+export const DIMENSIONLESS_STEP_DELTA =
+  (2 * Math.PI) / DIMENSIONLESS_STEP_DENOMINATOR;
 export const CANONICAL_GENERATOR_WEIGHTS = Object.freeze({
   e8RootGraph: 11 / 20,
   qutritHopping: 1 / 4,
@@ -45,6 +52,71 @@ export const QUTRIT_ROOT_OF_UNITY = Object.freeze({
   im: Math.sqrt(3) / 2,
 });
 export const SCL_STENCIL = Object.freeze([1, -2, 1]);
+
+function midiRange(minimum, maximum) {
+  return Object.freeze([minimum, maximum]);
+}
+
+function createTernaryMidiLayout() {
+  if (SELECTED_FIXED_ROOTS !== 2) {
+    throw new RangeError("the ternary MIDI layout requires two fixed bookends");
+  }
+  if (TERNARY_REGISTER_LANES.length !== QUTRIT_DIMENSION) {
+    throw new RangeError("register-lane count must equal qutrit dimension");
+  }
+  if (OUROBOROS_DIMENSION > MIDI_NOTE_COUNT) {
+    throw new RangeError("the ETQ basis does not fit in the MIDI note domain");
+  }
+
+  const unusedNoteCount = MIDI_NOTE_COUNT - OUROBOROS_DIMENSION;
+  const windowMinimum =
+    MIDI_NOTE_MINIMUM + Math.floor(unusedNoteCount / 2);
+  const windowMaximum = windowMinimum + OUROBOROS_DIMENSION - 1;
+  const firstQutritNote = windowMinimum + 1;
+  const lastQutritNote = windowMaximum - 1;
+  const laneStride = SELECTED_TRIALITY_ORBITS;
+  const centeredQutritMidpoint = (QUTRIT_DIMENSION - 1) / 2;
+  const lanes = Object.freeze(
+    TERNARY_REGISTER_LANES.map((name, qutritLabel) => {
+      const minimum = firstQutritNote + laneStride * qutritLabel;
+      return Object.freeze({
+        qutritLabel,
+        centeredQutritValue: qutritLabel - centeredQutritMidpoint,
+        sclCurvature: SCL_STENCIL[qutritLabel],
+        name,
+        midiNoteRange: midiRange(minimum, minimum + laneStride - 1),
+      });
+    }),
+  );
+  const fixedSingletNotes = midiRange(windowMinimum, windowMaximum);
+
+  return Object.freeze({
+    noteCount: MIDI_NOTE_COUNT,
+    stateCount: OUROBOROS_DIMENSION,
+    qutritStateCount: QUTRIT_SUBSPACE_DIMENSION,
+    laneStride,
+    trialityShift: laneStride,
+    windowMinimum,
+    windowMaximum,
+    firstQutritNote,
+    lastQutritNote,
+    midiNoteDomain: midiRange(MIDI_NOTE_MINIMUM, MIDI_NOTE_MAXIMUM),
+    occupiedNoteRange: midiRange(windowMinimum, windowMaximum),
+    qutritNoteRange: midiRange(firstQutritNote, lastQutritNote),
+    fixedSingletNotes,
+    lanes,
+    basisMap:
+      `fixed0->${windowMinimum};fixed1->${windowMaximum};` +
+      `(m,q)->${firstQutritNote}+${laneStride}*q+m`,
+    inverseMap:
+      `${windowMinimum}->fixed0;${windowMaximum}->fixed1;otherwise ` +
+      `q=floor((note-${firstQutritNote})/${laneStride}),` +
+      `m=(note-${firstQutritNote})%${laneStride}`,
+  });
+}
+
+/** Single derived source of truth for the canonical ternary MIDI window. */
+export const TERNARY_MIDI_LAYOUT = createTernaryMidiLayout();
 
 // Twice the D4 triality matrix. Applying this matrix and dividing by two is
 // exact on the doubled-coordinate E8 roots used by this module.
@@ -233,9 +305,10 @@ export function trialityPermutation() {
   );
   for (let orbit = 0; orbit < SELECTED_TRIALITY_ORBITS; orbit += 1) {
     const offset = SELECTED_FIXED_ROOTS + QUTRIT_DIMENSION * orbit;
-    permutation[offset] = offset + 1;
-    permutation[offset + 1] = offset + 2;
-    permutation[offset + 2] = offset;
+    for (let label = 0; label < QUTRIT_DIMENSION; label += 1) {
+      permutation[offset + label] =
+        offset + ((label + 1) % QUTRIT_DIMENSION);
+    }
   }
   return permutation;
 }
@@ -307,20 +380,30 @@ export function buildRootAdjacency(basis = selectEtq101Basis()) {
   return adjacency;
 }
 
-export function buildGraphLaplacian(adjacency) {
+export function graphDegrees(adjacency) {
+  if (!Array.isArray(adjacency) || adjacency.length === 0) {
+    throw new TypeError("adjacency must be a non-empty matrix");
+  }
   const dimension = adjacency.length;
+  return adjacency.map((row) => {
+    if (!Array.isArray(row) || row.length !== dimension) {
+      throw new RangeError("adjacency must be square");
+    }
+    return row.reduce((sum, value) => sum + value, 0);
+  });
+}
+
+export function buildGraphLaplacian(adjacency) {
+  const degrees = graphDegrees(adjacency);
   return adjacency.map((row, rowIndex) => {
-    const degree = row.reduce((sum, value) => sum + value, 0);
     return row.map((value, columnIndex) =>
-      rowIndex === columnIndex ? degree : -value,
+      rowIndex === columnIndex ? degrees[rowIndex] : -value,
     );
   });
 }
 
 export function graphSummary(adjacency) {
-  const degrees = adjacency.map((row) =>
-    row.reduce((sum, value) => sum + value, 0),
-  );
+  const degrees = graphDegrees(adjacency);
   const edgeCount = degrees.reduce((sum, degree) => sum + degree, 0) / 2;
 
   const visited = new Set([0]);
@@ -362,12 +445,7 @@ export function graphDegreePotential(
   }
 
   const dimension = adjacency.length;
-  const degrees = adjacency.map((row) => {
-    if (!Array.isArray(row) || row.length !== dimension) {
-      throw new RangeError("adjacency must be square");
-    }
-    return row.reduce((sum, value) => sum + value, 0);
-  });
+  const degrees = graphDegrees(adjacency);
   const degreeSum = degrees.reduce((sum, value) => sum + value, 0);
   const numerators = degrees.map((degree) => dimension * degree - degreeSum);
   const denominator = Math.max(...numerators.map((value) => Math.abs(value)));
@@ -375,12 +453,28 @@ export function graphDegreePotential(
     throw new RangeError("degree potential is undefined for a regular graph");
   }
 
+  const degreeCounts = new Map();
+  for (const degree of degrees) {
+    degreeCounts.set(degree, (degreeCounts.get(degree) ?? 0) + 1);
+  }
+  const traceNumerator = numerators.reduce((sum, value) => sum + value, 0);
+  const maximumAbsoluteNumerator = Math.max(
+    ...numerators.map((value) => Math.abs(value)),
+  );
+
   return {
     degrees,
     degreeSum,
     meanDegree: { numerator: degreeSum, denominator: dimension },
     numerators,
     normalizationDenominator: denominator,
+    traceNumerator,
+    maximumAbsoluteNumerator,
+    degreeDistribution: [...degreeCounts.entries()].sort(
+      ([left], [right]) => left - right,
+    ),
+    expression:
+      `V_degree[j,j]=(${dimension}*degree_j-${degreeSum})/${denominator}`,
     diagonal: numerators.map((value) => value / denominator),
   };
 }
@@ -394,7 +488,10 @@ export function qutritHoppingLaplacian() {
     const start = SELECTED_FIXED_ROOTS + QUTRIT_DIMENSION * orbitIndex;
     for (let row = 0; row < QUTRIT_DIMENSION; row += 1) {
       for (let column = 0; column < QUTRIT_DIMENSION; column += 1) {
-        matrix[start + row][start + column] = row === column ? 2 / 3 : -1 / 3;
+        matrix[start + row][start + column] =
+          row === column
+            ? (QUTRIT_DIMENSION - 1) / QUTRIT_DIMENSION
+            : -1 / QUTRIT_DIMENSION;
       }
     }
   }
@@ -434,7 +531,7 @@ export function canonicalGeneratorMatrix(
 
 /** diag(0,0, 1,-2,1, ..., 1,-2,1). */
 export function curvatureDiagonal() {
-  const diagonal = [0, 0];
+  const diagonal = Array(SELECTED_FIXED_ROOTS).fill(0);
   for (let orbit = 0; orbit < SELECTED_TRIALITY_ORBITS; orbit += 1) {
     diagonal.push(...SCL_STENCIL);
   }
@@ -443,37 +540,66 @@ export function curvatureDiagonal() {
 
 /** diag(0,0, 0,1,2, ..., 0,1,2). */
 export function qutritNumberDiagonal() {
-  const diagonal = [0, 0];
+  const diagonal = Array(SELECTED_FIXED_ROOTS).fill(0);
+  const labels = Array.from(
+    { length: QUTRIT_DIMENSION },
+    (_, qutritLabel) => qutritLabel,
+  );
   for (let orbit = 0; orbit < SELECTED_TRIALITY_ORBITS; orbit += 1) {
-    diagonal.push(0, 1, 2);
+    diagonal.push(...labels);
   }
   return diagonal;
 }
 
 /** diag(0,0, -1,0,1, ..., -1,0,1). */
 export function centeredQutritNumberDiagonal() {
-  const diagonal = [0, 0];
+  const diagonal = Array(SELECTED_FIXED_ROOTS).fill(0);
+  const midpoint = (QUTRIT_DIMENSION - 1) / 2;
+  const centeredLabels = Array.from(
+    { length: QUTRIT_DIMENSION },
+    (_, qutritLabel) => qutritLabel - midpoint,
+  );
   for (let orbit = 0; orbit < SELECTED_TRIALITY_ORBITS; orbit += 1) {
-    diagonal.push(-1, 0, 1);
+    diagonal.push(...centeredLabels);
   }
   return diagonal;
 }
 
+/** Return the MIDI note derived for one selected orbit/qutrit state. */
+export function midiNoteForTernaryState(orbitIndex, qutritLabel) {
+  if (
+    !Number.isSafeInteger(orbitIndex) ||
+    orbitIndex < 0 ||
+    orbitIndex >= SELECTED_TRIALITY_ORBITS
+  ) {
+    throw new RangeError("orbitIndex lies outside the canonical selector");
+  }
+  if (
+    !Number.isSafeInteger(qutritLabel) ||
+    qutritLabel < 0 ||
+    qutritLabel >= QUTRIT_DIMENSION
+  ) {
+    throw new RangeError("qutritLabel lies outside the qutrit domain");
+  }
+  return (
+    TERNARY_MIDI_LAYOUT.firstQutritNote +
+    TERNARY_MIDI_LAYOUT.laneStride * qutritLabel +
+    orbitIndex
+  );
+}
+
 /**
- * Canonical symbolic MIDI codebook for the 2 + 33*3 ETQ decomposition.
+ * Canonical symbolic MIDI codebook for the selected ETQ decomposition.
  *
- * The 101-note window is maximally centered in MIDI's 7-bit note domain, with
- * the lower start selected when the two possible margins differ by one. The
- * two fixed singlets are codebook bookends. Each qutrit label receives one
- * complete 33-note register lane; orbit index supplies the offset within it.
- * This is a symbolic identity map and declares no acoustic frequency.
+ * The basis-sized window is maximally centered in MIDI's 7-bit note domain,
+ * with the lower start selected when the two possible margins differ by one.
+ * The fixed singlets are codebook bookends. Each qutrit label receives one
+ * complete register lane; orbit index supplies the offset within it. This is
+ * a symbolic identity map and declares no acoustic frequency.
  */
 export function buildTernaryMidiCodebook() {
-  const windowStart = Math.floor(
-    (MIDI_NOTE_COUNT - OUROBOROS_DIMENSION) / 2,
-  );
-  const firstQutritNote = windowStart + 1;
-  const highFixedNote = windowStart + OUROBOROS_DIMENSION - 1;
+  const [lowFixedNote, highFixedNote] =
+    TERNARY_MIDI_LAYOUT.fixedSingletNotes;
   const entries = [
     {
       basisIndex: 0,
@@ -482,7 +608,7 @@ export function buildTernaryMidiCodebook() {
       orbitIndex: null,
       qutritLabel: null,
       lane: "fixed-low-bookend",
-      midiNote: windowStart,
+      midiNote: lowFixedNote,
     },
     {
       basisIndex: 1,
@@ -505,10 +631,7 @@ export function buildTernaryMidiCodebook() {
         orbitIndex,
         qutritLabel,
         lane: TERNARY_REGISTER_LANES[qutritLabel],
-        midiNote:
-          firstQutritNote +
-          SELECTED_TRIALITY_ORBITS * qutritLabel +
-          orbitIndex,
+        midiNote: midiNoteForTernaryState(orbitIndex, qutritLabel),
       });
     }
   }
@@ -522,23 +645,21 @@ export function basisIndexFromMidiNote(note) {
   if (!Number.isSafeInteger(note)) {
     throw new TypeError("MIDI note must be a safe integer");
   }
-  const windowStart = Math.floor(
-    (MIDI_NOTE_COUNT - OUROBOROS_DIMENSION) / 2,
-  );
-  if (note === windowStart) {
+  const [lowFixedNote, highFixedNote] =
+    TERNARY_MIDI_LAYOUT.fixedSingletNotes;
+  if (note === lowFixedNote) {
     return 0;
   }
-  if (note === windowStart + OUROBOROS_DIMENSION - 1) {
+  if (note === highFixedNote) {
     return 1;
   }
 
-  const offset = note - (windowStart + 1);
-  const qutritStateCount = SELECTED_TRIALITY_ORBITS * QUTRIT_DIMENSION;
-  if (offset < 0 || offset >= qutritStateCount) {
+  const offset = note - TERNARY_MIDI_LAYOUT.firstQutritNote;
+  if (offset < 0 || offset >= TERNARY_MIDI_LAYOUT.qutritStateCount) {
     return null;
   }
-  const qutritLabel = Math.floor(offset / SELECTED_TRIALITY_ORBITS);
-  const orbitIndex = offset % SELECTED_TRIALITY_ORBITS;
+  const qutritLabel = Math.floor(offset / TERNARY_MIDI_LAYOUT.laneStride);
+  const orbitIndex = offset % TERNARY_MIDI_LAYOUT.laneStride;
   return SELECTED_FIXED_ROOTS + QUTRIT_DIMENSION * orbitIndex + qutritLabel;
 }
 
@@ -680,25 +801,29 @@ export function complexMatrixPower(matrix, exponent) {
 
 export function qutritOperators() {
   const zero = () => complex(0, 0);
-  const X = Array.from({ length: 3 }, () => Array.from({ length: 3 }, zero));
-  const Z = Array.from({ length: 3 }, () => Array.from({ length: 3 }, zero));
+  const X = Array.from({ length: QUTRIT_DIMENSION }, () =>
+    Array.from({ length: QUTRIT_DIMENSION }, zero),
+  );
+  const Z = Array.from({ length: QUTRIT_DIMENSION }, () =>
+    Array.from({ length: QUTRIT_DIMENSION }, zero),
+  );
 
-  for (let source = 0; source < 3; source += 1) {
-    X[(source + 1) % 3][source] = complex(1, 0);
-    const phase = (2 * Math.PI * source) / 3;
+  for (let source = 0; source < QUTRIT_DIMENSION; source += 1) {
+    X[(source + 1) % QUTRIT_DIMENSION][source] = complex(1, 0);
+    const phase = (2 * Math.PI * source) / QUTRIT_DIMENSION;
     Z[source][source] = complex(Math.cos(phase), Math.sin(phase));
   }
 
-  const N = [
-    [complex(0), complex(0), complex(0)],
-    [complex(0), complex(1), complex(0)],
-    [complex(0), complex(0), complex(2)],
-  ];
-  const D = [
-    [complex(1), complex(0), complex(0)],
-    [complex(0), complex(-2), complex(0)],
-    [complex(0), complex(0), complex(1)],
-  ];
+  const N = Array.from({ length: QUTRIT_DIMENSION }, (_, row) =>
+    Array.from({ length: QUTRIT_DIMENSION }, (_, column) =>
+      complex(row === column ? row : 0),
+    ),
+  );
+  const D = Array.from({ length: QUTRIT_DIMENSION }, (_, row) =>
+    Array.from({ length: QUTRIT_DIMENSION }, (_, column) =>
+      complex(row === column ? SCL_STENCIL[row] : 0),
+    ),
+  );
   return { X, Z, N, D };
 }
 
@@ -750,12 +875,12 @@ export function canonicalModelSummary() {
       total: OUROBOROS_DIMENSION,
       fixedSinglets: SELECTED_FIXED_ROOTS,
       qutritOrbits: SELECTED_TRIALITY_ORBITS,
-      qutritSubspace: SELECTED_TRIALITY_ORBITS * QUTRIT_DIMENSION,
+      qutritSubspace: QUTRIT_SUBSPACE_DIMENSION,
     },
     constants: {
       phaseThetaRad: PHASE_THETA_RAD,
       qutritOrder: QUTRIT_DIMENSION,
-      midiNoteDomain: [MIDI_NOTE_MINIMUM, MIDI_NOTE_MAXIMUM],
+      midiNoteDomain: [...TERNARY_MIDI_LAYOUT.midiNoteDomain],
     },
     dynamics: {
       weights: { ...CANONICAL_GENERATOR_WEIGHTS },
@@ -772,29 +897,22 @@ export function canonicalModelSummary() {
       degreeSum: degreePotential.degreeSum,
       meanDegree: degreePotential.meanDegree,
       normalizationDenominator: degreePotential.normalizationDenominator,
-      traceNumerator: degreePotential.numerators.reduce(
-        (sum, value) => sum + value,
-        0,
-      ),
-      maximumAbsoluteNumerator: Math.max(
-        ...degreePotential.numerators.map((value) => Math.abs(value)),
-      ),
+      traceNumerator: degreePotential.traceNumerator,
+      maximumAbsoluteNumerator: degreePotential.maximumAbsoluteNumerator,
+      degreeDistribution: degreePotential.degreeDistribution,
     },
     midiCodebook: {
-      mappingId: "centered-101-state-ternary-register-v1",
+      entries: midiCodebook.length,
+      uniqueNotes: new Set(
+        midiCodebook.map((entry) => entry.midiNote),
+      ).size,
       occupiedNoteRange: [
         Math.min(...midiCodebook.map((entry) => entry.midiNote)),
         Math.max(...midiCodebook.map((entry) => entry.midiNote)),
       ],
-      fixedSingletNotes: midiCodebook
-        .filter((entry) => entry.stateType === "fixed-singlet")
-        .map((entry) => entry.midiNote),
-      laneRanges: TERNARY_REGISTER_LANES.map((lane) => {
-        const notes = midiCodebook
-          .filter((entry) => entry.lane === lane)
-          .map((entry) => entry.midiNote);
-        return { lane, minimum: Math.min(...notes), maximum: Math.max(...notes) };
-      }),
+      laneSizes: TERNARY_REGISTER_LANES.map(
+        (lane) => midiCodebook.filter((entry) => entry.lane === lane).length,
+      ),
     },
   };
 }

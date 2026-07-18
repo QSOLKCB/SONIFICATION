@@ -12,12 +12,18 @@ import {
   CANONICAL_GENERATOR_WEIGHTS,
   D4_TRIALITY_NUMERATOR,
   DIMENSIONLESS_STEP_DELTA,
+  DIMENSIONLESS_STEP_DENOMINATOR,
   MIDI_NOTE_MAXIMUM,
   MIDI_NOTE_MINIMUM,
   OUROBOROS_DIMENSION,
   PHASE_THETA_RAD,
+  QUTRIT_DIMENSION,
   QUTRIT_ROOT_OF_UNITY,
+  QUTRIT_SUBSPACE_DIMENSION,
   SCL_STENCIL,
+  SELECTED_FIXED_ROOTS,
+  SELECTED_TRIALITY_ORBITS,
+  TERNARY_MIDI_LAYOUT,
   applyPermutationIndex,
   applyTriality,
   basisIndexFromMidiNote,
@@ -37,6 +43,7 @@ import {
   graphDegreePotential,
   graphSummary,
   maxComplexMatrixDifference,
+  midiNoteForTernaryState,
   permuteDiagonal,
   phaseKickDiagonal,
   qutritHoppingLaplacian,
@@ -140,7 +147,7 @@ test("selected E8 root graph matches the canonical fixtures", () => {
   const adjacency = buildRootAdjacency(basis);
   assert.equal(sha256(adjacency), EXPECTED_ADJACENCY_SHA256);
   assert.deepEqual(graphSummary(adjacency), {
-    vertices: 101,
+    vertices: OUROBOROS_DIMENSION,
     edges: 1687,
     minimumDegree: 22,
     maximumDegree: 55,
@@ -167,14 +174,20 @@ test("selected E8 root graph matches the canonical fixtures", () => {
   // Regression Rayleigh checks. A graph Laplacian is PSD analytically; these
   // vectors also catch sign errors in an implementation.
   const vectors = [
-    Array.from({ length: 101 }, (_, index) => (index % 7) - 3),
-    Array.from({ length: 101 }, (_, index) => Math.sin(index * 0.37)),
-    Array.from({ length: 101 }, (_, index) => (index === 42 ? 1 : 0)),
+    Array.from({ length: OUROBOROS_DIMENSION }, (_, index) => (index % 7) - 3),
+    Array.from(
+      { length: OUROBOROS_DIMENSION },
+      (_, index) => Math.sin(index * 0.37),
+    ),
+    Array.from(
+      { length: OUROBOROS_DIMENSION },
+      (_, index) => (index === 42 ? 1 : 0),
+    ),
   ];
   for (const vector of vectors) {
     let quadraticForm = 0;
-    for (let row = 0; row < 101; row += 1) {
-      for (let column = 0; column < 101; column += 1) {
+    for (let row = 0; row < OUROBOROS_DIMENSION; row += 1) {
+      for (let column = 0; column < OUROBOROS_DIMENSION; column += 1) {
         quadraticForm += vector[row] * laplacian[row][column] * vector[column];
       }
     }
@@ -185,30 +198,47 @@ test("selected E8 root graph matches the canonical fixtures", () => {
 test("selected-graph degree potential is exact, centered, and triality invariant", () => {
   const adjacency = buildRootAdjacency(selectEtq101Basis());
   const potential = graphDegreePotential(adjacency);
-  assert.equal(potential.degreeSum, 3374);
-  assert.deepEqual(potential.meanDegree, { numerator: 3374, denominator: 101 });
-  assert.equal(potential.normalizationDenominator, 2181);
-  assert.equal(potential.numerators.reduce((sum, value) => sum + value, 0), 0);
-  assert.equal(Math.max(...potential.numerators.map(Math.abs)), 2181);
+  const summary = graphSummary(adjacency);
+  assert.equal(potential.degreeSum, 2 * summary.edges);
+  assert.deepEqual(potential.meanDegree, {
+    numerator: potential.degreeSum,
+    denominator: OUROBOROS_DIMENSION,
+  });
+  assert.equal(potential.traceNumerator, 0);
+  assert.equal(
+    potential.numerators.reduce((sum, value) => sum + value, 0),
+    potential.traceNumerator,
+  );
+  assert.equal(
+    potential.normalizationDenominator,
+    Math.max(...potential.numerators.map(Math.abs)),
+  );
+  assert.equal(
+    potential.maximumAbsoluteNumerator,
+    potential.normalizationDenominator,
+  );
   assertClose(Math.max(...potential.diagonal.map(Math.abs)), 1);
 
   const degreeDistribution = new Map();
   for (const degree of potential.degrees) {
     degreeDistribution.set(degree, (degreeDistribution.get(degree) ?? 0) + 1);
   }
-  assert.deepEqual(Object.fromEntries(degreeDistribution), {
-    22: 12,
-    23: 6,
-    30: 12,
-    32: 24,
-    33: 12,
-    34: 6,
-    40: 6,
-    42: 12,
-    43: 6,
-    44: 3,
-    55: 2,
-  });
+  const expectedDistribution = [...degreeDistribution.entries()].sort(
+    ([left], [right]) => left - right,
+  );
+  assert.deepEqual(potential.degreeDistribution, expectedDistribution);
+  assert.equal(
+    potential.degreeDistribution.reduce(
+      (count, [, multiplicity]) => count + multiplicity,
+      0,
+    ),
+    OUROBOROS_DIMENSION,
+  );
+  assert.equal(
+    potential.expression,
+    `V_degree[j,j]=(${OUROBOROS_DIMENSION}*degree_j-` +
+      `${potential.degreeSum})/${potential.normalizationDenominator}`,
+  );
 
   const permutation = trialityPermutation();
   for (let index = 0; index < OUROBOROS_DIMENSION; index += 1) {
@@ -239,17 +269,29 @@ test("canonical v2 generator is real symmetric and triality invariant", () => {
     qutritNumber: 0,
     ouroborosRing: 0,
   });
-  assertClose(DIMENSIONLESS_STEP_DELTA, (2 * Math.PI) / 303);
+  assertClose(
+    DIMENSIONLESS_STEP_DELTA,
+    (2 * Math.PI) / DIMENSIONLESS_STEP_DENOMINATOR,
+  );
 
   const qutritLaplacian = qutritHoppingLaplacian();
-  assert.ok(qutritLaplacian[0].every((value) => value === 0));
-  assert.ok(qutritLaplacian[1].every((value) => value === 0));
-  for (let row = 2; row < OUROBOROS_DIMENSION; row += 1) {
-    const orbitStart = 2 + 3 * Math.floor((row - 2) / 3);
+  for (let row = 0; row < SELECTED_FIXED_ROOTS; row += 1) {
+    assert.ok(qutritLaplacian[row].every((value) => value === 0));
+  }
+  for (let row = SELECTED_FIXED_ROOTS; row < OUROBOROS_DIMENSION; row += 1) {
+    const orbitStart =
+      SELECTED_FIXED_ROOTS +
+      QUTRIT_DIMENSION *
+        Math.floor((row - SELECTED_FIXED_ROOTS) / QUTRIT_DIMENSION);
     assertClose(qutritLaplacian[row].reduce((sum, value) => sum + value, 0), 0);
     for (let column = 0; column < OUROBOROS_DIMENSION; column += 1) {
-      const inOrbit = column >= orbitStart && column < orbitStart + 3;
-      const expected = !inOrbit ? 0 : row === column ? 2 / 3 : -1 / 3;
+      const inOrbit =
+        column >= orbitStart && column < orbitStart + QUTRIT_DIMENSION;
+      const expected = !inOrbit
+        ? 0
+        : row === column
+          ? (QUTRIT_DIMENSION - 1) / QUTRIT_DIMENSION
+          : -1 / QUTRIT_DIMENSION;
       assertClose(qutritLaplacian[row][column], expected);
     }
   }
@@ -276,24 +318,32 @@ test("qutrit number and SCL curvature operators obey the declared identity", () 
   const number = qutritNumberDiagonal();
   const centered = centeredQutritNumberDiagonal();
   const curvature = curvatureDiagonal();
-  assert.equal(number.length, 101);
-  assert.equal(curvature.length, 101);
+  assert.equal(number.length, OUROBOROS_DIMENSION);
+  assert.equal(curvature.length, OUROBOROS_DIMENSION);
   assert.equal(curvature.reduce((sum, value) => sum + value, 0), 0);
 
   const multiplicities = new Map();
   for (const value of curvature) {
     multiplicities.set(value, (multiplicities.get(value) ?? 0) + 1);
   }
+  const expectedMultiplicities = new Map([[0, SELECTED_FIXED_ROOTS]]);
+  for (const value of SCL_STENCIL) {
+    expectedMultiplicities.set(
+      value,
+      (expectedMultiplicities.get(value) ?? 0) + SELECTED_TRIALITY_ORBITS,
+    );
+  }
   assert.deepEqual(
-    Object.fromEntries([...multiplicities.entries()].sort(([a], [b]) => a - b)),
-    { "-2": 33, "0": 2, "1": 66 },
+    [...multiplicities.entries()].sort(([a], [b]) => a - b),
+    [...expectedMultiplicities.entries()].sort(([a], [b]) => a - b),
   );
 
-  for (let index = 0; index < 101; index += 1) {
-    const projector = index < 2 ? 0 : 1;
+  for (let index = 0; index < OUROBOROS_DIMENSION; index += 1) {
+    const projector = index < SELECTED_FIXED_ROOTS ? 0 : 1;
     assert.equal(
       curvature[index],
-      3 * (number[index] - projector) ** 2 - 2 * projector,
+      QUTRIT_DIMENSION * (number[index] - projector) ** 2 -
+        (QUTRIT_DIMENSION - 1) * projector,
     );
     assert.equal(centered[index], number[index] - projector);
   }
@@ -302,7 +352,7 @@ test("qutrit number and SCL curvature operators obey the declared identity", () 
   const orbitZero = curvature;
   const orbitOne = permuteDiagonal(curvature, permutation, 1);
   const orbitTwo = permuteDiagonal(curvature, permutation, 2);
-  for (let index = 0; index < 101; index += 1) {
+  for (let index = 0; index < OUROBOROS_DIMENSION; index += 1) {
     assert.equal(orbitZero[index] + orbitOne[index] + orbitTwo[index], 0);
   }
 });
@@ -322,9 +372,19 @@ test("complex matrix multiplication rejects malformed and incompatible shapes", 
 
 test("qutrit Weyl operators satisfy X^3=Z^3=I and ZX=zeta XZ", () => {
   const { X, Z } = qutritOperators();
-  const identity = complexIdentity(3);
-  assert.ok(maxComplexMatrixDifference(complexMatrixPower(X, 3), identity) < 1e-12);
-  assert.ok(maxComplexMatrixDifference(complexMatrixPower(Z, 3), identity) < 1e-12);
+  const identity = complexIdentity(QUTRIT_DIMENSION);
+  assert.ok(
+    maxComplexMatrixDifference(
+      complexMatrixPower(X, QUTRIT_DIMENSION),
+      identity,
+    ) < 1e-12,
+  );
+  assert.ok(
+    maxComplexMatrixDifference(
+      complexMatrixPower(Z, QUTRIT_DIMENSION),
+      identity,
+    ) < 1e-12,
+  );
 
   const ZX = complexMatrixMultiply(Z, X);
   const XZ = complexMatrixMultiply(X, Z).map((row) =>
@@ -339,8 +399,11 @@ test("theta=pi/2 phase kick is unitary and twisted qutrit step has order three",
   }
 
   const step = twistedQutritStep(PHASE_THETA_RAD);
-  const cubed = complexMatrixPower(step, 3);
-  assert.ok(maxComplexMatrixDifference(cubed, complexIdentity(3)) < 1e-12);
+  const cubed = complexMatrixPower(step, QUTRIT_DIMENSION);
+  assert.ok(
+    maxComplexMatrixDifference(cubed, complexIdentity(QUTRIT_DIMENSION)) <
+      1e-12,
+  );
 });
 
 test("ternary/SCL Ouroboros state is normalized with explicit singlet phases", () => {
@@ -357,21 +420,21 @@ test("ternary/SCL Ouroboros state is normalized with explicit singlet phases", (
   assertClose(state[1].re * scale, 1);
   assertClose(state[1].im * scale, 0);
 
-  const expectedPhases = [
-    -PHASE_THETA_RAD,
-    (2 * Math.PI) / 3 + 2 * PHASE_THETA_RAD,
-    (4 * Math.PI) / 3 - PHASE_THETA_RAD,
-  ];
-  for (let qutritLabel = 0; qutritLabel < 3; qutritLabel += 1) {
-    assertClose(state[2 + qutritLabel].re * scale, Math.cos(expectedPhases[qutritLabel]));
-    assertClose(state[2 + qutritLabel].im * scale, Math.sin(expectedPhases[qutritLabel]));
+  for (let qutritLabel = 0; qutritLabel < QUTRIT_DIMENSION; qutritLabel += 1) {
+    const expectedPhase =
+      (2 * Math.PI * qutritLabel) / QUTRIT_DIMENSION -
+      PHASE_THETA_RAD * SCL_STENCIL[qutritLabel];
+    const index = SELECTED_FIXED_ROOTS + qutritLabel;
+    assertClose(state[index].re * scale, Math.cos(expectedPhase));
+    assertClose(state[index].im * scale, Math.sin(expectedPhase));
   }
 });
 
-test("ternary MIDI codebook is a bijective symbolic encoding of all 101 states", () => {
+test("ternary MIDI codebook is a bijective symbolic encoding of all selected states", () => {
   const codebook = buildTernaryMidiCodebook();
   assert.equal(codebook.length, OUROBOROS_DIMENSION);
-  assert.equal(new Set(codebook.map((entry) => entry.midiNote)).size, 101);
+  const occupiedNotes = new Set(codebook.map((entry) => entry.midiNote));
+  assert.equal(occupiedNotes.size, OUROBOROS_DIMENSION);
   assert.ok(
     codebook.every(
       (entry) =>
@@ -379,36 +442,62 @@ test("ternary MIDI codebook is a bijective symbolic encoding of all 101 states",
     ),
   );
   assert.deepEqual(
-    codebook.slice(0, 2).map((entry) => entry.midiNote),
-    [13, 113],
+    codebook
+      .filter((entry) => entry.stateType === "fixed-singlet")
+      .map((entry) => entry.midiNote),
+    TERNARY_MIDI_LAYOUT.fixedSingletNotes,
+  );
+  assert.equal(
+    TERNARY_MIDI_LAYOUT.windowMinimum,
+    MIDI_NOTE_MINIMUM +
+      Math.floor(
+        (TERNARY_MIDI_LAYOUT.noteCount - TERNARY_MIDI_LAYOUT.stateCount) / 2,
+      ),
+  );
+  assert.equal(
+    TERNARY_MIDI_LAYOUT.windowMaximum -
+      TERNARY_MIDI_LAYOUT.windowMinimum +
+      1,
+    OUROBOROS_DIMENSION,
   );
 
-  const expectedLanes = {
-    low: [14, 46],
-    mid: [47, 79],
-    high: [80, 112],
-  };
-  for (const [lane, expectedRange] of Object.entries(expectedLanes)) {
+  for (const lane of TERNARY_MIDI_LAYOUT.lanes) {
     const notes = codebook
-      .filter((entry) => entry.lane === lane)
+      .filter((entry) => entry.lane === lane.name)
       .map((entry) => entry.midiNote);
-    assert.equal(notes.length, 33);
-    assert.deepEqual([Math.min(...notes), Math.max(...notes)], expectedRange);
+    assert.equal(notes.length, TERNARY_MIDI_LAYOUT.laneStride);
+    assert.deepEqual(
+      [Math.min(...notes), Math.max(...notes)],
+      lane.midiNoteRange,
+    );
   }
 
   for (const entry of codebook) {
     assert.equal(basisIndexFromMidiNote(entry.midiNote), entry.basisIndex);
+    if (entry.qutritLabel !== null) {
+      assert.equal(
+        entry.midiNote,
+        midiNoteForTernaryState(entry.orbitIndex, entry.qutritLabel),
+      );
+    }
   }
-  for (const note of [0, 12, 114, 127]) {
-    assert.equal(basisIndexFromMidiNote(note), null);
+  for (let note = MIDI_NOTE_MINIMUM; note <= MIDI_NOTE_MAXIMUM; note += 1) {
+    if (!occupiedNotes.has(note)) {
+      assert.equal(basisIndexFromMidiNote(note), null);
+    }
   }
 
   const byBasis = new Map(codebook.map((entry) => [entry.basisIndex, entry]));
   const permutation = trialityPermutation();
   for (const entry of codebook.filter((candidate) => candidate.qutritLabel !== null)) {
     const mapped = byBasis.get(permutation[entry.basisIndex]);
-    const offset = entry.midiNote - 14;
-    const mappedOffset = mapped.midiNote - 14;
-    assert.equal(mappedOffset, (offset + 33) % 99);
+    const offset = entry.midiNote - TERNARY_MIDI_LAYOUT.firstQutritNote;
+    const mappedOffset =
+      mapped.midiNote - TERNARY_MIDI_LAYOUT.firstQutritNote;
+    assert.equal(
+      mappedOffset,
+      (offset + TERNARY_MIDI_LAYOUT.trialityShift) %
+        QUTRIT_SUBSPACE_DIMENSION,
+    );
   }
 });
