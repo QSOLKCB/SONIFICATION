@@ -1,7 +1,7 @@
 # ETQ-101 Mathematical Model
 
-**Version:** 1.0.0  
-**Status:** Normative specification  
+**Version:** 2.0.0
+**Status:** Normative specification
 **Model name:** E8-Root Triality-Qutrit 101-State Sonification Model (ETQ-101)
 
 ## Abstract
@@ -14,40 +14,34 @@ ETQ-101 is a deterministic finite-dimensional model that combines:
 - 33 mutually exclusive qutrit/triality blocks with computational values `[0, 1, 2]` plus two triality-fixed singlets;
 - the SCL ternary-curvature observable `diag(1, -2, 1)`;
 - a phase kick at \(\theta=\pi/2\);
-- optional golden-ratio modulation; and
-- a declared 432 Hz time and sonification reference.
+- a selected-root-graph degree potential; and
+- a symbolic low/mid/high ternary MIDI codebook with no acoustic reference.
 
 The precise claim is:
 
 > **ETQ-101 is a deterministic 101-dimensional root-indexed graph truncation derived from E8, closed under a D4 triality embedded in E8, with 33 direct-sum qutrit/triality blocks and two fixed singlets.**
 
-It is not a 101-dimensional representation of the E8 Lie group or Lie algebra. It is an authored effective model whose basis selector, operators, units, observables, and sonification map are explicit and testable.
+It is not a 101-dimensional representation of the E8 Lie group or Lie algebra. It is an authored effective model whose basis selector, operators, dimensionless dynamics, observables, and symbolic mapping are explicit and testable.
 
 ## 1. Correction of the proposed scalar equation
 
-Use separate symbols for three unrelated constants:
+The forward profile uses separate symbols for the phase and qutrit character:
 
 $$
 \theta=\frac{\pi}{2},\qquad
-\varphi=\frac{1+\sqrt5}{2},\qquad
 \zeta=e^{2\pi i/3}.
 $$
 
-Here \(\theta\) is a phase, \(\varphi\) is the golden ratio, and \(\zeta\) is the primitive qutrit root of unity. Define
+Here \(\theta\) is a declared phase and \(\zeta\) is the primitive qutrit root
+of unity. ETQ-101 v2 defines no absolute frequency.
 
-$$
-f_0=432\ \mathrm{Hz},\qquad
-\Omega_0=2\pi f_0=864\pi\ \mathrm{s}^{-1}.
-$$
-
-The supplied expression has the form
+The original proposal contained a scalar expression of the form
 
 $$
 \theta^2\left[
 \mathrm{Tr}(\rho)-\frac12(1-2+1)
 \right]
-+\frac{\Omega_0}{101}
-\left(\frac{2\pi}{\theta}\right)^2=0.
++\text{a term with inverse-time units}=0.
 $$
 
 Because
@@ -56,54 +50,44 @@ $$
 1-2+1=0
 $$
 
-and a density operator is normalized by \(\mathrm{Tr}(\rho)=1\), the expression becomes
-
-$$
-\theta^2+
-\frac{\Omega_0}{101}
-\left(\frac{2\pi}{\theta}\right)^2.
-$$
-
-At \(\theta=\pi/2\), this is
-
-$$
-\frac{\pi^2}{4}
-+\frac{13824\pi}{101}\ \mathrm{s}^{-1}.
-$$
-
-It cannot equal zero as written. More importantly, it adds a dimensionless number to an angular frequency. Only the ternary sum vanishes; the first term does **not** vanish.
+and a density operator is normalized by \(\mathrm{Tr}(\rho)=1\), only the
+ternary sum vanishes. The trace contribution does **not** vanish. Adding it to
+an inverse-time term is dimensionally invalid, so v2 removes the dimensional
+term instead of assigning it an arbitrary calibration.
 
 If a scalar zero condition is aesthetically useful, a dimensionless calibration residual may be defined instead:
 
 $$
 \begin{aligned}
-\mathcal R(\rho,\Omega)
+\mathcal R(\rho)
 ={}&\theta^2\bigl(\mathrm{Tr}\rho-1\bigr)^2
 +\frac16\bigl(\mathrm{Tr}(\rho D)\bigr)^2\\
 &+\frac12\bigl(\mathrm{Tr}(\rho Q)\bigr)^2
-+\frac1{101}\left(\frac{\Omega}{\Omega_0}-1\right)^2
 \ge 0.
 \end{aligned}
 $$
 
-Then \(\mathcal R=0\) expresses normalization, aggregate ternary balance, aggregate centered-qutrit balance, and exact frequency calibration. It is a declared constraint—not an equation of motion or a physical law. Positivity and Hermiticity of \(\rho\) remain separate axioms.
+Then \(\mathcal R=0\) expresses normalization, aggregate ternary balance, and
+aggregate centered-qutrit balance. It is a declared diagnostic constraint—not
+an equation of motion or physical law. Positivity and Hermiticity of \(\rho\)
+remain separate axioms.
 
 ## 2. Notation
 
 | Symbol | Meaning | Units |
 |---|---|---|
 | \(\theta\) | SCL phase, canonically \(\pi/2\) | rad (dimensionless) |
-| \(\varphi\) | Golden ratio \((1+\sqrt5)/2\) | dimensionless |
 | \(\zeta\) | Qutrit root of unity \(e^{2\pi i/3}\) | dimensionless |
-| \(f_0\) | Declared reference frequency, 432 Hz | Hz |
-| \(\Omega_0\) | \(2\pi f_0\) | rad s\(^{-1}\) |
 | \(\mathcal H_{101}\) | Compact ETQ-101 state space | — |
 | \(\rho\) | Density operator on the selected state space | — |
 | \(U_\tau\) | Embedded order-three triality action | — |
 | \(D\) | SCL ternary-curvature observable | — |
 | \(N\) | Qutrit number-label observable | — |
+| \(V_{\deg}\) | Centered selected-graph degree potential | — |
 | \(K\) | Dimensionless Hermitian generator | — |
-| \(H=\hbar\Omega_0K\) | Hamiltonian when a physical-energy notation is wanted | energy |
+| \(s\) | Dimensionless continuous evolution parameter | — |
+| \(\delta\) | Dimensionless Floquet step, \(2\pi/303\) | — |
+| \(M(m,q)\) | Symbolic MIDI note-number code | integer |
 
 `SCL` is project terminology. This specification does not claim it is a standard mathematical acronym.
 
@@ -447,27 +431,70 @@ $$
 
 This guarantees \(0\preceq\overline L_E\preceq I\) without making a numerical eigensolver part of the model contract. Spectral-radius normalization is permitted only when explicitly recorded.
 
+Let \(d_j=\sum_kW_{jk}\), so the selected graph has
+
+$$
+\sum_jd_j=3374,
+\qquad
+\overline d=\frac{3374}{101}.
+$$
+
+Define the exact centered degree potential
+
+$$
+\boxed{
+(V_{\deg})_{jj}
+=\frac{101d_j-3374}{2181}.
+}
+$$
+
+Its numerator sum is zero and its maximum absolute numerator is 2181, hence
+
+$$
+\mathrm{Tr}(V_{\deg})=0,
+\qquad
+\|V_{\deg}\|=1.
+$$
+
+Triality preserves graph degree, so
+
+$$
+[V_{\deg},U_\tau]=0.
+$$
+
+The potential is an exact consequence of the **selected** graph. Choosing it
+as a generator term is authored, and it is not an independent full-E8
+invariant. In general \([V_{\deg},L_E]\ne0\) because the graph is irregular.
+
 ## 10. Ouroboros state and optional ring
 
 `Ouroboros` is a declared ETQ model name, not a standard mathematical state class.
 
-Let \(d_j\) be the \(j\)-th diagonal entry of \(D\). Define the golden-phase state
+Write the fixed singlets as \(|s_0\rangle,|s_1\rangle\), and write the 33
+qutrit orbits as \(|m,q\rangle\). For
 
 $$
-|\Omega_{\varphi,\theta}\rangle
+(d_0,d_1,d_2)=(1,-2,1),
+$$
+
+define the ternary/SCL state
+
+$$
+|\Omega_{3,\theta}\rangle
 =\frac1{\sqrt{101}}
-\sum_{j=0}^{100}
-\exp\!\left(
-\frac{2\pi i j}{\varphi}-i\theta d_j
-\right)|j\rangle
+\left[
+|s_0\rangle+|s_1\rangle
++\sum_{m=0}^{32}\sum_{q=0}^{2}
+e^{2\pi iq/3-i\theta d_q}|m,q\rangle
+\right]
 $$
 
 and
 
 $$
 \rho_0
-=|\Omega_{\varphi,\theta}\rangle
-\langle\Omega_{\varphi,\theta}|.
+=|\Omega_{3,\theta}\rangle
+\langle\Omega_{3,\theta}|.
 $$
 
 Then
@@ -477,6 +504,11 @@ $$
 \mathrm{Tr}(\rho_0)=1,\qquad
 \mathrm{Tr}(\rho_0^2)=1.
 $$
+
+The fixed singlets have explicitly zero phase and no qutrit label. Every basis
+amplitude has magnitude \(1/\sqrt{101}\), so the initial basis probabilities
+are uniform. Phase can influence a later observation only through a declared
+noncommuting evolution or phase-sensitive observable.
 
 If an exactly triality-invariant initial state is required, use the twirl
 
@@ -524,15 +556,6 @@ $$
 \right].
 $$
 
-For orbit projectors \(\Pi_m\), define a triality-invariant golden potential
-
-$$
-V_\varphi
-=0_2\oplus
-\sum_{m=0}^{32}
-\cos\!\left(\frac{2\pi m}{\varphi}+\theta\right)\Pi_m.
-$$
-
 A general dimensionless Hermitian generator is
 
 $$
@@ -540,7 +563,7 @@ $$
 K=
 a_E\overline L_E
 +a_Q\overline L_Q
-+a_\varphi V_\varphi
++a_{\deg}V_{\deg}
 +a_D\frac D2
 +a_NQ
 +a_\circ\frac{L_\circ}{4},
@@ -549,34 +572,38 @@ $$
 
 where all \(a_\bullet\in\mathbb R\) are dimensionless and must be recorded in the model manifest.
 
-The first three displayed terms commute with triality. The static curvature, centered-number, and full-ring terms generally break it. The canonical example keeps those static coefficients at zero and applies the SCL operator as the covariant phase drive instead.
-
-Use the declared angular reference to define
+The first three displayed terms commute with triality. The static curvature,
+centered-number, and full-ring terms generally break it. The canonical v2
+profile is
 
 $$
 \boxed{
-H=\hbar\Omega_0K,
-\qquad
-\Omega_0=2\pi(432)\ \mathrm{s}^{-1}.
+K=\frac{11}{20}\overline L_E
++\frac14\overline L_Q
++\frac15V_{\deg}.
 }
 $$
 
-Closed evolution is
+These rational weights are authored model choices. The operators they weight
+are graph- or qutrit-derived, but E8 does not determine the coefficients.
+
+Closed continuous evolution uses a dimensionless parameter \(s\):
 
 $$
-\dot\rho=-i\Omega_0[K,\rho].
+\boxed{
+\frac{d\rho}{ds}=-i[K,\rho].
+}
 $$
 
-All terms inside \(K\) are dimensionless, so there is no unit mismatch.
+No SI time or acoustic frequency is implied. A downstream realization may
+choose a tempo or clock, but that receiver-side choice is not part of ETQ-101.
 
 For discrete dynamics, fix the operator order explicitly. The canonical Floquet convention is
 
 $$
-U_F=e^{-i\tau K}F_Q,
+U_F=e^{-i\delta K}F_Q,
 \qquad
 \rho_{n+1}=U_F\rho_nU_F^\dagger,
-\qquad
-\tau=\Omega_0\Delta t,
 $$
 
 where
@@ -585,31 +612,27 @@ $$
 F_Q=I_2\oplus(I_{33}\otimes F_3).
 $$
 
-The canonical dimensionless step and physical timestep are declared as
+The canonical dimensionless step is declared as
 
 $$
 \boxed{
-\tau=\frac{2\pi}{303},
-\qquad
-\Delta t=\frac{\tau}{\Omega_0}
-=\frac{1}{303\cdot432}\ \mathrm{s}.
+\delta=\frac{2\pi}{303}.
 }
 $$
 
 The rightmost factor acts first: the SCL phase kick, then the triality shift,
 then the continuous-generator step. With \(K=0\), \(F_Q^3=I_{101}\). The
-choice \(\tau=2\pi/303\) is part of the authored canonical profile; it is not
+choice \(\delta=2\pi/303\) is part of the authored canonical profile; it is not
 forced by E8.
 
-The canonical `generator-spectrum-v1` audio profile is separate from this
-Floquet update: it diagonalizes the dimensionless generator \(K\) and does not
-claim that \(U_F\) has order 303, diagonalize \(U_F\), or integrate a trajectory
-\(\rho_n\).
+ETQ-101 v2 does not claim that \(U_F\) has order 303. The fact that
+\(F_Q^3=I_{101}\) does not establish a corresponding order for the product
+\(e^{-i\delta K}F_Q\).
 
 An optional open-system extension is
 
 $$
-\dot\rho=-i\Omega_0[K,\rho]
+\frac{d\rho}{ds}=-i[K,\rho]
 +\sum_\ell\gamma_\ell
 \left(
 L_\ell\rho L_\ell^\dagger
@@ -617,20 +640,21 @@ L_\ell\rho L_\ell^\dagger
 \right),
 $$
 
-where \(\gamma_\ell\) has units s\(^{-1}\). Such a run must be labeled a GKSL/Lindblad simulation, not unitary qutrit logic.
+where each \(\gamma_\ell\) is a dimensionless rate relative to \(s\). Such a
+run must be labeled a GKSL/Lindblad simulation, not unitary qutrit logic.
 
 ## 12. Observables
 
 For the two fixed roots and 33 qutrit orbits, define projectors \(\Pi_{\mathrm{fix},s}\) and \(\Pi_{m,q}\). Then
 
 $$
-p_{m,q}(t)=\mathrm{Tr}(\rho(t)\Pi_{m,q})
+p_{m,q}(s)=\mathrm{Tr}(\rho(s)\Pi_{m,q})
 $$
 
 are qutrit populations and
 
 $$
-\kappa(t)=\mathrm{Tr}(\rho(t)D)
+\kappa(s)=\mathrm{Tr}(\rho(s)D)
 $$
 
 is aggregate SCL curvature.
@@ -638,11 +662,11 @@ is aggregate SCL curvature.
 Other useful observables are
 
 $$
-q_N(t)=\mathrm{Tr}(\rho(t)Q),
+q_N(s)=\mathrm{Tr}(\rho(s)Q),
 $$
 
 $$
-e_E(t)=\mathrm{Tr}(\rho(t)\overline L_E),
+e_E(s)=\mathrm{Tr}(\rho(s)\overline L_E),
 $$
 
 and triality projectors
@@ -655,7 +679,7 @@ $$
 If \([K,U_\tau]=0\), the sector weights
 
 $$
-w_r(t)=\mathrm{Tr}(\rho(t)P_r)
+w_r(s)=\mathrm{Tr}(\rho(s)P_r)
 $$
 
 are conserved under the continuous unitary dynamics.
@@ -704,8 +728,8 @@ whose dimension is \(3^{101}\); that is a different and vastly larger model.
 
 ## 14. Preserved quantities
 
-For the continuous time-independent unitary dynamics
-\(\dot\rho=-i\Omega_0[K,\rho]\), the following are preserved:
+For the continuous parameter-independent unitary dynamics
+\(d\rho/ds=-i[K,\rho]\), the following are preserved:
 
 - \(\mathrm{Tr}(\rho)\);
 - Hermiticity and positive semidefiniteness of \(\rho\);
@@ -739,15 +763,21 @@ The complete normative checklist for a conforming implementation is:
 10. \(D=3(N-\Pi_Q)^2-2\Pi_Q\).
 11. \(D_0+D_1+D_2=0\).
 12. Unitarity of \(U_D\) and \(F_3^3=I\).
-13. Normalization of \(|\Omega_{\varphi,\theta}\rangle\).
-14. Hermiticity and unit consistency of the declared generator.
+13. Normalization and explicit singlet phases of
+    \(|\Omega_{3,\theta}\rangle\).
+14. Exact degree-potential centering, scaling, and triality invariance.
+15. Exact canonical generator coefficients and dimensionless step.
+16. Hermiticity and dimensionlessness of the declared generator.
+17. Bijection, inverse, lane ranges, and triality shift of the MIDI codebook.
 
-The dependency-free reference tests currently verify items 1–13 at the
-structural/operator level. The canonical coefficients, timestep, model
-relations, serialization rules, and regression fixtures are checked by
-`npm run verify`. Construction and eigensolver-level validation of a complete
-numeric \(K\), \(U_F\), and audio render remain future reference-renderer work;
-the repository does not claim those artifacts already exist.
+The dependency-free tests verify the implemented structural, state,
+degree-potential, generator-symmetry, triality-invariance, and codebook checks.
+`npm run verify` additionally checks the
+canonical v2 serialization and hashes, schema constants, the absence of the
+removed forward anchors, and the immutable v1 identity fixture. The reference
+source constructs \(K\), but a numerical matrix exponential/Floquet trajectory,
+dynamics-to-event observation rule, and Standard MIDI File exporter remain
+future work; the repository does not claim that they already exist.
 
 ## 16. References
 
@@ -755,5 +785,10 @@ the repository does not claim those artifacts already exist.
 - Craig McRae, [*Exploring Triality Explicitly: Convenient bases for SO(8), Spin(1,7), and G2*](https://arxiv.org/abs/2502.14016) (2025). Explicit D4/Spin(8) triality context.
 - Robert Feger and Thomas W. Kephart, [*LieART — A Mathematica Application for Lie Algebras and Representation Theory*](https://arxiv.org/abs/1206.6379) (2014). Representation tables and computational Lie-algebra conventions.
 - Ashmeet Singh and Sean M. Carroll, [*Modeling Position and Momentum in Finite-Dimensional Hilbert Spaces via Generalized Pauli Operators*](https://arxiv.org/abs/1806.10134) (2020). Finite-dimensional generalized Pauli operators.
-- Bertram Kostant, [*Experimental evidence for the occurrence of E8 in nature and the radii of the Gosset circles*](https://arxiv.org/abs/1003.0046) (2010). E8 roots, Coxeter-plane circles, and the specific golden-ratio relation discussed there.
 - Pierre-Philippe Dechant, [*The E8 geometry from a Clifford perspective*](https://arxiv.org/abs/1603.04805) (2016). E8 root geometry and Coxeter-plane constructions.
+- Florian Grond and Jonathan Berger, “Parameter Mapping Sonification,” in
+  *The Sonification Handbook*, Chapter 15, pp. 363–397 (2011). Mapping design,
+  receiver dependence, and evaluation boundaries.
+- Elvira Pirondini et al., [“A Spectral Method for Generating Surrogate Graph
+  Signals”](https://doi.org/10.1109/LSP.2016.2594072), *IEEE Signal Processing
+  Letters* 23(9), 2016. Graph-Fourier surrogate testing for node signals.

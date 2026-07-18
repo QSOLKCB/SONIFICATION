@@ -15,23 +15,26 @@ import {
 import { deriveLaplacianClockTuning } from "./tanner-tuning-fork.mjs";
 
 /**
- * Forward E8-root-graph tuning profile. It derives ratios from the immutable
- * ETQ-101 selected root graph while keeping absolute clock calibration out of
- * the legacy ETQ-101 v1 model contract.
+ * Auxiliary E8-root-graph calibration experiment. It derives ratios from the
+ * ETQ-101 selected root graph but does not replace the v2 symbolic MIDI
+ * codebook, introduce a root-model clock, or define canonical ETQ events.
  */
 export const ETQ101_CLOCK_TUNING_PROFILE = Object.freeze({
   profileId: "etq101-e8-root-laplacian-frame-bin-v1",
-  status: "candidate-kernel",
+  status: "auxiliary-noncanonical-calibration",
   sourceModel: `${MODEL_ID}@${MODEL_VERSION}`,
-  semanticScope: "derived-e8-root-graph-observation-profile",
+  semanticScope: "auxiliary-e8-root-graph-calibration-experiment",
+  canonicalEtq101Mapping: false,
   replacesCanonicalEtq101GeneratorSpectrum: false,
+  replacesCanonicalEtq101MidiCodebook: false,
+  rootEtq101Clock: "none-symbolic-midi-v2",
   pitchOperator: "etq101-selected-e8-root-graph-laplacian-v1",
   pitchRatioMap: "sqrt-positive-eigenvalue-v1",
   zeroModePolicy: "omit-dc-v1",
-  absoluteUnit: "declared-nominal-audio-frame-bin-v1",
+  absoluteUnit: "declared-nominal-frame-bin-auxiliary-v1",
 });
 
-/** Derive the ETQ-101 E8 root-graph spectrum and its clock-bin calibration. */
+/** Derive an auxiliary selected-root spectrum and clock-bin calibration. */
 export function deriveEtq101ClockTuning({
   sampleRateHz,
   calibrationFrameCount,

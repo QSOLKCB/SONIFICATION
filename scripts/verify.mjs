@@ -9,14 +9,27 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 
 import {
+  CANONICAL_GENERATOR_WEIGHTS,
+  DIMENSIONLESS_STEP_DELTA,
+  MODEL_ID,
+  MODEL_VERSION,
+  PHASE_THETA_RAD,
+  basisIndexFromMidiNote,
   buildRootAdjacency,
+  buildTernaryMidiCodebook,
+  canonicalGeneratorMatrix,
   canonicalModelSummary,
+  graphDegreePotential,
   selectEtq101Basis,
+  trialityPermutation,
 } from "../src/etq-model.mjs";
 
-const exampleUrl = new URL("../examples/etq-101.canonical.json", import.meta.url);
-const schemaUrl = new URL("../spec/etq-101.schema.json", import.meta.url);
-const contract = JSON.parse(readFileSync(exampleUrl, "utf8"));
+const contractUrl = new URL(
+  "../examples/etq-101.v2.canonical.json",
+  import.meta.url,
+);
+const schemaUrl = new URL("../spec/etq-101.v2.schema.json", import.meta.url);
+const contract = JSON.parse(readFileSync(contractUrl, "utf8"));
 const schema = JSON.parse(readFileSync(schemaUrl, "utf8"));
 
 function sha256Utf8(value) {
@@ -47,123 +60,17 @@ function contractPayloadSha256(value) {
   return sha256Utf8(stableSerialize(payload));
 }
 
-const expected = {
-  stateSpace: {
-    type: "root-indexed-graph-hilbert-space",
-    basisInnerProduct: "<r|s>=kronecker-delta",
-    decomposition: "C^2 direct-sum (C^33 tensor C^3)",
-    qutritBlockSemantics: "33-mutually-exclusive-direct-sum-blocks",
-  },
-  dimensions: {
-    total: 101,
-    fixedSinglets: 2,
-    qutritOrbits: 33,
-    qutritSubspace: 99,
-  },
-  constants: {
-    phaseThetaRad: Math.PI / 2,
-    goldenRatio: (1 + Math.sqrt(5)) / 2,
-    referenceFrequencyHz: 432,
-    referenceAngularFrequencyRadPerSecond: 2 * Math.PI * 432,
-  },
-  selection: {
-    coordinateEncoding: "doubled-integer-e8-roots",
-    algorithm: "lexicographic-triality-closed-v1",
-    hilbertSpaceConstruction: "ell2-of-selected-root-labels",
-    fixedRoots: 2,
-    completeTrialityOrbits: 33,
-  },
-  dynamics: {
-    form: "floquet",
-    continuousGenerator: "K=0.55*L_E_bar+0.25*L_Q_bar+0.20*V_phi",
-    floquetOperator: "U_F=exp(-i*tau*K)*F_Q",
-    graphNormalization: "two-times-maximum-degree",
-    dimensionlessStepTau: (2 * Math.PI) / 303,
-    dimensionlessStepTauExpression: "2*pi/303",
-    timeStepSeconds: 1 / (303 * 432),
-    timeStepSecondsExpression: "1/(303*432)",
-    initialStateRecipe: "ouroboros-golden-scl-v1",
-    weights: {
-      e8RootGraph: 0.55,
-      qutritHopping: 0.25,
-      goldenOrbitPotential: 0.2,
-      sclStatic: 0,
-      qutritNumber: 0,
-      ouroborosRing: 0,
-    },
-    phaseDrive: {
-      operator: "diag(1,-2,1)",
-      thetaRad: Math.PI / 2,
-      stepOrder: [
-        "scl-phase-kick",
-        "triality-shift",
-        "continuous-generator",
-      ],
-      trialityCovariantOrbit: [0, 1, 2],
-    },
-  },
-  sonification: {
-    mappingId: "generator-spectrum-v1",
-    renderStatus: "specified-not-implemented",
-    spectralSource: "dimensionless-generator-K",
-    trajectoryUsed: false,
-    initialStateRecipe: "ouroboros-golden-scl-v1",
-    referenceFrequencyHz: 432,
-    pitchMapId: "golden-band-v1",
-    pitchMap: "f_l=f0*2^(goldenRatio*xi_l)",
-    normalizedSpectralDomain: [-1, 1],
-    amplitudeMapId: "spectral-projector-sqrt-v1",
-    amplitudeMap: "a_l=sqrt(Tr(rho0*P_l))",
-    oscillatorPhaseMapId: "zero-v1",
-    stereoMapId: "triality-equal-power-v1",
-    epsilonMu: 1e-12,
-    eigenvalueAbsoluteTolerance: 1e-10,
-    eigenvalueRelativeTolerance: 1e-10,
-    eigenvalueGroupingId: "sorted-adjacent-connected-v1",
-    groupEigenvalueId: "arithmetic-mean-v1",
-    durationSeconds: 20,
-    sampleRateHz: 48000,
-    channels: 2,
-    windowId: "raised-cosine-edge-v1",
-    edgeFadeSeconds: 0.02,
-    peakCeiling: 0.98,
-    silencePolicy: "emit-zero-pcm",
-    pcmFormat: "s16le",
-    quantizer: "nearest-ties-away-from-zero-v1",
-    dither: "none",
-    numericRuntimeId: null,
-    eigensolverId: null,
-    renderManifestPayloadSha256: null,
-    pcmSha256: null,
-  },
-  fixtures: {
-    e8RootCount: 240,
-    trialityFixedRoots: 12,
-    trialityThreeCycles: 76,
-    selectedGraph: {
-      vertices: 101,
-      edges: 1687,
-      minimumDegree: 22,
-      maximumDegree: 55,
-      connected: true,
-    },
-  },
-  determinism: {
-    fixtureSerialization:
-      "UTF-8(JSON.stringify(value)); compact; no BOM; no trailing newline",
-    contractCanonicalization: "recursive-lexicographic-object-keys-json-v1",
-    contractPayloadRule:
-      "remove $schema and determinism.contractPayloadSha256 before canonicalization",
-    basisSha256:
-      "97cfd1f087745422fd66d3640c7b86c3209593c4b53741018c08a5e9cdb15f6f",
-    adjacencySha256:
-      "29ae0af5b1090c9de30f1efc25789060fb1791eb175d2afcd6888847f7fe6324",
-    contractPayloadSha256:
-      "6577443641be02609c045ee0afc423c2be37bbe5ae83f671cbae304c0e9cb930",
-  },
-  claimBoundary:
-    "A deterministic 101-dimensional root-indexed Hilbert space built from an E8 root-graph truncation closed under an embedded D4 triality. It is not a 101-dimensional representation of E8, and 432 Hz is a declared sonification scale.",
-};
+function collectPropertyNames(value, names = new Set()) {
+  if (Array.isArray(value)) {
+    for (const item of value) collectPropertyNames(item, names);
+  } else if (value !== null && typeof value === "object") {
+    for (const [key, child] of Object.entries(value)) {
+      names.add(key);
+      collectPropertyNames(child, names);
+    }
+  }
+  return names;
+}
 
 assert.deepEqual(Object.keys(contract).sort(), [
   "$schema",
@@ -173,102 +80,197 @@ assert.deepEqual(Object.keys(contract).sort(), [
   "dimensions",
   "dynamics",
   "fixtures",
+  "legacyProfile",
   "modelId",
   "modelVersion",
+  "parameterOrigins",
   "profile",
   "selection",
   "sonification",
   "stateSpace",
 ]);
-assert.equal(contract.$schema, "../spec/etq-101.schema.json");
-assert.equal(contract.modelId, "ETQ-101");
-assert.equal(contract.modelVersion, "1.0.0");
-assert.equal(contract.profile, "compact-101");
-for (const key of [
-  "stateSpace",
-  "dimensions",
-  "constants",
-  "selection",
-  "dynamics",
-  "sonification",
-  "fixtures",
-  "determinism",
-]) {
-  assert.deepEqual(contract[key], expected[key], `Canonical ${key} mismatch`);
-}
-assert.equal(contract.claimBoundary, expected.claimBoundary);
+assert.equal(contract.$schema, "../spec/etq-101.v2.schema.json");
+assert.equal(contract.modelId, MODEL_ID);
+assert.equal(contract.modelVersion, MODEL_VERSION);
+assert.equal(contract.profile, "compact-101-ternary-midi");
 
 const basis = selectEtq101Basis();
 const adjacency = buildRootAdjacency(basis);
+const degreePotential = graphDegreePotential(adjacency);
+const midiCodebook = buildTernaryMidiCodebook();
+const generator = canonicalGeneratorMatrix(adjacency);
 const observed = canonicalModelSummary();
-const observedHashes = {
-  basisSha256: fixtureSha256(basis),
-  adjacencySha256: fixtureSha256(adjacency),
-};
 
-assert.equal(contract.modelId, observed.modelId);
-assert.equal(contract.modelVersion, observed.modelVersion);
 assert.deepEqual(contract.dimensions, observed.dimensions);
 assert.deepEqual(contract.constants, observed.constants);
+assert.equal(contract.constants.phaseThetaRad, PHASE_THETA_RAD);
+assert.deepEqual(contract.dynamics.weights, CANONICAL_GENERATOR_WEIGHTS);
+assert.deepEqual(contract.dynamics.weights, observed.dynamics.weights);
+assert.equal(
+  contract.dynamics.dimensionlessStepDelta,
+  DIMENSIONLESS_STEP_DELTA,
+);
+assert.equal(
+  contract.dynamics.dimensionlessStepDelta,
+  observed.dynamics.dimensionlessStepDelta,
+);
 assert.equal(contract.fixtures.e8RootCount, observed.e8.rootCount);
 assert.equal(contract.fixtures.trialityFixedRoots, observed.e8.trialityFixedRoots);
 assert.equal(contract.fixtures.trialityThreeCycles, observed.e8.trialityThreeCycles);
 assert.deepEqual(contract.fixtures.selectedGraph, observed.selectedGraph);
-assert.equal(contract.determinism.basisSha256, observedHashes.basisSha256);
-assert.equal(contract.determinism.adjacencySha256, observedHashes.adjacencySha256);
+assert.deepEqual(
+  {
+    degreeSum: contract.fixtures.degreePotential.degreeSum,
+    meanDegree: contract.fixtures.degreePotential.meanDegree,
+    normalizationDenominator:
+      contract.fixtures.degreePotential.normalizationDenominator,
+    traceNumerator: contract.fixtures.degreePotential.traceNumerator,
+    maximumAbsoluteNumerator:
+      contract.fixtures.degreePotential.maximumAbsoluteNumerator,
+  },
+  observed.degreePotential,
+);
+assert.deepEqual(
+  contract.sonification.occupiedNoteRange,
+  observed.midiCodebook.occupiedNoteRange,
+);
+assert.deepEqual(
+  contract.sonification.fixedSingletNotes,
+  observed.midiCodebook.fixedSingletNotes,
+);
+
+assert.equal(
+  contract.determinism.basisSha256,
+  fixtureSha256(basis),
+);
+assert.equal(
+  contract.determinism.adjacencySha256,
+  fixtureSha256(adjacency),
+);
+assert.equal(
+  contract.determinism.degreePotentialNumeratorsSha256,
+  fixtureSha256(degreePotential.numerators),
+);
+assert.equal(
+  contract.determinism.midiCodebookSha256,
+  fixtureSha256(midiCodebook),
+);
 assert.equal(
   contract.determinism.contractPayloadSha256,
   contractPayloadSha256(contract),
 );
 
+assert.equal(degreePotential.degreeSum, 2 * contract.fixtures.selectedGraph.edges);
 assert.equal(
-  contract.dimensions.total,
-  contract.dimensions.fixedSinglets + 3 * contract.dimensions.qutritOrbits,
+  degreePotential.numerators.reduce((sum, value) => sum + value, 0),
+  0,
 );
 assert.equal(
-  contract.dimensions.qutritSubspace,
-  3 * contract.dimensions.qutritOrbits,
-);
-assert.equal(contract.constants.phaseThetaRad, Math.PI / 2);
-assert.equal(contract.constants.goldenRatio, (1 + Math.sqrt(5)) / 2);
-assert.equal(
-  contract.constants.referenceAngularFrequencyRadPerSecond,
-  2 * Math.PI * contract.constants.referenceFrequencyHz,
-);
-assert.equal(contract.dynamics.phaseDrive.thetaRad, contract.constants.phaseThetaRad);
-assert.equal(
-  contract.sonification.referenceFrequencyHz,
-  contract.constants.referenceFrequencyHz,
-);
-assert.equal(contract.dynamics.dimensionlessStepTau, (2 * Math.PI) / 303);
-assert.equal(
-  contract.dynamics.timeStepSeconds,
-  contract.dynamics.dimensionlessStepTau /
-    contract.constants.referenceAngularFrequencyRadPerSecond,
+  Math.max(...degreePotential.numerators.map((value) => Math.abs(value))),
+  degreePotential.normalizationDenominator,
 );
 assert.equal(
   Object.values(contract.dynamics.weights).reduce((sum, value) => sum + value, 0),
   1,
 );
+assert.equal(contract.dynamics.dimensionlessStepDelta, (2 * Math.PI) / 303);
+assert.equal(contract.dynamics.physicalTimeScale, null);
+assert.equal(contract.sonification.absoluteFrequencyHz, null);
+assert.deepEqual(contract.sonification.allowedArtifactExtensions, [
+  ".mid",
+  ".csv",
+  ".json",
+]);
+assert.equal(contract.sonification.renderedAudioStatus, "permanently-disabled");
+
+const permutation = trialityPermutation();
+for (let row = 0; row < generator.length; row += 1) {
+  for (let column = 0; column < generator.length; column += 1) {
+    assert.ok(Number.isFinite(generator[row][column]));
+    assert.ok(Math.abs(generator[row][column] - generator[column][row]) <= 1e-15);
+    assert.ok(
+      Math.abs(
+        generator[permutation[row]][permutation[column]] -
+          generator[row][column],
+      ) <= 1e-15,
+    );
+  }
+}
+
+assert.equal(midiCodebook.length, 101);
+assert.equal(new Set(midiCodebook.map((entry) => entry.midiNote)).size, 101);
+for (const entry of midiCodebook) {
+  assert.equal(basisIndexFromMidiNote(entry.midiNote), entry.basisIndex);
+}
+
+const forbiddenForwardProperties = [
+  "goldenRatio",
+  "referenceFrequencyHz",
+  "referenceAngularFrequencyRadPerSecond",
+  "sampleRateHz",
+  "pcmFormat",
+  "pcmSha256",
+  "wavSha256",
+];
+const forwardPayload = structuredClone(contract);
+delete forwardPayload.legacyProfile;
+const forwardPropertyNames = collectPropertyNames(forwardPayload);
+for (const forbidden of forbiddenForwardProperties) {
+  assert.equal(forwardPropertyNames.has(forbidden), false, `${forbidden} is forbidden`);
+}
 
 assert.equal(schema.$schema, "https://json-schema.org/draft/2020-12/schema");
 assert.equal(
   schema.$id,
-  "https://raw.githubusercontent.com/QSOLKCB/SONIFICATION/main/spec/etq-101.schema.json",
+  "https://raw.githubusercontent.com/QSOLKCB/SONIFICATION/main/spec/etq-101.v2.schema.json",
 );
-assert.equal(
-  schema.properties.determinism.properties.contractPayloadSha256.const,
-  contract.determinism.contractPayloadSha256,
+assert.equal(schema.type, "object");
+assert.equal(schema.additionalProperties, false);
+assert.deepEqual([...schema.required].sort(), Object.keys(contract).sort());
+assert.equal(schema.properties.modelId.const, contract.modelId);
+assert.equal(schema.properties.modelVersion.const, contract.modelVersion);
+assert.equal(schema.properties.profile.const, contract.profile);
+assert.deepEqual(schema.properties.stateSpace.const, contract.stateSpace);
+assert.deepEqual(schema.properties.dimensions.const, contract.dimensions);
+assert.deepEqual(schema.properties.constants.const, contract.constants);
+assert.deepEqual(schema.properties.selection.const, contract.selection);
+assert.deepEqual(schema.properties.dynamics.const, contract.dynamics);
+assert.deepEqual(schema.properties.fixtures.const, contract.fixtures);
+assert.deepEqual(schema.properties.determinism.const, contract.determinism);
+assert.deepEqual(schema.properties.legacyProfile.const, contract.legacyProfile);
+assert.deepEqual(
+  schema.properties.parameterOrigins.const,
+  contract.parameterOrigins,
 );
+assert.equal(schema.properties.claimBoundary.const, contract.claimBoundary);
+
+const sonificationSchema = schema.properties.sonification;
+assert.equal(sonificationSchema.type, "object");
+assert.equal(sonificationSchema.additionalProperties, false);
+assert.deepEqual(
+  [...sonificationSchema.required].sort(),
+  Object.keys(contract.sonification).sort(),
+);
+for (const [key, value] of Object.entries(contract.sonification)) {
+  const property = sonificationSchema.properties[key];
+  assert.ok(property, `Missing sonification schema property ${key}`);
+  if (Object.hasOwn(property, "const")) {
+    assert.deepEqual(property.const, value, `Schema const mismatch for ${key}`);
+  } else {
+    assert.equal(property.type, "null", `Unhandled schema rule for ${key}`);
+    assert.equal(value, null, `${key} must be null`);
+  }
+}
 
 console.log(
   JSON.stringify(
     {
       status: "PASS",
       validation:
-        "Exact canonical instance, cross-field relations, schema parse, and deterministic fixtures",
+        "ETQ-101 v2 structural model, degree potential, ternary MIDI codebook, schema constants, and deterministic receipts",
       summary: observed,
       determinism: contract.determinism,
+      legacyProfile: contract.legacyProfile,
     },
     null,
     2,

@@ -1,11 +1,14 @@
 {
-  "name": "@qsol-imc/tanner-tuning-fork-review",
-  "version": "0.1.0",
+  "name": "@qsol-imc/etq-101",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "test": "node --test",
-    "test:tuning": "node --test tests/tanner-tuning-fork.test.mjs"
+    "test:tuning": "node --test tests/tanner-tuning-fork.test.mjs",
+    "verify": "node scripts/verify.mjs && node scripts/verify-legacy.mjs",
+    "verify:forward": "node scripts/verify.mjs",
+    "verify:legacy": "node scripts/verify-legacy.mjs"
   },
   "engines": {
     "node": ">=20"

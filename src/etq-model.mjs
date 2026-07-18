@@ -17,16 +17,29 @@
  */
 
 export const MODEL_ID = "ETQ-101";
-export const MODEL_VERSION = "1.0.0";
+export const MODEL_VERSION = "2.0.0";
 export const OUROBOROS_DIMENSION = 101;
 export const QUTRIT_DIMENSION = 3;
 export const SELECTED_FIXED_ROOTS = 2;
 export const SELECTED_TRIALITY_ORBITS = 33;
-export const REFERENCE_FREQUENCY_HZ = 432;
-export const REFERENCE_ANGULAR_FREQUENCY_RAD_S =
-  2 * Math.PI * REFERENCE_FREQUENCY_HZ;
 export const PHASE_THETA_RAD = Math.PI / 2;
-export const GOLDEN_RATIO = (1 + Math.sqrt(5)) / 2;
+export const DIMENSIONLESS_STEP_DELTA = (2 * Math.PI) / 303;
+export const CANONICAL_GENERATOR_WEIGHTS = Object.freeze({
+  e8RootGraph: 11 / 20,
+  qutritHopping: 1 / 4,
+  graphDegreePotential: 1 / 5,
+  sclStatic: 0,
+  qutritNumber: 0,
+  ouroborosRing: 0,
+});
+export const MIDI_NOTE_MINIMUM = 0;
+export const MIDI_NOTE_MAXIMUM = 127;
+export const MIDI_NOTE_COUNT = MIDI_NOTE_MAXIMUM - MIDI_NOTE_MINIMUM + 1;
+export const TERNARY_REGISTER_LANES = Object.freeze([
+  "low",
+  "mid",
+  "high",
+]);
 export const QUTRIT_ROOT_OF_UNITY = Object.freeze({
   re: -0.5,
   im: Math.sqrt(3) / 2,
@@ -331,6 +344,94 @@ export function graphSummary(adjacency) {
   };
 }
 
+/**
+ * Exact centered degree potential for the selected root graph.
+ *
+ * For graph dimension n, degree sum S, and degrees d_j, the returned integer
+ * numerators are n*d_j-S. Dividing by their maximum absolute value produces a
+ * trace-zero diagonal with operator norm one. The integer receipt is the
+ * canonical identity; `diagonal` is its binary64 realization.
+ */
+export function graphDegreePotential(
+  adjacency = buildRootAdjacency(selectEtq101Basis()),
+) {
+  if (!Array.isArray(adjacency) || adjacency.length !== OUROBOROS_DIMENSION) {
+    throw new RangeError(
+      `adjacency must contain ${OUROBOROS_DIMENSION} rows`,
+    );
+  }
+
+  const dimension = adjacency.length;
+  const degrees = adjacency.map((row) => {
+    if (!Array.isArray(row) || row.length !== dimension) {
+      throw new RangeError("adjacency must be square");
+    }
+    return row.reduce((sum, value) => sum + value, 0);
+  });
+  const degreeSum = degrees.reduce((sum, value) => sum + value, 0);
+  const numerators = degrees.map((degree) => dimension * degree - degreeSum);
+  const denominator = Math.max(...numerators.map((value) => Math.abs(value)));
+  if (denominator === 0) {
+    throw new RangeError("degree potential is undefined for a regular graph");
+  }
+
+  return {
+    degrees,
+    degreeSum,
+    meanDegree: { numerator: degreeSum, denominator: dimension },
+    numerators,
+    normalizationDenominator: denominator,
+    diagonal: numerators.map((value) => value / denominator),
+  };
+}
+
+/** Normalized qutrit-cycle Laplacian, zero on the two fixed singlets. */
+export function qutritHoppingLaplacian() {
+  const matrix = Array.from({ length: OUROBOROS_DIMENSION }, () =>
+    Array(OUROBOROS_DIMENSION).fill(0),
+  );
+  for (let orbitIndex = 0; orbitIndex < SELECTED_TRIALITY_ORBITS; orbitIndex += 1) {
+    const start = SELECTED_FIXED_ROOTS + QUTRIT_DIMENSION * orbitIndex;
+    for (let row = 0; row < QUTRIT_DIMENSION; row += 1) {
+      for (let column = 0; column < QUTRIT_DIMENSION; column += 1) {
+        matrix[start + row][start + column] = row === column ? 2 / 3 : -1 / 3;
+      }
+    }
+  }
+  return matrix;
+}
+
+/**
+ * Canonical dimensionless v2 generator.
+ *
+ * K=(11/20)*L_E/(2*d_max)+(1/4)*L_Q+(1/5)*V_degree.
+ * The function constructs only K; it does not assign a physical clock or
+ * implement the matrix exponential used by the specified Floquet profile.
+ */
+export function canonicalGeneratorMatrix(
+  adjacency = buildRootAdjacency(selectEtq101Basis()),
+) {
+  const potential = graphDegreePotential(adjacency);
+  const graphLaplacian = buildGraphLaplacian(adjacency);
+  const maximumDegree = Math.max(...potential.degrees);
+  const qutritLaplacian = qutritHoppingLaplacian();
+  const weights = CANONICAL_GENERATOR_WEIGHTS;
+
+  return graphLaplacian.map((row, rowIndex) =>
+    row.map((value, columnIndex) => {
+      const graphTerm =
+        weights.e8RootGraph * value / (2 * maximumDegree);
+      const qutritTerm =
+        weights.qutritHopping * qutritLaplacian[rowIndex][columnIndex];
+      const potentialTerm =
+        rowIndex === columnIndex
+          ? weights.graphDegreePotential * potential.diagonal[rowIndex]
+          : 0;
+      return graphTerm + qutritTerm + potentialTerm;
+    }),
+  );
+}
+
 /** diag(0,0, 1,-2,1, ..., 1,-2,1). */
 export function curvatureDiagonal() {
   const diagonal = [0, 0];
@@ -358,6 +459,89 @@ export function centeredQutritNumberDiagonal() {
   return diagonal;
 }
 
+/**
+ * Canonical symbolic MIDI codebook for the 2 + 33*3 ETQ decomposition.
+ *
+ * The 101-note window is maximally centered in MIDI's 7-bit note domain, with
+ * the lower start selected when the two possible margins differ by one. The
+ * two fixed singlets are codebook bookends. Each qutrit label receives one
+ * complete 33-note register lane; orbit index supplies the offset within it.
+ * This is a symbolic identity map and declares no acoustic frequency.
+ */
+export function buildTernaryMidiCodebook() {
+  const windowStart = Math.floor(
+    (MIDI_NOTE_COUNT - OUROBOROS_DIMENSION) / 2,
+  );
+  const firstQutritNote = windowStart + 1;
+  const highFixedNote = windowStart + OUROBOROS_DIMENSION - 1;
+  const entries = [
+    {
+      basisIndex: 0,
+      stateType: "fixed-singlet",
+      fixedIndex: 0,
+      orbitIndex: null,
+      qutritLabel: null,
+      lane: "fixed-low-bookend",
+      midiNote: windowStart,
+    },
+    {
+      basisIndex: 1,
+      stateType: "fixed-singlet",
+      fixedIndex: 1,
+      orbitIndex: null,
+      qutritLabel: null,
+      lane: "fixed-high-bookend",
+      midiNote: highFixedNote,
+    },
+  ];
+
+  for (let orbitIndex = 0; orbitIndex < SELECTED_TRIALITY_ORBITS; orbitIndex += 1) {
+    for (let qutritLabel = 0; qutritLabel < QUTRIT_DIMENSION; qutritLabel += 1) {
+      entries.push({
+        basisIndex:
+          SELECTED_FIXED_ROOTS + QUTRIT_DIMENSION * orbitIndex + qutritLabel,
+        stateType: "qutrit-orbit-state",
+        fixedIndex: null,
+        orbitIndex,
+        qutritLabel,
+        lane: TERNARY_REGISTER_LANES[qutritLabel],
+        midiNote:
+          firstQutritNote +
+          SELECTED_TRIALITY_ORBITS * qutritLabel +
+          orbitIndex,
+      });
+    }
+  }
+
+  entries.sort((left, right) => left.basisIndex - right.basisIndex);
+  return entries.map((entry) => Object.freeze(entry));
+}
+
+/** Invert a note in the canonical ternary codebook, or return null. */
+export function basisIndexFromMidiNote(note) {
+  if (!Number.isSafeInteger(note)) {
+    throw new TypeError("MIDI note must be a safe integer");
+  }
+  const windowStart = Math.floor(
+    (MIDI_NOTE_COUNT - OUROBOROS_DIMENSION) / 2,
+  );
+  if (note === windowStart) {
+    return 0;
+  }
+  if (note === windowStart + OUROBOROS_DIMENSION - 1) {
+    return 1;
+  }
+
+  const offset = note - (windowStart + 1);
+  const qutritStateCount = SELECTED_TRIALITY_ORBITS * QUTRIT_DIMENSION;
+  if (offset < 0 || offset >= qutritStateCount) {
+    return null;
+  }
+  const qutritLabel = Math.floor(offset / SELECTED_TRIALITY_ORBITS);
+  const orbitIndex = offset % SELECTED_TRIALITY_ORBITS;
+  return SELECTED_FIXED_ROOTS + QUTRIT_DIMENSION * orbitIndex + qutritLabel;
+}
+
 /** Diagonal of U_tau^power D U_tau^-power. */
 export function permuteDiagonal(
   diagonal,
@@ -379,17 +563,23 @@ export function phaseKickDiagonal(theta = PHASE_THETA_RAD) {
 }
 
 /**
- * Pure, normalized ETQ-101 golden-phase Ouroboros state. "Ouroboros" is a
- * declared model name, not a standard state class.
+ * Pure, normalized ETQ-101 ternary/SCL state.
+ *
+ * Fixed singlets have zero phase. A qutrit state (m,q) carries the qutrit
+ * character 2*pi*q/3 followed by the declared SCL phase kick -theta*d_q.
+ * "Ouroboros" remains a declared model recipe name, not a standard state
+ * class.
  */
-export function ouroborosState({
-  theta = PHASE_THETA_RAD,
-  goldenRatio = GOLDEN_RATIO,
-} = {}) {
+export function ternaryOuroborosState({ theta = PHASE_THETA_RAD } = {}) {
   const curvature = curvatureDiagonal();
   const normalization = 1 / Math.sqrt(OUROBOROS_DIMENSION);
   return curvature.map((value, index) => {
-    const phase = (2 * Math.PI * index) / goldenRatio - theta * value;
+    const ternaryPhase =
+      index < SELECTED_FIXED_ROOTS
+        ? 0
+        : (2 * Math.PI * ((index - SELECTED_FIXED_ROOTS) % QUTRIT_DIMENSION)) /
+          QUTRIT_DIMENSION;
+    const phase = ternaryPhase - theta * value;
     return {
       re: normalization * Math.cos(phase),
       im: normalization * Math.sin(phase),
@@ -551,6 +741,8 @@ export function canonicalModelSummary() {
   const { fixed, triples } = classifyTrialityOrbits(roots);
   const basis = selectEtq101Basis(roots);
   const adjacency = buildRootAdjacency(basis);
+  const degreePotential = graphDegreePotential(adjacency);
+  const midiCodebook = buildTernaryMidiCodebook();
   return {
     modelId: MODEL_ID,
     modelVersion: MODEL_VERSION,
@@ -562,10 +754,12 @@ export function canonicalModelSummary() {
     },
     constants: {
       phaseThetaRad: PHASE_THETA_RAD,
-      goldenRatio: GOLDEN_RATIO,
-      referenceFrequencyHz: REFERENCE_FREQUENCY_HZ,
-      referenceAngularFrequencyRadPerSecond:
-        REFERENCE_ANGULAR_FREQUENCY_RAD_S,
+      qutritOrder: QUTRIT_DIMENSION,
+      midiNoteDomain: [MIDI_NOTE_MINIMUM, MIDI_NOTE_MAXIMUM],
+    },
+    dynamics: {
+      weights: { ...CANONICAL_GENERATOR_WEIGHTS },
+      dimensionlessStepDelta: DIMENSIONLESS_STEP_DELTA,
     },
     e8: {
       rootCount: roots.length,
@@ -574,5 +768,33 @@ export function canonicalModelSummary() {
       trialityThreeCycles: triples.length,
     },
     selectedGraph: graphSummary(adjacency),
+    degreePotential: {
+      degreeSum: degreePotential.degreeSum,
+      meanDegree: degreePotential.meanDegree,
+      normalizationDenominator: degreePotential.normalizationDenominator,
+      traceNumerator: degreePotential.numerators.reduce(
+        (sum, value) => sum + value,
+        0,
+      ),
+      maximumAbsoluteNumerator: Math.max(
+        ...degreePotential.numerators.map((value) => Math.abs(value)),
+      ),
+    },
+    midiCodebook: {
+      mappingId: "centered-101-state-ternary-register-v1",
+      occupiedNoteRange: [
+        Math.min(...midiCodebook.map((entry) => entry.midiNote)),
+        Math.max(...midiCodebook.map((entry) => entry.midiNote)),
+      ],
+      fixedSingletNotes: midiCodebook
+        .filter((entry) => entry.stateType === "fixed-singlet")
+        .map((entry) => entry.midiNote),
+      laneRanges: TERNARY_REGISTER_LANES.map((lane) => {
+        const notes = midiCodebook
+          .filter((entry) => entry.lane === lane)
+          .map((entry) => entry.midiNote);
+        return { lane, minimum: Math.min(...notes), maximum: Math.max(...notes) };
+      }),
+    },
   };
 }

@@ -1,0 +1,240 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/QSOLKCB/SONIFICATION/main/spec/etq-101.v2.schema.json",
+  "title": "ETQ-101 v2.0.0 Canonical Ternary MIDI Contract",
+  "description": "Exact schema for the forward dimensionless ETQ-101 symbolic MIDI profile. The deposited v1.0.0 schema remains in etq-101.schema.json.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "modelId",
+    "modelVersion",
+    "profile",
+    "stateSpace",
+    "dimensions",
+    "constants",
+    "selection",
+    "dynamics",
+    "sonification",
+    "parameterOrigins",
+    "fixtures",
+    "determinism",
+    "legacyProfile",
+    "claimBoundary"
+  ],
+  "properties": {
+    "$schema": { "const": "../spec/etq-101.v2.schema.json" },
+    "modelId": { "const": "ETQ-101" },
+    "modelVersion": { "const": "2.0.0" },
+    "profile": { "const": "compact-101-ternary-midi" },
+    "stateSpace": {
+      "const": {
+        "type": "root-indexed-graph-hilbert-space",
+        "basisInnerProduct": "<r|s>=kronecker-delta",
+        "decomposition": "C^2 direct-sum (C^33 tensor C^3)",
+        "qutritBlockSemantics": "33-mutually-exclusive-direct-sum-blocks"
+      }
+    },
+    "dimensions": {
+      "const": {
+        "total": 101,
+        "fixedSinglets": 2,
+        "qutritOrbits": 33,
+        "qutritSubspace": 99
+      }
+    },
+    "constants": {
+      "const": {
+        "phaseThetaRad": 1.5707963267948966,
+        "qutritOrder": 3,
+        "midiNoteDomain": [0, 127]
+      }
+    },
+    "selection": {
+      "const": {
+        "coordinateEncoding": "doubled-integer-e8-roots",
+        "algorithm": "lexicographic-triality-closed-v1",
+        "hilbertSpaceConstruction": "ell2-of-selected-root-labels",
+        "fixedRoots": 2,
+        "completeTrialityOrbits": 33
+      }
+    },
+    "dynamics": {
+      "const": {
+        "form": "dimensionless-floquet",
+        "continuousGenerator": "K=(11/20)*L_E_bar+(1/4)*L_Q_bar+(1/5)*V_degree",
+        "floquetOperator": "U_F=exp(-i*delta*K)*F_Q",
+        "graphNormalization": "two-times-maximum-degree",
+        "degreePotentialId": "centered-degree-operator-norm-v1",
+        "degreePotential": "V_degree[j,j]=(101*degree_j-3374)/2181",
+        "dimensionlessStepDelta": 0.020736585172209856,
+        "dimensionlessStepDeltaExpression": "2*pi/303",
+        "physicalTimeScale": null,
+        "initialStateRecipe": "ouroboros-ternary-scl-v1",
+        "initialState": "(1/sqrt(101))*(|s_0>+|s_1>+sum_m,q exp(i*2*pi*q/3-i*theta*d_q)|m,q>)",
+        "weights": {
+          "e8RootGraph": 0.55,
+          "qutritHopping": 0.25,
+          "graphDegreePotential": 0.2,
+          "sclStatic": 0,
+          "qutritNumber": 0,
+          "ouroborosRing": 0
+        },
+        "phaseDrive": {
+          "operator": "diag(1,-2,1)",
+          "thetaRad": 1.5707963267948966,
+          "stepOrder": [
+            "scl-phase-kick",
+            "triality-shift",
+            "continuous-generator"
+          ],
+          "trialityCovariantOrbit": [0, 1, 2]
+        }
+      }
+    },
+    "sonification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mappingId",
+        "status",
+        "outputDomain",
+        "allowedArtifactExtensions",
+        "renderedAudioStatus",
+        "basisMap",
+        "inverseMap",
+        "midiNoteDomain",
+        "occupiedNoteRange",
+        "fixedSingletNotes",
+        "lanes",
+        "laneOrderingSemantics",
+        "singletSemantics",
+        "absoluteFrequencyHz",
+        "receiverTuning",
+        "dynamicsToEvents",
+        "midiFileExporterStatus"
+      ],
+      "properties": {
+        "mappingId": { "const": "centered-101-state-ternary-register-v1" },
+        "status": { "const": "codebook-implemented-exporter-not-yet-implemented" },
+        "outputDomain": { "const": "symbolic-standard-midi-note-numbers" },
+        "allowedArtifactExtensions": { "const": [".mid", ".csv", ".json"] },
+        "renderedAudioStatus": { "const": "permanently-disabled" },
+        "basisMap": { "const": "fixed0->13;fixed1->113;(m,q)->14+33*q+m" },
+        "inverseMap": { "const": "13->fixed0;113->fixed1;otherwise q=floor((note-14)/33),m=(note-14)%33" },
+        "midiNoteDomain": { "const": [0, 127] },
+        "occupiedNoteRange": { "const": [13, 113] },
+        "fixedSingletNotes": { "const": [13, 113] },
+        "lanes": {
+          "const": [
+            {
+              "qutritLabel": 0,
+              "centeredQutritValue": -1,
+              "sclCurvature": 1,
+              "name": "low",
+              "midiNoteRange": [14, 46]
+            },
+            {
+              "qutritLabel": 1,
+              "centeredQutritValue": 0,
+              "sclCurvature": -2,
+              "name": "mid",
+              "midiNoteRange": [47, 79]
+            },
+            {
+              "qutritLabel": 2,
+              "centeredQutritValue": 1,
+              "sclCurvature": 1,
+              "name": "high",
+              "midiNoteRange": [80, 112]
+            }
+          ]
+        },
+        "laneOrderingSemantics": { "const": "authored-low-mid-high-code-for-cyclic-qutrit-labels" },
+        "singletSemantics": { "const": "codebook-bookends-not-spectral-extrema" },
+        "absoluteFrequencyHz": { "type": "null" },
+        "receiverTuning": { "const": "external-and-nonnormative" },
+        "dynamicsToEvents": { "const": "not-specified" },
+        "midiFileExporterStatus": { "const": "not-yet-implemented" }
+      }
+    },
+    "parameterOrigins": {
+      "const": {
+        "rootGraph": "derived-from-exact-e8-roots-after-declared-selector",
+        "degreePotential": "derived-from-selected-root-graph-degrees",
+        "ternaryLanes": "qutrit-labels-plus-declared-low-mid-high-order",
+        "midiWindow": "declared-maximally-centered-lower-start-tie-break",
+        "phaseTheta": "declared-quadrature",
+        "excludedForwardAnchors": [
+          "golden-ratio-modulation",
+          "absolute-hertz-reference",
+          "rendered-audio"
+        ]
+      }
+    },
+    "fixtures": {
+      "const": {
+        "e8RootCount": 240,
+        "trialityFixedRoots": 12,
+        "trialityThreeCycles": 76,
+        "selectedGraph": {
+          "vertices": 101,
+          "edges": 1687,
+          "minimumDegree": 22,
+          "maximumDegree": 55,
+          "connected": true
+        },
+        "degreePotential": {
+          "degreeSum": 3374,
+          "meanDegree": { "numerator": 3374, "denominator": 101 },
+          "normalizationDenominator": 2181,
+          "traceNumerator": 0,
+          "maximumAbsoluteNumerator": 2181,
+          "degreeDistribution": [
+            [22, 12],
+            [23, 6],
+            [30, 12],
+            [32, 24],
+            [33, 12],
+            [34, 6],
+            [40, 6],
+            [42, 12],
+            [43, 6],
+            [44, 3],
+            [55, 2]
+          ]
+        },
+        "midiCodebook": {
+          "entries": 101,
+          "uniqueNotes": 101,
+          "occupiedNoteRange": [13, 113],
+          "laneSizes": [33, 33, 33]
+        }
+      }
+    },
+    "determinism": {
+      "const": {
+        "fixtureSerialization": "UTF-8(JSON.stringify(value)); compact; no BOM; no trailing newline",
+        "contractCanonicalization": "recursive-lexicographic-object-keys-json-v1",
+        "contractPayloadRule": "remove $schema and determinism.contractPayloadSha256 before canonicalization",
+        "basisSha256": "97cfd1f087745422fd66d3640c7b86c3209593c4b53741018c08a5e9cdb15f6f",
+        "adjacencySha256": "29ae0af5b1090c9de30f1efc25789060fb1791eb175d2afcd6888847f7fe6324",
+        "degreePotentialNumeratorsSha256": "517b9b86e07a1788cabc446be93e573d21719af3c1e0eeaedae00b81689c4468",
+        "midiCodebookSha256": "9a3196255e92bbc6857576e410a852dc66cd0354f27185fb2bede5b99f76e304",
+        "contractPayloadSha256": "d17e4e104bae41e649f1589467fb8122eb42fc9be4298110f4c21753580b3eab"
+      }
+    },
+    "legacyProfile": {
+      "const": {
+        "model": "ETQ-101@1.0.0",
+        "profile": "compact-101",
+        "contractPath": "examples/etq-101.canonical.json",
+        "contractPayloadSha256": "6577443641be02609c045ee0afc423c2be37bbe5ae83f671cbae304c0e9cb930",
+        "relationship": "preserved-legacy-authored-432-profile-not-forward-default"
+      }
+    },
+    "claimBoundary": {
+      "const": "A deterministic 101-dimensional E8-root-indexed graph model closed under embedded D4 triality. Its forward note map is a symbolic encoding of the declared 2+33x3 basis decomposition; low, mid, and high are authored codes for cyclic qutrit labels, and no acoustic frequency or rendered audio is defined."
+    }
+  }
+}

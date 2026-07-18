@@ -1,16 +1,18 @@
 # Tanner Graph Tuning Fork
 
 **Profile:** `tanner-laplacian-frame-bin-v1`  
-**Status:** Candidate mathematical kernel and derived ETQ-101 root-graph observation profile; canonical PCM intentionally remains null
+**Status:** Auxiliary, noncanonical graph-calibration experiment
 
-This profile offers a forward alternative to an authored absolute reference by
-using reproducible nominal sample-clock calibration. The declared graph
-operator and ratio map determine interval ratios. The nominal playback clock
-supplies the unavoidable unit of hertz.
+This profile studies reproducible nominal sample-clock calibration for Tanner
+and selected-root graph spectra. The declared graph operator and ratio map
+determine interval ratios; an explicitly supplied nominal clock provides the
+unit of hertz. It is not the root ETQ-101 mapping.
 
-ETQ-101 v1.0 and its 432 Hz mapping remain replayable as the explicitly legacy
-`legacy-authored-432-v1` profile. This document does not rewrite that deposited
-contract, and no canonical PCM realization is required by this profile.
+Root ETQ-101 v2 uses a symbolic low/mid/high MIDI codebook and declares no
+sample clock, absolute frequency, PCM realization, or frame-bin calibration.
+ETQ-101 v1.0 remains preserved as an immutable specification-identity fixture;
+its originally unimplemented renderer is not claimed to be replayable. This
+document changes neither contract.
 
 ## 1. Instrument identity
 
@@ -84,18 +86,16 @@ orthonormality, and zero-mode tolerances in its `numerics` block. Overrides do
 not silently reuse an unqualified numerical receipt.
 
 For ETQ-101, [`deriveEtq101ClockTuning`](../src/etq101-tuning-fork.mjs)
-applies the same rule to its positive-semidefinite E8 root-graph Laplacian. It
-must not be applied directly to the canonical generator $K$, because the
-signed golden cosine potential can make $K$ indefinite.
+applies the same rule to the positive-semidefinite selected E8 root-graph
+Laplacian as an auxiliary experiment. It must not be substituted for the
+canonical v2 generator $K$ or the v2 symbolic MIDI codebook.
 
-This ETQ bridge is therefore a derived **E8-root-graph observation profile**,
-not a drop-in replacement for the canonical full-$K$ generator-spectrum map.
-It omits the qutrit hopping term, golden potential, and initial-state spectral
-weights. A future full-ETQ clock-bin profile should instead apply the same bin
-selector to the existing positive pitch ratios
-$r_\ell=2^{\varphi\xi_\ell}$ after the full $K$ reference eigensolver is fixed.
+This bridge is therefore a derived **E8-root-graph calibration experiment**,
+not a forward ETQ mapping. It omits the qutrit hopping term, degree potential,
+ternary/SCL state, and low/mid/high lane codebook. No transformation from its
+spectral ratios or frame bins into canonical ETQ-101 v2 events is defined.
 
-## 3. Exact frame-bin calibration
+## 3. Exact frame-bin calibration (auxiliary only)
 
 Declare a sample rate $F_s$, calibration frame count $N$, playback band
 $[F_{\min},F_{\max}]$, and positive ratios with extrema
@@ -145,7 +145,8 @@ device's sample clock.
 
 The playback band and bin-selection policy remain declared engineering
 choices. The profile does not claim that E8 or a Tanner graph selects an
-absolute audible frequency.
+absolute audible frequency. These quantities belong only to this auxiliary
+calibration experiment; root ETQ-101 v2 has no playback clock or hertz layer.
 
 ## 4. Nonbacktracking phase clock
 
@@ -163,7 +164,7 @@ non-Hermitian and can have complex modes. Its powers provide exact cyclic phase
 clocks and its magnitudes or projectors may later control decay, brightness,
 distortion, or graph-edge excitation.
 
-## 5. Golden fixtures
+## 5. Mathematical and regression fixtures
 
 The dependency-free test suite fixes seven invariants:
 
@@ -177,12 +178,17 @@ The dependency-free test suite fixes seven invariants:
 7. GF(3) coefficients 1 and 2 produce different instrument hashes despite
    identical unweighted topology.
 
-An additional integration golden runs the actual 101-node selected E8 root
+The $P_5$ occurrence of $\varphi$ is solely an exact algebraic identity of that
+test graph. It is unrelated to the authored golden-ratio phase/pitch
+modulation removed from forward ETQ-101 v2, and it does not enter the v2 state,
+generator, MIDI mapping, or timing.
+
+An additional integration regression runs the actual 101-node selected E8 root
 graph through eigenspace grouping and frame-bin calibration. At 48 kHz with a
 960,000-frame calibration window and a declared 40–16,000 Hz band, it fixes
 $q=3028$ and the exact anchor $757/5$ Hz. This is a regression fixture for the
-declared profile, not a claim that 151.4 Hz is selected by E8.
+auxiliary profile, not a claim that 151.4 Hz is selected by E8 and not an ETQ
+v2 clock.
 
 The QEC sources reviewed while extracting these invariants are indexed in
 [`qec_repo.json`](../qec_repo.json).
-
