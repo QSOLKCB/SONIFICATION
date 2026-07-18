@@ -6,23 +6,49 @@ These instructions apply to every automated coding agent working in this
 repository.
 
 The **root ETQ-101 system** means the ETQ model, contracts, tools, and workflows
-outside the separate `APP/` and `sonification/` music-first laboratories. It
-includes root-level tools and the ETQ material in `src/`, `scripts/`,
-`spec/`, `examples/`, `tests/`, and `docs/`.
+outside the separate `APP/` and `sonification/` music-first laboratories.
 
-A more specific `AGENTS.md` may add tighter local rules, but it must not relax
-the root output policy without explicit written direction from the repository
+### Covered root entrypoints and pipelines
+
+The root policy explicitly covers:
+
+- the ETQ implementation in `src/etq-model.mjs` and every present or future
+  ETQ, Tanner-tuning, MIDI, event-table, or provenance module under `src/`;
+- `scripts/verify.mjs` and every present or future root ETQ command under
+  `scripts/`;
+- the `npm test` and `npm run verify` entrypoints declared in the root
+  `package.json`;
+- canonical contracts and examples under `examples/`, schemas under
+  `spec/`, root-model tests under `tests/`, and ETQ specifications under
+  `docs/` whenever they define, invoke, or validate a runtime/export
+  workflow; and
+- any new or renamed tool, command, pipeline, notebook, or workflow outside
+  `APP/` and `sonification/` that consumes the root ETQ model or produces
+  artifacts from it.
+
+If the scope of a new pipeline is uncertain, treat it as part of the root
+ETQ-101 system until the repository owner explicitly excludes it. A more
+specific `AGENTS.md` may add tighter local rules, but it must not relax the
+root output policy without explicit written direction from the repository
 owner.
 
 ## Root ETQ-101 output policy
 
-- Root ETQ runtime and export workflows may generate only:
+- Root ETQ runtime and export workflows may persist or return only:
   - Standard MIDI files: `.mid`
   - event or audit tables: `.csv`
   - deterministic contracts, manifests, and provenance records: `.json`
 - PCM and rendered-audio generation in the root ETQ system is permanently
   disabled. Do not create, enable, restore, or invoke a root WAV renderer or
   export path.
+- The audio-generation ban applies to the complete lifecycle, not only final
+  exports. Root ETQ code must not create sampled-audio or PCM buffers in
+  memory, write them to temporary files or caches, embed them in fixtures, or
+  pass them to an encoder, decoder, browser audio API, synthesizer, or playback
+  service.
+- Frequency values, pitch ratios, event times, durations, velocities, MIDI
+  messages, graph/matrix data, and other symbolic control data are allowed.
+  Arrays of sampled waveform amplitudes or encoded audio bytes are not.
 - Do not bypass the restriction by emitting another rendered-audio format.
   Prohibited root outputs include `.wav`, `.pcm`, `.aiff`, `.flac`,
   `.mp3`, `.ogg`, and equivalent encoded or raw audio.
@@ -46,10 +72,11 @@ and never describe their rendered audio as the canonical sound of ETQ-101.
 
 ## Development files and checks
 
-The output allowlist applies to generated runtime/export artifacts, not normal
-repository development or publication files. Source code, tests,
+The persisted-artifact allowlist applies to generated runtime/export artifacts,
+not normal repository development or publication files. Source code, tests,
 documentation, schemas, images, TeX, and archival PDFs may use the file types
-appropriate to their purpose.
+appropriate to their purpose. The stricter ban on generating sampled audio
+still applies in memory, temporary storage, caches, and test fixtures.
 
 When changing a root ETQ export workflow:
 
@@ -59,5 +86,5 @@ When changing a root ETQ export workflow:
 - treat CSV as an auditable event/data table rather than an audio format;
 - test that only `.mid`, `.csv`, and `.json` runtime artifacts are emitted;
   and
-- test that rendered-audio requests fail explicitly instead of being silently
-  redirected or renamed.
+- test that sampled-audio or rendered-audio requests fail explicitly instead
+  of being buffered, silently redirected, or renamed.
