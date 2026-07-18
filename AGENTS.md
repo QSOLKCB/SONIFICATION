@@ -15,9 +15,11 @@ The root policy explicitly covers:
 - the ETQ implementation in `src/etq-model.mjs` and every present or future
   ETQ, Tanner-tuning, MIDI, event-table, or provenance module under `src/`;
 - `scripts/verify.mjs` and every present or future root ETQ command under
-  `scripts/`;
+  `scripts/`, including verification, export, migration, fixture-generation,
+  or audit jobs;
 - the `npm test` and `npm run verify` entrypoints declared in the root
-  `package.json`;
+  `package.json`, plus any future root `npm run` script that invokes an ETQ
+  model, export, event-table, provenance, validation, or fixture workflow;
 - canonical contracts and examples under `examples/`, schemas under
   `spec/`, root-model tests under `tests/`, and ETQ specifications under
   `docs/` whenever they define, invoke, or validate a runtime/export
@@ -27,10 +29,11 @@ The root policy explicitly covers:
   artifacts from it.
 
 If the scope of a new pipeline is uncertain, treat it as part of the root
-ETQ-101 system until the repository owner explicitly excludes it. A more
-specific `AGENTS.md` may add tighter local rules, but it must not relax the
-root output policy without explicit written direction from the repository
-owner.
+ETQ-101 system until the repository owner explicitly excludes it. A pipeline
+remains in scope whether it is run manually, from CI, from tests, or as an
+intermediate helper for another root workflow. A more specific `AGENTS.md` may
+add tighter local rules, but it must not relax the root output policy without
+explicit written direction from the repository owner.
 
 ## Root ETQ-101 output policy
 
@@ -42,10 +45,11 @@ owner.
   disabled. Do not create, enable, restore, or invoke a root WAV renderer or
   export path.
 - The audio-generation ban applies to the complete lifecycle, not only final
-  exports. Root ETQ code must not create sampled-audio or PCM buffers in
-  memory, write them to temporary files or caches, embed them in fixtures, or
-  pass them to an encoder, decoder, browser audio API, synthesizer, or playback
-  service.
+  exports or persisted artifacts. Root ETQ code must not create sampled-audio
+  or PCM buffers in memory, write them to temporary files, caches, logs, or
+  snapshots, embed them in fixtures, or pass them to an encoder, decoder,
+  browser audio API, synthesizer, playback service, or analysis step that
+  requires rendered audio.
 - Frequency values, pitch ratios, event times, durations, velocities, MIDI
   messages, graph/matrix data, and other symbolic control data are allowed.
   Arrays of sampled waveform amplitudes or encoded audio bytes are not.
