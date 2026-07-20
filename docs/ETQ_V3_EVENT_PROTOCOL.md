@@ -12,14 +12,13 @@ specification into a separately named event protocol:
 
 The v3 core is not an audio renderer. It defines a finite state registry, an
 exact monomial step, one complete 303-event traversal, an exact graph lift, and
-canonical reproducibility receipts. JSON, CSV, NDJSON, GraphML, SVG, and MIDI
-are receiver serializations of the same committed event document.
+canonical reproducibility receipts. Persisted root receiver artifacts are JSON,
+CSV, or MIDI serializations of the same committed event document.
 
-Normative machine-readable identity is generated as `contract.json`, with
-`contract.schema.json`, by `npm run build:v3`. The dependency-free exact
-construction is `src/etq-v3-core.mjs`; Node-specific hashing and receiver
-serialization are in `src/etq-v3-canonical.mjs`, `src/etq-v3-receivers.mjs`, and
-`src/etq-v3-artifacts.mjs`.
+The repository fixture is `examples/etq-303.v3.canonical.json`, with schema
+`spec/etq-303.v3.schema.json`. A generated bundle instead writes
+`contract.json` beside `contract.schema.json`, and the generated contract uses
+`./contract.schema.json` so it remains valid outside the repository layout.
 
 ## 2. Preserved v2 base
 
@@ -50,7 +49,7 @@ The canonical tensor basis is
 |j,a\rangle,\qquad j\in\mathbb Z_{101},\quad a\in\mathbb Z_3,
 \]
 
-with lexicographic tensor index
+with tensor index
 
 \[
 \operatorname{tensorIndex}(j,a)=3j+a.
@@ -88,6 +87,10 @@ The exact phase multiplier applied before the fibre shift is a Gaussian unit:
 | 1 | -2 | `-1` | 2 |
 | 2 | 1 | `-i` | 3 |
 
+The canonical contract records both the three aligned phase symbols
+`[-i,-1,-i]` and the four-value lookup table `[1,i,-1,-i]`; it does not confuse
+the two arrays.
+
 The three-step phase exponent is
 
 \[
@@ -111,15 +114,14 @@ Since `gcd(101,3)=1`, the least positive solution is
 \]
 
 The accumulated Gaussian-unit phase over 303 steps is one because the
-three-step phase product is one and occurs 101 times. Therefore
+three-step phase product occurs 101 times. Therefore
 
 \[
 F_{303}^{303}=I_{303},
 \]
 
-and no smaller positive power is the identity. The test suite exhaustively
-checks every positive power below 303 and checks closure for all 303 basis
-states.
+and no smaller positive power is the identity. The tests exhaustively check all
+positive powers below 303 and closure on all 303 basis states.
 
 ## 5. Canonical event ordering
 
@@ -139,32 +141,22 @@ n=j+101k,
 k=2(a-(j\bmod3))\bmod3.
 \]
 
-Each event records:
-
-- sequence index;
-- tensor index;
-- base site index;
-- external fibre label;
-- exact Gaussian-unit transition phase;
-- next sequence index; and
-- next tensor index.
-
-The event document also contains the 101-entry site registry: exact doubled E8
-root coordinates, v2 state class, internal triality label where present,
-selected-graph degree, exact degree-potential numerator, and preserved v2 MIDI
-note code.
+Each event records sequence index, tensor index, base site, external fibre,
+exact transition phase, next sequence index, and next tensor index. The event
+document also contains the 101-entry site registry: exact doubled E8 root
+coordinates, v2 state class, internal triality label where present, selected-
+graph degree, degree-potential numerator, and preserved v2 MIDI note code.
 
 ## 6. Exact graph lift
 
-V3 defines the graph context
+V3 defines
 
 \[
 G_{303}=G_{101}\square C_3.
 \]
 
 Horizontal edges copy each of the 1,687 selected-root edges into each of three
-fibre layers. Vertical edges attach a copy of `C_3` to every base site.
-Therefore
+fibre layers. Vertical edges attach a copy of `C_3` to every base site. Hence
 
 \[
 |V|=101\cdot3=303,
@@ -174,27 +166,21 @@ Therefore
 |E|=3(1687)+101(3)=5364.
 \]
 
-For a base vertex of degree `d_j`, the lifted degree is exactly
-
-\[
-d_j+2.
-\]
-
-The v2 degree range `22..55` therefore becomes `24..57`. Connectivity is both a
-consequence of the Cartesian product of connected graphs and checked directly
-by finite traversal of the generated edge list.
+For a base vertex of degree `d_j`, the lifted degree is `d_j+2`; the v2 range
+`22..55` therefore becomes `24..57`. Connectivity follows from the Cartesian
+product of connected graphs and is checked directly on the generated edge
+list.
 
 The 303-event ordering is **not claimed to be a graph walk** in `G_303`.
 `R_101` advances selector order and is not asserted to be an automorphism of
 the selected E8 root graph.
 
-## 7. Canonical identity and receipts
+## 7. Canonical identity and implementation provenance
 
 Identity-bearing JSON permits only null, booleans, strings, arrays, plain
 objects, and safe integers. Object keys are serialized recursively in
-lexicographic order. Arrays preserve their declared order. Floating-point
-values are rejected. Files use UTF-8 with no BOM and no trailing newline where
-canonical JSON bytes define identity.
+lexicographic order. Arrays preserve declared order. Files use UTF-8 with no
+BOM and no trailing newline where canonical JSON bytes define identity.
 
 Hashes are domain-separated as
 
@@ -202,10 +188,16 @@ Hashes are domain-separated as
 UTF-8(domain) + NUL + payload bytes
 ```
 
+The contract records an implementation identity built from a declared set of
+v3 runtime/export source files. Each file is read as UTF-8 text, CRLF and CR are
+normalized to LF, and its byte length and SHA-256 are recorded. A
+domain-separated source-bundle hash binds the ordered list. The same identity
+is repeated in the contract, observation receipt, and manifest lineage.
+
 The acyclic build order is:
 
 ```text
-preserved v2 fixtures
+preserved v2 fixtures + v3 implementation identity
   -> site registry + lifted edges + 303 events
   -> canonical event document commitment
   -> deterministic receiver artifacts
@@ -214,12 +206,11 @@ preserved v2 fixtures
 ```
 
 No document claims an ordinary hash of final bytes that include that same hash.
-The receipt-bound architecture is methodologically informed by the archived
-observation protocol in `10.5281/zenodo.21292906` and its supported v1.2 version
-`10.5281/zenodo.21293821`; those works are provenance-method references, not
-mathematical dependencies of the 303-state construction.
+The receipt architecture is methodologically informed by
+`10.5281/zenodo.21292906` and `10.5281/zenodo.21293821`; those works are method
+references, not mathematical dependencies of the 303-state construction.
 
-## 8. Reference receivers
+## 8. Reference receivers and root output policy
 
 All receivers consume the same committed event document.
 
@@ -227,17 +218,28 @@ All receivers consume the same committed event document.
 |---|---|
 | `events.json` | canonical core event document |
 | `events.csv` | lossless fixed-column table |
-| `events.ndjson` | one enriched event per line |
-| `graph.graphml` | exact `G_101 square C_3` graph |
-| `events.svg` | integer-grid 101-by-3 event atlas |
+| `graph.json` | exact `G_101 square C_3` nodes and edges |
+| `event-atlas.json` | authored integer-grid atlas metadata |
 | `events.mid` | symbolic channel-plus-note projection |
+
+The root output policy allows only `.json`, `.csv`, and `.mid`. GraphML, SVG,
+NDJSON, WAV, PCM, and other formats are not emitted by the root v3 build. A
+separate application or external tool may transform the committed JSON data,
+but that transform is not a canonical root artifact.
 
 The MIDI profile uses the external fibre as zero-based channel and the
 preserved v2 symbolic note for the base site. It emits one integer tick per
 event, velocity 64, and no tempo meta-event. This is a deterministic receiver
-convention, not an acoustic scale or a mathematical necessity.
+convention, not an acoustic scale or mathematical necessity.
 
-## 9. Deliberately excluded from v3 identity
+## 9. Build safety
+
+`npm run build:v3` writes to a dedicated subdirectory under `dist/`. A custom
+`--output` path outside `dist/`, the `dist/` root itself, or an existing
+nonempty directory is rejected. The script does not recursively delete caller-
+selected paths and writes each artifact with exclusive creation semantics.
+
+## 10. Deliberately excluded from v3 identity
 
 V3 does not use:
 
@@ -250,12 +252,11 @@ V3 does not use:
 - empirical, statistical, or perceptual validation; or
 - 303 distinct E8 roots.
 
-The earlier experimental Python renderer was useful as a design probe for the
-product-space and three-lane receiver idea. Its ring surrogate, sorted degrees,
-continuous evolution, frequency map, interpolation, and additive synthesis are
-not imported into the v3 canonical contract.
+The earlier experimental Python renderer remains a useful design probe. Its
+ring surrogate, sorted degrees, continuous evolution, frequency map,
+interpolation, and additive synthesis do not enter the v3 contract.
 
-## 10. Verification
+## 11. Verification
 
 Use Node.js 20 or later:
 
@@ -265,7 +266,8 @@ npm run verify
 npm run build:v3
 ```
 
-`npm test` checks the preserved v2 fixtures, tensor and CRT bijections, exact
-operator order, phase closure, labelled degree identity, graph product,
-receiver counts, and receipt chain. `npm run verify` additionally verifies the
-v3 contract and continues to run the preserved v2 and v1 verifiers.
+The tests check preserved v2 fixtures, tensor and CRT bijections, exact order,
+phase closure and symbol alignment, labelled degree identity, graph product,
+receiver allowlisting, implementation identity, schema portability, output-path
+safety, and the acyclic receipt chain. `npm run verify` additionally checks the
+committed v3 fixtures and continues to run the preserved v2 and v1 verifiers.
