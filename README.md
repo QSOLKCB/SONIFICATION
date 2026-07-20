@@ -13,31 +13,30 @@ ETQ-101 v2 selected roots
                 -> 303 exact tensor states
                 -> one exact 303-step event traversal
                 -> committed event document
-                -> JSON / CSV / NDJSON / GraphML / SVG / MIDI receivers
+                -> JSON / CSV / symbolic MIDI receivers
 ```
 
 ## The central result
 
-For basis states `|j,a>` with `j in Z_101` and `a in Z_3`, define the support
-step
+For basis states `|j,a>` with `j in Z_101` and `a in Z_3`, define
 
 ```text
-(j,a) -> (j+1 mod 101, a+1 mod 3)
+(j,a) -> (j+1 mod 101, a+1 mod 3).
 ```
 
-and the exact local phase multiplier from
-`X_3 exp(-i*pi*diag(1,-2,1)/2)`. The phase multipliers are `[-i,-1,-i]`, or
-Gaussian exponents `[3,2,3]`.
+The exact local phase multiplier is supplied by
+`X_3 exp(-i*pi*diag(1,-2,1)/2)`. Its phase exponents are `[3,2,3]`, with aligned
+Gaussian-unit symbols `[-i,-1,-i]`.
 
 Because `gcd(101,3)=1`, the support step visits all 303 pairs exactly once and
-returns after 303 steps. The three-step phase product is one, so the full
+returns after 303 steps. The three-step phase product is one, so the complete
 monomial operator has exact order 303.
 
 **These are 303 root-indexed tensor states, not 303 distinct E8 roots.**
 
 ## Exact graph context
 
-V3 defines
+V3 defines the Cartesian graph lift
 
 ```text
 G_303 = G_101 square C_3
@@ -58,25 +57,43 @@ The event ordering is not claimed to be a graph walk.
 
 ## Canonical artifacts
 
-`npm run build:v3` creates:
+`npm run build:v3` writes only root-policy-allowed `.json`, `.csv`, and `.mid`
+artifacts into a new or empty dedicated subdirectory of `dist/`:
 
 ```text
 contract.json
 contract.schema.json
 events.json
 events.csv
-events.ndjson
-graph.graphml
-events.svg
+graph.json
+event-atlas.json
 events.mid
 observation-receipt.json
 manifest.json
 ```
 
-`events.json` is the canonical event commitment. Every receiver is a
-deterministic projection of it. The MIDI receiver uses the external fibre as
-channel and the preserved v2 symbolic note as note number; no tempo or hertz is
-canonical.
+`events.json` is the canonical event commitment. `graph.json` preserves the
+exact Cartesian graph data, while `event-atlas.json` supplies integer-grid
+layout metadata without privileging a rendered image format. External tools may
+convert these JSON records to GraphML, SVG, OSC, DMX, or other receiver formats;
+such conversions are outside the root ETQ export workflow.
+
+The MIDI receiver uses the external fibre as channel and the preserved v2
+symbolic note as note number. No tempo or hertz value is canonical.
+
+## Provenance and implementation identity
+
+The contract, observation receipt, and manifest all record a deterministic v3
+implementation identity. It hashes the normalized UTF-8 bytes of the exact v3
+core, canonical serializer, receivers, artifact builder, and build entrypoint.
+This binds generated artifacts to the implementation that produced them even
+when the semantic version remains `3.0.0`.
+
+The generated bundle uses `./contract.schema.json`, so its contract validates
+without depending on the repository directory layout. The committed repository
+fixture continues to reference `../spec/etq-303.v3.schema.json`. `$schema` is
+excluded from the semantic contract-payload hash, so the two location-correct
+references do not create different mathematical contract identities.
 
 ## No numerical or acoustic noise in identity
 
@@ -85,7 +102,7 @@ eigensolver output, ring-Laplacian replacement, sorted degree multiset
 substituted for labelled vertices, sample rate, hertz, waveform, PCM, WAV,
 random input, wall clock, or empirical validation claim.
 
-Identity-bearing JSON accepts safe integers only for numbers.
+Identity-bearing JSON accepts safe integers only for numeric values.
 
 ## Verify
 
@@ -98,7 +115,8 @@ npm run build:v3
 ```
 
 `npm run verify` validates v3 and continues to validate the immutable v2 and v1
-contracts.
+contracts. The build command fails closed for unsafe, existing nonempty, or
+non-`dist/` output paths and never recursively deletes a caller-selected path.
 
 ## Documentation
 
