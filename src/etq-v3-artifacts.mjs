@@ -4,6 +4,8 @@
 // SPDX-License-Identifier: MPL-2.0
 // Copyright (c) 2026 Trent Slade / QSOL-IMC.
 
+import { readFileSync } from "node:fs";
+
 import {
   BASE_RELEASE,
   BASE_SITE_COUNT,
@@ -11,6 +13,7 @@ import {
   EVENT_SCHEMA_ID,
   FIBRE_DIMENSION,
   FIBRE_PHASE_GAUSSIAN_EXPONENTS,
+  FIBRE_PHASE_GAUSSIAN_SYMBOLS,
   GAUSSIAN_UNIT_SYMBOLS,
   LIFTED_GRAPH_SCHEMA_ID,
   MODEL_ID,
@@ -48,20 +51,33 @@ export {
   utf8,
 } from "./etq-v3-canonical.mjs";
 export {
+  ALLOWED_ROOT_ARTIFACT_EXTENSIONS,
   EVENT_CSV_COLUMNS,
   EVENT_DOCUMENT_FILENAME,
   buildCsvReceiver,
-  buildGraphmlReceiver,
+  buildEventAtlasJsonReceiver,
+  buildGraphJsonReceiver,
   buildMidiReceiver,
-  buildNdjsonReceiver,
   buildReceiverArtifacts,
-  buildSvgReceiver,
 } from "./etq-v3-receivers.mjs";
 
-export const CONTRACT_SCHEMA_PATH = "../spec/etq-303.v3.schema.json";
+export const REPOSITORY_CONTRACT_SCHEMA_PATH = "../spec/etq-303.v3.schema.json";
+export const BUNDLE_CONTRACT_SCHEMA_PATH = "./contract.schema.json";
+export const CONTRACT_SCHEMA_PATH = REPOSITORY_CONTRACT_SCHEMA_PATH;
+export const CONTRACT_SCHEMA_ID =
+  "https://raw.githubusercontent.com/QSOLKCB/SONIFICATION/main/spec/etq-303.v3.schema.json";
 export const CONTRACT_PATH = "examples/etq-303.v3.canonical.json";
 export const RECEIPT_SCHEMA_ID = "qsol.etq-303.observation-receipt/v1";
 export const MANIFEST_SCHEMA_ID = "qsol.etq-303.manifest/v1";
+export const IMPLEMENTATION_ID = "etq-303-node-reference-v1";
+
+export const IMPLEMENTATION_SOURCE_PATHS = Object.freeze([
+  "src/etq-v3-core.mjs",
+  "src/etq-v3-canonical.mjs",
+  "src/etq-v3-receivers.mjs",
+  "src/etq-v3-artifacts.mjs",
+  "scripts/build-v3-artifacts.mjs",
+]);
 
 export const HASH_DOMAINS = Object.freeze({
   basis: "ETQ/V3/BASE-BASIS/v1",
@@ -71,6 +87,7 @@ export const HASH_DOMAINS = Object.freeze({
   liftedEdges: "ETQ/V3/LIFTED-EDGES/v1",
   events: "ETQ/V3/EVENTS/v1",
   eventDocument: "ETQ/V3/EVENT-DOCUMENT/v1",
+  implementation: "ETQ/V3/IMPLEMENTATION/v1",
   contract: "ETQ/V3/CONTRACT/v1",
   receipt: "ETQ/V3/RECEIPT/v1",
   manifest: "ETQ/V3/MANIFEST/v1",
@@ -84,7 +101,35 @@ function contractPayload(value) {
   return payload;
 }
 
-export function buildCanonicalContract() {
+function normalizedSourceBytes(path) {
+  const text = readFileSync(new URL(`../${path}`, import.meta.url), "utf8")
+    .replaceAll("\r\n", "\n")
+    .replaceAll("\r", "\n");
+  return utf8(text);
+}
+
+export function buildImplementationIdentity() {
+  const sourceFiles = IMPLEMENTATION_SOURCE_PATHS.map((path) => {
+    const bytes = normalizedSourceBytes(path);
+    return { path, byteLength: bytes.length, sha256: sha256Bytes(bytes) };
+  });
+  const core = {
+    id: IMPLEMENTATION_ID,
+    sourceNormalization: "UTF-8-text;CRLF-and-CR-normalized-to-LF",
+    sourceFiles,
+  };
+  return {
+    ...core,
+    sourceBundleSha256: canonicalObjectSha256(HASH_DOMAINS.implementation, core),
+  };
+}
+
+export function buildCanonicalContract({
+  schemaRef = REPOSITORY_CONTRACT_SCHEMA_PATH,
+} = {}) {
+  if (typeof schemaRef !== "string" || schemaRef.length === 0) {
+    throw new TypeError("schemaRef must be a non-empty string");
+  }
   const basis = selectEtq101Basis();
   const adjacency = buildRootAdjacency(basis);
   const degreePotential = graphDegreePotential(adjacency);
@@ -93,15 +138,17 @@ export function buildCanonicalContract() {
   const events = buildCanonicalEvents();
   const eventDocument = buildEventDocument();
   const invariants = exactInvariantSummary();
+  const implementation = buildImplementationIdentity();
 
   const contract = {
-    $schema: CONTRACT_SCHEMA_PATH,
+    $schema: schemaRef,
     modelId: MODEL_ID,
     modelVersion: MODEL_VERSION,
     profile: PROFILE_ID,
     releaseDate: "2026-07-20",
     lineage: {
       baseRelease: { ...BASE_RELEASE },
+      implementation,
       provenanceMethodReferences: [
         {
           role: "foundational-receipt-bound-observation-protocol",
@@ -131,7 +178,8 @@ export function buildCanonicalContract() {
         supportAction: "(j,a)->(j+1 mod 101,a+1 mod 3)",
         sclStencil: [1, -2, 1],
         gaussianPhaseExponents: [...FIBRE_PHASE_GAUSSIAN_EXPONENTS],
-        gaussianPhaseSymbols: [...GAUSSIAN_UNIT_SYMBOLS],
+        gaussianPhaseSymbols: [...FIBRE_PHASE_GAUSSIAN_SYMBOLS],
+        gaussianUnitSymbolLookup: [...GAUSSIAN_UNIT_SYMBOLS],
         gcd101And3: invariants.arithmetic.gcd101And3,
         supportCycleLength: EVENT_COUNT,
         exactOperatorOrder: EVENT_COUNT,
@@ -164,9 +212,8 @@ export function buildCanonicalContract() {
     receiverProfiles: {
       canonicalJson: "canonical-json-v1",
       csv: "csv-table-v1",
-      ndjson: "ndjson-stream-v1",
-      graphml: "cartesian-graphml-v1",
-      svg: "svg-event-atlas-v1",
+      graphJson: "cartesian-graph-json-v1",
+      eventAtlasJson: "event-atlas-json-v1",
       midi: {
         id: "symbolic-midi-channel-v1",
         note: "preserved-ETQ-101-v2-symbolic-note",
@@ -177,6 +224,7 @@ export function buildCanonicalContract() {
         tempoMetaEvent: null,
         absoluteFrequencyHz: null,
       },
+      allowedArtifactExtensions: [".csv", ".json", ".mid"],
       receiverMappingsAreMathematicalNecessities: false,
     },
     exclusions: [
@@ -206,35 +254,22 @@ export function buildCanonicalContract() {
         "recursive-lexicographic-object-keys; arrays-preserve-order; safe-integers-only; UTF-8; no-BOM; no-trailing-newline",
       domainSeparatorEncoding: "UTF-8(domain)+NUL+payload-bytes",
       hashDomains: { ...HASH_DOMAINS },
+      implementationSourceBundleSha256: implementation.sourceBundleSha256,
       preservedV2BasisFixtureSha256: sha256Bytes(utf8(JSON.stringify(basis))),
-      preservedV2AdjacencyFixtureSha256: sha256Bytes(
-        utf8(JSON.stringify(adjacency)),
-      ),
+      preservedV2AdjacencyFixtureSha256: sha256Bytes(utf8(JSON.stringify(adjacency))),
       preservedV2DegreePotentialNumeratorsFixtureSha256: sha256Bytes(
         utf8(JSON.stringify(degreePotential.numerators)),
       ),
       baseBasisDomainSha256: canonicalObjectSha256(HASH_DOMAINS.basis, basis),
-      baseAdjacencyDomainSha256: canonicalObjectSha256(
-        HASH_DOMAINS.adjacency,
-        adjacency,
-      ),
+      baseAdjacencyDomainSha256: canonicalObjectSha256(HASH_DOMAINS.adjacency, adjacency),
       baseDegreePotentialDomainSha256: canonicalObjectSha256(
         HASH_DOMAINS.degreePotential,
         degreePotential.numerators,
       ),
-      siteRegistrySha256: canonicalObjectSha256(
-        HASH_DOMAINS.siteRegistry,
-        siteRegistry,
-      ),
-      liftedEdgesSha256: canonicalObjectSha256(
-        HASH_DOMAINS.liftedEdges,
-        liftedGraph.edges,
-      ),
+      siteRegistrySha256: canonicalObjectSha256(HASH_DOMAINS.siteRegistry, siteRegistry),
+      liftedEdgesSha256: canonicalObjectSha256(HASH_DOMAINS.liftedEdges, liftedGraph.edges),
       eventsSha256: canonicalObjectSha256(HASH_DOMAINS.events, events),
-      eventDocumentSha256: canonicalObjectSha256(
-        HASH_DOMAINS.eventDocument,
-        eventDocument,
-      ),
+      eventDocumentSha256: canonicalObjectSha256(HASH_DOMAINS.eventDocument, eventDocument),
       contractPayloadSha256: null,
     },
     claimBoundary:
@@ -247,16 +282,19 @@ export function buildCanonicalContract() {
   return contract;
 }
 
-export function buildContractSchema(contract = buildCanonicalContract()) {
+export function buildContractSchema(
+  contract = buildCanonicalContract(),
+  { schemaId = CONTRACT_SCHEMA_ID } = {},
+) {
+  if (typeof schemaId !== "string" || schemaId.length === 0) {
+    throw new TypeError("schemaId must be a non-empty string");
+  }
   const required = Object.keys(contract);
   const properties = {};
-  for (const [key, value] of Object.entries(contract)) {
-    properties[key] = { const: value };
-  }
+  for (const [key, value] of Object.entries(contract)) properties[key] = { const: value };
   return {
     $schema: "https://json-schema.org/draft/2020-12/schema",
-    $id:
-      "https://raw.githubusercontent.com/QSOLKCB/SONIFICATION/main/spec/etq-303.v3.schema.json",
+    $id: schemaId,
     title: "ETQ-303 v3.0.0 exact canonical contract",
     type: "object",
     additionalProperties: false,
@@ -267,9 +305,9 @@ export function buildContractSchema(contract = buildCanonicalContract()) {
 
 export function buildReceiptAndManifest() {
   const eventDocument = buildEventDocument();
-  const contract = buildCanonicalContract();
+  const contract = buildCanonicalContract({ schemaRef: BUNDLE_CONTRACT_SCHEMA_PATH });
   const contractBytes = utf8(canonicalSerialize(contract));
-  const contractSchema = buildContractSchema(contract);
+  const contractSchema = buildContractSchema(contract, { schemaId: BUNDLE_CONTRACT_SCHEMA_PATH });
   const contractSchemaBytes = utf8(canonicalSerialize(contractSchema));
   const receiverArtifacts = buildReceiverArtifacts(eventDocument).map((artifact) => {
     const sha256 = sha256Bytes(artifact.bytes);
@@ -280,26 +318,26 @@ export function buildReceiptAndManifest() {
     return { ...artifact, sha256, semanticSha256, byteLength: artifact.bytes.length };
   });
 
-  const eventArtifact = receiverArtifacts.find(
-    (artifact) => artifact.filename === EVENT_DOCUMENT_FILENAME,
-  );
+  const eventArtifact = receiverArtifacts.find((artifact) => artifact.filename === EVENT_DOCUMENT_FILENAME);
+  if (!eventArtifact) throw new Error("canonical event receiver is missing");
+  const implementation = contract.lineage.implementation;
   const receiptCore = {
     schema: RECEIPT_SCHEMA_ID,
     modelId: MODEL_ID,
     modelVersion: MODEL_VERSION,
     profile: PROFILE_ID,
+    implementation,
     eventCommitment: {
       filename: eventArtifact.filename,
       fileSha256: eventArtifact.sha256,
       semanticSha256: eventArtifact.semanticSha256,
-      canonicalEventDocumentSha256:
-        contract.determinism.eventDocumentSha256,
+      canonicalEventDocumentSha256: contract.determinism.eventDocumentSha256,
     },
     contract: {
-      path: CONTRACT_PATH,
+      filename: "contract.json",
+      schemaFilename: "contract.schema.json",
       fileSha256: sha256Bytes(contractBytes),
-      contractPayloadSha256:
-        contract.determinism.contractPayloadSha256,
+      contractPayloadSha256: contract.determinism.contractPayloadSha256,
     },
     receivers: receiverArtifacts.map((artifact) => ({
       receiverId: artifact.receiverId,
@@ -348,17 +386,14 @@ export function buildReceiptAndManifest() {
     modelId: MODEL_ID,
     modelVersion: MODEL_VERSION,
     profile: PROFILE_ID,
-    lineage: { ...BASE_RELEASE },
+    lineage: { baseRelease: { ...BASE_RELEASE }, implementation },
     generationRule:
       "contract-and-event-document-first; receiver-bytes-second; receipt-third; manifest-last",
     artifacts: manifestArtifacts,
     receiptCoreSha256,
     claimBoundary: contract.claimBoundary,
   };
-  const manifestCoreSha256 = canonicalObjectSha256(
-    HASH_DOMAINS.manifest,
-    manifestCore,
-  );
+  const manifestCoreSha256 = canonicalObjectSha256(HASH_DOMAINS.manifest, manifestCore);
   const manifest = { ...manifestCore, manifestCoreSha256 };
 
   return {
