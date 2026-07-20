@@ -4,6 +4,17 @@
 // SPDX-License-Identifier: MPL-2.0
 
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
+import {
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
+import { extname, resolve } from "node:path";
 import test from "node:test";
 
 import {
@@ -12,6 +23,7 @@ import {
   EVENT_COUNT,
   FIBRE_DIMENSION,
   FIBRE_PHASE_GAUSSIAN_EXPONENTS,
+  FIBRE_PHASE_GAUSSIAN_SYMBOLS,
   buildCanonicalEvents,
   buildEventDocument,
   buildLiftedGraph,
@@ -25,15 +37,18 @@ import {
   tensorIndex,
 } from "../src/etq-v3-core.mjs";
 import {
+  ALLOWED_ROOT_ARTIFACT_EXTENSIONS,
+  BUNDLE_CONTRACT_SCHEMA_PATH,
   EVENT_CSV_COLUMNS,
   HASH_DOMAINS,
+  IMPLEMENTATION_SOURCE_PATHS,
   buildCanonicalContract,
   buildCsvReceiver,
-  buildGraphmlReceiver,
+  buildEventAtlasJsonReceiver,
+  buildGraphJsonReceiver,
+  buildImplementationIdentity,
   buildMidiReceiver,
-  buildNdjsonReceiver,
   buildReceiptAndManifest,
-  buildSvgReceiver,
   canonicalObjectSha256,
   canonicalSerialize,
   sha256Bytes,
@@ -45,9 +60,7 @@ import {
   selectEtq101Basis,
 } from "../src/etq-model.mjs";
 
-function countOccurrences(text, pattern) {
-  return text.split(pattern).length - 1;
-}
+const PROJECT_ROOT = resolve(new URL("..", import.meta.url).pathname);
 
 test("the preserved ETQ-101 v2 fixtures are unchanged", () => {
   const basis = selectEtq101Basis();
@@ -74,8 +87,10 @@ test("tensor indexing is a bijection on 101 times 3", () => {
     }
   }
   assert.equal(indices.size, EVENT_COUNT);
-  assert.deepEqual([...indices].sort((a, b) => a - b),
-    Array.from({ length: EVENT_COUNT }, (_, index) => index));
+  assert.deepEqual(
+    [...indices].sort((a, b) => a - b),
+    Array.from({ length: EVENT_COUNT }, (_, index) => index),
+  );
 });
 
 test("the CRT event traversal visits all 303 addresses exactly once", () => {
@@ -92,8 +107,9 @@ test("the CRT event traversal visits all 303 addresses exactly once", () => {
   assert.equal(indices.size, EVENT_COUNT);
 });
 
-test("the exact monomial step has order 303 and no smaller positive order", () => {
+test("the exact monomial step has order 303 and aligned phase labels", () => {
   assert.deepEqual(FIBRE_PHASE_GAUSSIAN_EXPONENTS, [3, 2, 3]);
+  assert.deepEqual(FIBRE_PHASE_GAUSSIAN_SYMBOLS, ["-i", "-1", "-i"]);
   for (let power = 1; power < EVENT_COUNT; power += 1) {
     const result = exactMonomialPower(0, 0, power);
     assert.notEqual(result.tensorIndex, 0);
@@ -110,6 +126,15 @@ test("the exact monomial step has order 303 and no smaller positive order", () =
       });
     }
   }
+  const contract = buildCanonicalContract();
+  assert.deepEqual(
+    contract.exactMathematics.monomialStep.gaussianPhaseSymbols,
+    ["-i", "-1", "-i"],
+  );
+  assert.deepEqual(
+    contract.exactMathematics.monomialStep.gaussianUnitSymbolLookup,
+    ["1", "i", "-1", "-i"],
+  );
 });
 
 test("event transitions are exactly the monomial support cycle", () => {
@@ -177,6 +202,7 @@ test("the canonical event document separates internal triality from the external
   assert.equal(document.events.length, 303);
   assert.equal(document.siteRegistry.length, 101);
   assert.equal(document.graphContext.eventTraversalIsGraphWalk, false);
+  assert.deepEqual(document.exactStep.gaussianPhaseSymbols, ["-i", "-1", "-i"]);
   const internalLabels = new Set(
     document.siteRegistry
       .map((site) => site.internalTrialityLabel)
@@ -197,21 +223,21 @@ test("canonical serialization rejects floating identity values", () => {
   assert.throws(() => canonicalSerialize({ value: Number.NaN }), /safe integers only/);
 });
 
-test("all reference receivers are deterministic projections of the same event document", () => {
+test("all reference receivers are deterministic allowlisted projections", () => {
   const document = buildEventDocument();
   const csv = buildCsvReceiver(document);
   assert.equal(csv.trimEnd().split("\n").length, EVENT_COUNT + 1);
   assert.deepEqual(csv.split("\n", 1)[0].split(","), EVENT_CSV_COLUMNS);
 
-  const ndjson = buildNdjsonReceiver(document);
-  assert.equal(ndjson.trimEnd().split("\n").length, EVENT_COUNT);
+  const graph = JSON.parse(buildGraphJsonReceiver(document, buildLiftedGraph()));
+  assert.equal(graph.nodes.length, EVENT_COUNT);
+  assert.equal(graph.edges.length, 5364);
+  assert.equal(graph.connected, true);
 
-  const graphml = buildGraphmlReceiver(document, buildLiftedGraph());
-  assert.equal(countOccurrences(graphml, "<node "), EVENT_COUNT);
-  assert.equal(countOccurrences(graphml, "<edge "), 5364);
-
-  const svg = buildSvgReceiver(document);
-  assert.equal(countOccurrences(svg, '<rect class="node"'), EVENT_COUNT);
+  const atlas = JSON.parse(buildEventAtlasJsonReceiver(document));
+  assert.equal(atlas.entries.length, EVENT_COUNT);
+  assert.equal(atlas.columns, 101);
+  assert.equal(atlas.rows, 3);
 
   const midi = buildMidiReceiver(document);
   assert.equal(midi.subarray(0, 4).toString("ascii"), "MThd");
@@ -219,9 +245,35 @@ test("all reference receivers are deterministic projections of the same event do
   assert.equal(midi.readUInt16BE(12), 1);
   const statusBytes = [...midi].filter((byte) => (byte & 0xf0) === 0x90 || (byte & 0xf0) === 0x80);
   assert.equal(statusBytes.length, EVENT_COUNT * 2);
+
+  const bundle = buildReceiptAndManifest();
+  const allowed = new Set(ALLOWED_ROOT_ARTIFACT_EXTENSIONS);
+  assert.deepEqual(
+    bundle.receiverArtifacts.map((artifact) => artifact.filename),
+    ["events.json", "events.csv", "graph.json", "event-atlas.json", "events.mid"],
+  );
+  for (const artifact of bundle.receiverArtifacts) {
+    assert.ok(allowed.has(extname(artifact.filename)));
+  }
 });
 
-test("contract, receipt, and manifest form an acyclic deterministic identity chain", () => {
+test("implementation identity binds the v3 source bundle", () => {
+  const identity = buildImplementationIdentity();
+  assert.deepEqual(
+    identity.sourceFiles.map((entry) => entry.path),
+    IMPLEMENTATION_SOURCE_PATHS,
+  );
+  assert.equal(identity.sourceFiles.length, 5);
+  assert.match(identity.sourceBundleSha256, /^[0-9a-f]{64}$/);
+  const contract = buildCanonicalContract();
+  assert.deepEqual(contract.lineage.implementation, identity);
+  assert.equal(
+    contract.determinism.implementationSourceBundleSha256,
+    identity.sourceBundleSha256,
+  );
+});
+
+test("contract, receipt, manifest, and bundled schema form an acyclic identity chain", () => {
   const contract = buildCanonicalContract();
   const payload = structuredClone(contract);
   delete payload.$schema;
@@ -231,11 +283,78 @@ test("contract, receipt, and manifest form an acyclic deterministic identity cha
     canonicalObjectSha256(HASH_DOMAINS.contract, payload),
   );
   const bundle = buildReceiptAndManifest();
-  assert.equal(bundle.receipt.receivers.length, 6);
-  assert.equal(bundle.manifest.artifacts.length, 9);
+  assert.equal(bundle.receipt.receivers.length, 5);
+  assert.equal(bundle.manifest.artifacts.length, 8);
+  assert.equal(bundle.contract.$schema, BUNDLE_CONTRACT_SCHEMA_PATH);
+  assert.equal(bundle.contractSchema.$id, BUNDLE_CONTRACT_SCHEMA_PATH);
+  assert.equal(
+    bundle.contractSchema.properties.$schema.const,
+    BUNDLE_CONTRACT_SCHEMA_PATH,
+  );
+  assert.equal(
+    bundle.contract.determinism.contractPayloadSha256,
+    contract.determinism.contractPayloadSha256,
+  );
+  assert.deepEqual(bundle.receipt.implementation, contract.lineage.implementation);
+  assert.deepEqual(
+    bundle.manifest.lineage.implementation,
+    contract.lineage.implementation,
+  );
   assert.ok(!bundle.manifest.artifacts.some((artifact) => artifact.filename === "manifest.json"));
   assert.equal(
     bundle.receipt.eventCommitment.canonicalEventDocumentSha256,
     contract.determinism.eventDocumentSha256,
   );
+});
+
+test("the build command rejects unsafe or nonempty output paths without deleting them", () => {
+  const packagePath = resolve(PROJECT_ROOT, "package.json");
+  const packageBefore = existsSync(packagePath) ? readFileSync(packagePath) : null;
+  const rootAttempt = spawnSync(
+    process.execPath,
+    ["scripts/build-v3-artifacts.mjs", "--output", "."],
+    { cwd: PROJECT_ROOT, encoding: "utf8" },
+  );
+  assert.notEqual(rootAttempt.status, 0);
+  if (packageBefore !== null) assert.deepEqual(readFileSync(packagePath), packageBefore);
+
+  mkdirSync(resolve(PROJECT_ROOT, "dist"), { recursive: true });
+  const nonempty = mkdtempSync(resolve(PROJECT_ROOT, "dist", "unsafe-"));
+  const sentinel = resolve(nonempty, "sentinel.txt");
+  writeFileSync(sentinel, "keep", "utf8");
+  const nonemptyAttempt = spawnSync(
+    process.execPath,
+    ["scripts/build-v3-artifacts.mjs", "--output", nonempty],
+    { cwd: PROJECT_ROOT, encoding: "utf8" },
+  );
+  assert.notEqual(nonemptyAttempt.status, 0);
+  assert.equal(readFileSync(sentinel, "utf8"), "keep");
+  rmSync(nonempty, { recursive: true, force: true });
+});
+
+test("the build command writes only allowed root artifact types", () => {
+  mkdirSync(resolve(PROJECT_ROOT, "dist"), { recursive: true });
+  const parent = mkdtempSync(resolve(PROJECT_ROOT, "dist", "build-parent-"));
+  const output = resolve(parent, "bundle");
+  const result = spawnSync(
+    process.execPath,
+    ["scripts/build-v3-artifacts.mjs", "--output", output],
+    { cwd: PROJECT_ROOT, encoding: "utf8" },
+  );
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  const filenames = readdirSync(output).sort();
+  assert.deepEqual(filenames, [
+    "contract.json",
+    "contract.schema.json",
+    "event-atlas.json",
+    "events.csv",
+    "events.json",
+    "events.mid",
+    "graph.json",
+    "manifest.json",
+    "observation-receipt.json",
+  ]);
+  const allowed = new Set(ALLOWED_ROOT_ARTIFACT_EXTENSIONS);
+  assert.ok(filenames.every((filename) => allowed.has(extname(filename))));
+  rmSync(parent, { recursive: true, force: true });
 });
