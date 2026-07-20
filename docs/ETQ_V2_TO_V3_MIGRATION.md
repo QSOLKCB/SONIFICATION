@@ -17,8 +17,12 @@
 - the declared product step has an exact single 303-state support orbit;
 - canonical output is a receiver-neutral event document;
 - `G_303 = G_101 square C_3` supplies exact graph context;
-- JSON, CSV, NDJSON, GraphML, SVG, and MIDI receivers share one commitment;
-- domain-separated, acyclic receipt and manifest identities are implemented.
+- JSON, CSV, graph-JSON, atlas-JSON, and MIDI receivers share one commitment;
+- all persisted root artifacts use only `.json`, `.csv`, or `.mid`;
+- domain-separated receipts bind a normalized v3 implementation source bundle;
+- generated contracts use the adjacent bundled schema;
+- output generation rejects unsafe or nonempty directories instead of deleting
+  them recursively.
 
 ## Breaking semantic change
 
