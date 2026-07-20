@@ -61,6 +61,11 @@ export const FIBRE_PHASE_GAUSSIAN_EXPONENTS = Object.freeze(
   SCL_STENCIL.map((curvature) => modulo(-curvature, 4)),
 );
 export const GAUSSIAN_UNIT_SYMBOLS = Object.freeze(["1", "i", "-1", "-i"]);
+export const FIBRE_PHASE_GAUSSIAN_SYMBOLS = Object.freeze(
+  FIBRE_PHASE_GAUSSIAN_EXPONENTS.map(
+    (exponent) => GAUSSIAN_UNIT_SYMBOLS[exponent],
+  ),
+);
 
 export function modulo(value, modulus) {
   if (!Number.isSafeInteger(value) || !Number.isSafeInteger(modulus) || modulus <= 0) {
@@ -105,10 +110,7 @@ export function tensorAddress(index) {
   };
 }
 
-/**
- * The support permutation underlying R_101 tensor F_3.
- * The Gaussian-unit phase is recorded separately from the support address.
- */
+/** Support permutation underlying R_101 tensor F_3. */
 export function exactMonomialStep(siteIndex, fibreLabel) {
   requireIndex(siteIndex, BASE_SITE_COUNT, "siteIndex");
   requireIndex(fibreLabel, FIBRE_DIMENSION, "fibreLabel");
@@ -170,7 +172,6 @@ export function eventAddress(sequenceIndex) {
 export function eventIndexFromAddress(siteIndex, fibreLabel) {
   requireIndex(siteIndex, BASE_SITE_COUNT, "siteIndex");
   requireIndex(fibreLabel, FIBRE_DIMENSION, "fibreLabel");
-  // n = siteIndex + 101*k; 101 == 2 mod 3 and 2^-1 == 2 mod 3.
   const k = modulo(2 * (fibreLabel - modulo(siteIndex, 3)), 3);
   const sequenceIndex = siteIndex + BASE_SITE_COUNT * k;
   if (sequenceIndex >= EVENT_COUNT) throw new Error("CRT inverse escaped domain");
@@ -258,11 +259,7 @@ export function buildLiftedGraph() {
     }
   }
 
-  const fibreEdges = [
-    [0, 1],
-    [0, 2],
-    [1, 2],
-  ];
+  const fibreEdges = [[0, 1], [0, 2], [1, 2]];
   for (let siteIndex = 0; siteIndex < BASE_SITE_COUNT; siteIndex += 1) {
     for (const [leftFibre, rightFibre] of fibreEdges) {
       edges.push({
@@ -298,9 +295,7 @@ export function buildLiftedGraph() {
       }
     }
   }
-  const baseEdgeCount = adjacency
-    .flat()
-    .reduce((sum, value) => sum + value, 0) / 2;
+  const baseEdgeCount = adjacency.flat().reduce((sum, value) => sum + value, 0) / 2;
 
   return {
     schema: LIFTED_GRAPH_SCHEMA_ID,
@@ -358,11 +353,7 @@ export function buildEventDocument() {
       expression: "H_303=H_101 tensor C^3",
       basisSemantics: "101-root-indexed-sites-times-independent-ternary-fibre",
       tensorBasisOrder: "tensorIndex=3*siteIndex+fibreLabel",
-      dimensions: {
-        baseSites: BASE_SITE_COUNT,
-        fibre: FIBRE_DIMENSION,
-        total: EVENT_COUNT,
-      },
+      dimensions: { baseSites: BASE_SITE_COUNT, fibre: FIBRE_DIMENSION, total: EVENT_COUNT },
     },
     exactStep: {
       expression: "F_303=R_101 tensor (X_3 exp(-i*pi*D_3/2))",
@@ -370,7 +361,8 @@ export function buildEventDocument() {
       phaseConvention: "exp(-i*pi*d_a/2)=i^g_a",
       sclStencil: [...SCL_STENCIL],
       gaussianExponents: [...FIBRE_PHASE_GAUSSIAN_EXPONENTS],
-      gaussianSymbols: [...GAUSSIAN_UNIT_SYMBOLS],
+      gaussianPhaseSymbols: [...FIBRE_PHASE_GAUSSIAN_SYMBOLS],
+      gaussianUnitSymbolLookup: [...GAUSSIAN_UNIT_SYMBOLS],
       supportCycleLength: EVENT_COUNT,
       operatorOrder: EVENT_COUNT,
     },
@@ -396,18 +388,12 @@ export function exactInvariantSummary() {
   const graph = buildLiftedGraph();
   const events = buildCanonicalEvents();
   const visitedTensorIndices = new Set(events.map((event) => event.tensorIndex));
-  const visitedAddresses = new Set(
-    events.map((event) => `${event.siteIndex},${event.fibreLabel}`),
-  );
+  const visitedAddresses = new Set(events.map((event) => `${event.siteIndex},${event.fibreLabel}`));
   const phaseAfterThree = exactMonomialPower(0, 0, 3);
   const phaseAfter303 = exactMonomialPower(0, 0, EVENT_COUNT);
 
   return {
-    dimensions: {
-      baseSites: BASE_SITE_COUNT,
-      fibre: FIBRE_DIMENSION,
-      total: EVENT_COUNT,
-    },
+    dimensions: { baseSites: BASE_SITE_COUNT, fibre: FIBRE_DIMENSION, total: EVENT_COUNT },
     arithmetic: {
       gcd101And3: gcd(BASE_SITE_COUNT, FIBRE_DIMENSION),
       lcm101And3: lcm(BASE_SITE_COUNT, FIBRE_DIMENSION),
@@ -420,8 +406,8 @@ export function exactInvariantSummary() {
     },
     monomialStep: {
       phaseExponents: [...FIBRE_PHASE_GAUSSIAN_EXPONENTS],
-      threeStepAccumulatedPhaseGaussianExponent:
-        phaseAfterThree.accumulatedPhaseGaussianExponent,
+      phaseSymbols: [...FIBRE_PHASE_GAUSSIAN_SYMBOLS],
+      threeStepAccumulatedPhaseGaussianExponent: phaseAfterThree.accumulatedPhaseGaussianExponent,
       after303: phaseAfter303,
     },
     graph: {
