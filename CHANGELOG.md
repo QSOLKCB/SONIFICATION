@@ -1,5 +1,24 @@
 # Changelog
 
+## 3.0.0 — ETQ-303 exact event protocol
+
+- Promoted the optional `H_303 = H_101 tensor C^3` extension into a separately
+  named 303-state forward model without claiming 303 distinct E8 roots.
+- Added an exact monomial step with support action
+  `(j,a)->(j+1 mod 101,a+1 mod 3)` and Gaussian-unit phase labels `[3,2,3]`.
+- Proved and exhaustively verified exact order 303 and a bijective CRT event
+  traversal through all tensor addresses.
+- Added the exact Cartesian graph lift `G_101 square C_3`: 303 vertices, 5,364
+  edges, degree range 24-57, and one connected component.
+- Made the canonical output a receiver-neutral 303-entry event document.
+- Added deterministic JSON, CSV, NDJSON, GraphML, SVG, and symbolic MIDI
+  receiver artifacts.
+- Added integer-only canonical JSON, domain-separated hashes, an acyclic
+  observation receipt, and a manifest-core receipt.
+- Preserved the complete ETQ-101 v2 and v1 contracts and verifiers unchanged.
+- Excluded floating eigensolver output, ring surrogates, sorted degree proxies,
+  hertz, PCM, WAV, and empirical claims from v3 identity.
+
 ## 2.0.0 — ETQ-101 forward profile
 
 - Removed the golden-ratio modulation and declared 432 Hz scale from the

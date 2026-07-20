@@ -1,0 +1,271 @@
+# ETQ-303 v3.0.0 Exact Event Protocol
+
+## 1. Scope and normative status
+
+ETQ-303 v3.0.0 is an exact finite extension of the released ETQ-101 v2.0.0
+selected-root model. It promotes the optional product space from the v2 formal
+specification into a separately named event protocol:
+
+\[
+\mathcal H_{303}=\mathcal H_{101}\otimes\mathbb C^3.
+\]
+
+The v3 core is not an audio renderer. It defines a finite state registry, an
+exact monomial step, one complete 303-event traversal, an exact graph lift, and
+canonical reproducibility receipts. JSON, CSV, NDJSON, GraphML, SVG, and MIDI
+are receiver serializations of the same committed event document.
+
+Normative machine-readable identity is generated as `contract.json`, with
+`contract.schema.json`, by `npm run build:v3`. The dependency-free exact
+construction is `src/etq-v3-core.mjs`; Node-specific hashing and receiver
+serialization are in `src/etq-v3-canonical.mjs`, `src/etq-v3-receivers.mjs`, and
+`src/etq-v3-artifacts.mjs`.
+
+## 2. Preserved v2 base
+
+The base is the immutable ETQ-101 v2.0.0 release:
+
+- Git tag: `v2.0.0`
+- Git commit: `8c24d58ca76abbac77c427a4f63ca434570c82b3`
+- version DOI: `10.5281/zenodo.21432511`
+- selected-basis SHA-256:
+  `97cfd1f087745422fd66d3640c7b86c3209593c4b53741018c08a5e9cdb15f6f`
+- selected-adjacency SHA-256:
+  `29ae0af5b1090c9de30f1efc25789060fb1791eb175d2afcd6888847f7fe6324`
+
+V3 imports the v2 root generator and selector rather than modifying them. The
+101 selected E8 roots remain 101 distinct root labels. Tensoring each selected
+site with an independent three-state fibre creates 303 states; it does not
+create 303 distinct E8 roots.
+
+## 3. Two ternary labels that must not be conflated
+
+For a non-fixed v2 site, the selected basis already carries an **internal D4
+triality label** in `{0,1,2}`. V3 adds a separate **external fibre label**
+`a in {0,1,2}` through `H_101 tensor C^3`.
+
+The canonical tensor basis is
+
+\[
+|j,a\rangle,\qquad j\in\mathbb Z_{101},\quad a\in\mathbb Z_3,
+\]
+
+with lexicographic tensor index
+
+\[
+\operatorname{tensorIndex}(j,a)=3j+a.
+\]
+
+The two fixed singlets have no internal triality label, but all 101 sites have
+all three external fibre labels.
+
+## 4. Exact monomial step
+
+Let
+
+\[
+D_3=\operatorname{diag}(1,-2,1),\qquad
+F_3=X_3\exp(-i\pi D_3/2),
+\]
+
+and let `R_101` be the declared selector-order cyclic shift. V3 uses
+
+\[
+F_{303}=R_{101}\otimes F_3.
+\]
+
+At the basis-support level,
+
+\[
+(j,a)\longmapsto(j+1\bmod101,\ a+1\bmod3).
+\]
+
+The exact phase multiplier applied before the fibre shift is a Gaussian unit:
+
+| fibre `a` | curvature `d_a` | multiplier | exponent `g_a` in `i^g_a` |
+|---:|---:|---:|---:|
+| 0 | 1 | `-i` | 3 |
+| 1 | -2 | `-1` | 2 |
+| 2 | 1 | `-i` | 3 |
+
+The three-step phase exponent is
+
+\[
+3+2+3=8\equiv0\pmod4,
+\]
+
+so the accumulated local phase over one fibre cycle is exactly one.
+
+### Exact order proof
+
+If the support returns to its initial address after `n` steps, then
+
+\[
+n\equiv0\pmod{101},\qquad n\equiv0\pmod3.
+\]
+
+Since `gcd(101,3)=1`, the least positive solution is
+
+\[
+\operatorname{lcm}(101,3)=303.
+\]
+
+The accumulated Gaussian-unit phase over 303 steps is one because the
+three-step phase product is one and occurs 101 times. Therefore
+
+\[
+F_{303}^{303}=I_{303},
+\]
+
+and no smaller positive power is the identity. The test suite exhaustively
+checks every positive power below 303 and checks closure for all 303 basis
+states.
+
+## 5. Canonical event ordering
+
+Starting from `(0,0)`, event `n` has address
+
+\[
+j=n\bmod101,\qquad a=n\bmod3,
+\]
+
+for `n=0,...,302`. Coprimality makes this a bijection onto all 303 pairs.
+
+The exact inverse is
+
+\[
+n=j+101k,
+\qquad
+k=2(a-(j\bmod3))\bmod3.
+\]
+
+Each event records:
+
+- sequence index;
+- tensor index;
+- base site index;
+- external fibre label;
+- exact Gaussian-unit transition phase;
+- next sequence index; and
+- next tensor index.
+
+The event document also contains the 101-entry site registry: exact doubled E8
+root coordinates, v2 state class, internal triality label where present,
+selected-graph degree, exact degree-potential numerator, and preserved v2 MIDI
+note code.
+
+## 6. Exact graph lift
+
+V3 defines the graph context
+
+\[
+G_{303}=G_{101}\square C_3.
+\]
+
+Horizontal edges copy each of the 1,687 selected-root edges into each of three
+fibre layers. Vertical edges attach a copy of `C_3` to every base site.
+Therefore
+
+\[
+|V|=101\cdot3=303,
+\]
+
+\[
+|E|=3(1687)+101(3)=5364.
+\]
+
+For a base vertex of degree `d_j`, the lifted degree is exactly
+
+\[
+d_j+2.
+\]
+
+The v2 degree range `22..55` therefore becomes `24..57`. Connectivity is both a
+consequence of the Cartesian product of connected graphs and checked directly
+by finite traversal of the generated edge list.
+
+The 303-event ordering is **not claimed to be a graph walk** in `G_303`.
+`R_101` advances selector order and is not asserted to be an automorphism of
+the selected E8 root graph.
+
+## 7. Canonical identity and receipts
+
+Identity-bearing JSON permits only null, booleans, strings, arrays, plain
+objects, and safe integers. Object keys are serialized recursively in
+lexicographic order. Arrays preserve their declared order. Floating-point
+values are rejected. Files use UTF-8 with no BOM and no trailing newline where
+canonical JSON bytes define identity.
+
+Hashes are domain-separated as
+
+```text
+UTF-8(domain) + NUL + payload bytes
+```
+
+The acyclic build order is:
+
+```text
+preserved v2 fixtures
+  -> site registry + lifted edges + 303 events
+  -> canonical event document commitment
+  -> deterministic receiver artifacts
+  -> observation receipt
+  -> manifest core + manifest-core receipt
+```
+
+No document claims an ordinary hash of final bytes that include that same hash.
+The receipt-bound architecture is methodologically informed by the archived
+observation protocol in `10.5281/zenodo.21292906` and its supported v1.2 version
+`10.5281/zenodo.21293821`; those works are provenance-method references, not
+mathematical dependencies of the 303-state construction.
+
+## 8. Reference receivers
+
+All receivers consume the same committed event document.
+
+| Artifact | Exact role |
+|---|---|
+| `events.json` | canonical core event document |
+| `events.csv` | lossless fixed-column table |
+| `events.ndjson` | one enriched event per line |
+| `graph.graphml` | exact `G_101 square C_3` graph |
+| `events.svg` | integer-grid 101-by-3 event atlas |
+| `events.mid` | symbolic channel-plus-note projection |
+
+The MIDI profile uses the external fibre as zero-based channel and the
+preserved v2 symbolic note for the base site. It emits one integer tick per
+event, velocity 64, and no tempo meta-event. This is a deterministic receiver
+convention, not an acoustic scale or a mathematical necessity.
+
+## 9. Deliberately excluded from v3 identity
+
+V3 does not use:
+
+- a ring Laplacian as a replacement for the selected-root graph;
+- a sorted degree multiset in place of the labelled vertex-degree sequence;
+- floating eigensolver output;
+- sample rate, hertz, duration, waveform, PCM, or WAV;
+- an additive 303-partial renderer;
+- claims of exact long-time physical dynamics;
+- empirical, statistical, or perceptual validation; or
+- 303 distinct E8 roots.
+
+The earlier experimental Python renderer was useful as a design probe for the
+product-space and three-lane receiver idea. Its ring surrogate, sorted degrees,
+continuous evolution, frequency map, interpolation, and additive synthesis are
+not imported into the v3 canonical contract.
+
+## 10. Verification
+
+Use Node.js 20 or later:
+
+```bash
+npm test
+npm run verify
+npm run build:v3
+```
+
+`npm test` checks the preserved v2 fixtures, tensor and CRT bijections, exact
+operator order, phase closure, labelled degree identity, graph product,
+receiver counts, and receipt chain. `npm run verify` additionally verifies the
+v3 contract and continues to run the preserved v2 and v1 verifiers.
