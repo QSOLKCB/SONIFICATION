@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use or discuss this work, please cite it using this metadata and preserve the repository attribution."
-title: "QSOL SONIFICATION and the ETQ-101 v2 Ternary MIDI Model"
+title: "ETQ-303 v3: Exact 303-State Root-Indexed Event Protocol"
 type: software
 authors:
   - family-names: "Slade"
@@ -8,24 +8,29 @@ authors:
     affiliation: "QSOL-IMC"
 repository-code: "https://github.com/QSOLKCB/SONIFICATION"
 url: "https://github.com/QSOLKCB/SONIFICATION"
-version: 2.0.0
-date-released: 2026-07-19
+version: 3.0.0
+date-released: 2026-07-20
 license: MPL-2.0
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21432511"
+    description: "Archived ETQ-101 v2.0.0 base release"
 keywords:
-  - sonification
+  - deterministic event protocol
   - E8 root system
   - D4 triality
   - qutrit algebra
-  - ternary curvature
+  - graph product
+  - canonical serialization
+  - reproducible artifacts
   - symbolic MIDI
-  - spectral graph model
 preferred-citation:
   type: software
   authors:
     - family-names: "Slade"
       given-names: "Trent"
       affiliation: "QSOL-IMC"
-  title: "QSOL SONIFICATION and the ETQ-101 v2 Ternary MIDI Model"
-  version: 2.0.0
+  title: "ETQ-303 v3: Exact 303-State Root-Indexed Event Protocol"
+  version: 3.0.0
   year: 2026
   url: "https://github.com/QSOLKCB/SONIFICATION"
