@@ -6,7 +6,7 @@
       "affiliation": "QSOL-IMC"
     }
   ],
-  "description": "<p>ETQ-303 v3.0.0 is an exact finite 303-state event protocol constructed as H_101 tensor C^3 over the preserved ETQ-101 v2 selected-root basis. It defines a single exact 303-step monomial support traversal, Gaussian-unit phase labels, the Cartesian graph lift G_101 square C_3, a canonical event document, deterministic JSON/CSV/NDJSON/GraphML/SVG/MIDI receivers, and acyclic provenance receipts.</p><p>The 303 states are root-indexed tensor states, not 303 distinct E8 roots. The canonical contract contains no hertz, sample rate, waveform, PCM, WAV, floating eigensolver identity, physical validation, or privileged receiver. The archived ETQ-101 v2.0.0 base release is DOI 10.5281/zenodo.21432511.</p>",
+  "description": "<p>ETQ-303 v3.0.0 is an exact finite 303-state event protocol constructed as H_101 tensor C^3 over the preserved ETQ-101 v2 selected-root basis. It defines a single exact 303-step monomial support traversal, aligned Gaussian-unit phase labels, the Cartesian graph lift G_101 square C_3, a canonical event document, deterministic JSON/CSV/MIDI receiver artifacts, and acyclic provenance receipts that bind a normalized v3 implementation source bundle.</p><p>The 303 states are root-indexed tensor states, not 303 distinct E8 roots. Root artifacts are restricted to .json, .csv, and .mid; graph and atlas data are serialized as JSON. The canonical contract contains no hertz, sample rate, waveform, PCM, WAV, floating eigensolver identity, physical validation, or privileged receiver. The archived ETQ-101 v2.0.0 base release is DOI 10.5281/zenodo.21432511.</p>",
   "version": "3.0.0",
   "upload_type": "software",
   "access_right": "open",
