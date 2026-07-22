@@ -1,5 +1,20 @@
 # ETQ-101 v2 to ETQ-303 v3 Migration
 
+## v3.0.1 documentation clarification
+
+Version 3.0.1 adds notation conventions and makes the finite-dimensional
+identity explicit:
+
+\[
+\mathcal H_{303}=\mathcal H_{101}\otimes\mathbb C^3,
+\qquad
+\dim(\mathcal H_{303})=101\times3=303.
+\]
+
+These are algebraic vector-space dimensions and basis-state counts, not
+physical spacetime dimensions. The clarification does not change any item in
+the preserved or new-v3 lists below, nor any runtime artifact or hash.
+
 ## Preserved unchanged
 
 - standard 240-root E8 construction;

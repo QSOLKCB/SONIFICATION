@@ -1,0 +1,776 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper,margin=24mm,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,longtable,tabularx,array,multirow}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{seqsplit}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=numeric,sorting=none,maxbibnames=99]{biblatex}
+\addbibresource{ETQ-303_references.bib}
+
+% Keep the generated publication PDF byte-stable when SOURCE_DATE_EPOCH is set.
+\ifdefined\pdftrailerid
+  \pdftrailerid{}
+\fi
+
+\definecolor{etqblue}{HTML}{1F4E79}
+\definecolor{etqcyan}{HTML}{008DA8}
+\definecolor{etqlight}{HTML}{EEF3F6}
+\definecolor{etqgray}{HTML}{4B5563}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=etqblue,
+  citecolor=etqblue,
+  urlcolor=etqcyan,
+  pdfauthor={Trent Slade / QSOL-IMC},
+  pdftitle={ETQ-303 v3.0.1 Formal Mathematical Specification and Reproducibility Record},
+  pdfsubject={Exact 303-state root-indexed event protocol},
+  pdfkeywords={E8, D4 triality, qutrit, graph product, deterministic event protocol, reproducibility}
+}
+\urlstyle{same}
+\setlength{\emergencystretch}{3em}
+\setlist{nosep,leftmargin=*}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small ETQ-303 v3.0.1 Formal specification}
+\fancyhead[R]{\small Trent Slade / QSOL-IMC}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Hone}{\mathcal H_{101}}
+\newcommand{\Hthree}{\mathcal H_{303}}
+\newcommand{\Gone}{G_{101}}
+\newcommand{\Gthree}{G_{303}}
+\newcommand{\Fthree}{F_{303}}
+\newcommand{\Zthree}{\mathbb Z_{3}}
+\newcommand{\Zone}{\mathbb Z_{101}}
+\newcommand{\hash}[1]{\texttt{\footnotesize\seqsplit{#1}}}
+\newcommand{\statusExact}{\textbf{Exact}}
+\newcommand{\statusAuthored}{\textbf{Authored}}
+\newcommand{\statusExcluded}{\textbf{Excluded}}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{etqlight},
+  frame=single,
+  rulecolor=\color{gray!40},
+  breaklines=true,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false
+}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+\thispagestyle{empty}
+
+\begin{center}
+  \vspace*{22mm}
+  {\fontsize{31}{36}\selectfont\bfseries\color{etqblue} ETQ-303 v3}\par
+  \vspace{9mm}
+  {\fontsize{22}{27}\selectfont\bfseries Exact 303-State Root-Indexed\\[1.5mm]Event Protocol}\par
+  \vspace{14mm}
+  {\Large Formal Mathematical Specification\\and Reproducibility Record}\par
+  \vspace{22mm}
+  {\large Trent Slade}\par
+  {\large QSOL-IMC}\par
+  \vspace{8mm}
+  {\large Version 3.0.1 --- 22 July 2026}\par
+\end{center}
+
+\vfill
+\small
+\noindent
+\begin{tabularx}{\textwidth}{@{}>{\bfseries}p{38mm}>{\raggedright\arraybackslash}X@{}}
+Archive source & \url{https://github.com/QSOLKCB/SONIFICATION} \\
+Original v3 release & Git tag \texttt{v3.0.0}; commit \hash{6b55e51647226d1c248dc8d79f9ed9336241c2ac} \\
+Original v3 DOI & \href{https://doi.org/10.5281/zenodo.21455181}{10.5281/zenodo.21455181} (ETQ-303 v3.0.0) \\
+Documentation patch & Version 3.0.1; terminology and exposition clarification only \\
+Base version DOI & \href{https://doi.org/10.5281/zenodo.21432511}{10.5281/zenodo.21432511} (ETQ-101 v2.0.0) \\
+v3.0.1 version DOI & Pending Zenodo \emph{New version} deposition; replace this field after publication \\
+Licence & Mozilla Public License 2.0 (MPL-2.0) \\
+Record status & Formal software specification and reproducibility record; no empirical or physical validation claim \\
+\end{tabularx}
+\normalsize
+
+\vspace{8mm}
+\colorbox{etqlight}{\parbox{0.95\textwidth}{\textbf{Archival note.}
+This document is a documentation-only successor to the immutable ETQ-303 v3.0.0 release identified above. Version 3.0.1 clarifies algebraic dimension and tensor notation; it does not alter the mathematical construction, state indexing, event protocol, deterministic artifacts, implementation identity, or scientific claim boundary. The v3.0.0 tag and archived files remain unchanged.}}
+
+\clearpage
+\hypersetup{pageanchor=true}
+\pagenumbering{roman}
+\begin{abstract}
+ETQ-303 v3.0.1 documents the exact finite event protocol first released as ETQ-303 v3.0.0 and constructed from the released ETQ-101 v2.0.0 selected-root model. The preserved base has 101 E8-root labels arranged as two triality-fixed singlets and 33 complete order-three D4 triality orbits. Version 3 forms the tensor state space
+\[
+\Hthree=\Hone\otimes\mathbb C^3,
+\]
+so every preserved site carries an independent three-state external fibre. A declared monomial step acts on support as
+\[
+(j,a)\longmapsto(j+1\bmod 101,\ a+1\bmod 3)
+\]
+and carries exact Gaussian-unit phase exponents $(3,2,3)$, with aligned symbols $(-i,-1,-i)$. Coprimality of 101 and 3 gives one 303-state support orbit, while the three-step phase product equals one; hence the complete monomial operator has exact order 303.
+
+The graph context is the Cartesian product $\Gthree=\Gone\square C_3$. It has 303 vertices, 5,364 edges, degree range 24--57, and one connected component. Here 303 is the algebraic dimension and the number of basis-indexed states in a finite complex vector space, not a number of physical spacetime dimensions. The canonical output is a receiver-neutral 303-entry event document. JSON, CSV, graph JSON, atlas JSON, and symbolic MIDI artifacts are deterministic projections; no receiver is mathematically privileged. Identity-bearing JSON uses safe integers only, recursive lexicographic key order, domain-separated SHA-256 receipts, and an implementation source-bundle identity. The root workflow emits no hertz, sample rate, waveform, PCM, WAV, floating eigensolver identity, or empirical validation claim.
+\end{abstract}
+
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+\section{Purpose, scope, and normative status}
+This manuscript is the human-readable formal specification and reproducibility record for the ETQ-303 v3.0.1 documentation patch. It describes the exact protocol and machine-readable identity first archived as ETQ-303 v3.0.0. The current machine-readable repository fixture is
+\texttt{examples/etq-303.v3.canonical.json}; its schema is
+\texttt{spec/etq-303.v3.schema.json}. The exact construction is implemented by the dependency-free Node.js modules named in the implementation identity, and the release verification entrypoint is \texttt{npm run verify}.
+
+The supported forward claim, unchanged from v3.0.0, is:
+\begin{quote}
+ETQ-303 v3.0.0 is an exact finite 303-state tensor extension of the preserved ETQ-101 v2 selected-root basis. It defines a single 303-step monomial support traversal with exact Gaussian-unit phase labels, the Cartesian graph lift $\Gone\square C_3$, a canonical event document, and deterministic allowlisted receiver artifacts with acyclic provenance receipts.
+\end{quote}
+
+The word \emph{exact} refers to finite integer combinatorics, modular arithmetic, and finite-dimensional linear algebra after the declared v2 selector and v3 protocol choices have been fixed. It does not mean that the selector, external fibre, starting address, receiver mapping, or serialization vocabulary is uniquely selected by E8 or by nature.
+
+\subsection{Version lineage and archival identity}
+Version 3 preserves the ETQ-101 v2.0.0 base release, its source tag, selected basis, adjacency, degree-potential numerators, and contract receipt \cite{slade_etq_v2_2026}. The v3 implementation was merged through repository pull request 12 at commit
+\hash{6b55e51647226d1c248dc8d79f9ed9336241c2ac}, frozen at tag \texttt{v3.0.0}, and archived at DOI \href{https://doi.org/10.5281/zenodo.21455181}{10.5281/zenodo.21455181}.
+
+Version 3.0.1 is a terminology and exposition clarification only. It does not replace, retag, or silently rewrite the v3.0.0 archive. Its repository tag and version-specific Zenodo DOI should identify the clarification separately once published.
+
+\subsection{Notation and Conventions}
+Unless explicitly stated otherwise, scalars are elements of $\mathbb C$, all vector spaces appearing in the construction are finite-dimensional, and $\dim(V)$ denotes the algebraic dimension of a vector space $V$. The symbol $\otimes$ denotes the tensor product over $\mathbb C$ unless another scalar field is explicitly declared. Operators act on the finite-dimensional spaces declared in the construction; the real Euclidean root-coordinate spaces used to realize root systems are identified explicitly when they occur.
+
+\paragraph{Terminology (Dimensions).}
+Throughout this document, \emph{dimension} refers exclusively to finite-dimensional vector-space dimension, including tensor-product spaces, unless another mathematical meaning is explicitly declared. It does not refer to physical spacetime dimensions. References to the rank or dimensionality of algebraic structures such as $D_4$, $E_8$, root spaces, selected-state spaces, or tensor-product spaces are purely mathematical unless an additional physical interpretation is explicitly introduced. No physical interpretation is to be inferred from dimension, rank, state count, or tensor-product notation alone.
+
+\section{Epistemic layers and interpretation rules}
+To prevent reproducibility from being confused with mathematical necessity or empirical validation, statements in this specification belong to the following layers.
+
+\begin{longtable}{@{}p{36mm}p{114mm}@{}}
+\toprule
+Layer & Meaning in this specification \\
+\midrule
+\endfirsthead
+\toprule
+Layer & Meaning in this specification \\
+\midrule
+\endhead
+Preserved exact base & The 240 standard E8 roots, embedded order-three D4 triality, v2 orbit decomposition, selected 101 root labels, selected adjacency, and preserved v2 receipts. \\
+Exact v3 consequence & Tensor dimension, tensor-index bijection, CRT traversal, phase closure, order 303, Cartesian graph-product counts, degrees, and connectivity. \\
+Authored protocol & Promotion of the optional product extension, selector-order shift $R_{101}$, starting address $(0,0)$, event field names, external fibre semantics, and receiver profiles. \\
+Symbolic receiver & JSON, CSV, graph/atlas JSON, and MIDI serializations. These are deterministic encodings, not physical spectra or unique observations. \\
+Numerical auxiliary & Floating eigensolvers, spectral ratios, frame-bin calibration, graph surrogates, or rendered laboratory experiments. None enters v3 canonical identity. \\
+Empirical/perceptual & Any listener study, measured system, physical qutrit, acoustic apparatus, or falsifiable physical interpretation. No such validation is claimed. \\
+\bottomrule
+\end{longtable}
+
+``Canonical'' means canonical within the named v3 contract. A changed base selector, fibre action, event ordering, source-file identity set, or receiver mapping defines a different named profile and requires new receipts.
+
+\section{Preserved ETQ-101 v2 base}
+\subsection{Exact E8 root realization}
+Use the standard 240-root coordinate realization in the eight-dimensional Euclidean root space $\mathbb R^8$ \cite{bourbaki2002lie,baez2002octonions,dechant2016e8}:
+\begin{equation}
+\mathcal R_{E_8}=
+\{\pm e_i\pm e_j:i<j\}
+\cup
+\left\{\frac12(s_1,\ldots,s_8):s_i\in\{-1,1\},\;\#\{i:s_i=-1\}\text{ even}\right\}.
+\end{equation}
+The first family contributes 112 roots and the second contributes 128. Every root has squared norm two. The implementation stores doubled integer coordinates $\widetilde r=2r$, so
+\begin{equation}
+\widetilde r\cdot\widetilde r=8,
+\qquad
+r_a\cdot r_b=1\iff \widetilde r_a\cdot\widetilde r_b=4.
+\end{equation}
+Root identity, sorting, triality, and adjacency therefore use exact integers. The numeral 8 here is the rank and Euclidean root-space dimension of $E_8$; it is not a spacetime dimension.
+
+\subsection{Embedded D4 triality}
+On each four-coordinate block define
+\begin{equation}
+A=\frac12
+\begin{pmatrix}
+1&1&1&1\\
+1&1&-1&-1\\
+1&-1&1&-1\\
+-1&1&1&-1
+\end{pmatrix},
+\qquad
+\tau=A\oplus A.
+\end{equation}
+Each block realizes the rank-4 $D_4$ root-space action. The numeral 4 in $D_4$ refers to algebraic rank, equivalently the dimension of its Euclidean root space, and not to four-dimensional spacetime. Direct arithmetic gives $A^{\mathsf T}A=I_4$ and $A^3=I_4$. Exact enumeration verifies
+\begin{equation}
+\tau\mathcal R_{E_8}=\mathcal R_{E_8},
+\qquad
+\tau^3=I_8.
+\end{equation}
+The induced root permutation has 12 fixed roots and 76 three-cycles:
+\begin{equation}
+12+76\cdot3=240.
+\end{equation}
+This is D4/Spin(8) triality embedded in an E8-derived construction, not an outer triality intrinsic to E8 itself \cite{baez2002octonions}.
+
+\subsection{Preserved selector and 101-state base}
+The v2 selector sorts doubled coordinate vectors lexicographically, retains the first two fixed roots, takes the lexicographically least representative of each non-fixed orbit, and retains the first 33 complete orbits. In the preserved ordering,
+\begin{equation}
+S_{101}=\{s_0,s_1\}\cup\bigcup_{m=0}^{32}\{r_m,\tau r_m,\tau^2r_m\}.
+\end{equation}
+The root coordinates label an abstract orthonormal graph basis:
+\begin{equation}
+\Hone=\ell^2(S_{101})
+=\mathbb C^2\oplus(\mathbb C^{33}\otimes\mathbb C^3),
+\qquad
+\dim\Hone=2+33\cdot3=101.
+\end{equation}
+Thus the ETQ-101 selected basis contains 101 states. This state-space dimension is distinct from the eight-dimensional Euclidean coordinates used to label its selected roots. It is not a 101-dimensional representation of the E8 Lie algebra; standard representation tables provide the relevant comparison \cite{feger2015lieart}.
+
+\subsection{Preserved selected-root graph}
+For $r_a,r_b\in S_{101}$ define
+\begin{equation}
+(W_{101})_{ab}=\begin{cases}
+1,&a\ne b\text{ and }r_a\cdot r_b=1,\\
+0,&\text{otherwise.}
+\end{cases}
+\end{equation}
+The exact selected graph $\Gone$ has 101 vertices, 1,687 edges, degree sum 3,374, degree range 22--55, and one connected component. The exact centered degree-potential numerators are
+\begin{equation}
+\nu_j=101d_j-3374,
+\qquad
+\max_j|\nu_j|=2181,
+\qquad
+\sum_j\nu_j=0.
+\end{equation}
+Version 3 preserves the labelled degree sequence and these v2 receipts. It does not replace the graph with a 101-cycle or sort degrees independently of their vertex labels.
+
+\section{The 303-state tensor extension}
+\begin{definition}[ETQ-303 state space]
+The v3 state space is
+\begin{equation}
+\boxed{\Hthree=\Hone\otimes\mathbb C^3.}
+\end{equation}
+Its canonical basis consists of vectors $|j,a\rangle$ with $j\in\Zone$ indexing a preserved v2 site and $a\in\Zthree$ indexing an independent external fibre.
+\end{definition}
+
+\begin{proposition}[Dimension]
+The algebraic dimension of the ETQ-303 state space is
+\begin{align}
+\dim(\Hthree)
+&=\dim(\Hone)\dim(\mathbb C^3)\\
+&=101\times3\\
+&=303.
+\end{align}
+\end{proposition}
+\begin{proof}
+The dimension of a finite tensor product is the product of dimensions.
+\end{proof}
+
+Thus 303 is both the dimension of the finite event/state vector space and the number of basis-indexed states in the exact construction. It is not a claim of 303 physical dimensions. The factor $\mathbb C^3$ is the declared independent three-state, or qutrit-like, tensor factor used by the protocol; the tensor product introduces no additional physical ontology.
+
+The 303 vectors are root-indexed tensor states. There remain exactly 101 distinct selected E8 root labels. The external fibre is not the pre-existing internal triality label on the 99-dimensional non-fixed sector. The two fixed singlets have no internal triality label, but each fixed singlet has all three external fibre states.
+
+\subsection{Canonical tensor index}
+Define
+\begin{equation}
+\operatorname{tidx}(j,a)=3j+a,
+\qquad
+j\in\{0,\ldots,100\},\quad a\in\{0,1,2\}.
+\end{equation}
+The inverse is
+\begin{equation}
+j=\left\lfloor\frac{\operatorname{tidx}}3\right\rfloor,
+\qquad
+a=\operatorname{tidx}\bmod3.
+\end{equation}
+Thus $\operatorname{tidx}$ is an exact bijection between $\Zone\times\Zthree$ and $\{0,\ldots,302\}$.
+
+\section{Exact monomial step and Gaussian phases}
+Let
+\begin{equation}
+D_3=\operatorname{diag}(1,-2,1),
+\qquad
+X_3|a\rangle=|a+1\bmod3\rangle,
+\end{equation}
+and define the local twisted step
+\begin{equation}
+F_3=X_3\exp(-i\pi D_3/2).
+\end{equation}
+The generalized shift belongs to the standard finite Weyl/Pauli construction \cite{schwinger1960unitary}. Let $R_{101}|j\rangle=|j+1\bmod101\rangle$ be the declared selector-order cyclic shift. Version 3 defines
+\begin{equation}
+\boxed{\Fthree=R_{101}\otimes F_3.}
+\end{equation}
+
+At the basis-support level,
+\begin{equation}
+(j,a)\longmapsto(j+1\bmod101,\ a+1\bmod3).
+\end{equation}
+The phase multiplier applied at fibre label $a$ is
+\begin{equation}
+\exp(-i\pi d_a/2)=i^{g_a},
+\qquad
+(d_0,d_1,d_2)=(1,-2,1),
+\end{equation}
+with the exact table
+\begin{center}
+\begin{tabular}{@{}rrrr@{}}
+\toprule
+$a$ & $d_a$ & $g_a\bmod4$ & $i^{g_a}$ \\
+\midrule
+0 & 1 & 3 & $-i$ \\
+1 & $-2$ & 2 & $-1$ \\
+2 & 1 & 3 & $-i$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The aligned phase-symbol array is therefore $(-i,-1,-i)$. The separate four-value lookup table is $(1,i,-1,-i)$. Conflating those arrays would be a contract error.
+
+\begin{lemma}[Three-step phase closure]
+The accumulated local phase over one fibre cycle is one.
+\end{lemma}
+\begin{proof}
+The exponent sum is
+\begin{equation}
+3+2+3=8\equiv0\pmod4,
+\end{equation}
+so the product is $i^8=1$.
+\end{proof}
+
+\section{Exact order 303}
+\begin{theorem}[Order of the declared monomial step]
+The operator $\Fthree$ has exact order 303:
+\begin{equation}
+\Fthree^{303}=I_{303},
+\qquad
+\Fthree^n\ne I_{303}\quad(1\le n<303).
+\end{equation}
+\end{theorem}
+\begin{proof}
+If the support action returns to its initial address after $n$ steps, then
+\begin{equation}
+n\equiv0\pmod{101},
+\qquad
+n\equiv0\pmod3.
+\end{equation}
+Because $\gcd(101,3)=1$, the least positive solution is
+$\operatorname{lcm}(101,3)=303$. At 303 steps the fibre cycle occurs 101 times. Each three-step fibre cycle has phase one by the preceding lemma, so the accumulated phase is also one. Therefore the complete monomial operator closes at 303 and at no smaller positive power.
+\end{proof}
+
+The implementation additionally exhausts every positive power below 303 and checks 303-step closure from every basis state. Exhaustive finite verification is a regression receipt; the arithmetic proof is the mathematical reason.
+
+\section{Canonical event ordering and CRT inverse}
+Starting at $(0,0)$, define event $n\in\{0,\ldots,302\}$ by
+\begin{equation}
+j(n)=n\bmod101,
+\qquad
+a(n)=n\bmod3.
+\end{equation}
+
+\begin{theorem}[Event-address bijection]
+The map $n\mapsto(j(n),a(n))$ is a bijection from $\mathbb Z_{303}$ to $\Zone\times\Zthree$.
+\end{theorem}
+\begin{proof}
+This is the Chinese remainder isomorphism because 101 and 3 are coprime. An explicit inverse is
+\begin{equation}
+n=j+101k,
+\qquad
+k=2\bigl(a-(j\bmod3)\bigr)\bmod3,
+\end{equation}
+where 2 is the inverse of $101\equiv2\pmod3$.
+\end{proof}
+
+Each canonical event records:
+\begin{itemize}
+\item sequence index $n$;
+\item tensor index $3j+a$;
+\item base site index $j$;
+\item external fibre label $a$;
+\item exact transition exponent and Gaussian-unit symbol;
+\item next sequence index $(n+1)\bmod303$; and
+\item next tensor index.
+\end{itemize}
+The 303-entry event table in the accompanying workbook is a complete finite receipt of this bijection.
+
+\section{Site registry and preserved root identity}
+The canonical event document embeds a 101-entry site registry. Each entry contains:
+\begin{itemize}
+\item exact doubled E8 root coordinates;
+\item preserved v2 basis class: fixed singlet or triality-orbit state;
+\item fixed index or orbit index where applicable;
+\item internal triality label and authored low/mid/high display lane where applicable;
+\item exact selected-graph degree;
+\item lifted degree $d_j+2$;
+\item exact degree-potential numerator $101d_j-3374$ and denominator 2181; and
+\item preserved v2 symbolic MIDI note.
+\end{itemize}
+The selected basis contains 41 roots from the integer-coordinate family and 60 from the half-integer family. These are exact consequences of the preserved lexicographic selector, not E8 invariants independent of that selector.
+
+\section{Cartesian graph lift}
+\begin{definition}[Lifted graph]
+Let $C_3$ be the three-vertex cycle. The v3 graph context is
+\begin{equation}
+\boxed{\Gthree=\Gone\square C_3.}
+\end{equation}
+Its vertices are pairs $(j,a)$. Horizontal edges copy every base edge at fixed fibre label; vertical edges connect the three fibre labels at fixed site.
+\end{definition}
+
+Cartesian graph products and their matrix identities are standard \cite{hammack2011product}. With $A_1,L_1$ denoting the adjacency and Laplacian of $\Gone$, and $A_C,L_C$ those of $C_3$,
+\begin{align}
+A_3&=A_1\otimes I_3+I_{101}\otimes A_C,\\
+L_3&=L_1\otimes I_3+I_{101}\otimes L_C.
+\end{align}
+
+\begin{proposition}[Exact graph fixtures]
+The lifted graph has
+\begin{align}
+|V(\Gthree)|&=101\cdot3=303,\\
+|E(\Gthree)|&=3\cdot1687+101\cdot3=5364.
+\end{align}
+For a base vertex of degree $d_j$, every lifted copy has degree $d_j+2$. Consequently the degree range is 24--57 and the degree sum is $2\cdot5364=10728$.
+\end{proposition}
+
+\begin{proof}
+A Cartesian product contains one copy of every $\Gone$ edge in each of three fibre layers and one copy of every $C_3$ edge at each of 101 base vertices. The degree formula for Cartesian products is $\deg_{G\square H}(g,h)=\deg_G(g)+\deg_H(h)$; every $C_3$ vertex has degree two.
+\end{proof}
+
+Since both factors are connected, $\Gthree$ is connected. Its exact degree distribution is:
+\begin{center}
+\begin{tabular}{@{}rrrrrrrrrrrr@{}}
+\toprule
+Degree & 24&25&32&34&35&36&42&44&45&46&57\\
+Count  & 36&18&36&72&36&18&18&36&18&9&6\\
+\bottomrule
+\end{tabular}
+\end{center}
+The data workbook also records the exact finite breadth-first-search receipt $\operatorname{diam}(\Gone)=3$ and hence $\operatorname{diam}(\Gthree)=4$. These diameter values are supplementary exact receipts, not canonical contract identity fields.
+
+\subsection{Structural spectral consequence}
+If $\lambda_i$ are the Laplacian eigenvalues of $\Gone$, then the Laplacian spectrum of $\Gthree$ is the multiset
+\begin{equation}
+\{\lambda_i,\lambda_i+3,\lambda_i+3: i=1,\ldots,101\},
+\end{equation}
+because $\operatorname{spec}(L_{C_3})=\{0,3,3\}$. This is an exact symbolic graph-product identity. No floating eigensolver output is used as a selector, contract field, or canonical receipt. Graph signal processing may be applied in separately qualified analyses \cite{shuman2013gsp,pirondini2016surrogate}.
+
+\section{Canonical event document}
+The canonical mathematical output is the event document, not a MIDI file and not audio. Its top-level content comprises:
+\begin{itemize}
+\item model and profile identity;
+\item immutable v2 lineage;
+\item tensor state-space semantics;
+\item exact step and phase arrays;
+\item exact graph context;
+\item the 101-entry site registry;
+\item the 303 canonical events; and
+\item the claim boundary.
+\end{itemize}
+
+The event document is committed by the domain-separated hash
+\begin{equation}
+\hash{d0ab60df11084a230e641d737ec22b2b2ca7d3a3ba5b8759ba669ac4d5254dc0}.
+\end{equation}
+The event-array-only receipt is
+\begin{equation}
+\hash{24190612457279577625c0dd2dd4df45bb41c820ee221b31a80f70fde165e3dc}.
+\end{equation}
+These hashes establish identity within the stated serialization and domain rules; they do not establish authorship, scientific validity, or physical realization.
+
+\section{Receiver artifacts and root output policy}
+All reference receivers consume the same committed event document. Parameter-mapping discipline requires source fields, target fields, scaling, timing, and receiver assumptions to remain explicit \cite{grond2011parameter}.
+
+\begin{longtable}{@{}p{34mm}p{48mm}p{67mm}@{}}
+\toprule
+Artifact & Receiver profile & Exact role \\
+\midrule
+\endfirsthead
+\toprule
+Artifact & Receiver profile & Exact role \\
+\midrule
+\endhead
+\texttt{events.json} & \texttt{canonical-json-v1} & Canonical core event document and primary event commitment. \\
+\texttt{events.csv} & \texttt{csv-table-v1} & Lossless fixed-column event table suitable for audit and spreadsheet import. \\
+\texttt{graph.json} & \path{cartesian-graph-json-v1} & Exact vertices, degrees, and 5,364 labelled edges of $\Gone\square C_3$. \\
+\texttt{event-atlas.json} & \texttt{event-atlas-json-v1} & Authored integer-grid display coordinates and labels; not a unique geometric embedding. \\
+\texttt{events.mid} & \path{symbolic-midi-channel-v1} & External fibre mapped to zero-based MIDI channel and preserved v2 symbolic note mapped to note number. \\
+\bottomrule
+\end{longtable}
+
+The root workflow may persist only \texttt{.json}, \texttt{.csv}, and \texttt{.mid} artifacts. It emits no GraphML, SVG, NDJSON, PCM, WAV, or other rendered-audio format. External applications may convert committed JSON to OSC, DMX, SVG, GraphML, haptics, or other receivers; such transforms are separately versioned observation profiles, not canonical root artifacts.
+
+The MIDI profile uses one integer tick per event, velocity 64, and no tempo meta-event. Therefore MIDI timing in seconds and all acoustic realization remain receiver-defined. Low/mid/high and fibre/channel choices are authored symbolic conventions, not intrinsic energy levels or E8-selected acoustics.
+
+\section{Canonical serialization and domain-separated hashes}
+Identity-bearing JSON follows these rules:
+\begin{enumerate}
+\item permitted values are null, booleans, strings, arrays, plain objects, and safe integers;
+\item object keys are sorted recursively in lexicographic order;
+\item array order is preserved;
+\item files use UTF-8, no byte-order mark, and no trailing newline where canonical bytes define identity; and
+\item floating-point identity values are rejected.
+\end{enumerate}
+These rules narrow the implementation profile beyond general JSON syntax \cite{rfc8259}.
+
+Every semantic receipt uses SHA-256 \cite{nist2015sha} with domain separation
+\begin{equation}
+\operatorname{SHA256}(\operatorname{UTF8}(\text{domain})\,\|\,\texttt{0x00}\,\|\,\text{payload bytes}).
+\end{equation}
+Selected identity receipts are:
+
+\begin{longtable}{@{}p{58mm}p{91mm}@{}}
+\toprule
+Object & SHA-256 \\
+\midrule
+\endfirsthead
+\toprule
+Object & SHA-256 \\
+\midrule
+\endhead
+Preserved v2 selected basis & \hash{97cfd1f087745422fd66d3640c7b86c3209593c4b53741018c08a5e9cdb15f6f} \\
+Preserved v2 selected adjacency & \hash{29ae0af5b1090c9de30f1efc25789060fb1791eb175d2afcd6888847f7fe6324} \\
+Preserved v2 degree-potential numerators & \hash{517b9b86e07a1788cabc446be93e573d21719af3c1e0eeaedae00b81689c4468} \\
+V3 site registry & \hash{482ff966b77f02cc28b9d4d0fa4bcfc5e355af97dd35dfebafce4b28637cb05d} \\
+V3 lifted edge list & \hash{7c2c820468e3492932ea2d97331114a0c9644d28f9048b864bc81abca84202cf} \\
+V3 event array & \hash{24190612457279577625c0dd2dd4df45bb41c820ee221b31a80f70fde165e3dc} \\
+V3 event document & \hash{d0ab60df11084a230e641d737ec22b2b2ca7d3a3ba5b8759ba669ac4d5254dc0} \\
+V3 contract payload & \hash{7f0330e5c7182fa80acdb09d9bc240c273e78fa9d9ac73f95e58ac9e488d9890} \\
+V3 implementation source bundle & \hash{2b99e929ba604e44ab9391d4a04ac3314188b13d0c902d603829f13639cc10b6} \\
+\bottomrule
+\end{longtable}
+
+\section{Implementation identity and acyclic provenance}
+Semantic version 3.0.0 alone is insufficient to distinguish two source revisions that produce different artifacts. The contract therefore records a normalized implementation identity named
+\texttt{etq-303-node-reference-v1}. The source set is:
+
+\begin{longtable}{@{}p{66mm}r p{71mm}@{}}
+\toprule
+Source file & Bytes & SHA-256 \\
+\midrule
+\endfirsthead
+\toprule
+Source file & Bytes & SHA-256 \\
+\midrule
+\endhead
+\texttt{src/etq-v3-core.mjs} & 15,443 & \hash{1ed950cba76551a0f01ca0f5048606d901623e47c689a88460cb8620f6c88c9c} \\
+\texttt{src/etq-v3-canonical.mjs} & 2,049 & \hash{fe0af75423c0ac64267a4e4779cdea079c5877bf77bb9caaf62a9b074ed5b2de} \\
+\texttt{src/etq-v3-receivers.mjs} & 7,373 & \hash{eb901643c6cc47b30484164e504d5d327a4cfc86e1c185ca1e059b27b5d85eca} \\
+\texttt{src/etq-v3-artifacts.mjs} & 14,600 & \hash{3253113d0bf80f72f036910b35025013abc64ca8cce92322b0cf2d36bdd0923d} \\
+\texttt{scripts/build-v3-artifacts.mjs} & 3,086 & \hash{b7d9222741ad6029f826745977210042f87c0ed0561d4ad3c6a9a2987a9734a2} \\
+\bottomrule
+\end{longtable}
+
+Files are read as UTF-8 text, with CRLF and CR normalized to LF before per-file hashing and ordered source-bundle commitment. The same implementation identity appears in the contract, observation receipt, and manifest lineage.
+
+The provenance chain is deliberately acyclic:
+\begin{lstlisting}
+preserved v2 fixtures + v3 implementation identity
+  -> site registry + lifted edges + 303 events
+  -> canonical event-document commitment
+  -> deterministic receiver bytes
+  -> observation receipt
+  -> manifest core + manifest-core receipt
+\end{lstlisting}
+No document claims an ordinary hash of final bytes that already contain that same hash. The documentation-only v3.0.1 release deliberately leaves the v3.0.0 implementation identity and all deterministic receipts unchanged. The receipt architecture is methodologically informed by the separately archived receipt-bound observation protocols \cite{slade_collective_v10_2026,slade_collective_v12_2026}; those records are method references, not mathematical dependencies of ETQ-303.
+
+\section{Build safety}
+The build command writes only to a dedicated subdirectory beneath \texttt{dist/}. A custom path outside \texttt{dist/}, the \texttt{dist/} root itself, or an existing non-empty directory is rejected. The builder does not recursively delete a caller-selected path and uses exclusive file creation. These are operational safety properties, not mathematical consequences of E8, but they are part of the reproducible export contract.
+
+The generated bundle places \texttt{contract.json} beside \texttt{contract.schema.json}; the generated contract therefore uses \texttt{./contract.schema.json}. The committed repository fixture uses \texttt{../spec/etq-303.v3.schema.json}. The \texttt{\$schema} location is excluded from the semantic contract payload hash, so a location-correct bundle reference does not change the mathematical contract identity.
+
+\section{Breaking change from v2}
+Version 3.0.0 was a semantic expansion, not a silent rewrite of v2. Version 3.0.1 introduces no further semantic or protocol change.
+
+\begin{longtable}{@{}p{37mm}p{52mm}p{60mm}@{}}
+\toprule
+Topic & ETQ-101 v2.0.0 & ETQ-303 v3.0.0 \\
+\midrule
+\endfirsthead
+\toprule
+Topic & ETQ-101 v2.0.0 & ETQ-303 v3.0.0 \\
+\midrule
+\endhead
+Forward state space & 101 root-indexed graph states & $101\times3=303$ root-indexed tensor states \\
+Ternary structure & 33 internal triality/qutrit blocks plus two singlets & Independent external fibre on every one of 101 sites; internal labels remain separate \\
+Canonical observation & 101-entry symbolic MIDI codebook & Receiver-neutral 303-entry event document \\
+MIDI & Implemented symbolic codebook & One optional deterministic receiver using channel plus preserved v2 note \\
+Graph context & Selected graph $\Gone$ & Exact Cartesian lift $\Gone\square C_3$ \\
+Order 303 & Optional appendix extension & Exact named monomial step with proved order 303 \\
+Provenance & Contract and fixture receipts & Contract, implementation identity, event commitment, receiver receipts, manifest \\
+Acoustic output & Excluded & Still excluded \\
+\bottomrule
+\end{longtable}
+
+The v1 and v2 contracts remain immutable historical identities. A v3 citation must not be substituted for a v2-specific result, and vice versa.
+
+\section{Auxiliary Tanner and spectral modules}
+The repository retains Tanner-graph spectral tuning tools, grouped eigenspace projectors, non-backtracking operators, and nominal frame-bin calibration experiments. Their graph ratios and numerical receipts may support diagnostics, external receivers, or future conditional tests, but they do not define canonical v3 event identity. In particular:
+\begin{itemize}
+\item no floating eigenvalue or eigenvector enters the v3 contract;
+\item no frame-bin calibration supplies a root-model clock or hertz scale;
+\item no Tanner graph replaces the selected E8-root graph;
+\item no golden-ratio occurrence in a test graph restores a golden modulation profile; and
+\item no auxiliary numerical result validates a physical E8, QEC, or acoustic system.
+\end{itemize}
+
+\section{Reproducibility and verification}
+A conforming source checkout requires Node.js 20 or later and runs:
+\begin{lstlisting}[language=bash]
+npm test
+npm run verify
+npm run build:v3
+\end{lstlisting}
+The test and verification chain checks:
+\begin{enumerate}
+\item 240 unique E8 roots with doubled squared norm eight;
+\item order-three, orthogonal, root-preserving embedded triality;
+\item orbit decomposition $12+76(3)=240$;
+\item preserved selector size and v2 basis, adjacency, and degree-potential receipts;
+\item tensor-index and inverse bijection on 303 states;
+\item CRT event traversal and inverse;
+\item phase exponents $(3,2,3)$ and aligned symbols $(-i,-1,-i)$;
+\item no positive operator power below 303 is the identity;
+\item 303-step closure from all 303 basis states;
+\item exact graph-product vertices, edges, degree sequence, and connectivity;
+\item event-document, site-registry, event-array, and edge-list hashes;
+\item allowlisted root artifact extensions only;
+\item normalized implementation identity;
+\item generated bundle schema portability;
+\item unsafe output-path rejection and exclusive writes;
+\item acyclic receipt and manifest construction; and
+\item continued verification of the preserved v2 and v1 contracts.
+\end{enumerate}
+
+\section{Zenodo v3.0.1 deposit package}
+The documentation-only v3.0.1 publication update contains:
+\begin{itemize}
+\item \texttt{ETQ-303\_formal\_model\_v3.0.1.pdf};
+\item \texttt{ETQ-303\_formal\_model\_v3.0.1.tex};
+\item \texttt{ETQ-303\_references.bib};
+\item a regenerated \texttt{UPLOAD\_SHA256SUMS.txt}; and
+\item, if a convenience bundle is used, \texttt{ETQ-303\_Zenodo\_Submission\_v3.0.1.zip}.
+\end{itemize}
+
+Retain the unchanged data artifacts under their original names:
+\begin{itemize}
+\item \path{ETQ-303_data_table_v3.0.0.xlsx}; and
+\item \path{ETQ-303_parameter_table_v3.0.0.csv}.
+\end{itemize}
+They describe the unchanged v3.0.0 protocol identity and deterministic data. Use Zenodo's \emph{New version} workflow from the v3.0.0 record, preserve DOI \href{https://doi.org/10.5281/zenodo.21455181}{10.5281/zenodo.21455181} as the immutable original release, and allow Zenodo to mint a distinct version-specific DOI for v3.0.1. The checksum file intentionally does not contain its own checksum, avoiding a circular self-hash.
+
+The spreadsheet contains the 101-entry site registry, 303 events, 5,364 lifted edges, parameter and claim tables, degree distributions, formulas that verify key counts, and the implementation/hash receipts. The CSV is the compact reviewer-facing parameter table.
+
+\section{Claim matrix and reviewer-facing limits}
+\begin{longtable}{@{}p{31mm}p{58mm}p{59mm}@{}}
+\toprule
+Topic & Supported wording & Do not claim \\
+\midrule
+\endfirsthead
+\toprule
+Topic & Supported wording & Do not claim \\
+\midrule
+\endhead
+E8 roots & 101 preserved selected E8-root labels, each paired with three external fibre states & 303 distinct E8 roots \\
+State space & $\Hthree=\Hone\otimes\mathbb C^3$ & A 303-dimensional representation of the E8 Lie algebra \\
+Dimension terminology & Finite-dimensional algebraic vector spaces; $101\times3=303$ basis-indexed states & Physical spacetime dimensions or an implied physical ontology \\
+Ternary labels & Internal triality and external fibre are separate fields & The two labels are the same physical degree of freedom \\
+Exact step & Finite monomial action with exponents $(3,2,3)$ and symbols $(-i,-1,-i)$ & A measured physical evolution \\
+Order 303 & Exact order of the declared product step & Periodicity of an arbitrary generator, receiver, or audio renderer \\
+Graph & Exact Cartesian product $\Gone\square C_3$ & The event sequence follows graph edges \\
+Receivers & Deterministic JSON, CSV, and MIDI serializations & Receiver choices are forced by E8 \\
+Graph/atlas JSON & Exact graph data and authored integer-grid coordinates & A unique natural embedding of E8 geometry \\
+MIDI & Symbolic channel/note code & Canonical pitch, tempo, loudness, or hertz \\
+Hashes & Identity under stated serialization domains & Proof of authorship, validity, or physical truth \\
+Implementation identity & Normalized hash of named source files & Self-authenticating authorship proof \\
+Receipt protocol & Acyclic provenance binding & Quantum measurement, collapse, or observer causation \\
+Tanner numerics & Optional auxiliary numerical tools & Canonical v3 identity or exact spectral proof \\
+Audio & Outside the v3 root contract & WAV or PCM as a canonical ETQ-303 artifact \\
+\bottomrule
+\end{longtable}
+
+\section{Conclusion}
+ETQ-303 v3.0.1 clarifies the exposition of the bounded, exact, and reproducible finite event protocol first released as v3.0.0. The central result is not ``303 E8 roots'' or 303 physical dimensions, but a 303-state tensor basis over 101 preserved root labels, equipped with an exact order-303 monomial step and an exact Cartesian graph context. The canonical artifact is the event document; MIDI is one symbolic receiver among several deterministic views.
+
+The formal contribution is the separation of preserved mathematics, exact consequences, authored protocol choices, receiver encodings, numerical auxiliaries, and excluded physical claims. This separation makes the model independently reproducible without converting designed mappings into claims of natural necessity.
+
+\appendix
+\section{Canonical parameter summary}
+\begin{longtable}{@{}p{48mm}p{48mm}p{52mm}@{}}
+\toprule
+Parameter or fixture & Canonical value & Origin/status \\
+\midrule
+\endfirsthead
+\toprule
+Parameter or fixture & Canonical value & Origin/status \\
+\midrule
+\endhead
+Model/profile & ETQ-303@3.0.0 / \path{full-qutrit-event-protocol-v1} & Named release identity \\
+Documentation version & 3.0.1 & Terminology and exposition clarification only \\
+Ambient roots & 240 & Preserved exact E8 realization \\
+V2 orbit decomposition & 12 fixed; 76 three-cycles & Exact enumeration \\
+Preserved selector & first 2 fixed; first 33 complete orbits & Authored lexicographic rule \\
+Base dimension & 101 & Exact after selector \\
+External fibre & 3 & Authored v3 extension \\
+Total dimension & 303 & Exact tensor dimension \\
+Tensor index & $3j+a$ & Authored canonical ordering; exact bijection \\
+SCL stencil & $(1,-2,1)$ & Preserved exact diagonal \\
+Phase exponents & $(3,2,3)$ & Exact modulo-four consequence \\
+Phase symbols & $(-i,-1,-i)$ & Exact lookup \\
+Support action & $(j,a)\mapsto(j+1,a+1)$ modulo $(101,3)$ & Exact finite permutation \\
+Operator order & 303 & Exact support and phase proof \\
+Event address & $(n\bmod101,n\bmod3)$ & Exact CRT bijection \\
+Base graph & 101 vertices; 1,687 edges; connected & Preserved v2 fixture \\
+Lifted graph & 303 vertices; 5,364 edges; connected & Exact Cartesian product \\
+Lifted degree range & 24--57 & Exact $d_j+2$ rule \\
+Allowed root outputs & \texttt{.json}, \texttt{.csv}, \texttt{.mid} & Root output policy \\
+Canonical event artifact & \texttt{events.json} & Authored receiver-neutral commitment \\
+Absolute frequency & null / undefined & Explicitly excluded \\
+Rendered audio & disabled in root workflow & Explicitly excluded \\
+Implementation bundle & \hash{2b99e929ba604e44ab9391d4a04ac3314188b13d0c902d603829f13639cc10b6} & Normalized source identity \\
+\bottomrule
+\end{longtable}
+
+\section{Required deterministic checks}
+A conforming independent implementation should check all of the following:
+\begin{enumerate}
+\item exact 240-root E8 generation and doubled norm eight;
+\item exact embedded triality and orbit decomposition;
+\item preserved 101-label selector and ordering;
+\item preserved v2 fixture hashes;
+\item 303 tensor addresses and index inverse;
+\item 303 CRT event addresses and inverse;
+\item aligned phase exponents and symbols;
+\item exact order 303 and closure on all basis states;
+\item exact site-registry labels and degree-potential numerators;
+\item exact 5,364-edge Cartesian lift and degree distribution;
+\item connectedness and zero duplicate edges;
+\item canonical event document and domain-separated hashes;
+\item allowlisted artifact extensions only;
+\item normalized source implementation identity;
+\item portable generated schema reference;
+\item safe output-path behavior; and
+\item independent v2 and legacy verification.
+\end{enumerate}
+
+\section{Optional extension boundaries}
+External receivers may map the committed event document to OSC, DMX, graphics, haptics, robotics, graph-signal arrays, or rendered sound. Each extension must declare its complete mapping, units, timing, numeric ABI, runtime requirements, and receipts. Such a receiver is not part of ETQ-303 v3 canonical identity unless introduced by a new named profile.
+
+An open-system or continuous generator may also be declared separately, but it must not be inferred from the order-303 monomial step. In particular, the exact identity $\Fthree^{303}=I$ does not imply periodicity for an arbitrary Hamiltonian, matrix exponential, Floquet composition, interpolation, or audio renderer.
+
+\printbibliography[title={References}]
+
+\end{document}

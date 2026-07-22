@@ -1,4 +1,7 @@
-# ETQ-303 v3.0.0 Claim Boundaries
+# ETQ-303 v3.0.1 Claim Boundaries
+
+Version 3.0.1 clarifies terminology only. The exact protocol, canonical v3.0.0
+contract, deterministic artifacts, and scientific claim boundary are unchanged.
 
 ## Supported wording
 
@@ -12,6 +15,8 @@
 
 | Topic | Supported | Do not claim |
 |---|---|---|
+| Dimension terminology | Finite-dimensional algebraic vector-space dimension; `dim(H_303) = dim(H_101) dim(C^3) = 101*3 = 303` | Physical spacetime dimensions or physical ontology inferred from a tensor product |
+| E8 and D4 spaces | `E8` in an 8-dimensional Euclidean root space; `D4` of algebraic rank 4 | Eight- or four-dimensional spacetime models |
 | E8 roots | 101 preserved selected E8 root labels, each paired with three external fibre states | 303 distinct E8 roots |
 | State space | `H_303 = H_101 tensor C^3` | 303-dimensional representation of the E8 Lie algebra |
 | Ternary labels | internal triality label and external fibre label are separate fields | the two labels are the same physical degree of freedom |
