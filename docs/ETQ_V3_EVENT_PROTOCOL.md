@@ -1,14 +1,35 @@
-# ETQ-303 v3.0.0 Exact Event Protocol
+# ETQ-303 v3 Exact Event Protocol
+
+> **Documentation version 3.0.1.** This is a terminology and exposition
+> clarification of the protocol first archived as v3.0.0. No mathematical
+> construction, event behavior, ordering, fixture, hash, or scientific claim
+> changed.
 
 ## 1. Scope and normative status
 
-ETQ-303 v3.0.0 is an exact finite extension of the released ETQ-101 v2.0.0
-selected-root model. It promotes the optional product space from the v2 formal
-specification into a separately named event protocol:
+ETQ-303 v3.0.1 documents the exact finite extension of the released ETQ-101
+v2.0.0 selected-root model first published as ETQ-303 v3.0.0. The original
+release promotes the optional product space from the v2 formal specification
+into a separately named event protocol:
 
 \[
 \mathcal H_{303}=\mathcal H_{101}\otimes\mathbb C^3.
 \]
+
+Because both factors are finite-dimensional,
+
+\[
+\dim(\mathcal H_{303})
+=\dim(\mathcal H_{101})\dim(\mathbb C^3)
+=101\times3
+=303.
+\]
+
+Thus 303 is the algebraic dimension of the finite event/state vector space and
+also the number of basis-indexed states in the exact construction. It is not a
+claim about 303 physical dimensions. The `C^3` factor is the declared
+independent three-state, or qutrit-like, factor used by the protocol; the tensor
+product introduces no additional physical ontology.
 
 The v3 core is not an audio renderer. It defines a finite state registry, an
 exact monomial step, one complete 303-event traversal, an exact graph lift, and
@@ -19,6 +40,22 @@ The repository fixture is `examples/etq-303.v3.canonical.json`, with schema
 `spec/etq-303.v3.schema.json`. A generated bundle instead writes
 `contract.json` beside `contract.schema.json`, and the generated contract uses
 `./contract.schema.json` so it remains valid outside the repository layout.
+
+## Notation and Conventions
+
+Unless explicitly stated otherwise, scalars are elements of \(\mathbb C\), all
+vector spaces in the ETQ-303 construction are finite-dimensional, and
+\(\dim(V)\) denotes the algebraic dimension of the vector space \(V\). The
+symbol \(\otimes\) denotes the tensor product over \(\mathbb C\). Operators act
+on the finite-dimensional spaces declared by the construction; real Euclidean
+root-coordinate spaces are identified explicitly where used.
+
+Throughout this document, “dimension” means finite-dimensional vector-space
+dimension unless another mathematical meaning is explicitly declared. It does
+not mean physical spacetime dimension. References to the rank or dimensionality
+of \(D_4\), \(E_8\), root spaces, selected-state spaces, and tensor-product
+spaces are purely mathematical. No physical interpretation should be inferred
+unless one is explicitly introduced.
 
 ## 2. Preserved v2 base
 
@@ -36,6 +73,13 @@ V3 imports the v2 root generator and selector rather than modifying them. The
 101 selected E8 roots remain 101 distinct root labels. Tensoring each selected
 site with an independent three-state fibre creates 303 states; it does not
 create 303 distinct E8 roots.
+
+The ambient \(E_8\) root system is realized in the 8-dimensional Euclidean root
+space \(\mathbb R^8\). The embedded \(D_4\) subsystem has rank 4; the numeral 4
+describes algebraic rank/root-space dimension, not four-dimensional spacetime.
+The selected ETQ-101 graph-state basis contains 101 states, whereas its ETQ-303
+tensor extension contains 303 states. These counts are not coordinate-space or
+spacetime dimensions.
 
 ## 3. Two ternary labels that must not be conflated
 

@@ -1,12 +1,13 @@
 {
   "name": "@qsol-imc/etq-303",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": true,
   "type": "module",
   "scripts": {
     "test": "node --test",
     "test:tuning": "node --test tests/tanner-tuning-fork.test.mjs",
     "build:v3": "node scripts/build-v3-artifacts.mjs",
+    "build:paper": "bash scripts/build-etq303-paper.sh",
     "verify": "node scripts/verify-v3.mjs && node scripts/verify.mjs && node scripts/verify-legacy.mjs",
     "verify:v3": "node scripts/verify-v3.mjs",
     "verify:v2": "node scripts/verify.mjs",

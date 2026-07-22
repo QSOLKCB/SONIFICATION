@@ -1,5 +1,24 @@
 # Changelog
 
+## 3.0.1 — dimension terminology clarification
+
+- Clarified that every use of “dimension” in the ETQ-303 construction refers
+  to finite-dimensional algebraic vector spaces unless explicitly stated
+  otherwise; it does not refer to physical spacetime dimensions.
+- Added notation conventions for scalars in `C`, `dim(V)`, tensor products over
+  `C`, and operators on declared finite-dimensional spaces.
+- Added the explicit derivation
+  `dim(H_303) = dim(H_101) dim(C^3) = 101*3 = 303` and stated that 303 is both
+  the algebraic state-space dimension and the number of basis-indexed states.
+- Clarified that `E8` is represented in an 8-dimensional Euclidean root space,
+  `D4` has rank 4, ETQ-101 contains 101 selected basis states, and ETQ-303
+  contains 303 tensor states.
+- Added the canonical LaTeX source, rebuilt PDF, publication build instructions,
+  and regenerated publication-file checksums to the repository.
+- No mathematical behavior, state indexing, event generation, deterministic
+  output, protocol hash, test fixture, implementation identity, or scientific
+  claim was changed. The archived v3.0.0 release remains immutable.
+
 ## 3.0.0 — ETQ-303 exact event protocol
 
 - Promoted the optional `H_303 = H_101 tensor C^3` extension into a separately

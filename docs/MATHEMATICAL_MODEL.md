@@ -686,6 +686,16 @@ are conserved under the continuous unitary dynamics.
 
 ## 13. Full-qutrit tensor extension
 
+> **ETQ-303 v3.0.1 terminology note.** In this extension, scalars are in
+> \(\mathbb C\) unless explicitly stated otherwise, all vector spaces are
+> finite-dimensional, \(\dim(V)\) is algebraic vector-space dimension, and
+> \(\otimes\) is the tensor product over \(\mathbb C\). “Dimension” does not
+> mean physical spacetime dimension. The 8-dimensional \(E_8\) root space,
+> rank-4 \(D_4\) subsystem, 101-state selected basis, and 303-state tensor basis
+> are distinct mathematical notions and imply no physical ontology. This note
+> clarifies terminology only and does not revise the normative ETQ-101 v2
+> construction above.
+
 Because 101 is not divisible by three, a qutrit cannot be a tensor factor of the entire 101-dimensional compact space.
 
 If every one of the 101 modes must carry a full qutrit, use
@@ -697,6 +707,21 @@ $$
 \cong\mathbb C^{303}.
 }
 $$
+
+Consequently,
+
+$$
+\dim(\mathcal H_{303})
+=\dim(\mathcal H_{101})\dim(\mathbb C^3)
+=101\times3
+=303.
+$$
+
+Here 303 is the algebraic dimension of the finite event/state vector space and
+the number of its basis-indexed states, not a claim of 303 physical dimensions.
+The \(\mathbb C^3\) factor is the declared three-state, or qutrit-like, tensor
+factor used by the protocol; the tensor product introduces no additional
+physical ontology.
 
 The original 101-dimensional state is then the reduced state
 

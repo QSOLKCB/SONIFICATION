@@ -8,10 +8,13 @@ authors:
     affiliation: "QSOL-IMC"
 repository-code: "https://github.com/QSOLKCB/SONIFICATION"
 url: "https://github.com/QSOLKCB/SONIFICATION"
-version: 3.0.0
-date-released: 2026-07-20
+version: 3.0.1
+date-released: 2026-07-22
 license: MPL-2.0
 identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21455181"
+    description: "Archived ETQ-303 v3.0.0 original release"
   - type: doi
     value: "10.5281/zenodo.21432511"
     description: "Archived ETQ-101 v2.0.0 base release"
@@ -31,6 +34,6 @@ preferred-citation:
       given-names: "Trent"
       affiliation: "QSOL-IMC"
   title: "ETQ-303 v3: Exact 303-State Root-Indexed Event Protocol"
-  version: 3.0.0
+  version: 3.0.1
   year: 2026
   url: "https://github.com/QSOLKCB/SONIFICATION"

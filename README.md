@@ -1,11 +1,13 @@
-# ETQ-303 v3: Exact 303-State Root-Indexed Event Protocol
+# ETQ-303 v3.0.1: Exact 303-State Root-Indexed Event Protocol
 
 **A deterministic, receiver-neutral event protocol built as the exact product
 `H_101 tensor C^3` over the preserved ETQ-101 v2 selected-root model.**
 
-ETQ-303 v3.0.0 turns the optional full-qutrit extension from ETQ-101 v2 into a
-complete implementation. Its canonical output is a 303-entry event document,
-not a MIDI file and not rendered audio.
+ETQ-303 v3.0.1 is a documentation-only clarification of the exact protocol
+first archived as v3.0.0. It does not change the mathematical construction,
+state indexing, event generation, deterministic outputs, or scientific claim
+boundary. The canonical output remains a 303-entry event document, not a MIDI
+file and not rendered audio.
 
 ```text
 ETQ-101 v2 selected roots
@@ -33,6 +35,42 @@ returns after 303 steps. The three-step phase product is one, so the complete
 monomial operator has exact order 303.
 
 **These are 303 root-indexed tensor states, not 303 distinct E8 roots.**
+
+## Notation and Conventions
+
+Unless explicitly stated otherwise, scalars are in \(\mathbb C\), all vector
+spaces in the ETQ-303 construction are finite-dimensional, \(\dim(V)\) is
+algebraic vector-space dimension, and \(\otimes\) is the tensor product over
+\(\mathbb C\). Operators act on the finite-dimensional spaces declared by the
+construction.
+
+Throughout the ETQ-303 documentation, “dimension” means finite-dimensional
+vector-space dimension unless another mathematical meaning is explicitly
+declared. It never means physical spacetime dimension. The \(E_8\) root system
+is represented in an 8-dimensional Euclidean root space, while each \(D_4\)
+factor has rank 4. Those numbers describe algebraic root spaces, not spacetime.
+No physical interpretation follows from rank, dimension, state count, or
+tensor-product notation alone.
+
+The state-space construction is explicitly
+
+\[
+\mathcal H_{303}=\mathcal H_{101}\otimes\mathbb C^3,
+\]
+
+with
+
+\[
+\dim(\mathcal H_{303})
+=\dim(\mathcal H_{101})\dim(\mathbb C^3)
+=101\times3
+=303.
+\]
+
+Thus 303 is both the algebraic dimension of the finite event/state vector space
+and the number of basis-indexed states. The \(\mathbb C^3\) factor is the
+declared independent three-state, or qutrit-like, protocol factor; it introduces
+no additional physical ontology.
 
 ## Exact graph context
 
@@ -89,6 +127,10 @@ core, canonical serializer, receivers, artifact builder, and build entrypoint.
 This binds generated artifacts to the implementation that produced them even
 when the semantic version remains `3.0.0`.
 
+The repository/documentation release is v3.0.1, while the unchanged canonical
+runtime contract remains v3.0.0. Consequently this patch does not regenerate or
+rename protocol fixtures, event hashes, or the v3 implementation identity.
+
 The generated bundle uses `./contract.schema.json`, so its contract validates
 without depending on the repository directory layout. The committed repository
 fixture continues to reference `../spec/etq-303.v3.schema.json`. `$schema` is
@@ -123,6 +165,8 @@ non-`dist/` output paths and never recursively deletes a caller-selected path.
 - [Exact event protocol](docs/ETQ_V3_EVENT_PROTOCOL.md)
 - [Claim boundaries](docs/ETQ_V3_CLAIM_BOUNDARIES.md)
 - [v2 to v3 migration](docs/ETQ_V2_TO_V3_MIGRATION.md)
+- [Formal v3.0.1 paper and build instructions](docs/etq-303/README.md)
+- [v3.0.1 release notes](docs/ETQ_V3_0_1_RELEASE_NOTES.md)
 - [ETQ-101 v2 mathematical model](docs/MATHEMATICAL_MODEL.md)
 - [Auxiliary Tanner tuning fork](docs/TANNER_TUNING_FORK.md)
 
@@ -134,6 +178,15 @@ The preserved base release is ETQ-101 v2.0.0:
   `8c24d58ca76abbac77c427a4f63ca434570c82b3`
 - archive DOI: `10.5281/zenodo.21432511`
 
+The original ETQ-303 release remains immutable:
+
+- source: Git tag `v3.0.0`, commit
+  `6b55e51647226d1c248dc8d79f9ed9336241c2ac`
+- archive DOI: `10.5281/zenodo.21455181`
+
+Version 3.0.1 adds only terminology and exposition clarifications. It is
+intended to receive its own tag and Zenodo version DOI after review and merge.
+
 The acyclic receipt architecture is methodologically informed by the archived
 receipt-bound observation protocol versions `10.5281/zenodo.21292906` and
 `10.5281/zenodo.21293821`. They are provenance-method references, not
@@ -143,13 +196,14 @@ mathematical dependencies of ETQ-303.
 
 A precise description is:
 
-> ETQ-303 v3.0.0 is an exact finite 303-state tensor extension of the preserved
+> ETQ-303 v3.0.1 documents the exact finite 303-state tensor extension of the preserved
 > ETQ-101 v2 selected-root basis, with a single 303-step monomial support
 > traversal, exact Gaussian-unit phase labels, an exact Cartesian graph lift,
 > and deterministic receiver artifacts bound to one canonical event document.
 
-It does not claim a 303-dimensional E8 representation, 303 distinct roots,
-physical qutrit hardware, an E8-selected acoustic scale, or empirical
+Here “303-dimensional” is strictly algebraic. The construction does not claim
+303 physical dimensions, a 303-dimensional E8 representation, 303 distinct
+roots, physical qutrit hardware, an E8-selected acoustic scale, or empirical
 validation.
 
 ## Creator and licence

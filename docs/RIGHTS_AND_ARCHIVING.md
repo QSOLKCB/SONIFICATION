@@ -57,16 +57,22 @@ they do not by themselves prove legal authorship.
 
 ## Zenodo record policy
 
-The repository includes [`.zenodo.json`](../.zenodo.json) for a future ETQ-101
-v2 open-software deposit under MPL-2.0. The displayed DOI currently identifies
-the immutable v1.0.0 release and must not be cited as the v2 artifact. Before
-publishing a v2 record:
+The repository includes [`.zenodo.json`](../.zenodo.json) for the current open
+software deposit under MPL-2.0. Version-specific archives must remain distinct:
+
+- ETQ-101 v2.0.0: `10.5281/zenodo.21432511`;
+- ETQ-303 v3.0.0: `10.5281/zenodo.21455181`; and
+- ETQ-303 v3.0.1: documentation-only clarification, with its version DOI to be
+  added after Zenodo publishes the new version.
+
+For each new version:
 
 1. archive an immutable release tag, not a moving branch;
-2. confirm creator spelling and affiliation;
-3. add an ORCID only if Trent Slade supplies and verifies it;
-4. confirm the DOI back into `CITATION.cff` and the release notes; and
-5. verify Zenodo's current rights field in the draft interface.
+2. preserve prior version tags, files, and DOI metadata unchanged;
+3. confirm creator spelling, affiliation, and verified ORCID metadata;
+4. regenerate checksums for every changed publication artifact;
+5. confirm the new version DOI back into `CITATION.cff` and release notes; and
+6. verify Zenodo's current rights field in the draft interface.
 
 Zenodo record metadata remains separately reusable under Zenodo's metadata
 terms. Keep the public record accurate and avoid claiming that the archive DOI
