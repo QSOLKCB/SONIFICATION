@@ -41,6 +41,24 @@ import {
 import { buildSourceBinaryForms } from "../src/d4-triality-covariant-engine.mjs";
 
 const PROJECT_ROOT = resolve(new URL("..", import.meta.url).pathname);
+const contractFixture = JSON.parse(
+  readFileSync(
+    resolve(PROJECT_ROOT, "examples/d4-tia-15.v2.canonical.json"),
+    "utf8",
+  ),
+);
+const contractSchema = JSON.parse(
+  readFileSync(
+    resolve(PROJECT_ROOT, "spec/d4-tia-15.v2.schema.json"),
+    "utf8",
+  ),
+);
+const fixtureReceipt = JSON.parse(
+  readFileSync(
+    resolve(PROJECT_ROOT, "examples/d4-tia-15.v2.receipt.json"),
+    "utf8",
+  ),
+);
 
 test("D4-TIA-15 v2 keeps an exact explicit probe and Roberts anchor", () => {
   assert.equal(PROFILE_ID, "D4-TIA-15");
@@ -296,4 +314,16 @@ test("v2 build command fails closed and emits the exact allowlisted bundle", () 
 
   rmSync(outside, { recursive: true, force: true });
   rmSync(parent, { recursive: true, force: true });
+});
+
+test("v2 canonical contract, schema, and deterministic document hashes are frozen", () => {
+  const contract = buildCanonicalProfileContractV2();
+  const bundle = buildArtifactBundleV2();
+  assert.deepEqual(contract, contractFixture);
+  assert.equal(contractSchema.$id, "qsol.d4-tia-15.profile/v2");
+  assert.deepEqual(contractSchema.const, contractFixture);
+  assert.equal(bundle.manifest.mappingContractSha256, fixtureReceipt.mappingContractSha256);
+  assert.equal(bundle.manifest.evaluationDocumentSha256, fixtureReceipt.evaluationDocumentSha256);
+  assert.equal(bundle.manifest.eventDocumentSha256, fixtureReceipt.eventDocumentSha256);
+  assert.deepEqual(bundle.manifest.invariantProjection, fixtureReceipt.invariantProjection);
 });
