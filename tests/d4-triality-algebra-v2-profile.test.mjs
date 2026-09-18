@@ -9,6 +9,7 @@ import {
   readdirSync,
   rmSync,
   symlinkSync,
+  writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
 import { resolve } from "node:path";
@@ -248,9 +249,7 @@ test("v2 build command fails closed and emits the exact allowlisted bundle", () 
   const nonempty = resolve(parent, "nonempty");
   mkdirSync(nonempty);
   const marker = resolve(nonempty, "keep.txt");
-  await import("node:fs").then(({ writeFileSync }) =>
-    writeFileSync(marker, "keep", "utf8"),
-  );
+  writeFileSync(marker, "keep", "utf8");
   const rejected = spawnSync(
     process.execPath,
     ["scripts/build-d4-tia-v2-artifacts.mjs", "--output", nonempty],
