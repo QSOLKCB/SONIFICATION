@@ -101,8 +101,8 @@ is a verification failure.
 - exact sparse term count; and
 - SHA-256 of the canonical exact polynomial.
 
-The fixture was deliberately kept separate from D4-TIA-15's MIDI/event contract.
-This PR does not alter MIDI mapping, tempo, tuning, timbre, or any ETQ identity.
+The fixture is deliberately kept separate from D4-TIA-15's MIDI/event contract.
+This engine does not alter MIDI mapping, tempo, tuning, timbre, or any ETQ identity.
 
 Run:
 
@@ -111,18 +111,26 @@ npm test
 npm run verify:d4-tia-cov
 ```
 
-## Sequenced follow-up
+## Completed research sequence and archive
 
-The research sequence is intentionally locked:
+This engine became the first executable layer of the now-completed D4-TIA v2
+research sequence:
 
-1. **D4-TIA-COV v0.1** — exact covariant algebra engine — this phase.
-2. **D4/F4 \(S_3\) orbit + equivariance harness** — next.
-3. **D4-TIA-15 v2** — sonify evaluated covariants/orbits while testing
-   equivariance before invariant projection.
-4. Freeze/tag/archive the resulting research line, then update Zenodo.
+1. **D4-TIA-COV v0.1.0** — exact covariant algebra engine — complete.
+2. **D4-TIA-S3-EQUIV v0.1.0** — exact D4/F4 \(S_3\) orbit and equivariance
+   harness — complete.
+3. **D4-TIA-15 v2.0.0** — evaluated-covariant orbit sonification downstream of
+   those exact checks — complete.
+4. **Freeze/tag/archive** — complete at immutable Git tag
+   `d4-tia-v2.0.0`, release commit
+   `7aa6df165d0ad70297365dbf0d69072634ed4314`.
+5. **Zenodo formalization** — complete at DOI
+   `10.5281/zenodo.22831753`.
 
-The next phase should test commutation of the mathematical action and the
-symbolic receiver action rather than adding another ad-hoc three-way mapping.
+The completed sequence preserves the original design rule: test the mathematical
+action and covariant equivariance before introducing the receiver mapping. Any
+future receiver remapping or semantic change belongs to a new D4-TIA version,
+not a modification of the frozen v2.0.0 release.
 
 ## Source boundary
 
