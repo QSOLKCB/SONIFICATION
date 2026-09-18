@@ -40,6 +40,18 @@ test("ETQ D4 triality is exactly Sakai's wS wT three-cycle", () => {
   );
 });
 
+test("integer matrix multiplication keeps exact intermediates", () => {
+  const M = Number.MAX_SAFE_INTEGER;
+  assert.deepEqual(
+    integerMatrixMultiply([[M, 1, -M]], [[2], [1], [2]]),
+    [[1]],
+  );
+  assert.throws(
+    () => integerMatrixMultiply([[M]], [[2]]),
+    /matrix product exceeded safe-integer range/,
+  );
+});
+
 test("D4 triality invariant grade relations are internally exact", () => {
   const grade = trialityInvariantGrade({
     quadraticDegree: 1,
@@ -66,6 +78,15 @@ test("D4 triality invariant grade relations are internally exact", () => {
         polynomialDegree: 2,
       }),
     /negative covariant order/,
+  );
+  assert.throws(
+    () =>
+      trialityInvariantGrade({
+        quadraticDegree: Number.MAX_SAFE_INTEGER,
+        cubicDegree: 0,
+        polynomialDegree: 1,
+      }),
+    /modularWeight exceeded safe-integer range/,
   );
 });
 
