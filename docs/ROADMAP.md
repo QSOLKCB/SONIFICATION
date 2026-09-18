@@ -84,16 +84,41 @@ executable mathematics before any further auditory interpretation.
 The harness performs 90 exact symbolic equivariance checks and adds no new
 receiver or sonification mapping.
 
+## Root D4-TIA-15 v2.0.0 — evaluated-covariant orbit sonification (implemented)
+
+- evaluates all 15 exact covariants across the six canonical
+  \(SL_2(\mathbb Z)/\Gamma(2)\cong S_3\) representatives;
+- uses the exact authored coefficient probe
+  \((a_0,a_1,a_2,b_0,b_1,b_2,b_3)=(1,2,3,4,5,6,7)\);
+- evaluates covariants at the leading-coefficient/Roberts anchor
+  \((u,v)=(1,0)\);
+- rechecks exact equivariance before any receiver mapping;
+- places the six quotient positions in consecutive derived tick blocks while
+  preserving the v1 grading clock inside each block;
+- converts the exact within-generator orbit value order into a small integer
+  pitch contour with equal exact values sharing the same pitch offset;
+- preserves modular weight \(k\) as the base MIDI note, covariant order
+  \(\omega\) as channel, \(d=d_a+d_b\) as duration, and fixed velocity 64;
+- requires every order-zero covariant to have one exact value class and one
+  identical MIDI note/channel/velocity/duration control tuple across all six
+  orbit positions; and
+- exports only deterministic JSON, CSV, and symbolic MIDI, with no tempo,
+  tuning, PCM, or rendered-audio identity.
+
+The coefficient probe, temporal layout, and exact-rank-to-pitch rule are
+authored receiver choices. The exact algebra, quotient action, equivariance
+checks, and order-zero invariant behavior are separately verified.
+
 ## Sequenced D4-TIA research follow-up
 
 The remaining D4-TIA sequence is intentionally ordered:
 
-1. **D4-TIA-15 v2** — sonify evaluated covariants/orbits while preserving the
-   tested equivariance boundary before invariant projection.
-2. **Freeze/tag/archive** the resulting research line and then update Zenodo.
+1. **Freeze/tag/archive** the D4-TIA-COV, D4-TIA-S3-EQUIV, and D4-TIA-15 v2
+   research line.
+2. **Update Zenodo** with the frozen research release and provenance.
 
-The algebra and symmetry-action layers are now executable and tested; the next
-phase may finally define the evaluated-covariant/orbit receiver contract.
+The evaluated-covariant sonification layer is now implemented. No further
+receiver remapping should occur before this line is frozen and archived.
 
 The remaining numbered phases below apply only to the independent `APP/` and
 `sonification/` audio laboratories.
