@@ -260,7 +260,7 @@ Where a mapping is authored rather than mathematically forced, the documentation
 - **ETQ-303 v3.0.1 documentation/publication release** — DOI `10.5281/zenodo.21494678`
 - **D4-TIA v2.0.0** — DOI `10.5281/zenodo.22831753`
 
-D4-TIA v2.0.0 archives the frozen D4-TIA-COV v0.1.0, D4-TIA-S3-EQUIV v0.1.0, and D4-TIA-15 v2.0.0 research line. It remains separately versioned from the preserved ETQ runtime contracts.
+D4-TIA v2.0.0 archives the frozen D4-TIA-COV v0.1.0, D4-TIA-S3-EQUIV v0.1.0, and D4-TIA-15 v2.0.0 research line. The immutable implementation tag `d4-tia-v2.0.0` points to commit `7aa6df165d0ad70297365dbf0d69072634ed4314`; publication/citation metadata finalized immediately afterward is pinned at commit `0cfe7ee19ea361c059319b3c0af4178aed8a9f1d`. The two commits carry the same frozen D4-TIA runtime identity and deterministic commitments. D4-TIA remains separately versioned from the preserved ETQ runtime contracts.
 
 ## Creator and licence
 
