@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: MPL-2.0
 
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
 import {
   EVENT_COUNT,
@@ -15,6 +18,26 @@ import {
   buildMidiReceiverV2,
 } from "../src/d4-triality-algebra-v2-artifacts.mjs";
 
+const PROJECT_ROOT = resolve(fileURLToPath(new URL("..", import.meta.url)));
+const contractFixture = JSON.parse(
+  readFileSync(
+    resolve(PROJECT_ROOT, "examples/d4-tia-15.v2.canonical.json"),
+    "utf8",
+  ),
+);
+const contractSchema = JSON.parse(
+  readFileSync(
+    resolve(PROJECT_ROOT, "spec/d4-tia-15.v2.schema.json"),
+    "utf8",
+  ),
+);
+const fixtureReceipt = JSON.parse(
+  readFileSync(
+    resolve(PROJECT_ROOT, "examples/d4-tia-15.v2.receipt.json"),
+    "utf8",
+  ),
+);
+
 const contract = buildCanonicalProfileContractV2();
 const document = buildEventDocumentV2();
 const invariant = buildInvariantProjectionSummary();
@@ -22,6 +45,13 @@ const bundle = buildArtifactBundleV2();
 
 assert.equal(PROFILE_ID, "D4-TIA-15");
 assert.equal(PROFILE_VERSION, "2.0.0");
+assert.deepEqual(contract, contractFixture);
+assert.equal(contractSchema.$id, "qsol.d4-tia-15.profile/v2");
+assert.deepEqual(contractSchema.const, contractFixture);
+assert.equal(bundle.manifest.mappingContractSha256, fixtureReceipt.mappingContractSha256);
+assert.equal(bundle.manifest.evaluationDocumentSha256, fixtureReceipt.evaluationDocumentSha256);
+assert.equal(bundle.manifest.eventDocumentSha256, fixtureReceipt.eventDocumentSha256);
+assert.deepEqual(bundle.manifest.invariantProjection, fixtureReceipt.invariantProjection);
 assert.equal(document.eventCount, EVENT_COUNT);
 assert.equal(document.eventCount, 90);
 assert.equal(document.orbitSize, 6);
