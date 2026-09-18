@@ -1,5 +1,20 @@
 # Changelog
 
+## Unreleased — D4/F4 triality reference bridge
+
+- Added the ETQ-303 v3.0.1 Zenodo DOI `10.5281/zenodo.21494678` to the
+  repository overview and citation metadata.
+- Added an exact literature cross-check showing that the existing ETQ
+  four-coordinate triality matrix factors as `A = w_S w_T` in the
+  (W(F_4)/W(D_4)\cong S_3) convention used by Kazuhiro Sakai.
+- Added safe-integer tests for the two involutions, their order-three product,
+  and the equality with ETQ's existing triality numerator.
+- Added the exact trigrading relations and 15-generator minimal covariant
+  ledger from Sakai's ring of D4 triality invariants as a noncanonical research
+  reference.
+- Added a future receiver-neutral triality-invariant algebra sonification path
+  without changing ETQ-101 v2 or ETQ-303 v3 protocol identity.
+
 ## 3.0.1 — dimension terminology clarification
 
 - Clarified that every use of “dimension” in the ETQ-303 construction refers
