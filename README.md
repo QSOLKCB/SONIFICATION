@@ -136,6 +136,42 @@ npm run verify:d4-tia-s3
 
 See [D4-TIA-S3-EQUIV v0.1.0](docs/D4_TRIALITY_S3_EQUIVARIANCE.md).
 
+
+## D4-TIA-15 v2: evaluated covariant orbit sonification
+
+**D4-TIA-15 v2.0.0** is now downstream of both the exact covariant engine and
+the \(S_3\) equivariance harness. Instead of sonifying only the published
+grading ledger, v2 evaluates every covariant at six canonical quotient
+representatives and turns each generator's exact six-value ordering into a
+small symbolic MIDI pitch contour.
+
+The exact probe is
+
+```text
+(a0,a1,a2,b0,b1,b2,b3) = (1,2,3,4,5,6,7)
+(u,v) = (1,0)
+```
+
+where \((u,v)=(1,0)\) is the leading-coefficient/Roberts anchor. For each
+generator, equal exact rational values remain tied; the value-class rank is
+mapped to a small integer offset around the preserved modular-weight note
+\(k\). The six quotient positions occupy consecutive derived tick blocks.
+
+For the five order-zero covariants, exact \(SL_2\) invariance is enforced all
+the way through the symbolic receiver: their exact value, MIDI note, channel,
+velocity, and duration controls are identical at all six orbit positions. The
+only change is when the repeated invariant event occurs in the six-step orbit
+sequence.
+
+Build and verify v2 independently:
+
+```bash
+npm run verify:d4-tia-v2
+npm run build:d4-tia-v2
+```
+
+See [D4-TIA-15 v2.0.0](docs/D4_TRIALITY_ALGEBRA_SONIFICATION_V2.md).
+
 ## Notation and Conventions
 
 Unless explicitly stated otherwise, scalars are in \(\mathbb C\), all vector
@@ -256,7 +292,7 @@ npm run verify
 npm run build:v3
 ```
 
-`npm run verify` validates D4-TIA-COV, D4-TIA-S3-EQUIV, D4-TIA-15, v3, and continues to validate the immutable v2 and v1
+`npm run verify` validates D4-TIA-COV, D4-TIA-S3-EQUIV, D4-TIA-15 v2 and v1, v3, and continues to validate the immutable ETQ v2 and v1
 contracts. The build command fails closed for unsafe, existing nonempty, or
 non-`dist/` output paths and never recursively deletes a caller-selected path.
 
@@ -267,6 +303,7 @@ non-`dist/` output paths and never recursively deletes a caller-selected path.
 - [D4-TIA-15 invariant-algebra sonification profile](docs/D4_TRIALITY_ALGEBRA_SONIFICATION.md)
 - [D4-TIA-COV exact covariant algebra engine](docs/D4_TRIALITY_COVARIANT_ENGINE.md)
 - [D4-TIA-S3-EQUIV orbit and equivariance harness](docs/D4_TRIALITY_S3_EQUIVARIANCE.md)
+- [D4-TIA-15 v2 evaluated-covariant orbit sonification](docs/D4_TRIALITY_ALGEBRA_SONIFICATION_V2.md)
 - [Claim boundaries](docs/ETQ_V3_CLAIM_BOUNDARIES.md)
 - [v2 to v3 migration](docs/ETQ_V2_TO_V3_MIGRATION.md)
 - [Formal v3.0.1 paper and build instructions](docs/etq-303/README.md)

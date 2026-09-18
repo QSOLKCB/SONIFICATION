@@ -139,3 +139,14 @@ Not supported:
 - K. Sakai, *The ring of D4 triality invariants*, arXiv:2504.00546v2 (2026).
 - K. Sakai, *E-strings, F4, and D4 triality*, JHEP 07 (2023) 192,
   arXiv:2304.04878.
+
+## Successor profile
+
+This document remains the immutable specification for **D4-TIA-15 v1.0.0**.
+The separately versioned **D4-TIA-15 v2.0.0** profile is downstream of the
+exact covariant engine and \(S_3\) equivariance harness. It evaluates the
+covariants across six quotient representatives and sonifies their exact
+within-generator orbit value classes while enforcing receiver invariance for
+order-zero covariants.
+
+See [D4-TIA-15 v2.0.0](D4_TRIALITY_ALGEBRA_SONIFICATION_V2.md).
