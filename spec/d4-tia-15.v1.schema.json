@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "qsol.d4-tia-15.profile/v1",
+  "title": "D4-TIA-15 v1 mapping contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "profileId",
+    "profileVersion",
+    "status",
+    "source",
+    "publishedStructure",
+    "mapping",
+    "determinism",
+    "lineage",
+    "claimBoundary"
+  ],
+  "properties": {
+    "schema": { "const": "qsol.d4-tia-15.profile/v1" },
+    "profileId": { "const": "D4-TIA-15" },
+    "profileVersion": { "const": "1.0.0" },
+    "status": { "const": "separate-noncanonical-research-profile" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["author", "title", "arxiv", "year", "theorem", "grading"],
+      "properties": {
+        "author": { "const": "Kazuhiro Sakai" },
+        "title": { "const": "The ring of D4 triality invariants" },
+        "arxiv": { "const": "2504.00546v2" },
+        "year": { "const": 2026 },
+        "theorem": { "type": "string" },
+        "grading": { "type": "string" }
+      }
+    },
+    "publishedStructure": {
+      "type": "object",
+      "required": [
+        "generatorCount",
+        "refinedDegrees",
+        "covariantDegree",
+        "polynomialDegree",
+        "modularWeight",
+        "covariantOrder",
+        "gradingRelations"
+      ],
+      "properties": {
+        "generatorCount": { "const": 15 },
+        "refinedDegrees": { "const": ["d_a", "d_b"] },
+        "covariantDegree": { "const": "d=d_a+d_b" },
+        "polynomialDegree": { "const": "m" },
+        "modularWeight": { "const": "k" },
+        "covariantOrder": { "const": "omega" },
+        "gradingRelations": {
+          "const": [
+            "k=4*d_a+6*d_b+m",
+            "omega=2*d_a+3*d_b-m",
+            "omega=(k-3*m)/2"
+          ]
+        }
+      }
+    },
+    "mapping": { "type": "object" },
+    "determinism": { "type": "object" },
+    "lineage": { "type": "object" },
+    "claimBoundary": { "type": "string", "minLength": 1 }
+  }
+}
