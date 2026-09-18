@@ -4,7 +4,6 @@
 
 Frozen implementation tag: `d4-tia-v2.0.0`  
 Frozen implementation commit: `7aa6df165d0ad70297365dbf0d69072634ed4314`  
-Archive metadata commit: `0cfe7ee19ea361c059319b3c0af4178aed8a9f1d`  
 Zenodo DOI: `10.5281/zenodo.22831753`
 
 The immutable `d4-tia-v2.0.0` tag freezes the tested mathematical/software
