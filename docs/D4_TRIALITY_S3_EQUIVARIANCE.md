@@ -200,8 +200,9 @@ the exact symmetry checks, not an aesthetically chosen three-way permutation.
 The combined D4-TIA-COV v0.1.0, D4-TIA-S3-EQUIV v0.1.0, and D4-TIA-15 v2.0.0
 implementation is frozen at Git tag `d4-tia-v2.0.0`, commit
 `7aa6df165d0ad70297365dbf0d69072634ed4314`. Publication/citation metadata
-is pinned at immutable Git commit `0cfe7ee19ea361c059319b3c0af4178aed8a9f1d`, and the formalized release is
-archived at Zenodo DOI `10.5281/zenodo.22831753`.
+was finalized afterward on the documentation line without changing that frozen
+implementation identity, and the formalized release is archived at Zenodo DOI
+`10.5281/zenodo.22831753`.
 
 ## Verify
 
