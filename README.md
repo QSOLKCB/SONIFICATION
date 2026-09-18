@@ -266,4 +266,4 @@ D4-TIA v2.0.0 archives the frozen D4-TIA-COV v0.1.0, D4-TIA-S3-EQUIV v0.1.0, and
 
 Created by **Trent Slade / QSOL-IMC**.
 
-Licensed under the Mozilla Public License 2.0. Preserve the copyright and licence notices and use `CITATION.cff` for citation metadata.
+Licensed under the Mozilla Public License 2.0. Preserve the copyright and licence notices. Use `CITATION.cff` for ETQ-303 citation metadata and `CITATION-D4-TIA.cff` for the archived D4-TIA v2.0.0 release.
