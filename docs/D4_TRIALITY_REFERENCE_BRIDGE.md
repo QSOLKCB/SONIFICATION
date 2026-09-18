@@ -120,8 +120,9 @@ R^G_{\ast,\ast}
 \mathbb C[V_2\oplus V_3\oplus\mathbb C^2]^{SL_2(\mathbb C)}.
 $$
 
-For refined degrees \(d_a,d_b\), polynomial degree \(m\), modular weight \(k\),
-and covariant order \(\omega\), the grading relations are
+For refined degrees \(d_a,d_b\), homogeneous polynomial degree \(m\) in
+the D4 variables, modular weight \(k\), and covariant order \(\omega\), the
+grading relations are
 
 $$
 \boxed{k=4d_a+6d_b+m},
@@ -131,6 +132,11 @@ $$
 \boxed{\omega=2d_a+3d_b-m
       =\frac{k-3m}{2}}.
 $$
+
+Here \(m\) follows Definition 2.1 and Theorem 4.10 of the 2026 paper: it is
+the polynomial degree of a D4 triality invariant. It should not be confused
+with the Jacobi-form index also conventionally denoted \(m\) in the earlier
+2023 triality-invariant Jacobi-form construction.
 
 The same paper gives a minimal basis of 15 joint covariants. The repository
 records only their labels and exact grade ledger in
