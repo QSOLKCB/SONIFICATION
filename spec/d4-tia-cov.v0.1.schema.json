@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "qsol.d4-tia-cov.engine-summary/v0.1",
+  "title": "D4-TIA-COV v0.1.0 exact covariant-engine summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "engineId",
+    "engineVersion",
+    "sourceConvention",
+    "generatorCount",
+    "cubicSyzygy",
+    "generators"
+  ],
+  "properties": {
+    "schema": { "const": "qsol.d4-tia-cov.engine-summary/v0.1" },
+    "engineId": { "const": "D4-TIA-COV" },
+    "engineVersion": { "const": "0.1.0" },
+    "sourceConvention": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["quadratic", "cubic", "transvectant"],
+      "properties": {
+        "quadratic": { "type": "string" },
+        "cubic": { "type": "string" },
+        "transvectant": { "type": "string" }
+      }
+    },
+    "generatorCount": { "const": 15 },
+    "cubicSyzygy": { "const": "2*Q^2+P^3+g^2*D_g=0" },
+    "generators": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "index",
+          "label",
+          "grade",
+          "termCount",
+          "polynomialSha256"
+        ],
+        "properties": {
+          "index": { "type": "integer", "minimum": 1, "maximum": 15 },
+          "label": { "type": "string", "minLength": 1 },
+          "grade": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "quadraticDegree",
+              "cubicDegree",
+              "covariantDegree",
+              "polynomialDegree",
+              "modularWeight",
+              "covariantOrder"
+            ],
+            "properties": {
+              "quadraticDegree": { "type": "integer", "minimum": 0 },
+              "cubicDegree": { "type": "integer", "minimum": 0 },
+              "covariantDegree": { "type": "integer", "minimum": 1 },
+              "polynomialDegree": { "type": "integer", "minimum": 0 },
+              "modularWeight": { "type": "integer", "minimum": 0 },
+              "covariantOrder": { "type": "integer", "minimum": 0 }
+            }
+          },
+          "termCount": { "type": "integer", "minimum": 1 },
+          "polynomialSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    }
+  }
+}
