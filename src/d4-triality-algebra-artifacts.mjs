@@ -54,20 +54,31 @@ export const EVENT_CSV_COLUMNS = Object.freeze([
   "velocity",
 ]);
 
-function sha256File(path) {
-  return createHash("sha256").update(readFileSync(path)).digest("hex");
+function normalizedSourceBytes(path) {
+  const text = readFileSync(resolve(PROJECT_ROOT, path), "utf8")
+    .replaceAll("\r\n", "\n")
+    .replaceAll("\r", "\n");
+  return utf8(text);
 }
 
 export function buildImplementationIdentity() {
-  const sourceFiles = IMPLEMENTATION_SOURCE_PATHS.map((path) => ({
-    path,
-    sha256: sha256File(resolve(PROJECT_ROOT, path)),
-  }));
-  return {
+  const sourceFiles = IMPLEMENTATION_SOURCE_PATHS.map((path) => {
+    const bytes = normalizedSourceBytes(path);
+    return {
+      path,
+      byteLength: bytes.length,
+      sha256: sha256Bytes(bytes),
+    };
+  });
+  const core = {
+    sourceNormalization: "UTF-8-text;CRLF-and-CR-normalized-to-LF",
     sourceFiles,
+  };
+  return {
+    ...core,
     sourceBundleSha256: canonicalObjectSha256(
       "qsol.d4-tia-15.source-bundle/v1",
-      sourceFiles,
+      core,
     ),
   };
 }
