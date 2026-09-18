@@ -1,5 +1,7 @@
 # ETQ-303 v3.0.1 — terminology and exposition clarification
 
+**Archive DOI:** `10.5281/zenodo.21494678`
+
 ETQ-303 v3.0.1 is a documentation-only patch to the exact protocol archived as
 v3.0.0. It responds to reader feedback by removing any possible ambiguity
 between algebraic vector-space dimension and physical spacetime dimension.
