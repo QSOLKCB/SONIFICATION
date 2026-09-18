@@ -32,14 +32,23 @@ must not silently inherit the separate audio laboratories' clocks or tunings.
 This bridge is noncanonical context. It changes no v2/v3 fixture, event
 ordering, implementation identity, or receiver artifact.
 
-## Future root research profile — triality-invariant algebra sonification
+## Root D4-TIA-15 v1.0.0 — triality-invariant algebra sonification (implemented)
 
-A later separately versioned profile may use the 15-generator invariant basis
-as a finite symbolic source object. Before any auditory mapping is canonical it
-must preserve and test the published grading relations, define its event
-semantics and provenance, and remain within the root MIDI/CSV/JSON output
-policy. No tempo, acoustic tuning, timbre, or rendered audio may enter root ETQ
-identity.
+- separately versioned profile over the published 15-generator minimal basis;
+- exact preservation of \(d_a,d_b,m,k,\omega\) and derived
+  \(d=d_a+d_b\);
+- identity-transfer receiver projection: \(m\) to onset tick, \(d\) to
+  duration, \(k\) to MIDI note, and \(\omega\) to MIDI channel;
+- unchanged \(d_a,d_b\) retained in JSON/CSV and MIDI track metadata;
+- 15 generator tracks plus one metadata track, with no canonical tempo;
+- canonical JSON contract and fixture, schema, lossless event document, CSV,
+  symbolic MIDI, implementation identity, and SHA-256 manifest; and
+- fail-closed root build restricted to JSON, CSV, and MIDI.
+
+The mapping is explicitly authored even though its transfers are identities:
+the mathematics does not declare modular weight to be pitch or covariant order
+to be channel. Tuning, timbre, loudness, wall-clock tempo, PCM, and rendered
+audio remain outside profile identity. ETQ-101 v2 and ETQ-303 v3 are unchanged.
 
 The remaining numbered phases below apply only to the independent `APP/` and
 `sonification/` audio laboratories.
