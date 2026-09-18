@@ -1,8 +1,8 @@
 # D4-TIA-S3-EQUIV v0.1.0 — D4/F4 Orbit and Covariant Equivariance Harness
 
 **Status:** implemented research harness  
-**Harness ID:** \`D4-TIA-S3-EQUIV\`  
-**Version:** \`0.1.0\`  
+**Harness ID:** `D4-TIA-S3-EQUIV`  
+**Version:** `0.1.0`  
 **Sonification impact:** none — this phase tests symmetry before receiver design
 
 ## Purpose
@@ -202,12 +202,22 @@ permutation.
 
 Run:
 
-\`\`\`bash
+```bash
 npm test
 npm run verify:d4-tia-s3
-\`\`\`
+```
 
 The full root verifier also includes this harness.
+
+## Canonical fixture
+
+`examples/d4-tia-s3-equivariance.v0.1.canonical.json` freezes the exact
+six-element D4 orbit, modular quotient representatives and multiplication
+table, plus the coefficient-action and transformed-basis hashes for all six
+representatives. The companion schema binds the complete canonical summary
+with `const`, so a changed orbit, representative, quotient table, or
+equivariance commitment fails verification rather than silently redefining
+the harness.
 
 ## Claim boundary
 
