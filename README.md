@@ -174,7 +174,7 @@ D4-TIA-COV
 → D4-TIA-S3-EQUIV
 → D4-TIA-15 v2
 → preserved D4-TIA-15 v1
-→ ETQ-303 v3
+→ ETQ-303 runtime v3.0.0
 → preserved ETQ-101 v2 and v1
 ```
 
@@ -257,7 +257,7 @@ Where a mapping is authored rather than mathematically forced, the documentation
 
 - **ETQ-101 v2.0.0** — DOI `10.5281/zenodo.21432511`
 - **ETQ-303 v3.0.0** — DOI `10.5281/zenodo.21455181`
-- **ETQ-303 v3.0.1** — DOI `10.5281/zenodo.21494678`
+- **ETQ-303 v3.0.1 documentation/publication release** — DOI `10.5281/zenodo.21494678`
 
 The D4-TIA-COV, D4-TIA-S3-EQUIV, and D4-TIA-15 v2 line is implemented and is the next research line to freeze and archive.
 
