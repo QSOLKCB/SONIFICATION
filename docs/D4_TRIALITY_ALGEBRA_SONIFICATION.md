@@ -1,8 +1,8 @@
 # D4-TIA-15 v1.0.0 — Triality-Invariant Algebra Sonification Profile
 
 **Status:** implemented root research profile  
-**Profile ID:** \`D4-TIA-15\`  
-**Version:** \`1.0.0\`  
+**Profile ID:** `D4-TIA-15`  
+**Version:** `1.0.0`  
 **Relationship to ETQ:** separate; ETQ-101 v2 and ETQ-303 v3 identities are unchanged
 
 ## Purpose
@@ -70,11 +70,11 @@ view does not replace the JSON/CSV ledger.
 
 The canonical information-bearing objects remain:
 
-- \`contract.json\` — versioned mapping contract;
-- \`events.json\` — lossless generator/event document;
-- \`events.csv\` — auditable grading table;
-- \`events.mid\` — symbolic MIDI projection; and
-- \`manifest.json\` — artifact hashes and implementation identity.
+- `contract.json` — versioned mapping contract;
+- `events.json` — lossless generator/event document;
+- `events.csv` — auditable grading table;
+- `events.mid` — symbolic MIDI projection; and
+- `manifest.json` — artifact hashes and implementation identity.
 
 Root artifacts remain restricted to JSON, CSV, and MIDI. No PCM or rendered
 audio is constructed anywhere in the profile.
@@ -101,18 +101,18 @@ audio is constructed anywhere in the profile.
 
 ## Determinism and provenance
 
-\`manifest.json\` records SHA-256 for each emitted artifact and an implementation
+`manifest.json` records SHA-256 for each emitted artifact and an implementation
 identity over the reference ledger, profile implementation, artifact builder,
 canonical serializer, and build entrypoint. The build command refuses a
-nonempty target and writes exclusively into a dedicated \`dist/\` subdirectory.
+nonempty target and writes exclusively into a dedicated `dist/` subdirectory.
 
 Run:
 
-\`\`\`bash
+```bash
 npm test
 npm run verify:d4-tia
 npm run build:d4-tia
-\`\`\`
+```
 
 ## Claim boundary
 
