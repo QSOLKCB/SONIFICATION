@@ -3,7 +3,7 @@
 **Status:** implemented research harness  
 **Harness ID:** `D4-TIA-S3-EQUIV`  
 **Version:** `0.1.0`  
-**Sonification impact:** none — this phase tests symmetry before receiver design
+**Sonification impact:** this harness itself adds no receiver mapping; it supplies the exact symmetry boundary used by the released D4-TIA-15 v2.0.0 profile
 
 ## Purpose
 
@@ -181,22 +181,26 @@ exact symbolic equivariance checks.
 No numerical tolerance, floating-point comparison, sampling argument, or
 listener-facing receiver is involved.
 
-## Why this comes before D4-TIA-15 v2
+## Role in the completed D4-TIA-15 v2 sequence
 
 D4-TIA-15 v1 maps invariant-algebra grading metadata into symbolic MIDI fields.
-The next version is intended to sonify **evaluated covariants and their orbit
-behavior**.
+This harness was introduced before v2 so that evaluated-covariant sonification
+would have a tested statement of what is allowed to move under triality and what
+must remain invariant after projection.
 
-Before that can be done responsibly, the repository needs a tested statement of
-what is allowed to move under triality and what must remain invariant after
-projection.
+That sequence is now complete. **D4-TIA-15 v2.0.0** evaluates the covariants
+across the six frozen quotient representatives, rechecks exact equivariance
+before receiver mapping, and then applies its separately declared symbolic MIDI
+mapping.
 
-This harness supplies that boundary.
+The harness therefore remains the mathematical boundary underneath the released
+receiver rather than a plan for future work: the receiver layer is downstream of
+the exact symmetry checks, not an aesthetically chosen three-way permutation.
 
-The next phase may define a receiver \(\Phi\) only if it preserves the tested
-equivariance structure before any invariant aggregation. In other words, the
-design target is a commuting diagram, not an aesthetically chosen three-way
-permutation.
+The combined D4-TIA-COV v0.1.0, D4-TIA-S3-EQUIV v0.1.0, and D4-TIA-15 v2.0.0
+line is frozen at Git tag `d4-tia-v2.0.0`, release commit
+`7aa6df165d0ad70297365dbf0d69072634ed4314`, and archived at Zenodo DOI
+`10.5281/zenodo.22831753`.
 
 ## Verify
 
