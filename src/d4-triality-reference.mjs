@@ -51,6 +51,19 @@ function validateIntegerMatrix(matrix, name) {
   return { rows: matrix.length, columns: width };
 }
 
+const MAX_SAFE_BIGINT = BigInt(Number.MAX_SAFE_INTEGER);
+const MIN_SAFE_BIGINT = -MAX_SAFE_BIGINT;
+
+function exactSafeNumber(value, context) {
+  if (typeof value !== "bigint") {
+    throw new TypeError(`${context} must be a bigint`);
+  }
+  if (value < MIN_SAFE_BIGINT || value > MAX_SAFE_BIGINT) {
+    throw new RangeError(`${context} exceeded safe-integer range`);
+  }
+  return Number(value);
+}
+
 export function integerMatrixMultiply(left, right) {
   const leftShape = validateIntegerMatrix(left, "left");
   const rightShape = validateIntegerMatrix(right, "right");
@@ -63,14 +76,11 @@ export function integerMatrixMultiply(left, right) {
 
   return left.map((row) =>
     Array.from({ length: rightShape.columns }, (_, column) => {
-      let total = 0;
+      let total = 0n;
       for (let index = 0; index < leftShape.columns; index += 1) {
-        total += row[index] * right[index][column];
+        total += BigInt(row[index]) * BigInt(right[index][column]);
       }
-      if (!Number.isSafeInteger(total)) {
-        throw new RangeError("matrix product exceeded safe-integer range");
-      }
-      return total;
+      return exactSafeNumber(total, "matrix product");
     }),
   );
 }
@@ -104,8 +114,10 @@ function requireNonnegativeSafeInteger(value, name) {
  * Compute Sakai's trigrading relations for D4 triality invariants.
  *
  * da and db are the refined degrees in the binary quadratic and binary cubic,
- * m is the polynomial degree in the D4 variables, k is modular weight, and
- * omega is covariant order.
+ * m is the homogeneous polynomial degree in the D4 variables used by Sakai's
+ * 2026 D4-triality-invariant ring, k is modular weight, and omega is covariant
+ * order. This m is distinct from the Jacobi-form index used in the earlier
+ * triality-invariant Jacobi-form construction.
  */
 export function trialityInvariantGrade({
   quadraticDegree,
@@ -116,20 +128,21 @@ export function trialityInvariantGrade({
   requireNonnegativeSafeInteger(cubicDegree, "cubicDegree");
   requireNonnegativeSafeInteger(polynomialDegree, "polynomialDegree");
 
-  const covariantOrder =
-    2 * quadraticDegree + 3 * cubicDegree - polynomialDegree;
-  if (covariantOrder < 0) {
+  const da = BigInt(quadraticDegree);
+  const db = BigInt(cubicDegree);
+  const m = BigInt(polynomialDegree);
+  const covariantOrderExact = 2n * da + 3n * db - m;
+  if (covariantOrderExact < 0n) {
     throw new RangeError("the requested grades imply negative covariant order");
   }
-  const modularWeight =
-    4 * quadraticDegree + 6 * cubicDegree + polynomialDegree;
+  const modularWeightExact = 4n * da + 6n * db + m;
 
   return Object.freeze({
     quadraticDegree,
     cubicDegree,
     polynomialDegree,
-    modularWeight,
-    covariantOrder,
+    modularWeight: exactSafeNumber(modularWeightExact, "modularWeight"),
+    covariantOrder: exactSafeNumber(covariantOrderExact, "covariantOrder"),
   });
 }
 
