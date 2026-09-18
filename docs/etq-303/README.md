@@ -7,7 +7,7 @@ Zenodo but was not tracked in the Git repository.
 | Version | Treatment |
 |---|---|
 | v3.0.0 | Immutable original release at DOI `10.5281/zenodo.21455181`, Git tag `v3.0.0`, commit `6b55e51647226d1c248dc8d79f9ed9336241c2ac` |
-| v3.0.1 | Terminology and exposition clarification only; no protocol, state, event, fixture, hash, implementation, or claim change |
+| v3.0.1 | Terminology and exposition clarification only; DOI `10.5281/zenodo.21494678`; no protocol, state, event, fixture, hash, implementation, or claim change |
 
 The v3.0.0 archive identifies its original source and PDF with these SHA-256
 hashes:
