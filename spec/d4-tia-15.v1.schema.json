@@ -17,53 +17,109 @@
     "claimBoundary"
   ],
   "properties": {
-    "schema": { "const": "qsol.d4-tia-15.profile/v1" },
-    "profileId": { "const": "D4-TIA-15" },
-    "profileVersion": { "const": "1.0.0" },
-    "status": { "const": "separate-noncanonical-research-profile" },
+    "schema": {
+      "const": "qsol.d4-tia-15.profile/v1"
+    },
+    "profileId": {
+      "const": "D4-TIA-15"
+    },
+    "profileVersion": {
+      "const": "1.0.0"
+    },
+    "status": {
+      "const": "separate-noncanonical-research-profile"
+    },
     "source": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["author", "title", "arxiv", "year", "theorem", "grading"],
-      "properties": {
-        "author": { "const": "Kazuhiro Sakai" },
-        "title": { "const": "The ring of D4 triality invariants" },
-        "arxiv": { "const": "2504.00546v2" },
-        "year": { "const": 2026 },
-        "theorem": { "type": "string" },
-        "grading": { "type": "string" }
+      "const": {
+        "author": "Kazuhiro Sakai",
+        "title": "The ring of D4 triality invariants",
+        "arxiv": "2504.00546v2",
+        "year": 2026,
+        "theorem": "Theorem 5.2 / equation (5.23) minimal 15-generator basis",
+        "grading": "Theorem 4.10 and Remark 4.17"
       }
     },
     "publishedStructure": {
-      "type": "object",
-      "required": [
-        "generatorCount",
-        "refinedDegrees",
-        "covariantDegree",
-        "polynomialDegree",
-        "modularWeight",
-        "covariantOrder",
-        "gradingRelations"
-      ],
-      "properties": {
-        "generatorCount": { "const": 15 },
-        "refinedDegrees": { "const": ["d_a", "d_b"] },
-        "covariantDegree": { "const": "d=d_a+d_b" },
-        "polynomialDegree": { "const": "m" },
-        "modularWeight": { "const": "k" },
-        "covariantOrder": { "const": "omega" },
-        "gradingRelations": {
-          "const": [
-            "k=4*d_a+6*d_b+m",
-            "omega=2*d_a+3*d_b-m",
-            "omega=(k-3*m)/2"
-          ]
-        }
+      "const": {
+        "generatorCount": 15,
+        "refinedDegrees": [
+          "d_a",
+          "d_b"
+        ],
+        "covariantDegree": "d=d_a+d_b",
+        "polynomialDegree": "m",
+        "modularWeight": "k",
+        "covariantOrder": "omega",
+        "gradingRelations": [
+          "k=4*d_a+6*d_b+m",
+          "omega=2*d_a+3*d_b-m",
+          "omega=(k-3*m)/2"
+        ]
       }
     },
-    "mapping": { "type": "object" },
-    "determinism": { "type": "object" },
-    "lineage": { "type": "object" },
-    "claimBoundary": { "type": "string", "minLength": 1 }
+    "mapping": {
+      "const": {
+        "eventOrder": {
+          "source": "published 15-generator basis order",
+          "transfer": "identity"
+        },
+        "onsetTick": {
+          "source": "polynomial degree m",
+          "transfer": "identity"
+        },
+        "durationTicks": {
+          "source": "covariant degree d=d_a+d_b",
+          "transfer": "identity"
+        },
+        "midiNote": {
+          "source": "modular weight k",
+          "transfer": "identity"
+        },
+        "midiChannel": {
+          "source": "covariant order omega",
+          "transfer": "identity"
+        },
+        "quadraticDegree": {
+          "source": "refined degree d_a",
+          "transfer": "preserved as event metadata"
+        },
+        "cubicDegree": {
+          "source": "refined degree d_b",
+          "transfer": "preserved as event metadata"
+        },
+        "velocity": {
+          "value": 64,
+          "status": "authored receiver constant; not grading data"
+        },
+        "midiDivision": {
+          "value": 1,
+          "status": "symbolic tick resolution; no canonical tempo"
+        },
+        "tempoMicrosecondsPerQuarter": null,
+        "absoluteFrequencyHz": null,
+        "receiverTuning": "external-and-nonnormative",
+        "renderedAudioStatus": "permanently-disabled-in-root-profile"
+      }
+    },
+    "determinism": {
+      "const": {
+        "numericAbi": "safe-integers-only",
+        "eventCount": 15,
+        "runtimeArtifactExtensions": [
+          ".json",
+          ".csv",
+          ".mid"
+        ]
+      }
+    },
+    "lineage": {
+      "const": {
+        "relationToEtq": "independent profile; does not modify ETQ-101 v2 or ETQ-303 v3 protocol identity",
+        "referenceBridge": "docs/D4_TRIALITY_REFERENCE_BRIDGE.md"
+      }
+    },
+    "claimBoundary": {
+      "const": "The 15 source generators and their grading ledger are literature-derived. Their direct placement into MIDI note/channel/tick fields is an authored sonification convention chosen to avoid scaling, normalization, or invented latent quantities. MIDI is symbolic; tempo, tuning, timbre, loudness, and rendered audio are outside profile identity."
+    }
   }
 }
