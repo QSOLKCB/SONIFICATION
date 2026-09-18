@@ -121,9 +121,10 @@ research sequence:
    harness — complete.
 3. **D4-TIA-15 v2.0.0** — evaluated-covariant orbit sonification downstream of
    those exact checks — complete.
-4. **Freeze/tag/archive** — complete at immutable Git tag
-   `d4-tia-v2.0.0`, release commit
-   `7aa6df165d0ad70297365dbf0d69072634ed4314`.
+4. **Freeze/tag/archive** — implementation frozen at immutable Git tag
+   `d4-tia-v2.0.0`, commit
+   `7aa6df165d0ad70297365dbf0d69072634ed4314`; publication/citation metadata
+   is pinned at immutable Git commit `0cfe7ee19ea361c059319b3c0af4178aed8a9f1d`.
 5. **Zenodo formalization** — complete at DOI
    `10.5281/zenodo.22831753`.
 
