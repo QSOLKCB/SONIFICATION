@@ -197,9 +197,9 @@ The root runtime/export bundle commands — `npm run build:v3`, `npm run build:d
 
 That allowlist applies to generated runtime/export artifacts, not normal repository or publication files. For example, `npm run build:paper` may produce archival PDF and checksum files.
 
-Rendered PCM/WAV audio is intentionally excluded from root runtime/export identity.
+Rendered audio generation is **permanently prohibited** in root ETQ runtime/export workflows. Root code must not create PCM or sampled-audio buffers even transiently — in memory, temporary files, caches, logs, snapshots, fixtures, playback paths, or analysis steps — and must not encode or emit WAV or any other rendered-audio format.
 
-The separate `APP/` and `sonification/` directories are audio laboratories. They can render audio without changing the root ETQ or D4-TIA contracts.
+The separate `APP/` and `sonification/` directories are independent audio laboratories. They may render audio, but those features must not be imported into, called from, or used to bypass the root ETQ runtime/export policy.
 
 ## ETQ-303 artifacts
 
