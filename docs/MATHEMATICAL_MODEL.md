@@ -142,7 +142,7 @@ $$
 
 A published D4/F4 triality convention gives two involutions
 
-$
+$$
 w_T=
 \begin{pmatrix}
 1&0&0&0\\
@@ -158,13 +158,13 @@ w_S=\frac12
 1&-1&1&1\\
 -1&1&1&1
 \end{pmatrix}.
-$
+$$
 
 In the displayed coordinate conventions the ETQ matrix factors exactly as
 
-$
+$$
 \boxed{A=w_Sw_T}.
-$
+$$
 
 Sakai uses these generators for the quotient
 \(W(F_4)/W(D_4)\cong S_3\), paired with the modular quotient
@@ -177,9 +177,9 @@ model. The exact factorization is verified in
 
 It satisfies
 
-$
+$$
 A^TA=I_4,\qquad A^3=I_4.
-$
+$$
 
 Define the simultaneous eight-dimensional action
 
