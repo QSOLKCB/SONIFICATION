@@ -8,7 +8,7 @@ Archive metadata commit: `0cfe7ee19ea361c059319b3c0af4178aed8a9f1d`
 Zenodo DOI: `10.5281/zenodo.22831753`
 
 The immutable `d4-tia-v2.0.0` tag freezes the tested mathematical/software
-implementation that was deposited to Zenodo. Publication metadata was finalized
+implementation underlying the Zenodo formalization. Publication metadata was finalized
 immediately afterward on the repository documentation line: the DOI badge,
 released-status changelog/roadmap text, rights-and-archiving update, and
 `CITATION-D4-TIA.cff` do not alter the frozen runtime contracts, fixtures,
