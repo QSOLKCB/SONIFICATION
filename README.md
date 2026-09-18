@@ -1,6 +1,6 @@
 # SONIFICATION — ETQ-303 and D4 Triality Research
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21494678.svg)](https://doi.org/10.5281/zenodo.21494678)
+[![ETQ-303 v3.0.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21494678.svg)](https://doi.org/10.5281/zenodo.21494678) [![D4-TIA v2.0.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22831753.svg)](https://doi.org/10.5281/zenodo.22831753)
 
 This repository contains two related but separately versioned research lines:
 
@@ -253,16 +253,17 @@ Where a mapping is authored rather than mathematically forced, the documentation
 - [Implementation roadmap](docs/ROADMAP.md)
 - [Formal ETQ-303 v3.0.1 paper](docs/etq-303/README.md)
 
-## Archived ETQ releases
+## Archived releases
 
 - **ETQ-101 v2.0.0** — DOI `10.5281/zenodo.21432511`
 - **ETQ-303 v3.0.0** — DOI `10.5281/zenodo.21455181`
 - **ETQ-303 v3.0.1 documentation/publication release** — DOI `10.5281/zenodo.21494678`
+- **D4-TIA v2.0.0** — DOI `10.5281/zenodo.22831753`
 
-The D4-TIA-COV, D4-TIA-S3-EQUIV, and D4-TIA-15 v2 line is implemented and is the next research line to freeze and archive.
+D4-TIA v2.0.0 archives the frozen D4-TIA-COV v0.1.0, D4-TIA-S3-EQUIV v0.1.0, and D4-TIA-15 v2.0.0 research line. The immutable implementation tag `d4-tia-v2.0.0` points to commit `7aa6df165d0ad70297365dbf0d69072634ed4314`. Publication/citation metadata was finalized afterward on the documentation line without changing the frozen D4-TIA runtime identity or deterministic commitments. D4-TIA remains separately versioned from the preserved ETQ runtime contracts.
 
 ## Creator and licence
 
 Created by **Trent Slade / QSOL-IMC**.
 
-Licensed under the Mozilla Public License 2.0. Preserve the copyright and licence notices and use `CITATION.cff` for citation metadata.
+Licensed under the Mozilla Public License 2.0. Preserve the copyright and licence notices. Use `CITATION.cff` for ETQ-303 citation metadata and `CITATION-D4-TIA.cff` for the archived D4-TIA v2.0.0 release.

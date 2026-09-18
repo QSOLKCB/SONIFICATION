@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use or discuss the D4-TIA v2 research line, please cite it using this metadata and preserve the repository attribution."
+title: "D4-TIA v2.0.0 — Exact D4 Triality Covariants, S3 Equivariance, and Evaluated Sonification"
+type: software
+authors:
+  - family-names: "Slade"
+    given-names: "Trent"
+    affiliation: "QSOL-IMC"
+repository-code: "https://github.com/QSOLKCB/SONIFICATION"
+url: "https://doi.org/10.5281/zenodo.22831753"
+version: 2.0.0
+date-released: 2026-09-18
+license: MPL-2.0
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22831753"
+    description: "Archived D4-TIA v2.0.0 release"
+keywords:
+  - D4 triality
+  - F4 Weyl group
+  - S3 equivariance
+  - invariant theory
+  - binary covariants
+  - transvectants
+  - exact rational arithmetic
+  - mathematical sonification
+  - symbolic MIDI
+  - reproducible research
+preferred-citation:
+  type: software
+  authors:
+    - family-names: "Slade"
+      given-names: "Trent"
+      affiliation: "QSOL-IMC"
+  title: "D4-TIA v2.0.0 — Exact D4 Triality Covariants, S3 Equivariance, and Evaluated Sonification"
+  version: 2.0.0
+  year: 2026
+  doi: "10.5281/zenodo.22831753"
+  url: "https://doi.org/10.5281/zenodo.22831753"
