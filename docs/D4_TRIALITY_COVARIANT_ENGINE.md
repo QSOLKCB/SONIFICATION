@@ -21,7 +21,7 @@ f(u,v)=\sum_{i=0}^{2}\alpha_i u^{2-i}v^i,
 g(u,v)=\sum_{i=0}^{3}\beta_i u^{3-i}v^i,
 $$
 
-and the normalized transvectant of binary forms (F,G) of orders (m,n) is
+and the normalized transvectant of binary forms \(F,G\) of orders \(m,n\) is
 
 $$
 (F,G)_r =
@@ -54,14 +54,14 @@ fixture over this exact serialization.
 
 The engine constructs Sakai's Theorem 5.2 basis:
 
-- quadratic covariants: (f), (D_f=(f,f)_2);
-- cubic covariants: (g), (P=(g,g)_2), (Q=(g,P)_1),
-  (D_g=(P,P)_2);
+- quadratic covariants: \(f\), \(D_f=(f,f)_2\);
+- cubic covariants: \(g\), \(P=(g,g)_2\), \(Q=(g,P)_1\),
+  \(D_g=(P,P)_2\);
 - joint covariants:
-  ((f,g)_1), ((f,g)_2), ((f^2,g)_3),
-  ((f,P)_1), ((f,P)_2), ((f,Q)_2),
-  ((f^2,Q)_3), ((f^3,g^2)_6), and
-  ((f^3,gQ)_6).
+  \((f,g)_1\), \((f,g)_2\), \((f^2,g)_3\),
+  \((f,P)_1\), \((f,P)_2\), \((f,Q)_2\),
+  \((f^2,Q)_3\), \((f^3,g^2)_6\), and
+  \((f^3,gQ)_6\).
 
 It also verifies exactly the cubic syzygy
 
@@ -75,7 +75,7 @@ For every symbolic polynomial, the engine counts the degrees in
 (alpha_i), (eta_j), and (u,v) to derive
 
 $$
-d_a,quad d_b,quad \omega.
+d_a,\qquad d_b,\qquad \omega.
 $$
 
 It then derives
@@ -116,7 +116,7 @@ npm run verify:d4-tia-cov
 The research sequence is intentionally locked:
 
 1. **D4-TIA-COV v0.1** — exact covariant algebra engine — this phase.
-2. **D4/F4 (S_3) orbit + equivariance harness** — next.
+2. **D4/F4 \(S_3\) orbit + equivariance harness** — next.
 3. **D4-TIA-15 v2** — sonify evaluated covariants/orbits while testing
    equivariance before invariant projection.
 4. Freeze/tag/archive the resulting research line, then update Zenodo.
