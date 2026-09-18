@@ -62,9 +62,9 @@ The repository includes [`.zenodo.json`](../.zenodo.json) for the current open
 software deposit under MPL-2.0. Version-specific archives must remain distinct:
 
 - ETQ-101 v2.0.0: `10.5281/zenodo.21432511`;
-- ETQ-303 v3.0.0: `10.5281/zenodo.21455181`; and
+- ETQ-303 v3.0.0: `10.5281/zenodo.21455181`;
 - ETQ-303 v3.0.1: `10.5281/zenodo.21494678` (documentation-only clarification); and
-- D4-TIA v2.0.0: `10.5281/zenodo.22831753` (separately versioned D4-TIA research release; frozen implementation tag `d4-tia-v2.0.0` at commit `7aa6df165d0ad70297365dbf0d69072634ed4314`, metadata-complete archive commit `0cfe7ee19ea361c059319b3c0af4178aed8a9f1d`).
+- D4-TIA v2.0.0: `10.5281/zenodo.22831753` (separately versioned D4-TIA research release; frozen implementation tag `d4-tia-v2.0.0` at commit `7aa6df165d0ad70297365dbf0d69072634ed4314`).
 
 For each new version:
 
@@ -87,12 +87,11 @@ validates the model's scientific interpretation.
 `CITATION.cff` remains the citation record for the ETQ-303 v3.0.1
 documentation/publication release. The separately archived D4-TIA v2.0.0 line
 uses `CITATION-D4-TIA.cff`, which records DOI
-`10.5281/zenodo.22831753`, the metadata-complete repository snapshot, and the
-D4-TIA release title/version. The frozen implementation tag
-`d4-tia-v2.0.0` is recorded separately in the README, changelog, and archive
-history above. This avoids relabelling either research line through a
-repository-wide citation record. The original immutable implementation tag was
-created before DOI/citation metadata was finalized; commit
-`0cfe7ee19ea361c059319b3c0af4178aed8a9f1d` is the immutable Git commit that
-contains the completed D4-TIA release metadata and `CITATION-D4-TIA.cff`
-without changing the v2.0.0 runtime identity.
+`10.5281/zenodo.22831753`, the repository location, and the D4-TIA release
+title/version. The frozen implementation tag `d4-tia-v2.0.0` and commit
+`7aa6df165d0ad70297365dbf0d69072634ed4314` are recorded separately in the
+README, changelog, and archive history above. Publication/citation metadata was
+finalized afterward on the documentation line; no intermediate documentation
+commit is designated as a complete archive snapshot. This avoids relabelling
+either research line while keeping the frozen implementation identity distinct
+from later metadata-only corrections.
