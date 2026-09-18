@@ -109,16 +109,19 @@ The coefficient probe, temporal layout, and exact-rank-to-pitch rule are
 authored receiver choices. The exact algebra, quotient action, equivariance
 checks, and order-zero invariant behavior are separately verified.
 
-## Sequenced D4-TIA research follow-up
+## D4-TIA v2 release and archive — completed
 
-The remaining D4-TIA sequence is intentionally ordered:
+The first complete D4-TIA research line is now frozen and archived:
 
-1. **Freeze/tag/archive** the D4-TIA-COV, D4-TIA-S3-EQUIV, and D4-TIA-15 v2
-   research line.
-2. **Update Zenodo** with the frozen research release and provenance.
+1. **Freeze/tag/archive — complete.** The immutable GitHub release
+   `d4-tia-v2.0.0` freezes D4-TIA-COV v0.1.0, D4-TIA-S3-EQUIV v0.1.0,
+   and D4-TIA-15 v2.0.0.
+2. **Zenodo formalization — complete.** The archived release is published at
+   DOI `10.5281/zenodo.22831753`.
 
-The evaluated-covariant sonification layer is now implemented. No further
-receiver remapping should occur before this line is frozen and archived.
+The v2 receiver mapping and its exact commitments are now historical release
+identity. Any future receiver remapping or semantic change must use a new
+version rather than modifying the frozen v2.0.0 line.
 
 The remaining numbered phases below apply only to the independent `APP/` and
 `sonification/` audio laboratories.
