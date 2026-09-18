@@ -1,0 +1,692 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "qsol.d4-tia-s3-equivariance/v0.1",
+  "title": "D4-TIA-S3-EQUIV v0.1.0 canonical harness summary",
+  "const": {
+    "schema": "qsol.d4-tia-s3-equivariance/v0.1",
+    "harnessId": "D4-TIA-S3-EQUIV",
+    "harnessVersion": "0.1.0",
+    "quotientIdentification": {
+      "modular": "SL2(Z)/Gamma(2)~=S3",
+      "d4": "W(F4)/W(D4)~=S3",
+      "generatorCorrespondence": [
+        "gS<->wS",
+        "gT<->wT"
+      ],
+      "warning": "The six modular matrices are canonical SL2(Z) representatives of quotient classes; they are not asserted to form a literal six-element subgroup upstairs."
+    },
+    "d4Orbit": {
+      "generators": {
+        "S": [
+          [
+            "1/2",
+            "1/2",
+            "1/2",
+            "-1/2"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "-1/2",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "-1/2",
+            "1/2",
+            "1/2"
+          ],
+          [
+            "-1/2",
+            "1/2",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "T": [
+          [
+            "1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "-1"
+          ]
+        ]
+      },
+      "elements": [
+        {
+          "label": "e",
+          "matrix": [
+            [
+              "1",
+              "0",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        },
+        {
+          "label": "S",
+          "matrix": [
+            [
+              "1/2",
+              "1/2",
+              "1/2",
+              "-1/2"
+            ],
+            [
+              "1/2",
+              "1/2",
+              "-1/2",
+              "1/2"
+            ],
+            [
+              "1/2",
+              "-1/2",
+              "1/2",
+              "1/2"
+            ],
+            [
+              "-1/2",
+              "1/2",
+              "1/2",
+              "1/2"
+            ]
+          ]
+        },
+        {
+          "label": "T",
+          "matrix": [
+            [
+              "1",
+              "0",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "0",
+              "-1"
+            ]
+          ]
+        },
+        {
+          "label": "ST",
+          "matrix": [
+            [
+              "1/2",
+              "1/2",
+              "1/2",
+              "1/2"
+            ],
+            [
+              "1/2",
+              "1/2",
+              "-1/2",
+              "-1/2"
+            ],
+            [
+              "1/2",
+              "-1/2",
+              "1/2",
+              "-1/2"
+            ],
+            [
+              "-1/2",
+              "1/2",
+              "1/2",
+              "-1/2"
+            ]
+          ]
+        },
+        {
+          "label": "TS",
+          "matrix": [
+            [
+              "1/2",
+              "1/2",
+              "1/2",
+              "-1/2"
+            ],
+            [
+              "1/2",
+              "1/2",
+              "-1/2",
+              "1/2"
+            ],
+            [
+              "1/2",
+              "-1/2",
+              "1/2",
+              "1/2"
+            ],
+            [
+              "1/2",
+              "-1/2",
+              "-1/2",
+              "-1/2"
+            ]
+          ]
+        },
+        {
+          "label": "STS",
+          "matrix": [
+            [
+              "1/2",
+              "1/2",
+              "1/2",
+              "1/2"
+            ],
+            [
+              "1/2",
+              "1/2",
+              "-1/2",
+              "-1/2"
+            ],
+            [
+              "1/2",
+              "-1/2",
+              "1/2",
+              "-1/2"
+            ],
+            [
+              "1/2",
+              "-1/2",
+              "-1/2",
+              "1/2"
+            ]
+          ]
+        }
+      ],
+      "multiplicationTable": {
+        "e": {
+          "e": "e",
+          "S": "S",
+          "T": "T",
+          "ST": "ST",
+          "TS": "TS",
+          "STS": "STS"
+        },
+        "S": {
+          "e": "S",
+          "S": "e",
+          "T": "ST",
+          "ST": "T",
+          "TS": "STS",
+          "STS": "TS"
+        },
+        "T": {
+          "e": "T",
+          "S": "TS",
+          "T": "e",
+          "ST": "STS",
+          "TS": "S",
+          "STS": "ST"
+        },
+        "ST": {
+          "e": "ST",
+          "S": "STS",
+          "T": "S",
+          "ST": "TS",
+          "TS": "e",
+          "STS": "T"
+        },
+        "TS": {
+          "e": "TS",
+          "S": "T",
+          "T": "STS",
+          "ST": "e",
+          "TS": "ST",
+          "STS": "S"
+        },
+        "STS": {
+          "e": "STS",
+          "S": "ST",
+          "T": "TS",
+          "ST": "S",
+          "TS": "T",
+          "STS": "e"
+        }
+      },
+      "seed": [
+        2,
+        4,
+        6,
+        10
+      ],
+      "orbit": [
+        {
+          "label": "e",
+          "vector": [
+            "2",
+            "4",
+            "6",
+            "10"
+          ]
+        },
+        {
+          "label": "S",
+          "vector": [
+            "1",
+            "5",
+            "7",
+            "9"
+          ]
+        },
+        {
+          "label": "T",
+          "vector": [
+            "2",
+            "4",
+            "6",
+            "-10"
+          ]
+        },
+        {
+          "label": "ST",
+          "vector": [
+            "11",
+            "-5",
+            "-3",
+            "-1"
+          ]
+        },
+        {
+          "label": "TS",
+          "vector": [
+            "1",
+            "5",
+            "7",
+            "-9"
+          ]
+        },
+        {
+          "label": "STS",
+          "vector": [
+            "11",
+            "-5",
+            "-3",
+            "1"
+          ]
+        }
+      ]
+    },
+    "modularQuotient": {
+      "generators": {
+        "S": [
+          [
+            0,
+            -1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "T": [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "representatives": [
+        {
+          "label": "e",
+          "matrix": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "mod2Key": "1001"
+        },
+        {
+          "label": "S",
+          "matrix": [
+            [
+              0,
+              -1
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "mod2Key": "0110"
+        },
+        {
+          "label": "T",
+          "matrix": [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "mod2Key": "1101"
+        },
+        {
+          "label": "ST",
+          "matrix": [
+            [
+              0,
+              -1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "mod2Key": "0111"
+        },
+        {
+          "label": "TS",
+          "matrix": [
+            [
+              1,
+              -1
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "mod2Key": "1110"
+        },
+        {
+          "label": "STS",
+          "matrix": [
+            [
+              -1,
+              0
+            ],
+            [
+              1,
+              -1
+            ]
+          ],
+          "mod2Key": "1011"
+        }
+      ],
+      "multiplicationTable": {
+        "e": {
+          "e": "e",
+          "S": "S",
+          "T": "T",
+          "ST": "ST",
+          "TS": "TS",
+          "STS": "STS"
+        },
+        "S": {
+          "e": "S",
+          "S": "e",
+          "T": "ST",
+          "ST": "T",
+          "TS": "STS",
+          "STS": "TS"
+        },
+        "T": {
+          "e": "T",
+          "S": "TS",
+          "T": "e",
+          "ST": "STS",
+          "TS": "S",
+          "STS": "ST"
+        },
+        "ST": {
+          "e": "ST",
+          "S": "STS",
+          "T": "S",
+          "ST": "TS",
+          "TS": "e",
+          "STS": "T"
+        },
+        "TS": {
+          "e": "TS",
+          "S": "T",
+          "T": "STS",
+          "ST": "e",
+          "TS": "ST",
+          "STS": "S"
+        },
+        "STS": {
+          "e": "STS",
+          "S": "ST",
+          "T": "TS",
+          "ST": "S",
+          "TS": "T",
+          "STS": "e"
+        }
+      }
+    },
+    "multiplicationTablesMatch": true,
+    "equivariance": {
+      "law": "Psi(alpha';u,v)=Psi(alpha;u',v')",
+      "representatives": [
+        {
+          "label": "e",
+          "modularMatrix": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "mod2Key": "1001",
+          "coefficientActionSha256": "185115b9b28e422ee05212edca011c65df4c5ab0e793a4f9ace08dac293aa86b",
+          "transformedBasisSha256": "56b8b812cfcaafc7e7cbb0989699f17884b8d871351389df8fab693a5be06080",
+          "checkedGenerators": 15,
+          "allPassed": true
+        },
+        {
+          "label": "S",
+          "modularMatrix": [
+            [
+              0,
+              -1
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "mod2Key": "0110",
+          "coefficientActionSha256": "e1a3070fed3d7b36be835fa3880c883e0037888531ead9ddb0ec062613564b2c",
+          "transformedBasisSha256": "e91ccda5e80205b3d804577035fbf51c9dbfc27f6ca0ba79b6e8867260d0e490",
+          "checkedGenerators": 15,
+          "allPassed": true
+        },
+        {
+          "label": "T",
+          "modularMatrix": [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "mod2Key": "1101",
+          "coefficientActionSha256": "e4caf286de06b999e592cb2c1788cd9de8729f3ea9d64736e6a22a889865c586",
+          "transformedBasisSha256": "a234378f666c9f1b6fac0aa49886c3c0eb7200829d8618002ef237f270444b2a",
+          "checkedGenerators": 15,
+          "allPassed": true
+        },
+        {
+          "label": "ST",
+          "modularMatrix": [
+            [
+              0,
+              -1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "mod2Key": "0111",
+          "coefficientActionSha256": "d6463a68d274468a19686eb28784ca2e8934ee2e05adf4383fd161e5b0a54bcd",
+          "transformedBasisSha256": "f0ba61bed81f7920a849ab6e7c2ce4ec8df54c5000133acb1d9cfd1f10353158",
+          "checkedGenerators": 15,
+          "allPassed": true
+        },
+        {
+          "label": "TS",
+          "modularMatrix": [
+            [
+              1,
+              -1
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "mod2Key": "1110",
+          "coefficientActionSha256": "26878272d4f2110faad459ac1e4801a9754cdfe662a2abfaf4bc76cbfd41fae6",
+          "transformedBasisSha256": "2049f04675545c9184d3eaf566a26e23ff06da27400afc225a5fd07eb3b18227",
+          "checkedGenerators": 15,
+          "allPassed": true
+        },
+        {
+          "label": "STS",
+          "modularMatrix": [
+            [
+              -1,
+              0
+            ],
+            [
+              1,
+              -1
+            ]
+          ],
+          "mod2Key": "1011",
+          "coefficientActionSha256": "11b562c354f98be0661620204b85fd6d30c713e47accb2ec678cc5365e453e4d",
+          "transformedBasisSha256": "e9ab2b4c3a327aac1c024f56cc42470fecf9bab96e3b6723b7ac44eb9c1881d6",
+          "checkedGenerators": 15,
+          "allPassed": true
+        }
+      ],
+      "checkedRepresentatives": 6,
+      "checkedGenerators": 15,
+      "exactChecks": 90,
+      "allPassed": true,
+      "quotientMultiplicationTable": {
+        "e": {
+          "e": "e",
+          "S": "S",
+          "T": "T",
+          "ST": "ST",
+          "TS": "TS",
+          "STS": "STS"
+        },
+        "S": {
+          "e": "S",
+          "S": "e",
+          "T": "ST",
+          "ST": "T",
+          "TS": "STS",
+          "STS": "TS"
+        },
+        "T": {
+          "e": "T",
+          "S": "TS",
+          "T": "e",
+          "ST": "STS",
+          "TS": "S",
+          "STS": "ST"
+        },
+        "ST": {
+          "e": "ST",
+          "S": "STS",
+          "T": "S",
+          "ST": "TS",
+          "TS": "e",
+          "STS": "T"
+        },
+        "TS": {
+          "e": "TS",
+          "S": "T",
+          "T": "STS",
+          "ST": "e",
+          "TS": "ST",
+          "STS": "S"
+        },
+        "STS": {
+          "e": "STS",
+          "S": "ST",
+          "T": "TS",
+          "ST": "S",
+          "TS": "T",
+          "STS": "e"
+        }
+      }
+    },
+    "claimBoundary": "The harness verifies the exact six-element D4/F4 triality quotient orbit and exact SL2(C) covariant equivariance for the 15 constructed binary covariants under six canonical SL2(Z) representatives. It does not claim that the quotient classes themselves are a six-element subgroup of SL2(Z), and it introduces no sonification mapping."
+  }
+}
