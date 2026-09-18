@@ -7,7 +7,15 @@ import {
   readdirSync,
   writeFileSync,
 } from "node:fs";
-import { basename, dirname, extname, isAbsolute, relative, resolve, sep } from "node:path";
+import {
+  basename,
+  dirname,
+  extname,
+  isAbsolute,
+  relative,
+  resolve,
+  sep,
+} from "node:path";
 import { fileURLToPath } from "node:url";
 
 import {
@@ -18,16 +26,41 @@ import {
 const PROJECT_ROOT = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const OUTPUT_ROOT = resolve(PROJECT_ROOT, "dist");
 const ALLOWED_EXTENSIONS = new Set(ALLOWED_ROOT_ARTIFACT_EXTENSIONS);
+const RENDERED_AUDIO_OPTION =
+  /^--(?:wav|pcm|aiff|flac|mp3|ogg|audio|render-audio)(?:=|$)/i;
 
-function outputArgument() {
-  const index = process.argv.indexOf("--output");
-  if (index === -1) return resolve(OUTPUT_ROOT, "d4-tia-15-v1.0.0");
-  const value = process.argv[index + 1];
-  if (!value) throw new Error("--output requires a path");
-  return resolve(value);
+function parseArguments(argv = process.argv.slice(2)) {
+  let output = resolve(OUTPUT_ROOT, "d4-tia-15-v1.0.0");
+  let sawOutput = false;
+
+  for (let index = 0; index < argv.length; index += 1) {
+    const argument = argv[index];
+
+    if (RENDERED_AUDIO_OPTION.test(argument)) {
+      throw new Error(
+        `rendered-audio request is prohibited in the root D4-TIA profile: ${argument}`,
+      );
+    }
+
+    if (argument === "--output") {
+      if (sawOutput) throw new Error("--output may be specified only once");
+      const value = argv[index + 1];
+      if (!value || value.startsWith("--")) {
+        throw new Error("--output requires a path");
+      }
+      output = resolve(value);
+      sawOutput = true;
+      index += 1;
+      continue;
+    }
+
+    throw new Error(`unknown option: ${argument}`);
+  }
+
+  return output;
 }
 
-function assertDedicatedOutputPath(output) {
+function assertLexicallyInsideOutputRoot(output) {
   const relativeOutput = relative(OUTPUT_ROOT, output);
   if (
     relativeOutput === "" ||
@@ -37,8 +70,47 @@ function assertDedicatedOutputPath(output) {
   ) {
     throw new Error(`--output must be a dedicated subdirectory of ${OUTPUT_ROOT}`);
   }
+  return relativeOutput;
+}
+
+function assertNoSymlinkedAncestors(output, relativeOutput) {
+  if (!existsSync(OUTPUT_ROOT)) {
+    mkdirSync(OUTPUT_ROOT, { recursive: true });
+  }
+
+  const rootStat = lstatSync(OUTPUT_ROOT);
+  if (rootStat.isSymbolicLink()) {
+    throw new Error("dist output root must not be a symbolic link");
+  }
+  if (!rootStat.isDirectory()) {
+    throw new Error("dist output root exists and is not a directory");
+  }
+
+  let current = OUTPUT_ROOT;
+  for (const component of relativeOutput.split(sep).filter(Boolean)) {
+    current = resolve(current, component);
+    if (!existsSync(current)) break;
+
+    const stat = lstatSync(current);
+    if (stat.isSymbolicLink()) {
+      throw new Error(`--output path contains symbolic link: ${current}`);
+    }
+    if (current !== output && !stat.isDirectory()) {
+      throw new Error(`--output ancestor is not a directory: ${current}`);
+    }
+  }
+}
+
+function assertDedicatedOutputPath(output) {
+  const relativeOutput = assertLexicallyInsideOutputRoot(output);
+  assertNoSymlinkedAncestors(output, relativeOutput);
+
   if (existsSync(output)) {
-    if (!lstatSync(output).isDirectory()) {
+    const stat = lstatSync(output);
+    if (stat.isSymbolicLink()) {
+      throw new Error("--output must not be a symbolic link");
+    }
+    if (!stat.isDirectory()) {
       throw new Error("--output already exists and is not a directory");
     }
     if (readdirSync(output).length !== 0) {
@@ -58,7 +130,7 @@ function assertAllowedFilename(filename) {
   }
 }
 
-const output = outputArgument();
+const output = parseArguments();
 assertDedicatedOutputPath(output);
 mkdirSync(output, { recursive: true });
 
@@ -71,7 +143,9 @@ const files = new Map([
   ["manifest.json", bundle.manifestBytes],
 ]);
 
-for (const [filename, bytes] of [...files.entries()].sort(([a], [b]) => a.localeCompare(b))) {
+for (const [filename, bytes] of [...files.entries()].sort(([a], [b]) =>
+  a.localeCompare(b),
+)) {
   assertAllowedFilename(filename);
   writeFileSync(resolve(output, filename), bytes, { flag: "wx" });
 }
