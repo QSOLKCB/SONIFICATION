@@ -87,9 +87,12 @@ validates the model's scientific interpretation.
 `CITATION.cff` remains the citation record for the ETQ-303 v3.0.1
 documentation/publication release. The separately archived D4-TIA v2.0.0 line
 uses `CITATION-D4-TIA.cff`, which records DOI
-`10.5281/zenodo.22831753`, tag `d4-tia-v2.0.0`, and the D4-TIA release
-title/version. This avoids relabelling either research line through a
+`10.5281/zenodo.22831753`, the metadata-complete repository snapshot, and the
+D4-TIA release title/version. The frozen implementation tag
+`d4-tia-v2.0.0` is recorded separately in the README, changelog, and archive
+history above. This avoids relabelling either research line through a
 repository-wide citation record. The original immutable implementation tag was
-created before DOI/citation metadata was finalized; commit `0cfe7ee19ea361c059319b3c0af4178aed8a9f1d`
-is the immutable Git commit that contains the completed D4-TIA release metadata
-and `CITATION-D4-TIA.cff` without changing the v2.0.0 runtime identity.
+created before DOI/citation metadata was finalized; commit
+`0cfe7ee19ea361c059319b3c0af4178aed8a9f1d` is the immutable Git commit that
+contains the completed D4-TIA release metadata and `CITATION-D4-TIA.cff`
+without changing the v2.0.0 runtime identity.
