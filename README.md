@@ -60,6 +60,35 @@ ETQ's 101-state selector, independent \(\mathbb C^3\) factor, SCL stencil, or
 sonification choices. See
 [the D4/F4 triality reference bridge](docs/D4_TRIALITY_REFERENCE_BRIDGE.md).
 
+
+## D4-TIA-15: separately versioned invariant-algebra profile
+
+The published 15-generator D4 triality-invariant/covariant basis is now also
+available as the independent **D4-TIA-15 v1.0.0** symbolic sonification
+profile. It preserves the grading ledger exactly and uses identity transfers
+rather than fitted or normalized mappings:
+
+```text
+m            -> onset tick
+d=da+db      -> duration ticks
+k            -> MIDI note number
+omega        -> MIDI channel
+da, db       -> unchanged event metadata
+```
+
+This mapping is still an authored receiver convention; invariant theory does
+not identify modular weight with acoustic pitch. No tempo, tuning, timbre,
+loudness, PCM, or rendered audio enters the profile identity.
+
+Build and verify it independently:
+
+```bash
+npm run verify:d4-tia
+npm run build:d4-tia
+```
+
+See [D4-TIA-15 v1.0.0](docs/D4_TRIALITY_ALGEBRA_SONIFICATION.md).
+
 ## Notation and Conventions
 
 Unless explicitly stated otherwise, scalars are in \(\mathbb C\), all vector
@@ -180,7 +209,7 @@ npm run verify
 npm run build:v3
 ```
 
-`npm run verify` validates v3 and continues to validate the immutable v2 and v1
+`npm run verify` validates D4-TIA-15, v3, and continues to validate the immutable v2 and v1
 contracts. The build command fails closed for unsafe, existing nonempty, or
 non-`dist/` output paths and never recursively deletes a caller-selected path.
 
@@ -188,6 +217,7 @@ non-`dist/` output paths and never recursively deletes a caller-selected path.
 
 - [Exact event protocol](docs/ETQ_V3_EVENT_PROTOCOL.md)
 - [D4/F4 triality reference bridge](docs/D4_TRIALITY_REFERENCE_BRIDGE.md)
+- [D4-TIA-15 invariant-algebra sonification profile](docs/D4_TRIALITY_ALGEBRA_SONIFICATION.md)
 - [Claim boundaries](docs/ETQ_V3_CLAIM_BOUNDARIES.md)
 - [v2 to v3 migration](docs/ETQ_V2_TO_V3_MIGRATION.md)
 - [Formal v3.0.1 paper and build instructions](docs/etq-303/README.md)
