@@ -6,8 +6,8 @@ authors:
   - family-names: "Slade"
     given-names: "Trent"
     affiliation: "QSOL-IMC"
-repository-code: "https://github.com/QSOLKCB/SONIFICATION"
-url: "https://github.com/QSOLKCB/SONIFICATION/releases/tag/d4-tia-v2.0.0"
+repository-code: "https://github.com/QSOLKCB/SONIFICATION/tree/0cfe7ee19ea361c059319b3c0af4178aed8a9f1d"
+url: "https://doi.org/10.5281/zenodo.22831753"
 version: 2.0.0
 date-released: 2026-09-18
 license: MPL-2.0
@@ -36,4 +36,4 @@ preferred-citation:
   version: 2.0.0
   year: 2026
   doi: "10.5281/zenodo.22831753"
-  url: "https://github.com/QSOLKCB/SONIFICATION/releases/tag/d4-tia-v2.0.0"
+  url: "https://doi.org/10.5281/zenodo.22831753"
