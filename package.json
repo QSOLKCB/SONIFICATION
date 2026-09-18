@@ -8,13 +8,14 @@
     "test:tuning": "node --test tests/tanner-tuning-fork.test.mjs",
     "build:v3": "node scripts/build-v3-artifacts.mjs",
     "build:paper": "bash scripts/build-etq303-paper.sh",
-    "verify": "node scripts/verify-d4-tia-cov.mjs && node scripts/verify-d4-tia.mjs && node scripts/verify-v3.mjs && node scripts/verify.mjs && node scripts/verify-legacy.mjs",
+    "verify": "node scripts/verify-d4-tia-cov.mjs && node scripts/verify-d4-tia-s3-equivariance.mjs && node scripts/verify-d4-tia.mjs && node scripts/verify-v3.mjs && node scripts/verify.mjs && node scripts/verify-legacy.mjs",
     "verify:v3": "node scripts/verify-v3.mjs",
     "verify:v2": "node scripts/verify.mjs",
     "verify:legacy": "node scripts/verify-legacy.mjs",
     "build:d4-tia": "node scripts/build-d4-tia-artifacts.mjs",
     "verify:d4-tia": "node scripts/verify-d4-tia.mjs",
-    "verify:d4-tia-cov": "node scripts/verify-d4-tia-cov.mjs"
+    "verify:d4-tia-cov": "node scripts/verify-d4-tia-cov.mjs",
+    "verify:d4-tia-s3": "node scripts/verify-d4-tia-s3-equivariance.mjs"
   },
   "engines": {
     "node": ">=20"
