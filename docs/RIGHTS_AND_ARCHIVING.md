@@ -4,7 +4,7 @@
 
 This project permits reuse while keeping origin and changes visible. Trent
 Slade / QSOL-IMC is identified as the original creator in [`NOTICE`](../NOTICE),
-[`AUTHORS.md`](../AUTHORS.md), and [`CITATION.cff`](../CITATION.cff).
+[`AUTHORS.md`](../AUTHORS.md), [`CITATION.cff`](../CITATION.cff), and the D4-TIA-specific [`CITATION-D4-TIA.cff`](../CITATION-D4-TIA.cff).
 
 The repository uses the
 [Mozilla Public License 2.0](https://www.mozilla.org/MPL/2.0/). MPL-2.0 allows
@@ -48,8 +48,9 @@ presentations:
 1. retain `LICENSE` and applicable source notices as MPL-2.0 requires;
 2. retain `NOTICE` when redistributing the project as a whole;
 3. identify modifications accurately; and
-4. cite the project using `CITATION.cff` and a DOI for the same released
-   version, once available.
+4. cite the matching released line using `CITATION.cff` for ETQ-303 or
+   `CITATION-D4-TIA.cff` for D4-TIA, together with the DOI for that same
+   released version.
 
 Git hashes, ETQ contract hashes, basis hashes, adjacency hashes, release tags,
 and archive DOIs should be recorded together. Hashes show artifact identity;
@@ -62,7 +63,8 @@ software deposit under MPL-2.0. Version-specific archives must remain distinct:
 
 - ETQ-101 v2.0.0: `10.5281/zenodo.21432511`;
 - ETQ-303 v3.0.0: `10.5281/zenodo.21455181`; and
-- ETQ-303 v3.0.1: `10.5281/zenodo.21494678` (documentation-only clarification).
+- ETQ-303 v3.0.1: `10.5281/zenodo.21494678` (documentation-only clarification); and
+- D4-TIA v2.0.0: `10.5281/zenodo.22831753` (separately versioned D4-TIA research release).
 
 For each new version:
 
@@ -70,10 +72,21 @@ For each new version:
 2. preserve prior version tags, files, and DOI metadata unchanged;
 3. confirm creator spelling, affiliation, and verified ORCID metadata;
 4. regenerate checksums for every changed publication artifact;
-5. confirm the new version DOI in the paper source, `CITATION.cff`, release notes,
-   and version-specific archiving documentation; and
+5. confirm the new version DOI in the paper source, the matching citation file
+   (`CITATION.cff` for ETQ-303 or `CITATION-D4-TIA.cff` for D4-TIA), release
+   notes, and version-specific archiving documentation; and
 6. verify Zenodo's current rights field in the draft interface.
 
 Zenodo record metadata remains separately reusable under Zenodo's metadata
 terms. Keep the public record accurate and avoid claiming that the archive DOI
 validates the model's scientific interpretation.
+
+
+### Current citation-file split
+
+`CITATION.cff` remains the citation record for the ETQ-303 v3.0.1
+documentation/publication release. The separately archived D4-TIA v2.0.0 line
+uses `CITATION-D4-TIA.cff`, which records DOI
+`10.5281/zenodo.22831753`, tag `d4-tia-v2.0.0`, and the D4-TIA release
+title/version. This avoids relabelling either research line through a
+repository-wide citation record.
