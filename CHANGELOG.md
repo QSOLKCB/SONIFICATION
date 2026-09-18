@@ -1,5 +1,21 @@
 # Changelog
 
+## Unreleased — D4-TIA-15 v1.0.0 profile
+
+- Added a separately versioned symbolic sonification profile over the published
+  15-generator D4 triality-invariant/covariant basis.
+- Preserved the published grading ledger exactly and added machine checks for
+  \(k=4d_a+6d_b+m\) and
+  \(\omega=2d_a+3d_b-m=(k-3m)/2\).
+- Added direct identity transfers from polynomial degree, total covariant
+  degree, modular weight, and covariant order into symbolic tick, duration,
+  MIDI-note, and MIDI-channel fields without rescaling the source grades.
+- Added canonical contract/schema fixtures, JSON/CSV event artifacts, a
+  16-track symbolic MIDI receiver with no tempo event, implementation identity,
+  SHA-256 manifest, build command, verifier, tests, and documentation.
+- Kept ETQ-101 v2 and ETQ-303 v3 protocol identities unchanged and retained the
+  root ban on PCM/rendered audio.
+
 ## Unreleased — D4/F4 triality reference bridge
 
 - Added the ETQ-303 v3.0.1 Zenodo DOI `10.5281/zenodo.21494678` to the
