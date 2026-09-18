@@ -18,7 +18,30 @@ The v2 codebook is implemented. A future dynamics-to-event mapping and `.mid`
 exporter require their own versioned contract and perceptual evaluation; they
 must not silently inherit the separate audio laboratories' clocks or tunings.
 
-The remaining phases in this document apply only to the independent `APP/` and
+## Root D4/F4 triality literature bridge — implemented
+
+- exact factorization of the existing ETQ four-coordinate triality matrix as
+  `A = w_S w_T` in Sakai's published (W(F_4)/W(D_4)\cong S_3) convention;
+- safe-integer tests for the two involutions and their order-three product;
+- exact trigrading equations for D4 triality invariants;
+- a machine-readable ledger of the 15 minimal quadratic/cubic joint
+  covariants; and
+- explicit boundaries separating the published invariant theory from ETQ's
+  authored selector, qutrit factor, receiver mapping, and protocol identity.
+
+This bridge is noncanonical context. It changes no v2/v3 fixture, event
+ordering, implementation identity, or receiver artifact.
+
+## Future root research profile — triality-invariant algebra sonification
+
+A later separately versioned profile may use the 15-generator invariant basis
+as a finite symbolic source object. Before any auditory mapping is canonical it
+must preserve and test the published grading relations, define its event
+semantics and provenance, and remain within the root MIDI/CSV/JSON output
+policy. No tempo, acoustic tuning, timbre, or rendered audio may enter root ETQ
+identity.
+
+The remaining numbered phases below apply only to the independent `APP/` and
 `sonification/` audio laboratories.
 
 ## Audio laboratory Phase 1 — deterministic loop kernel (implemented)

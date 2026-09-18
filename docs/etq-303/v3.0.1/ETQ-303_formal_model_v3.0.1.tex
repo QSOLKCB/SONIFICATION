@@ -109,7 +109,7 @@ Original v3 release & Git tag \texttt{v3.0.0}; commit \hash{6b55e51647226d1c248d
 Original v3 DOI & \href{https://doi.org/10.5281/zenodo.21455181}{10.5281/zenodo.21455181} (ETQ-303 v3.0.0) \\
 Documentation patch & Version 3.0.1; terminology and exposition clarification only \\
 Base version DOI & \href{https://doi.org/10.5281/zenodo.21432511}{10.5281/zenodo.21432511} (ETQ-101 v2.0.0) \\
-v3.0.1 version DOI & Pending Zenodo \emph{New version} deposition; replace this field after publication \\
+v3.0.1 version DOI & \href{https://doi.org/10.5281/zenodo.21494678}{10.5281/zenodo.21494678} (documentation-only clarification) \\
 Licence & Mozilla Public License 2.0 (MPL-2.0) \\
 Record status & Formal software specification and reproducibility record; no empirical or physical validation claim \\
 \end{tabularx}
@@ -156,7 +156,7 @@ The word \emph{exact} refers to finite integer combinatorics, modular arithmetic
 Version 3 preserves the ETQ-101 v2.0.0 base release, its source tag, selected basis, adjacency, degree-potential numerators, and contract receipt \cite{slade_etq_v2_2026}. The v3 implementation was merged through repository pull request 12 at commit
 \hash{6b55e51647226d1c248dc8d79f9ed9336241c2ac}, frozen at tag \texttt{v3.0.0}, and archived at DOI \href{https://doi.org/10.5281/zenodo.21455181}{10.5281/zenodo.21455181}.
 
-Version 3.0.1 is a terminology and exposition clarification only. It does not replace, retag, or silently rewrite the v3.0.0 archive. Its repository tag and version-specific Zenodo DOI should identify the clarification separately once published.
+Version 3.0.1 is a terminology and exposition clarification only. It does not replace, retag, or silently rewrite the v3.0.0 archive. The published clarification is archived separately at DOI \href{https://doi.org/10.5281/zenodo.21494678}{10.5281/zenodo.21494678}.
 
 \subsection{Notation and Conventions}
 Unless explicitly stated otherwise, scalars are elements of $\mathbb C$, all vector spaces appearing in the construction are finite-dimensional, and $\dim(V)$ denotes the algebraic dimension of a vector space $V$. The symbol $\otimes$ denotes the tensor product over $\mathbb C$ unless another scalar field is explicitly declared. Operators act on the finite-dimensional spaces declared in the construction; the real Euclidean root-coordinate spaces used to realize root systems are identified explicitly when they occur.
@@ -670,7 +670,7 @@ Retain the unchanged data artifacts under their original names:
 \item \path{ETQ-303_data_table_v3.0.0.xlsx}; and
 \item \path{ETQ-303_parameter_table_v3.0.0.csv}.
 \end{itemize}
-They describe the unchanged v3.0.0 protocol identity and deterministic data. Use Zenodo's \emph{New version} workflow from the v3.0.0 record, preserve DOI \href{https://doi.org/10.5281/zenodo.21455181}{10.5281/zenodo.21455181} as the immutable original release, and allow Zenodo to mint a distinct version-specific DOI for v3.0.1. The checksum file intentionally does not contain its own checksum, avoiding a circular self-hash.
+They describe the unchanged v3.0.0 protocol identity and deterministic data. The published v3.0.1 record is \href{https://doi.org/10.5281/zenodo.21494678}{10.5281/zenodo.21494678}; it was created as a distinct Zenodo version while DOI \href{https://doi.org/10.5281/zenodo.21455181}{10.5281/zenodo.21455181} remains the immutable original v3.0.0 release. The checksum file intentionally does not contain its own checksum, avoiding a circular self-hash.
 
 The spreadsheet contains the 101-entry site registry, 303 events, 5,364 lifted edges, parameter and claim tables, degree distributions, formulas that verify key counts, and the implementation/hash receipts. The CSV is the compact reviewer-facing parameter table.
 

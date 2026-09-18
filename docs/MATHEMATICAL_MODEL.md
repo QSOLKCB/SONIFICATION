@@ -140,6 +140,41 @@ A=\frac12
 \end{pmatrix}.
 $$
 
+A published D4/F4 triality convention gives two involutions
+
+$$
+w_T=
+\begin{pmatrix}
+1&0&0&0\\
+0&1&0&0\\
+0&0&1&0\\
+0&0&0&-1
+\end{pmatrix},
+\qquad
+w_S=\frac12
+\begin{pmatrix}
+1&1&1&-1\\
+1&1&-1&1\\
+1&-1&1&1\\
+-1&1&1&1
+\end{pmatrix}.
+$$
+
+In the displayed coordinate conventions the ETQ matrix factors exactly as
+
+$$
+\boxed{A=w_Sw_T}.
+$$
+
+Sakai uses these generators for the quotient
+\(W(F_4)/W(D_4)\cong S_3\), paired with the modular quotient
+\(SL_2(\mathbb Z)/\Gamma(2)\cong S_3\) in a fiber-product symmetry.
+ETQ imports **only the exact finite D4/F4 triality matrix identity** as a
+literature cross-check; it does not add the modular action to the canonical
+model. The exact factorization is verified in
+`tests/d4-triality-reference.test.mjs` and documented in
+`docs/D4_TRIALITY_REFERENCE_BRIDGE.md`.
+
 It satisfies
 
 $$
@@ -806,6 +841,8 @@ future work; the repository does not claim that they already exist.
 
 ## 16. References
 
+- Kazuhiro Sakai, [*E-strings, F4, and D4 triality*](https://arxiv.org/abs/2304.04878), JHEP 07 (2023) 192. The exact D4/F4 quotient generators used in the literature bridge.
+- Kazuhiro Sakai, [*The ring of D4 triality invariants*](https://arxiv.org/abs/2504.00546), arXiv:2504.00546v2 (2026). Fiber-product invariants, covariant-ring isomorphism, trigrading, and the 15-generator minimal basis used by the noncanonical reference layer.
 - John C. Baez, [*The Octonions*](https://arxiv.org/abs/math/0105155), *Bulletin of the American Mathematical Society* 39 (2002), 145–205. Background on octonions, Spin(8) triality, and exceptional structures.
 - Craig McRae, [*Exploring Triality Explicitly: Convenient bases for SO(8), Spin(1,7), and G2*](https://arxiv.org/abs/2502.14016) (2025). Explicit D4/Spin(8) triality context.
 - Robert Feger and Thomas W. Kephart, [*LieART — A Mathematica Application for Lie Algebras and Representation Theory*](https://arxiv.org/abs/1206.6379) (2014). Representation tables and computational Lie-algebra conventions.

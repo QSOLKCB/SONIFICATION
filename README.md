@@ -1,5 +1,7 @@
 # ETQ-303 v3.0.1: Exact 303-State Root-Indexed Event Protocol
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21494678.svg)](https://doi.org/10.5281/zenodo.21494678)
+
 **A deterministic, receiver-neutral event protocol built as the exact product
 `H_101 tensor C^3` over the preserved ETQ-101 v2 selected-root model.**
 
@@ -35,6 +37,28 @@ returns after 303 steps. The three-step phase product is one, so the complete
 monomial operator has exact order 303.
 
 **These are 303 root-indexed tensor states, not 303 distinct E8 roots.**
+
+## Published D4/F4 triality cross-check
+
+The existing four-coordinate ETQ triality matrix has an exact factorization in
+the D4/F4 convention used by Kazuhiro Sakai:
+
+$$
+A=w_Sw_T,
+\qquad
+W(F_4)/W(D_4)\cong S_3.
+$$
+
+Here \(w_T\) and \(w_S\) are the two involutions used to generate the published
+triality quotient, and their product is the same order-three matrix already
+used by ETQ. The repository now checks this identity with exact integer
+arithmetic and records the 15-generator grading ledger from Sakai's later ring
+of D4 triality invariants.
+
+This is a literature alignment, not a claim that the papers derive or validate
+ETQ's 101-state selector, independent \(\mathbb C^3\) factor, SCL stencil, or
+sonification choices. See
+[the D4/F4 triality reference bridge](docs/D4_TRIALITY_REFERENCE_BRIDGE.md).
 
 ## Notation and Conventions
 
@@ -163,6 +187,7 @@ non-`dist/` output paths and never recursively deletes a caller-selected path.
 ## Documentation
 
 - [Exact event protocol](docs/ETQ_V3_EVENT_PROTOCOL.md)
+- [D4/F4 triality reference bridge](docs/D4_TRIALITY_REFERENCE_BRIDGE.md)
 - [Claim boundaries](docs/ETQ_V3_CLAIM_BOUNDARIES.md)
 - [v2 to v3 migration](docs/ETQ_V2_TO_V3_MIGRATION.md)
 - [Formal v3.0.1 paper and build instructions](docs/etq-303/README.md)
@@ -184,8 +209,8 @@ The original ETQ-303 release remains immutable:
   `6b55e51647226d1c248dc8d79f9ed9336241c2ac`
 - archive DOI: `10.5281/zenodo.21455181`
 
-Version 3.0.1 adds only terminology and exposition clarifications. It is
-intended to receive its own tag and Zenodo version DOI after review and merge.
+Version 3.0.1 adds only terminology and exposition clarifications. Its archived
+Zenodo version DOI is `10.5281/zenodo.21494678`.
 
 The acyclic receipt architecture is methodologically informed by the archived
 receipt-bound observation protocol versions `10.5281/zenodo.21292906` and

@@ -13,6 +13,9 @@ date-released: 2026-07-22
 license: MPL-2.0
 identifiers:
   - type: doi
+    value: "10.5281/zenodo.21494678"
+    description: "Archived ETQ-303 v3.0.1 documentation release"
+  - type: doi
     value: "10.5281/zenodo.21455181"
     description: "Archived ETQ-303 v3.0.0 original release"
   - type: doi
@@ -36,4 +39,5 @@ preferred-citation:
   title: "ETQ-303 v3: Exact 303-State Root-Indexed Event Protocol"
   version: 3.0.1
   year: 2026
+  doi: "10.5281/zenodo.21494678"
   url: "https://github.com/QSOLKCB/SONIFICATION"
