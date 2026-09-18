@@ -3,13 +3,16 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import {
+  existsSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
   readdirSync,
   rmSync,
+  symlinkSync,
   writeFileSync,
 } from "node:fs";
+import { tmpdir } from "node:os";
 import { extname, resolve } from "node:path";
 import test from "node:test";
 
@@ -127,9 +130,23 @@ test("artifact manifest binds contract, events, receivers, and implementation", 
   assert.match(bundle.manifest.mappingContractSha256, /^[0-9a-f]{64}$/);
   assert.match(bundle.manifest.eventDocumentSha256, /^[0-9a-f]{64}$/);
   assert.match(bundle.manifest.manifestCoreSha256, /^[0-9a-f]{64}$/);
+
+  const identity = buildImplementationIdentity();
+  assert.equal(
+    identity.sourceNormalization,
+    "UTF-8-text;CRLF-and-CR-normalized-to-LF",
+  );
   assert.deepEqual(
-    buildImplementationIdentity().sourceFiles.map((entry) => entry.path),
+    identity.sourceFiles.map((entry) => entry.path),
     IMPLEMENTATION_SOURCE_PATHS,
+  );
+  assert.ok(
+    identity.sourceFiles.every(
+      (entry) =>
+        Number.isSafeInteger(entry.byteLength) &&
+        entry.byteLength > 0 &&
+        /^[0-9a-f]{64}$/.test(entry.sha256),
+    ),
   );
 });
 
@@ -140,20 +157,70 @@ test("root artifacts remain restricted to JSON, CSV, and MIDI", () => {
   }
 });
 
-test("build command fails closed on nonempty output and emits the exact bundle", () => {
+test("build command fails closed on unsupported requests and unsafe paths", () => {
   mkdirSync(resolve(PROJECT_ROOT, "dist"), { recursive: true });
   const parent = mkdtempSync(resolve(PROJECT_ROOT, "dist", "d4-tia-test-"));
+
+  const audioOutput = resolve(parent, "audio-request");
+  const audioRejected = spawnSync(
+    process.execPath,
+    ["scripts/build-d4-tia-artifacts.mjs", "--output", audioOutput, "--wav"],
+    { cwd: PROJECT_ROOT, encoding: "utf8" },
+  );
+  assert.notEqual(audioRejected.status, 0);
+  assert.match(
+    `${audioRejected.stderr}${audioRejected.stdout}`,
+    /rendered-audio request is prohibited/,
+  );
+  assert.equal(existsSync(audioOutput), false);
+
+  const unknownOutput = resolve(parent, "unknown-request");
+  const unknownRejected = spawnSync(
+    process.execPath,
+    ["scripts/build-d4-tia-artifacts.mjs", "--output", unknownOutput, "--bogus"],
+    { cwd: PROJECT_ROOT, encoding: "utf8" },
+  );
+  assert.notEqual(unknownRejected.status, 0);
+  assert.match(
+    `${unknownRejected.stderr}${unknownRejected.stdout}`,
+    /unknown option: --bogus/,
+  );
+  assert.equal(existsSync(unknownOutput), false);
+
   const nonempty = resolve(parent, "nonempty");
   mkdirSync(nonempty);
   writeFileSync(resolve(nonempty, "sentinel.txt"), "keep", "utf8");
-
-  const rejected = spawnSync(
+  const nonemptyRejected = spawnSync(
     process.execPath,
     ["scripts/build-d4-tia-artifacts.mjs", "--output", nonempty],
     { cwd: PROJECT_ROOT, encoding: "utf8" },
   );
-  assert.notEqual(rejected.status, 0);
+  assert.notEqual(nonemptyRejected.status, 0);
   assert.equal(readFileSync(resolve(nonempty, "sentinel.txt"), "utf8"), "keep");
+
+  const outside = mkdtempSync(resolve(tmpdir(), "d4-tia-outside-"));
+  const link = resolve(parent, "escape-link");
+  let symlinkCreated = false;
+  try {
+    symlinkSync(outside, link, "dir");
+    symlinkCreated = true;
+  } catch (error) {
+    if (!["EPERM", "EACCES"].includes(error?.code)) throw error;
+  }
+  if (symlinkCreated) {
+    const escapedOutput = resolve(link, "bundle");
+    const symlinkRejected = spawnSync(
+      process.execPath,
+      ["scripts/build-d4-tia-artifacts.mjs", "--output", escapedOutput],
+      { cwd: PROJECT_ROOT, encoding: "utf8" },
+    );
+    assert.notEqual(symlinkRejected.status, 0);
+    assert.match(
+      `${symlinkRejected.stderr}${symlinkRejected.stdout}`,
+      /contains symbolic link/,
+    );
+    assert.equal(existsSync(resolve(outside, "bundle")), false);
+  }
 
   const output = resolve(parent, "bundle");
   const built = spawnSync(
@@ -169,5 +236,7 @@ test("build command fails closed on nonempty output and emits the exact bundle",
     "events.mid",
     "manifest.json",
   ]);
+
+  rmSync(outside, { recursive: true, force: true });
   rmSync(parent, { recursive: true, force: true });
 });
