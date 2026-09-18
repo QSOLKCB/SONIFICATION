@@ -2,11 +2,18 @@
 
 ## D4-TIA v2.0.0 — 2026-09-18
 
-Immutable Git tag: `d4-tia-v2.0.0`  
-Release commit: `7aa6df165d0ad70297365dbf0d69072634ed4314`  
+Frozen implementation tag: `d4-tia-v2.0.0`  
+Frozen implementation commit: `7aa6df165d0ad70297365dbf0d69072634ed4314`  
 Zenodo DOI: `10.5281/zenodo.22831753`
 
-This release freezes and archives the D4-TIA-COV v0.1.0 algebra engine,
+The immutable `d4-tia-v2.0.0` tag freezes the tested mathematical/software
+implementation that was deposited to Zenodo. Publication metadata was finalized
+immediately afterward on the repository documentation line: the DOI badge,
+released-status changelog/roadmap text, rights-and-archiving update, and
+`CITATION-D4-TIA.cff` do not alter the frozen runtime contracts, fixtures,
+receiver mapping, or deterministic commitments.
+
+This release archives the D4-TIA-COV v0.1.0 algebra engine,
 D4-TIA-S3-EQUIV v0.1.0 symmetry harness, and D4-TIA-15 v2.0.0
 evaluated-covariant sonification profile as one separately versioned D4-TIA
 research line.
