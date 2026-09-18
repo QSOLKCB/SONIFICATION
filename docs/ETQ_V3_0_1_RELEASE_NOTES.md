@@ -41,17 +41,18 @@ The original Git tag `v3.0.0`, commit
 `6b55e51647226d1c248dc8d79f9ed9336241c2ac`, and Zenodo DOI
 `10.5281/zenodo.21455181` remain immutable.
 
-## Zenodo v3.0.1 upload set
+## Archived Zenodo v3.0.1 file set
 
-Replace the prior paper source and PDF with:
+The published record at DOI `10.5281/zenodo.21494678` contains the
+documentation-only v3.0.1 publication set. The changed publication files are:
 
 - `ETQ-303_formal_model_v3.0.1.tex`;
 - `ETQ-303_formal_model_v3.0.1.pdf`; and
 - regenerated `UPLOAD_SHA256SUMS.txt`.
 
-Retain the unchanged `ETQ-303_references.bib`,
+The unchanged `ETQ-303_references.bib`,
 `ETQ-303_data_table_v3.0.0.xlsx`, and
-`ETQ-303_parameter_table_v3.0.0.csv` under their existing names because they
-describe the unchanged v3.0.0 protocol and data identity. If a convenience
-archive is desired, rebuild it as `ETQ-303_Zenodo_Submission_v3.0.1.zip`
-without altering those retained data files.
+`ETQ-303_parameter_table_v3.0.0.csv` retain their existing names because they
+describe the unchanged v3.0.0 protocol and data identity. The convenience
+archive remains `ETQ-303_Zenodo_Submission_v3.0.1.zip` without altering those
+retained data files.
