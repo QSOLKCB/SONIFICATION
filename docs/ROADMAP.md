@@ -57,9 +57,9 @@ audio remain outside profile identity. ETQ-101 v2 and ETQ-303 v3 are unchanged.
 - Sakai's binary quadratic/cubic convention and normalized transvectant;
 - exact construction of the 15 generators in Theorem 5.2;
 - exact verification of the cubic syzygy
-  (2Q^2+P^3+g^2D_g=0);
-- grades ((d_a,d_b,omega)) derived from the actual symbolic covariants,
-  followed by derived (d,m,k) and comparison with the literature ledger; and
+  \(2Q^2+P^3+g^2D_g=0\);
+- grades \((d_a,d_b,\omega)\) derived from the actual symbolic covariants,
+  followed by derived \(d,m,k\) and comparison with the literature ledger; and
 - canonical sparse-polynomial term counts and SHA-256 fixtures.
 
 This phase changes no MIDI/event mapping. It turns the literature ledger into
@@ -69,7 +69,7 @@ executable mathematics before any further auditory interpretation.
 
 The remaining D4-TIA sequence is intentionally ordered:
 
-1. **D4/F4 (S_3) orbit + equivariance harness** — next.
+1. **D4/F4 \(S_3\) orbit + equivariance harness** — next.
 2. **D4-TIA-15 v2** — sonify evaluated covariants/orbits while testing
    equivariance before invariant projection.
 3. **Freeze/tag/archive** the resulting research line and then update Zenodo.
