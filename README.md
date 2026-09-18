@@ -5,7 +5,7 @@
 This repository contains two related but separately versioned research lines:
 
 - **ETQ-303 v3.0.1** — an exact 303-state event protocol built from the preserved ETQ-101 v2 model.
-- **D4-TIA** — exact D4 triality covariants, an exact (S_3) symmetry harness, and a symbolic sonification profile built on top of them.
+- **D4-TIA** — exact D4 triality covariants, an exact S3 symmetry harness, and a symbolic sonification profile built on top of them.
 
 They share D4 triality context, but the D4-TIA work does **not** change ETQ-101 or ETQ-303 protocol identity.
 
@@ -38,11 +38,11 @@ The repository is designed so that the mathematics, the event data, and the rece
 
 ETQ-303 extends the preserved 101-state ETQ-101 model with an independent three-state factor:
 
-[
-mathcal H_{303}=mathcal H_{101}otimesmathbb C^3.
-]
+```math
+\mathcal H_{303}=\mathcal H_{101}\otimes\mathbb C^3.
+```
 
-That gives exactly (101	imes3=303) basis-indexed states.
+That gives exactly $101\times3=303$ basis-indexed states.
 
 The support step advances both indices:
 
@@ -62,11 +62,11 @@ See [the ETQ-303 event protocol](docs/ETQ_V3_EVENT_PROTOCOL.md) for the full con
 
 The repository also checks that the four-coordinate ETQ triality matrix matches the D4/F4 convention used by Kazuhiro Sakai:
 
-[
+```math
 A=w_Sw_T,
-qquad
-W(F_4)/W(D_4)cong S_3.
-]
+\qquad
+W(F_4)/W(D_4)\cong S_3.
+```
 
 That is a literature alignment. It does not mean Sakai's papers derive ETQ's state selector, qutrit factor, SCL stencil, or sonification choices.
 
@@ -94,15 +94,15 @@ See [D4-TIA-COV](docs/D4_TRIALITY_COVARIANT_ENGINE.md).
 
 **D4-TIA-S3-EQUIV v0.1.0** builds the six-element D4/F4 triality quotient and matches it to six canonical representatives of
 
-[
-SL_2(mathbb Z)/Gamma(2)cong S_3.
-]
+```math
+SL_2(\mathbb Z)/\Gamma(2)\cong S_3.
+```
 
 For all 15 covariants and all six representatives, the repository verifies the exact transformation law
 
-[
-Psi(alpha';u,v)=Psi(alpha;u',v').
-]
+```math
+\Psi(\alpha';u,v)=\Psi(\alpha;u',v').
+```
 
 That is **90 exact symbolic equivariance checks**.
 
