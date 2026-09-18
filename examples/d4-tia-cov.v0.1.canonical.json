@@ -1,0 +1,224 @@
+{
+  "schema": "qsol.d4-tia-cov.engine-summary/v0.1",
+  "engineId": "D4-TIA-COV",
+  "engineVersion": "0.1.0",
+  "sourceConvention": {
+    "quadratic": "f=sum_{i=0}^2 alpha_i u^(2-i) v^i",
+    "cubic": "g=sum_{i=0}^3 beta_i u^(3-i) v^i",
+    "transvectant": "(F,G)_r=((m-r)!(n-r)!)/(m!n!)*sum_{j=0}^r(-1)^j*C(r,j)*d_u^(r-j)d_v^j F*d_u^j d_v^(r-j) G"
+  },
+  "generatorCount": 15,
+  "cubicSyzygy": "2*Q^2+P^3+g^2*D_g=0",
+  "generators": [
+    {
+      "index": 1,
+      "label": "f",
+      "grade": {
+        "quadraticDegree": 1,
+        "cubicDegree": 0,
+        "covariantDegree": 1,
+        "polynomialDegree": 0,
+        "modularWeight": 4,
+        "covariantOrder": 2
+      },
+      "termCount": 3,
+      "polynomialSha256": "4c91eeb2ad16d0b86313c289d21d073bad7965ef2359d11c9f6f8b1a25f1e919"
+    },
+    {
+      "index": 2,
+      "label": "g",
+      "grade": {
+        "quadraticDegree": 0,
+        "cubicDegree": 1,
+        "covariantDegree": 1,
+        "polynomialDegree": 0,
+        "modularWeight": 6,
+        "covariantOrder": 3
+      },
+      "termCount": 4,
+      "polynomialSha256": "81fdcc38ab9b98826fca6c216258804c7c67d9172673b342227317691ba21748"
+    },
+    {
+      "index": 3,
+      "label": "(f,g)_1",
+      "grade": {
+        "quadraticDegree": 1,
+        "cubicDegree": 1,
+        "covariantDegree": 2,
+        "polynomialDegree": 2,
+        "modularWeight": 12,
+        "covariantOrder": 3
+      },
+      "termCount": 10,
+      "polynomialSha256": "5fc651c25b486c07b6e84b4b6f74184cfd35ffa051efe442e00abf8693efa012"
+    },
+    {
+      "index": 4,
+      "label": "quadratic-discriminant",
+      "grade": {
+        "quadraticDegree": 2,
+        "cubicDegree": 0,
+        "covariantDegree": 2,
+        "polynomialDegree": 4,
+        "modularWeight": 12,
+        "covariantOrder": 0
+      },
+      "termCount": 2,
+      "polynomialSha256": "f1f5c4af36401c96f38d1a351d0750ef2380472d66251ef228c1dd8a6a1faea4"
+    },
+    {
+      "index": 5,
+      "label": "(f,g)_2",
+      "grade": {
+        "quadraticDegree": 1,
+        "cubicDegree": 1,
+        "covariantDegree": 2,
+        "polynomialDegree": 4,
+        "modularWeight": 14,
+        "covariantOrder": 1
+      },
+      "termCount": 6,
+      "polynomialSha256": "30a1a526a2eabc3b10fddc8b2ad03ef19582f8b0d23d8073e75ebbca934e0906"
+    },
+    {
+      "index": 6,
+      "label": "P=(g,g)_2",
+      "grade": {
+        "quadraticDegree": 0,
+        "cubicDegree": 2,
+        "covariantDegree": 2,
+        "polynomialDegree": 4,
+        "modularWeight": 16,
+        "covariantOrder": 2
+      },
+      "termCount": 6,
+      "polynomialSha256": "ceaf075a0a609aabe91ecebca839b495af0974a8c9a7426a8f68be1c8753f02d"
+    },
+    {
+      "index": 7,
+      "label": "(f^2,g)_3",
+      "grade": {
+        "quadraticDegree": 2,
+        "cubicDegree": 1,
+        "covariantDegree": 3,
+        "polynomialDegree": 6,
+        "modularWeight": 20,
+        "covariantOrder": 1
+      },
+      "termCount": 10,
+      "polynomialSha256": "c1ebf86edab4596145da7e1d16a287848f1c2178f548a6ed60addb2fc4a1cb6e"
+    },
+    {
+      "index": 8,
+      "label": "(f,P)_1",
+      "grade": {
+        "quadraticDegree": 1,
+        "cubicDegree": 2,
+        "covariantDegree": 3,
+        "polynomialDegree": 6,
+        "modularWeight": 22,
+        "covariantOrder": 2
+      },
+      "termCount": 12,
+      "polynomialSha256": "86ee25a18e4c4e170576c5b61ef290a9a5651b318a78bd9ddbb969bf51399f7f"
+    },
+    {
+      "index": 9,
+      "label": "Q=(g,P)_1",
+      "grade": {
+        "quadraticDegree": 0,
+        "cubicDegree": 3,
+        "covariantDegree": 3,
+        "polynomialDegree": 6,
+        "modularWeight": 24,
+        "covariantOrder": 3
+      },
+      "termCount": 12,
+      "polynomialSha256": "c67cba53a49163e533b118d6c4a6d58c6102622fea8daebd9b9765b4dda59737"
+    },
+    {
+      "index": 10,
+      "label": "(f,P)_2",
+      "grade": {
+        "quadraticDegree": 1,
+        "cubicDegree": 2,
+        "covariantDegree": 3,
+        "polynomialDegree": 8,
+        "modularWeight": 24,
+        "covariantOrder": 0
+      },
+      "termCount": 6,
+      "polynomialSha256": "05f6f548c52cf5c92d64b7da5009560040b01aa5a9b3ec8903913453298ac64a"
+    },
+    {
+      "index": 11,
+      "label": "(f,Q)_2",
+      "grade": {
+        "quadraticDegree": 1,
+        "cubicDegree": 3,
+        "covariantDegree": 4,
+        "polynomialDegree": 10,
+        "modularWeight": 32,
+        "covariantOrder": 1
+      },
+      "termCount": 18,
+      "polynomialSha256": "ad6e9f989dcb94d08bfeda72477fa75175a95176839adb22bd748094272cf237"
+    },
+    {
+      "index": 12,
+      "label": "(f^3,g^2)_6",
+      "grade": {
+        "quadraticDegree": 3,
+        "cubicDegree": 2,
+        "covariantDegree": 5,
+        "polynomialDegree": 12,
+        "modularWeight": 36,
+        "covariantOrder": 0
+      },
+      "termCount": 16,
+      "polynomialSha256": "548f901bc5ec663c42502f442665d8bb108c929565a1dbd59ac8ac21d9927fbc"
+    },
+    {
+      "index": 13,
+      "label": "cubic-discriminant=(P,P)_2",
+      "grade": {
+        "quadraticDegree": 0,
+        "cubicDegree": 4,
+        "covariantDegree": 4,
+        "polynomialDegree": 12,
+        "modularWeight": 36,
+        "covariantOrder": 0
+      },
+      "termCount": 5,
+      "polynomialSha256": "90d34071e942ce618480f3ad103adac0b08d250ee6dc06ba2f85f64bb0bfa823"
+    },
+    {
+      "index": 14,
+      "label": "(f^2,Q)_3",
+      "grade": {
+        "quadraticDegree": 2,
+        "cubicDegree": 3,
+        "covariantDegree": 5,
+        "polynomialDegree": 12,
+        "modularWeight": 38,
+        "covariantOrder": 1
+      },
+      "termCount": 30,
+      "polynomialSha256": "47738aaf2f5d60fe7877f04545413a14fa866a39655dbe7ad5a2a7a7259e6d77"
+    },
+    {
+      "index": 15,
+      "label": "(f^3,gQ)_6",
+      "grade": {
+        "quadraticDegree": 3,
+        "cubicDegree": 4,
+        "covariantDegree": 7,
+        "polynomialDegree": 18,
+        "modularWeight": 54,
+        "covariantOrder": 0
+      },
+      "termCount": 30,
+      "polynomialSha256": "e5b9317e8733a23218c4d295ac94451d1b6c419a3d605de77af98d3e258296a2"
+    }
+  ]
+}

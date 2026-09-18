@@ -50,6 +50,33 @@ the mathematics does not declare modular weight to be pitch or covariant order
 to be channel. Tuning, timbre, loudness, wall-clock tempo, PCM, and rendered
 audio remain outside profile identity. ETQ-101 v2 and ETQ-303 v3 are unchanged.
 
+
+## Root D4-TIA-COV v0.1.0 — exact covariant algebra engine (implemented)
+
+- exact sparse polynomial arithmetic over reduced rational numbers;
+- Sakai's binary quadratic/cubic convention and normalized transvectant;
+- exact construction of the 15 generators in Theorem 5.2;
+- exact verification of the cubic syzygy
+  \(2Q^2+P^3+g^2D_g=0\);
+- grades \((d_a,d_b,\omega)\) derived from the actual symbolic covariants,
+  followed by derived \(d,m,k\) and comparison with the literature ledger; and
+- canonical sparse-polynomial term counts and SHA-256 fixtures.
+
+This phase changes no MIDI/event mapping. It turns the literature ledger into
+executable mathematics before any further auditory interpretation.
+
+## Sequenced D4-TIA research follow-up
+
+The remaining D4-TIA sequence is intentionally ordered:
+
+1. **D4/F4 \(S_3\) orbit + equivariance harness** — next.
+2. **D4-TIA-15 v2** — sonify evaluated covariants/orbits while testing
+   equivariance before invariant projection.
+3. **Freeze/tag/archive** the resulting research line and then update Zenodo.
+
+Do not skip directly to a new receiver mapping before the equivariance harness
+exists and is tested.
+
 The remaining numbered phases below apply only to the independent `APP/` and
 `sonification/` audio laboratories.
 
