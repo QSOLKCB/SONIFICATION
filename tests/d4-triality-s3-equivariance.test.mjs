@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MPL-2.0
 
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import test from "node:test";
 
 import {
@@ -24,6 +26,20 @@ import {
   canonicalPolynomialText,
   polynomialsEqual,
 } from "../src/d4-triality-covariant-engine.mjs";
+
+const PROJECT_ROOT = resolve(new URL("..", import.meta.url).pathname);
+const fixture = JSON.parse(
+  readFileSync(
+    resolve(PROJECT_ROOT, "examples/d4-tia-s3-equivariance.v0.1.canonical.json"),
+    "utf8",
+  ),
+);
+const schema = JSON.parse(
+  readFileSync(
+    resolve(PROJECT_ROOT, "spec/d4-tia-s3-equivariance.v0.1.schema.json"),
+    "utf8",
+  ),
+);
 
 const EXPECTED_TABLE = {
   e: { e: "e", S: "S", T: "T", ST: "ST", TS: "TS", STS: "STS" },
@@ -139,4 +155,12 @@ test("the harness keeps quotient S3 and upstairs SL2 actions explicitly separate
     /not asserted to form a literal six-element subgroup/,
   );
   assert.match(summary.claimBoundary, /introduces no sonification mapping/);
+});
+
+
+test("the canonical S3 equivariance summary is pinned by fixture and schema", () => {
+  const summary = buildS3EquivarianceHarnessSummary();
+  assert.deepEqual(summary, fixture);
+  assert.equal(schema.$id, "qsol.d4-tia-s3-equivariance/v0.1");
+  assert.deepEqual(schema.const, fixture);
 });
