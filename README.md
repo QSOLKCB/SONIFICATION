@@ -1,354 +1,264 @@
-# ETQ-303 v3.0.1: Exact 303-State Root-Indexed Event Protocol
+# SONIFICATION — ETQ-303 and D4 Triality Research
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21494678.svg)](https://doi.org/10.5281/zenodo.21494678)
 
-**A deterministic, receiver-neutral event protocol built as the exact product
-`H_101 tensor C^3` over the preserved ETQ-101 v2 selected-root model.**
+This repository contains two related but separately versioned research lines:
 
-ETQ-303 v3.0.1 is a documentation-only clarification of the exact protocol
-first archived as v3.0.0. It does not change the mathematical construction,
-state indexing, event generation, deterministic outputs, or scientific claim
-boundary. The canonical output remains a 303-entry event document, not a MIDI
-file and not rendered audio.
+- **ETQ-303 v3.0.1** — an exact 303-state event protocol built from the preserved ETQ-101 v2 model.
+- **D4-TIA** — exact D4 triality covariants, an exact (S_3) symmetry harness, and a symbolic sonification profile built on top of them.
 
-```text
-ETQ-101 v2 selected roots
-        x independent C^3 fibre
-                -> 303 exact tensor states
-                -> one exact 303-step event traversal
-                -> committed event document
-                -> JSON / CSV / symbolic MIDI receivers
-```
+They share D4 triality context, but the D4-TIA work does **not** change ETQ-101 or ETQ-303 protocol identity.
 
-## The central result
+## The short version
 
-For basis states `|j,a>` with `j in Z_101` and `a in Z_3`, define
+ETQ-303:
 
 ```text
-(j,a) -> (j+1 mod 101, a+1 mod 3).
+ETQ-101 v2 selected states
+        × independent 3-state fibre
+                → 303 exact tensor states
+                → one exact 303-step traversal
+                → deterministic event document
+                → JSON / CSV / symbolic MIDI
 ```
 
-The exact local phase multiplier is supplied by
-`X_3 exp(-i*pi*diag(1,-2,1)/2)`. Its phase exponents are `[3,2,3]`, with aligned
-Gaussian-unit symbols `[-i,-1,-i]`.
+D4-TIA:
 
-Because `gcd(101,3)=1`, the support step visits all 303 pairs exactly once and
-returns after 303 steps. The three-step phase product is one, so the complete
-monomial operator has exact order 303.
+```text
+published 15-generator D4 covariant basis
+        → exact symbolic covariants
+        → exact S3 action and equivariance checks
+        → exact six-position evaluations
+        → symbolic MIDI contour
+```
 
-**These are 303 root-indexed tensor states, not 303 distinct E8 roots.**
+The repository is designed so that the mathematics, the event data, and the receiver choices remain distinguishable.
 
-## Published D4/F4 triality cross-check
+## ETQ-303 in plain language
 
-The existing four-coordinate ETQ triality matrix has an exact factorization in
-the D4/F4 convention used by Kazuhiro Sakai:
+ETQ-303 extends the preserved 101-state ETQ-101 model with an independent three-state factor:
 
-$$
+[
+mathcal H_{303}=mathcal H_{101}otimesmathbb C^3.
+]
+
+That gives exactly (101	imes3=303) basis-indexed states.
+
+The support step advances both indices:
+
+```text
+(j,a) → (j+1 mod 101, a+1 mod 3)
+```
+
+Because 101 and 3 are coprime, one traversal visits all 303 tensor addresses exactly once before returning to the start.
+
+**303 means algebraic states here. It does not mean 303 physical dimensions or 303 distinct E8 roots.**
+
+The canonical ETQ output is an event document. JSON, CSV, and MIDI are deterministic receiver formats built from that document.
+
+See [the ETQ-303 event protocol](docs/ETQ_V3_EVENT_PROTOCOL.md) for the full construction.
+
+## D4 triality bridge
+
+The repository also checks that the four-coordinate ETQ triality matrix matches the D4/F4 convention used by Kazuhiro Sakai:
+
+[
 A=w_Sw_T,
-\qquad
-W(F_4)/W(D_4)\cong S_3.
-$$
+qquad
+W(F_4)/W(D_4)cong S_3.
+]
 
-Here \(w_T\) and \(w_S\) are the two involutions used to generate the published
-triality quotient, and their product is the same order-three matrix already
-used by ETQ. The repository now checks this identity with exact integer
-arithmetic and records the 15-generator grading ledger from Sakai's later ring
-of D4 triality invariants.
+That is a literature alignment. It does not mean Sakai's papers derive ETQ's state selector, qutrit factor, SCL stencil, or sonification choices.
 
-This is a literature alignment, not a claim that the papers derive or validate
-ETQ's 101-state selector, independent \(\mathbb C^3\) factor, SCL stencil, or
-sonification choices. See
-[the D4/F4 triality reference bridge](docs/D4_TRIALITY_REFERENCE_BRIDGE.md).
+See [the D4/F4 triality reference bridge](docs/D4_TRIALITY_REFERENCE_BRIDGE.md).
 
+## D4-TIA: from published algebra to sound
 
-## D4-TIA-15: separately versioned invariant-algebra profile
+The D4-TIA work is split into three layers.
 
-The published 15-generator D4 triality-invariant/covariant basis is now also
-available as the independent **D4-TIA-15 v1.0.0** symbolic sonification
-profile. It preserves the grading ledger exactly and uses identity transfers
-rather than fitted or normalized mappings:
+### 1. Exact covariant algebra
 
-```text
-m            -> onset tick
-d=da+db      -> duration ticks
-k            -> MIDI note number
-omega        -> MIDI channel
-da, db       -> unchanged event metadata
-```
+**D4-TIA-COV v0.1.0** constructs the published 15-generator basis directly with exact rational arithmetic.
 
-This mapping is still an authored receiver convention; invariant theory does
-not identify modular weight with acoustic pitch. No tempo, tuning, timbre,
-loudness, PCM, or rendered audio enters the profile identity.
+It verifies the covariants, their grading, and the cubic syzygy. No floating-point algebra is used.
 
-Build and verify it independently:
-
-```bash
-npm run verify:d4-tia
-npm run build:d4-tia
-```
-
-See [D4-TIA-15 v1.0.0](docs/D4_TRIALITY_ALGEBRA_SONIFICATION.md).
-
-
-## D4-TIA-COV: executable invariant/covariant algebra
-
-The 15-row D4-TIA literature ledger is now backed by the exact
-**D4-TIA-COV v0.1.0** algebra engine. It constructs the binary quadratic and
-binary cubic, evaluates Sakai's normalized transvectants, builds all 15
-Theorem 5.2 covariants, verifies the cubic syzygy, and derives each generator's
-grades from the symbolic polynomial itself.
-
-All coefficients are exact reduced rationals; no floating-point arithmetic is
-used. This phase deliberately adds **no new sonification mapping**.
-
-Verify it independently:
+Verify it with:
 
 ```bash
 npm run verify:d4-tia-cov
 ```
 
-See [D4-TIA-COV v0.1.0](docs/D4_TRIALITY_COVARIANT_ENGINE.md).
+See [D4-TIA-COV](docs/D4_TRIALITY_COVARIANT_ENGINE.md).
 
+### 2. Exact symmetry and equivariance
 
-## D4-TIA-S3-EQUIV: exact triality orbit and equivariance harness
+**D4-TIA-S3-EQUIV v0.1.0** builds the six-element D4/F4 triality quotient and matches it to six canonical representatives of
 
-The next layer is now executable as **D4-TIA-S3-EQUIV v0.1.0**. The harness
-constructs the exact six-element D4/F4 triality quotient generated by
-\(w_S,w_T\), matches it to six canonical representatives of
-\(SL_2(\mathbb Z)/\Gamma(2)\), and verifies the binary-covariant law
+[
+SL_2(mathbb Z)/Gamma(2)cong S_3.
+]
 
-\[
-\Psi(\alpha';u,v)=\Psi(\alpha;u',v')
-\]
+For all 15 covariants and all six representatives, the repository verifies the exact transformation law
 
-for all 15 exact covariants under all six representatives: **90 exact symbolic
-checks**.
+[
+Psi(alpha';u,v)=Psi(alpha;u',v').
+]
 
-The implementation deliberately distinguishes quotient classes from their
-upstairs \(SL_2(\mathbb Z)\) representatives. No new MIDI, tuning, tempo,
-timbre, or rendered-audio mapping is introduced.
+That is **90 exact symbolic equivariance checks**.
 
-Verify it independently:
+Verify it with:
 
 ```bash
 npm run verify:d4-tia-s3
 ```
 
-See [D4-TIA-S3-EQUIV v0.1.0](docs/D4_TRIALITY_S3_EQUIVARIANCE.md).
+See [D4-TIA-S3-EQUIV](docs/D4_TRIALITY_S3_EQUIVARIANCE.md).
 
+### 3. Evaluated-covariant sonification
 
-## D4-TIA-15 v2: evaluated covariant orbit sonification
+**D4-TIA-15 v2.0.0** evaluates the 15 exact covariants across the six quotient positions and maps their exact within-generator value ordering into a small MIDI pitch contour.
 
-**D4-TIA-15 v2.0.0** is now downstream of both the exact covariant engine and
-the \(S_3\) equivariance harness. Instead of sonifying only the published
-grading ledger, v2 evaluates every covariant at six canonical quotient
-representatives and turns each generator's exact six-value ordering into a
-small symbolic MIDI pitch contour.
-
-The exact probe is
+The fixed evaluation probe is:
 
 ```text
 (a0,a1,a2,b0,b1,b2,b3) = (1,2,3,4,5,6,7)
 (u,v) = (1,0)
 ```
 
-where \((u,v)=(1,0)\) is the leading-coefficient/Roberts anchor. For each
-generator, equal exact rational values remain tied; the value-class rank is
-mapped to a small integer offset around the preserved modular-weight note
-\(k\). The six quotient positions occupy consecutive derived tick blocks.
+This produces:
 
-For the five order-zero covariants, exact \(SL_2\) invariance is enforced all
-the way through the symbolic receiver: their exact value, MIDI note, channel,
-velocity, and duration controls are identical at all six orbit positions. The
-only change is when the repeated invariant event occurs in the six-step orbit
-sequence.
+```text
+15 generators × 6 orbit positions = 90 symbolic events
+```
 
-Build and verify v2 independently:
+The coefficient probe and pitch mapping are authored sonification choices. The exact algebra and symmetry checks are separate from those choices.
+
+For the five order-zero invariants, the receiver requires the same:
+
+- exact value;
+- MIDI note;
+- MIDI channel;
+- velocity; and
+- duration
+
+at every orbit position.
+
+So the invariant rows remain invariant at the symbolic MIDI-control level. Their playback time changes because the six orbit positions are presented in sequence.
+
+Verify and build v2 with:
 
 ```bash
 npm run verify:d4-tia-v2
 npm run build:d4-tia-v2
 ```
 
-See [D4-TIA-15 v2.0.0](docs/D4_TRIALITY_ALGEBRA_SONIFICATION_V2.md).
+See [D4-TIA-15 v2](docs/D4_TRIALITY_ALGEBRA_SONIFICATION_V2.md).
 
-## Notation and Conventions
+The preserved v1 grading-only profile is documented at [D4-TIA-15 v1](docs/D4_TRIALITY_ALGEBRA_SONIFICATION.md).
 
-Unless explicitly stated otherwise, scalars are in \(\mathbb C\), all vector
-spaces in the ETQ-303 construction are finite-dimensional, \(\dim(V)\) is
-algebraic vector-space dimension, and \(\otimes\) is the tensor product over
-\(\mathbb C\). Operators act on the finite-dimensional spaces declared by the
-construction.
-
-Throughout the ETQ-303 documentation, “dimension” means finite-dimensional
-vector-space dimension unless another mathematical meaning is explicitly
-declared. It never means physical spacetime dimension. The \(E_8\) root system
-is represented in an 8-dimensional Euclidean root space, while each \(D_4\)
-factor has rank 4. Those numbers describe algebraic root spaces, not spacetime.
-No physical interpretation follows from rank, dimension, state count, or
-tensor-product notation alone.
-
-The state-space construction is explicitly
-
-\[
-\mathcal H_{303}=\mathcal H_{101}\otimes\mathbb C^3,
-\]
-
-with
-
-\[
-\dim(\mathcal H_{303})
-=\dim(\mathcal H_{101})\dim(\mathbb C^3)
-=101\times3
-=303.
-\]
-
-Thus 303 is both the algebraic dimension of the finite event/state vector space
-and the number of basis-indexed states. The \(\mathbb C^3\) factor is the
-declared independent three-state, or qutrit-like, protocol factor; it introduces
-no additional physical ontology.
-
-## Exact graph context
-
-V3 defines the Cartesian graph lift
-
-```text
-G_303 = G_101 square C_3
-```
-
-with exact fixtures:
-
-| Fixture | Value |
-|---|---:|
-| vertices | 303 |
-| horizontal edges | 5,061 |
-| vertical fibre edges | 303 |
-| total edges | 5,364 |
-| degree range | 24-57 |
-| connected | yes |
-
-The event ordering is not claimed to be a graph walk.
-
-## Canonical artifacts
-
-`npm run build:v3` writes only root-policy-allowed `.json`, `.csv`, and `.mid`
-artifacts into a new or empty dedicated subdirectory of `dist/`:
-
-```text
-contract.json
-contract.schema.json
-events.json
-events.csv
-graph.json
-event-atlas.json
-events.mid
-observation-receipt.json
-manifest.json
-```
-
-`events.json` is the canonical event commitment. `graph.json` preserves the
-exact Cartesian graph data, while `event-atlas.json` supplies integer-grid
-layout metadata without privileging a rendered image format. External tools may
-convert these JSON records to GraphML, SVG, OSC, DMX, or other receiver formats;
-such conversions are outside the root ETQ export workflow.
-
-The MIDI receiver uses the external fibre as channel and the preserved v2
-symbolic note as note number. No tempo or hertz value is canonical.
-
-## Provenance and implementation identity
-
-The contract, observation receipt, and manifest all record a deterministic v3
-implementation identity. It hashes the normalized UTF-8 bytes of the exact v3
-core, canonical serializer, receivers, artifact builder, and build entrypoint.
-This binds generated artifacts to the implementation that produced them even
-when the semantic version remains `3.0.0`.
-
-The repository/documentation release is v3.0.1, while the unchanged canonical
-runtime contract remains v3.0.0. Consequently this patch does not regenerate or
-rename protocol fixtures, event hashes, or the v3 implementation identity.
-
-The generated bundle uses `./contract.schema.json`, so its contract validates
-without depending on the repository directory layout. The committed repository
-fixture continues to reference `../spec/etq-303.v3.schema.json`. `$schema` is
-excluded from the semantic contract-payload hash, so the two location-correct
-references do not create different mathematical contract identities.
-
-## No numerical or acoustic noise in identity
-
-The v3 canonical contract contains no floating-point identity field,
-eigensolver output, ring-Laplacian replacement, sorted degree multiset
-substituted for labelled vertices, sample rate, hertz, waveform, PCM, WAV,
-random input, wall clock, or empirical validation claim.
-
-Identity-bearing JSON accepts safe integers only for numeric values.
-
-## Verify
+## Quick verification
 
 Node.js 20 or newer:
 
 ```bash
 npm test
 npm run verify
-npm run build:v3
 ```
 
-`npm run verify` validates D4-TIA-COV, D4-TIA-S3-EQUIV, D4-TIA-15 v2 and v1, v3, and continues to validate the immutable ETQ v2 and v1
-contracts. The build command fails closed for unsafe, existing nonempty, or
-non-`dist/` output paths and never recursively deletes a caller-selected path.
+The full verifier checks:
 
-## Documentation
+```text
+D4-TIA-COV
+→ D4-TIA-S3-EQUIV
+→ D4-TIA-15 v2
+→ preserved D4-TIA-15 v1
+→ ETQ-303 v3
+→ preserved ETQ-101 v2 and v1
+```
 
-- [Exact event protocol](docs/ETQ_V3_EVENT_PROTOCOL.md)
-- [D4/F4 triality reference bridge](docs/D4_TRIALITY_REFERENCE_BRIDGE.md)
-- [D4-TIA-15 invariant-algebra sonification profile](docs/D4_TRIALITY_ALGEBRA_SONIFICATION.md)
-- [D4-TIA-COV exact covariant algebra engine](docs/D4_TRIALITY_COVARIANT_ENGINE.md)
-- [D4-TIA-S3-EQUIV orbit and equivariance harness](docs/D4_TRIALITY_S3_EQUIVARIANCE.md)
-- [D4-TIA-15 v2 evaluated-covariant orbit sonification](docs/D4_TRIALITY_ALGEBRA_SONIFICATION_V2.md)
-- [Claim boundaries](docs/ETQ_V3_CLAIM_BOUNDARIES.md)
-- [v2 to v3 migration](docs/ETQ_V2_TO_V3_MIGRATION.md)
-- [Formal v3.0.1 paper and build instructions](docs/etq-303/README.md)
-- [v3.0.1 release notes](docs/ETQ_V3_0_1_RELEASE_NOTES.md)
-- [ETQ-101 v2 mathematical model](docs/MATHEMATICAL_MODEL.md)
-- [Auxiliary Tanner tuning fork](docs/TANNER_TUNING_FORK.md)
+Build the main root bundles with:
 
-## Lineage
+```bash
+npm run build:v3
+npm run build:d4-tia-v2
+```
 
-The preserved base release is ETQ-101 v2.0.0:
+## Root artifact policy
 
-- source: Git tag `v2.0.0`, commit
-  `8c24d58ca76abbac77c427a4f63ca434570c82b3`
-- archive DOI: `10.5281/zenodo.21432511`
+Root builds produce only:
 
-The original ETQ-303 release remains immutable:
+```text
+.json
+.csv
+.mid
+```
 
-- source: Git tag `v3.0.0`, commit
-  `6b55e51647226d1c248dc8d79f9ed9336241c2ac`
-- archive DOI: `10.5281/zenodo.21455181`
+Rendered PCM/WAV audio is intentionally excluded from root protocol identity.
 
-Version 3.0.1 adds only terminology and exposition clarifications. Its archived
-Zenodo version DOI is `10.5281/zenodo.21494678`.
+The separate `APP/` and `sonification/` directories are audio laboratories. They can render audio without changing the root ETQ or D4-TIA contracts.
 
-The acyclic receipt architecture is methodologically informed by the archived
-receipt-bound observation protocol versions `10.5281/zenodo.21292906` and
-`10.5281/zenodo.21293821`. They are provenance-method references, not
-mathematical dependencies of ETQ-303.
+## ETQ-303 artifacts
+
+`npm run build:v3` writes a deterministic bundle containing the canonical contract, event document, graph data, observation receipt, symbolic MIDI, and manifest.
+
+The exact file list and provenance rules are documented in [the ETQ-303 event protocol](docs/ETQ_V3_EVENT_PROTOCOL.md).
+
+No tempo or hertz value is canonical.
+
+## D4-TIA v2 artifacts
+
+`npm run build:d4-tia-v2` writes:
+
+```text
+contract.json
+evaluations.json
+events.json
+events.csv
+events.mid
+manifest.json
+```
+
+`evaluations.json` keeps the exact 15-by-6 covariant evaluation matrix separate from the 90-event receiver document.
 
 ## Scientific boundary
 
-A precise description is:
+This repository makes exact mathematical and deterministic software claims about the constructions it implements.
 
-> ETQ-303 v3.0.1 documents the exact finite 303-state tensor extension of the preserved
-> ETQ-101 v2 selected-root basis, with a single 303-step monomial support
-> traversal, exact Gaussian-unit phase labels, an exact Cartesian graph lift,
-> and deterministic receiver artifacts bound to one canonical event document.
+It does **not** claim:
 
-Here “303-dimensional” is strictly algebraic. The construction does not claim
-303 physical dimensions, a 303-dimensional E8 representation, 303 distinct
-roots, physical qutrit hardware, an E8-selected acoustic scale, or empirical
-validation.
+- physical spacetime dimensions from algebraic dimension;
+- 303 distinct E8 roots;
+- a unique pitch system implied by E8 or D4 invariant theory;
+- physical qutrit hardware;
+- canonical tempo, tuning, timbre, or loudness;
+- empirical validation from symbolic MIDI alone.
+
+Where a mapping is authored rather than mathematically forced, the documentation says so.
+
+## Documentation
+
+- [ETQ-303 exact event protocol](docs/ETQ_V3_EVENT_PROTOCOL.md)
+- [D4/F4 triality reference bridge](docs/D4_TRIALITY_REFERENCE_BRIDGE.md)
+- [D4-TIA-COV exact covariant engine](docs/D4_TRIALITY_COVARIANT_ENGINE.md)
+- [D4-TIA-S3-EQUIV symmetry harness](docs/D4_TRIALITY_S3_EQUIVARIANCE.md)
+- [D4-TIA-15 v2 evaluated-covariant sonification](docs/D4_TRIALITY_ALGEBRA_SONIFICATION_V2.md)
+- [D4-TIA-15 v1 grading-only sonification](docs/D4_TRIALITY_ALGEBRA_SONIFICATION.md)
+- [ETQ claim boundaries](docs/ETQ_V3_CLAIM_BOUNDARIES.md)
+- [ETQ v2 to v3 migration](docs/ETQ_V2_TO_V3_MIGRATION.md)
+- [ETQ-101 v2 mathematical model](docs/MATHEMATICAL_MODEL.md)
+- [Implementation roadmap](docs/ROADMAP.md)
+- [Formal ETQ-303 v3.0.1 paper](docs/etq-303/README.md)
+
+## Archived ETQ releases
+
+- **ETQ-101 v2.0.0** — DOI `10.5281/zenodo.21432511`
+- **ETQ-303 v3.0.0** — DOI `10.5281/zenodo.21455181`
+- **ETQ-303 v3.0.1** — DOI `10.5281/zenodo.21494678`
+
+The D4-TIA-COV, D4-TIA-S3-EQUIV, and D4-TIA-15 v2 line is implemented and is the next research line to freeze and archive.
 
 ## Creator and licence
 
-Created by **Trent Slade / QSOL-IMC**. Licensed under the Mozilla Public License
-2.0. Preserve the copyright and licence notices and use `CITATION.cff` for
-citation metadata.
+Created by **Trent Slade / QSOL-IMC**.
+
+Licensed under the Mozilla Public License 2.0. Preserve the copyright and licence notices and use `CITATION.cff` for citation metadata.
