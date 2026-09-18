@@ -62,8 +62,7 @@ software deposit under MPL-2.0. Version-specific archives must remain distinct:
 
 - ETQ-101 v2.0.0: `10.5281/zenodo.21432511`;
 - ETQ-303 v3.0.0: `10.5281/zenodo.21455181`; and
-- ETQ-303 v3.0.1: documentation-only clarification, with its version DOI to be
-  added after Zenodo publishes the new version.
+- ETQ-303 v3.0.1: `10.5281/zenodo.21494678` (documentation-only clarification).
 
 For each new version:
 
@@ -71,7 +70,8 @@ For each new version:
 2. preserve prior version tags, files, and DOI metadata unchanged;
 3. confirm creator spelling, affiliation, and verified ORCID metadata;
 4. regenerate checksums for every changed publication artifact;
-5. confirm the new version DOI back into `CITATION.cff` and release notes; and
+5. confirm the new version DOI in the paper source, `CITATION.cff`, release notes,
+   and version-specific archiving documentation; and
 6. verify Zenodo's current rights field in the draft interface.
 
 Zenodo record metadata remains separately reusable under Zenodo's metadata
