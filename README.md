@@ -1,5 +1,7 @@
 # ETQ-303 v3.0.1: Exact 303-State Root-Indexed Event Protocol
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21494678.svg)](https://doi.org/10.5281/zenodo.21494678)
+
 **A deterministic, receiver-neutral event protocol built as the exact product
 `H_101 tensor C^3` over the preserved ETQ-101 v2 selected-root model.**
 
@@ -184,8 +186,8 @@ The original ETQ-303 release remains immutable:
   `6b55e51647226d1c248dc8d79f9ed9336241c2ac`
 - archive DOI: `10.5281/zenodo.21455181`
 
-Version 3.0.1 adds only terminology and exposition clarifications. It is
-intended to receive its own tag and Zenodo version DOI after review and merge.
+Version 3.0.1 adds only terminology and exposition clarifications. Its archived
+Zenodo version DOI is `10.5281/zenodo.21494678`.
 
 The acyclic receipt architecture is methodologically informed by the archived
 receipt-bound observation protocol versions `10.5281/zenodo.21292906` and
