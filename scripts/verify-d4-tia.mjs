@@ -35,6 +35,20 @@ assert.equal(contract.profileId, PROFILE_ID);
 assert.equal(contract.profileVersion, PROFILE_VERSION);
 assert.equal(schema.properties.profileId.const, PROFILE_ID);
 assert.equal(schema.properties.profileVersion.const, PROFILE_VERSION);
+for (const key of [
+  "source",
+  "publishedStructure",
+  "mapping",
+  "determinism",
+  "lineage",
+  "claimBoundary",
+]) {
+  assert.deepEqual(
+    schema.properties[key].const,
+    contract[key],
+    `schema must bind canonical contract section: ${key}`,
+  );
+}
 
 const document = buildEventDocument();
 assert.equal(document.events.length, GENERATOR_COUNT);
@@ -57,6 +71,10 @@ assert.deepEqual(
 );
 assert.deepEqual(ALLOWED_ROOT_ARTIFACT_EXTENSIONS, [".json", ".csv", ".mid"]);
 assert.ok(bundle.manifest.implementation.sourceFiles.length >= 5);
+assert.equal(
+  bundle.manifest.implementation.sourceNormalization,
+  "UTF-8-text;CRLF-and-CR-normalized-to-LF",
+);
 assert.match(bundle.manifest.manifestCoreSha256, /^[0-9a-f]{64}$/);
 
 console.log(
