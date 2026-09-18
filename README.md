@@ -253,13 +253,14 @@ Where a mapping is authored rather than mathematically forced, the documentation
 - [Implementation roadmap](docs/ROADMAP.md)
 - [Formal ETQ-303 v3.0.1 paper](docs/etq-303/README.md)
 
-## Archived ETQ releases
+## Archived releases
 
 - **ETQ-101 v2.0.0** — DOI `10.5281/zenodo.21432511`
 - **ETQ-303 v3.0.0** — DOI `10.5281/zenodo.21455181`
 - **ETQ-303 v3.0.1 documentation/publication release** — DOI `10.5281/zenodo.21494678`
+- **D4-TIA v2.0.0** — DOI `10.5281/zenodo.22831753`
 
-The D4-TIA-COV, D4-TIA-S3-EQUIV, and D4-TIA-15 v2 line is implemented and is the next research line to freeze and archive.
+D4-TIA v2.0.0 archives the frozen D4-TIA-COV v0.1.0, D4-TIA-S3-EQUIV v0.1.0, and D4-TIA-15 v2.0.0 research line. It remains separately versioned from the preserved ETQ runtime contracts.
 
 ## Creator and licence
 
