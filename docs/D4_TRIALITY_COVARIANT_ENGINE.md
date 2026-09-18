@@ -16,7 +16,7 @@ The implementation follows Kazuhiro Sakai, *The ring of D4 triality invariants*
 coefficient weights,
 
 $$
-f(u,v)=\sum_{i=0}^{2}\alpha_i u^{2-i}v^i,
+\(\alpha_i\), \(\beta_j\), and \(u,v\) to derive
 \qquad
 g(u,v)=\sum_{i=0}^{3}\beta_i u^{3-i}v^i,
 $$
@@ -72,7 +72,7 @@ $$
 ## Grades are derived, not trusted
 
 For every symbolic polynomial, the engine counts the degrees in
-(alpha_i), (eta_j), and (u,v) to derive
+\(\alpha_i\), \(\beta_j\), and \(u,v\) to derive
 
 $$
 d_a,\qquad d_b,\qquad \omega.
