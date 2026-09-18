@@ -89,6 +89,26 @@ npm run build:d4-tia
 
 See [D4-TIA-15 v1.0.0](docs/D4_TRIALITY_ALGEBRA_SONIFICATION.md).
 
+
+## D4-TIA-COV: executable invariant/covariant algebra
+
+The 15-row D4-TIA literature ledger is now backed by the exact
+**D4-TIA-COV v0.1.0** algebra engine. It constructs the binary quadratic and
+binary cubic, evaluates Sakai's normalized transvectants, builds all 15
+Theorem 5.2 covariants, verifies the cubic syzygy, and derives each generator's
+grades from the symbolic polynomial itself.
+
+All coefficients are exact reduced rationals; no floating-point arithmetic is
+used. This phase deliberately adds **no new sonification mapping**.
+
+Verify it independently:
+
+```bash
+npm run verify:d4-tia-cov
+```
+
+See [D4-TIA-COV v0.1.0](docs/D4_TRIALITY_COVARIANT_ENGINE.md).
+
 ## Notation and Conventions
 
 Unless explicitly stated otherwise, scalars are in \(\mathbb C\), all vector
@@ -209,7 +229,7 @@ npm run verify
 npm run build:v3
 ```
 
-`npm run verify` validates D4-TIA-15, v3, and continues to validate the immutable v2 and v1
+`npm run verify` validates D4-TIA-COV, D4-TIA-15, v3, and continues to validate the immutable v2 and v1
 contracts. The build command fails closed for unsafe, existing nonempty, or
 non-`dist/` output paths and never recursively deletes a caller-selected path.
 
@@ -218,6 +238,7 @@ non-`dist/` output paths and never recursively deletes a caller-selected path.
 - [Exact event protocol](docs/ETQ_V3_EVENT_PROTOCOL.md)
 - [D4/F4 triality reference bridge](docs/D4_TRIALITY_REFERENCE_BRIDGE.md)
 - [D4-TIA-15 invariant-algebra sonification profile](docs/D4_TRIALITY_ALGEBRA_SONIFICATION.md)
+- [D4-TIA-COV exact covariant algebra engine](docs/D4_TRIALITY_COVARIANT_ENGINE.md)
 - [Claim boundaries](docs/ETQ_V3_CLAIM_BOUNDARIES.md)
 - [v2 to v3 migration](docs/ETQ_V2_TO_V3_MIGRATION.md)
 - [Formal v3.0.1 paper and build instructions](docs/etq-303/README.md)
