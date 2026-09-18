@@ -14,6 +14,8 @@ Preferred attribution:
   Trent Slade / QSOL-IMC, SONIFICATION and ETQ-101,
   https://github.com/QSOLKCB/SONIFICATION
 
-Citation metadata is provided in CITATION.cff.
+Citation metadata is version-specific:
+- use `CITATION.cff` for the ETQ-303 v3.0.1 documentation/publication release;
+- use `CITATION-D4-TIA.cff` for the archived D4-TIA v2.0.0 release.
 
 No ownership is claimed over pre-existing mathematics or scientific facts.
