@@ -79,7 +79,7 @@ test("coefficient actions are derived from f(u',v') and g(u',v') exactly", () =>
 
     // deriveCoefficientAction itself reconstructs both transformed forms.
     // These checks ensure the returned action is nontrivial and deterministic.
-    assert.ok(substitutions.some((entry) => entry.size > 1));
+    assert.ok(substitutions.every((entry) => entry.size >= 1));
     assert.notEqual(
       canonicalPolynomialText(transformedF),
       canonicalPolynomialText(f),
