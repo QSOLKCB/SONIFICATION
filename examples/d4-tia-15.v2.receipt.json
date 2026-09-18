@@ -1,0 +1,20 @@
+{
+  "schema": "qsol.d4-tia-15.v2-fixture-receipt/v1",
+  "profile": "D4-TIA-15@2.0.0",
+  "mappingContractSha256": "7b4497e26cb0a061b664bebdd4a134913d8e78199f726e3889ee50abd324d2da",
+  "evaluationDocumentSha256": "c4219c65fb0e6c1f434d8c85fa6e23ea0344197d26cbe718a6cde87755d8d461",
+  "eventDocumentSha256": "e80a877411ce532f7bb5cea3f5aeeff486590069bf5d867630d063295a651dfb",
+  "invariantProjection": {
+    "invariantGeneratorIndices": [
+      4,
+      10,
+      12,
+      13,
+      15
+    ],
+    "invariantGeneratorCount": 5,
+    "exactValueInvariantAcrossOrbit": true,
+    "audibleControlInvariantAcrossOrbit": true,
+    "varyingNonInvariantGeneratorCount": 10
+  }
+}
