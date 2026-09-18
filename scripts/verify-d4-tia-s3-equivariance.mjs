@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: MPL-2.0
 
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
 import {
   HARNESS_ID,
@@ -10,9 +13,26 @@ import {
   buildS3EquivarianceHarnessSummary,
 } from "../src/d4-triality-s3-equivariance.mjs";
 
+const PROJECT_ROOT = resolve(fileURLToPath(new URL("..", import.meta.url)));
+const fixture = JSON.parse(
+  readFileSync(
+    resolve(PROJECT_ROOT, "examples/d4-tia-s3-equivariance.v0.1.canonical.json"),
+    "utf8",
+  ),
+);
+const schema = JSON.parse(
+  readFileSync(
+    resolve(PROJECT_ROOT, "spec/d4-tia-s3-equivariance.v0.1.schema.json"),
+    "utf8",
+  ),
+);
+
 const summary = buildS3EquivarianceHarnessSummary();
 
 assert.equal(summary.schema, HARNESS_SCHEMA_ID);
+assert.deepEqual(summary, fixture);
+assert.equal(schema.$id, HARNESS_SCHEMA_ID);
+assert.deepEqual(schema.const, fixture);
 assert.equal(summary.harnessId, HARNESS_ID);
 assert.equal(summary.harnessVersion, HARNESS_VERSION);
 assert.equal(summary.d4Orbit.elements.length, 6);
