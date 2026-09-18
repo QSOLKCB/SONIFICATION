@@ -1,6 +1,6 @@
 # SONIFICATION — ETQ-303 and D4 Triality Research
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21494678.svg)](https://doi.org/10.5281/zenodo.21494678)
+[![ETQ-303 v3.0.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21494678.svg)](https://doi.org/10.5281/zenodo.21494678) [![D4-TIA v2.0.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22831753.svg)](https://doi.org/10.5281/zenodo.22831753)
 
 This repository contains two related but separately versioned research lines:
 
