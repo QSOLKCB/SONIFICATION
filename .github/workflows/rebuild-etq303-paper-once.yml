@@ -1,0 +1,39 @@
+name: rebuild ETQ-303 paper once
+
+on:
+  push:
+    branches:
+      - research/d4-triality-invariant-bridge
+    paths:
+      - .github/workflows/rebuild-etq303-paper-once.yml
+      - docs/etq-303/v3.0.1/ETQ-303_formal_model_v3.0.1.tex
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/d4-triality-invariant-bridge
+      - name: Install publication toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y latexmk biber texlive-latex-extra texlive-fonts-recommended lmodern
+      - name: Rebuild publication artifacts
+        run: npm run build:paper
+      - name: Commit regenerated PDF and checksums
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/etq-303/v3.0.1/ETQ-303_formal_model_v3.0.1.pdf
+          git add docs/etq-303/v3.0.1/UPLOAD_SHA256SUMS.txt
+          if git diff --cached --quiet; then
+            echo "Publication artifacts already current."
+            exit 0
+          fi
+          git commit -m "docs: rebuild v3.0.1 publication artifacts"
+          git push origin HEAD:"${GITHUB_REF_NAME}"
