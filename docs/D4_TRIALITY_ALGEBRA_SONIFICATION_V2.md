@@ -218,6 +218,18 @@ document.
 The MIDI file remains format 1 with one conductor/metadata track and one track
 per generator. Each generator track contains its six orbit events.
 
+## Canonical fixtures
+
+`examples/d4-tia-15.v2.canonical.json` freezes the complete v2 mapping
+contract. `spec/d4-tia-15.v2.schema.json` binds that contract with an exact
+`const` schema.
+
+`examples/d4-tia-15.v2.receipt.json` independently pins the SHA-256 hashes of
+the canonical contract, exact evaluation document, and 90-event document, plus
+the invariant-projection summary. A changed probe, orbit order, rank mapping,
+evaluation value, or event projection therefore changes a frozen commitment
+and fails verification.
+
 ## Determinism and provenance
 
 The manifest binds:
