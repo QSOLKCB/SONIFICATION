@@ -1,5 +1,23 @@
 # Changelog
 
+## Unreleased — D4-TIA-COV v0.1.0 algebra engine
+
+- Added an exact sparse-polynomial engine over reduced rational arithmetic for
+  a binary quadratic and binary cubic.
+- Implemented Sakai's normalized transvectant convention and constructed all
+  15 covariants in Theorem 5.2 from (f) and (g).
+- Added exact verification of the cubic syzygy
+  (2Q^2+P^3+g^2D_g=0).
+- Derived ((d_a,d_b,omega)) from each symbolic covariant, then derived
+  (d,m,k) and checked them against the existing literature ledger.
+- Added canonical term-count and SHA-256 fixtures, a schema, verifier, tests,
+  and a dedicated mathematical specification.
+- Locked the follow-up sequence to: (S_3) orbit/equivariance harness,
+  D4-TIA-15 v2 evaluated-covariant sonification, then freeze/tag/archive and
+  Zenodo update.
+- No ETQ identity, MIDI mapping, tempo, tuning, or rendered-audio behavior was
+  changed.
+
 ## Unreleased — D4-TIA-15 v1.0.0 profile
 
 - Added a separately versioned symbolic sonification profile over the published
