@@ -43,20 +43,20 @@ monomial operator has exact order 303.
 The existing four-coordinate ETQ triality matrix has an exact factorization in
 the D4/F4 convention used by Kazuhiro Sakai:
 
-[
+$$
 A=w_Sw_T,
-qquad
-W(F_4)/W(D_4)cong S_3.
-]
+\qquad
+W(F_4)/W(D_4)\cong S_3.
+$$
 
-Here (w_T) and (w_S) are the two involutions used to generate the published
+Here \(w_T\) and \(w_S\) are the two involutions used to generate the published
 triality quotient, and their product is the same order-three matrix already
 used by ETQ. The repository now checks this identity with exact integer
 arithmetic and records the 15-generator grading ledger from Sakai's later ring
 of D4 triality invariants.
 
 This is a literature alignment, not a claim that the papers derive or validate
-ETQ's 101-state selector, independent (mathbb C^3) factor, SCL stencil, or
+ETQ's 101-state selector, independent \(\mathbb C^3\) factor, SCL stencil, or
 sonification choices. See
 [the D4/F4 triality reference bridge](docs/D4_TRIALITY_REFERENCE_BRIDGE.md).
 
