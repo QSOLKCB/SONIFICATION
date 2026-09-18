@@ -4,7 +4,7 @@
 
 This repository contains two related but separately versioned research lines:
 
-- **ETQ-303 v3.0.1** — an exact 303-state event protocol built from the preserved ETQ-101 v2 model.
+- **ETQ-303 v3.0.1** — the current documentation/publication release for the exact ETQ-303 protocol. The canonical runtime contract and deterministic outputs remain **v3.0.0**.
 - **D4-TIA** — exact D4 triality covariants, an exact S3 symmetry harness, and a symbolic sonification profile built on top of them.
 
 They share D4 triality context, but the D4-TIA work does **not** change ETQ-101 or ETQ-303 protocol identity.
@@ -36,7 +36,9 @@ The repository is designed so that the mathematics, the event data, and the rece
 
 ## ETQ-303 in plain language
 
-ETQ-303 extends the preserved 101-state ETQ-101 model with an independent three-state factor:
+The ETQ-303 runtime contract is **v3.0.0**. The **v3.0.1** repository release only clarifies its documentation and publication material; it does not change the runtime contract, state indexing, event generation, or deterministic outputs.
+
+The protocol extends the preserved 101-state ETQ-101 model with an independent three-state factor:
 
 ```math
 \mathcal H_{303}=\mathcal H_{101}\otimes\mathbb C^3.
@@ -183,9 +185,9 @@ npm run build:v3
 npm run build:d4-tia-v2
 ```
 
-## Root artifact policy
+## Runtime/export artifact policy
 
-Root builds produce only:
+The root runtime/export bundle commands — `npm run build:v3`, `npm run build:d4-tia`, and `npm run build:d4-tia-v2` — persist only:
 
 ```text
 .json
@@ -193,7 +195,9 @@ Root builds produce only:
 .mid
 ```
 
-Rendered PCM/WAV audio is intentionally excluded from root protocol identity.
+That allowlist applies to generated runtime/export artifacts, not normal repository or publication files. For example, `npm run build:paper` may produce archival PDF and checksum files.
+
+Rendered PCM/WAV audio is intentionally excluded from root runtime/export identity.
 
 The separate `APP/` and `sonification/` directories are audio laboratories. They can render audio without changing the root ETQ or D4-TIA contracts.
 
