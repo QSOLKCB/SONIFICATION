@@ -15,11 +15,11 @@ The implementation follows Kazuhiro Sakai, *The ring of D4 triality invariants*
 (arXiv:2504.00546v2). In the paper, binary forms are written without binomial
 coefficient weights,
 
-$$
-\(\alpha_i\), \(\beta_j\), and \(u,v\) to derive
+$
+f(u,v)=\sum_{i=0}^{2}\alpha_i u^{2-i}v^i,
 \qquad
 g(u,v)=\sum_{i=0}^{3}\beta_i u^{3-i}v^i,
-$$
+$
 
 and the normalized transvectant of binary forms \(F,G\) of orders \(m,n\) is
 
