@@ -74,3 +74,25 @@ def test_symlink_manifest_is_not_followed(tmp_path: Path) -> None:
     passed, message = cli._verify(symbolic)
     assert not passed
     assert "PASS" not in message
+
+def test_codex_2m_frame_fm_regression_rejected_before_render() -> None:
+    # Codex measured 304.4 MiB RSS for an FM render that the former 96-byte
+    # estimate admitted as 183.1 MiB under a nominal 256 MiB budget.
+    config = LoopConfig(
+        tempo_bpm=368.64, bars=16, beats_per_bar=4, sample_rate=192_000,
+        voice_mode="fm",
+    )
+    assert config.frame_count == 2_000_000
+    with pytest.raises(ValueError, match="verifier resource budget"):
+        cli._verify_budget(config)
+
+
+def test_small_frame_count_does_not_bypass_total_fm_work_limit() -> None:
+    # A short, high-tempo loop can still contain many FM notes/convolutions.
+    config = LoopConfig(
+        tempo_bpm=400.0, bars=16, beats_per_bar=4, sample_rate=8_000,
+        voice_mode="fm",
+    )
+    assert config.frame_count < 100_000
+    with pytest.raises(ValueError, match="verifier resource budget"):
+        cli._verify_budget(config)
