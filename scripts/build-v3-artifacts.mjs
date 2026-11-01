@@ -24,12 +24,51 @@ const PROJECT_ROOT = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const OUTPUT_ROOT = resolve(PROJECT_ROOT, "dist");
 const ALLOWED_EXTENSIONS = new Set(ALLOWED_ROOT_ARTIFACT_EXTENSIONS);
 
-function outputArgument() {
-  const index = process.argv.indexOf("--output");
-  if (index === -1) return resolve(OUTPUT_ROOT, "etq-303-v3.0.0");
-  const value = process.argv[index + 1];
-  if (!value) throw new Error("--output requires a path");
-  return resolve(value);
+const RENDERED_AUDIO_OPTION =
+  /^--(?:wav|pcm|aiff|flac|mp3|ogg|audio|render-audio)(?:=|$)/i;
+
+function outputArgument(argv = process.argv.slice(2)) {
+  let output = resolve(OUTPUT_ROOT, "etq-303-v3.0.0");
+  let sawOutput = false;
+  for (let i = 0; i < argv.length; i += 1) {
+    const arg = argv[i];
+    if (RENDERED_AUDIO_OPTION.test(arg)) {
+      throw new Error("rendered-audio request is prohibited in root ETQ: " + arg);
+    }
+    if (arg === "--output") {
+      if (sawOutput) throw new Error("--output may be specified only once");
+      const value = argv[i + 1];
+      if (!value || value.startsWith("--")) {
+        throw new Error("--output requires a path");
+      }
+      output = resolve(value);
+      sawOutput = true;
+      i += 1;
+      continue;
+    }
+    throw new Error("unknown option: " + arg);
+  }
+  return output;
+}
+
+function assertNoSymlinkedAncestors(output, relativeOutput) {
+  if (!existsSync(OUTPUT_ROOT)) mkdirSync(OUTPUT_ROOT, { recursive: true });
+  const root = lstatSync(OUTPUT_ROOT);
+  if (root.isSymbolicLink() || !root.isDirectory()) {
+    throw new Error("dist output root must be a real directory");
+  }
+  let current = OUTPUT_ROOT;
+  for (const component of relativeOutput.split(sep).filter(Boolean)) {
+    current = resolve(current, component);
+    if (!existsSync(current)) break;
+    const stat = lstatSync(current);
+    if (stat.isSymbolicLink()) {
+      throw new Error("--output path contains symbolic link: " + current);
+    }
+    if (!stat.isDirectory()) {
+      throw new Error("--output path component is not a directory: " + current);
+    }
+  }
 }
 
 function assertDedicatedOutputPath(output) {
@@ -42,6 +81,7 @@ function assertDedicatedOutputPath(output) {
   ) {
     throw new Error(`--output must be a dedicated subdirectory of ${OUTPUT_ROOT}`);
   }
+  assertNoSymlinkedAncestors(output, relativeOutput);
   if (existsSync(output)) {
     if (!lstatSync(output).isDirectory()) {
       throw new Error("--output already exists and is not a directory");
@@ -66,6 +106,7 @@ function assertAllowedFilename(filename) {
 const output = outputArgument();
 assertDedicatedOutputPath(output);
 mkdirSync(output, { recursive: true });
+assertDedicatedOutputPath(output);
 
 const bundle = buildReceiptAndManifest();
 const files = new Map([
