@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import {
   chmodSync, copyFileSync, existsSync, lstatSync, mkdirSync, mkdtempSync,
-  readFileSync, rmSync, symlinkSync, writeFileSync,
+  readFileSync, renameSync, rmSync, symlinkSync, writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, resolve } from "node:path";
@@ -19,6 +19,8 @@ import {
   IMPLEMENTATION_SOURCE_PATHS_V2,
   buildImplementationIdentityV2,
 } from "../src/d4-triality-algebra-v2-artifacts.mjs";
+
+import { publishAnchored } from "../scripts/build-v3-artifacts.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const V3 = "scripts/build-v3-artifacts.mjs";
@@ -130,5 +132,49 @@ test("paper publication never follows symlinked PDF or predictable checksum temp
     );
   } finally {
     rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("a directory replaced with a symlink DURING bundle writing cannot redirect files", () => {
+  if (process.platform !== "linux") return;
+  const parent = mkdtempSync(resolve(ROOT, "dist", "race-"));
+  const outside = mkdtempSync(resolve(tmpdir(), "etq-race-outside-"));
+  const output = resolve(parent, "bundle");
+  const moved = resolve(parent, "old-bundle");
+  try {
+    mkdirSync(output);
+    function* switchedFiles() {
+      // This mutation occurs after publishAnchored has opened its private
+      // staging directory, before it attempts the first artifact write.
+      renameSync(output, moved);
+      symlinkSync(outside, output, "dir");
+      yield ["contract.json", Buffer.from('{"fixture":true}', "utf8")];
+    }
+    assert.throws(
+      () => publishAnchored(output, switchedFiles()),
+      /ENOTDIR|EEXIST|not a real directory|not empty|EISDIR/,
+    );
+    assert.deepEqual(readdirSync(outside), []);
+    assert.equal(existsSync(resolve(outside, "contract.json")), false);
+    assert.equal(lstatSync(output).isSymbolicLink(), true);
+  } finally {
+    rmSync(parent, { recursive: true, force: true });
+    rmSync(outside, { recursive: true, force: true });
+  }
+});
+
+test("anchored publication permits an ordinary dedicated nested bundle", () => {
+  if (process.platform !== "linux") return;
+  const parent = mkdtempSync(resolve(ROOT, "dist", "pinned-"));
+  try {
+    const output = resolve(parent, "nested", "bundle");
+    publishAnchored(output, [
+      ["contract.json", Buffer.from('{"ok":true}', "utf8")],
+      ["events.csv", Buffer.from("test\n", "utf8")],
+    ]);
+    assert.deepEqual(readdirSync(output).sort(), ["contract.json", "events.csv"]);
+    assert.equal(readFileSync(resolve(output, "contract.json"), "utf8"), '{"ok":true}');
+  } finally {
+    rmSync(parent, { recursive: true, force: true });
   }
 });
