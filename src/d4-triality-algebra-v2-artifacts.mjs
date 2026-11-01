@@ -29,6 +29,7 @@ export const ALLOWED_ROOT_ARTIFACT_EXTENSIONS_V2 = Object.freeze([
 ]);
 
 export const IMPLEMENTATION_SOURCE_PATHS_V2 = Object.freeze([
+  "src/d4-triality-reference.mjs",
   "src/d4-triality-covariant-engine.mjs",
   "src/d4-triality-s3-equivariance.mjs",
   "src/d4-triality-algebra-v2-profile.mjs",

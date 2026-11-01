@@ -263,7 +263,7 @@ test("implementation identity binds the v3 source bundle", () => {
     identity.sourceFiles.map((entry) => entry.path),
     IMPLEMENTATION_SOURCE_PATHS,
   );
-  assert.equal(identity.sourceFiles.length, 5);
+  assert.equal(identity.sourceFiles.length, 6);
   assert.match(identity.sourceBundleSha256, /^[0-9a-f]{64}$/);
   const contract = buildCanonicalContract();
   assert.deepEqual(contract.lineage.implementation, identity);

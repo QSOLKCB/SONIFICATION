@@ -15,9 +15,21 @@ for command_name in latexmk pdflatex biber sha256sum; do
   fi
 done
 
+if [[ -L "$paper_dir" || ! -d "$paper_dir" ]]; then
+  echo "publication directory must be a real directory" >&2
+  exit 1
+fi
+for final_name in "$pdf_name" "$checksum_name"; do
+  if [[ -L "$paper_dir/$final_name" ]]; then
+    echo "publication destination is a symbolic link: $final_name" >&2
+    exit 1
+  fi
+done
+
 build_dir="$(mktemp -d /tmp/etq303-paper-v3.0.1.XXXXXX)"
+stage_dir="$(mktemp -d "$paper_dir/.etq303-publish.XXXXXXXX")"
 cleanup() {
-  rm -rf -- "$build_dir"
+  rm -rf -- "$build_dir" "$stage_dir"
 }
 trap cleanup EXIT
 
@@ -49,13 +61,24 @@ if grep -Eiq \
   exit 1
 fi
 
-cp "$build_dir/$pdf_name" "$paper_dir/$pdf_name"
+# Build publication bytes in a private, unpredictable directory. Atomic
+# renames replace directory entries rather than following target symlinks.
+cp -- "$build_dir/$pdf_name" "$stage_dir/$pdf_name"
+for name in "$pdf_name" "$tex_name" "$bib_name"; do
+  source_file="$paper_dir/$name"
+  if [[ "$name" == "$pdf_name" ]]; then source_file="$stage_dir/$pdf_name"; fi
+  digest="$(sha256sum "$source_file")"
+  printf '%s  %s\n' "${digest%% *}" "$name"
+done > "$stage_dir/$checksum_name"
 
-(
-  cd "$paper_dir"
-  sha256sum "$pdf_name" "$tex_name" "$bib_name" > "$checksum_name.tmp"
-  mv "$checksum_name.tmp" "$checksum_name"
-)
+for name in "$pdf_name" "$checksum_name"; do
+  if [[ -L "$paper_dir/$name" ]]; then
+    echo "publication destination became a symbolic link: $name" >&2
+    exit 1
+  fi
+done
+mv -fT -- "$stage_dir/$pdf_name" "$paper_dir/$pdf_name"
+mv -fT -- "$stage_dir/$checksum_name" "$paper_dir/$checksum_name"
 
 echo "built $paper_dir/$pdf_name"
 echo "updated $paper_dir/$checksum_name"

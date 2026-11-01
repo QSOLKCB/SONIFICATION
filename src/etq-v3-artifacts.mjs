@@ -72,6 +72,7 @@ export const MANIFEST_SCHEMA_ID = "qsol.etq-303.manifest/v1";
 export const IMPLEMENTATION_ID = "etq-303-node-reference-v1";
 
 export const IMPLEMENTATION_SOURCE_PATHS = Object.freeze([
+  "src/etq-model.mjs",
   "src/etq-v3-core.mjs",
   "src/etq-v3-canonical.mjs",
   "src/etq-v3-receivers.mjs",
