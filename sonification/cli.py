@@ -8,6 +8,7 @@ import json
 import logging
 import os
 import re
+import stat
 import sys
 import tempfile
 from collections.abc import Sequence
@@ -21,6 +22,9 @@ from .renderer import RenderResult, render_loop
 
 _EXPORTS = frozenset({"wav", "manifest", "recipe", "fingerprint"})
 _MAX_MANIFEST_BYTES = 16 * 1024 * 1024
+_MAX_VERIFY_FRAMES = 2_000_000
+_MAX_VERIFY_BEATS = 128
+_MAX_VERIFY_ESTIMATED_BYTES = 256 * 1024 * 1024
 LOGGER = logging.getLogger(__name__)
 
 
@@ -125,11 +129,37 @@ def _config_from_recipe(recipe: dict[str, Any]) -> LoopConfig:
     return LoopConfig(**values)
 
 
+def _read_manifest_bounded(path: Path) -> bytes:
+    """Open once, reject special files and bound reads despite size races."""
+    flags = os.O_RDONLY | getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0) | getattr(os, "O_NOFOLLOW", 0)
+    fd = os.open(path, flags)
+    with os.fdopen(fd, "rb") as source:
+        metadata = os.fstat(source.fileno())
+        if not stat.S_ISREG(metadata.st_mode):
+            raise ValueError("manifest must be a regular file")
+        if metadata.st_size > _MAX_MANIFEST_BYTES:
+            raise ValueError(f"manifest exceeds {_MAX_MANIFEST_BYTES} byte limit")
+        payload = source.read(_MAX_MANIFEST_BYTES + 1)
+        if len(payload) > _MAX_MANIFEST_BYTES:
+            raise ValueError(f"manifest exceeds {_MAX_MANIFEST_BYTES} byte limit")
+        return payload
+
+
+def _verify_budget(config: LoopConfig) -> None:
+    """Fail before render work; leave explicit generate limits unchanged."""
+    estimated_bytes_per_frame = 160 if config.voice_mode == "hybrid" else 96
+    if (
+        config.frame_count > _MAX_VERIFY_FRAMES
+        or config.total_beats > _MAX_VERIFY_BEATS
+        or config.frame_count * estimated_bytes_per_frame > _MAX_VERIFY_ESTIMATED_BYTES
+    ):
+        raise ValueError("manifest replay exceeds verifier resource budget")
+
+
 def _verify(path: Path) -> tuple[bool, str]:
     try:
-        if path.stat().st_size > _MAX_MANIFEST_BYTES:
-            return False, f"manifest exceeds {_MAX_MANIFEST_BYTES} byte limit"
-        manifest = json.loads(path.read_bytes().decode("utf-8"))
+        manifest = json.loads(_read_manifest_bounded(path).decode("utf-8"))
         if not isinstance(manifest, dict):
             return False, "manifest root must be a JSON object"
         if manifest.get("schema") != "sonification.manifest/v1":
@@ -138,11 +168,15 @@ def _verify(path: Path) -> tuple[bool, str]:
         recipe = manifest.get("recipe")
         if not isinstance(recipe, dict):
             return False, "manifest recipe is missing"
-        result = render_loop(_config_from_recipe(recipe))
         fingerprint = manifest.get("fingerprint")
         if not isinstance(fingerprint, dict):
             return False, "manifest fingerprint is missing"
         expected_wav = fingerprint.get("wav_sha256")
+        if not isinstance(expected_wav, str) or not re.fullmatch(r"[0-9a-f]{64}", expected_wav):
+            return False, "manifest WAV fingerprint is invalid"
+        config = _config_from_recipe(recipe)
+        _verify_budget(config)
+        result = render_loop(config)
         if result.wav_sha256 != expected_wav:
             return False, "re-rendered WAV hash differs (runtime or source mismatch)"
         if result.manifest != manifest:
