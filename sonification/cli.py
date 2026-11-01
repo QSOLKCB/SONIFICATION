@@ -17,8 +17,8 @@ from pathlib import Path
 from typing import Any
 
 from . import __version__
-from .config import LoopConfig
 from .composition import build_phase1_tracks
+from .config import LoopConfig
 from .core.provenance import canonical_json_bytes, validate_manifest_integrity
 from .renderer import RenderResult, render_loop
 
