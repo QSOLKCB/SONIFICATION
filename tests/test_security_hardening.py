@@ -87,12 +87,28 @@ def test_codex_2m_frame_fm_regression_rejected_before_render() -> None:
         cli._verify_budget(config)
 
 
-def test_small_frame_count_does_not_bypass_total_fm_work_limit() -> None:
-    # A short, high-tempo loop can still contain many FM notes/convolutions.
+def test_small_frame_count_does_not_bypass_total_event_limit() -> None:
+    # A short, high-tempo loop can still schedule hundreds of notes.
     config = LoopConfig(
         tempo_bpm=400.0, bars=16, beats_per_bar=4, sample_rate=8_000,
-        voice_mode="fm",
+        voice_mode="hybrid",
     )
     assert config.frame_count < 100_000
+    with pytest.raises(ValueError, match="verifier resource budget"):
+        cli._verify_budget(config)
+
+
+def test_fm_convolution_work_limit_enforced_independently(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # Lift the memory and synthesized-sample gates for this NEGATIVE CONTROL
+    # so it specifically proves that the FM FIR operation limit rejects.
+    config = LoopConfig(
+        tempo_bpm=384.0, bars=16, beats_per_bar=4, sample_rate=60_000,
+        voice_mode="fm",
+    )
+    assert config.frame_count == 600_000
+    monkeypatch.setattr(cli, "_MAX_VERIFY_ESTIMATED_BYTES", 1 << 40)
+    monkeypatch.setattr(cli, "_MAX_VERIFY_SYNTHESIZED_SAMPLES", 1 << 40)
     with pytest.raises(ValueError, match="verifier resource budget"):
         cli._verify_budget(config)
