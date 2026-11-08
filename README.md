@@ -32,6 +32,14 @@ MIDI only. [The profile specification](docs/MAT_SPEC_001.md) describes the
 mapping, controls and provenance. The [original feasibility study](docs/materials/FEASIBILITY.md)
 is preserved as its research background.
 
+## MAT-SPEC-002: uncertainty and sampling sensitivity
+
+A separately versioned, symbolic-only successor adds **22,050 matched-q pressure comparisons**, exact reported-interval checks, stream/tile parity, and GLUBALL uniform-floor sampling controls at 6/12/24/48 positions. It borrows invariant/evidence engineering from QEC, OPT, SPECTRAL, GALAXY, GLUBALL and UFF while keeping physical-model and listener claims explicitly untested.
+
+Reproduce: `uv run --no-project python scripts/build_mat_spec_002.py --out dist/mat-spec-002`.
+
+See [MAT-SPEC-002 experimental controls](docs/MAT_SPEC_002.md). The frozen MAT-SPEC-001 package and archived DOI remain unchanged.
+
 ## The short version
 
 ETQ-303:
