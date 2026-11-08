@@ -19,8 +19,16 @@ from itertools import combinations
 from pathlib import Path, PurePosixPath
 
 from materials.mat_spec import (
-    PRESSURES, SAMPLE_Q, SOURCE_PATH, SOURCE_SHA256,
-    build_bundle as build_v1, canonical_json, rank_offsets, sha256,
+    PRESSURES,
+    SAMPLE_Q,
+    SOURCE_PATH,
+    SOURCE_SHA256,
+    canonical_json,
+    rank_offsets,
+    sha256,
+)
+from materials.mat_spec import (
+    build_bundle as build_v1,
 )
 
 PROFILE = "MAT-SPEC-002"

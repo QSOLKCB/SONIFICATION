@@ -14,8 +14,14 @@ from pathlib import Path
 
 from materials.mat_spec import build_bundle, sha256
 from materials.mat_spec_002 import (
-    OUTPUT_NAMES, SAMPLE_COUNTS, audit_pairs, build_evidence, index_observations,
-    interval_relation, uniform_indices, write_evidence,
+    OUTPUT_NAMES,
+    SAMPLE_COUNTS,
+    audit_pairs,
+    build_evidence,
+    index_observations,
+    interval_relation,
+    uniform_indices,
+    write_evidence,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
