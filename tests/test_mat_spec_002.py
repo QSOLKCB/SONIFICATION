@@ -9,11 +9,10 @@ import io
 import json
 import tempfile
 import unittest
-from fractions import Fraction
 from itertools import combinations
 from pathlib import Path
 
-from materials.mat_spec import PRESSURES, build_bundle, sha256
+from materials.mat_spec import build_bundle, sha256
 from materials.mat_spec_002 import (
     OUTPUT_NAMES, SAMPLE_COUNTS, audit_pairs, build_evidence, index_observations,
     interval_relation, uniform_indices, write_evidence,
@@ -79,7 +78,10 @@ class EvidenceTests(unittest.TestCase):
             21 * 1050,
         )
         self.assertEqual(self.manifest["profile"], "MAT-SPEC-002")
-        self.assertEqual(self.manifest["source_sha256"], "15a56ccdd2f681de0e1d3d1517dc4641732dbef4e2d6153591154cc4b039b50a")
+        self.assertEqual(
+            self.manifest["source_sha256"],
+            "15a56ccdd2f681de0e1d3d1517dc4641732dbef4e2d6153591154cc4b039b50a",
+        )
 
     def test_tile_parity_with_one_block_and_odd_block(self) -> None:
         indexed = index_observations(self.obs)

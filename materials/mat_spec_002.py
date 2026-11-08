@@ -61,7 +61,8 @@ def interval_relation(a: dict, b: dict) -> str:
 def uniform_indices(logical_count: int, sample_count: int) -> tuple[int, ...]:
     """GLUBALL uniform-floor index map; exact integers and no logical allocation."""
     if (
-        type(logical_count) is not int or type(sample_count) is not int
+        not isinstance(logical_count, int) or isinstance(logical_count, bool)
+        or not isinstance(sample_count, int) or isinstance(sample_count, bool)
         or not (1 <= sample_count <= logical_count <= 1_000_000)
     ):
         raise ValueError("invalid uniform-floor bounds")
@@ -101,7 +102,9 @@ def scaled_twice(row: dict) -> dict:
     }
 
 
-def audit_pairs(by_pressure: dict[str, list[dict]], tile_size: int = TILE_SIZE) -> tuple[list[dict], dict]:
+def audit_pairs(
+    by_pressure: dict[str, list[dict]], tile_size: int = TILE_SIZE
+) -> tuple[list[dict], dict]:
     """Stream 21 matched-q pressure comparisons without materializing pair states.
 
     Tiling must not change counts, direction, missingness or canonical receipt.
@@ -184,7 +187,10 @@ def audit_sampling(by_pressure: dict[str, list[dict]]) -> list[dict]:
             "missing_selected_cells": missing_cells,
             "comparable_pressure_pairs": len(complete) * (len(complete) - 1) // 2,
             "exact_profile_collisions": collisions,
-            "scope": "nominal selected-data collisions only; no significance or perceptual inference",
+            "scope": (
+                "nominal selected-data collisions only; "
+                "no significance or perceptual inference"
+            ),
         })
     return result
 
@@ -217,7 +223,10 @@ def build_evidence(root: Path) -> dict[str, bytes]:
         "sample_metadata_lane": "i mod 3, not topology or physics",
         "receiver_invariant": "positive common scaling preserves exact interval ordering",
         "source_reuse": "MAT-SPEC-001 verified in-memory observations only",
-        "claims": "numerical interval separation and sensitivity only; no uncertainty distribution",
+        "claims": (
+            "numerical interval separation and sensitivity only; "
+            "no uncertainty distribution"
+        ),
         "physical_phase_inference": "NOT_TESTED",
         "listener_discrimination": "NOT_TESTED",
         "E8_in_helium": "NOT_CLAIMED",

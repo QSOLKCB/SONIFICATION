@@ -2,7 +2,7 @@
 
 ## Measured helium spectra and sonification preservation
 
-Prepared for DOI **10.5281/zenodo.24062652**. This profile implements the first
+Record DOI: **10.5281/zenodo.24062652**. This profile implements the first
 physical-data adapter motivated by
 [SONIFICATION-MATERIALS-FEASIBILITY-001](materials/FEASIBILITY.md).
 It is independently versioned from ETQ-303 and D4-TIA. The earlier feasibility

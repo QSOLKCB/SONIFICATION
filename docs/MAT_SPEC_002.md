@@ -2,7 +2,7 @@
 
 MAT-SPEC-002 is an **additive, experimental successor** to the archived
 MAT-SPEC-001 v1.0.0 implementation in SONIFICATION PR #22 (merge commit
-195b325097cd01f16e9ca909edd95482d4863c27), prepared for DOI
+195b325097cd01f16e9ca909edd95482d4863c27), archived in the MAT-SPEC-001 record at DOI
 10.5281/zenodo.24062652. The seven MAT-SPEC-001 runtime artifacts, frozen
 mapping, published source bytes and feasibility study are **not modified**.
 This successor has **no assigned DOI**.

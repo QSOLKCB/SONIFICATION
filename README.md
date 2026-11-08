@@ -6,7 +6,7 @@ This repository contains three separately versioned research lines:
 
 - **ETQ-303 v3.0.1** — the current documentation/publication release for the exact ETQ-303 protocol. The canonical runtime contract and deterministic outputs remain **v3.0.0**.
 - **D4-TIA** — exact D4 triality covariants, an exact S3 symmetry harness, and a symbolic sonification profile built on top of them.
-- **MAT-SPEC-001 v1.0.0** — attributed superfluid-helium measurements, an exact common-scale frequency mapping, and explicit comparisons with rank contours and quantized MIDI. Prepared for [DOI 10.5281/zenodo.24062652](https://doi.org/10.5281/zenodo.24062652).
+- **MAT-SPEC-001 v1.0.0** — attributed superfluid-helium measurements, an exact common-scale frequency mapping, and explicit comparisons with rank contours and quantized MIDI. Record DOI: [10.5281/zenodo.24062652](https://doi.org/10.5281/zenodo.24062652).
 
 ETQ and D4-TIA share D4 triality context. MAT-SPEC-001 adds an independent physical-data profile. Neither extension changes ETQ-101 or ETQ-303 protocol identity.
 

@@ -22,7 +22,10 @@ def main() -> int:
     parser.add_argument("--render-audio", action="store_true", help="always rejected")
     args = parser.parse_args()
     if args.render_audio:
-        print(json.dumps({"error": "audio is disabled for root material profiles"}), file=sys.stderr)
+        print(
+            json.dumps({"error": "audio is disabled for root material profiles"}),
+            file=sys.stderr,
+        )
         return 2
     try:
         outputs = build_evidence(ROOT)
