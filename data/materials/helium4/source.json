@@ -1,0 +1,21 @@
+{
+  "dataset_id": "godfrin-2021-helium4-dispersion-all-pressures-v1",
+  "title": "The dispersion relation of Landau elementary excitations and the thermodynamic properties of superfluid 4He",
+  "authors": ["H. Godfrin", "K. Beauvois", "A. Sultan", "E. Krotscheck", "J. Dawidowski", "B. Fak", "J. Ollivier"],
+  "journal": "Physical Review B 103, 104516 (2021)",
+  "doi": "10.1103/PhysRevB.103.104516",
+  "paper_url": "https://arxiv.org/abs/2012.09067v1",
+  "data_url": "https://arxiv.org/src/2012.09067v1/anc/DispersionAllPressures.txt",
+  "filename": "DispersionAllPressures.txt",
+  "sha256": "15a56ccdd2f681de0e1d3d1517dc4641732dbef4e2d6153591154cc4b039b50a",
+  "encoding": "UTF-16 with BOM",
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "retrieved_date": "2026-11-09",
+  "temperature": {"relation": "less than", "value_K": "0.100", "scope": "paper measurement conditions, not a per-row thermometer reading"},
+  "pressure_bar": ["0", "0.51", "1.02", "2.01", "5.01", "10.01", "24.08"],
+  "phase_scope": "low-temperature superfluid helium-4 at all seven pressures",
+  "observation_type": "author-supplied processed tabulated energies and reported errors; not raw detector counts or new measurements",
+  "source_modified": false,
+  "derived_outputs": "MAT-SPEC-001 rational frequency controls, rank contours and quantized symbolic MIDI"
+}

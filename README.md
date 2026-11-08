@@ -1,13 +1,36 @@
-# SONIFICATION — ETQ-303 and D4 Triality Research
+# SONIFICATION — ETQ-303, D4 Triality and Material Spectra
 
 [![ETQ-303 v3.0.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21494678.svg)](https://doi.org/10.5281/zenodo.21494678) [![D4-TIA v2.0.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22831753.svg)](https://doi.org/10.5281/zenodo.22831753)
 
-This repository contains two related but separately versioned research lines:
+This repository contains three separately versioned research lines:
 
 - **ETQ-303 v3.0.1** — the current documentation/publication release for the exact ETQ-303 protocol. The canonical runtime contract and deterministic outputs remain **v3.0.0**.
 - **D4-TIA** — exact D4 triality covariants, an exact S3 symmetry harness, and a symbolic sonification profile built on top of them.
+- **MAT-SPEC-001 v1.0.0** — attributed superfluid-helium measurements, an exact common-scale frequency mapping, and explicit comparisons with rank contours and quantized MIDI. Prepared for [DOI 10.5281/zenodo.24062652](https://doi.org/10.5281/zenodo.24062652).
 
-They share D4 triality context, but the D4-TIA work does **not** change ETQ-101 or ETQ-303 protocol identity.
+ETQ and D4-TIA share D4 triality context. MAT-SPEC-001 adds an independent physical-data profile. Neither extension changes ETQ-101 or ETQ-303 protocol identity.
+
+## MAT-SPEC-001: measured materials, declared mappings
+
+The first material profile retains all 7,350 positions in Godfrin et al.'s
+helium-4 table: 7,118 energy/error pairs and 232 explicitly missing pairs.
+A fixed 400 Hz/meV symbolic mapping preserves the tabulated energy ratios and
+scales the reported errors. Six selected wavevectors at each of seven pressures
+provide 42 matched comparison events. Rank mapping yields three contours;
+quantized MIDI records its own rounding error. These are numerical preservation
+results, not listener results or an identification of E8 symmetry in helium.
+
+Python 3.11+ standard library; no project install or network access is needed:
+
+```bash
+uv run --no-project python -m unittest discover -s tests -p test_mat_spec.py -v
+uv run --no-project python scripts/build_mat_spec.py --out dist/mat-spec-001
+```
+
+The output directory must be new. Runtime artifacts are JSON, CSV and symbolic
+MIDI only. [The profile specification](docs/MAT_SPEC_001.md) describes the
+mapping, controls and provenance. The [original feasibility study](docs/materials/FEASIBILITY.md)
+is preserved as its research background.
 
 ## The short version
 
