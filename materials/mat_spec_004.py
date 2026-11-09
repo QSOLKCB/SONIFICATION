@@ -18,7 +18,7 @@ from fractions import Fraction
 from itertools import combinations, pairwise
 from pathlib import Path, PurePosixPath
 
-from materials import mat_spec, mat_spec_002, mat_spec_003
+from materials import mat_spec, mat_spec_003
 
 PROFILE = "MAT-SPEC-004"
 VERSION = "0.1.0"
@@ -244,8 +244,6 @@ def audit_temperature(mapped: list[dict]) -> dict:
         raise ValueError("negative reassociation control failed")
     pair_collisions = sum(a == b for a, b in combinations(notes, 2))
     distinct = len(set(notes))
-    if distinct + pair_collisions > len(mapped) + len(mapped) * (len(mapped) - 1) // 2:
-        raise ValueError("invalid receiver counts")
     return {
         "profile": PROFILE,
         "version": VERSION,
@@ -285,6 +283,8 @@ def _control_csv(mapped: list[dict]) -> bytes:
 def build_evidence(root: Path) -> dict[str, bytes]:
     """Rebuild parents, enforce known source identity and emit symbolic outputs."""
     parent = mat_spec_003.build_evidence(root)
+    if set(parent) != mat_spec_003.OUTPUT_NAMES:
+        raise ValueError("unexpected MAT-SPEC-003 parent artifact membership")
     receipts = {key: mat_spec.sha256(data) for key, data in parent.items()}
     if PARENT_V3_SHA256 is not None and receipts != PARENT_V3_SHA256:
         raise ValueError("frozen MAT-SPEC-003 parent SHA-256 mismatch")

@@ -144,8 +144,15 @@ class BundleTests(unittest.TestCase):
         ):
             mat_spec_004.build_evidence(ROOT)
         original_parent = mat_spec_003.build_evidence(ROOT)
+        extra = dict(original_parent)
+        extra["injected.json"] = b"unexpected"
+        with (
+            patch("materials.mat_spec_004.mat_spec_003.build_evidence", return_value=extra),
+            self.assertRaisesRegex(ValueError, "artifact membership"),
+        ):
+            mat_spec_004.build_evidence(ROOT)
         drifted = dict(original_parent)
-        drifted["audit.json"] = b"changed"
+        drifted["controls.json"] = b"changed"
         with (
             patch("materials.mat_spec_004.mat_spec_003.build_evidence", return_value=drifted),
             self.assertRaises(ValueError),
