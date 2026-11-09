@@ -103,7 +103,7 @@ def vectors() -> list[tuple[str, str]]:
                 for kind in range(SOURCE_KINDS))
     data.extend((f"G 0 31 2 1 {e} {d}", gate_oracle(0, 31, 2, 1, e, d))
                 for e, d in ((0, 0), (0, 1), (1, 0), (1, 1)))
-    data.extend((f"G 0 31 1 0 0 0", "BLOCKED") for _ in range(1))
+    data.append(("G 0 31 1 0 0 0", "BLOCKED"))
     data.extend((f"P {mode}", provenance_oracle(mode)) for mode in range(13))
     data.extend(("F", "BLOCKED_NO_SCORE") for _ in range(2))
     return data
@@ -128,7 +128,9 @@ def verify(executable: Path) -> dict[str, object]:
         raise AssertionError(f"output count mismatch: {len(observed)} != {len(cases)}")
     for index, ((request, expected), answer) in enumerate(zip(cases, observed, strict=True), 1):
         if answer.strip() != expected:
-            raise AssertionError(f"case {index}: {request!r}, expected {expected!r}, got {answer!r}")
+            raise AssertionError(
+                f"case {index}: {request!r}, expected {expected!r}, got {answer!r}"
+            )
     return {
         "profile": "SPARK-002", "milestone": "phase-1a",
         "status": "EXECUTED_ADA_PYTHON_DIFFERENTIAL_PASS",
