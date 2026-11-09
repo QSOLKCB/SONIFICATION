@@ -1,0 +1,50 @@
+name: SPARK-001 native Ada differential verification
+on:
+  push:
+    paths:
+      - 'verification/spark/**'
+      - 'scripts/verify_spark_001.py'
+      - 'tests/test_spark_001.py'
+      - 'docs/SPARK_001.md'
+      - '.github/workflows/spark-001.yml'
+  pull_request:
+    paths:
+      - 'verification/spark/**'
+      - 'scripts/verify_spark_001.py'
+      - 'tests/test_spark_001.py'
+      - 'docs/SPARK_001.md'
+      - '.github/workflows/spark-001.yml'
+permissions:
+  contents: read
+jobs:
+  native-differential:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install GNAT 13
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends gnat-13
+          gnatmake-13 --version
+      - name: Compile bounded kernel and non-SPARK CLI
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/qsol-spark-001
+          cd /tmp/qsol-spark-001
+          gnatmake-13 -gnat2022 -gnata \
+            -I"$GITHUB_WORKSPACE/verification/spark" \
+            "$GITHUB_WORKSPACE/verification/spark/spark_probe.adb" \
+            -o /tmp/qsol-spark-001/spark_probe
+      - name: Differential replay against Python reference
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest tests.test_spark_001 -v
+          python3 scripts/verify_spark_001.py \
+            --exe /tmp/qsol-spark-001/spark_probe
+      - name: Truthful proof-status receipt
+        run: |
+          echo 'SPARK_PROOF_STATUS=NOT_EXECUTED_NO_GNATPROVE' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Ada differential testing is not formal proof or physical validation.' >> "$GITHUB_STEP_SUMMARY"

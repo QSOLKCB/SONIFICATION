@@ -199,6 +199,23 @@ See docs/MAT_SPEC_010.md and docs/MAT_SPEC_010_HANDOFF.md.
 After 010: SPARK/Ada verification, then the separate VANILLAJS
 Lean-to-ECMAScript refinement repair. No MAT-SPEC-011.
 
+## SPARK-001 — Numerical verification after MAT-SPEC-010
+
+The bounded Ada/SPARK kernel lives under verification/spark/, outside
+the completed MAT-SPEC-001 through 010 research profiles. It checks
+exact signed hundredths, closed intervals, missingness versus boundary
+zero and declared source/diagnostic isolation. A deterministic Python
+reference compares hundreds of inputs with an independently compiled
+GNAT executable. This **tests code**, not experimental helium physics.
+
+GNATprove is a separate **owner-authorized local main-only workflow**:
+.github/workflows/spark-001-proof.yml. No automatic untrusted-branch
+execution on the QSOL self-hosted runner. A completed compiler/differential
+job does not mean proof obligations are discharged.
+
+See [SPARK-001 method and limits](docs/SPARK_001.md).
+Next separately: the outstanding VANILLAJS Lean-to-ECMAScript refinement.
+
 ## The short version
 
 ETQ-303:
