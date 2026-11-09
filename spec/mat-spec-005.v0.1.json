@@ -1,0 +1,29 @@
+{
+  "profile": "MAT-SPEC-005",
+  "version": "0.1.0",
+  "name": "Two-sided helium lambda-point reference and phase-witness gate",
+  "parent_profile": "MAT-SPEC-004 v0.1.0",
+  "parent_commit": "eac0659cbae1392bf63632ec8138005367e63304",
+  "foundational_doi": "10.5281/zenodo.24062652",
+  "source_doi": "10.1063/1.556028",
+  "data_sha256": "e39c29c8dab12a789d6a80d86487c61a4b25c53b68a58d83a88f03bb66755b8e",
+  "sample_count": 14,
+  "lambda_K": "2.1768",
+  "source_conditions": "helium-4 saturated vapour pressure, ITS-90, compiled reference tables",
+  "temperature_regions": "T < lambda context He-II, T == lambda reference boundary, T > lambda context He-I; NOT independent labels",
+  "property_scales": {
+    "first_sound_m_per_s": "2 Hz/(m/s)",
+    "second_sound_m_per_s": "40 Hz/(m/s)",
+    "heat_capacity_J_per_mol_K": "16 Hz/(J/mol/K)"
+  },
+  "receiver": "exact rational authored frequency targets plus 12-TET A4=440 symbolic notes, no MIDI export",
+  "zero_rule": "second_sound at lambda is published zero reference boundary, unpitched; not an observed above-transition non-detection",
+  "missing_rule": "null above-domain second sound or missing heat capacity remains null and unpitched; no zero substitution",
+  "uncertainty": "per-row measurement uncertainties absent; never infer from printed precision",
+  "crossing_pair_K": [
+    "2.1767",
+    "2.1769"
+  ],
+  "claim": "two-sided evaluated reference comparison only; not an independently phase-labelled classifier, calibrated uncertainty analysis or held-out study",
+  "audio": "root symbolic JSON/CSV only, no PCM or rendered audio"
+}

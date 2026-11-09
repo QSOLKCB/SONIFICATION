@@ -85,6 +85,26 @@ Reproduce: \`uv run --no-project python scripts/build_mat_spec_004.py --out dist
 Read the [methods and evidence boundaries](docs/MAT_SPEC_004.md).
 The DOI 10.5281/zenodo.24062652 remains the MAT-SPEC-001 record.
 
+## MAT-SPEC-005 — cross-transition helium reference and phase-witness boundary
+
+An independently versioned, offline physical-reference adapter transcribes
+14 selected Donnelly–Barenghi recommended helium-4 observations (DOI
+10.1063/1.556028) at saturated vapour pressure, covering both sides of the
+2.1768 K lambda reference. First-sound and heat-capacity recommendations
+cross the transition; second sound is tabulated only in helium-II, with a
+separate recommended zero limit exactly at lambda. **Absent values above
+lambda remain null, not zero.**
+
+The profile compares exact physical-property targets against lossy
+symbolic 12-TET mappings while requiring frozen source/provenance receipts.
+**Contextual He-I/He-II labels are not independent phase diagnostics**;
+the classifier/held-out scientific gate remains BLOCKED. Source is an
+experiment-derived reference compilation, not original raw measurements.
+
+Reproduce: \`uv run --no-project python scripts/build_mat_spec_005.py --out dist/mat-spec-005\`.
+[Methods and nonclaims](docs/MAT_SPEC_005.md). The MAT-SPEC-001 DOI
+10.5281/zenodo.24062652 remains assigned to the original record.
+
 ## The short version
 
 ETQ-303:
