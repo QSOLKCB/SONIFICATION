@@ -1,0 +1,17 @@
+{
+  "profile": "MAT-SPEC-007",
+  "version": "0.1.0",
+  "parent_profile": "MAT-SPEC-006 v0.1.0",
+  "parent_commit": "c1abb62e8914f6790b5da5a51adf330b813b0530",
+  "mat_spec_001_record_doi": "10.5281/zenodo.24062652",
+  "review_doi": "10.1103/RevModPhys.79.1",
+  "data_sha256": "b3457eeafd8bda8f8b9ebd63d4cd72af825fd8bd04e2660d01f637578db79489",
+  "sources": "4 asterisked pure helium-4 SVP fit summary rows from review Table VII",
+  "numerics": "Fraction exact closed reported-fit-uncertainty boxes, touching overlaps",
+  "comparison": "6 distinct campaign pairs, 3 lab-family groups, unknown cross-fit covariance",
+  "receiver": "400 Hz per dimensionless Aplus/Aminus ratio to 12-TET note; signed alpha not pitched",
+  "claim": "compare published fits, not raw experimental measurements, verified phase diagnoses, or a phase classifier",
+  "experimental_independence": "different acquisition origin from independent papers; shared review and some authors; not an authenticated heldout run",
+  "outputs": "canonical JSON and CSV only; root PCM/WAV generation prohibited",
+  "closure": "MAT-SPEC-010 is final; thereafter SPARK/Ada and VANILLAJS Lean-ECMAScript refinement"
+}

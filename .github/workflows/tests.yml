@@ -89,6 +89,30 @@ jobs:
           PY
       - name: Build MAT-SPEC-006 primary experiment evidence
         run: python scripts/build_mat_spec_006.py --out dist/mat-spec-006
+      - name: Print MAT-SPEC-006 seven-artifact baseline for successor
+        run: |
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          for path in sorted(Path("dist/mat-spec-006").iterdir()):
+              if path.is_file():
+                  print(
+                      "MAT_SPEC_006_DIGEST", path.name,
+                      hashlib.sha256(path.read_bytes()).hexdigest(),
+                  )
+          PY
+      - name: Build MAT-SPEC-007 independent fit concordance
+        run: python scripts/build_mat_spec_007.py --out dist/mat-spec-007
+      - name: Print MAT-SPEC-007 interval and receiver summaries
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("dist/mat-spec-007")
+          for name in ("audit.json", "replication-gate.json", "receiver.json"):
+              data = json.loads((root / name).read_bytes())
+              print("MAT_SPEC_007_RESULT", name, json.dumps(data, sort_keys=True))
+          PY
       - name: Print MAT-SPEC-006 source and held-out status
         run: |
           python - <<'PY'

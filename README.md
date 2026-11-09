@@ -128,6 +128,21 @@ Reproduce: \`uv run --no-project python scripts/build_mat_spec_006.py --out dist
 [Physical provenance and limits](docs/MAT_SPEC_006.md).
 The DOI 10.5281/zenodo.24062652 remains MAT-SPEC-001's record only.
 
+## MAT-SPEC-007 — Independent experiment fit concordance
+
+Four published fit-summary records for pure helium-4 at SVP are compared
+with separate original experiment, later reanalysis and laboratory-family
+provenance. Signed critical-exponent and positive amplitude-ratio uncertainty
+boxes are audited using exact arithmetic. They are **review-derived fitted
+parameters**, not raw independent measurements or verified phase labels.
+
+Reproduce: uv run --no-project python scripts/build_mat_spec_007.py
+--out dist/mat-spec-007. See docs/MAT_SPEC_007.md.
+
+**Stop at MAT-SPEC-010**, then separately perform SPARK/Ada proof work and
+repair the outstanding VANILLAJS Lean-to-ECMAScript refinement obligation.
+See docs/MAT_SPEC_007_TO_010.md for explicit acceptance gates.
+
 ## The short version
 
 ETQ-303:
