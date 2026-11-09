@@ -1,0 +1,42 @@
+{
+  "profile": "MAT-SPEC-003",
+  "version": "0.1.0",
+  "source_sha256": "15a56ccdd2f681de0e1d3d1517dc4641732dbef4e2d6153591154cc4b039b50a",
+  "related_doi": "10.5281/zenodo.24062652",
+  "parent_commit": "c400a27e16cc1ed63efc6657dbdd25d003b7bdbb",
+  "primary_windows_inverse_angstrom": {
+    "phonon": [
+      "0.150",
+      "0.450"
+    ],
+    "maxon": [
+      "0.750",
+      "1.400"
+    ],
+    "roton": [
+      "1.600",
+      "2.150"
+    ]
+  },
+  "alternate_windows_inverse_angstrom": {
+    "phonon": [
+      "0.150",
+      "0.300"
+    ],
+    "maxon": [
+      "0.900",
+      "1.250"
+    ],
+    "roton": [
+      "1.800",
+      "2.050"
+    ]
+  },
+  "phonon": "origin-constrained unweighted slope in meV*angstrom",
+  "extrema": "windowed maxon maximum and roton minimum; no curve fit",
+  "bounds": "independent adversarial boxes from reported +/-errE; no distribution",
+  "missing": "mark partial; do not compare windows with any missing observations",
+  "receiver": "compare exact nominal maxon/roton energies, two-value ranks and 12-TET",
+  "zero_and_audio": "no PCM/WAV; zero not silently pitched",
+  "claim": "windowed descriptors, not phase, sound-speed, E8 or perceptual identification"
+}

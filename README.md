@@ -40,6 +40,20 @@ Reproduce: `uv run --no-project python scripts/build_mat_spec_002.py --out dist/
 
 See [MAT-SPEC-002 experimental controls](docs/MAT_SPEC_002.md). The frozen MAT-SPEC-001 package and archived DOI remain unchanged.
 
+## MAT-SPEC-003: Physical Mode Discrimination
+
+An independently versioned, offline research adapter extracts explicitly windowed
+**phonon-region slope**, **maxon-like maximum**, and **roton-like minimum** descriptors
+from the measured low-temperature helium dispersion table. It propagates reported
+error bounds, rejects incomplete-window claims, compares 63 pressure/feature
+pairs, audits alternative wavevector windows, and tests exact-energy versus rank
+and 12-TET MIDI information loss. It does **not** classify material phases,
+measure a q→0 sound speed, fit a Hamiltonian, recognize E8, or test listeners.
+
+Run `uv run --no-project python scripts/build_mat_spec_003.py --out dist/mat-spec-003`.
+[Full methods and nonclaims](docs/MAT_SPEC_003.md). MAT-SPEC-001 DOI:
+[10.5281/zenodo.24062652](https://doi.org/10.5281/zenodo.24062652).
+
 ## The short version
 
 ETQ-303:

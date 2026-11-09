@@ -31,6 +31,18 @@ jobs:
           PY
       - name: Build successor MAT-SPEC-002 interval evidence
         run: python scripts/build_mat_spec_002.py --out dist/mat-spec-002
+      - name: Print MAT-SPEC-002 digests for MAT-SPEC-003 parent pinning
+        run: |
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+
+          for path in sorted(Path("dist/mat-spec-002").iterdir()):
+              if path.is_file():
+                  print("MAT_SPEC_002_DIGEST", path.name, hashlib.sha256(path.read_bytes()).hexdigest())
+          PY
+      - name: Build MAT-SPEC-003 physical-mode evidence
+        run: python scripts/build_mat_spec_003.py --out dist/mat-spec-003
 
   test:
     runs-on: ubuntu-latest
