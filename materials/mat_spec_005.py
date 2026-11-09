@@ -68,21 +68,53 @@ EXPECTED_META = {
     "doi": "10.1063/1.556028",
     "source_pdf": "https://srd.nist.gov/jpcrdreprint/1.556028.pdf",
     "source_website": "https://www.mas.ncl.ac.uk/helium/",
-    "publisher_notice": "1998 AIP/ACS, original publication copyright retained; numerical facts selectively transcribed with attribution",
-    "source_type": "experiment-based evaluated reference tables and spline recommendations; not original individual-run measurements",
+    "publisher_notice": (
+        "1998 AIP/ACS, original publication copyright retained; numerical "
+        "facts selectively transcribed with attribution"
+    ),
+    "source_type": (
+        "experiment-based evaluated reference tables and spline "
+        "recommendations; not original individual-run measurements"
+    ),
     "condition": "liquid helium-4 at saturated vapor pressure, ITS-90 temperature",
     "lambda_temperature_K": "2.1768",
     "table_3_3": "recommended first sound speed u1 (m/s), printed page 1230, PDF page index 14",
-    "table_4_3": "recommended second sound speed u2 (m/s) in helium II, printed page 1233, PDF page index 17; zero at lambda is a recommended boundary value",
-    "table_7_4": "recommended heat capacity Cs (J/mol K), printed page 1241, PDF page index 25; undefined at lambda point",
+    "table_4_3": (
+        "recommended second sound speed u2 (m/s) in helium II, printed page "
+        "1233, PDF page index 17; zero at lambda is a recommended boundary "
+        "value"
+    ),
+    "table_7_4": (
+        "recommended heat capacity Cs (J/mol K), printed page 1241, PDF page "
+        "index 25; undefined at lambda point"
+    ),
     "selected_rows": 14,
     "data_sha256": "e39c29c8dab12a789d6a80d86487c61a4b25c53b68a58d83a88f03bb66755b8e",
-    "selection": "predeclared for MAT-SPEC-005 after reference inspection; sparse exact crossing entries and one distant row each side; not random or independently held out",
-    "measurement_errors": "per-row experimental error/covariance not given in recommended Tables 3.3, 4.3, 7.4; encode null",
-    "missingness": "blank means not tabulated at that exact T or outside property domain; never replace with zero",
-    "phase_labels": "context only from reference lambda point at SVP; not independently measured row-level phase labels",
-    "data_rights": "small excerpt of factual numerical values; underlying source publication not re-licensed",
-    "source_independence": "one evaluated compilation assembled from earlier experiments; separate columns are not source-separated independent trials"
+    "selection": (
+        "predeclared for MAT-SPEC-005 after reference inspection; sparse "
+        "exact crossing entries and one distant row each side; not random or "
+        "independently held out"
+    ),
+    "measurement_errors": (
+        "per-row experimental error/covariance not given in recommended "
+        "Tables 3.3, 4.3, 7.4; encode null"
+    ),
+    "missingness": (
+        "blank means not tabulated at that exact T or outside property "
+        "domain; never replace with zero"
+    ),
+    "phase_labels": (
+        "context only from reference lambda point at SVP; not independently "
+        "measured row-level phase labels"
+    ),
+    "data_rights": (
+        "small excerpt of factual numerical values; underlying source "
+        "publication not re-licensed"
+    ),
+    "source_independence": (
+        "one evaluated compilation assembled from earlier experiments; "
+        "separate columns are not source-separated independent trials"
+    )
 }
 
 EXPECTED_SPEC = {
@@ -97,21 +129,37 @@ EXPECTED_SPEC = {
     "sample_count": 14,
     "lambda_K": "2.1768",
     "source_conditions": "helium-4 saturated vapour pressure, ITS-90, compiled reference tables",
-    "temperature_regions": "T < lambda context He-II, T == lambda reference boundary, T > lambda context He-I; NOT independent labels",
+    "temperature_regions": (
+        "T < lambda context He-II, T == lambda reference boundary, T > lambda "
+        "context He-I; NOT independent labels"
+    ),
     "property_scales": {
         "first_sound_m_per_s": "2 Hz/(m/s)",
         "second_sound_m_per_s": "40 Hz/(m/s)",
         "heat_capacity_J_per_mol_K": "16 Hz/(J/mol/K)"
     },
-    "receiver": "exact rational authored frequency targets plus 12-TET A4=440 symbolic notes, no MIDI export",
-    "zero_rule": "second_sound at lambda is published zero reference boundary, unpitched; not an observed above-transition non-detection",
-    "missing_rule": "null above-domain second sound or missing heat capacity remains null and unpitched; no zero substitution",
+    "receiver": (
+        "exact rational authored frequency targets plus 12-TET A4=440 "
+        "symbolic notes, no MIDI export"
+    ),
+    "zero_rule": (
+        "second_sound at lambda is published zero reference boundary, "
+        "unpitched; not an observed above-transition non-detection"
+    ),
+    "missing_rule": (
+        "null above-domain second sound or missing heat capacity remains null "
+        "and unpitched; no zero substitution"
+    ),
     "uncertainty": "per-row measurement uncertainties absent; never infer from printed precision",
     "crossing_pair_K": [
         "2.1767",
         "2.1769"
     ],
-    "claim": "two-sided evaluated reference comparison only; not an independently phase-labelled classifier, calibrated uncertainty analysis or held-out study",
+    "claim": (
+        "two-sided evaluated reference comparison only; not an independently "
+        "phase-labelled classifier, calibrated uncertainty analysis or "
+        "held-out study"
+    ),
     "audio": "root symbolic JSON/CSV only, no PCM or rendered audio"
 }
 
