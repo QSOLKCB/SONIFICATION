@@ -1,0 +1,1 @@
+{"status": "FAIL", "out": "/home/trent/sonification-formal-001/formal/sonification/audit/attempt-003/unimported_nested_module/checker", "error": "module coverage mismatch: ['Audit.lean', 'Sonification.lean', 'Sonification/Intervals.lean', 'Sonification/Nested/Excluded.lean', 'Sonification/OrderedIntervals.lean']"}

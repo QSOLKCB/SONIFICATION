@@ -1,7 +1,7 @@
 {
   "schema": "qsol.sonification-formal-001.theorem-map/v1",
   "target_commit": "8c62517138e3b86a4672d8969e190b747f81c398",
-  "coverage": "Historical operations remain OPEN in SOURCE_INVENTORY.json; selected mathematical submodels below have their own narrower scope and do not promote production operations.",
+  "coverage": "Historical operations remain OPEN in SOURCE_INVENTORY.json. Narrow mathematical submodels and exact finite conformance domains have separate rows; no assurance dimension promotes production-wide correctness.",
   "aggregation": "No dimension promotes another dimension. PASS is always scoped to linked evidence.",
   "targets": [
     {
@@ -363,6 +363,162 @@
         ]
       },
       "audit_pending": false
+    },
+    {
+      "release": "mat-spec-007-v0.1.0",
+      "source_commit": "b97348ff8fcf3f57764dec21a8914f153f96a745",
+      "source_tree": "c1b842c6bace3ccb01714007b8d7ebb05bcecd31",
+      "source_sha256": "2e363adea6c781ab68aec69d2ee5c7d712fc5e46346ae5be21d8cf3e929781c6",
+      "id": "MAT007.classify.finite_exact_fraction",
+      "implementation": {
+        "path": "materials/mat_spec_007.py",
+        "symbol": "classify"
+      },
+      "intended_property": "50,630 exact rational cases including invalid intervals and five 4096-bit stress cases; independent cross-product oracle and accepted source AST; exact outputs/exceptions",
+      "finite_scope": "Exact built-in two-element tuple of exact fractions.Fraction endpoints; CPython 3.12.13 observed.",
+      "formal_definition": null,
+      "proof_path": null,
+      "typed_consumer": null,
+      "theorems": [],
+      "proof_dependencies": [],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "Prove CPython execution of the pinned extracted AST conforms to an operational semantics",
+        "Prove exact Fraction/decimal representations correspond to the intended rationals",
+        "Prove source extraction and import/caller binding preservation",
+        "Prove universal observable-result and exception relation"
+      ],
+      "executable_tests": [
+        {
+          "path": "formal/sonification/refinement/test_refinement.py",
+          "symbol": "FrozenSourceClassifyTests and independent rational oracle"
+        }
+      ],
+      "assumptions": [
+        "Git and SHA-256 identify frozen bytes",
+        "CPython 3.12.13 and stdlib semantics trusted for finite test",
+        "Oracle independence limited to separately authored arithmetic and parser; still unverified software"
+      ],
+      "assurance": {
+        "MODEL_PROVED": "OPEN",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "PASS",
+        "AUDIT_ACCEPTED": "PASS"
+      },
+      "evidence": {
+        "DIFFERENTIAL_TESTED": [
+          "formal/sonification/refinement/receipts/expanded-final-conformance/receipt.json"
+        ],
+        "AUDIT_ACCEPTED": [
+          "formal/sonification/audit/attempt-003/AUDIT.json"
+        ]
+      },
+      "independent_specification_review": "PENDING",
+      "audit_scope": "Finite conformance evidence only; no mathematical or implementation refinement acceptance"
+    },
+    {
+      "release": "mat-spec-007-v0.1.0",
+      "source_commit": "b97348ff8fcf3f57764dec21a8914f153f96a745",
+      "source_tree": "c1b842c6bace3ccb01714007b8d7ebb05bcecd31",
+      "source_sha256": "2e363adea6c781ab68aec69d2ee5c7d712fc5e46346ae5be21d8cf3e929781c6",
+      "id": "MAT007.decimal.finite_lexical",
+      "implementation": {
+        "path": "materials/mat_spec_007.py",
+        "symbol": "decimal"
+      },
+      "intended_property": "42 declared ASCII decimal strings crossed with positive flag; exact numeric and rejection outcomes; one long-string counterexample outside finite corpus",
+      "finite_scope": "21 authored strings crossed with positive True/False, CPython 3.12.13.",
+      "formal_definition": null,
+      "proof_path": null,
+      "typed_consumer": null,
+      "theorems": [],
+      "proof_dependencies": [],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "Prove CPython execution of the pinned extracted AST conforms to an operational semantics",
+        "Prove exact Fraction/decimal representations correspond to the intended rationals",
+        "Prove source extraction and import/caller binding preservation",
+        "Prove universal observable-result and exception relation"
+      ],
+      "executable_tests": [
+        {
+          "path": "formal/sonification/refinement/test_interval.py",
+          "symbol": "FrozenIntervalConformance.test_decimal_domain_42_cases"
+        }
+      ],
+      "assumptions": [
+        "Git and SHA-256 identify frozen bytes",
+        "CPython 3.12.13 and stdlib semantics trusted for finite test",
+        "Oracle independence limited to separately authored arithmetic and parser; still unverified software"
+      ],
+      "assurance": {
+        "MODEL_PROVED": "OPEN",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "PASS",
+        "AUDIT_ACCEPTED": "PASS"
+      },
+      "evidence": {
+        "DIFFERENTIAL_TESTED": [
+          "formal/sonification/refinement/receipts/expanded-final-conformance/receipt.json"
+        ],
+        "AUDIT_ACCEPTED": [
+          "formal/sonification/audit/attempt-003/AUDIT.json"
+        ]
+      },
+      "independent_specification_review": "PENDING",
+      "audit_scope": "Finite conformance evidence only; no mathematical or implementation refinement acceptance"
+    },
+    {
+      "release": "mat-spec-007-v0.1.0",
+      "source_commit": "b97348ff8fcf3f57764dec21a8914f153f96a745",
+      "source_tree": "c1b842c6bace3ccb01714007b8d7ebb05bcecd31",
+      "source_sha256": "2e363adea6c781ab68aec69d2ee5c7d712fc5e46346ae5be21d8cf3e929781c6",
+      "id": "MAT007.interval.finite_fields",
+      "implementation": {
+        "path": "materials/mat_spec_007.py",
+        "symbol": "interval"
+      },
+      "intended_property": "882 center/error string and field combinations; exact Fraction endpoints and rejection/exception paths",
+      "finite_scope": "Two declared fields crossed with 21 authored centers and 21 authored error strings, CPython 3.12.13.",
+      "formal_definition": null,
+      "proof_path": null,
+      "typed_consumer": null,
+      "theorems": [],
+      "proof_dependencies": [],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "Prove CPython execution of the pinned extracted AST conforms to an operational semantics",
+        "Prove exact Fraction/decimal representations correspond to the intended rationals",
+        "Prove source extraction and import/caller binding preservation",
+        "Prove universal observable-result and exception relation"
+      ],
+      "executable_tests": [
+        {
+          "path": "formal/sonification/refinement/test_interval.py",
+          "symbol": "FrozenIntervalConformance.test_interval_domain_882_cases"
+        }
+      ],
+      "assumptions": [
+        "Git and SHA-256 identify frozen bytes",
+        "CPython 3.12.13 and stdlib semantics trusted for finite test",
+        "Oracle independence limited to separately authored arithmetic and parser; still unverified software"
+      ],
+      "assurance": {
+        "MODEL_PROVED": "OPEN",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "PASS",
+        "AUDIT_ACCEPTED": "PASS"
+      },
+      "evidence": {
+        "DIFFERENTIAL_TESTED": [
+          "formal/sonification/refinement/receipts/expanded-final-conformance/receipt.json"
+        ],
+        "AUDIT_ACCEPTED": [
+          "formal/sonification/audit/attempt-003/AUDIT.json"
+        ]
+      },
+      "independent_specification_review": "PENDING",
+      "audit_scope": "Finite conformance evidence only; no mathematical or implementation refinement acceptance"
     }
   ]
 }

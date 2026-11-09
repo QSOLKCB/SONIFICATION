@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/home/trent/sonification-formal-001/formal/sonification/tools/inventory.py",
+    "--check"
+  ],
+  "cwd": "/home/trent/sonification-formal-001",
+  "exit_code": 0,
+  "stdout_sha256": "b628001e79c9d1fe253f06a4a3b694a06c7a345b581342093a771950aa8dac61",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "expected_zero": true,
+  "detected_as_expected": true
+}

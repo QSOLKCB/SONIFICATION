@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/home/trent/sonification-formal-001/formal/sonification/refinement/run.py",
+    "--root",
+    "/home/trent/sonification-formal-001"
+  ],
+  "cwd": "/home/trent/sonification-formal-001",
+  "exit_code": 0,
+  "stdout_sha256": "994d771b4f81d9ac91fd9f76950b0c0f06a343bdfdc84e4eea7fc9304b0c1301",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "expected_zero": true,
+  "detected_as_expected": true
+}

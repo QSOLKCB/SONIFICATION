@@ -1,0 +1,9 @@
+{
+  "assurance": "MATHEMATICAL_MODEL_ONLY",
+  "baseline_commit": null,
+  "commands": [],
+  "error": "module coverage mismatch: ['Audit.lean', 'Sonification.lean', 'Sonification/Intervals.lean', 'Sonification/Nested/Excluded.lean', 'Sonification/OrderedIntervals.lean']",
+  "python_refinement": "OPEN",
+  "started_utc": "2026-11-09T21:58:58.225656+00:00",
+  "status": "FAIL"
+}

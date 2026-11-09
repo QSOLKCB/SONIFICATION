@@ -2,7 +2,7 @@
   "project": "SONIFICATION-FORMAL-001",
   "target_commit": "8c62517138e3b86a4672d8969e190b747f81c398",
   "protocol_commit": "a1f74e8d1847d218d6b68c125fac9522e2ffc2fb",
-  "stage": "PR_B",
+  "stage": "PR_C",
   "overall_status": "INCOMPLETE",
   "proof_completion_claim": false,
   "private_packets": "Retained outside public repository; no private schema/template export",
@@ -11,13 +11,18 @@
     "Separate independent assurance states",
     "Initial specification and source-refinement work in progress on later stages"
   ],
-  "next_action": "Integrate PR C source-sensitive finite conformance, then formalize rational order and CPython source/refinement semantics; continue MAT-SPEC-008\u2013010 and historical closure.",
+  "next_action": "Define CPython small-step semantics for supported AST; prove Fraction representation and source correspondence. Extend independent obligations to MAT-SPEC-008\u2013010, earlier MAT-SPEC, D4-TIA, ETQ.",
   "publication_authorization": false,
   "mathematical_model_scope": "19 Lean interval/order theorems at MAT-SPEC-007; independent audit PASS for these exact statements",
   "model_proof_input_commit": "1bb4ca67681123b2f25ff7f5fd04e958046a4f9d",
   "model_proof_receipt": "formal/sonification/lean/attempts/commit-bound-001/result.json",
   "independent_model_audit": "formal/sonification/audit/attempt-004-model/AUDIT.json",
   "REFINEMENT_PROVED": "OPEN",
-  "DIFFERENTIAL_TESTED": "NOT_EXECUTED_FOR_PR_B",
-  "AUDIT_ACCEPTED": "PASS_FOR_MODEL_STATEMENTS_ONLY"
+  "DIFFERENTIAL_TESTED": "PASS_FOR_RECORDED_FINITE_DOMAINS",
+  "AUDIT_ACCEPTED": "PASS_FOR_MODEL_AND_RECORDED_FINITE_OBSERVATIONS",
+  "model_proof_pr": "https://github.com/QSOLKCB/SONIFICATION/pull/41",
+  "model_proof_pr_head": "31acc9221e98d30931f07864fecc82a2139ea79c",
+  "finite_conformance": "50,630 classify cases, 42 decimal cases, 882 interval cases, 26 tests, zero mismatch on CPython 3.12.13",
+  "finite_conformance_receipt": "formal/sonification/refinement/receipts/expanded-final-conformance/receipt.json",
+  "independent_full_audit": "formal/sonification/audit/attempt-003/AUDIT.json"
 }
