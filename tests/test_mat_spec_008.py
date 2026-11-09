@@ -35,7 +35,7 @@ def packet_fixture(
         "diagnostic_sigma": "0.02",
         "diagnostic_basis": "INDEPENDENT_NON_TEMPERATURE_DIAGNOSTIC",
         "phase": phase,
-        "source_sha256": "a" * 64,
+        "source_sha256": ("a" if campaign == "CAMPAIGN_ONE" else "b") * 64,
         "pressure_condition": "HE4_SVP",
     }
 
@@ -180,6 +180,30 @@ class FuturePacketTests(unittest.TestCase):
                 result = mat_spec_008.validate_future_measurement_packet(rows)
                 self.assertEqual(result["status"], "BLOCKED")
                 self.assertIn(reason, result["reasons"])
+
+    def test_original_source_identity_and_phase_coverage_cannot_be_reused(
+        self,
+    ) -> None:
+        for field, value, reason in (
+            ("original_run_id", "RUN_01", "REUSED_ORIGINAL_RUN_ACROSS_CAMPAIGNS"),
+            (
+                "source_document_id", "DOC_CAMPAIGN_ONE",
+                "REUSED_ORIGINAL_DOCUMENT_ACROSS_CAMPAIGNS",
+            ),
+            ("source_sha256", "a" * 64, "REUSED_SOURCE_BYTES_ACROSS_CAMPAIGNS"),
+        ):
+            with self.subTest(field=field):
+                records = two_campaign_fixture()
+                for item in records[2:]:
+                    item[field] = value
+                result = mat_spec_008.validate_future_measurement_packet(records)
+                self.assertEqual(result["status"], "BLOCKED")
+                self.assertIn(reason, result["reasons"])
+                self.assertFalse(result["physical_evidence_admitted"])
+        records = two_campaign_fixture()
+        records[3]["phase"] = "HE_I"
+        result = mat_spec_008.validate_future_measurement_packet(records)
+        self.assertIn("BOTH_PHASES_REQUIRED_FOR_EACH_CAMPAIGN", result["reasons"])
 
     def test_empty_padded_duplicate_and_reused_run_identifiers(self) -> None:
         for field, value in (

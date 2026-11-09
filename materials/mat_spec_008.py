@@ -223,6 +223,11 @@ def validate_future_measurement_packet(records: list[dict]) -> dict:
         }
     experiment_to_lab: dict[str, str] = {}
     experiment_to_source: dict[str, str] = {}
+    experiment_to_hash: dict[str, str] = {}
+    run_to_campaign: dict[str, str] = {}
+    document_to_campaign: dict[str, str] = {}
+    hash_to_campaign: dict[str, str] = {}
+    phases_by_campaign: dict[str, set[str]] = {}
     seen_rows = set()
     campaigns = set()
     labs = set()
@@ -244,11 +249,20 @@ def validate_future_measurement_packet(records: list[dict]) -> dict:
         if camp in experiment_to_lab and experiment_to_lab[camp] != lab:
             reasons.add("CAMPAIGN_LAB_IDENTITY_CONTRADICTION")
         experiment_to_lab[camp] = lab
-        # Original run ID must match within a source campaign, never fork.
+        # Source, document and run identities must not migrate between
+        # purportedly independent acquisition campaigns.
         source_key = doc + ":" + run
         if camp in experiment_to_source and experiment_to_source[camp] != source_key:
             reasons.add("CAMPAIGN_RUN_OR_DOCUMENT_INCONSISTENT")
         experiment_to_source[camp] = source_key
+        for key, owner, prior in (
+            ("REUSED_ORIGINAL_RUN_ACROSS_CAMPAIGNS", run_to_campaign, run),
+            ("REUSED_ORIGINAL_DOCUMENT_ACROSS_CAMPAIGNS", document_to_campaign, doc),
+        ):
+            if prior in owner and owner[prior] != camp:
+                reasons.add(key)
+            owner[prior] = camp
+        phases_by_campaign.setdefault(camp, set()).add(row.get("phase"))
         if row.get("source_type") != "ORIGINAL_EXPERIMENTAL_RECORD":
             reasons.add("DERIVED_FIT_OR_COMPILATION_IS_NOT_PRIMARY_DATA")
         if row.get("synthetic_fixture") is True:
@@ -263,12 +277,24 @@ def validate_future_measurement_packet(records: list[dict]) -> dict:
             _decimal(row.get("diagnostic_sigma"))
         except ValueError:
             reasons.add("MISSING_CALIBRATED_MEASUREMENT_UNCERTAINTY")
+        digest = row.get("source_sha256")
         if (
-            not isinstance(row.get("source_sha256"), str)
-            or not re.fullmatch(r"[0-9a-f]{64}", row["source_sha256"])
-            or row.get("pressure_condition") not in {"HE4_SVP", "DOCUMENTED_FIXED_PRESSURE"}
+            not isinstance(digest, str)
+            or re.fullmatch(r"[0-9a-f]{64}", digest) is None
+            or row.get("pressure_condition") not in {
+                "HE4_SVP", "DOCUMENTED_FIXED_PRESSURE"
+            }
         ):
             reasons.add("SOURCE_HASH_OR_PHYSICAL_CONDITION_NOT_DOCUMENTED")
+        else:
+            if digest in hash_to_campaign and hash_to_campaign[digest] != camp:
+                reasons.add("REUSED_SOURCE_BYTES_ACROSS_CAMPAIGNS")
+            hash_to_campaign[digest] = camp
+            if camp in experiment_to_hash and experiment_to_hash[camp] != digest:
+                reasons.add("CAMPAIGN_SOURCE_BYTES_INCONSISTENT")
+            experiment_to_hash[camp] = digest
+    if any(phases != {"HE_I", "HE_II"} for phases in phases_by_campaign.values()):
+        reasons.add("BOTH_PHASES_REQUIRED_FOR_EACH_CAMPAIGN")
     if len(campaigns) < 2 or len(labs) < 2:
         reasons.add("TWO_INDEPENDENT_CAMPAIGNS_AND_LABS_REQUIRED")
     if len(set(experiment_to_source.values())) < 2:
