@@ -94,9 +94,8 @@ class Phase1BProofReceipts(unittest.TestCase):
         with mock.patch(
             "scripts.verify_spark_002_phase_1b_receipts.subprocess.run",
             return_value=completed,
-        ) as mocked:
-            with self.assertRaisesRegex(ValueError, "pinned historical Git source mismatch"):
-                verify(ROOT, EVIDENCE)
+        ) as mocked, self.assertRaisesRegex(ValueError, "pinned historical Git source mismatch"):
+            verify(ROOT, EVIDENCE)
         self.assertEqual(mocked.call_count, 1)
         self.assertIn("show", mocked.call_args.args[0])
 
