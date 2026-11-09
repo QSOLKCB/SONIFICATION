@@ -1,0 +1,20 @@
+{
+  "profile": "MAT-SPEC-004",
+  "version": "0.1.0",
+  "title": "Helium temperature-series preservation and phase-evidence admission",
+  "parent_profile": "MAT-SPEC-003 v0.1.0",
+  "parent_commit": "c15ef3223e78cffad1494d99ad6edbdb41195362",
+  "parent_mat_spec_001_doi": "10.5281/zenodo.24062652",
+  "source_doi": "10.1063/5.0083847",
+  "source_sha256": "e741aac11809d18d05451efd30ca96dba0ae98765bde4952b0af96daeef8cf82",
+  "source_rows": 8,
+  "source_scope": "eight distinct below-transition helium-II simulation-parameter inputs, not primary phase measurements",
+  "fraction_rule": "exact rational superfluid_fraction = 1 - reported normal_fraction",
+  "receiver_rule": "authored 400 Hz * superfluid_fraction; symbolic nearest 12-TET and dense ranks",
+  "receiver_unit": "Hz for an authored control target; not a measured acoustic signal",
+  "uncertainty_rule": "not reported, encode as null; never assume zero",
+  "phase_evidence_rule": "blocked without independently measured above/below transition diagnostics, calibrated errors and a source-separated held-out test",
+  "output_rule": "symbolic canonical JSON and CSV only; no MIDI/audio rendered",
+  "source_licence": "CC BY 4.0",
+  "code_licence": "MPL-2.0"
+}

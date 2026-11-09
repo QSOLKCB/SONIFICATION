@@ -62,6 +62,29 @@ numerical preservation results, not phase or listening evidence.
 [Full methods and nonclaims](docs/MAT_SPEC_003.md). MAT-SPEC-001 DOI:
 [10.5281/zenodo.24062652](https://doi.org/10.5281/zenodo.24062652).
 
+## MAT-SPEC-004 v0.1.0 — temperature-series preservation and phase gate
+
+The next independent research profile transcribes eight 0.9–2.1 K
+superfluid-helium **model-parameter** entries from Bhadra and Mishra
+(AIP Advances, DOI 10.1063/5.0083847, CC BY 4.0). It derives exact
+two-fluid fractions and symbolic receiver controls while preserving
+missing uncertainty metadata.
+
+The eight exact fractions remain distinct; authored 12-TET controls retain
+six distinct notes (three pair collisions). This is numerical quantization,
+not evidence of audibility.
+
+**Scientific gate:** All published inputs are He-II model parameters, not
+independently phase-labelled measurements spanning the transition.
+MAT-SPEC-004 therefore explicitly reports
+\`BLOCKED_INSUFFICIENT_PHYSICAL_EVIDENCE\`: no classifier, critical exponent,
+temperature threshold or listener outcome is claimed. MAT-SPEC-003's
+pressure-dependent below-100-mK spectra are not matched to this new series.
+
+Reproduce: \`uv run --no-project python scripts/build_mat_spec_004.py --out dist/mat-spec-004\`.
+Read the [methods and evidence boundaries](docs/MAT_SPEC_004.md).
+The DOI 10.5281/zenodo.24062652 remains the MAT-SPEC-001 record.
+
 ## The short version
 
 ETQ-303:

@@ -43,6 +43,44 @@ jobs:
           PY
       - name: Build MAT-SPEC-003 physical-mode evidence
         run: python scripts/build_mat_spec_003.py --out dist/mat-spec-003
+      - name: Print MAT-SPEC-003 eight-file baseline digest inventory
+        run: |
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+
+          for path in sorted(Path("dist/mat-spec-003").iterdir()):
+              if path.is_file():
+                  print(
+                      "MAT_SPEC_003_DIGEST",
+                      path.name,
+                      hashlib.sha256(path.read_bytes()).hexdigest(),
+                  )
+          PY
+      - name: Build MAT-SPEC-004 temperature preservation evidence
+        run: python scripts/build_mat_spec_004.py --out dist/mat-spec-004
+      - name: Audit MAT-SPEC-004 symbolic losses and phase hold
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("dist/mat-spec-004")
+          audit = json.loads((root / "audit.json").read_text())
+          gate = json.loads((root / "phase-gate.json").read_text())
+          print(
+              "MAT_SPEC_004_NUMERIC_RECEIPT",
+              json.dumps({
+                  "samples": audit["source_entries"],
+                  "closure": audit["exact_mass_fraction_closure_checks"],
+                  "full_precision_distinct": audit["full_precision_fraction_values_distinct"],
+                  "midi_distinct": audit["quantized_midi_unique_notes"],
+                  "midi_collisions": audit["quantized_midi_colliding_pairs"],
+              }, sort_keys=True),
+          )
+          print("MAT_SPEC_004_PHASE_GATE", gate["status"])
+          print("MAT_SPEC_004_BLOCK_REASONS", ",".join(gate["reasons"]))
+          PY
       - name: Report measured finite-window mode diagnostics
         run: |
           python - <<'PY'
