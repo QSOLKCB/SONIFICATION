@@ -84,6 +84,11 @@ are **not** published as physical evidence.
 
 ## Source inheritance, deterministic output and limitations
 
+All eight MAT-SPEC-008 output digests are **hard-pinned**, including
+the parent manifest and its admission receipts. Those digests were
+reconstructed from the frozen merged MAT-SPEC-008 implementation in CI;
+they authenticate artifact bytes, not physical source independence.
+
 The builder replays MAT-SPEC-001–008 in the repository's existing
 strictly source-pinned order. It will fail if the frozen MAT-SPEC-008
 artifact membership, original metadata or source hashes have drifted.

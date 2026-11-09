@@ -51,9 +51,23 @@ CONTROL_IDS = (
     "DOCUMENT_REUSED",
 )
 SHA256_RE = re.compile(r"[0-9a-f]{64}")
-# Pin all eight released MAT-SPEC-008 outputs from merged-main CI
-# before PR is promoted from draft to review.
-PARENT_V8_SHA256: dict[str, str] | None = None
+# Frozen eight-output MAT-SPEC-008 baseline reconstructed at its merge SHA.
+PARENT_V8_SHA256 = {
+    "admission.json": "ea1c960c6a6b20a58ae8895345f404d2028e7f3298a25aa871d0aea8e4cf769c",
+    "campaigns.csv": "5a052673e4c26a5c6cedc46aaabdfd113854419754b1f4ed36c37b9f1adbc16e",
+    "candidate-pairs.csv": (
+        "47df30686f0bcb616a2eb1fca4073d55f6c96f419bcb36e42043acb8c12bfd98"
+    ),
+    "contract.json": "d5be6f36e8e931d15f427232268738eea7f2ba5f268f1a29895f4e98048d6621",
+    "manifest.json": "10d3cde4a68f13facf7badc71bc6e872f17bf632311284943ed8db3c3a913b5e",
+    "measurement-audit.json": (
+        "4f80ef1fb48c66dc7e002333911386ef1ae869c3a458be9b583c8f943b3eac9c"
+    ),
+    "protocol.json": "6b4fa2721777b8ea51387782e7707056c0820885a99162dd400892c0629ff9ce",
+    "source-catalogue.json": (
+        "c6d3fec5fc0179df2abbac51219956a6a79af82c327be34b76c359f5ec9de88e"
+    ),
+}
 
 
 def source_gate(parent: dict[str, bytes]) -> dict:
@@ -327,7 +341,7 @@ def build_evidence(root: Path) -> dict[str, bytes]:
     if set(parent) != mat_spec_008.OUTPUT_NAMES:
         raise ValueError("MAT-SPEC-008 parent membership mismatch")
     parents = {name: mat_spec.sha256(raw) for name, raw in parent.items()}
-    if PARENT_V8_SHA256 is not None and parents != PARENT_V8_SHA256:
+    if parents != PARENT_V8_SHA256:
         raise ValueError("frozen MAT-SPEC-008 outputs drifted")
     prior = json.loads(parent["manifest.json"])
     if (

@@ -183,6 +183,10 @@ class EvidenceTests(unittest.TestCase):
         self.assertEqual(set(self.outputs), mat_spec_009.OUTPUT_NAMES)
         ancestor = mat_spec_008.build_evidence(ROOT)
         self.assertEqual(set(ancestor), set(self.manifest["parent_artifacts"]))
+        self.assertEqual(
+            {name: mat_spec.sha256(raw) for name, raw in ancestor.items()},
+            mat_spec_009.PARENT_V8_SHA256,
+        )
         for name, record in self.manifest["parent_artifacts"].items():
             self.assertEqual(mat_spec.sha256(ancestor[name]), record["sha256"])
         for name, record in self.manifest["outputs"].items():
