@@ -28311,24 +28311,1266 @@
       "MODEL_PROVED": "OPEN",
       "REFINEMENT_PROVED": "OPEN",
       "dependency_edges_by_snapshot": {
-        "d4-tia-v2.0.0": [],
-        "mat-spec-001-first-source": [],
-        "mat-spec-002-first-source": [],
-        "mat-spec-003-v0.1.0": [],
-        "mat-spec-004-v0.1.0": [],
-        "mat-spec-005-v0.1.0": [],
-        "mat-spec-006-v0.1.0": [],
-        "mat-spec-007-v0.1.0": [],
-        "mat-spec-008-v0.1.0": [],
-        "mat-spec-009-v0.1.0": [],
-        "mat-spec-010-v0.1.0": [],
-        "sonification-main-reference": [],
-        "spark-001-v1.0.0": [],
-        "spark-002-phase-1a-historical": [],
-        "spark-002-phase-1b-historical": [],
-        "v2.0.0": [],
-        "v3.0.0": [],
-        "v3.0.1": []
+        "d4-tia-v2.0.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "FloatArray",
+                "MathSource",
+                "validate_render_request"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "constants",
+              "names": [
+                "HALF_PI",
+                "PHI",
+                "TAU"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/constants.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "prng",
+              "names": [
+                "GOLDEN_GAMMA",
+                "UINT64_MASK",
+                "SplitMix64",
+                "splitmix64",
+                "splitmix64_array",
+                "splitmix64_at_indices",
+                "uint64_array_to_float64",
+                "uint64_to_float64",
+                "validate_uint64"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/prng.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 16,
+              "module": "sources",
+              "names": [
+                "ConstantSource",
+                "DeterministicNoiseSource",
+                "FractalNoiseSource",
+                "LogisticSource",
+                "SineSource"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/sources.py"
+          }
+        ],
+        "mat-spec-001-first-source": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "FloatArray",
+                "MathSource",
+                "validate_render_request"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "constants",
+              "names": [
+                "HALF_PI",
+                "PHI",
+                "TAU"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/constants.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "prng",
+              "names": [
+                "GOLDEN_GAMMA",
+                "UINT64_MASK",
+                "SplitMix64",
+                "splitmix64",
+                "splitmix64_array",
+                "splitmix64_at_indices",
+                "uint64_array_to_float64",
+                "uint64_to_float64",
+                "validate_uint64"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/prng.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 16,
+              "module": "sources",
+              "names": [
+                "ConstantSource",
+                "DeterministicNoiseSource",
+                "FractalNoiseSource",
+                "LogisticSource",
+                "SineSource"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/sources.py"
+          }
+        ],
+        "mat-spec-002-first-source": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "FloatArray",
+                "MathSource",
+                "validate_render_request"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "constants",
+              "names": [
+                "HALF_PI",
+                "PHI",
+                "TAU"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/constants.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "prng",
+              "names": [
+                "GOLDEN_GAMMA",
+                "UINT64_MASK",
+                "SplitMix64",
+                "splitmix64",
+                "splitmix64_array",
+                "splitmix64_at_indices",
+                "uint64_array_to_float64",
+                "uint64_to_float64",
+                "validate_uint64"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/prng.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 16,
+              "module": "sources",
+              "names": [
+                "ConstantSource",
+                "DeterministicNoiseSource",
+                "FractalNoiseSource",
+                "LogisticSource",
+                "SineSource"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/sources.py"
+          }
+        ],
+        "mat-spec-003-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "FloatArray",
+                "MathSource",
+                "validate_render_request"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "constants",
+              "names": [
+                "HALF_PI",
+                "PHI",
+                "TAU"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/constants.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "prng",
+              "names": [
+                "GOLDEN_GAMMA",
+                "UINT64_MASK",
+                "SplitMix64",
+                "splitmix64",
+                "splitmix64_array",
+                "splitmix64_at_indices",
+                "uint64_array_to_float64",
+                "uint64_to_float64",
+                "validate_uint64"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/prng.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 16,
+              "module": "sources",
+              "names": [
+                "ConstantSource",
+                "DeterministicNoiseSource",
+                "FractalNoiseSource",
+                "LogisticSource",
+                "SineSource"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/sources.py"
+          }
+        ],
+        "mat-spec-004-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "FloatArray",
+                "MathSource",
+                "validate_render_request"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "constants",
+              "names": [
+                "HALF_PI",
+                "PHI",
+                "TAU"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/constants.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "prng",
+              "names": [
+                "GOLDEN_GAMMA",
+                "UINT64_MASK",
+                "SplitMix64",
+                "splitmix64",
+                "splitmix64_array",
+                "splitmix64_at_indices",
+                "uint64_array_to_float64",
+                "uint64_to_float64",
+                "validate_uint64"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/prng.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 16,
+              "module": "sources",
+              "names": [
+                "ConstantSource",
+                "DeterministicNoiseSource",
+                "FractalNoiseSource",
+                "LogisticSource",
+                "SineSource"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/sources.py"
+          }
+        ],
+        "mat-spec-005-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "FloatArray",
+                "MathSource",
+                "validate_render_request"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "constants",
+              "names": [
+                "HALF_PI",
+                "PHI",
+                "TAU"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/constants.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "prng",
+              "names": [
+                "GOLDEN_GAMMA",
+                "UINT64_MASK",
+                "SplitMix64",
+                "splitmix64",
+                "splitmix64_array",
+                "splitmix64_at_indices",
+                "uint64_array_to_float64",
+                "uint64_to_float64",
+                "validate_uint64"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/prng.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 16,
+              "module": "sources",
+              "names": [
+                "ConstantSource",
+                "DeterministicNoiseSource",
+                "FractalNoiseSource",
+                "LogisticSource",
+                "SineSource"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/sources.py"
+          }
+        ],
+        "mat-spec-006-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "FloatArray",
+                "MathSource",
+                "validate_render_request"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "constants",
+              "names": [
+                "HALF_PI",
+                "PHI",
+                "TAU"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/constants.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "prng",
+              "names": [
+                "GOLDEN_GAMMA",
+                "UINT64_MASK",
+                "SplitMix64",
+                "splitmix64",
+                "splitmix64_array",
+                "splitmix64_at_indices",
+                "uint64_array_to_float64",
+                "uint64_to_float64",
+                "validate_uint64"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/prng.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 16,
+              "module": "sources",
+              "names": [
+                "ConstantSource",
+                "DeterministicNoiseSource",
+                "FractalNoiseSource",
+                "LogisticSource",
+                "SineSource"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/sources.py"
+          }
+        ],
+        "mat-spec-007-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "FloatArray",
+                "MathSource",
+                "validate_render_request"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "constants",
+              "names": [
+                "HALF_PI",
+                "PHI",
+                "TAU"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/constants.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "prng",
+              "names": [
+                "GOLDEN_GAMMA",
+                "UINT64_MASK",
+                "SplitMix64",
+                "splitmix64",
+                "splitmix64_array",
+                "splitmix64_at_indices",
+                "uint64_array_to_float64",
+                "uint64_to_float64",
+                "validate_uint64"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/prng.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 16,
+              "module": "sources",
+              "names": [
+                "ConstantSource",
+                "DeterministicNoiseSource",
+                "FractalNoiseSource",
+                "LogisticSource",
+                "SineSource"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/sources.py"
+          }
+        ],
+        "mat-spec-008-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "FloatArray",
+                "MathSource",
+                "validate_render_request"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "constants",
+              "names": [
+                "HALF_PI",
+                "PHI",
+                "TAU"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/constants.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "prng",
+              "names": [
+                "GOLDEN_GAMMA",
+                "UINT64_MASK",
+                "SplitMix64",
+                "splitmix64",
+                "splitmix64_array",
+                "splitmix64_at_indices",
+                "uint64_array_to_float64",
+                "uint64_to_float64",
+                "validate_uint64"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/prng.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 16,
+              "module": "sources",
+              "names": [
+                "ConstantSource",
+                "DeterministicNoiseSource",
+                "FractalNoiseSource",
+                "LogisticSource",
+                "SineSource"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/sources.py"
+          }
+        ],
+        "mat-spec-009-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "FloatArray",
+                "MathSource",
+                "validate_render_request"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "constants",
+              "names": [
+                "HALF_PI",
+                "PHI",
+                "TAU"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/constants.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "prng",
+              "names": [
+                "GOLDEN_GAMMA",
+                "UINT64_MASK",
+                "SplitMix64",
+                "splitmix64",
+                "splitmix64_array",
+                "splitmix64_at_indices",
+                "uint64_array_to_float64",
+                "uint64_to_float64",
+                "validate_uint64"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/prng.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 16,
+              "module": "sources",
+              "names": [
+                "ConstantSource",
+                "DeterministicNoiseSource",
+                "FractalNoiseSource",
+                "LogisticSource",
+                "SineSource"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/sources.py"
+          }
+        ],
+        "mat-spec-010-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "FloatArray",
+                "MathSource",
+                "validate_render_request"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "constants",
+              "names": [
+                "HALF_PI",
+                "PHI",
+                "TAU"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/constants.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "prng",
+              "names": [
+                "GOLDEN_GAMMA",
+                "UINT64_MASK",
+                "SplitMix64",
+                "splitmix64",
+                "splitmix64_array",
+                "splitmix64_at_indices",
+                "uint64_array_to_float64",
+                "uint64_to_float64",
+                "validate_uint64"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/prng.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 16,
+              "module": "sources",
+              "names": [
+                "ConstantSource",
+                "DeterministicNoiseSource",
+                "FractalNoiseSource",
+                "LogisticSource",
+                "SineSource"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/sources.py"
+          }
+        ],
+        "sonification-main-reference": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "FloatArray",
+                "MathSource",
+                "validate_render_request"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "constants",
+              "names": [
+                "HALF_PI",
+                "PHI",
+                "TAU"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/constants.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "prng",
+              "names": [
+                "GOLDEN_GAMMA",
+                "UINT64_MASK",
+                "SplitMix64",
+                "splitmix64",
+                "splitmix64_array",
+                "splitmix64_at_indices",
+                "uint64_array_to_float64",
+                "uint64_to_float64",
+                "validate_uint64"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/prng.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 16,
+              "module": "sources",
+              "names": [
+                "ConstantSource",
+                "DeterministicNoiseSource",
+                "FractalNoiseSource",
+                "LogisticSource",
+                "SineSource"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/sources.py"
+          }
+        ],
+        "spark-001-v1.0.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "FloatArray",
+                "MathSource",
+                "validate_render_request"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "constants",
+              "names": [
+                "HALF_PI",
+                "PHI",
+                "TAU"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/constants.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "prng",
+              "names": [
+                "GOLDEN_GAMMA",
+                "UINT64_MASK",
+                "SplitMix64",
+                "splitmix64",
+                "splitmix64_array",
+                "splitmix64_at_indices",
+                "uint64_array_to_float64",
+                "uint64_to_float64",
+                "validate_uint64"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/prng.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 16,
+              "module": "sources",
+              "names": [
+                "ConstantSource",
+                "DeterministicNoiseSource",
+                "FractalNoiseSource",
+                "LogisticSource",
+                "SineSource"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/sources.py"
+          }
+        ],
+        "spark-002-phase-1a-historical": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "FloatArray",
+                "MathSource",
+                "validate_render_request"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "constants",
+              "names": [
+                "HALF_PI",
+                "PHI",
+                "TAU"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/constants.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "prng",
+              "names": [
+                "GOLDEN_GAMMA",
+                "UINT64_MASK",
+                "SplitMix64",
+                "splitmix64",
+                "splitmix64_array",
+                "splitmix64_at_indices",
+                "uint64_array_to_float64",
+                "uint64_to_float64",
+                "validate_uint64"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/prng.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 16,
+              "module": "sources",
+              "names": [
+                "ConstantSource",
+                "DeterministicNoiseSource",
+                "FractalNoiseSource",
+                "LogisticSource",
+                "SineSource"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/sources.py"
+          }
+        ],
+        "spark-002-phase-1b-historical": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "FloatArray",
+                "MathSource",
+                "validate_render_request"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "constants",
+              "names": [
+                "HALF_PI",
+                "PHI",
+                "TAU"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/constants.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "prng",
+              "names": [
+                "GOLDEN_GAMMA",
+                "UINT64_MASK",
+                "SplitMix64",
+                "splitmix64",
+                "splitmix64_array",
+                "splitmix64_at_indices",
+                "uint64_array_to_float64",
+                "uint64_to_float64",
+                "validate_uint64"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/prng.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 16,
+              "module": "sources",
+              "names": [
+                "ConstantSource",
+                "DeterministicNoiseSource",
+                "FractalNoiseSource",
+                "LogisticSource",
+                "SineSource"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/sources.py"
+          }
+        ],
+        "v2.0.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "FloatArray",
+                "MathSource",
+                "validate_render_request"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "constants",
+              "names": [
+                "HALF_PI",
+                "PHI",
+                "TAU"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/constants.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "prng",
+              "names": [
+                "GOLDEN_GAMMA",
+                "UINT64_MASK",
+                "SplitMix64",
+                "splitmix64",
+                "splitmix64_array",
+                "splitmix64_at_indices",
+                "uint64_array_to_float64",
+                "uint64_to_float64",
+                "validate_uint64"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/prng.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 16,
+              "module": "sources",
+              "names": [
+                "ConstantSource",
+                "DeterministicNoiseSource",
+                "FractalNoiseSource",
+                "LogisticSource",
+                "SineSource"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/sources.py"
+          }
+        ],
+        "v3.0.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "FloatArray",
+                "MathSource",
+                "validate_render_request"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "constants",
+              "names": [
+                "HALF_PI",
+                "PHI",
+                "TAU"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/constants.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "prng",
+              "names": [
+                "GOLDEN_GAMMA",
+                "UINT64_MASK",
+                "SplitMix64",
+                "splitmix64",
+                "splitmix64_array",
+                "splitmix64_at_indices",
+                "uint64_array_to_float64",
+                "uint64_to_float64",
+                "validate_uint64"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/prng.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 16,
+              "module": "sources",
+              "names": [
+                "ConstantSource",
+                "DeterministicNoiseSource",
+                "FractalNoiseSource",
+                "LogisticSource",
+                "SineSource"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/sources.py"
+          }
+        ],
+        "v3.0.1": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "FloatArray",
+                "MathSource",
+                "validate_render_request"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "constants",
+              "names": [
+                "HALF_PI",
+                "PHI",
+                "TAU"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/constants.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "prng",
+              "names": [
+                "GOLDEN_GAMMA",
+                "UINT64_MASK",
+                "SplitMix64",
+                "splitmix64",
+                "splitmix64_array",
+                "splitmix64_at_indices",
+                "uint64_array_to_float64",
+                "uint64_to_float64",
+                "validate_uint64"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/prng.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 16,
+              "module": "sources",
+              "names": [
+                "ConstantSource",
+                "DeterministicNoiseSource",
+                "FractalNoiseSource",
+                "LogisticSource",
+                "SineSource"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/math/sources.py"
+          }
+        ]
       },
       "functions": [],
       "git_blob": "d37c3e065ee79f623d32ef3d2e5ed85bf32a30bb",
@@ -31375,24 +32617,744 @@
       "MODEL_PROVED": "OPEN",
       "REFINEMENT_PROVED": "OPEN",
       "dependency_edges_by_snapshot": {
-        "d4-tia-v2.0.0": [],
-        "mat-spec-001-first-source": [],
-        "mat-spec-002-first-source": [],
-        "mat-spec-003-v0.1.0": [],
-        "mat-spec-004-v0.1.0": [],
-        "mat-spec-005-v0.1.0": [],
-        "mat-spec-006-v0.1.0": [],
-        "mat-spec-007-v0.1.0": [],
-        "mat-spec-008-v0.1.0": [],
-        "mat-spec-009-v0.1.0": [],
-        "mat-spec-010-v0.1.0": [],
-        "sonification-main-reference": [],
-        "spark-001-v1.0.0": [],
-        "spark-002-phase-1a-historical": [],
-        "spark-002-phase-1b-historical": [],
-        "v2.0.0": [],
-        "v3.0.0": [],
-        "v3.0.1": []
+        "d4-tia-v2.0.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "RhythmGenerator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "events",
+              "names": [
+                "NoteEvent"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/events.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "grid",
+              "names": [
+                "events_from_steps"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/grid.py"
+          }
+        ],
+        "mat-spec-001-first-source": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "RhythmGenerator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "events",
+              "names": [
+                "NoteEvent"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/events.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "grid",
+              "names": [
+                "events_from_steps"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/grid.py"
+          }
+        ],
+        "mat-spec-002-first-source": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "RhythmGenerator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "events",
+              "names": [
+                "NoteEvent"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/events.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "grid",
+              "names": [
+                "events_from_steps"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/grid.py"
+          }
+        ],
+        "mat-spec-003-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "RhythmGenerator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "events",
+              "names": [
+                "NoteEvent"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/events.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "grid",
+              "names": [
+                "events_from_steps"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/grid.py"
+          }
+        ],
+        "mat-spec-004-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "RhythmGenerator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "events",
+              "names": [
+                "NoteEvent"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/events.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "grid",
+              "names": [
+                "events_from_steps"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/grid.py"
+          }
+        ],
+        "mat-spec-005-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "RhythmGenerator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "events",
+              "names": [
+                "NoteEvent"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/events.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "grid",
+              "names": [
+                "events_from_steps"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/grid.py"
+          }
+        ],
+        "mat-spec-006-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "RhythmGenerator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "events",
+              "names": [
+                "NoteEvent"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/events.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "grid",
+              "names": [
+                "events_from_steps"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/grid.py"
+          }
+        ],
+        "mat-spec-007-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "RhythmGenerator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "events",
+              "names": [
+                "NoteEvent"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/events.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "grid",
+              "names": [
+                "events_from_steps"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/grid.py"
+          }
+        ],
+        "mat-spec-008-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "RhythmGenerator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "events",
+              "names": [
+                "NoteEvent"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/events.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "grid",
+              "names": [
+                "events_from_steps"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/grid.py"
+          }
+        ],
+        "mat-spec-009-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "RhythmGenerator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "events",
+              "names": [
+                "NoteEvent"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/events.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "grid",
+              "names": [
+                "events_from_steps"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/grid.py"
+          }
+        ],
+        "mat-spec-010-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "RhythmGenerator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "events",
+              "names": [
+                "NoteEvent"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/events.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "grid",
+              "names": [
+                "events_from_steps"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/grid.py"
+          }
+        ],
+        "sonification-main-reference": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "RhythmGenerator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "events",
+              "names": [
+                "NoteEvent"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/events.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "grid",
+              "names": [
+                "events_from_steps"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/grid.py"
+          }
+        ],
+        "spark-001-v1.0.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "RhythmGenerator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "events",
+              "names": [
+                "NoteEvent"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/events.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "grid",
+              "names": [
+                "events_from_steps"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/grid.py"
+          }
+        ],
+        "spark-002-phase-1a-historical": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "RhythmGenerator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "events",
+              "names": [
+                "NoteEvent"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/events.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "grid",
+              "names": [
+                "events_from_steps"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/grid.py"
+          }
+        ],
+        "spark-002-phase-1b-historical": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "RhythmGenerator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "events",
+              "names": [
+                "NoteEvent"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/events.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "grid",
+              "names": [
+                "events_from_steps"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/grid.py"
+          }
+        ],
+        "v2.0.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "RhythmGenerator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "events",
+              "names": [
+                "NoteEvent"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/events.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "grid",
+              "names": [
+                "events_from_steps"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/grid.py"
+          }
+        ],
+        "v3.0.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "RhythmGenerator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "events",
+              "names": [
+                "NoteEvent"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/events.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "grid",
+              "names": [
+                "events_from_steps"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/grid.py"
+          }
+        ],
+        "v3.0.1": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 3,
+              "module": "base",
+              "names": [
+                "RhythmGenerator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 4,
+              "module": "events",
+              "names": [
+                "NoteEvent"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/events.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 5,
+              "module": "grid",
+              "names": [
+                "events_from_steps"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/sequencing/grid.py"
+          }
+        ]
       },
       "functions": [],
       "git_blob": "23853e812db559796f057f8cbd9221804fec5ee6",
@@ -32376,24 +34338,1644 @@
       "MODEL_PROVED": "OPEN",
       "REFINEMENT_PROVED": "OPEN",
       "dependency_edges_by_snapshot": {
-        "d4-tia-v2.0.0": [],
-        "mat-spec-001-first-source": [],
-        "mat-spec-002-first-source": [],
-        "mat-spec-003-v0.1.0": [],
-        "mat-spec-004-v0.1.0": [],
-        "mat-spec-005-v0.1.0": [],
-        "mat-spec-006-v0.1.0": [],
-        "mat-spec-007-v0.1.0": [],
-        "mat-spec-008-v0.1.0": [],
-        "mat-spec-009-v0.1.0": [],
-        "mat-spec-010-v0.1.0": [],
-        "sonification-main-reference": [],
-        "spark-001-v1.0.0": [],
-        "spark-002-phase-1a-historical": [],
-        "spark-002-phase-1b-historical": [],
-        "v2.0.0": [],
-        "v3.0.0": [],
-        "v3.0.1": []
+        "d4-tia-v2.0.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 8,
+              "module": "additive",
+              "names": [
+                "AdditiveSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/additive.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 9,
+              "module": "base",
+              "names": [
+                "INSTRUMENT_ABI",
+                "IdentityDict",
+                "Instrument",
+                "MonoSignal"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 10,
+              "module": "envelopes",
+              "names": [
+                "ADSREnvelope",
+                "PluckEnvelope"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/envelopes.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 11,
+              "module": "fm",
+              "names": [
+                "FMSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/fm.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 12,
+              "module": "karplus_strong",
+              "names": [
+                "KarplusStrong",
+                "KarplusStrongSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/karplus_strong.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 13,
+              "module": "oscillators",
+              "names": [
+                "band_limited_saw",
+                "band_limited_square",
+                "decimate_fir",
+                "deterministic_excitation",
+                "deterministic_phase",
+                "deterministic_unit",
+                "sine_oscillator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/oscillators.py"
+          }
+        ],
+        "mat-spec-001-first-source": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 8,
+              "module": "additive",
+              "names": [
+                "AdditiveSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/additive.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 9,
+              "module": "base",
+              "names": [
+                "INSTRUMENT_ABI",
+                "IdentityDict",
+                "Instrument",
+                "MonoSignal"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 10,
+              "module": "envelopes",
+              "names": [
+                "ADSREnvelope",
+                "PluckEnvelope"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/envelopes.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 11,
+              "module": "fm",
+              "names": [
+                "FMSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/fm.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 12,
+              "module": "karplus_strong",
+              "names": [
+                "KarplusStrong",
+                "KarplusStrongSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/karplus_strong.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 13,
+              "module": "oscillators",
+              "names": [
+                "band_limited_saw",
+                "band_limited_square",
+                "decimate_fir",
+                "deterministic_excitation",
+                "deterministic_phase",
+                "deterministic_unit",
+                "sine_oscillator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/oscillators.py"
+          }
+        ],
+        "mat-spec-002-first-source": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 8,
+              "module": "additive",
+              "names": [
+                "AdditiveSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/additive.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 9,
+              "module": "base",
+              "names": [
+                "INSTRUMENT_ABI",
+                "IdentityDict",
+                "Instrument",
+                "MonoSignal"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 10,
+              "module": "envelopes",
+              "names": [
+                "ADSREnvelope",
+                "PluckEnvelope"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/envelopes.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 11,
+              "module": "fm",
+              "names": [
+                "FMSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/fm.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 12,
+              "module": "karplus_strong",
+              "names": [
+                "KarplusStrong",
+                "KarplusStrongSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/karplus_strong.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 13,
+              "module": "oscillators",
+              "names": [
+                "band_limited_saw",
+                "band_limited_square",
+                "decimate_fir",
+                "deterministic_excitation",
+                "deterministic_phase",
+                "deterministic_unit",
+                "sine_oscillator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/oscillators.py"
+          }
+        ],
+        "mat-spec-003-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 8,
+              "module": "additive",
+              "names": [
+                "AdditiveSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/additive.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 9,
+              "module": "base",
+              "names": [
+                "INSTRUMENT_ABI",
+                "IdentityDict",
+                "Instrument",
+                "MonoSignal"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 10,
+              "module": "envelopes",
+              "names": [
+                "ADSREnvelope",
+                "PluckEnvelope"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/envelopes.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 11,
+              "module": "fm",
+              "names": [
+                "FMSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/fm.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 12,
+              "module": "karplus_strong",
+              "names": [
+                "KarplusStrong",
+                "KarplusStrongSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/karplus_strong.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 13,
+              "module": "oscillators",
+              "names": [
+                "band_limited_saw",
+                "band_limited_square",
+                "decimate_fir",
+                "deterministic_excitation",
+                "deterministic_phase",
+                "deterministic_unit",
+                "sine_oscillator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/oscillators.py"
+          }
+        ],
+        "mat-spec-004-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 8,
+              "module": "additive",
+              "names": [
+                "AdditiveSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/additive.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 9,
+              "module": "base",
+              "names": [
+                "INSTRUMENT_ABI",
+                "IdentityDict",
+                "Instrument",
+                "MonoSignal"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 10,
+              "module": "envelopes",
+              "names": [
+                "ADSREnvelope",
+                "PluckEnvelope"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/envelopes.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 11,
+              "module": "fm",
+              "names": [
+                "FMSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/fm.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 12,
+              "module": "karplus_strong",
+              "names": [
+                "KarplusStrong",
+                "KarplusStrongSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/karplus_strong.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 13,
+              "module": "oscillators",
+              "names": [
+                "band_limited_saw",
+                "band_limited_square",
+                "decimate_fir",
+                "deterministic_excitation",
+                "deterministic_phase",
+                "deterministic_unit",
+                "sine_oscillator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/oscillators.py"
+          }
+        ],
+        "mat-spec-005-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 8,
+              "module": "additive",
+              "names": [
+                "AdditiveSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/additive.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 9,
+              "module": "base",
+              "names": [
+                "INSTRUMENT_ABI",
+                "IdentityDict",
+                "Instrument",
+                "MonoSignal"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 10,
+              "module": "envelopes",
+              "names": [
+                "ADSREnvelope",
+                "PluckEnvelope"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/envelopes.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 11,
+              "module": "fm",
+              "names": [
+                "FMSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/fm.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 12,
+              "module": "karplus_strong",
+              "names": [
+                "KarplusStrong",
+                "KarplusStrongSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/karplus_strong.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 13,
+              "module": "oscillators",
+              "names": [
+                "band_limited_saw",
+                "band_limited_square",
+                "decimate_fir",
+                "deterministic_excitation",
+                "deterministic_phase",
+                "deterministic_unit",
+                "sine_oscillator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/oscillators.py"
+          }
+        ],
+        "mat-spec-006-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 8,
+              "module": "additive",
+              "names": [
+                "AdditiveSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/additive.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 9,
+              "module": "base",
+              "names": [
+                "INSTRUMENT_ABI",
+                "IdentityDict",
+                "Instrument",
+                "MonoSignal"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 10,
+              "module": "envelopes",
+              "names": [
+                "ADSREnvelope",
+                "PluckEnvelope"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/envelopes.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 11,
+              "module": "fm",
+              "names": [
+                "FMSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/fm.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 12,
+              "module": "karplus_strong",
+              "names": [
+                "KarplusStrong",
+                "KarplusStrongSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/karplus_strong.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 13,
+              "module": "oscillators",
+              "names": [
+                "band_limited_saw",
+                "band_limited_square",
+                "decimate_fir",
+                "deterministic_excitation",
+                "deterministic_phase",
+                "deterministic_unit",
+                "sine_oscillator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/oscillators.py"
+          }
+        ],
+        "mat-spec-007-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 8,
+              "module": "additive",
+              "names": [
+                "AdditiveSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/additive.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 9,
+              "module": "base",
+              "names": [
+                "INSTRUMENT_ABI",
+                "IdentityDict",
+                "Instrument",
+                "MonoSignal"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 10,
+              "module": "envelopes",
+              "names": [
+                "ADSREnvelope",
+                "PluckEnvelope"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/envelopes.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 11,
+              "module": "fm",
+              "names": [
+                "FMSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/fm.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 12,
+              "module": "karplus_strong",
+              "names": [
+                "KarplusStrong",
+                "KarplusStrongSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/karplus_strong.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 13,
+              "module": "oscillators",
+              "names": [
+                "band_limited_saw",
+                "band_limited_square",
+                "decimate_fir",
+                "deterministic_excitation",
+                "deterministic_phase",
+                "deterministic_unit",
+                "sine_oscillator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/oscillators.py"
+          }
+        ],
+        "mat-spec-008-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 8,
+              "module": "additive",
+              "names": [
+                "AdditiveSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/additive.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 9,
+              "module": "base",
+              "names": [
+                "INSTRUMENT_ABI",
+                "IdentityDict",
+                "Instrument",
+                "MonoSignal"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 10,
+              "module": "envelopes",
+              "names": [
+                "ADSREnvelope",
+                "PluckEnvelope"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/envelopes.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 11,
+              "module": "fm",
+              "names": [
+                "FMSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/fm.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 12,
+              "module": "karplus_strong",
+              "names": [
+                "KarplusStrong",
+                "KarplusStrongSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/karplus_strong.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 13,
+              "module": "oscillators",
+              "names": [
+                "band_limited_saw",
+                "band_limited_square",
+                "decimate_fir",
+                "deterministic_excitation",
+                "deterministic_phase",
+                "deterministic_unit",
+                "sine_oscillator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/oscillators.py"
+          }
+        ],
+        "mat-spec-009-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 8,
+              "module": "additive",
+              "names": [
+                "AdditiveSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/additive.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 9,
+              "module": "base",
+              "names": [
+                "INSTRUMENT_ABI",
+                "IdentityDict",
+                "Instrument",
+                "MonoSignal"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 10,
+              "module": "envelopes",
+              "names": [
+                "ADSREnvelope",
+                "PluckEnvelope"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/envelopes.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 11,
+              "module": "fm",
+              "names": [
+                "FMSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/fm.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 12,
+              "module": "karplus_strong",
+              "names": [
+                "KarplusStrong",
+                "KarplusStrongSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/karplus_strong.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 13,
+              "module": "oscillators",
+              "names": [
+                "band_limited_saw",
+                "band_limited_square",
+                "decimate_fir",
+                "deterministic_excitation",
+                "deterministic_phase",
+                "deterministic_unit",
+                "sine_oscillator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/oscillators.py"
+          }
+        ],
+        "mat-spec-010-v0.1.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 8,
+              "module": "additive",
+              "names": [
+                "AdditiveSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/additive.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 9,
+              "module": "base",
+              "names": [
+                "INSTRUMENT_ABI",
+                "IdentityDict",
+                "Instrument",
+                "MonoSignal"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 10,
+              "module": "envelopes",
+              "names": [
+                "ADSREnvelope",
+                "PluckEnvelope"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/envelopes.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 11,
+              "module": "fm",
+              "names": [
+                "FMSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/fm.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 12,
+              "module": "karplus_strong",
+              "names": [
+                "KarplusStrong",
+                "KarplusStrongSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/karplus_strong.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 13,
+              "module": "oscillators",
+              "names": [
+                "band_limited_saw",
+                "band_limited_square",
+                "decimate_fir",
+                "deterministic_excitation",
+                "deterministic_phase",
+                "deterministic_unit",
+                "sine_oscillator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/oscillators.py"
+          }
+        ],
+        "sonification-main-reference": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 8,
+              "module": "additive",
+              "names": [
+                "AdditiveSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/additive.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 9,
+              "module": "base",
+              "names": [
+                "INSTRUMENT_ABI",
+                "IdentityDict",
+                "Instrument",
+                "MonoSignal"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 10,
+              "module": "envelopes",
+              "names": [
+                "ADSREnvelope",
+                "PluckEnvelope"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/envelopes.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 11,
+              "module": "fm",
+              "names": [
+                "FMSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/fm.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 12,
+              "module": "karplus_strong",
+              "names": [
+                "KarplusStrong",
+                "KarplusStrongSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/karplus_strong.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 13,
+              "module": "oscillators",
+              "names": [
+                "band_limited_saw",
+                "band_limited_square",
+                "decimate_fir",
+                "deterministic_excitation",
+                "deterministic_phase",
+                "deterministic_unit",
+                "sine_oscillator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/oscillators.py"
+          }
+        ],
+        "spark-001-v1.0.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 8,
+              "module": "additive",
+              "names": [
+                "AdditiveSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/additive.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 9,
+              "module": "base",
+              "names": [
+                "INSTRUMENT_ABI",
+                "IdentityDict",
+                "Instrument",
+                "MonoSignal"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 10,
+              "module": "envelopes",
+              "names": [
+                "ADSREnvelope",
+                "PluckEnvelope"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/envelopes.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 11,
+              "module": "fm",
+              "names": [
+                "FMSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/fm.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 12,
+              "module": "karplus_strong",
+              "names": [
+                "KarplusStrong",
+                "KarplusStrongSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/karplus_strong.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 13,
+              "module": "oscillators",
+              "names": [
+                "band_limited_saw",
+                "band_limited_square",
+                "decimate_fir",
+                "deterministic_excitation",
+                "deterministic_phase",
+                "deterministic_unit",
+                "sine_oscillator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/oscillators.py"
+          }
+        ],
+        "spark-002-phase-1a-historical": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 8,
+              "module": "additive",
+              "names": [
+                "AdditiveSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/additive.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 9,
+              "module": "base",
+              "names": [
+                "INSTRUMENT_ABI",
+                "IdentityDict",
+                "Instrument",
+                "MonoSignal"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 10,
+              "module": "envelopes",
+              "names": [
+                "ADSREnvelope",
+                "PluckEnvelope"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/envelopes.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 11,
+              "module": "fm",
+              "names": [
+                "FMSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/fm.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 12,
+              "module": "karplus_strong",
+              "names": [
+                "KarplusStrong",
+                "KarplusStrongSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/karplus_strong.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 13,
+              "module": "oscillators",
+              "names": [
+                "band_limited_saw",
+                "band_limited_square",
+                "decimate_fir",
+                "deterministic_excitation",
+                "deterministic_phase",
+                "deterministic_unit",
+                "sine_oscillator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/oscillators.py"
+          }
+        ],
+        "spark-002-phase-1b-historical": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 8,
+              "module": "additive",
+              "names": [
+                "AdditiveSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/additive.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 9,
+              "module": "base",
+              "names": [
+                "INSTRUMENT_ABI",
+                "IdentityDict",
+                "Instrument",
+                "MonoSignal"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 10,
+              "module": "envelopes",
+              "names": [
+                "ADSREnvelope",
+                "PluckEnvelope"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/envelopes.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 11,
+              "module": "fm",
+              "names": [
+                "FMSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/fm.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 12,
+              "module": "karplus_strong",
+              "names": [
+                "KarplusStrong",
+                "KarplusStrongSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/karplus_strong.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 13,
+              "module": "oscillators",
+              "names": [
+                "band_limited_saw",
+                "band_limited_square",
+                "decimate_fir",
+                "deterministic_excitation",
+                "deterministic_phase",
+                "deterministic_unit",
+                "sine_oscillator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/oscillators.py"
+          }
+        ],
+        "v2.0.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 8,
+              "module": "additive",
+              "names": [
+                "AdditiveSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/additive.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 9,
+              "module": "base",
+              "names": [
+                "INSTRUMENT_ABI",
+                "IdentityDict",
+                "Instrument",
+                "MonoSignal"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 10,
+              "module": "envelopes",
+              "names": [
+                "ADSREnvelope",
+                "PluckEnvelope"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/envelopes.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 11,
+              "module": "fm",
+              "names": [
+                "FMSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/fm.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 12,
+              "module": "karplus_strong",
+              "names": [
+                "KarplusStrong",
+                "KarplusStrongSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/karplus_strong.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 13,
+              "module": "oscillators",
+              "names": [
+                "band_limited_saw",
+                "band_limited_square",
+                "decimate_fir",
+                "deterministic_excitation",
+                "deterministic_phase",
+                "deterministic_unit",
+                "sine_oscillator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/oscillators.py"
+          }
+        ],
+        "v3.0.0": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 8,
+              "module": "additive",
+              "names": [
+                "AdditiveSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/additive.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 9,
+              "module": "base",
+              "names": [
+                "INSTRUMENT_ABI",
+                "IdentityDict",
+                "Instrument",
+                "MonoSignal"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 10,
+              "module": "envelopes",
+              "names": [
+                "ADSREnvelope",
+                "PluckEnvelope"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/envelopes.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 11,
+              "module": "fm",
+              "names": [
+                "FMSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/fm.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 12,
+              "module": "karplus_strong",
+              "names": [
+                "KarplusStrong",
+                "KarplusStrongSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/karplus_strong.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 13,
+              "module": "oscillators",
+              "names": [
+                "band_limited_saw",
+                "band_limited_square",
+                "decimate_fir",
+                "deterministic_excitation",
+                "deterministic_phase",
+                "deterministic_unit",
+                "sine_oscillator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/oscillators.py"
+          }
+        ],
+        "v3.0.1": [
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 8,
+              "module": "additive",
+              "names": [
+                "AdditiveSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/additive.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 9,
+              "module": "base",
+              "names": [
+                "INSTRUMENT_ABI",
+                "IdentityDict",
+                "Instrument",
+                "MonoSignal"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/base.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 10,
+              "module": "envelopes",
+              "names": [
+                "ADSREnvelope",
+                "PluckEnvelope"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/envelopes.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 11,
+              "module": "fm",
+              "names": [
+                "FMSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/fm.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 12,
+              "module": "karplus_strong",
+              "names": [
+                "KarplusStrong",
+                "KarplusStrongSynth"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/karplus_strong.py"
+          },
+          {
+            "import": {
+              "kind": "python_from_import",
+              "level": 1,
+              "line": 13,
+              "module": "oscillators",
+              "names": [
+                "band_limited_saw",
+                "band_limited_square",
+                "decimate_fir",
+                "deterministic_excitation",
+                "deterministic_phase",
+                "deterministic_unit",
+                "sine_oscillator"
+              ]
+            },
+            "relation": "static_import",
+            "target": "sonification/core/synthesis/oscillators.py"
+          }
+        ]
       },
       "functions": [],
       "git_blob": "bde217bf26dbbc8a66bec39b7b249a7c31df1d21",
