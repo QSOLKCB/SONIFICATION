@@ -38,6 +38,7 @@ def _copy_bound_audit(tmp_path: Path) -> Path:
     audit = destination / "audit"
     audit.mkdir(parents=True)
     shutil.copytree(source / "audit/attempt-004-model", audit / "attempt-004-model")
+    shutil.copy2(source / "audit/attempt-004-model.snapshot.json", audit)
     shutil.copy2(source / "audit/model_run.py", audit / "model_run.py")
     report = json.loads((audit / "attempt-004-model/AUDIT.json").read_text())
     for name in report["proof_input_sha256"]:
@@ -165,5 +166,42 @@ def test_joint_child_and_root_report_tamper_fails_pinned_report(tmp_path: Path) 
         patch.object(model_verify, "HERE", audit),
         redirect_stdout(StringIO()),
         pytest.raises(ValueError, match="recorded independent audit report changed"),
+    ):
+        model_verify.main()
+
+
+def test_missing_negative_input_snapshot_fails_closed(tmp_path: Path) -> None:
+    audit = _copy_bound_audit(tmp_path)
+    (audit / "attempt-004-model/false_theorem/mutated-inputs/Audit.lean.source").unlink()
+    with (
+        patch.object(model_verify, "HERE", audit),
+        redirect_stdout(StringIO()),
+        pytest.raises(ValueError, match="retained model audit file inventory mismatch"),
+    ):
+        model_verify.main()
+
+
+def test_linked_model_attempt_root_or_manifest_fails_closed(tmp_path: Path) -> None:
+    audit = _copy_bound_audit(tmp_path)
+    attempt = audit / "attempt-004-model"
+    renamed_attempt = audit / "attempt-copy"
+    attempt.rename(renamed_attempt)
+    attempt.symlink_to(renamed_attempt, target_is_directory=True)
+    with (
+        patch.object(model_verify, "HERE", audit),
+        redirect_stdout(StringIO()),
+        pytest.raises(ValueError, match="linked retained model audit root or manifest"),
+    ):
+        model_verify.main()
+    attempt.unlink()
+    renamed_attempt.rename(attempt)
+    manifest = audit / "attempt-004-model.snapshot.json"
+    renamed_manifest = audit / "snapshot-copy.json"
+    manifest.rename(renamed_manifest)
+    manifest.symlink_to(renamed_manifest)
+    with (
+        patch.object(model_verify, "HERE", audit),
+        redirect_stdout(StringIO()),
+        pytest.raises(ValueError, match="linked retained model audit root or manifest"),
     ):
         model_verify.main()

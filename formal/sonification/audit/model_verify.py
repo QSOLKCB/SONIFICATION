@@ -7,6 +7,9 @@ import json
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+SNAPSHOT_SHA256 = "4d4a24100e5ab6015b762204cce4bd2ea660bbd54be5a291ec035e51687b5020"
+SNAPSHOT_SOURCE_COMMIT = "fcce6b0d6287a443282013e04b8e7211e1b36eb2"
+SNAPSHOT_TREE = "455099b3e40099eac67c810229f5d540ebecfe59"
 EMPTY_SHA256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 LEAN_VERSION_STDOUT_SHA256 = "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
 EXPECTED_AUDIT_SHA256 = "6604bdf24e72d2a307c19581756ca90df9dc7f68553462f9dfb5c54747e29c52"
@@ -61,6 +64,38 @@ EXPECTED_NOMINAL_ARTIFACT_SHA256 = {
 
 def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def verify_retained_snapshot(attempt: Path) -> None:
+    """Require all 190 retained model-audit files from merged PR #42."""
+    manifest_path = HERE / "attempt-004-model.snapshot.json"
+    if attempt.is_symlink() or manifest_path.is_symlink():
+        raise ValueError("linked retained model audit root or manifest")
+    if digest(manifest_path) != SNAPSHOT_SHA256:
+        raise ValueError("retained model audit snapshot manifest changed")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    expected = manifest["files"]
+    if (
+        manifest["source_commit"] != SNAPSHOT_SOURCE_COMMIT
+        or manifest["source_tree"] != SNAPSHOT_TREE
+        or manifest["attempt"] != "attempt-004-model"
+        or manifest["expected_file_count"] != 190
+        or len(expected) != 190
+    ):
+        raise ValueError("unexpected retained model audit snapshot identity")
+    observed = set()
+    for path in attempt.rglob("*"):
+        if path.is_symlink():
+            raise ValueError(f"linked retained model audit path: {path}")
+        if path.is_file():
+            observed.add(path.relative_to(attempt).as_posix())
+        elif not path.is_dir():
+            raise ValueError(f"unsupported retained model audit path: {path}")
+    if observed != set(expected):
+        raise ValueError("retained model audit file inventory mismatch")
+    for relative, expected_hash in expected.items():
+        if digest(attempt / relative) != expected_hash:
+            raise ValueError(f"altered retained model audit file: {relative}")
 
 
 def main() -> int:
@@ -163,6 +198,7 @@ def main() -> int:
         or set(nominal["observed_theorems"]) != set(nominal["expected_theorems"])
     ):
         raise ValueError("nominal checker theorem inventory changed")
+    verify_retained_snapshot(attempt)
     print(json.dumps({"status": "MODEL_AUDIT_BINDING_MATCH", "theorems": 19,
                       "refinement": "OPEN", "scope": "recorded mathematical statements"}))
     return 0
