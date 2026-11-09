@@ -43,12 +43,20 @@
     "model_negative_receipt": "formal/sonification/mat008/lean/attempts/commit-bound-negative-001/result.json",
     "finite_receipt": "formal/sonification/mat008/receipts/conformance-002/result/receipt.json",
     "independent_audit": "formal/sonification/mat008/audit/attempt-001/AUDIT.json",
-    "audit_binder_negative_receipt": "formal/sonification/mat008/audit/binder-hardening-001/result.json",
+    "audit_binder_negative_receipt": "formal/sonification/mat008/audit/binder-hardening-002/result.json",
     "MODEL_PROVED": "PASS_FOR_TEN_EXACT_MODEL_THEOREMS",
     "REFINEMENT_PROVED": "OPEN",
     "DIFFERENTIAL_TESTED": "PASS_FOR_1296_BUILTIN_ROW_CASES",
     "AUDIT_ACCEPTED": "PASS_FOR_DECLARED_PARTIAL_SCOPE",
     "full_validator_status": "OPEN",
-    "counterexample": "Equal-text str subclasses with inconsistent hashes evade the production run-reuse dictionary gate."
+    "counterexample": "Equal-text str subclasses with inconsistent hashes evade the production run-reuse dictionary gate.",
+    "previous_audit_binder_negative_receipt": "formal/sonification/mat008/audit/binder-hardening-001/result.json",
+    "audit_portability_receipt": "formal/sonification/mat008/audit/portability-002/result.json",
+    "audit_hotfix_snapshot": "formal/sonification/mat008/audit/hotfix-snapshot.json",
+    "audit_hotfix_verifier": "formal/sonification/mat008/audit/hotfix_verify.py",
+    "audit_hotfix_independent_review": "formal/sonification/mat008/audit/hotfix-independent-audit.json",
+    "audit_verifier_sha256": "f682e110a1a66871ec1dedbaa448c98f0f6d16529589f2ff469b772bc5fd3e70",
+    "audit_runner_sha256": "7c9e67d4e8dec118ab80163442fe876e84f0ff978b6461d3703367a3badfc25d",
+    "audit_runner_exit_controls": "tests/test_sonification_formal_mat008_audit_cli.py"
   }
 }

@@ -67,8 +67,10 @@ valid. No production source was changed.
 From the repository root, produce a fresh execution in a new, append-only directory:
 
 ```sh
-python3 formal/sonification/mat008/audit/run.py attempt-NEW
-python3 formal/sonification/mat008/audit/verify.py attempt-001
+python3 formal/sonification/mat008/audit/run.py attempt-NEW \
+  --lean-root /absolute/path/to/lean-4.19.0
+python3 formal/sonification/mat008/audit/verify.py attempt-001 \
+  --lean-root /absolute/path/to/lean-4.19.0
 ```
 
 The verifier deliberately accepts only the independently reviewed `attempt-001`.
@@ -76,6 +78,16 @@ A new execution remains raw evidence until a separate audit and reviewed digest
 pin bind its receipt. The original verification command and streams remain under
 `attempt-001/verification-001`; its original verifier source is preserved in
 `attempt-001/inputs/audit-verify.py`.
+
+`--lean-root` names the local installation directory containing `bin/lean` and
+`lib/lean`. It can differ from the auditor's historical installation path.
+The verifier retains those archived path strings as provenance, validates the
+exact 1,303 imported module names and path layout, and hashes the local binary
+and imported `.olean` files against the accepted digests. It does not read the
+historical absolute paths. The selected installation must contain the exact
+recorded Lean binary and imported library bytes, not just the same version
+banner. The runner records failures and timeouts before returning a nonzero
+exit status; its printed `status` and `execution-index.json` agree.
 
 The hardened verifier pins the original `AUDIT.json` digest above, requires the
 exact 161-file membership across this attempt and both postcommit Lean receipt
@@ -99,13 +111,67 @@ metadata, and disabled assertions. The original accepted audit bytes remain
 unchanged. Reproduce the controls with:
 
 ```sh
-python3 formal/sonification/mat008/audit/binder_negative.py NEW_BINDER_ATTEMPT
+python3 formal/sonification/mat008/audit/binder_negative.py NEW_BINDER_ATTEMPT \
+  --lean-root /absolute/path/to/lean-4.19.0
 ```
 
 These are static evidence-integrity checks with trusted OS execution. They do
 not prevent concurrent adversarial replacement, authenticate external sources,
 or create new mathematical or Python-refinement evidence. The reviewed verifier
 and independent digest pin remain trusted inputs.
+
+The original hardening receipt above belongs to the prior verifier source and
+is preserved unchanged. After the toolchain relocation fix,
+[binder-hardening-002/result.json](binder-hardening-002/result.json), SHA-256
+`664b11dee3da1b15aca4aead10e7c69963b13e845820ba68ae0d2d983b349656`,
+replayed the baseline and all 14 negative cases against current `verify.py`
+(SHA-256 `f682e110a1a66871ec1dedbaa448c98f0f6d16529589f2ff469b772bc5fd3e70`).
+
+The relocation control at
+[portability-002/result.json](portability-002/result.json), SHA-256
+`40a94f2c5cf1d62a35d343f30c069ba55770c4292f008151af5dd814aa49c44c`,
+hard-linked the pinned binary and 1,303 imported files beneath a different
+installation root. The full retained-audit verifier passed there; changing one
+local import or the local binary caused nonzero rejection while the historical
+installation remained intact. A copy fallback supports separate filesystems.
+`portability-001` retains the earlier hard-link-only probe and its original
+source snapshot. These controls verify byte binding of the retained proof
+evidence; they do not rerun the Lean proofs from the relocated installation.
+
+The audit runner's failure-status unit controls use isolated stubs for a failed
+job, failed direct build, failed version command and timeout. In each case it
+retains an execution index with `FAIL` and `main()` returns 1; the command
+entrypoint propagates that return value with `SystemExit`. A complete stubbed
+execution reports `PASS` and returns 0. These tests check runner
+behavior; they are not new theorem-prover evidence.
+
+The append-only hotfix receipts are independently indexed by
+[hotfix-snapshot.json](hotfix-snapshot.json), SHA-256
+`423964376918eb3c56188a8a17d7709f891698beb394d5b47f36c1bc58e77b31`.
+The [hotfix verifier](hotfix_verify.py) pins that digest and checks exact file
+and directory membership, sizes, and hashes for the 65 files in
+`binder-hardening-002` and `portability-002`. It also checks the current audit
+runner and its CLI test source digests, the control scripts, accepted-audit
+identity, and the expected outcome of every control. Run it
+from the repository root with:
+
+```sh
+python3 formal/sonification/mat008/audit/hotfix_verify.py
+python3 -m pytest tests/test_sonification_formal_mat008_audit_cli.py -q
+```
+
+The hotfix snapshot binds these two new control receipts. The original
+`attempt-001` proof evidence remains governed by the pinned accepted audit
+and the full verifier above. The snapshot adds no mathematical theorem or
+Python implementation refinement claim.
+
+The independently authored
+[hotfix audit handoff](hotfix-independent-audit.json), SHA-256
+`5661b7586dc045a69168803f9fc05162b858daa116fc0c8d1de85b0cb4059df0`,
+records the reviewed source hashes and separately executed mutations. Its
+PASS concerns the stated artifact and source binding only. The complete
+accepted proof evidence still requires the full verifier and the pinned
+Lean installation bytes.
 
 Historical failed proof attempts remain untouched under `lean/attempts`; they are
 explicitly outside the three-module active proof set. No commit, push, release,

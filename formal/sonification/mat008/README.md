@@ -44,7 +44,8 @@ From a full-history checkout with the pinned Lean 4.19.0 toolchain available:
 ```sh
 python3 formal/sonification/mat008/verify_source_binding.py
 python3 formal/sonification/mat008/verify_receipt.py
-python3 formal/sonification/mat008/audit/verify.py attempt-001
+python3 formal/sonification/mat008/audit/verify.py attempt-001 \
+  --lean-root /absolute/path/to/lean-4.19.0
 python3 -m pytest tests/test_sonification_formal_mat008_run_ownership.py -q
 ```
 
@@ -57,6 +58,18 @@ commands and logs are retained in the `lean/attempts`, `audit/attempt-001`, and
 `lean/EVIDENCE_MANIFEST.json` inventories the development attempt files at its
 creation point; the postcommit receipts are separately bound by the accepted
 audit. No historical proof receipt is rewritten.
+
+The current verifier accepts `--lean-root` so an identical pinned Lean 4.19.0
+installation can live at another absolute path. It checks the local binary
+and all 1,303 imported `.olean` digests without opening the archived absolute
+paths. The current verifier's 14 binder controls are retained in
+`audit/binder-hardening-002`; three relocation controls are in
+`audit/portability-002`. Their 65 retained files are bound by
+`audit/hotfix-snapshot.json`; the verification command is in
+[audit/README.md](audit/README.md).
+The audit runner now exits nonzero when a job fails or times out, after
+writing its execution index. The original accepted audit report remains
+byte-for-byte unchanged.
 
 The unit tests check byte identity of the current checkout source and context
 files and run the finite oracle on those checked bytes. This works with a

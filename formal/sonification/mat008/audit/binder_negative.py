@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import re
@@ -107,9 +108,13 @@ def mutate(name: str, work: Path, case: Path) -> str:
 
 
 def main() -> int:
-    if len(sys.argv) != 2 or re.fullmatch(r"[A-Za-z0-9_-]+", sys.argv[1]) is None:
-        raise SystemExit("usage: python3 audit/binder_negative.py NEW_OUTPUT_NAME")
-    out = HERE / sys.argv[1]
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("output_name", help="new append-only result directory")
+    parser.add_argument("--lean-root", required=True, type=Path)
+    args = parser.parse_args()
+    if re.fullmatch(r"[A-Za-z0-9_-]+", args.output_name) is None:
+        parser.error("output name must contain only letters, digits, underscore or hyphen")
+    out = HERE / args.output_name
     out.mkdir(exist_ok=False)
     original = (HERE / "attempt-001/AUDIT.json").read_bytes()
     if digest(original) != AUDIT_SHA256:
@@ -136,7 +141,10 @@ def main() -> int:
             argv = [sys.executable]
             if name == "optimized_python":
                 argv.append("-O")
-            argv.extend([str(work / "audit/verify.py"), "attempt-001"])
+            argv.extend([
+                str(work / "audit/verify.py"), "attempt-001",
+                "--lean-root", str(args.lean_root),
+            ])
             timed_out = False
             try:
                 run = subprocess.run(argv, cwd=work, capture_output=True, timeout=60)

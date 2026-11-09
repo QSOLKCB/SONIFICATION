@@ -77,7 +77,8 @@ select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
 "formal/sonification/mat008/audit/run.py" = ["E501"]
 "formal/sonification/mat008/audit/binder_negative.py" = ["E501"]
 "formal/sonification/mat008/audit/attempt-001/inputs/*.py" = ["E501"]
-"formal/sonification/mat008/audit/binder-hardening-001/inputs/*.py" = ["E501"]
+"formal/sonification/mat008/audit/binder-hardening-*/inputs/*.py" = ["E501"]
+"formal/sonification/mat008/audit/portability-*/inputs/*.py" = ["E501"]
 
 [tool.coverage.run]
 branch = true

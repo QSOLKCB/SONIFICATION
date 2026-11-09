@@ -1,0 +1,975 @@
+{
+  "assurance": {
+    "AUDIT_ACCEPTED": "PASS",
+    "DIFFERENTIAL_TESTED": "PASS",
+    "MODEL_PROVED": "PASS",
+    "REFINEMENT_PROVED": "PASS"
+  },
+  "audit_outcome": "PASS",
+  "auditor": "independent_auditor Codex subagent",
+  "claims": [
+    {
+      "assurance": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "PASS",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "PASS"
+      },
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "Sonification.Mat008.reused_run_blocks",
+      "kind": "theorem",
+      "origin": "Mat008.RunOwnership",
+      "scope": "Exact source-independent Lean proposition; no theorem about CPython.",
+      "type": "\u2200 (rows : List Sonification.Mat008.ParsedRow) (a b : Sonification.Mat008.ParsedRow),\n  a \u2208 rows \u2192\n    b \u2208 rows \u2192 a.originalRun = b.originalRun \u2192 a.campaign \u2260 b.campaign \u2192 (Sonification.Mat008.scan rows).conflict = true",
+      "unsafe_definition": false
+    },
+    {
+      "assurance": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "axioms": [
+        "propext"
+      ],
+      "declaration": "Sonification.Mat008.step_conflict_sticky",
+      "kind": "theorem",
+      "origin": "Mat008.RunOwnership",
+      "scope": "Exact source-independent Lean proposition; no theorem about CPython.",
+      "type": "\u2200 (s : Sonification.Mat008.State) (row : Sonification.Mat008.ParsedRow),\n  s.conflict = true \u2192 (Sonification.Mat008.step s row).conflict = true",
+      "unsafe_definition": false
+    },
+    {
+      "assurance": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "declaration": "Sonification.Mat008.step_clear_same_owner",
+      "kind": "theorem",
+      "origin": "Mat008.RunOwnership",
+      "scope": "Exact source-independent Lean proposition; no theorem about CPython.",
+      "type": "\u2200 (s : Sonification.Mat008.State) (row : Sonification.Mat008.ParsedRow) (campaign : String),\n  (Sonification.Mat008.step s row).conflict = false \u2192\n    Sonification.Mat008.lookup s.owner row.originalRun = some campaign \u2192 campaign = row.campaign",
+      "unsafe_definition": false
+    },
+    {
+      "assurance": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "Sonification.Mat008.scan_clear_covers",
+      "kind": "theorem",
+      "origin": "Mat008.RunOwnership",
+      "scope": "Exact source-independent Lean proposition; no theorem about CPython.",
+      "type": "\u2200 (rows : List Sonification.Mat008.ParsedRow),\n  (Sonification.Mat008.scan rows).conflict = false \u2192 Sonification.Mat008.Covers (Sonification.Mat008.scan rows) rows",
+      "unsafe_definition": false
+    },
+    {
+      "assurance": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "Sonification.Mat008.step_covers",
+      "kind": "theorem",
+      "origin": "Mat008.RunOwnership",
+      "scope": "Exact source-independent Lean proposition; no theorem about CPython.",
+      "type": "\u2200 (s : Sonification.Mat008.State) (rows : List Sonification.Mat008.ParsedRow) (row : Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.Covers s rows \u2192\n    (Sonification.Mat008.step s row).conflict = false \u2192\n      Sonification.Mat008.Covers (Sonification.Mat008.step s row) (rows ++ [row])",
+      "unsafe_definition": false
+    },
+    {
+      "assurance": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "axioms": [
+        "propext"
+      ],
+      "declaration": "Sonification.Mat008.snoc_induction",
+      "kind": "theorem",
+      "origin": "Mat008.RunOwnership",
+      "scope": "Exact source-independent Lean proposition; no theorem about CPython.",
+      "type": "\u2200 {\u03b1 : Type} (motive : List \u03b1 \u2192 Prop),\n  motive [] \u2192 (\u2200 (rows : List \u03b1) (row : \u03b1), motive rows \u2192 motive (rows ++ [row])) \u2192 \u2200 (rows : List \u03b1), motive rows",
+      "unsafe_definition": false
+    },
+    {
+      "assurance": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "axioms": [],
+      "declaration": "Sonification.Mat008.nonvacuity",
+      "kind": "theorem",
+      "origin": "Mat008.RunOwnership",
+      "scope": "Exact source-independent Lean proposition; no theorem about CPython.",
+      "type": "(Sonification.Mat008.scan\n        [{ campaign := \"A\", originalRun := \"RUN\" }, { campaign := \"B\", originalRun := \"RUN\" },\n          { campaign := \"B\", originalRun := \"OTHER\" }]).conflict =\n    true \u2227\n  (Sonification.Mat008.scan\n        [{ campaign := \"A\", originalRun := \"RUN_A\" }, { campaign := \"B\", originalRun := \"RUN_B\" }]).conflict =\n    false",
+      "unsafe_definition": false
+    },
+    {
+      "assurance": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "axioms": [
+        "propext"
+      ],
+      "declaration": "Sonification.Mat008.scan_append",
+      "kind": "theorem",
+      "origin": "Mat008.RunOwnership",
+      "scope": "Exact source-independent Lean proposition; no theorem about CPython.",
+      "type": "\u2200 (rows : List Sonification.Mat008.ParsedRow) (row : Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.scan (rows ++ [row]) = Sonification.Mat008.step (Sonification.Mat008.scan rows) row",
+      "unsafe_definition": false
+    },
+    {
+      "assurance": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "axioms": [],
+      "declaration": "Sonification.Mat008.scanFrom_append",
+      "kind": "theorem",
+      "origin": "Mat008.RunOwnership",
+      "scope": "Exact source-independent Lean proposition; no theorem about CPython.",
+      "type": "\u2200 (s : Sonification.Mat008.State) (xs ys : List Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.scanFrom s (xs ++ ys) = Sonification.Mat008.scanFrom (Sonification.Mat008.scanFrom s xs) ys",
+      "unsafe_definition": false
+    },
+    {
+      "assurance": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "axioms": [],
+      "declaration": "Sonification.Mat008.step_clear_before",
+      "kind": "theorem",
+      "origin": "Mat008.RunOwnership",
+      "scope": "Exact source-independent Lean proposition; no theorem about CPython.",
+      "type": "\u2200 (s : Sonification.Mat008.State) (row : Sonification.Mat008.ParsedRow),\n  (Sonification.Mat008.step s row).conflict = false \u2192 s.conflict = false",
+      "unsafe_definition": false
+    }
+  ],
+  "counterexamples": [
+    {
+      "claim": "All Python str instances admitted by _identity obey the ordinary equal-text run-ownership guarantee.",
+      "json_roundtrip_reuse_reason_present": true,
+      "json_roundtrip_status": "BLOCKED",
+      "raw_observation": "audit/attempt-001/independent-conformance.stdout",
+      "reproduced_independently": true,
+      "reuse_reason_present": false,
+      "subclass_status": "STRUCTURAL_ONLY_UNAUTHENTICATED",
+      "truth_status": "FALSE_IN_BROADER_DOMAIN",
+      "witness": "Equal-text str subclasses with hash shifted by campaign pass _identity and evade the run dictionary gate."
+    }
+  ],
+  "coverage": {
+    "active_lean_sources": [
+      "Mat008/RunOwnership.lean",
+      "Mat008.lean",
+      "Audit.lean"
+    ],
+    "active_modules": [
+      "Mat008.RunOwnership",
+      "Mat008",
+      "Audit"
+    ],
+    "expected_and_observed_declarations": 99,
+    "external_olean_modules": 1303,
+    "historical_attempt_sources": "Preserved, explicitly excluded from active module set; no coverage claimed for failed attempts.",
+    "kernel_theorem_declarations": 28,
+    "named_theorems": 10,
+    "supporting_snoc_induction_type_checked_by_exact_observed_statement_comparison": true,
+    "typed_consumers": 9,
+    "unsafe_generated_compiler_declarations": 22
+  },
+  "created_utc": "2026-11-09T22:45:18.145075+00:00",
+  "evidence_files": {
+    "audit/attempt-001/direct-00.json": {
+      "bytes": 638,
+      "sha256": "6c8cfb60f367ccf82d656d01546b9500d0efe0bd16435b66ee00f76ce4bd2e61"
+    },
+    "audit/attempt-001/direct-00.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/direct-00.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/direct-01.json": {
+      "bytes": 612,
+      "sha256": "7f4956efa56fe58a60c7a42370a0d6e6f87698b0014cdc2b3b8f986a918a195d"
+    },
+    "audit/attempt-001/direct-01.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/direct-01.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/direct-02.json": {
+      "bytes": 610,
+      "sha256": "8c94349377ee92b2fdfed22e9572998882b809e2259767a79b35a16963110a8e"
+    },
+    "audit/attempt-001/direct-02.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/direct-02.stdout": {
+      "bytes": 93927,
+      "sha256": "777b8c6cc7ac87f8982ca8d7b3368b4a187e882ef661b8a38ff3300180034e28"
+    },
+    "audit/attempt-001/execution-index.json": {
+      "bytes": 6608,
+      "sha256": "a424a9b88507b02ce9f24151e3f88f4327adff1cd1c8f8c1c4b12f52c3aedbfb"
+    },
+    "audit/attempt-001/finite-input-manifest.json": {
+      "bytes": 927,
+      "sha256": "c70ef6c85fbb3d3b2cc2aa23b87b7330e268e63fd6f487985a93c7e29d978bac"
+    },
+    "audit/attempt-001/fresh-checker.json": {
+      "bytes": 820,
+      "sha256": "1287a87d4f3e84548f96b8dd3466b343854b2bc6662a4ba74d7ef91c7d2d21e5"
+    },
+    "audit/attempt-001/fresh-checker.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-checker.stdout": {
+      "bytes": 146,
+      "sha256": "9831493e4ae9d7c77a855e4f28ae6a815d0c3d13ee132d43df3eb9c5d1d1a5fa"
+    },
+    "audit/attempt-001/fresh-checker/00.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-checker/00.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-checker/01.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-checker/01.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-checker/02.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-checker/02.stdout": {
+      "bytes": 93927,
+      "sha256": "777b8c6cc7ac87f8982ca8d7b3368b4a187e882ef661b8a38ff3300180034e28"
+    },
+    "audit/attempt-001/fresh-checker/declarations.json": {
+      "bytes": 36377,
+      "sha256": "089dd232b6e89c48bb398020e3dd802673e66f11473358b63164075a9893ec8f"
+    },
+    "audit/attempt-001/fresh-checker/result.json": {
+      "bytes": 4604,
+      "sha256": "d59d7d7dcb014c1d5fe8fc931bc2fde4fe51bc5fbed82068a39b90ee5ced2480"
+    },
+    "audit/attempt-001/fresh-checker/toolchain-imports.json": {
+      "bytes": 304533,
+      "sha256": "8ffe3ac72c6480936ba701e02ca4e848f8aed9e0fcf5439fb909ede3898138cb"
+    },
+    "audit/attempt-001/fresh-checker/version.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-checker/version.stdout": {
+      "bytes": 78,
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    "audit/attempt-001/fresh-negative.json": {
+      "bytes": 753,
+      "sha256": "b5c85e1245e85c497f075837b73f361d9b7c07b835918a0501b1b36fc364d2b2"
+    },
+    "audit/attempt-001/fresh-negative.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative.stdout": {
+      "bytes": 46,
+      "sha256": "c45c22bd896a310d57fce63b480cbdd6f4aa83126a3bb3ac54bcc41396180ba6"
+    },
+    "audit/attempt-001/fresh-negative/drop_sticky_conflict/Counterexample.lean": {
+      "bytes": 1338,
+      "sha256": "5ad7110a3a3ed6b2975a9affd908d1a0263164ba68f391e9cdbe3686047afaa1"
+    },
+    "audit/attempt-001/fresh-negative/drop_sticky_conflict/RunOwnership.lean": {
+      "bytes": 4620,
+      "sha256": "b5f5bac00f6005df187426ffe0777815be6e58c86fed4f978b6a539efee9e76b"
+    },
+    "audit/attempt-001/fresh-negative/drop_sticky_conflict/counterexample.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/drop_sticky_conflict/counterexample.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/drop_sticky_conflict/runner.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/drop_sticky_conflict/runner.stdout": {
+      "bytes": 231,
+      "sha256": "b31a54cba6c35bec109933ee0761ab00f717126821808ce77cdbfc5cc53d223b"
+    },
+    "audit/attempt-001/fresh-negative/drop_sticky_conflict/verification/00.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/drop_sticky_conflict/verification/00.stdout": {
+      "bytes": 1114,
+      "sha256": "2730fd5db1dbc69bd37d79b11972e7e27fa64532334cce5f337feffb4a96a08c"
+    },
+    "audit/attempt-001/fresh-negative/drop_sticky_conflict/verification/result.json": {
+      "bytes": 2098,
+      "sha256": "0f622be01c8aae9982f9f02fe8c03cf1253466b6a43cb91c2dcc1e78ff07c3df"
+    },
+    "audit/attempt-001/fresh-negative/drop_sticky_conflict/verification/version.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/drop_sticky_conflict/verification/version.stdout": {
+      "bytes": 78,
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    "audit/attempt-001/fresh-negative/prohibited_data_assumption/RunOwnership.lean": {
+      "bytes": 4674,
+      "sha256": "e595e116983d359026b33b819a10c71b69051ad65113d872aa30ffa2821c136c"
+    },
+    "audit/attempt-001/fresh-negative/prohibited_data_assumption/runner.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/prohibited_data_assumption/runner.stdout": {
+      "bytes": 223,
+      "sha256": "31db43f05918ba8871b246647208fa35dd7361ac8b1fd39f492d95f7ade37126"
+    },
+    "audit/attempt-001/fresh-negative/prohibited_data_assumption/verification/00.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/prohibited_data_assumption/verification/00.stdout": {
+      "bytes": 66,
+      "sha256": "4107f03fc2931f623cfa3eef548929573cdfc41f65523a9e1db6d319279bb53c"
+    },
+    "audit/attempt-001/fresh-negative/prohibited_data_assumption/verification/01.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/prohibited_data_assumption/verification/01.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/prohibited_data_assumption/verification/02.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/prohibited_data_assumption/verification/02.stdout": {
+      "bytes": 77476,
+      "sha256": "cdcdb2f26ebc85c1f0c4047ea2cbb10f9a0cc79f59802796588a1acf1d4e65ee"
+    },
+    "audit/attempt-001/fresh-negative/prohibited_data_assumption/verification/result.json": {
+      "bytes": 3384,
+      "sha256": "0f74a63b4df78d03a576efd705a0b355da8d7c43c580e403994d97c91102c5a9"
+    },
+    "audit/attempt-001/fresh-negative/prohibited_data_assumption/verification/version.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/prohibited_data_assumption/verification/version.stdout": {
+      "bytes": 78,
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    "audit/attempt-001/fresh-negative/result.json": {
+      "bytes": 3237,
+      "sha256": "dbc5ce0396b615dba170c6150189c02b1e4a8bc4f82e9e617fcc1d08868d9075"
+    },
+    "audit/attempt-001/fresh-negative/unimported_module/RunOwnership.lean": {
+      "bytes": 4634,
+      "sha256": "653f4638568e4e461176cca7659360737f3ac2632152163602c789fd65ead201"
+    },
+    "audit/attempt-001/fresh-negative/unimported_module/runner.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/unimported_module/runner.stdout": {
+      "bytes": 278,
+      "sha256": "02011ffa47e1d0e852b8efe3a3ad275f6a2c73ca85970ab4bed0e751e593d725"
+    },
+    "audit/attempt-001/fresh-negative/unimported_module/verification/result.json": {
+      "bytes": 311,
+      "sha256": "5f300ca7509736eebf91a513c538017ea52120ad40bbf58477a0add669a57f47"
+    },
+    "audit/attempt-001/fresh-negative/weaker_same_name_theorem/RunOwnership.lean": {
+      "bytes": 4143,
+      "sha256": "24393ac9a7c843235dc4826c13d7bf3ce76a914fc6192c1a2c0df0eeb71c0968"
+    },
+    "audit/attempt-001/fresh-negative/weaker_same_name_theorem/runner.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/weaker_same_name_theorem/runner.stdout": {
+      "bytes": 221,
+      "sha256": "60758be2b05bf40844f7127539af2a549ab45e778facd48bc8196976ffd64536"
+    },
+    "audit/attempt-001/fresh-negative/weaker_same_name_theorem/verification/00.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/weaker_same_name_theorem/verification/00.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/weaker_same_name_theorem/verification/01.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/weaker_same_name_theorem/verification/01.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/weaker_same_name_theorem/verification/02.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/weaker_same_name_theorem/verification/02.stdout": {
+      "bytes": 61962,
+      "sha256": "73a63e30e966230e7e7d31a19fc5b5f091d956cb3c9fc5840204cc40b73d7bd0"
+    },
+    "audit/attempt-001/fresh-negative/weaker_same_name_theorem/verification/result.json": {
+      "bytes": 3384,
+      "sha256": "a09df814f96e08b802c8893521c33c7d6dab28229a077b85983e3db3172ac72a"
+    },
+    "audit/attempt-001/fresh-negative/weaker_same_name_theorem/verification/version.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/fresh-negative/weaker_same_name_theorem/verification/version.stdout": {
+      "bytes": 78,
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    "audit/attempt-001/identity-commands.json": {
+      "bytes": 1681,
+      "sha256": "39217feafbc78b73e9808d1ca6796a6c9bd43709f031c273f262435550997303"
+    },
+    "audit/attempt-001/identity-frozen-source.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/identity-frozen-source.stdout": {
+      "bytes": 30876,
+      "sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08"
+    },
+    "audit/attempt-001/identity-peeled-commit.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/identity-peeled-commit.stdout": {
+      "bytes": 41,
+      "sha256": "ba3b06be0062f36c3d51ae873001200fd30ea8a3fceb92b669ac2a734863f84e"
+    },
+    "audit/attempt-001/identity-source-tree.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/identity-source-tree.stdout": {
+      "bytes": 41,
+      "sha256": "3f8d599ca17ca39e9248960ac824d3ea3d76b3fa68471d02e87d1b8d2f8ebdbe"
+    },
+    "audit/attempt-001/identity-tag-object.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/identity-tag-object.stdout": {
+      "bytes": 41,
+      "sha256": "1592981af66e9f5c6fa80c304ea42fb3d3d4c9674bc751ab8a04ca06317a4eb5"
+    },
+    "audit/attempt-001/independent-conformance.json": {
+      "bytes": 577,
+      "sha256": "ed3a3a3c37b10b52e631f546548827115db42812c9debb15b18d3d071eaef52d"
+    },
+    "audit/attempt-001/independent-conformance.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/independent-conformance.stdout": {
+      "bytes": 604,
+      "sha256": "41be9abf7b26999d7c0592a04767956a9487aaf0dbe1cb0b328eb2b2c221ed1d"
+    },
+    "audit/attempt-001/input-manifest.json": {
+      "bytes": 2636,
+      "sha256": "d5aec6715fc41842001bf8e197fe00008c6971aa84427cb0f7a36fa5c429d008"
+    },
+    "audit/attempt-001/inputs/Audit.lean": {
+      "bytes": 4434,
+      "sha256": "42205261c134c4820976c71d89b99053fb6277f7adfb75d2e11364e270b1d2a8"
+    },
+    "audit/attempt-001/inputs/Mat008.lean": {
+      "bytes": 27,
+      "sha256": "dc3d800f6d677de0d96f82fcb3de2768a8c8fae13d7b2b1e91ab42a7c0eaf8cc"
+    },
+    "audit/attempt-001/inputs/Mat008/RunOwnership.lean": {
+      "bytes": 4634,
+      "sha256": "653f4638568e4e461176cca7659360737f3ac2632152163602c789fd65ead201"
+    },
+    "audit/attempt-001/inputs/audit-independent_conformance.py": {
+      "bytes": 4778,
+      "sha256": "7a9f3869742ffb6bb0a8460af9f0ba8f322d533426a605ae3aeaddd7dbbe0951"
+    },
+    "audit/attempt-001/inputs/audit-run.py": {
+      "bytes": 5534,
+      "sha256": "94ddb259ff916c2ffcdc2a7b8dd41bfe5595ec8890ccfca8ce1f908806df18f4"
+    },
+    "audit/attempt-001/inputs/audit-verify.py": {
+      "bytes": 7811,
+      "sha256": "1f5ec37c426569bd7da7d2872ae0d64acbc75630e40f4a016ada657eef03ad01"
+    },
+    "audit/attempt-001/inputs/check.py": {
+      "bytes": 9037,
+      "sha256": "9be62fe0becdb7de309bd50ee6ca49932106d8b868eaac51f9b73336d9e625dc"
+    },
+    "audit/attempt-001/inputs/expected-declarations.json": {
+      "bytes": 4716,
+      "sha256": "b220d9e288eb2d76fddaadace632d434292eee3c218da3aec59e363461ce69b1"
+    },
+    "audit/attempt-001/inputs/finite/formal/sonification/mat008/capture.py": {
+      "bytes": 2103,
+      "sha256": "3003bd181e38a70670a1218aeeab603bbedd7f9964127ebb38976b8056f4ba54"
+    },
+    "audit/attempt-001/inputs/finite/formal/sonification/mat008/conformance.py": {
+      "bytes": 8622,
+      "sha256": "645ae27fcf222eef613bf16c3c9c87820e11472c8cbbb324ce7d431d1f5c8962"
+    },
+    "audit/attempt-001/inputs/finite/formal/sonification/mat008/verify_receipt.py": {
+      "bytes": 2399,
+      "sha256": "e10484ac37feaa6e58ea293edd9556bc9417c6038827e6b5d081ecc09c4dc32f"
+    },
+    "audit/attempt-001/inputs/finite/tests/test_sonification_formal_mat008_run_ownership.py": {
+      "bytes": 2379,
+      "sha256": "40d70f7bfda86a496474708ebe4b68ceee74698454cb4bd1aeb9f37bfccb3f33"
+    },
+    "audit/attempt-001/inputs/lakefile.toml": {
+      "bytes": 157,
+      "sha256": "bd2e5b74ad2973018878d3afea24243cf4a274d49ad10d3031a060b07a158758"
+    },
+    "audit/attempt-001/inputs/lean-toolchain": {
+      "bytes": 25,
+      "sha256": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea"
+    },
+    "audit/attempt-001/inputs/negative.py": {
+      "bytes": 6165,
+      "sha256": "ec302629c41228ea2d18da10d217f6c4775d9a5252097285cfdb43cb750e5489"
+    },
+    "audit/attempt-001/inputs/theorem-statements.json": {
+      "bytes": 4558,
+      "sha256": "805aad10819bc30ddb4b4f421645d8c8ae4407db2920e4ac50f3922923a4688f"
+    },
+    "audit/attempt-001/lean-version.json": {
+      "bytes": 511,
+      "sha256": "9c34d89cad1c3790d2d8c6b6de48571f08f92450c41cf7f3dee0ec88896fedaf"
+    },
+    "audit/attempt-001/lean-version.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/lean-version.stdout": {
+      "bytes": 78,
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    "audit/attempt-001/submitted-conformance.json": {
+      "bytes": 685,
+      "sha256": "ca5b523a231e2f6e225c004053dc5cb23baba9429d19f1311720609a00861d05"
+    },
+    "audit/attempt-001/submitted-conformance.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/submitted-conformance.stdout": {
+      "bytes": 53,
+      "sha256": "4c85e85845684e9b00c58f7e439ebe1b76a4beb4c356c4b761ef2df20bf295fa"
+    },
+    "audit/attempt-001/submitted-conformance/receipt.json": {
+      "bytes": 1161,
+      "sha256": "12bd27efe042b826b0116de26742a13e45e575de642bae00c16ebc39fd86c20d"
+    },
+    "audit/attempt-001/targeted-tests.json": {
+      "bytes": 590,
+      "sha256": "39d90d6b8d4363fad95dc4a3a6dc025c5b042a70f0abea562c0e494a6608b865"
+    },
+    "audit/attempt-001/targeted-tests.stderr": {
+      "bytes": 687,
+      "sha256": "d44838ed9a1a8bb87f9c3c666cb5ca76955958bc52ff44f15bd3c818bc290f78"
+    },
+    "audit/attempt-001/targeted-tests.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/verification-001/command.json": {
+      "bytes": 491,
+      "sha256": "e6cfa612b7e3429442179d2a71aa2940175c933db9ed1030fc86b97c483d4b18"
+    },
+    "audit/attempt-001/verification-001/stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit/attempt-001/verification-001/stdout": {
+      "bytes": 774,
+      "sha256": "121ec6e8fd3ac9604c8cbd53665730b1ae43021933a61b9ee61c269306f25d3c"
+    },
+    "lean/attempts/commit-bound-001/00.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-001/00.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-001/01.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-001/01.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-001/02.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-001/02.stdout": {
+      "bytes": 93927,
+      "sha256": "777b8c6cc7ac87f8982ca8d7b3368b4a187e882ef661b8a38ff3300180034e28"
+    },
+    "lean/attempts/commit-bound-001/declarations.json": {
+      "bytes": 36377,
+      "sha256": "089dd232b6e89c48bb398020e3dd802673e66f11473358b63164075a9893ec8f"
+    },
+    "lean/attempts/commit-bound-001/result.json": {
+      "bytes": 4604,
+      "sha256": "0998da9b1861f96f5b2fec218955ec3291f68dd30f9705cd3d48b78be5cc48bd"
+    },
+    "lean/attempts/commit-bound-001/toolchain-imports.json": {
+      "bytes": 304533,
+      "sha256": "8ffe3ac72c6480936ba701e02ca4e848f8aed9e0fcf5439fb909ede3898138cb"
+    },
+    "lean/attempts/commit-bound-001/version.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-001/version.stdout": {
+      "bytes": 78,
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    "lean/attempts/commit-bound-negative-001/drop_sticky_conflict/Counterexample.lean": {
+      "bytes": 1338,
+      "sha256": "5ad7110a3a3ed6b2975a9affd908d1a0263164ba68f391e9cdbe3686047afaa1"
+    },
+    "lean/attempts/commit-bound-negative-001/drop_sticky_conflict/RunOwnership.lean": {
+      "bytes": 4620,
+      "sha256": "b5f5bac00f6005df187426ffe0777815be6e58c86fed4f978b6a539efee9e76b"
+    },
+    "lean/attempts/commit-bound-negative-001/drop_sticky_conflict/counterexample.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/drop_sticky_conflict/counterexample.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/drop_sticky_conflict/runner.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/drop_sticky_conflict/runner.stdout": {
+      "bytes": 238,
+      "sha256": "f7b2dd1abd5a71f32660de26d5ce6f8d8c22973e32d838554e3ce2e93c6f39df"
+    },
+    "lean/attempts/commit-bound-negative-001/drop_sticky_conflict/verification/00.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/drop_sticky_conflict/verification/00.stdout": {
+      "bytes": 1114,
+      "sha256": "2730fd5db1dbc69bd37d79b11972e7e27fa64532334cce5f337feffb4a96a08c"
+    },
+    "lean/attempts/commit-bound-negative-001/drop_sticky_conflict/verification/result.json": {
+      "bytes": 2098,
+      "sha256": "88707b5fe880aa60c650ce09bdd76f19172b74803a511635ede264efc67d9fb2"
+    },
+    "lean/attempts/commit-bound-negative-001/drop_sticky_conflict/verification/version.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/drop_sticky_conflict/verification/version.stdout": {
+      "bytes": 78,
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    "lean/attempts/commit-bound-negative-001/prohibited_data_assumption/RunOwnership.lean": {
+      "bytes": 4674,
+      "sha256": "e595e116983d359026b33b819a10c71b69051ad65113d872aa30ffa2821c136c"
+    },
+    "lean/attempts/commit-bound-negative-001/prohibited_data_assumption/runner.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/prohibited_data_assumption/runner.stdout": {
+      "bytes": 230,
+      "sha256": "eca4475aaa2c01928ced1daf91c082abae35beae061b256aefda7bea86e02095"
+    },
+    "lean/attempts/commit-bound-negative-001/prohibited_data_assumption/verification/00.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/prohibited_data_assumption/verification/00.stdout": {
+      "bytes": 66,
+      "sha256": "4107f03fc2931f623cfa3eef548929573cdfc41f65523a9e1db6d319279bb53c"
+    },
+    "lean/attempts/commit-bound-negative-001/prohibited_data_assumption/verification/01.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/prohibited_data_assumption/verification/01.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/prohibited_data_assumption/verification/02.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/prohibited_data_assumption/verification/02.stdout": {
+      "bytes": 77476,
+      "sha256": "cdcdb2f26ebc85c1f0c4047ea2cbb10f9a0cc79f59802796588a1acf1d4e65ee"
+    },
+    "lean/attempts/commit-bound-negative-001/prohibited_data_assumption/verification/result.json": {
+      "bytes": 3384,
+      "sha256": "8c81ae84a681fc3653c2c3d880689b9d4daaccf209c7d24407f8013e33fcc924"
+    },
+    "lean/attempts/commit-bound-negative-001/prohibited_data_assumption/verification/version.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/prohibited_data_assumption/verification/version.stdout": {
+      "bytes": 78,
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    "lean/attempts/commit-bound-negative-001/result.json": {
+      "bytes": 3265,
+      "sha256": "1e7d1a146c7bb91badc320b8c9e0498df87663625d010fd2879efc2b0e301725"
+    },
+    "lean/attempts/commit-bound-negative-001/unimported_module/RunOwnership.lean": {
+      "bytes": 4634,
+      "sha256": "653f4638568e4e461176cca7659360737f3ac2632152163602c789fd65ead201"
+    },
+    "lean/attempts/commit-bound-negative-001/unimported_module/runner.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/unimported_module/runner.stdout": {
+      "bytes": 285,
+      "sha256": "e57f7ed83d3a194b1b62fed70877f3b2e2469ca29c5c28680176abffd0bbe38c"
+    },
+    "lean/attempts/commit-bound-negative-001/unimported_module/verification/result.json": {
+      "bytes": 311,
+      "sha256": "eb1b2e0bc3f2c744ac907079a427e58fea81920ade7a9fe4d43807f8728aef94"
+    },
+    "lean/attempts/commit-bound-negative-001/weaker_same_name_theorem/RunOwnership.lean": {
+      "bytes": 4143,
+      "sha256": "24393ac9a7c843235dc4826c13d7bf3ce76a914fc6192c1a2c0df0eeb71c0968"
+    },
+    "lean/attempts/commit-bound-negative-001/weaker_same_name_theorem/runner.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/weaker_same_name_theorem/runner.stdout": {
+      "bytes": 228,
+      "sha256": "012103b582cb074582331cce0756a78fa8d751fa0a1a9399b5c6024d3c9f1bf6"
+    },
+    "lean/attempts/commit-bound-negative-001/weaker_same_name_theorem/verification/00.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/weaker_same_name_theorem/verification/00.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/weaker_same_name_theorem/verification/01.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/weaker_same_name_theorem/verification/01.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/weaker_same_name_theorem/verification/02.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/weaker_same_name_theorem/verification/02.stdout": {
+      "bytes": 61962,
+      "sha256": "73a63e30e966230e7e7d31a19fc5b5f091d956cb3c9fc5840204cc40b73d7bd0"
+    },
+    "lean/attempts/commit-bound-negative-001/weaker_same_name_theorem/verification/result.json": {
+      "bytes": 3384,
+      "sha256": "c031c2d70741f549f441b067fe777d20f68f23406b4ba832aaf53fd69fd97958"
+    },
+    "lean/attempts/commit-bound-negative-001/weaker_same_name_theorem/verification/version.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lean/attempts/commit-bound-negative-001/weaker_same_name_theorem/verification/version.stdout": {
+      "bytes": 78,
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    }
+  },
+  "finite_observations": {
+    "AST_execution_scope": "Exact three frozen function bodies _identity, _decimal, validate_future_measurement_packet; full production module initialization is not executed.",
+    "cases": 1296,
+    "collision_cases": 834,
+    "domain": "Exactly four built-in dict rows; campaign in two fixed built-in str labels; run in three fixed built-in str labels; remaining fields from recorded fixtures.",
+    "independent_oracle": "group by run, detect ownership set cardinality greater than one",
+    "named_positive_and_collision_fixtures": 2,
+    "noncollision_cases": 462,
+    "property": "Reuse reason iff a run has multiple campaign owners; collision blocks structure; physical/admission authentication flags stay false. Noncollision does not imply eligibility.",
+    "removed_reuse_reason_mutation_detected": true,
+    "source_pin_mutation_detected": true,
+    "status": "PASS",
+    "submitted_oracle": "unordered pairs",
+    "targeted_unittests": 3
+  },
+  "frozen_implementation": {
+    "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+    "path": "materials/mat_spec_008.py",
+    "sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08",
+    "tag": "mat-spec-008-v0.1.0",
+    "tag_object": "a02088e3c68addb41c9c7145694c0f566e84f87f",
+    "tree": "eb19f2e06a502442f621a73be1e5696c2fa25a65"
+  },
+  "negative_controls": {
+    "controls": [
+      {
+        "checker_exit_code": 1,
+        "detected": true,
+        "id": "drop_sticky_conflict",
+        "observed_error": "Lean rejected Mat008.RunOwnership; see original logs"
+      },
+      {
+        "checker_exit_code": 1,
+        "detected": true,
+        "id": "weaker_same_name_theorem",
+        "observed_error": "Lean rejected Audit; see original logs"
+      },
+      {
+        "checker_exit_code": 1,
+        "detected": true,
+        "id": "prohibited_data_assumption",
+        "observed_error": "Lean rejected Audit; see original logs"
+      },
+      {
+        "checker_exit_code": 1,
+        "detected": true,
+        "id": "unimported_module",
+        "observed_error": "module coverage mismatch: ['Audit.lean', 'Mat008.lean', 'Mat008/RunOwnership.lean', 'Unimported.lean']"
+      }
+    ],
+    "fresh_receipt": "audit/attempt-001/fresh-negative/result.json",
+    "status": "PASS",
+    "sticky_mutant_counterexample": "Mutant loses the earlier collision after an independent row; separately kernel-checked false flag.",
+    "submitted_receipt": "lean/attempts/commit-bound-negative-001/result.json"
+  },
+  "nonvacuity": {
+    "additional_preconditions": [],
+    "main_preconditions": [
+      "a and b belong to the arbitrary finite rows list",
+      "a.originalRun equals b.originalRun",
+      "a.campaign differs from b.campaign"
+    ],
+    "status": "PASS",
+    "witness": "A/RUN, B/RUN, B/OTHER has conflict true; A/RUN_A, B/RUN_B has conflict false, by kernel-checked decide."
+  },
+  "open_obligations": [
+    "Source-sensitive proof that frozen CPython function bodies refine the Lean model, including parsed identity representation and dictionary/set semantics.",
+    "Parsing, exceptions, malformed rows, arbitrary mutable/subclassed objects and dependency semantics outside the finite built-in fixtures.",
+    "Complete validate_future_measurement_packet obligation closure beyond the selected run-owner gate.",
+    "All remaining MAT-SPEC, D4-TIA and ETQ formalization obligations; physical evidence and authenticity claims."
+  ],
+  "proof_input_commit": "c7889e3c9468ef4354d45d41b467263a0b5dea02",
+  "reproducibility": {
+    "evidence_hash_inventory_is_not_a_signature": true,
+    "execution_command": [
+      "python3",
+      "formal/sonification/mat008/audit/run.py",
+      "NEW_ATTEMPT_NAME"
+    ],
+    "execution_index": "audit/attempt-001/execution-index.json",
+    "input_manifest": "audit/attempt-001/input-manifest.json",
+    "runner_exit_code": 0,
+    "verification_command": [
+      "python3",
+      "formal/sonification/mat008/audit/verify.py",
+      "attempt-001"
+    ],
+    "verifier_exit_code": 0,
+    "verifier_receipt": "audit/attempt-001/verification-001/command.json"
+  },
+  "schema": "SONIFICATION-FORMAL-001 independent scoped audit v1",
+  "scope": "Ten exact MAT008 run-ownership model theorems, four mathematical negative controls, source-pinned finite observations; not full validator verification.",
+  "source_changes": "None outside newly authored audit/ files; historical blobs and proof receipts unmodified.",
+  "tested_checkout_commit": "c713b0c17f7b79b862e1581ac8aa166bf86935d2",
+  "trust": {
+    "allowed_transitive_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "lean_executable_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "project_axioms": [],
+    "sorry_or_sorryAx_in_accepted_declaration_dependencies": false,
+    "trusted_components": [
+      "Lean 4.19.0 kernel and installed pinned distribution",
+      "Lean elaborator and audited Audit.lean metaprogram for observed inventory and axiom reporting",
+      "CPython 3 runtime, AST extraction, Git object reads and OS execution for finite observations",
+      "Local source identities are content bindings, not proof of owner authenticity"
+    ],
+    "unsafe_compiler_axiom_exception": false
+  }
+}

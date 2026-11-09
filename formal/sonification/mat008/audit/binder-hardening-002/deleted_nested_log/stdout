@@ -1,0 +1,1 @@
+{"status": "FAIL", "error": "evidence membership mismatch; missing=['audit/attempt-001/fresh-negative/prohibited_data_assumption/verification/02.stderr']; extra=[]", "error_type": "ValueError"}

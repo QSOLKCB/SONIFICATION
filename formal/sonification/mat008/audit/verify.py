@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import os
 import re
-import sys
 from pathlib import Path, PurePosixPath
 
 HERE = Path(os.path.abspath(__file__)).parent
@@ -28,6 +28,9 @@ ASSURANCE = {
 THEOREM_FIELDS = {"unsafe_definition", "type", "origin", "kind", "declaration", "axioms"}
 MODULES = {"Audit", "Mat008", "Mat008.RunOwnership"}
 ALLOW = {"propext", "Quot.sound", "Classical.choice"}
+MODULE_NAME = re.compile(r"[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)*\Z")
+SHA256 = re.compile(r"[0-9a-f]{64}\Z")
+EXPECTED_IMPORT_COUNT = 1303
 MUTATIONS = {
     "drop_sticky_conflict": (1, "Lean rejected Mat008.RunOwnership"),
     "weaker_same_name_theorem": (3, "Lean rejected Audit"),
@@ -199,14 +202,73 @@ def negative(root: Path) -> dict:
     return receipt
 
 
-def main() -> None:
+def verify_local_toolchain(
+    local_root: Path,
+    nominal: list[tuple[Path, dict]],
+    expected_modules: set[str],
+    expected_binary_sha256: str,
+) -> int:
+    """Bind recorded import names and digests to an installed Lean distribution.
+
+    Receipt absolute paths are provenance strings. No historical installation
+    path is opened; local paths are derived only from validated module names.
+    """
+    require(local_root.is_absolute(), "--lean-root must be an absolute path")
+    require(local_root == local_root.resolve(strict=True),
+            "--lean-root must be canonical and must not contain symlinks")
+    reject_symlinks(local_root)
+    require(local_root.is_dir(), "Lean toolchain root is not a directory")
+    require(sha(local_root / "bin/lean") == expected_binary_sha256,
+            "local Lean executable digest mismatch")
+    require(len(expected_modules) == EXPECTED_IMPORT_COUNT,
+            "recorded direct-build import inventory changed")
+    require(len(nominal) == 2, "nominal toolchain receipt inventory changed")
+    recorded_maps = []
+    recorded_roots = set()
+    for path, result in nominal:
+        binary_text = result["lean_executable"]["path"]
+        require(isinstance(binary_text, str), "recorded Lean executable path is invalid")
+        binary = PurePosixPath(binary_text)
+        require(binary.is_absolute() and str(binary) == binary_text
+                and ".." not in binary.parts and binary.name == "lean"
+                and binary.parent.name == "bin", "recorded Lean executable path is noncanonical")
+        recorded_root = binary.parent.parent
+        recorded_roots.add(str(recorded_root))
+        imports = load(path / "toolchain-imports.json")
+        require(isinstance(imports, dict) and set(imports) == expected_modules,
+                "toolchain import membership mismatch")
+        for module, item in imports.items():
+            require(MODULE_NAME.fullmatch(module) is not None,
+                    f"noncanonical toolchain import name: {module}")
+            require(isinstance(item, dict) and set(item) == {"path", "sha256"},
+                    f"invalid toolchain import record: {module}")
+            relative = PurePosixPath("lib/lean") / (module.replace(".", "/") + ".olean")
+            require(item["path"] == str(recorded_root / relative),
+                    f"recorded toolchain import path mismatch: {module}")
+            require(isinstance(item["sha256"], str)
+                    and SHA256.fullmatch(item["sha256"]) is not None,
+                    f"invalid toolchain import digest: {module}")
+        recorded_maps.append(imports)
+    require(len(recorded_roots) == 1 and recorded_maps[0] == recorded_maps[1],
+            "nominal toolchain import receipts disagree")
+    for module, item in recorded_maps[0].items():
+        relative = Path("lib/lean") / (module.replace(".", "/") + ".olean")
+        require(sha(local_root / relative) == item["sha256"],
+                f"local toolchain import digest mismatch: {module}")
+    return len(recorded_maps[0])
+
+
+def main(argv: list[str] | None = None) -> None:
     if not __debug__:
         raise ValueError("optimized Python is rejected; assertions must remain enabled")
-    if len(sys.argv) != 2:
-        raise SystemExit("usage: python3 audit/verify.py ATTEMPT_NAME")
-    require(sys.argv[1] == "attempt-001", "only the independently pinned attempt-001 is accepted")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("attempt", help="independently accepted audit attempt")
+    parser.add_argument("--lean-root", required=True, type=Path,
+                        help="absolute installation root containing bin/lean and lib/lean")
+    args = parser.parse_args(argv)
+    require(args.attempt == "attempt-001", "only the independently pinned attempt-001 is accepted")
     reject_symlinks(Path(os.path.abspath(__file__)))
-    attempt = HERE / sys.argv[1]
+    attempt = HERE / args.attempt
     audit = accepted_audit(attempt)
     manifest = load(attempt / "input-manifest.json")
     assert manifest["proof_input_commit"] == PIN
@@ -224,9 +286,10 @@ def main() -> None:
     for command in commands:
         assert command["exit_code"] == 0 and command["timed_out"] is False
         streams(attempt, command)
+    direct_output = (attempt / "direct-02.stdout").read_text()
     direct = [
         json.loads(line.removeprefix("SONIFICATION_DECL "))
-        for line in (attempt / "direct-02.stdout").read_text().splitlines()
+        for line in direct_output.splitlines()
         if line.startswith("SONIFICATION_DECL ")
     ]
     assert len(direct) == 99 and len({x["declaration"] for x in direct}) == 99
@@ -263,8 +326,17 @@ def main() -> None:
         }
         assert result["lean_executable"]["sha256"] == manifest["lean_binary_sha256"]
         assert load(path / "declarations.json") == direct
-        for item in load(path / "toolchain-imports.json").values():
-            assert sha(Path(item["path"])) == item["sha256"]
+    recorded_imports = {
+        line.removeprefix("SONIFICATION_IMPORT ")
+        for line in direct_output.splitlines()
+        if line.startswith("SONIFICATION_IMPORT ")
+    } - MODULES
+    import_count = verify_local_toolchain(
+        args.lean_root,
+        list(zip(nominal_paths, nominal, strict=True)),
+        recorded_imports,
+        manifest["lean_binary_sha256"],
+    )
     negative_paths = [LEAN / "attempts/commit-bound-negative-001", attempt / "fresh-negative"]
     for path in negative_paths:
         negative(path)
@@ -283,6 +355,8 @@ def main() -> None:
         "named_theorems": len(statements),
         "accepted_audit_sha256": ACCEPTED_AUDIT_SHA256,
         "exact_evidence_files": EVIDENCE_COUNT,
+        "local_toolchain_root": str(args.lean_root),
+        "toolchain_imports_checked": import_count,
         "allowed_transitive_axioms": sorted(ALLOW),
         "required_nominal_receipts": [str(p.relative_to(HERE.parent)) for p in nominal_paths],
         "required_negative_receipts": [str(p.relative_to(HERE.parent)) for p in negative_paths],

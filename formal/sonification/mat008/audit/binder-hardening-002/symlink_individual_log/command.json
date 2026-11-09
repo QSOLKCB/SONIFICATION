@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/tmp/mat008-binder-mutation-t2f8kcmn/audit/verify.py",
+    "attempt-001",
+    "--lean-root",
+    "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0"
+  ],
+  "case": "symlink_individual_log",
+  "cwd": "/tmp/mat008-binder-mutation-t2f8kcmn",
+  "exit_code": 1,
+  "expected_diagnostic": "symlink evidence rejected",
+  "expected_exit_code": 1,
+  "status": "PASS",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "a79ebed5dbbcda592055d8d350e22e98f73d0172347cc389d8e8b3dcc5b651f2",
+  "timed_out": false
+}

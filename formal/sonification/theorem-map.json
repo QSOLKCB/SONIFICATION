@@ -595,7 +595,19 @@
         ],
         "AUDIT_ACCEPTED": [
           "formal/sonification/mat008/audit/attempt-001/AUDIT.json",
+          "formal/sonification/mat008/audit/binder-hardening-002/result.json"
+        ],
+        "PREVIOUS_BINDER_CONTROL": [
           "formal/sonification/mat008/audit/binder-hardening-001/result.json"
+        ],
+        "PORTABILITY_CONTROL": [
+          "formal/sonification/mat008/audit/portability-002/result.json"
+        ],
+        "HOTFIX_RECEIPT_INVENTORY": [
+          "formal/sonification/mat008/audit/hotfix-snapshot.json"
+        ],
+        "HOTFIX_INDEPENDENT_REVIEW": [
+          "formal/sonification/mat008/audit/hotfix-independent-audit.json"
         ]
       },
       "independent_specification_review": "PENDING",
@@ -664,7 +676,19 @@
         ],
         "AUDIT_ACCEPTED": [
           "formal/sonification/mat008/audit/attempt-001/AUDIT.json",
+          "formal/sonification/mat008/audit/binder-hardening-002/result.json"
+        ],
+        "PREVIOUS_BINDER_CONTROL": [
           "formal/sonification/mat008/audit/binder-hardening-001/result.json"
+        ],
+        "PORTABILITY_CONTROL": [
+          "formal/sonification/mat008/audit/portability-002/result.json"
+        ],
+        "HOTFIX_RECEIPT_INVENTORY": [
+          "formal/sonification/mat008/audit/hotfix-snapshot.json"
+        ],
+        "HOTFIX_INDEPENDENT_REVIEW": [
+          "formal/sonification/mat008/audit/hotfix-independent-audit.json"
         ]
       },
       "independent_specification_review": "PENDING",

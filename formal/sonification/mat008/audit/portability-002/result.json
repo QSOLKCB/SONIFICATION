@@ -1,0 +1,63 @@
+{
+  "REFINEMENT_PROVED": "OPEN",
+  "accepted_audit_sha256": "34eef078032bfb168faec6ba3bfe82cbf7e6bdc0412fe56820bc2bf2e26665d8",
+  "import_manifest_sha256": "8ffe3ac72c6480936ba701e02ca4e848f8aed9e0fcf5439fb909ede3898138cb",
+  "results": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/audit/verify.py",
+        "attempt-001",
+        "--lean-root",
+        "/home/trent/sonification-formal-001-mat008/mat008-relocated-lzpwoomy/other-home-lean"
+      ],
+      "exit_code": 0,
+      "expected_diagnostic": "AUDIT_ACCEPTED_FOR_DECLARED_PARTIAL_SCOPE",
+      "expected_exit_code": 0,
+      "name": "relocated_valid",
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "cb31e56f763e43cf727cf1694e1dad151b5783c4027d75f0e0b07040bc0c656e",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/audit/verify.py",
+        "attempt-001",
+        "--lean-root",
+        "/home/trent/sonification-formal-001-mat008/mat008-relocated-lzpwoomy/other-home-lean"
+      ],
+      "exit_code": 1,
+      "expected_diagnostic": "local toolchain import digest mismatch: Init",
+      "expected_exit_code": 1,
+      "name": "relocated_changed_import",
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "f57a9bd5baafcfd725192377fba8777a741fddedef6e2f89c3882b27988da453",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/audit/verify.py",
+        "attempt-001",
+        "--lean-root",
+        "/home/trent/sonification-formal-001-mat008/mat008-relocated-lzpwoomy/other-home-lean"
+      ],
+      "exit_code": 1,
+      "expected_diagnostic": "local Lean executable digest mismatch",
+      "expected_exit_code": 1,
+      "name": "relocated_changed_binary",
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "48f722d44ba3c66f04e75284f2f7bab483abe630a8570d346f7c32f9a9c59074",
+      "timed_out": false
+    }
+  ],
+  "runner_sha256": "6312e49ff6e196ad137a67d343e58d6fa24af655361ff13a35959a7f52828899",
+  "scope": "Relocated accepted-toolchain binding and local-byte mutation detection only",
+  "selected_lean_binary_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "status": "PASS",
+  "verifier_sha256": "f682e110a1a66871ec1dedbaa448c98f0f6d16529589f2ff469b772bc5fd3e70"
+}

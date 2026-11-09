@@ -1,0 +1,335 @@
+{
+  "files": [
+    {
+      "bytes": 607,
+      "path": "binder-hardening-002/baseline/command.json",
+      "sha256": "f72212508994ce14d52c2b912cb5aeee21c39ff66b4d22ec5c022ab61af3ac46"
+    },
+    {
+      "bytes": 0,
+      "path": "binder-hardening-002/baseline/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1023,
+      "path": "binder-hardening-002/baseline/stdout",
+      "sha256": "cbee6436c398ff636ed3af7823321c6b789d95af31398da5a83c1c55b939cc61"
+    },
+    {
+      "bytes": 618,
+      "path": "binder-hardening-002/changed_accepted_theorem_type/command.json",
+      "sha256": "4d19e486325c8f1d8bb177526d2af5b1a47ea1aa670ed4d35b8b5f12e48b2565"
+    },
+    {
+      "bytes": 43188,
+      "path": "binder-hardening-002/changed_accepted_theorem_type/mutated-AUDIT.json",
+      "sha256": "9f09a8f337f3682e7374d5acf235e1f27328adf53f325de6e8ce012eb910a51a"
+    },
+    {
+      "bytes": 0,
+      "path": "binder-hardening-002/changed_accepted_theorem_type/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 91,
+      "path": "binder-hardening-002/changed_accepted_theorem_type/stdout",
+      "sha256": "6b1c2c1225bb972469d57ddd6bca5f2a483fd7e58dd911bfab4a06948bff65d7"
+    },
+    {
+      "bytes": 619,
+      "path": "binder-hardening-002/changed_current_theorem_statement/command.json",
+      "sha256": "6edfcb517c0221cab8264325b03b7d2c2d55828271ec4eaf6fde10db3d04543a"
+    },
+    {
+      "bytes": 4302,
+      "path": "binder-hardening-002/changed_current_theorem_statement/mutated-theorem-statements.json",
+      "sha256": "9dd39c347109a037544258decb4c5328fe0e1d2e7fb82bdc20632403d68b02f4"
+    },
+    {
+      "bytes": 0,
+      "path": "binder-hardening-002/changed_current_theorem_statement/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 113,
+      "path": "binder-hardening-002/changed_current_theorem_statement/stdout",
+      "sha256": "d75c556fdcd2fedad1723f86149765b2b7c69a0e1f1cd41fe7fdd9d17d9604f5"
+    },
+    {
+      "bytes": 619,
+      "path": "binder-hardening-002/deleted_all_postcommit_receipts/command.json",
+      "sha256": "3efb7927ac483b8305d893085a58ecda4032ed1f137a45f5e39c155b9103b2ea"
+    },
+    {
+      "bytes": 0,
+      "path": "binder-hardening-002/deleted_all_postcommit_receipts/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 159,
+      "path": "binder-hardening-002/deleted_all_postcommit_receipts/stdout",
+      "sha256": "15d5fcaead5e24353be0c99e5913f07cdb468a506787ef9dde5372bb3bce303c"
+    },
+    {
+      "bytes": 604,
+      "path": "binder-hardening-002/deleted_nested_log/command.json",
+      "sha256": "566e21852bd5bc3863426c0b7ecf75af7954b8723177be88e4177bdfe068d7a6"
+    },
+    {
+      "bytes": 0,
+      "path": "binder-hardening-002/deleted_nested_log/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 194,
+      "path": "binder-hardening-002/deleted_nested_log/stdout",
+      "sha256": "a82cbb330f79653765993b4487479617668b5eed4798017b43cf0a6d33237c2c"
+    },
+    {
+      "bytes": 614,
+      "path": "binder-hardening-002/deleted_postcommit_receipt/command.json",
+      "sha256": "ad1a8cad2c4571ff0c9b35d15d2db5bcb202b4e5d5cb54d8f3f35bd7fb9c595d"
+    },
+    {
+      "bytes": 0,
+      "path": "binder-hardening-002/deleted_postcommit_receipt/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 159,
+      "path": "binder-hardening-002/deleted_postcommit_receipt/stdout",
+      "sha256": "55ac8e0ed921e4113c23135d4d168b898c05a31fc8e3a7bd57a3948775630b13"
+    },
+    {
+      "bytes": 617,
+      "path": "binder-hardening-002/extra_empty_directory/command.json",
+      "sha256": "cff6fb8b4816ce619a63b58abb340b81489c58dc01dbd3d8f4072ac2432861b7"
+    },
+    {
+      "bytes": 0,
+      "path": "binder-hardening-002/extra_empty_directory/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 98,
+      "path": "binder-hardening-002/extra_empty_directory/stdout",
+      "sha256": "6d8e0517ec813f03683bbc820f2fe16facbb41f0f203b4731520d9a1a1234a27"
+    },
+    {
+      "bytes": 596,
+      "path": "binder-hardening-002/extra_file/command.json",
+      "sha256": "11eaad99ea3dfb8a1ce74a7eecf4fafa3868e4fbce8345dabaaec6894e56db39"
+    },
+    {
+      "bytes": 0,
+      "path": "binder-hardening-002/extra_file/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 145,
+      "path": "binder-hardening-002/extra_file/stdout",
+      "sha256": "ec60e82657e147f0d240334f3ffa78ef36f315dd5f9bfb7224e4074c6d10cac5"
+    },
+    {
+      "bytes": 8602,
+      "path": "binder-hardening-002/inputs/binder_negative.py",
+      "sha256": "3c80de2e81215d7d32999c04b6da4a875ae6b74928c03f843be4597f48caad76"
+    },
+    {
+      "bytes": 18196,
+      "path": "binder-hardening-002/inputs/verify.py",
+      "sha256": "f682e110a1a66871ec1dedbaa448c98f0f6d16529589f2ff469b772bc5fd3e70"
+    },
+    {
+      "bytes": 618,
+      "path": "binder-hardening-002/joint_log_and_manifest_tamper/command.json",
+      "sha256": "6073795a54301b9629d36903505957ce689c2f29bd48ce2ab94e86c5f0d6a50f"
+    },
+    {
+      "bytes": 43445,
+      "path": "binder-hardening-002/joint_log_and_manifest_tamper/mutated-AUDIT.json",
+      "sha256": "46af2218c3f536a11ca786612386ef2c4ae5a872c06603daa9c626177fe373ec"
+    },
+    {
+      "bytes": 35,
+      "path": "binder-hardening-002/joint_log_and_manifest_tamper/mutated-child-log",
+      "sha256": "f77798dcb216128437c9a5f485749af5c2ab626552ea8b47f464602c85660e89"
+    },
+    {
+      "bytes": 0,
+      "path": "binder-hardening-002/joint_log_and_manifest_tamper/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 91,
+      "path": "binder-hardening-002/joint_log_and_manifest_tamper/stdout",
+      "sha256": "6b1c2c1225bb972469d57ddd6bca5f2a483fd7e58dd911bfab4a06948bff65d7"
+    },
+    {
+      "bytes": 612,
+      "path": "binder-hardening-002/optimized_python/command.json",
+      "sha256": "b659d1eeb96a834071d2ba278af2047bdfdc8978cf18ea5e67524a47c6296fb1"
+    },
+    {
+      "bytes": 0,
+      "path": "binder-hardening-002/optimized_python/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 120,
+      "path": "binder-hardening-002/optimized_python/stdout",
+      "sha256": "f9fce35d93ecf4ca555037621896c4180932237f7f42d8b41a7cdda183fba754"
+    },
+    {
+      "bytes": 608,
+      "path": "binder-hardening-002/promoted_refinement/command.json",
+      "sha256": "edb8154c160135ffa9b061e3572788b9e5944677001b8c6ed28d670823c1614b"
+    },
+    {
+      "bytes": 43444,
+      "path": "binder-hardening-002/promoted_refinement/mutated-AUDIT.json",
+      "sha256": "4e7f81a9b5c9ff958fb0ece4cc5c9dc67148ed7bab5f5ffe83679da5e4f6b4e0"
+    },
+    {
+      "bytes": 0,
+      "path": "binder-hardening-002/promoted_refinement/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 91,
+      "path": "binder-hardening-002/promoted_refinement/stdout",
+      "sha256": "6b1c2c1225bb972469d57ddd6bca5f2a483fd7e58dd911bfab4a06948bff65d7"
+    },
+    {
+      "bytes": 11150,
+      "path": "binder-hardening-002/result.json",
+      "sha256": "664b11dee3da1b15aca4aead10e7c69963b13e845820ba68ae0d2d983b349656"
+    },
+    {
+      "bytes": 597,
+      "path": "binder-hardening-002/symlink_audit_root/command.json",
+      "sha256": "32a622351d1a0d43403083fd13e5d8b09b5764f48b0d72b029fc4af91255bf47"
+    },
+    {
+      "bytes": 0,
+      "path": "binder-hardening-002/symlink_audit_root/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 137,
+      "path": "binder-hardening-002/symlink_audit_root/stdout",
+      "sha256": "a566dea8f9d066ddb6e8eb6d4e8c65cef005ffb77cb2a3f145c5878ae8326b64"
+    },
+    {
+      "bytes": 605,
+      "path": "binder-hardening-002/symlink_individual_log/command.json",
+      "sha256": "5dbf08dde76eb3c303abd832a0211ec2da87731488b6eb13077cb04ed1e40f08"
+    },
+    {
+      "bytes": 0,
+      "path": "binder-hardening-002/symlink_individual_log/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 206,
+      "path": "binder-hardening-002/symlink_individual_log/stdout",
+      "sha256": "a79ebed5dbbcda592055d8d350e22e98f73d0172347cc389d8e8b3dcc5b651f2"
+    },
+    {
+      "bytes": 595,
+      "path": "binder-hardening-002/symlink_manifest/command.json",
+      "sha256": "d7f51a0907f177d237bbbdb1ae32d53fe37ec149ae550d38db5c970cf874b00b"
+    },
+    {
+      "bytes": 0,
+      "path": "binder-hardening-002/symlink_manifest/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 148,
+      "path": "binder-hardening-002/symlink_manifest/stdout",
+      "sha256": "6cd89d242aca7eae26218119ee0132e01685c895b0b1cf75bc54257ae8aefdc4"
+    },
+    {
+      "bytes": 602,
+      "path": "binder-hardening-002/symlink_postcommit_root/command.json",
+      "sha256": "f2fa6fae4906bf786bc5b7260bbdb23a67fa49d0757e209c706ab67e4ea6587f"
+    },
+    {
+      "bytes": 0,
+      "path": "binder-hardening-002/symlink_postcommit_root/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 150,
+      "path": "binder-hardening-002/symlink_postcommit_root/stdout",
+      "sha256": "b8b399b7a16737319af196e1db2af9eb53e2e6d77bcc978b18791f57af020712"
+    },
+    {
+      "bytes": 5454,
+      "path": "portability-002/inputs/portability_negative.py",
+      "sha256": "6312e49ff6e196ad137a67d343e58d6fa24af655361ff13a35959a7f52828899"
+    },
+    {
+      "bytes": 18196,
+      "path": "portability-002/inputs/verify.py",
+      "sha256": "f682e110a1a66871ec1dedbaa448c98f0f6d16529589f2ff469b772bc5fd3e70"
+    },
+    {
+      "bytes": 631,
+      "path": "portability-002/relocated_changed_binary.json",
+      "sha256": "293ca45028c0d46e905fb97f11edf6e90bffb63f1337e88fe16171983b761f24"
+    },
+    {
+      "bytes": 0,
+      "path": "portability-002/relocated_changed_binary.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 97,
+      "path": "portability-002/relocated_changed_binary.stdout",
+      "sha256": "48f722d44ba3c66f04e75284f2f7bab483abe630a8570d346f7c32f9a9c59074"
+    },
+    {
+      "bytes": 638,
+      "path": "portability-002/relocated_changed_import.json",
+      "sha256": "70e4fcab23668cd531f3398805c0ce068386cde3a9ebe2dfeeea5c2c8086bcd2"
+    },
+    {
+      "bytes": 0,
+      "path": "portability-002/relocated_changed_import.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 104,
+      "path": "portability-002/relocated_changed_import.stdout",
+      "sha256": "f57a9bd5baafcfd725192377fba8777a741fddedef6e2f89c3882b27988da453"
+    },
+    {
+      "bytes": 626,
+      "path": "portability-002/relocated_valid.json",
+      "sha256": "2be8344fbb4cf9966fd51e5766541e20bc462771020be3cceafa7f6fd6578f4b"
+    },
+    {
+      "bytes": 0,
+      "path": "portability-002/relocated_valid.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1051,
+      "path": "portability-002/relocated_valid.stdout",
+      "sha256": "cb31e56f763e43cf727cf1694e1dad151b5783c4027d75f0e0b07040bc0c656e"
+    },
+    {
+      "bytes": 2733,
+      "path": "portability-002/result.json",
+      "sha256": "40a94f2c5cf1d62a35d343f30c069ba55770c4292f008151af5dd814aa49c44c"
+    }
+  ],
+  "roots": [
+    "binder-hardening-002",
+    "portability-002"
+  ],
+  "schema": "sonification-mat008-audit-hotfix-snapshot-v1",
+  "scope": "Append-only controls for the two PR 44 audit CLI fixes; no new theorem or Python refinement"
+}
