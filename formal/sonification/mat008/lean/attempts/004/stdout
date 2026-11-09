@@ -1,0 +1,32 @@
+Mat008/RunOwnership.lean:22:15: error: application type mismatch
+  lookup lookup
+argument
+  lookup
+has type
+  List (String × String) → String → Option String : Type
+but is expected to have type
+  List (String × String) : Type
+Mat008/RunOwnership.lean:44:2: warning: declaration uses 'sorry'
+Mat008/RunOwnership.lean:39:8: warning: declaration uses 'sorry'
+Mat008/RunOwnership.lean:41:5: warning: unused variable `ho`
+note: this linter can be disabled with `set_option linter.unusedVariables false`
+Mat008/RunOwnership.lean:114:2: error: tactic 'decide' failed for proposition
+  (scan
+          [{ campaign := "A", originalRun := "RUN" }, { campaign := "B", originalRun := "RUN" },
+            { campaign := "B", originalRun := "OTHER" }]).conflict =
+      true ∧
+    (scan [{ campaign := "A", originalRun := "RUN_A" }, { campaign := "B", originalRun := "RUN_B" }]).conflict = false
+since its 'Decidable' instance
+  instDecidableAnd
+did not reduce to 'isTrue' or 'isFalse'.
+
+After unfolding the instances 'instDecidableAnd', 'instDecidableEqBool' and 'Bool.decEq', reduction got stuck at the 'Decidable' instance
+  match
+    (scan
+        [{ campaign := "A", originalRun := "RUN" }, { campaign := "B", originalRun := "RUN" },
+          { campaign := "B", originalRun := "OTHER" }]).conflict,
+    true with
+  | false, false => isTrue ⋯
+  | false, true => isFalse ⋯
+  | true, false => isFalse ⋯
+  | true, true => isTrue ⋯

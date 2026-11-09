@@ -1,0 +1,9 @@
+name = "sonification_mat008_run_ownership"
+version = "0.1.0"
+defaultTargets = ["Mat008", "Audit"]
+
+[[lean_lib]]
+name = "Mat008"
+
+[[lean_lib]]
+name = "Audit"

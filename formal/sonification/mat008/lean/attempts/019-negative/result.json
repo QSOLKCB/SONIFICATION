@@ -1,0 +1,79 @@
+{
+  "results": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/mat008-mutant-htw7nurp/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/lean/attempts/019-negative/drop_sticky_conflict/verification"
+      ],
+      "counterexample": {
+        "argv": [
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "Counterexample.lean"
+        ],
+        "exit_code": 0,
+        "source_sha256": "5ad7110a3a3ed6b2975a9affd908d1a0263164ba68f391e9cdbe3686047afaa1",
+        "statement": "Mutant clears A/B collision after an independent row."
+      },
+      "detected": true,
+      "exit_code": 1,
+      "expected": "Lean rejected Mat008.RunOwnership",
+      "mutation": "drop_sticky_conflict",
+      "observed_error": "Lean rejected Mat008.RunOwnership; see original logs",
+      "source_sha256": "b5f5bac00f6005df187426ffe0777815be6e58c86fed4f978b6a539efee9e76b"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/mat008-mutant-1paatw20/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/lean/attempts/019-negative/weaker_same_name_theorem/verification"
+      ],
+      "detected": true,
+      "exit_code": 1,
+      "expected": "Lean rejected Audit",
+      "mutation": "weaker_same_name_theorem",
+      "observed_error": "Lean rejected Audit; see original logs",
+      "source_sha256": "24393ac9a7c843235dc4826c13d7bf3ce76a914fc6192c1a2c0df0eeb71c0968"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/mat008-mutant-kfk0_t6r/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/lean/attempts/019-negative/prohibited_data_assumption/verification"
+      ],
+      "detected": true,
+      "exit_code": 1,
+      "expected": "Lean rejected Audit",
+      "mutation": "prohibited_data_assumption",
+      "observed_error": "Lean rejected Audit; see original logs",
+      "source_sha256": "e595e116983d359026b33b819a10c71b69051ad65113d872aa30ffa2821c136c"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/mat008-mutant-y14s1uph/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/lean/attempts/019-negative/unimported_module/verification"
+      ],
+      "detected": true,
+      "exit_code": 1,
+      "expected": "module coverage mismatch",
+      "mutation": "unimported_module",
+      "observed_error": "module coverage mismatch: ['Audit.lean', 'Mat008.lean', 'Mat008/RunOwnership.lean', 'Unimported.lean']",
+      "source_sha256": "653f4638568e4e461176cca7659360737f3ac2632152163602c789fd65ead201"
+    }
+  ],
+  "scope": "Negative controls for mathematical model only; no Python refinement.",
+  "status": "PASS"
+}
