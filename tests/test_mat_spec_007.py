@@ -107,9 +107,8 @@ class FitTests(unittest.TestCase):
                 self.raw.replace(b"-0.0198", b"-0.0199")
             )
         for item in ("NaN", "1e5", "1/3", " 0.1", "-00.1", "", "inf"):
-            with self.subTest(item=item):
-                with self.assertRaises(ValueError):
-                    mat_spec_007.decimal(item)
+            with self.subTest(item=item), self.assertRaises(ValueError):
+                mat_spec_007.decimal(item)
         for item in ("-1", "0"):
             with self.assertRaises(ValueError):
                 mat_spec_007.decimal(item, positive=True)
