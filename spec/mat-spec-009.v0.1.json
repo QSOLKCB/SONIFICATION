@@ -1,0 +1,21 @@
+{
+  "profile": "MAT-SPEC-009",
+  "version": "0.1.0",
+  "parent_profile": "MAT-SPEC-008 v0.1.0",
+  "parent_merge_commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+  "foundational_mat_spec_001_doi": "10.5281/zenodo.24062652",
+  "research_question": "Can a frozen symbolic receiver preserve independently measured helium-I and helium-II phase evidence on a source-separated experiment holdout?",
+  "protocol_status": "PROSPECTIVE_FOR_FUTURE_ACQUISITIONS_ONLY",
+  "timing": "Document frozen after examining MAT-SPEC-001 through MAT-SPEC-008 data; not a retrospective preregistration for prior experiments",
+  "predecessor_gate_required": "INDEPENDENT_MEASUREMENTS_ADMITTED",
+  "source_separation_unit": "original independent acquisition campaign; never split records within a campaign",
+  "partition": "explicit TRAIN or HOLDOUT; two families, one campaign minimum in each; both phases per partition",
+  "admissible_observable": "HE4_SVP heat_capacity J_PER_MOL_K; positive calibrated per-row uncertainties; independent non-temperature phase diagnostics with distinct source SHA",
+  "receiver": "Fraction-preserving authored symbolic 5 Hz per J/(mol K), quantize only after exact mapping; scale fixed before training and never tuned on holdout",
+  "metrics": "reserved: predeclared source-family-separated confusion matrix and discrimination with uncertainty, only after physical admission; no scores in this release",
+  "nonclaims": "NO_REAL_PHASE_CLASSIFIER_NO_INDEPENDENT_HOLDOUT_NO_EXPERIMENTAL_ACCURACY_NO_LISTENER_RESULT",
+  "synthetic_policy": "negative controls only; all synthetic fixtures are explicitly rejected as physical data, never included as empirical accuracy",
+  "prospective_registration": "future external registered receipt must be independently verified, a candidate SHA alone never certifies preregistration",
+  "output_policy": "canonical ASCII JSON and CSV; no sampled waveform PCM WAV or playback",
+  "program_stop": "MAT-SPEC-010 is final; SPARK/Ada and VANILLAJS Lean-ECMA afterwards"
+}
