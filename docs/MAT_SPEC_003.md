@@ -96,6 +96,42 @@ each descriptor/bound while preserving q candidates and completeness. Synthetic
 tests include missing observations, exact interval contact, duplicate extrema,
 negative energy/scale rejection and q-energy permutation. None is new physics.
 
+## Post-hoc coverage-selected roton core (distinct from primary)
+
+The primary broad roton window **1.600–2.150** contains missing source
+observations at every pressure (chiefly around q=1.65–1.78). Its 21 primary
+pressure-pair comparisons therefore remain **INELIGIBLE**, as required by the
+predeclared full-window gate. This is a real missing-data result, not a software
+failure.
+
+A separate **exploratory** analysis derives the longest contiguous run inside
+that original window with measured values at *all seven pressures*, using
+only status/missingness and no energy values. The frozen result is:
+
+    q = 1.860 through 2.150 inverse angstrom, inclusive, 146 positions
+
+This window covers the nominal observed roton minima (around q 1.92–2.05),
+but it was selected **after examining published data completeness**. It is
+neither preregistered nor an independent dataset and must never silently
+replace the primary result.
+
+MAT-SPEC-003 checks the coverage-selection algorithm against the exact
+endpoints and cardinality, then exports a separate common-support view.
+It reports 63 additional feature/pressure comparisons (including 21 eligible
+roton-core comparisons), a maxon/roton gap and conservative ratio interval for
+each pressure, and two-mode receiver collisions. These conclusions apply
+**only to that common observed q window**, not to unmeasured points outside
+the core. Rank and ordinary 12-TET pitch mapping still discard information.
+
+Outputs are explicitly separate:
+
+- `coverage-core.json` — missingness-only selection receipt and all core features;
+- `core-discrimination.csv` — comparisons on the common-support view.
+
+Strict comparisons are descriptive reported-error boxes, not statistical tests.
+The broad-window INELIGIBLE values remain untouched in the original
+`pressure-discrimination.csv` and `controls.json`.
+
 ## Determinism, provenance and boundaries
 
 MAT-SPEC-003 first invokes MAT-SPEC-002 to validate the original MAT-SPEC-001
@@ -108,7 +144,7 @@ a proof of measurement correctness, audit chronology or scientific truth.
 All runtime outputs are ASCII JSON/CSV; standard-library Python 3.11+;
 no network and no root waveform buffers. POSIX anchored no-follow output
 requires a fresh destination; unsafe file destinations and unsupported audio
-are rejected. The six outputs are:
+are rejected. The original six outputs, plus two explicitly exploratory outputs, are:
 
 - `contract.json` — frozen descriptor settings and claim scope;
 - `features.csv` — 21 declared (pressure, descriptor) summaries;

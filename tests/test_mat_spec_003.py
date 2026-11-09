@@ -193,6 +193,50 @@ class RuntimeEvidenceTests(unittest.TestCase):
         ):
             mat_spec_003.build_evidence(ROOT)
 
+    def test_posthoc_core_is_explicit_and_primary_roton_failure_is_preserved(self) -> None:
+        core = json.loads(self.bundle["coverage-core.json"])
+        info = core["selection"]
+        self.assertEqual(info["status"], "EXPLORATORY_POSTHOC_COVERAGE_SELECTED")
+        self.assertFalse(info["pre_registered"])
+        self.assertEqual(info["complete_roton_q_window"], ["1.860", "2.150"])
+        self.assertEqual(info["complete_q_positions"], 146)
+        self.assertEqual(len(info["q_inverse_angstrom"]), 146)
+        self.assertTrue(info["all_pressure_observed"])
+        self.assertEqual(
+            self.controls["pressure_pair_interval_counts"]["roton"]["INELIGIBLE"], 21
+        )
+        self.assertEqual(
+            self.controls["coverage_core_interval_counts"]["roton"]["INELIGIBLE"], 0
+        )
+        rows = list(csv.DictReader(io.StringIO(
+            self.bundle["core-discrimination.csv"].decode()
+        )))
+        self.assertEqual(len(rows), 63)
+        self.assertEqual(
+            sum(self.controls["coverage_core_interval_counts"]["roton"].values()), 21
+        )
+        self.assertEqual(
+            self.controls["metamorphic_checks"]["factor_two_coverage_core"], 21
+        )
+        self.assertEqual(
+            self.controls["coverage_core_receiver"]["collision_audit"][
+                "exact_common_scale"
+            ]["complete_profiles"], 7
+        )
+        for pressure in mat_spec.PRESSURES:
+            self.assertEqual(core["features"][pressure]["roton"]["status"], "COMPLETE")
+        original = mat_spec.build_bundle(ROOT)
+        indexed = mat_spec_002.index_observations(
+            json.loads(original["observations.json"])["observations"]
+        )
+        changed = {p: [dict(row) for row in rows] for p, rows in indexed.items()}
+        for row in changed["0"]:
+            if row["q_inverse_angstrom"] == "1.860":
+                row["status"] = "missing"
+                break
+        with self.assertRaisesRegex(ValueError, "coverage-core selection drift"):
+            mat_spec_003.coverage_core_window(changed)
+
     def test_fresh_no_follow_output_and_audio_rejection(self) -> None:
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)

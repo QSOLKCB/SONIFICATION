@@ -60,6 +60,16 @@ jobs:
               "MAT_SPEC_003_RECEIVER_COLLISIONS",
               json.dumps(controls["receiver"]["collision_audit"], sort_keys=True),
           )
+          print(
+              "MAT_SPEC_003_COVERAGE_CORE_COUNTS",
+              json.dumps(controls["coverage_core_interval_counts"], sort_keys=True),
+          )
+          print(
+              "MAT_SPEC_003_COVERAGE_CORE_RECEIVERS",
+              json.dumps(
+                  controls["coverage_core_receiver"]["collision_audit"], sort_keys=True
+              ),
+          )
           for row in csv.DictReader((root / "features.csv").open(newline="")):
               print(
                   "MAT_SPEC_003_MODE",

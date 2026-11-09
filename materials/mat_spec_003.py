@@ -36,6 +36,8 @@ OUTPUT_NAMES = frozenset({
     "pressure-discrimination.csv",
     "controls.json",
     "manifest.json",
+    "coverage-core.json",
+    "core-discrimination.csv",
 })
 PRIMARY_WINDOWS = {
     "phonon": ("0.150", "0.450"),
@@ -48,6 +50,8 @@ ALTERNATE_WINDOWS = {
     "roton": ("1.800", "2.050"),
 }
 MODES = ("phonon", "maxon", "roton")
+EXPLORATORY_CORE_WINDOW = ("1.860", "2.150")
+EXPLORATORY_CORE_Q_COUNT = 146
 PARENT_V2_SHA256 = {
     "audit.json": "782a432c29daba27f717d7d31a8d23dc8f9076eb75b3162b0b9e30c769e6d13e",
     "contract.json": "7a552ffc237ab742ba8a9f5d30c1ef5426e40a8508941f63f01547411d234507",
@@ -72,6 +76,10 @@ EXPECTED_SPEC = {
     "bounds": "independent adversarial boxes from reported +/-errE; no distribution",
     "missing": "mark partial; do not compare windows with any missing observations",
     "receiver": "compare exact nominal maxon/roton energies, two-value ranks and 12-TET",
+    "coverage_core_selection": (
+        "EXPLORATORY_POSTHOC: longest contiguous q run fully observed for all seven "
+        "pressures inside original roton window; require 1.860..2.150, 146 q"
+    ),
     "zero_and_audio": "no PCM/WAV; zero not silently pitched",
     "claim": "windowed descriptors, not phase, sound-speed, E8 or perceptual identification",
 }
@@ -304,6 +312,76 @@ def within_pressure_mode_gap(features: dict[str, dict[str, dict]]) -> dict:
     return result
 
 
+
+def coverage_core_window(by_pressure: dict[str, list[dict]]) -> dict:
+    """Post-hoc missingness-only roton core; never overwrite the primary window.
+
+    Choose the longest contiguous all-pressure complete run in the frozen
+    original roton window. Ties go to the lowest q. Freeze observed endpoints
+    as a regression gate so an input drift cannot silently reselect the run.
+    """
+    lo, hi = (Fraction(x) for x in PRIMARY_WINDOWS["roton"])
+    rows = by_pressure[mat_spec.PRESSURES[0]]
+    runs: list[list[str]] = []
+    for index, observation in enumerate(rows):
+        q = Fraction(observation["q_inverse_angstrom"])
+        if not lo <= q <= hi:
+            continue
+        if not all(
+            by_pressure[pressure][index]["status"] == "tabulated"
+            for pressure in mat_spec.PRESSURES
+        ):
+            continue
+        label = observation["q_inverse_angstrom"]
+        if runs and Fraction(label) - Fraction(runs[-1][-1]) == Fraction("0.002"):
+            runs[-1].append(label)
+        else:
+            runs.append([label])
+    if not runs:
+        raise ValueError("no all-pressure complete roton interval")
+    chosen = min(runs, key=lambda run: (-len(run), Fraction(run[0])))
+    if (
+        (chosen[0], chosen[-1]) != EXPLORATORY_CORE_WINDOW
+        or len(chosen) != EXPLORATORY_CORE_Q_COUNT
+    ):
+        raise ValueError("frozen exploratory coverage-core selection drift")
+    return {
+        "status": "EXPLORATORY_POSTHOC_COVERAGE_SELECTED",
+        "selection_uses": "missingness only; not energies, peak positions or errors",
+        "pre_registered": False,
+        "original_primary_roton_window": list(PRIMARY_WINDOWS["roton"]),
+        "complete_roton_q_window": list(EXPLORATORY_CORE_WINDOW),
+        "complete_q_positions": len(chosen),
+        "q_inverse_angstrom": chosen,
+        "all_pressure_observed": True,
+        "not_full_primary_window": True,
+    }
+
+
+def core_mode_features(
+    by_pressure: dict[str, list[dict]],
+    primary: dict[str, dict[str, dict]],
+) -> tuple[dict, dict]:
+    """Reusable complete q core: preserve the originally failed broad view."""
+    coverage = coverage_core_window(by_pressure)
+    result = {
+        pressure: {
+            "phonon": primary[pressure]["phonon"],
+            "maxon": primary[pressure]["maxon"],
+            "roton": mode_feature(
+                by_pressure[pressure], "roton", EXPLORATORY_CORE_WINDOW
+            ),
+        }
+        for pressure in mat_spec.PRESSURES
+    }
+    if any(
+        result[pressure]["roton"]["status"] != "COMPLETE"
+        for pressure in mat_spec.PRESSURES
+    ):
+        raise ValueError("coverage core contains missing roton observations")
+    return coverage, result
+
+
 def _feature_csv(features: dict[str, dict[str, dict]]) -> bytes:
     columns = (
         "pressure_bar", "mode", "status", "window_total", "valid", "missing",
@@ -352,14 +430,16 @@ def _pressure_csv(features: dict[str, dict[str, dict]]) -> tuple[bytes, dict]:
 
 
 def _assert_scale_metamorphism(
-    by_pressure: dict[str, list[dict]], features: dict[str, dict[str, dict]]
+    by_pressure: dict[str, list[dict]],
+    features: dict[str, dict[str, dict]],
+    windows: dict[str, tuple[str, str]] = PRIMARY_WINDOWS,
 ) -> int:
     count = 0
     for pressure in mat_spec.PRESSURES:
         doubled = [scale_observation(r, Fraction(2)) for r in by_pressure[pressure]]
         for mode in MODES:
             old = features[pressure][mode]
-            new = mode_feature(doubled, mode, PRIMARY_WINDOWS[mode])
+            new = mode_feature(doubled, mode, windows[mode])
             for name in ("nominal", "lower", "upper"):
                 expected = None if old[name] is None else str(2 * Fraction(old[name]))
                 if new[name] != expected:
@@ -406,17 +486,27 @@ def build_evidence(root: Path) -> dict[str, bytes]:
     by_pressure = mat_spec_002.index_observations(observations)
     features = window_features(by_pressure, PRIMARY_WINDOWS)
     alternatives = window_features(by_pressure, ALTERNATE_WINDOWS)
+    coverage, core_features = core_mode_features(by_pressure, features)
     pressure_bytes, pair_counts = _pressure_csv(features)
+    core_pressure_bytes, core_pair_counts = _pressure_csv(core_features)
     controls = {
         "profile": PROFILE,
         "version": VERSION,
         "mode_gap_and_ratio_by_pressure": within_pressure_mode_gap(features),
+        "coverage_core_mode_gap_and_ratio": within_pressure_mode_gap(core_features),
+        "coverage_core_receiver": receiver_controls(core_features),
+        "coverage_core_interval_counts": core_pair_counts,
         "receiver": receiver_controls(features),
         "alternate_windows": alternatives,
         "pressure_pair_interval_counts": pair_counts,
         "metamorphic_checks": {
             "factor_two_energy_and_error": _assert_scale_metamorphism(
                 by_pressure, features
+            ),
+            "factor_two_coverage_core": _assert_scale_metamorphism(
+                by_pressure,
+                core_features,
+                {**PRIMARY_WINDOWS, "roton": EXPLORATORY_CORE_WINDOW},
             ),
         },
         "observed_input_counts": {
@@ -443,6 +533,12 @@ def build_evidence(root: Path) -> dict[str, bytes]:
         "feature-intervals.json": mat_spec.canonical_json(features),
         "pressure-discrimination.csv": pressure_bytes,
         "controls.json": mat_spec.canonical_json(controls),
+        "coverage-core.json": mat_spec.canonical_json({
+            "selection": coverage,
+            "features": core_features,
+            "scope": "post-hoc common observed q support, not full-roton-window inference",
+        }),
+        "core-discrimination.csv": core_pressure_bytes,
     }
     impl = {
         path: mat_spec.sha256(mat_spec.read_regular(root / path))

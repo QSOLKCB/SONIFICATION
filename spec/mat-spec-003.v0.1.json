@@ -38,5 +38,6 @@
   "missing": "mark partial; do not compare windows with any missing observations",
   "receiver": "compare exact nominal maxon/roton energies, two-value ranks and 12-TET",
   "zero_and_audio": "no PCM/WAV; zero not silently pitched",
-  "claim": "windowed descriptors, not phase, sound-speed, E8 or perceptual identification"
+  "claim": "windowed descriptors, not phase, sound-speed, E8 or perceptual identification",
+  "coverage_core_selection": "EXPLORATORY_POSTHOC: longest contiguous q run fully observed for all seven pressures inside original roton window; require 1.860..2.150, 146 q"
 }
