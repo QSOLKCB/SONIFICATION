@@ -1,0 +1,20 @@
+{
+  "repository": "QSOLKCB/SONIFICATION",
+  "release_id": 439229831,
+  "url": "https://github.com/QSOLKCB/SONIFICATION/releases/tag/spark-001-v1.0.0",
+  "tag": "spark-001-v1.0.0",
+  "tag_peeled_commit": "95cc7c455535c1c4562d4241f5b387c811d90e5d",
+  "title": "SPARK-001 v1.0.0 — Formally Verified Bounded Numerical Kernel",
+  "draft": false,
+  "prerelease": false,
+  "immutable": true,
+  "published_at": "2026-11-09T14:39:06Z",
+  "asset": {
+    "id": 727770536,
+    "name": "SPARK-001-v1.0.0-proof-evidence.zip",
+    "bytes": 9051,
+    "sha256": "69ae22cf1e88407c26e98e657ec80b92aba89b28f7bbd683887266e4dd0f23d8",
+    "state": "uploaded"
+  }
+}
+

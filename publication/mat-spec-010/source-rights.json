@@ -1,0 +1,64 @@
+{
+  "profile": "MAT-SPEC-010",
+  "version": "0.1.0",
+  "archive_rights_scope": "MIXED_RIGHTS_NO_BLANKET_RELICENSING",
+  "records": [
+    {
+      "category": "repository_implementation_and_documentation",
+      "included": true,
+      "licence": "MPL-2.0",
+      "licence_file": "LICENSE",
+      "note": "Applies to repository-authored implementation and documentation, not third-party source publications."
+    },
+    {
+      "category": "godfrin_2021_ancillary_dispersion_data",
+      "included": true,
+      "licence": "CC BY 4.0",
+      "source": "https://arxiv.org/abs/2012.09067v1",
+      "doi": "10.1103/PhysRevB.103.104516",
+      "note": "Unmodified attributed ancillary table already pinned by MAT-SPEC-001."
+    },
+    {
+      "category": "bhadra_mishra_2022_model_input_excerpt",
+      "included": true,
+      "licence": "CC BY 4.0",
+      "doi": "10.1063/5.0083847",
+      "note": "Eight attributed model-input table entries; not raw measurements."
+    },
+    {
+      "category": "donnelly_barenghi_1998_evaluated_reference_excerpt",
+      "included": true,
+      "licence": "SOURCE_PUBLICATION_COPYRIGHT_RETAINED",
+      "doi": "10.1063/1.556028",
+      "note": "Small selectively transcribed factual excerpt with attribution; the source PDF is not redistributed or relicensed."
+    },
+    {
+      "category": "lipa_chui_1984_processed_measurement_excerpt",
+      "included": true,
+      "licence": "NASA_HOSTED_PUBLIC_USE_PERMITTED_ATTRIBUTION_RETAINED",
+      "source": "https://ntrs.nasa.gov/citations/19860021083",
+      "doi": "10.1103/PhysRevLett.51.2291",
+      "note": "Twelve manually selected factual values; the NASA report PDF is not redistributed."
+    },
+    {
+      "category": "barmatz_2007_fit_summary_excerpt",
+      "included": true,
+      "licence": "SOURCE_PUBLICATION_RIGHTS_RETAINED",
+      "doi": "10.1103/RevModPhys.79.1",
+      "note": "Four attributed secondary fitted values; the review PDF is not redistributed or relicensed."
+    },
+    {
+      "category": "secondary_literature",
+      "included": false,
+      "licence": "SOURCE_SPECIFIC",
+      "note": "Only citations, identifiers, lineage notes and URLs are included; article/report bytes are excluded."
+    },
+    {
+      "category": "synthetic_negative_controls",
+      "included": true,
+      "licence": "MPL-2.0",
+      "note": "Repository-authored software test fixtures; explicitly not physical evidence."
+    }
+  ]
+}
+
