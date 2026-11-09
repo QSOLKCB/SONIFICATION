@@ -42,6 +42,26 @@ class SparkReferenceTests(unittest.TestCase):
         self.assertNotIn("  pull_request:", source)
         self.assertNotIn("  push:", source)
 
+    def test_local_proof_fails_on_unproved_checks_and_warnings(self) -> None:
+        from pathlib import Path
+
+        root = Path(__file__).resolve().parents[1]
+        workflow = (root / ".github/workflows/spark-001-proof.yml").read_text()
+        proof_step = workflow.split("      - name: Run GNATprove", 1)[1].split(
+            "      - name: Record proof receipt", 1
+        )[0]
+        self.assertIn("set -euo pipefail", proof_step)
+        self.assertIn("gnatprove -P verification/spark/spark_core.gpr", proof_step)
+        self.assertIn("--mode=all", proof_step)
+        self.assertIn("--checks-as-errors=on", proof_step)
+        self.assertIn("--warnings=error", proof_step)
+        self.assertIn("--proof-warnings=on", proof_step)
+        self.assertIn("--report=statistics", proof_step)
+        self.assertNotIn("|| true", proof_step)
+        self.assertNotIn("continue-on-error: true", proof_step)
+        self.assertIn("steps.prove.conclusion", workflow)
+        self.assertIn("PROOF.log RESULT.txt > SHA256SUMS", workflow)
+
     def test_fixed_seed_vectors_and_source_identities(self) -> None:
         result = vectors()
         self.assertEqual(result, vectors())

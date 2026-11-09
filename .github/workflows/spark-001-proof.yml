@@ -54,8 +54,12 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p verification/spark/obj
+          # GNATprove normally exits 0 even with unproved checks or warnings.
+          # Both severity classes MUST fail the job and proof receipt.
           gnatprove -P verification/spark/spark_core.gpr \
-            --mode=all --level=2 2>&1 | tee '${{ steps.preflight.outputs.proof_directory }}/PROOF.log'
+            --mode=all --level=2 --report=statistics \
+            --checks-as-errors=on --warnings=error --proof-warnings=on \
+            2>&1 | tee '${{ steps.preflight.outputs.proof_directory }}/PROOF.log'
       - name: Record proof receipt locally, even on failed obligations
         if: always() && steps.preflight.outcome == 'success'
         shell: bash
@@ -64,7 +68,11 @@ jobs:
           evidence='${{ steps.preflight.outputs.proof_directory }}'
           printf 'Workflow: SPARK-001 owner-local\nCommit: %s\nGNATprove outcome: %s\n' \
             "$GITHUB_SHA" '${{ steps.prove.conclusion }}' > "$evidence/RESULT.txt"
-          (cd "$evidence" && sha256sum TOOLCHAIN.txt SOURCES.sha256 RESULT.txt > SHA256SUMS)
+          # PROOF.log is evidence too, including in failed proof attempts.
+          test -f "$evidence/PROOF.log"
+          (cd "$evidence" && sha256sum \
+            TOOLCHAIN.txt SOURCES.sha256 PROOF.log RESULT.txt > SHA256SUMS)
+          (cd "$evidence" && sha256sum -c SHA256SUMS)
           printf 'Proof evidence retained locally: %s\n' "$evidence" >> "$GITHUB_STEP_SUMMARY"
       - name: Publish only with explicit owner opt-in
         if: inputs.upload_evidence == true && always() && steps.preflight.outcome == 'success'

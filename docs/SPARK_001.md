@@ -55,7 +55,9 @@ From the SONIFICATION checkout, with GNAT 13 already installed:
 Run a separately installed GNATprove (with a compatible GNAT):
 
     mkdir -p verification/spark/obj
-    gnatprove -P verification/spark/spark_core.gpr --mode=all --level=2
+    gnatprove -P verification/spark/spark_core.gpr \
+      --mode=all --level=2 --report=statistics \
+      --checks-as-errors=on --warnings=error --proof-warnings=on
 
 The dedicated workflow (.github/workflows/spark-001-proof.yml) is
 **workflow_dispatch only** and guarded for reviewed main, the explicit
@@ -64,6 +66,15 @@ It refuses absent tools and retains the executed logs locally in a
 new immutable-by-path run directory; uploading evidence requires a
 second explicit opt-in. It does not run automatically on pull requests
 or unmerged branches.
+
+By default GNATprove can exit **zero despite unproved check messages or
+warnings**. This verification workflow uses `--checks-as-errors=on` and
+`--warnings=error` (plus `--proof-warnings=on`) so those conditions
+cause a **nonzero exit**. Bash `set -o pipefail` propagates this through
+`tee`; `steps.prove.conclusion` records failure rather than success.
+The PROOF.log is included in the source/toolchain SHA-256 receipt even
+when obligations are not discharged. This is strict proof admission,
+not a guarantee that an empty proof obligation set proves useful code.
 
 If the prover is missing, a VC is unproved, or any assumption is unresolved,
 mark the result UNPROVED. Do not replace failed proof with successful tests.
