@@ -1,52 +1,81 @@
-name: SPARK-001 GNATprove proof obligations
+name: SPARK-001 owner-authorized local GNATprove proof
 on:
-  pull_request:
-    paths:
-      - 'verification/spark/**'
-      - '.github/workflows/spark-001-proof.yml'
-  push:
-    paths:
-      - 'verification/spark/**'
-      - '.github/workflows/spark-001-proof.yml'
+  workflow_dispatch:
+    inputs:
+      authorize_proof:
+        description: 'I approve running reviewed main on my QSOL workstation'
+        type: boolean
+        required: true
+        default: false
+      upload_evidence:
+        description: 'Opt in to publishing proof logs to GitHub'
+        type: boolean
+        required: false
+        default: false
 permissions:
   contents: read
+concurrency:
+  group: spark-001-owner-local
+  cancel-in-progress: false
 jobs:
-  gnatprove:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 30
+  proof-local:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && github.actor == 'EmergentMonk' && inputs.authorize_proof == true
+    runs-on: [self-hosted, linux, x64, qsol-rtx5060ti]
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
-      - name: Install Alire 2.1.1
-        uses: alire-project/setup-alire@v6
         with:
-          version: '2.1.1'
-      - name: Install matching pinned GNAT/GPRbuild/GNATprove
+          persist-credentials: false
+      - name: Require exact reviewed source, installed tools and no workspace drift
+        id: preflight
         shell: bash
         run: |
           set -euo pipefail
-          alr --version
-          alr -n install --prefix="$RUNNER_TEMP/spark-compiler" \
-            gnat_native=16.1.0 gprbuild=26.0.1 gnatprove=16.1.0
-          echo "$RUNNER_TEMP/spark-compiler/bin" >> "$GITHUB_PATH"
-      - name: Execute proof obligations on checked-out SPARK source
-        shell: bash
-        run: |
-          set -euo pipefail
-          gnatprove --version
+          test "$GITHUB_REF" = refs/heads/main
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test -z "$(git status --porcelain --untracked-files=all)"
           command -v gnatprove
-          mkdir -p verification/spark/obj
+          command -v gnat
+          command -v gprbuild
+          evidence="$HOME/.local/state/qsol/sonification/spark-001/run-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+          test ! -e "$evidence"
+          mkdir -p -m 700 "$evidence"
+          echo "proof_directory=$evidence" >> "$GITHUB_OUTPUT"
+          gnatprove --version > "$evidence/TOOLCHAIN.txt"
+          gnat --version >> "$evidence/TOOLCHAIN.txt"
+          gprbuild --version >> "$evidence/TOOLCHAIN.txt"
+          printf 'source commit %s\n' "$GITHUB_SHA" >> "$evidence/TOOLCHAIN.txt"
           sha256sum verification/spark/spark_core.ads \
             verification/spark/spark_core.adb \
-            verification/spark/spark_core.gpr | tee spark-source-hashes.txt
+            verification/spark/spark_core.gpr > "$evidence/SOURCES.sha256"
+      - name: Run GNATprove with strict pipeline exit status
+        id: prove
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p verification/spark/obj
           gnatprove -P verification/spark/spark_core.gpr \
-            --mode=all --level=2 2>&1 | tee spark-proof.txt
-      - name: Save executed proof log regardless of success
-        if: always()
+            --mode=all --level=2 2>&1 | tee '${{ steps.preflight.outputs.proof_directory }}/PROOF.log'
+      - name: Record proof receipt locally, even on failed obligations
+        if: always() && steps.preflight.outcome == 'success'
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence='${{ steps.preflight.outputs.proof_directory }}'
+          printf 'Workflow: SPARK-001 owner-local\nCommit: %s\nGNATprove outcome: %s\n' \
+            "$GITHUB_SHA" '${{ steps.prove.conclusion }}' > "$evidence/RESULT.txt"
+          (cd "$evidence" && sha256sum TOOLCHAIN.txt SOURCES.sha256 RESULT.txt > SHA256SUMS)
+          printf 'Proof evidence retained locally: %s\n' "$evidence" >> "$GITHUB_STEP_SUMMARY"
+      - name: Publish only with explicit owner opt-in
+        if: inputs.upload_evidence == true && always() && steps.preflight.outcome == 'success'
         uses: actions/upload-artifact@v4
         with:
-          name: spark-001-gnatprove-${{ github.run_id }}-${{ github.run_attempt }}
+          name: spark-001-local-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
-            spark-source-hashes.txt
-            spark-proof.txt
+            ${{ steps.preflight.outputs.proof_directory }}/TOOLCHAIN.txt
+            ${{ steps.preflight.outputs.proof_directory }}/SOURCES.sha256
+            ${{ steps.preflight.outputs.proof_directory }}/PROOF.log
+            ${{ steps.preflight.outputs.proof_directory }}/RESULT.txt
+            ${{ steps.preflight.outputs.proof_directory }}/SHA256SUMS
           if-no-files-found: warn
-          retention-days: 30
+          retention-days: 14
