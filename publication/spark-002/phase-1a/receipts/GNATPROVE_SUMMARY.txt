@@ -1,0 +1,50 @@
+=========================
+Summary of SPARK analysis
+=========================
+
+-----------------------------------------------------------------------------------
+SPARK Analysis results        Total        Flow      Provers   Justified   Unproved
+-----------------------------------------------------------------------------------
+Data Dependencies                 .           .            .           .          .
+Flow Dependencies                 .           .            .           .          .
+Initialization                    .           .            .           .          .
+Non-Aliasing                      .           .            .           .          .
+Run-time Checks                   .           .            .           .          .
+Assertions                        .           .            .           .          .
+Functional Contracts             11           .    11 (CVC5)           .          .
+LSP Verification                  .           .            .           .          .
+Termination                      12          12            .           .          .
+Concurrency                       .           .            .           .          .
+-----------------------------------------------------------------------------------
+Total                            23    12 (52%)     11 (48%)           .          .
+
+
+max steps used for successful proof: 13
+
+============================
+Most difficult proved checks
+============================
+
+No check found with max time greater than 1 second
+
+========================
+Detailed analysis report
+========================
+
+Analyzed 2 units
+in unit spark_002_core, 13 subprograms and packages out of 13 analyzed
+  Spark_002_Core at spark_002_core.ads:3 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Spark_002_Core.Compare at spark_002_core.ads:33 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Spark_002_Core.Compare_Wide at spark_002_core.ads:50 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Spark_002_Core.Evaluate at spark_002_core.ads:141 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Spark_002_Core.Frozen_010_Decision at spark_002_core.ads:161 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Spark_002_Core.Has_Identity at spark_002_core.ads:82 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Spark_002_Core.Make_Box at spark_002_core.ads:27 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Spark_002_Core.Pair_Separated at spark_002_core.ads:92 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Spark_002_Core.Positive_Scale_Preserves_Order at spark_002_core.ads:61 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (5 checks)
+  Spark_002_Core.Scale at spark_002_core.ads:42 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Spark_002_Core.Structurally_Eligible at spark_002_core.ads:124 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Spark_002_Core.Well_Formed at spark_002_core.ads:22 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Spark_002_Core.Wide_Well_Formed at spark_002_core.ads:24 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+in unit spark_002_probe, 0 subprograms and packages out of 1 analyzed
+  Spark_002_Probe at spark_002_probe.adb:5 skipped; SPARK_Mode => Off

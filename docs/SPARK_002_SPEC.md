@@ -1,6 +1,6 @@
 # SPARK-002 Phase 1A — Bounded interval and evidence-gate specification
 
-**Status: candidate implementation; FORMAL PROOF NOT EXECUTED.**
+**Status: Phase 1A owner-run GNATprove receipts verified (23/23 reported checks), source-pinned to merged commit `06b1294bf1617e9eb3b825051e8bfbf7470e395c`. The native CI does not itself execute GNATprove. No release or scientific-gate promotion.**
 
 This is a separate Ada/SPARK verification stream. It leaves SPARK-001 v1.0.0,
 MAT-SPEC-001–010, historical source data, tags, scientific claims, checksums
@@ -118,6 +118,6 @@ The proof is not run by untrusted pull-request workflows or on the user's
 self-hosted workstation without authorization.
 
 **Phase 1A acceptance:** reviewed source, native CI passing and explicit
-`SPARK_002_FORMAL_PROOF_STATUS=NOT_EXECUTED`; no tag/DOI/release.
+`SPARK_002_FORMAL_PROOF_STATUS=NOT_EXECUTED` is the native-CI *job* status, not the status of the separately executed owner proof. Historical owner-run proof evidence is preserved in `publication/spark-002/phase-1a/`; no tag/DOI/release.
 Later phases may attempt full proofs, stronger parser contracts, a fixed-size
 global provenance audit, and independent Python/Ada semantic correspondence.

@@ -1,0 +1,34 @@
+name: SPARK-002 Phase 1A historical proof receipt checks
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'publication/spark-002/phase-1a/**'
+      - 'scripts/verify_spark_002_phase_1a_receipts.py'
+      - 'tests/test_spark_002_phase_1a_receipts.py'
+      - '.github/workflows/spark-002-proof-receipts.yml'
+  pull_request:
+    paths:
+      - 'publication/spark-002/phase-1a/**'
+      - 'scripts/verify_spark_002_phase_1a_receipts.py'
+      - 'tests/test_spark_002_phase_1a_receipts.py'
+      - '.github/workflows/spark-002-proof-receipts.yml'
+permissions:
+  contents: read
+jobs:
+  verify-evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify immutable source and original receipts
+        run: python3 scripts/verify_spark_002_phase_1a_receipts.py
+      - name: Negative mutation checks
+        run: python3 -m unittest tests.test_spark_002_phase_1a_receipts -v
+      - name: Record precise evidence boundary
+        run: |
+          echo 'Historical owner GNATprove receipts verified; GNATprove NOT rerun by CI.' >> "$GITHUB_STEP_SUMMARY"
+          echo '23 reported historical checks proved; MAT-SPEC physical gates remain blocked.' >> "$GITHUB_STEP_SUMMARY"

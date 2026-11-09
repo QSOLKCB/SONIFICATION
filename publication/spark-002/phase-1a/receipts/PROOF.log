@@ -1,0 +1,73 @@
+Phase 1 of 3: generation of data representation information ...
+Phase 2 of 3: generation of Global contracts ...
+Phase 3 of 3: flow analysis and proof ...
+ info: precondition proved (CVC5: 2 VC in max 0.0 seconds and 1 step)
+--> spark_002_core.adb:39:14
+
+ info: precondition proved (CVC5: 2 VC in max 0.0 seconds and 1 step)
+--> spark_002_core.adb:40:09
+
+ info: precondition proved (CVC5: 1 VC in max 0.0 seconds and 1 step)
+--> spark_002_core.adb:40:23
+
+ info: precondition proved (CVC5: 1 VC in max 0.0 seconds and 1 step)
+--> spark_002_core.adb:40:45
+
+ info: implicit aspect Always_Terminates on "Well_Formed" has been proved, subprogram will terminate
+--> spark_002_core.ads:22:13
+
+ info: implicit aspect Always_Terminates on "Wide_Well_Formed" has been proved, subprogram will terminate
+--> spark_002_core.ads:24:13
+
+ info: implicit aspect Always_Terminates on "Make_Box" has been proved, subprogram will terminate
+--> spark_002_core.ads:27:13
+
+ info: postcondition proved (CVC5: 3 VC in max 0.0 seconds and 1 step)
+--> spark_002_core.ads:29:08
+
+ info: implicit aspect Always_Terminates on "Compare" has been proved, subprogram will terminate
+--> spark_002_core.ads:33:13
+
+ info: postcondition proved (CVC5: 3 VC in max 0.0 seconds and 1 step)
+--> spark_002_core.ads:36:13
+
+ info: implicit aspect Always_Terminates on "Scale" has been proved, subprogram will terminate
+--> spark_002_core.ads:42:13
+
+ info: postcondition proved (CVC5: 3 VC in max 0.0 seconds and 1 step)
+--> spark_002_core.ads:46:13
+
+ info: implicit aspect Always_Terminates on "Compare_Wide" has been proved, subprogram will terminate
+--> spark_002_core.ads:50:13
+
+ info: postcondition proved (CVC5: 3 VC in max 0.0 seconds and 1 step)
+--> spark_002_core.ads:54:13
+
+ info: implicit aspect Always_Terminates on "Positive_Scale_Preserves_Order" has been proved, subprogram will terminate
+--> spark_002_core.ads:61:13
+
+ info: postcondition proved (CVC5: 1 VC in max 0.0 seconds and 13 steps)
+--> spark_002_core.ads:64:19
+
+ info: implicit aspect Always_Terminates on "Has_Identity" has been proved, subprogram will terminate
+--> spark_002_core.ads:82:13
+
+ info: implicit aspect Always_Terminates on "Pair_Separated" has been proved, subprogram will terminate
+--> spark_002_core.ads:92:13
+
+ info: implicit aspect Always_Terminates on "Structurally_Eligible" has been proved, subprogram will terminate
+--> spark_002_core.ads:124:13
+
+ info: implicit aspect Always_Terminates on "Evaluate" has been proved, subprogram will terminate
+--> spark_002_core.ads:141:13
+
+ info: postcondition proved (CVC5: 3 VC in max 0.0 seconds and 1 step)
+--> spark_002_core.ads:143:08
+
+ info: implicit aspect Always_Terminates on "Frozen_010_Decision" has been proved, subprogram will terminate
+--> spark_002_core.ads:161:13
+
+ info: postcondition proved (CVC5: 3 VC in max 0.0 seconds and 1 step)
+--> spark_002_core.ads:163:08
+Success: all checks proved (23 checks).
+Summary logged in /home/trent/sonification-spark-002-review/verification/spark002/obj/gnatprove/gnatprove.out
