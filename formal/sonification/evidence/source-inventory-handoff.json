@@ -1,0 +1,74 @@
+{
+  "AUDIT_ACCEPTED": "OPEN",
+  "DIFFERENTIAL_TESTED": "NOT_RUN",
+  "MODEL_PROVED": "OPEN",
+  "REFINEMENT_PROVED": "OPEN",
+  "agent_task": "historical_inventory",
+  "blockers": [
+    "Semantic dependency closure remains OPEN",
+    "ECMAScript/Ada and other non-Python function extraction is lexical only; grammar-aware coverage OPEN",
+    "No repository release tags for MAT-SPEC-001/002; first source-introduction commits used as dependency locators",
+    "External archive payload identity and external package semantics require investigation"
+  ],
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "formal/sonification/tools/inventory.py",
+        "--check"
+      ],
+      "cwd": "/home/trent/sonification-formal-001",
+      "exit_code": 0,
+      "stderr": "formal/sonification/evidence/source-inventory.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "formal/sonification/evidence/source-inventory.stdout.log",
+      "stdout_sha256": "b628001e79c9d1fe253f06a4a3b694a06c7a345b581342093a771950aa8dac61"
+    },
+    {
+      "argv": [
+        "uv",
+        "tool",
+        "run",
+        "--offline",
+        "ruff",
+        "check",
+        "formal/sonification/tools/inventory.py"
+      ],
+      "exit_code": 0,
+      "outcome": "PASS; All checks passed"
+    },
+    {
+      "argv": [
+        "python3.11",
+        "formal/sonification/tools/inventory.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "outcome": "PASS; same deterministic generated inventory"
+    },
+    {
+      "argv": [
+        "python3.12",
+        "formal/sonification/tools/inventory.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "outcome": "PASS; same deterministic generated inventory"
+    }
+  ],
+  "formalization_commit": null,
+  "next_actions": [
+    "Review canonical historical tag identities and inventory",
+    "Attach selected exact mathematical declarations and separate source-refinement evidence without promoting other functions",
+    "Implement grammar-aware ECMAScript source obligation extraction",
+    "Independently review remaining Python function contracts and dependency semantics"
+  ],
+  "project_id": "SONIFICATION-FORMAL-001",
+  "scope": "Identity and static-navigation inventory only; no theorem or refinement acceptance",
+  "target_commit": "8c62517138e3b86a4672d8969e190b747f81c398",
+  "tool_versions": {
+    "generation_python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+    "ruff": "0.17.4"
+  },
+  "worktree_state": "DIRTY; new inventory files; no production files modified"
+}

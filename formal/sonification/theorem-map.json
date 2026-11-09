@@ -1,0 +1,190 @@
+{
+  "schema": "qsol.sonification-formal-001.theorem-map/v1",
+  "target_commit": "8c62517138e3b86a4672d8969e190b747f81c398",
+  "coverage": "Selected investigation targets; all other operations remain OPEN in SOURCE_INVENTORY.json",
+  "aggregation": "No dimension promotes another dimension. PASS is always scoped to linked evidence.",
+  "targets": [
+    {
+      "id": "MAT007.interval",
+      "implementation": {
+        "path": "materials/mat_spec_007.py",
+        "symbol": "interval"
+      },
+      "intended_property": "Exact decimal center plus/minus strictly positive error; exceptions and missingness",
+      "formal_definition": null,
+      "theorems": [],
+      "proof_dependencies": [],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "CPython source-to-semantics correspondence",
+        "Representation, exception and observable output relation",
+        "Transitive production caller and dependency semantics"
+      ],
+      "executable_tests": [],
+      "assurance": {
+        "MODEL_PROVED": "OPEN",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "OPEN",
+        "AUDIT_ACCEPTED": "OPEN"
+      },
+      "evidence": {},
+      "independent_specification_review": "PENDING"
+    },
+    {
+      "id": "MAT007.classify",
+      "implementation": {
+        "path": "materials/mat_spec_007.py",
+        "symbol": "classify"
+      },
+      "intended_property": "Invalid rejection and exhaustive exclusive closed interval classification; reversal and positive scaling",
+      "formal_definition": null,
+      "theorems": [],
+      "proof_dependencies": [],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "CPython source-to-semantics correspondence",
+        "Representation, exception and observable output relation",
+        "Transitive production caller and dependency semantics"
+      ],
+      "executable_tests": [],
+      "assurance": {
+        "MODEL_PROVED": "OPEN",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "OPEN",
+        "AUDIT_ACCEPTED": "OPEN"
+      },
+      "evidence": {},
+      "independent_specification_review": "PENDING"
+    },
+    {
+      "id": "MAT007.pairwise_fits",
+      "implementation": {
+        "path": "materials/mat_spec_007.py",
+        "symbol": "pairwise_fits"
+      },
+      "intended_property": "Pair uniqueness, campaign separation and relation counts",
+      "formal_definition": null,
+      "theorems": [],
+      "proof_dependencies": [],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "CPython source-to-semantics correspondence",
+        "Representation, exception and observable output relation",
+        "Transitive production caller and dependency semantics"
+      ],
+      "executable_tests": [],
+      "assurance": {
+        "MODEL_PROVED": "OPEN",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "OPEN",
+        "AUDIT_ACCEPTED": "OPEN"
+      },
+      "evidence": {},
+      "independent_specification_review": "PENDING"
+    },
+    {
+      "id": "MAT008.packet",
+      "implementation": {
+        "path": "materials/mat_spec_008.py",
+        "symbol": "validate_future_measurement_packet"
+      },
+      "intended_property": "Row and provenance ownership invariants; fail closed",
+      "formal_definition": null,
+      "theorems": [],
+      "proof_dependencies": [],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "CPython source-to-semantics correspondence",
+        "Representation, exception and observable output relation",
+        "Transitive production caller and dependency semantics"
+      ],
+      "executable_tests": [],
+      "assurance": {
+        "MODEL_PROVED": "OPEN",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "OPEN",
+        "AUDIT_ACCEPTED": "OPEN"
+      },
+      "evidence": {},
+      "independent_specification_review": "PENDING"
+    },
+    {
+      "id": "MAT009.partition",
+      "implementation": {
+        "path": "materials/mat_spec_009.py",
+        "symbol": "check_future_challenge"
+      },
+      "intended_property": "TRAIN/HOLDOUT source-family separation; blocked classifier score",
+      "formal_definition": null,
+      "theorems": [],
+      "proof_dependencies": [],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "CPython source-to-semantics correspondence",
+        "Representation, exception and observable output relation",
+        "Transitive production caller and dependency semantics"
+      ],
+      "executable_tests": [],
+      "assurance": {
+        "MODEL_PROVED": "OPEN",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "OPEN",
+        "AUDIT_ACCEPTED": "OPEN"
+      },
+      "evidence": {},
+      "independent_specification_review": "PENDING"
+    },
+    {
+      "id": "MAT010.parent",
+      "implementation": {
+        "path": "materials/mat_spec_010.py",
+        "symbol": "verify_parent"
+      },
+      "intended_property": "Exact parent hashes and membership",
+      "formal_definition": null,
+      "theorems": [],
+      "proof_dependencies": [],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "CPython source-to-semantics correspondence",
+        "Representation, exception and observable output relation",
+        "Transitive production caller and dependency semantics"
+      ],
+      "executable_tests": [],
+      "assurance": {
+        "MODEL_PROVED": "OPEN",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "OPEN",
+        "AUDIT_ACCEPTED": "OPEN"
+      },
+      "evidence": {},
+      "independent_specification_review": "PENDING"
+    },
+    {
+      "id": "MAT010.closure",
+      "implementation": {
+        "path": "materials/mat_spec_010.py",
+        "symbol": "science_closure"
+      },
+      "intended_property": "Scientific gates remain open and numbered series closed",
+      "formal_definition": null,
+      "theorems": [],
+      "proof_dependencies": [],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "CPython source-to-semantics correspondence",
+        "Representation, exception and observable output relation",
+        "Transitive production caller and dependency semantics"
+      ],
+      "executable_tests": [],
+      "assurance": {
+        "MODEL_PROVED": "OPEN",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "OPEN",
+        "AUDIT_ACCEPTED": "OPEN"
+      },
+      "evidence": {},
+      "independent_specification_review": "PENDING"
+    }
+  ]
+}

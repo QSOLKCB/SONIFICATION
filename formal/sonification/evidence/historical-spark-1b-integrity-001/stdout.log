@@ -1,0 +1,2 @@
+SPARK-002 PHASE 1B HISTORICAL PROOF VERIFIED; GNATPROVE NOT RERUN
+{"historical_source_commit": "6f0f1be1ba8885fa708d7328bcb92fbf4ecc324f", "historical_sources_verified": 3, "new_prover_run": false, "original_receipts_verified": 7, "physical_evidence_admitted": false, "reported_proof_checks": 9, "unproved": 0}
