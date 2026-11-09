@@ -23,9 +23,18 @@ RECEIPTS = {
     "TOOLCHAIN.txt": "d0ec78c178655565104dd97553954ba573633797216446fad8b3254aad79de55"
 }
 SOURCES = {
-    "verification/spark002/spark_002_core.ads": "808648a2190ce8a28bd84313b7f88c4ec5fa0ca704c357bd2a44eb08fdb8e832",
-    "verification/spark002/spark_002_core.adb": "0df1ee836efc96d7c506a2b8523fe4e18ca388246dfeb7697172936e05b18f17",
-    "verification/spark002/spark_002_core.gpr": "91fcadee68bad68e0fd727196b4d299228a63825ae1d31412b24dc15e81b4afc"
+    "verification/spark002/spark_002_core.ads": (
+        "808648a2190ce8a28bd84313b7f88c4e"
+        "c5fa0ca704c357bd2a44eb08fdb8e832"
+    ),
+    "verification/spark002/spark_002_core.adb": (
+        "0df1ee836efc96d7c506a2b8523fe4e1"
+        "8ca388246dfeb7697172936e05b18f17"
+    ),
+    "verification/spark002/spark_002_core.gpr": (
+        "91fcadee68bad68e0fd727196b4d2992"
+        "28a63825ae1d31412b24dc15e81b4afc"
+    )
 }
 
 def _sha(raw: bytes) -> str:
@@ -67,14 +76,14 @@ def verify(root: Path, evidence: Path) -> dict[str, object]:
     for path, expected in SOURCES.items():
         result = subprocess.run(
             ["git", "-C", str(root), "show", f"{SOURCE_COMMIT}:{path}"],
-            stdin=subprocess.DEVNULL, stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE, check=False,
+            stdin=subprocess.DEVNULL, capture_output=True,
+            check=False,
         )
         if result.returncode or _sha(result.stdout) != expected:
             raise ValueError(f"historical Git source identity mismatch: {path}")
     proof = raw["PROOF.log"].decode("utf-8")
     summary = raw["GNATPROVE_SUMMARY.txt"].decode("utf-8")
-    if (b"SPARK-002 GNATprove exit status: 0\n" != raw["RESULT.txt"]
+    if (raw["RESULT.txt"] != b"SPARK-002 GNATprove exit status: 0\n"
             or "Success: all checks proved (23 checks)." not in proof
             or "Functional Contracts             11" not in summary
             or "Termination                      12" not in summary
@@ -101,6 +110,6 @@ if __name__ == "__main__":
         receipt = verify(root, root / "publication/spark-002/phase-1a")
     except (OSError, ValueError) as exc:
         print(f"SPARK-002 RECEIPT VERIFICATION FAILED: {exc}", file=sys.stderr)
-        raise SystemExit(1)
+        raise SystemExit(1) from None
     print("SPARK-002 HISTORICAL RECEIPTS VERIFIED — NO NEW PROOF EXECUTED")
     print(json.dumps(receipt, sort_keys=True))
