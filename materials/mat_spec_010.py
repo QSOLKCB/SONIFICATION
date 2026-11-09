@@ -40,6 +40,140 @@ STAGES = tuple(f"MAT-SPEC-{n:03d}" for n in range(1, 10))
 # Pin the seven MAT-SPEC-009 receipts from merged-main CI before review.
 PARENT_V9_SHA256: dict[str, str] | None = None
 
+EXPECTED_SPEC = json.loads(
+    "{\"profile\":\"MAT-SPEC-010\",\"version\":\"0.1.0\",\"name\":\"Final numbere"
+    "d MAT-SPEC evidence closure and reproducible archive index\",\"fina"
+    "l_numbered_profile\":\"MAT-SPEC-010\",\"numbered_profiles_total\":10,\""
+    "parent_profile\":\"MAT-SPEC-009 v0.1.0\",\"parent_commit\":\"0758a96360"
+    "726aafbb07abed34620eda178407ae\",\"source_replay_requirement\":\"All "
+    "prior nine profiles replayed by MAT-SPEC-009 descendant chain, wi"
+    "th known digests for each logical output\",\"latest_profile_status\""
+    ":\"BLOCKED_NO_ADMITTED_SOURCE_SEPARATED_PHYSICAL_EVIDENCE\",\"scient"
+    "ific_claims\":\"Frozen claim levels and exclusions for each of MAT-"
+    "SPEC-001 through -009; no new helium phase inference in this clos"
+    "ing profile\",\"archive_definition\":\"Deterministic JSON index of lo"
+    "gical artifact paths and input files with SHA-256; NOT ZIP, TAR, "
+    "deposited data or independent DOI\",\"release_rule\":\"External immut"
+    "able tag and release may be created only after owner merge and CI"
+    "; no release SHA anticipated inside its own contents\",\"allowed_ru"
+    "ntime_outputs\":\"Canonical ASCII JSON/CSV only, including preexist"
+    "ing symbolic MIDI SHA-256 identities but no rendered audio\",\"clos"
+    "ure\":\"NUMBERED_SERIES_CLOSED_AT_010_WITH_OPEN_SCIENTIFIC_GATES\",\""
+    "post_010_order\":[\"SONIFICATION_SPARK_ADA_PROOF_AND_DIFFERENTIAL_E"
+    "XECUTION\",\"VANILLAJS_LEAN_TO_ECMA_REFINEMENT_REPAIR\"],\"future_mat"
+    "erial_research\":\"separate post-MAT-SPEC programme; never add MAT-"
+    "SPEC-011\",\"claim_policy\":\"Executed numerical proofs/tests distinc"
+    "t from physics, source independence, listener perception, statist"
+    "ical significance and formal verification\",\"foundational_doi\":\"10"
+    ".5281/zenodo.24062652\",\"new_doi\":null}"
+)
+EXPECTED_CLAIMS = json.loads(
+    "{\"profile\":\"MAT-SPEC-010\",\"version\":\"0.1.0\",\"foundational_mat_spe"
+    "c_001_doi\":\"10.5281/zenodo.24062652\",\"stages\":[{\"profile\":\"MAT-SP"
+    "EC-001\",\"version\":\"1.0.0\",\"merged_commit\":\"195b325097cd01f16e9ca9"
+    "09edd95482d4863c27\",\"tag\":null,\"grade\":\"MEASURED_SPECTRAL_NUMERIC"
+    "AL_REPLAY\",\"finding\":\"Seven-pressure helium-4 neutron-dispersion "
+    "table preserved with symbolic mappings, observed/missing cells an"
+    "d reproducible provenance\",\"evidence_file\":\"audit.json\",\"boundary"
+    "\":\"No inference of new helium phase law, listening perception, or"
+    " unification\"},{\"profile\":\"MAT-SPEC-002\",\"version\":\"0.1.0\",\"merge"
+    "d_commit\":\"c400a27e16cc1ed63efc6657dbdd25d003b7bdbb\",\"tag\":null,\""
+    "grade\":\"MEASURED_INTERVAL_AND_SAMPLING_AUDIT\",\"finding\":\"Matched-"
+    "q interval ordering and sampling invariants over the frozen neutr"
+    "on-dispersion source\",\"evidence_file\":\"audit.json\",\"boundary\":\"Re"
+    "ported errors are not covariance or calibrated probability distri"
+    "butions\"},{\"profile\":\"MAT-SPEC-003\",\"version\":\"0.1.0\",\"merged_com"
+    "mit\":\"c15ef3223e78cffad1494d99ad6edbdb41195362\",\"tag\":\"mat-spec-0"
+    "03-v0.1.0\",\"grade\":\"MEASURED_MODE_FEATURE_ANALYSIS\",\"finding\":\"Ph"
+    "onon, maxon and roton feature comparisons retain missingness and "
+    "mark post-hoc common coverage as exploratory\",\"evidence_file\":\"co"
+    "ntrols.json\",\"boundary\":\"Coverage-core roton results are explorat"
+    "ory, not preregistered discovery\"},{\"profile\":\"MAT-SPEC-004\",\"ver"
+    "sion\":\"0.1.0\",\"merged_commit\":\"eac0659cbae1392bf63632ec8138005367"
+    "e63304\",\"tag\":\"mat-spec-004-v0.1.0\",\"grade\":\"MODEL_INPUT_TEMPERAT"
+    "URE_SYMBOLIC_ANALYSIS\",\"finding\":\"Eight published helium-II tempe"
+    "rature model inputs mapped with exact mass-fraction closure\",\"evi"
+    "dence_file\":\"audit.json\",\"boundary\":\"Published model inputs are n"
+    "ot independently observed phase labels\"},{\"profile\":\"MAT-SPEC-005"
+    "\",\"version\":\"0.1.0\",\"merged_commit\":\"5b4c89b795beb7fc8c4f7d86ce2a"
+    "2fb510cb6cb2\",\"tag\":\"mat-spec-005-v0.1.0\",\"grade\":\"EVALUATED_REFE"
+    "RENCE_CROSS_TRANSITION_REPLAY\",\"finding\":\"Fourteen evaluated SVP "
+    "reference temperatures span the lambda boundary, preserving zero "
+    "versus out-of-domain null distinctions\",\"evidence_file\":\"phase-ga"
+    "te.json\",\"boundary\":\"Reference values are not a new measured disc"
+    "ontinuity or independent phase classifier\"},{\"profile\":\"MAT-SPEC-"
+    "006\",\"version\":\"0.1.0\",\"merged_commit\":\"c1abb62e8914f6790b5da5a51"
+    "adf330b813b0530\",\"tag\":\"mat-spec-006-v0.1.0\",\"grade\":\"PRIMARY_PRO"
+    "CESSED_EXPERIMENTAL_TABLE_REPLAY\",\"finding\":\"Twelve published gra"
+    "vity-corrected and averaged Lipa-Chui experimental heat-capacity "
+    "rows preserved across lambda\",\"evidence_file\":\"phase-gate.json\",\""
+    "boundary\":\"One original processed campaign, no per-row errors or "
+    "orthogonal phase diagnostics\"},{\"profile\":\"MAT-SPEC-007\",\"version"
+    "\":\"0.1.0\",\"merged_commit\":\"b97348ff8fcf3f57764dec21a8914f153f96a7"
+    "45\",\"tag\":null,\"grade\":\"SECONDARY_PUBLISHED_FIT_CONCORDANCE\",\"fin"
+    "ding\":\"Four published critical-fit summaries trace four acquisiti"
+    "on campaigns across three laboratory families\",\"evidence_file\":\"r"
+    "eplication-gate.json\",\"boundary\":\"Secondary fit uncertainty boxes"
+    " do not authenticate original measurement rows or new experimenta"
+    "l replication\"},{\"profile\":\"MAT-SPEC-008\",\"version\":\"0.1.0\",\"merg"
+    "ed_commit\":\"b4247877dd471e2e9d4986c86bdc1f11b14e43f8\",\"tag\":null,"
+    "\"grade\":\"DOCUMENT_LINEAGE_AND_NEGATIVE_MEASUREMENT_ADMISSION\",\"fi"
+    "nding\":\"Ten literature records, four campaigns and only one campa"
+    "ign with source-pinned processed measurements\",\"evidence_file\":\"a"
+    "dmission.json\",\"boundary\":\"Zero eligible independently sourced me"
+    "asurement-campaign pairs; no classifier score\"},{\"profile\":\"MAT-S"
+    "PEC-009\",\"version\":\"0.1.0\",\"merged_commit\":\"0758a96360726aafbb07a"
+    "bed34620eda178407ae\",\"tag\":null,\"grade\":\"PROSPECTIVE_PROTOCOL_AND"
+    "_SYNTHETIC_NEGATIVE_CONTROLS\",\"finding\":\"Fourteen synthetic prove"
+    "nance/holdout controls reject evidence leakage; prospective proto"
+    "col remains blocked for actual physics\",\"evidence_file\":\"split-pr"
+    "otocol.json\",\"boundary\":\"Synthetic controls and prospective metad"
+    "ata are not physical training, source-separated accuracy or prere"
+    "gistered old experiments\"}]}"
+)
+EXPECTED_SOURCES = json.loads(
+    "{\"profile\":\"MAT-SPEC-010\",\"version\":\"0.1.0\",\"source_stages\":[{\"pr"
+    "ofile\":\"MAT-SPEC-001\",\"data_kind\":\"PUBLISHED_NEUTRON_SPECTRAL_MEA"
+    "SUREMENTS\",\"paths\":[\"data/materials/helium4/DispersionAllPressure"
+    "s.txt\",\"data/materials/helium4/source.json\"],\"note\":\"Original att"
+    "ributed measured neutron-dispersion table; finite cells with miss"
+    "ing values\"},{\"profile\":\"MAT-SPEC-002\",\"data_kind\":\"REUSES_MAT_SP"
+    "EC_001_MEASUREMENTS\",\"paths\":[],\"note\":\"No independently acquired"
+    " data; exact interval and sampling controls on frozen MAT-SPEC-00"
+    "1\"},{\"profile\":\"MAT-SPEC-003\",\"data_kind\":\"REUSES_MAT_SPEC_001_ME"
+    "ASUREMENTS\",\"paths\":[],\"note\":\"No new measured source; phonon/max"
+    "on/roton features preserve missingness\"},{\"profile\":\"MAT-SPEC-004"
+    "\",\"data_kind\":\"PUBLISHED_MODEL_INPUT_TABLE\",\"paths\":[\"data/materi"
+    "als/helium4/temperature_table1_2022.csv\",\"data/materials/helium4/"
+    "temperature_table1_2022.source.json\"],\"note\":\"Eight published mod"
+    "el-input temperature rows, not original independent phase measure"
+    "ments\"},{\"profile\":\"MAT-SPEC-005\",\"data_kind\":\"EVALUATED_REFERENC"
+    "E_COMPILATION\",\"paths\":[\"data/materials/helium4/nist_svp_lambda_r"
+    "eference_1998.csv\",\"data/materials/helium4/nist_svp_lambda_refere"
+    "nce_1998.source.json\"],\"note\":\"Donnelly-Barenghi recommended expe"
+    "rimental-reference property values, not one raw run\"},{\"profile\":"
+    "\"MAT-SPEC-006\",\"data_kind\":\"ORIGINAL_EXPERIMENTER_PROCESSED_MEASU"
+    "REMENTS\",\"paths\":[\"data/materials/helium4/lipa_chui_1984_excerpt."
+    "csv\",\"data/materials/helium4/lipa_chui_1984.source.json\",\"data/ma"
+    "terials/helium4/mat_spec_006_source_inventory.json\"],\"note\":\"Twel"
+    "ve gravity-corrected and averaged Lipa-Chui rows from one campaig"
+    "n, no row-level uncertainties\"},{\"profile\":\"MAT-SPEC-007\",\"data_k"
+    "ind\":\"SECONDARY_CRITICAL_FIT_SUMMARY\",\"paths\":[\"data/materials/he"
+    "lium4/mat_spec_007_svp_fit_summaries.csv\",\"data/materials/helium4"
+    "/mat_spec_007_svp_fit_summaries.source.json\"],\"note\":\"Four review"
+    " fit summaries with original acquisition lineage; not four source"
+    "-pinned raw measurement corpora\"},{\"profile\":\"MAT-SPEC-008\",\"data"
+    "_kind\":\"DOCUMENT_PROVENANCE_CATALOGUE\",\"paths\":[\"data/materials/h"
+    "elium4/mat_spec_008_source_catalogue.json\"],\"note\":\"Ten publicati"
+    "on records; one source-pinned original processed measurement camp"
+    "aign\"},{\"profile\":\"MAT-SPEC-009\",\"data_kind\":\"PROSPECTIVE_TEST_PR"
+    "OTOCOL\",\"paths\":[],\"note\":\"No new physical data; fourteen synthet"
+    "ic negative controls are not experimental measurements\"}],\"notes\""
+    ":\"Exact attributed source data at each stage, rather than treatin"
+    "g publications, fitted models or synthetic controls as independen"
+    "t experiments.\"}"
+)
+
 
 def _read_frozen_json(root: Path, path: str, frozen: dict) -> tuple[dict, bytes]:
     source = mat_spec.read_regular(root / path)
@@ -52,7 +186,9 @@ def _read_frozen_json(root: Path, path: str, frozen: dict) -> tuple[dict, bytes]
     return parsed, source
 
 
-def ancestor_artifact_maps() -> list[tuple[str, str, dict[str, str]]]:
+def ancestor_artifact_maps(
+    stage_009: dict[str, str] | None = None,
+) -> list[tuple[str, str, dict[str, str]]]:
     """Recover pinned receipts from the executed, linked 001..009 code."""
     return [
         ("MAT-SPEC-001", "1.0.0", mat_spec_002.PARENT_ARTIFACT_SHA256),
@@ -63,7 +199,7 @@ def ancestor_artifact_maps() -> list[tuple[str, str, dict[str, str]]]:
         ("MAT-SPEC-006", "0.1.0", mat_spec_007.PARENT_V6_SHA256),
         ("MAT-SPEC-007", "0.1.0", mat_spec_008.PARENT_V7_SHA256),
         ("MAT-SPEC-008", "0.1.0", mat_spec_009.PARENT_V8_SHA256),
-        ("MAT-SPEC-009", "0.1.0", PARENT_V9_SHA256),
+        ("MAT-SPEC-009", "0.1.0", PARENT_V9_SHA256 or stage_009),
     ]
 
 
@@ -302,7 +438,9 @@ def build_evidence(root: Path) -> dict[str, bytes]:
     ):
         raise ValueError("MAT-SPEC-010 final programme closure drift")
 
-    frozen = ancestor_artifact_maps()
+    frozen = ancestor_artifact_maps(
+        {name: mat_spec.sha256(raw) for name, raw in parent.items()}
+    )
     archive_members = validate_archive_membership(claims, frozen)
     inputs = _source_index(root, sources)
     closure = science_closure(split, audit, source_gate)
