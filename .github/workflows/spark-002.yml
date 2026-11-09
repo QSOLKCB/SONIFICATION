@@ -1,0 +1,55 @@
+name: SPARK-002 bounded Ada/Python differential pilot
+on:
+  push:
+    paths:
+      - 'verification/spark002/**'
+      - 'scripts/verify_spark_002.py'
+      - 'scripts/run_spark_002_proof.sh'
+      - 'tests/test_spark_002.py'
+      - 'docs/SPARK_002_SPEC.md'
+      - '.github/workflows/spark-002.yml'
+  pull_request:
+    paths:
+      - 'verification/spark002/**'
+      - 'scripts/verify_spark_002.py'
+      - 'scripts/run_spark_002_proof.sh'
+      - 'tests/test_spark_002.py'
+      - 'docs/SPARK_002_SPEC.md'
+      - '.github/workflows/spark-002.yml'
+permissions:
+  contents: read
+jobs:
+  native-differential:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install GNAT 13
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends gnat-13
+          gnatmake-13 --version
+      - name: Compile bounded SPARK kernel and separate non-SPARK driver
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/qsol-spark-002
+          cd /tmp/qsol-spark-002
+          gnatmake-13 -gnat2022 -gnata \
+            -I"$GITHUB_WORKSPACE/verification/spark002" \
+            "$GITHUB_WORKSPACE/verification/spark002/spark_002_probe.adb" \
+            -o /tmp/qsol-spark-002/spark_002_probe
+      - name: Independent Python oracle and native differential execution
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest tests.test_spark_002 -v
+          python3 scripts/verify_spark_002.py \
+            --exe /tmp/qsol-spark-002/spark_002_probe
+      - name: Report evidence boundary
+        shell: bash
+        run: |
+          echo 'SPARK_002_FORMAL_PROOF_STATUS=NOT_EXECUTED' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Native differential testing does not imply GNATprove VC discharge, source authentication or physical validation.' >> "$GITHUB_STEP_SUMMARY"
