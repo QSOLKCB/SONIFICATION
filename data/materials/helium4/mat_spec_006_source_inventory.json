@@ -1,0 +1,68 @@
+{
+  "profile": "MAT-SPEC-006",
+  "version": "0.1.0",
+  "research_question": "What additional physical data are required to validate a source-separated helium phase witness?",
+  "sources": [
+    {
+      "id": "NASA-CR-177037-APPENDIX-A-1984",
+      "role": "SOURCE_NUMERIC_EXCERPT",
+      "kind": "PRIMARY_EXPERIMENT_CORRECTED_AVERAGED",
+      "source_group": "LIPA_CHUI_1983_1984",
+      "available": "TWELVE_REVIEWED_ROWS",
+      "above_and_below": true,
+      "per_row_error": false,
+      "independent_diagnostic": false,
+      "heldout_independence_from_005": "NOT_ESTABLISHED",
+      "url": "https://ntrs.nasa.gov/citations/19860021083"
+    },
+    {
+      "id": "DONNELLY_BARENGHI_1998",
+      "role": "FROZEN_PARENT_REFERENCE",
+      "kind": "EVALUATED_COMPILATION",
+      "source_group": "REUSES_EARLIER_HELIUM_MEASUREMENTS",
+      "available": "MAT_SPEC_005_FROZEN",
+      "above_and_below": true,
+      "per_row_error": false,
+      "independent_diagnostic": false,
+      "heldout_independence_from_1984": "NOT_ESTABLISHED",
+      "doi": "10.1063/1.556028"
+    },
+    {
+      "id": "LIPA_1996_MICROGRAVITY",
+      "role": "CANDIDATE_ONLY",
+      "kind": "DIFFERENT_EXPERIMENT_PUBLICATION",
+      "source_group": "LIPA_MICROGRAVITY_1992",
+      "available": "PUBLICATION_ABSTRACT_NOT_ROW_ADMITTED",
+      "above_and_below": true,
+      "per_row_error": false,
+      "independent_diagnostic": false,
+      "heldout_independence_from_1984": "REQUIRES_ORIGINAL_RUN_AND_SOURCE_AUDIT",
+      "doi": "10.1103/PhysRevLett.76.944"
+    },
+    {
+      "id": "LIPA_2003_ORBIT",
+      "role": "CANDIDATE_ONLY",
+      "kind": "MICROGRAVITY_MEASUREMENT_REPORT",
+      "source_group": "LIPA_MICROGRAVITY_1992",
+      "available": "PUBLICATION_ABSTRACT_NOT_ROW_ADMITTED",
+      "above_and_below": true,
+      "per_row_error": false,
+      "independent_diagnostic": false,
+      "heldout_independence_from_1996": "OVERLAPPING_EXPERIMENTAL_CAMPAIGN",
+      "doi": "10.1103/PhysRevB.68.174518"
+    },
+    {
+      "id": "MAREK_LIPA_PHILIPS_1988",
+      "role": "CANDIDATE_ONLY",
+      "kind": "SECOND_SOUND_MEASUREMENT",
+      "source_group": "STANFORD_MAREK_LIPA_1988",
+      "available": "PUBLICATION_ABSTRACT_NOT_ROW_ADMITTED",
+      "above_and_below": false,
+      "per_row_error": false,
+      "independent_diagnostic": false,
+      "heldout_independence_from_1984": "NOT_ESTABLISHED",
+      "doi": "10.1103/PhysRevB.38.4465"
+    }
+  ],
+  "no_independence_assumption": "Shared authors, compilation lineage, experiments and reference interpolation require review; no title/DOI-count independence surrogate."
+}

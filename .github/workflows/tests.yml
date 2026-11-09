@@ -74,6 +74,33 @@ jobs:
           PY
       - name: Build MAT-SPEC-005 cross-transition evidence
         run: python scripts/build_mat_spec_005.py --out dist/mat-spec-005
+      - name: Print MAT-SPEC-005 ancestor output SHA-256 inventory
+        run: |
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+
+          for file in sorted(Path("dist/mat-spec-005").iterdir()):
+              if file.is_file():
+                  print(
+                      "MAT_SPEC_005_DIGEST", file.name,
+                      hashlib.sha256(file.read_bytes()).hexdigest(),
+                  )
+          PY
+      - name: Build MAT-SPEC-006 primary experiment evidence
+        run: python scripts/build_mat_spec_006.py --out dist/mat-spec-006
+      - name: Print MAT-SPEC-006 source and held-out status
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("dist/mat-spec-006")
+          gate = json.loads((root / "phase-gate.json").read_bytes())
+          audit = json.loads((root / "source-audit.json").read_bytes())
+          print("MAT_SPEC_006_SOURCE", json.dumps(audit["numeric"], sort_keys=True))
+          print("MAT_SPEC_006_PHASE_GATE", json.dumps(gate, sort_keys=True))
+          PY
       - name: Report cross-transition evidence and blocked phase witness
         run: |
           python - <<'PY'

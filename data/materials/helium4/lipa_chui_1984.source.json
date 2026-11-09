@@ -1,0 +1,35 @@
+{
+  "profile": "MAT-SPEC-006",
+  "source_id": "NASA-CR-177037-APPENDIX-A-1984",
+  "source_title": "High Accuracy Heat Capacity Measurements through the Lambda Transition of Helium with Very High Temperature Resolution",
+  "authors": [
+    "William M. Fairbank",
+    "John A. Lipa"
+  ],
+  "appendix_authors": [
+    "J. A. Lipa",
+    "T. C. P. Chui"
+  ],
+  "appendix_name": "The Heat Capacity of Liquid Helium Near the Lambda Transition, Data Release #1, January 15, 1984",
+  "publication_year": 1984,
+  "nasa_document_id": "19860021083",
+  "source_url": "https://ntrs.nasa.gov/api/citations/19860021083/downloads/19860021083.pdf",
+  "nasa_record": "https://ntrs.nasa.gov/citations/19860021083",
+  "related_original_paper_doi": "10.1103/PhysRevLett.51.2291",
+  "source_excerpt": "Appendix A, Table 1 (above lambda), Table 2 (below lambda)",
+  "source_pdf_page_indices": {
+    "table_1": 40,
+    "table_2": 41
+  },
+  "conditions": "helium-4, saturated vapour pressure, approximately 3 mm high sample",
+  "table_temperature_definition": "temperature minus T_lambda; published microdegrees (microkelvin offsets); not absolute kelvin",
+  "table_property": "gravity-corrected, averaged experimental heat capacity, J/(mol K)",
+  "data_kind": "experimenters' reported gravity-corrected and averaged results, not raw acquisition files",
+  "per_row_uncertainty": "not reported for these twelve selected rows; absent is null, not zero",
+  "calibration_limit": "authors discuss potential systematic calibration and calorimeter errors; no row-level error distributions supplied",
+  "transcription": "12 manually selected published numeric facts, six nearest-ish rows from each side, leading zeros normalized; not an exhaustive table",
+  "independence_from_mat_spec_005": "NOT_ESTABLISHED; 1998 Donnelly-Barenghi compilation cites earlier Lipa results; distinct document does not establish independent experimental ancestry",
+  "phase_labels": "ABOVE/BELOW derived from source table captions and signed delta T; not independently measured phase diagnostics",
+  "rights": "NASA-hosted contractor report labeled public-use permitted; attribution retained; no PDF redistributed",
+  "source_data_sha256": "06c405f1b13f90c2bd83322c512e116dafcf1f8e281618a59c3fcd4cf1510a04"
+}
