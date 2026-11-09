@@ -1,0 +1,54 @@
+{
+  "profile": "MAT-SPEC-007",
+  "version": "0.1.0",
+  "review_title": "Critical phenomena in microgravity: Past, present, and future",
+  "review_doi": "10.1103/RevModPhys.79.1",
+  "review_table": "Table VII, asterisked SVP entries",
+  "review_authors": [
+    "M. Barmatz",
+    "Inseob Hahn",
+    "J. A. Lipa",
+    "R. V. Duncan"
+  ],
+  "review_url": "https://www.depts.ttu.edu/phas/cees/Projects/Images_And_pdfs/Barmatz_RMP_2007.pdf",
+  "data_kind": "four secondary published fit summaries, not raw experimental measurements",
+  "original_experiments": [
+    {
+      "record_id": "AHLERS_1971",
+      "original_doi": "10.1103/PhysRevA.3.696",
+      "analysis_doi": "10.1103/PhysRevB.14.2096",
+      "acquisition_campaign": "AL71_SVP",
+      "lab_family": "BELL_AHLERS",
+      "note": "Mueller et al 1976 re-fit original Ahlers 1971 data, not a new 1976 SVP measurement"
+    },
+    {
+      "record_id": "GASPARINI_MOLDOVER_1975",
+      "original_doi": "10.1103/PhysRevB.12.93",
+      "analysis_doi": "10.1103/PhysRevB.17.1466",
+      "acquisition_campaign": "GM75_SVP",
+      "lab_family": "MINNESOTA_GASPARINI_MOLDOVER",
+      "note": "Gasparini Gaeta 1978 reanalysis of the Gasparini Moldover 1975 pure helium 4 measurement"
+    },
+    {
+      "record_id": "LIPA_CHUI_1983",
+      "original_doi": "10.1103/PhysRevLett.51.2291",
+      "analysis_doi": "10.1103/PhysRevLett.51.2291",
+      "acquisition_campaign": "LC83_SVP",
+      "lab_family": "STANFORD_LIPA",
+      "note": "Original 1983 ground experiment also reported in MAT-SPEC-006 NASA appendix"
+    },
+    {
+      "record_id": "LIPA_STS52_1992",
+      "original_doi": "10.1103/PhysRevLett.76.944",
+      "analysis_doi": "10.1103/PhysRevB.68.174518",
+      "acquisition_campaign": "STS52_1992",
+      "lab_family": "STANFORD_LIPA",
+      "note": "1992 orbital experiment described in 1996 and revised in 2003, not two campaigns"
+    }
+  ],
+  "scope": "pure helium-4 at saturated vapour pressure; derived critical alpha and Aplus/Aminus fits",
+  "uncertainty": "parenthetical uncertainties converted to decimals; unknown common confidence interpretation, covariance and fitted-model comparability",
+  "lineage": "4 acquisition campaigns, 3 laboratory families, 1 review compilation; raw experimental record independence not independently audited",
+  "data_sha256": "b3457eeafd8bda8f8b9ebd63d4cd72af825fd8bd04e2660d01f637578db79489",
+  "rights": "small selection of attributed factual numeric fit values; no review PDF redistributed"
+}

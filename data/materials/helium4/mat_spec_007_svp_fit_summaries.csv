@@ -1,0 +1,5 @@
+record_id,acquisition_campaign,lab_family,measurement_doi,analysis_doi,alpha,alpha_reported_error,amplitude_ratio,amplitude_ratio_reported_error,reference_condition,provenance_note
+AHLERS_1971,AL71_SVP,BELL_AHLERS,10.1103/PhysRevA.3.696,10.1103/PhysRevB.14.2096,-0.016,0.002,1.068,0.010,HE4_SVP,1976 reanalysis of 1971 Ahlers experimental heat capacity
+GASPARINI_MOLDOVER_1975,GM75_SVP,MINNESOTA_GASPARINI_MOLDOVER,10.1103/PhysRevB.12.93,10.1103/PhysRevB.17.1466,-0.0198,0.0037,1.081,0.016,HE4_SVP,1978 Gasparini Gaeta reanalysis of earlier pure helium 4 data
+LIPA_CHUI_1983,LC83_SVP,STANFORD_LIPA,10.1103/PhysRevLett.51.2291,10.1103/PhysRevLett.51.2291,-0.0127,0.0026,1.05,0.02,HE4_SVP,1983 ground calorimetry from MAT SPEC 006 source family
+LIPA_STS52_1992,STS52_1992,STANFORD_LIPA,10.1103/PhysRevLett.76.944,10.1103/PhysRevB.68.174518,-0.0127,0.0003,1.053,0.002,HE4_SVP,1992 orbital campaign published 1996 and reanalysed 2003
