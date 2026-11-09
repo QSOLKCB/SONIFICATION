@@ -1,0 +1,123 @@
+Sonification/Intervals.lean:39:51: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e - f ≥ 0
+  d - e ≥ 1
+  c - d ≥ 0
+  c - f ≥ 0
+where
+ c := a.hi
+ d := a.lo
+ e := b.hi
+ f := b.lo
+Sonification/Intervals.lean:39:51: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e - f ≥ 0
+  d - e ≤ 0
+  c - d ≥ 0
+  c - f ≥ 0
+where
+ c := a.hi
+ d := a.lo
+ e := b.hi
+ f := b.lo
+case pos
+a b : Interval
+h1 : a.lo ≤ a.hi ∧ b.lo ≤ b.hi
+h2 : b.lo ≤ a.hi
+h3 : b.hi < a.lo
+⊢ ¬(if a.hi < b.lo then some Relation.below else some Relation.above) = none
+case neg
+a b : Interval
+h1 : a.lo ≤ a.hi ∧ b.lo ≤ b.hi
+h2 : b.lo ≤ a.hi
+h3 : a.lo ≤ b.hi
+⊢ ¬(if a.hi < b.lo then some Relation.below else if b.hi < a.lo then some Relation.above else some Relation.overlap) =
+      none
+Sonification/Intervals.lean:45:35: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e - f ≥ 0
+  d - e ≤ 0
+  c - d ≥ 0
+  c - f ≥ 0
+where
+ c := a.hi
+ d := a.lo
+ e := b.hi
+ f := b.lo
+Sonification/Intervals.lean:51:35: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e - f ≥ 0
+  d - e ≤ 0
+  c - d ≥ 0
+  c - f ≥ 0
+where
+ c := a.hi
+ d := a.lo
+ e := b.hi
+ f := b.lo
+Sonification/Intervals.lean:58:35: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e - f ≥ 0
+  d - e ≥ 1
+  c - d ≥ 0
+  c - f ≥ 0
+where
+ c := a.hi
+ d := a.lo
+ e := b.hi
+ f := b.lo
+Sonification/Intervals.lean:58:35: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e - f ≥ 0
+  d - e ≤ 0
+  c - d ≥ 0
+  c - f ≥ 0
+where
+ c := a.hi
+ d := a.lo
+ e := b.hi
+ f := b.lo
+Sonification/Intervals.lean:66:35: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e - f ≥ 0
+  d - e ≤ 0
+  c - d ≥ 0
+  c - f ≥ 0
+where
+ c := a.hi
+ d := a.lo
+ e := b.hi
+ f := b.lo
+Sonification/Intervals.lean:79:46: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e - f ≥ 0
+  d - e ≤ 0
+  c - d ≥ 0
+  c - f ≤ -1
+where
+ c := a.hi
+ d := a.lo
+ e := b.hi
+ f := b.lo
+Sonification/Intervals.lean:79:46: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e - f ≥ 0
+  d - e ≥ 1
+  c - d ≥ 0
+  c - f ≥ 0
+where
+ c := a.hi
+ d := a.lo
+ e := b.hi
+ f := b.lo
+Sonification/Intervals.lean:79:46: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e - f ≥ 0
+  d - e ≤ 0
+  c - d ≥ 0
+  c - f ≥ 0
+where
+ c := a.hi
+ d := a.lo
+ e := b.hi
+ f := b.lo

@@ -1,0 +1,58 @@
+Sonification/Intervals.lean:43:25: error: tactic 'split' failed, consider using `set_option trace.split.failure true`
+case isTrue
+a b : Interval
+h✝ : a.hi < a.lo ∨ b.hi < b.lo
+⊢ a.lo ≤ a.hi → b.lo ≤ b.hi → b.lo ≤ a.hi
+Sonification/Intervals.lean:41:68: error: unsolved goals
+unknown goal
+
+unknown goal
+Sonification/Intervals.lean:41:68: error: unknown metavariable '?_uniq.5880'
+Sonification/Intervals.lean:48:25: error: tactic 'split' failed, consider using `set_option trace.split.failure true`
+case isTrue
+a b : Interval
+h✝ : a.hi < a.lo ∨ b.hi < b.lo
+⊢ a.lo ≤ a.hi → b.lo ≤ b.hi → a.lo ≤ b.hi
+Sonification/Intervals.lean:46:68: error: unsolved goals
+unknown goal
+
+unknown goal
+Sonification/Intervals.lean:46:68: error: unknown metavariable '?_uniq.5632'
+Sonification/Intervals.lean:54:25: error: tactic 'split' failed, consider using `set_option trace.split.failure true`
+case isTrue
+a b : Interval
+h✝ : a.hi < a.lo ∨ b.hi < b.lo
+⊢ a.lo ≤ a.hi → b.lo ≤ b.hi → a.lo ≤ b.hi → a.hi < b.lo
+Sonification/Intervals.lean:52:55: error: unsolved goals
+unknown goal
+
+unknown goal
+Sonification/Intervals.lean:52:55: error: unknown metavariable '?_uniq.6299'
+Sonification/Intervals.lean:60:25: error: tactic 'split' failed, consider using `set_option trace.split.failure true`
+case isTrue
+a b : Interval
+ha : a.lo ≤ a.hi
+hb : b.lo ≤ b.hi
+h✝ : a.hi < a.lo ∨ b.hi < b.lo
+⊢ False
+Sonification/Intervals.lean:58:38: error: unsolved goals
+unknown goal
+
+unknown goal
+Sonification/Intervals.lean:58:38: error: unknown metavariable '?_uniq.5750'
+Sonification/Intervals.lean:73:14: error: simp_all made no progress
+Sonification/Intervals.lean:70:49: error: unsolved goals
+unknown goal
+Sonification/Intervals.lean:70:49: error: unknown metavariable '?_uniq.13076'
+Sonification/Intervals.lean:80:5: error: unknown tactic
+Sonification/Intervals.lean:79:2: error: unsolved goals
+case mp
+k x y : Int
+hk : 0 < k
+h : k * x < k * y
+⊢ x < y
+Sonification/Intervals.lean:77:29: error: unsolved goals
+case mpr
+k x y : Int
+hk : 0 < k
+⊢ x < y → k * x < k * y

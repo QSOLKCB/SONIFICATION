@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/tmp/sonification-independent-audit-5iwdd7fx/check.py",
+    "--lean",
+    "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "--out",
+    "/home/trent/sonification-formal-001/formal/sonification/audit/attempt-004-model/unimported_nested_module/checker"
+  ],
+  "cwd": "/home/trent/sonification-formal-001",
+  "exit_code": 1,
+  "stdout_sha256": "34b0a83596cd02f8ba032f81d20fcc8753507f9d8525914847869e676b5b5ae5",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "expected_zero": false,
+  "detected_as_expected": true
+}

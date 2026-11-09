@@ -1,0 +1,27 @@
+Sonification/OrderedIntervals.lean:48:77: error: unsolved goals
+case pos
+α : Type
+o : OrderSpec α
+a b : Interval α
+h1 : o.lt a.hi a.lo ∨ o.lt b.hi b.lo
+h2 : o.lt a.hi b.lo
+h3 : o.lt b.hi a.lo
+⊢ ¬o.lt a.hi a.lo → o.lt b.hi b.lo
+
+case neg
+α : Type
+o : OrderSpec α
+a b : Interval α
+h1 : o.lt a.hi a.lo ∨ o.lt b.hi b.lo
+h2 : o.lt a.hi b.lo
+h3 : ¬o.lt b.hi a.lo
+⊢ ¬o.lt a.hi a.lo → o.lt b.hi b.lo
+Sonification/OrderedIntervals.lean:55:67: error: unsolved goals
+case neg
+α : Type
+o : OrderSpec α
+a b : Interval α
+h1 : o.lt a.hi a.lo ∨ o.lt b.hi b.lo
+h2 : ¬o.lt a.hi b.lo
+h3 : ¬o.lt b.hi a.lo
+⊢ ¬o.lt a.hi a.lo → o.lt b.hi b.lo

@@ -1,0 +1,406 @@
+Audit.lean:7:4: error: function expected at
+  classify
+term has type
+  ?m.12
+Audit.lean:7:27: error: function expected at
+  Valid
+term has type
+  ?m.27
+Audit.lean:7:38: error: function expected at
+  Valid
+term has type
+  ?m.27
+Audit.lean:10:53: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  a
+has type
+  Interval
+Audit.lean:10:60: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  b
+has type
+  Interval
+Audit.lean:10:4: error: function expected at
+  classify
+term has type
+  ?m.225
+Audit.lean:10:24: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.253
+Audit.lean:10:33: error: function expected at
+  Valid
+term has type
+  ?m.241
+Audit.lean:10:43: error: function expected at
+  Valid
+term has type
+  ?m.241
+Audit.lean:13:53: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  b
+has type
+  Interval
+Audit.lean:13:60: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  a
+has type
+  Interval
+Audit.lean:13:4: error: function expected at
+  classify
+term has type
+  ?m.525
+Audit.lean:13:24: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.553
+Audit.lean:13:33: error: function expected at
+  Valid
+term has type
+  ?m.541
+Audit.lean:13:43: error: function expected at
+  Valid
+term has type
+  ?m.541
+Audit.lean:17:26: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  a
+has type
+  Interval
+Audit.lean:17:33: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  b
+has type
+  Interval
+Audit.lean:17:40: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  b
+has type
+  Interval
+Audit.lean:17:47: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  a
+has type
+  Interval
+Audit.lean:16:4: error: function expected at
+  classify
+term has type
+  ?m.825
+Audit.lean:16:24: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.853
+Audit.lean:17:6: error: function expected at
+  Valid
+term has type
+  ?m.841
+Audit.lean:17:16: error: function expected at
+  Valid
+term has type
+  ?m.841
+Audit.lean:19:51: error: function expected at
+  Valid
+term has type
+  ?m.1207
+Audit.lean:19:66: error: function expected at
+  Valid
+term has type
+  ?m.1207
+Audit.lean:20:4: error: function expected at
+  classify
+term has type
+  ?m.1222
+Audit.lean:20:24: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.1240
+Audit.lean:20:33: error: function expected at
+  classify
+term has type
+  ?m.1222
+Audit.lean:20:53: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.1248
+Audit.lean:21:6: error: function expected at
+  classify
+term has type
+  ?m.1222
+Audit.lean:21:26: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.1256
+Audit.lean:24:6: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  a
+has type
+  Interval
+Audit.lean:24:13: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  b
+has type
+  Interval
+Audit.lean:24:20: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  b
+has type
+  Interval
+Audit.lean:24:27: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  a
+has type
+  Interval
+Audit.lean:25:6: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  a
+has type
+  Interval
+Audit.lean:25:13: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  b
+has type
+  Interval
+Audit.lean:25:21: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  a
+has type
+  Interval
+Audit.lean:25:28: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  b
+has type
+  Interval
+Audit.lean:25:35: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  b
+has type
+  Interval
+Audit.lean:25:42: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  a
+has type
+  Interval
+Audit.lean:26:6: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  b
+has type
+  Interval
+Audit.lean:26:13: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  a
+has type
+  Interval
+Audit.lean:26:21: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  a
+has type
+  Interval
+Audit.lean:26:28: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  b
+has type
+  Interval
+Audit.lean:26:35: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  b
+has type
+  Interval
+Audit.lean:26:42: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  a
+has type
+  Interval
+Audit.lean:23:50: error: function expected at
+  Valid
+term has type
+  ?m.1480
+Audit.lean:23:65: error: function expected at
+  Valid
+term has type
+  ?m.1480
+Audit.lean:29:4: error: function expected at
+  classify
+term has type
+  ?m.2336
+Audit.lean:29:20: error: function expected at
+  classify
+term has type
+  ?m.2336
+Audit.lean:32:29: error: type mismatch
+  Sonification.scale_lt_iff
+has type
+  ∀ (k x y : Int), 0 < k → (k * x < k * y ↔ x < y) : Prop
+but is expected to have type
+  k * x < k * y ↔ x < y : Prop
+Audit.lean:35:4: error: function expected at
+  classify
+term has type
+  ?m.2815
+Audit.lean:35:39: error: function expected at
+  classify
+term has type
+  ?m.2815
+Audit.lean:38:4: error: function expected at
+  Valid
+term has type
+  ?m.3061
+Audit.lean:41:9: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  a
+has type
+  Interval
+Audit.lean:41:16: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  b
+has type
+  Interval
+Audit.lean:40:49: error: function expected at
+  Valid
+term has type
+  ?m.3273
+Audit.lean:40:64: error: function expected at
+  Valid
+term has type
+  ?m.3273
+Audit.lean:41:24: error: function expected at
+  classify
+term has type
+  ?m.3298
+Audit.lean:41:44: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.3326
+Audit.lean:44:4: error: function expected at
+  classify
+term has type
+  ?m.3524
+Audit.lean:44:34: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.3532
+Audit.lean:45:4: error: function expected at
+  classify
+term has type
+  ?m.3524
+Audit.lean:45:34: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.3540
+Audit.lean:46:4: error: function expected at
+  classify
+term has type
+  ?m.3524
+Audit.lean:46:34: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.3548
+Audit.lean:47:4: error: function expected at
+  classify
+term has type
+  ?m.3524
+Audit.lean:49:51: error: function expected at
+  OrderSpec
+term has type
+  ?m.3830
+Audit.lean:49:71: error: function expected at
+  Interval
+term has type
+  ?m.3837
+Audit.lean:49:71: error: function expected at
+  Interval
+term has type
+  ?m.3837
+Audit.lean:50:10: error: function expected at
+  Valid
+term has type
+  ?m.3850
+Audit.lean:50:27: error: function expected at
+  Valid
+term has type
+  ?m.3850
+Audit.lean:53:41: error: function expected at
+  OrderSpec
+term has type
+  ?m.4193
+Audit.lean:55:49: error: function expected at
+  OrderSpec
+term has type
+  ?m.4471
+Audit.lean:55:69: error: function expected at
+  Interval
+term has type
+  ?m.4478
+Audit.lean:55:69: error: function expected at
+  Interval
+term has type
+  ?m.4478
+Audit.lean:56:4: error: function expected at
+  classify
+term has type
+  ?m.4492
+Audit.lean:56:26: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.4530
+Audit.lean:56:35: error: function expected at
+  Valid
+term has type
+  ?m.4513
+Audit.lean:56:47: error: function expected at
+  Valid
+term has type
+  ?m.4513
+Audit.lean:58:51: error: function expected at
+  OrderSpec
+term has type
+  ?m.4807
+Audit.lean:58:71: error: function expected at
+  Interval
+term has type
+  ?m.4814
+Audit.lean:58:71: error: function expected at
+  Interval
+term has type
+  ?m.4814
+Audit.lean:59:4: error: function expected at
+  classify
+term has type
+  ?m.4828
+Audit.lean:59:26: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.4866
+Audit.lean:60:6: error: function expected at
+  Valid
+term has type
+  ?m.4849
+Audit.lean:60:18: error: function expected at
+  Valid
+term has type
+  ?m.4849
+Audit.lean:62:41: error: function expected at
+  OrderSpec
+term has type
+  ?m.5144
+Audit.lean:62:61: error: function expected at
+  Interval
+term has type
+  ?m.5151
+Audit.lean:62:61: error: function expected at
+  Interval
+term has type
+  ?m.5151
+Audit.lean:63:10: error: function expected at
+  Valid
+term has type
+  ?m.5164
+Audit.lean:63:27: error: function expected at
+  Valid
+term has type
+  ?m.5164
+Audit.lean:64:4: error: function expected at
+  classify
+term has type
+  ?m.5184
+Audit.lean:64:26: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.5207
+Audit.lean:64:35: error: function expected at
+  classify
+term has type
+  ?m.5184
+Audit.lean:64:57: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.5215
+Audit.lean:65:6: error: function expected at
+  classify
+term has type
+  ?m.5184
+Audit.lean:65:28: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.5223
+Audit.lean:67:51: error: function expected at
+  OrderSpec
+term has type
+  ?m.5571
+Audit.lean:67:69: error: function expected at
+  OrderSpec
+term has type
+  ?m.5571
+Audit.lean:69:11: error: function expected at
+  Interval
+term has type
+  ?m.5622
+Audit.lean:69:11: error: function expected at
+  Interval
+term has type
+  ?m.5622
+Audit.lean:70:4: error: function expected at
+  classify
+term has type
+  ?m.5657
+Audit.lean:70:37: error: function expected at
+  classify
+term has type
+  ?m.5657
+Audit.lean:73:4: error: function expected at
+  classify
+term has type
+  ?m.6117
+Audit.lean:75:20: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.6164
+Audit.lean:75:39: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.6171
+Audit.lean:75:60: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.6178
+Audit.lean:106:27: error: unknown identifier 'ppExpr'
+Audit.lean:115:0: error: aborting evaluation since the expression depends on the 'sorry' axiom, which can lead to runtime instability and crashes.
+
+To attempt to evaluate anyway despite the risks, use the '#eval!' command.

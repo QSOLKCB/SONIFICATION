@@ -1,0 +1,133 @@
+Audit.lean:53:5: error: unknown namespace 'Sonification.Ordered'
+Audit.lean:55:71: error: function expected at
+  Interval
+term has type
+  Type
+Audit.lean:55:71: error: function expected at
+  Interval
+term has type
+  Type
+Audit.lean:56:10: error: function expected at
+  Valid ?m.861
+term has type
+  Prop
+Audit.lean:56:27: error: function expected at
+  Valid ?m.885
+term has type
+  Prop
+Audit.lean:55:51: error: function expected at
+  OrderSpec
+term has type
+  ?m.830
+Audit.lean:59:41: error: function expected at
+  OrderSpec
+term has type
+  ?m.1073
+Audit.lean:59:103: error: unknown identifier 'Sonification.Ordered.asymmetric'
+Audit.lean:61:69: error: function expected at
+  Interval
+term has type
+  Type
+Audit.lean:61:69: error: function expected at
+  Interval
+term has type
+  Type
+Audit.lean:62:35: error: function expected at
+  Valid ?m.1340
+term has type
+  Prop
+Audit.lean:62:47: error: function expected at
+  Valid ?m.1370
+term has type
+  Prop
+Audit.lean:61:49: error: function expected at
+  OrderSpec
+term has type
+  ?m.1134
+Audit.lean:62:26: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.1313
+Audit.lean:64:71: error: function expected at
+  Interval
+term has type
+  Type
+Audit.lean:64:71: error: function expected at
+  Interval
+term has type
+  Type
+Audit.lean:66:6: error: function expected at
+  Valid ?m.1782
+term has type
+  Prop
+Audit.lean:66:18: error: function expected at
+  Valid ?m.1812
+term has type
+  Prop
+Audit.lean:64:51: error: function expected at
+  OrderSpec
+term has type
+  ?m.1576
+Audit.lean:65:26: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.1755
+Audit.lean:68:61: error: function expected at
+  Interval
+term has type
+  Type
+Audit.lean:68:61: error: function expected at
+  Interval
+term has type
+  Type
+Audit.lean:69:10: error: function expected at
+  Valid ?m.2050
+term has type
+  Prop
+Audit.lean:69:27: error: function expected at
+  Valid ?m.2074
+term has type
+  Prop
+Audit.lean:68:41: error: function expected at
+  OrderSpec
+term has type
+  ?m.2019
+Audit.lean:70:26: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.2254
+Audit.lean:70:57: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.2307
+Audit.lean:71:28: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.2360
+Audit.lean:75:11: error: function expected at
+  Interval
+term has type
+  Type
+Audit.lean:75:11: error: function expected at
+  Interval
+term has type
+  Type
+Audit.lean:76:4: error: function expected at
+  classify ?m.2720 ?m.2721
+term has type
+  Option Relation
+Audit.lean:73:51: error: function expected at
+  OrderSpec
+term has type
+  ?m.2589
+Audit.lean:73:69: error: function expected at
+  OrderSpec
+term has type
+  ?m.2589
+Audit.lean:76:16: error: function expected at
+  map
+term has type
+  ?m.2667
+Audit.lean:79:4: error: function expected at
+  classify integerOrder { lo := a.lo, hi := a.hi }
+term has type
+  Option Relation
+Audit.lean:81:20: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.3277
+Audit.lean:81:39: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.3284
+Audit.lean:81:60: error: invalid dotted identifier notation, expected type is not of the form (... → C ...) where C is a constant
+  ?m.3291
+Audit.lean:81:82: error: unknown identifier 'Sonification.Ordered.integer_specialization'
+SONIFICATION_MODULE Sonification.Intervals
+Audit.lean:88:0: error: missing required imported module Sonification.OrderedIntervals

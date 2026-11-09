@@ -1,0 +1,117 @@
+import Std
+
+/-
+Independent mathematical specification for the closed-interval branch contract
+in MAT-SPEC-007 classify. Integer endpoints only; no Python refinement claim.
+-/
+namespace Sonification
+
+structure Interval where
+  lo : Int
+  hi : Int
+  deriving DecidableEq, Repr
+
+def Valid (a : Interval) : Prop := a.lo ≤ a.hi
+
+inductive Relation where
+  | below | above | overlap
+  deriving DecidableEq, Repr
+
+def classify (a b : Interval) : Option Relation :=
+  if a.lo > a.hi ∨ b.lo > b.hi then none
+  else if a.hi < b.lo then some .below
+  else if b.hi < a.lo then some .above
+  else some .overlap
+
+def scale (k : Int) (a : Interval) : Interval := ⟨k * a.lo, k * a.hi⟩
+
+def box (center error : Int) : Interval := ⟨center - error, center + error⟩
+
+def reverse : Relation → Relation
+  | .below => .above
+  | .above => .below
+  | .overlap => .overlap
+
+theorem invalid_iff (a b : Interval) :
+    classify a b = none ↔ ¬Valid a ∨ ¬Valid b := by
+  by_cases h1 : a.lo > a.hi ∨ b.lo > b.hi <;>
+    by_cases h2 : a.hi < b.lo <;> by_cases h3 : b.hi < a.lo <;>
+    simp_all [classify, Valid] <;> trace_state <;> omega
+
+theorem below_iff (a b : Interval) :
+    classify a b = some .below ↔ Valid a ∧ Valid b ∧ a.hi < b.lo := by
+  by_cases h1 : a.lo > a.hi ∨ b.lo > b.hi <;>
+    by_cases h2 : a.hi < b.lo <;> by_cases h3 : b.hi < a.lo <;>
+    simp_all [classify, Valid] <;> omega
+
+theorem above_iff (a b : Interval) :
+    classify a b = some .above ↔ Valid a ∧ Valid b ∧ b.hi < a.lo := by
+  by_cases h1 : a.lo > a.hi ∨ b.lo > b.hi <;>
+    by_cases h2 : a.hi < b.lo <;> by_cases h3 : b.hi < a.lo <;>
+    simp_all [classify, Valid] <;> omega
+
+theorem overlap_iff (a b : Interval) :
+    classify a b = some .overlap ↔
+      Valid a ∧ Valid b ∧ a.lo ≤ b.hi ∧ b.lo ≤ a.hi := by
+  by_cases h1 : a.lo > a.hi ∨ b.lo > b.hi <;>
+    by_cases h2 : a.hi < b.lo <;> by_cases h3 : b.hi < a.lo <;>
+    simp_all [classify, Valid] <;> omega
+
+theorem exhaustive (a b : Interval) (ha : Valid a) (hb : Valid b) :
+    classify a b = some .below ∨ classify a b = some .above ∨
+      classify a b = some .overlap := by
+  simp only [classify, Valid] at *
+  by_cases h1 : a.lo > a.hi ∨ b.lo > b.hi <;>
+    by_cases h2 : a.hi < b.lo <;> by_cases h3 : b.hi < a.lo <;>
+    simp_all [classify, Valid] <;> omega
+
+theorem exclusive (a b : Interval) (ha : Valid a) (hb : Valid b) :
+    ¬(a.hi < b.lo ∧ b.hi < a.lo) ∧
+    ¬(a.hi < b.lo ∧ (a.lo ≤ b.hi ∧ b.lo ≤ a.hi)) ∧
+    ¬(b.hi < a.lo ∧ (a.lo ≤ b.hi ∧ b.lo ≤ a.hi)) := by
+  unfold Valid at *
+  omega
+
+theorem reversal (a b : Interval) :
+    classify b a = (classify a b).map reverse := by
+  by_cases h1 : a.lo > a.hi ∨ b.lo > b.hi <;>
+    by_cases h2 : a.hi < b.lo <;> by_cases h3 : b.hi < a.lo <;>
+    simp_all [classify, reverse, or_comm] <;> omega
+
+theorem scale_lt_iff (k x y : Int) (hk : 0 < k) :
+    k * x < k * y ↔ x < y := by
+  constructor
+  · intro h
+    by_cases hxy : x < y
+    · exact hxy
+    · have hle : y ≤ x := by omega
+      have := Int.mul_le_mul_of_nonneg_left hle (Int.le_of_lt hk)
+      omega
+  · intro h
+    exact Int.mul_lt_mul_of_pos_left h hk
+
+theorem positive_scale (k : Int) (a b : Interval) (hk : 0 < k) :
+    classify (scale k a) (scale k b) = classify a b := by
+  simp only [classify, scale, scale_lt_iff k a.hi a.lo hk,
+    scale_lt_iff k b.hi b.lo hk, scale_lt_iff k a.hi b.lo hk,
+    scale_lt_iff k b.hi a.lo hk]
+
+theorem box_valid (center error : Int) (he : 0 ≤ error) :
+    Valid (box center error) := by
+  simp only [Valid, box]
+  omega
+
+theorem touching (a b : Interval) (ha : Valid a) (hb : Valid b)
+    (h : a.hi = b.lo) : classify a b = some .overlap := by
+  apply (overlap_iff a b).mpr
+  unfold Valid at *
+  omega
+
+theorem inhabited_branches :
+    classify ⟨0, 1⟩ ⟨2, 3⟩ = some .below ∧
+    classify ⟨2, 3⟩ ⟨0, 1⟩ = some .above ∧
+    classify ⟨0, 1⟩ ⟨1, 2⟩ = some .overlap ∧
+    classify ⟨1, 0⟩ ⟨0, 0⟩ = none := by
+  decide
+
+end Sonification

@@ -1,7 +1,7 @@
 {
   "schema": "qsol.sonification-formal-001.theorem-map/v1",
   "target_commit": "8c62517138e3b86a4672d8969e190b747f81c398",
-  "coverage": "Selected investigation targets; all other operations remain OPEN in SOURCE_INVENTORY.json",
+  "coverage": "Historical operations remain OPEN in SOURCE_INVENTORY.json; selected mathematical submodels below have their own narrower scope and do not promote production operations.",
   "aggregation": "No dimension promotes another dimension. PASS is always scoped to linked evidence.",
   "targets": [
     {
@@ -185,6 +185,184 @@
       },
       "evidence": {},
       "independent_specification_review": "PENDING"
+    },
+    {
+      "release": "mat-spec-007-v0.1.0",
+      "source_commit": "b97348ff8fcf3f57764dec21a8914f153f96a745",
+      "source_tree": "c1b842c6bace3ccb01714007b8d7ebb05bcecd31",
+      "source_sha256": "2e363adea6c781ab68aec69d2ee5c7d712fc5e46346ae5be21d8cf3e929781c6",
+      "proof_dependencies": [
+        "Lean 4.19.0 bundled Std and Init",
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "Formal CPython operational semantics for accepted source AST",
+        "Proof of source extraction and translation correctness",
+        "Exact Fraction-to-rational representation preservation",
+        "Initial state, exceptions, observable output and caller relation"
+      ],
+      "independent_specification_review": "PENDING",
+      "executable_tests": [],
+      "id": "MAT007.classify.integer_model",
+      "implementation": {
+        "path": "materials/mat_spec_007.py",
+        "symbol": "classify"
+      },
+      "intended_property": "Integer closed interval model: for all four unbounded Int endpoints, invalidity iff rejection; below/above/overlap exact and exclusive for valid intervals, reversal, positive Int scaling, touching overlap and all branch witnesses.",
+      "model_scope": "For all integer endpoints; Valid means lo \u2264 hi; positive scaling requires k > 0.",
+      "formal_definition": "Sonification.classify : Interval \u2192 Interval \u2192 Option Relation",
+      "proof_path": "formal/sonification/lean/Sonification/Intervals.lean",
+      "typed_consumer": "formal/sonification/lean/Audit.lean",
+      "theorems": [
+        "Sonification.invalid_iff",
+        "Sonification.below_iff",
+        "Sonification.above_iff",
+        "Sonification.overlap_iff",
+        "Sonification.exhaustive",
+        "Sonification.exclusive",
+        "Sonification.reversal",
+        "Sonification.scale_lt_iff",
+        "Sonification.positive_scale",
+        "Sonification.touching",
+        "Sonification.inhabited_branches"
+      ],
+      "assumptions": [
+        "Compiler-generated unsafe LCNF auxiliaries have lcProof/lcUnreachable; no safe declaration depends on them.",
+        "Lean kernel and bundled library semantics trusted.",
+        "No rational Fraction instantiation or Python semantics claimed."
+      ],
+      "assurance": {
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "AUDIT_ACCEPTED": "PASS"
+      },
+      "evidence": {
+        "MODEL_PROVED": [
+          "formal/sonification/lean/attempts/root-replay-001/result.json"
+        ],
+        "AUDIT_ACCEPTED": [
+          "formal/sonification/audit/attempt-004-model/AUDIT.json"
+        ]
+      },
+      "audit_pending": false
+    },
+    {
+      "release": "mat-spec-007-v0.1.0",
+      "source_commit": "b97348ff8fcf3f57764dec21a8914f153f96a745",
+      "source_tree": "c1b842c6bace3ccb01714007b8d7ebb05bcecd31",
+      "source_sha256": "2e363adea6c781ab68aec69d2ee5c7d712fc5e46346ae5be21d8cf3e929781c6",
+      "proof_dependencies": [
+        "Lean 4.19.0 bundled Std and Init",
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "Formal CPython operational semantics for accepted source AST",
+        "Proof of source extraction and translation correctness",
+        "Exact Fraction-to-rational representation preservation",
+        "Initial state, exceptions, observable output and caller relation"
+      ],
+      "independent_specification_review": "PENDING",
+      "executable_tests": [],
+      "id": "MAT007.interval.integer_box_model",
+      "implementation": {
+        "path": "materials/mat_spec_007.py",
+        "symbol": "interval"
+      },
+      "intended_property": "For every integer center and nonnegative integer error, [center-error,center+error] is ordered. Production requires strictly positive parsed decimal error; no implementation claim.",
+      "model_scope": "For all integer center/error with error \u2265 0.",
+      "formal_definition": "Sonification.box : Int \u2192 Int \u2192 Interval",
+      "proof_path": "formal/sonification/lean/Sonification/Intervals.lean",
+      "typed_consumer": "formal/sonification/lean/Audit.lean",
+      "theorems": [
+        "Sonification.box_valid"
+      ],
+      "assumptions": [
+        "Compiler-generated unsafe LCNF auxiliaries have lcProof/lcUnreachable; no safe declaration depends on them.",
+        "Lean kernel and bundled library semantics trusted.",
+        "No rational Fraction instantiation or Python semantics claimed."
+      ],
+      "assurance": {
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "AUDIT_ACCEPTED": "PASS"
+      },
+      "evidence": {
+        "MODEL_PROVED": [
+          "formal/sonification/lean/attempts/root-replay-001/result.json"
+        ],
+        "AUDIT_ACCEPTED": [
+          "formal/sonification/audit/attempt-004-model/AUDIT.json"
+        ]
+      },
+      "audit_pending": false
+    },
+    {
+      "release": "mat-spec-007-v0.1.0",
+      "source_commit": "b97348ff8fcf3f57764dec21a8914f153f96a745",
+      "source_tree": "c1b842c6bace3ccb01714007b8d7ebb05bcecd31",
+      "source_sha256": "2e363adea6c781ab68aec69d2ee5c7d712fc5e46346ae5be21d8cf3e929781c6",
+      "proof_dependencies": [
+        "Lean 4.19.0 bundled Std and Init",
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "Formal CPython operational semantics for accepted source AST",
+        "Proof of source extraction and translation correctness",
+        "Exact Fraction-to-rational representation preservation",
+        "Initial state, exceptions, observable output and caller relation"
+      ],
+      "independent_specification_review": "PENDING",
+      "executable_tests": [],
+      "id": "MAT007.classify.ordered_model",
+      "implementation": {
+        "path": "materials/mat_spec_007.py",
+        "symbol": "classify"
+      },
+      "intended_property": "For every structure satisfying the declared strict-comparison laws, classification is exhaustive on valid pairs; an order-reflecting mapping preserves result. Integer specialization witnesses the structure.",
+      "model_scope": "For every OrderSpec with irreflexivity, transitivity and compatibility; map theorem additionally assumes \u2200x y, target.lt(f x)(f y) \u2194 source.lt x y.",
+      "formal_definition": "Sonification.Ordered.classify : OrderSpec \u03b1 \u2192 Interval \u03b1 \u2192 Interval \u03b1 \u2192 Option Relation",
+      "proof_path": "formal/sonification/lean/Sonification/OrderedIntervals.lean",
+      "typed_consumer": "formal/sonification/lean/Audit.lean",
+      "theorems": [
+        "Sonification.Ordered.separation_exclusive",
+        "Sonification.Ordered.asymmetric",
+        "Sonification.Ordered.classify_below_iff",
+        "Sonification.Ordered.classify_overlap_iff",
+        "Sonification.Ordered.exhaustive",
+        "Sonification.Ordered.order_reflecting_map",
+        "Sonification.Ordered.integer_specialization"
+      ],
+      "assumptions": [
+        "Compiler-generated unsafe LCNF auxiliaries have lcProof/lcUnreachable; no safe declaration depends on them.",
+        "Lean kernel and bundled library semantics trusted.",
+        "No rational Fraction instantiation or Python semantics claimed."
+      ],
+      "assurance": {
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "AUDIT_ACCEPTED": "PASS"
+      },
+      "evidence": {
+        "MODEL_PROVED": [
+          "formal/sonification/lean/attempts/root-replay-001/result.json"
+        ],
+        "AUDIT_ACCEPTED": [
+          "formal/sonification/audit/attempt-004-model/AUDIT.json"
+        ]
+      },
+      "audit_pending": false
     }
   ]
 }
