@@ -82,7 +82,10 @@ jobs:
 
           for file in sorted(Path("dist/mat-spec-005").iterdir()):
               if file.is_file():
-                  print("MAT_SPEC_005_DIGEST", file.name, hashlib.sha256(file.read_bytes()).hexdigest())
+                  print(
+                      "MAT_SPEC_005_DIGEST", file.name,
+                      hashlib.sha256(file.read_bytes()).hexdigest(),
+                  )
           PY
       - name: Build MAT-SPEC-006 primary experiment evidence
         run: python scripts/build_mat_spec_006.py --out dist/mat-spec-006

@@ -200,7 +200,9 @@ class BundleTests(unittest.TestCase):
         self.assertEqual(actual["positive_per_row_measured_uncertainties"], 0)
         self.assertFalse(actual["phase_classifier_trained"])
         self.assertIsNone(actual["phase_holdout_accuracy"])
-        self.assertEqual(holdout["split_unit"], "distinct experimentally independent campaigns, never rows")
+        self.assertEqual(
+            holdout["split_unit"], "distinct experimentally independent campaigns, never rows"
+        )
         self.assertIsNone(holdout["physical_phase_heldout_accuracy"])
         csv_rows = list(csv.DictReader(io.StringIO(
             self.bundle["receiver-controls.csv"].decode("ascii")
