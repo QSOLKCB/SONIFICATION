@@ -54,6 +54,7 @@ class SourceAdmissionTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.source = mat_spec.read_regular(ROOT / mat_spec_008.SOURCE_PATH)
         cls.catalogue = mat_spec_008.parse_catalogue(cls.source)
+        assert mat_spec.sha256(cls.source) == mat_spec_008.CATALOGUE_SHA256
         cls.original = mat_spec_006.parse_measurements(
             mat_spec.read_regular(ROOT / mat_spec_006.DATA_PATH)
         )
@@ -257,6 +258,14 @@ class RuntimeEvidenceTests(unittest.TestCase):
         )
         original = mat_spec_007.build_evidence(ROOT)
         self.assertEqual(set(original), set(self.manifest["parent_outputs"]))
+        self.assertEqual(
+            {name: mat_spec.sha256(raw) for name, raw in original.items()},
+            mat_spec_008.PARENT_V7_SHA256,
+        )
+        self.assertEqual(
+            self.manifest["source_catalogue"]["sha256"],
+            mat_spec_008.CATALOGUE_SHA256,
+        )
         for name, record in self.manifest["parent_outputs"].items():
             self.assertEqual(record["sha256"], mat_spec.sha256(original[name]))
         for name, record in self.manifest["outputs"].items():

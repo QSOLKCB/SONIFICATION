@@ -27,7 +27,7 @@ PARENT_COMMIT = "b97348ff8fcf3f57764dec21a8914f153f96a745"
 FOUNDATIONAL_DOI = "10.5281/zenodo.24062652"
 SOURCE_PATH = "data/materials/helium4/mat_spec_008_source_catalogue.json"
 SPEC_PATH = "spec/mat-spec-008.v0.1.json"
-CATALOGUE_SHA256 = None  # Set to independent source-file SHA from GitHub CI.
+CATALOGUE_SHA256 = "6b6a973f46d1a748c5f94760a69e95899b5cc06ea717e1403b444eecdd880d88"
 CAMPAIGNS = ("AL71_SVP", "GM75_SVP", "LC83_SVP", "STS52_1992")
 FAMILIES = {
     "AL71_SVP": "BELL_AHLERS",
@@ -49,9 +49,21 @@ OUTPUT_NAMES = frozenset({
 IMPLEMENTATION_PATHS = (
     "materials/mat_spec_008.py", "scripts/build_mat_spec_008.py",
 )
-# Capture eight frozen MAT-SPEC-007 artifact SHA-256 values from successful
-# merged-main CI and require exact equality before making review-ready.
-PARENT_V7_SHA256: dict[str, str] | None = None
+# Frozen MAT-SPEC-007 eight-output baseline from merged-main GitHub CI.
+PARENT_V7_SHA256 = {
+    "audit.json": "0cc0d5ec77db4285ab379e15bbaf9a69b05cd367fd428cb6c227b8b8605a4d06",
+    "contract.json": "9e0eb1bf1e69599976dd57215ddeca956480c96ead61e36b055c67aa3125fc92",
+    "fit-summaries.csv": (
+        "b3457eeafd8bda8f8b9ebd63d4cd72af825fd8bd04e2660d01f637578db79489"
+    ),
+    "lineage.json": "acdbabfe12116b930ca84ba8cc50a3e2a4f83493a6fbafef5915ffefae3727bd",
+    "manifest.json": "19fda1a900d051352d274f8b00fbd9e2ed7a44e1c90ae00c4e40bc30d1e6d5fc",
+    "pair-relations.csv": "3528b8f1700479d4f4ced51ab1a43535d800fea266d246a7a574967bf86ad2d4",
+    "receiver.json": "c2edb389a353e71748464fcfc4dbf88b92f1ce3bf28dad43d4980b0c5cdcde01",
+    "replication-gate.json": (
+        "253b864e83ab4d5d36be16f6ec4ad71e0a7267a6b9c6fccfaf990a0b41950574"
+    ),
+}
 
 
 def _identity(value: object) -> str:
@@ -65,7 +77,7 @@ def _identity(value: object) -> str:
 
 def parse_catalogue(raw: bytes) -> dict:
     """Strict membership/lineage check; neither a PDF nor remote data fetch."""
-    if CATALOGUE_SHA256 is not None and mat_spec.sha256(raw) != CATALOGUE_SHA256:
+    if mat_spec.sha256(raw) != CATALOGUE_SHA256:
         raise ValueError("MAT-SPEC-008 source catalogue SHA-256 mismatch")
     try:
         data = json.loads(raw)
@@ -357,7 +369,7 @@ def build_evidence(root: Path) -> dict[str, bytes]:
     if set(parent) != mat_spec_007.OUTPUT_NAMES:
         raise ValueError("MAT-SPEC-007 parent artifact membership drift")
     hashes = {name: mat_spec.sha256(raw) for name, raw in parent.items()}
-    if PARENT_V7_SHA256 is not None and hashes != PARENT_V7_SHA256:
+    if hashes != PARENT_V7_SHA256:
         raise ValueError("frozen MAT-SPEC-007 parent output SHA-256 drift")
     manifest = json.loads(parent["manifest.json"])
     if (

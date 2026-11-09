@@ -16,6 +16,13 @@ It does not imply that the other experiments have no available data, or that
 only one helium experiment exists. Their source rows have simply not yet
 been independently acquired, validated and pinned as an eligible packet.
 
+The ten-document source inventory is pinned to SHA-256
+`6b6a973f46d1a748c5f94760a69e95899b5cc06ea717e1403b444eecdd880d88`.
+All eight MAT-SPEC-007 outputs are separately hard-pinned to the
+merged-main CI receipts. The catalogue hash authenticates local input
+bytes; it does not attest that unacquired raw data exist or that source
+independence has been proven.
+
 MAT-SPEC-008 is independently versioned and additive to the merged
 MAT-SPEC-007 baseline. Published MAT-SPEC-001 through -007 contracts are not
 modified. Foundational record DOI 10.5281/zenodo.24062652 remains assigned
