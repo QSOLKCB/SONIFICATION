@@ -1,6 +1,3 @@
-Failed to create stream fd: Operation not permitted
-Failed to create stream fd: Operation not permitted
-Failed to create stream fd: Operation not permitted
 #!/usr/bin/env python3
 """Deterministic Ada/Python differential oracle for SPARK-001. MPL-2.0.
 

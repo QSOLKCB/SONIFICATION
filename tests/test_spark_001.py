@@ -1,6 +1,3 @@
-Failed to create stream fd: Operation not permitted
-Failed to create stream fd: Operation not permitted
-Failed to create stream fd: Operation not permitted
 """SPARK-001 independent Python oracle tests. SPDX-License-Identifier: MPL-2.0"""
 from __future__ import annotations
 
