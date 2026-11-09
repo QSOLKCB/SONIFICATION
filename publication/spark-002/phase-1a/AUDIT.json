@@ -1,0 +1,40 @@
+{
+  "schema": "qsol.spark-002.phase-1a.preserved-proof-audit/v1",
+  "proof_execution": "OWNER_EXECUTED_GNATPROVE_NOT_REEXECUTED_IN_THIS_PR",
+  "source_commit": "06b1294bf1617e9eb3b825051e8bfbf7470e395c",
+  "original_9_member_owner_archive_sha256": "bc043ad9f676e30a2099905b24d98215826c347754626a1563888f0255e4b9b9",
+  "original_archive_in_git": false,
+  "receipt_sha256": {
+    "GNATPROVE_SUMMARY.txt": "71b04db9a09d292c826d2e366bd7c37e03fee33b2a3f81588f7e8d91b2715f38",
+    "PROOF.log": "a4af0cb30c7f2686f5b9f7bdf526f1d99bc782a9286f5934ca1c59fb66808e92",
+    "RESULT.txt": "9d4615f375c9745a87a3d8668646709762ba401db609d8695cf57f2d5cb0ee05",
+    "SHA256SUMS": "5423389a13b361e3f3c338aed8c4575cd597959025b9cdc619b2ae7fc2ecc77d",
+    "SOURCE_COMMIT.txt": "ddfffcbe8f175147f5516d3a066ad67b86ce35891f09aa0255680075e02734f5",
+    "SOURCES.sha256": "64bd121fe4d02ca66bd39e3161dcd8893e6c8de84449263f37aa2cca15db2ee3",
+    "TOOLCHAIN.txt": "d0ec78c178655565104dd97553954ba573633797216446fad8b3254aad79de55"
+  },
+  "source_sha256": {
+    "verification/spark002/spark_002_core.ads": "808648a2190ce8a28bd84313b7f88c4ec5fa0ca704c357bd2a44eb08fdb8e832",
+    "verification/spark002/spark_002_core.adb": "0df1ee836efc96d7c506a2b8523fe4e18ca388246dfeb7697172936e05b18f17",
+    "verification/spark002/spark_002_core.gpr": "91fcadee68bad68e0fd727196b4d299228a63825ae1d31412b24dc15e81b4afc"
+  },
+  "gnatprove": {
+    "fsf_version": "16.1.0",
+    "exit_status": 0,
+    "reported_checks": 23,
+    "proved_functional_cvc5": 11,
+    "proved_termination_flow": 12,
+    "separately_reported_runtime_checks": 0,
+    "unproved": 0,
+    "justified": 0,
+    "pragma_assume_reported": 0
+  },
+  "excluded": [
+    "Spark_002_Probe",
+    "external physical evidence authentication",
+    "helium phase classifier",
+    "E8 physical interpretation",
+    "Python MAT-SPEC whole-program refinement"
+  ],
+  "scientific_gate": "NUMBERED_SERIES_CLOSED_AT_010_WITH_OPEN_SCIENTIFIC_GATES"
+}
