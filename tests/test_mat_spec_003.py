@@ -256,6 +256,16 @@ class RuntimeEvidenceTests(unittest.TestCase):
             core["roton"],
             {"a_below_b": 0, "b_below_a": 20, "overlap": 1, "INELIGIBLE": 0},
         )
+        roton_rows = [
+            row for row in csv.DictReader(
+                io.StringIO(self.bundle["core-discrimination.csv"].decode())
+            )
+            if row["mode"] == "roton" and row["comparison"] == "overlap"
+        ]
+        self.assertEqual(
+            [(row["pressure_a_bar"], row["pressure_b_bar"]) for row in roton_rows],
+            [("0.51", "1.02")],
+        )
         receiver = self.controls["coverage_core_receiver"]["collision_audit"]
         self.assertEqual(
             {key: (value["unique_contours"], value["colliding_pairs"])

@@ -51,6 +51,14 @@ and 12-TET MIDI information loss. It does **not** classify material phases,
 measure a q→0 sound speed, fit a Hamiltonian, recognize E8, or test listeners.
 
 Run `uv run --no-project python scripts/build_mat_spec_003.py --out dist/mat-spec-003`.
+The broad roton window remains ineligible because of explicitly missing
+measurements. A **separately labelled post-hoc, coverage-selected core** at
+q=1.860–2.150 inverse angstrom (146 shared observed positions) supplies
+21 conditional roton comparisons: 20 separated, one overlapping.
+The exact two-energy receiver distinguishes seven pressures; quantized
+MIDI gives four contours and two-value ranks collapse to one. These are
+numerical preservation results, not phase or listening evidence.
+
 [Full methods and nonclaims](docs/MAT_SPEC_003.md). MAT-SPEC-001 DOI:
 [10.5281/zenodo.24062652](https://doi.org/10.5281/zenodo.24062652).
 

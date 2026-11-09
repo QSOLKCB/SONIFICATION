@@ -144,6 +144,8 @@ The GitHub Actions run on this PR's pinned data and code reports the following
 | Roton-like minimum (primary) | 0 | 0 | 0 | 21 |
 | Roton-core minimum (exploratory, common q) | 0 | 20 | 1 | 0 |
 
+The sole overlapping roton-core pair is **0.51 versus 1.02 bar**.
+
 The 21 pairs are ordered in ascending pressure. Higher reported pressures
 have greater nominal phonon-region slope proxies and greater maxon-like
 energy maxima in this sample. The observed roton-core minima tend to fall
