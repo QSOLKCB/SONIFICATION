@@ -140,6 +140,10 @@ def check_future_challenge(records: object) -> dict:
         "TRAIN": set(), "HOLDOUT": set(),
     }
     seen_registration: set[str] = set()
+    # Distinguish a shared diagnostic *document within one campaign* from
+    # a diagnostic source or event replayed by a different acquisition.
+    diagnostic_hash_owners: dict[str, tuple[str, str]] = {}
+    diagnostic_event_owners: dict[str, tuple[str, str]] = {}
     for record in records:
         if not isinstance(record, dict):
             reasons.add("MALFORMED_CANDIDATE_RECORD")
@@ -172,12 +176,32 @@ def check_future_challenge(records: object) -> dict:
         if record.get("label_basis") != "ORTHOGONAL_DIAGNOSTIC":
             reasons.add("CIRCULAR_OR_MISSING_ORTHOGONAL_LABEL")
         diagnostic_hash = record.get("diagnostic_sha256")
+        diagnostic_event_id = record.get("diagnostic_event_id")
         source_hash = record.get("source_sha256")
         if (
             not _digest(diagnostic_hash) or diagnostic_hash == source_hash
-            or not _identifier(record.get("diagnostic_event_id"))
+            or not _identifier(diagnostic_event_id)
         ):
             reasons.add("INDEPENDENT_DIAGNOSTIC_SOURCE_REQUIRED")
+        # Check both provenance dimensions independently. Different phase
+        # observations may share a diagnostic document *within* a campaign,
+        # but neither its digest nor an event identity may be recycled by
+        # another campaign or across TRAIN and HOLDOUT.
+        for identity, registry, valid in (
+            (diagnostic_hash, diagnostic_hash_owners, _digest(diagnostic_hash)),
+            (
+                diagnostic_event_id,
+                diagnostic_event_owners,
+                _identifier(diagnostic_event_id),
+            ),
+        ):
+            if not valid:
+                continue
+            prior = registry.setdefault(identity, (campaign, role))
+            if prior[0] != campaign:
+                reasons.add("DIAGNOSTIC_PROVENANCE_REUSED_ACROSS_CAMPAIGNS")
+            if prior[1] != role:
+                reasons.add("DIAGNOSTIC_PROVENANCE_LEAKAGE_ACROSS_SPLITS")
         receipt = record.get("pre_registration_sha256")
         if not _digest(receipt):
             reasons.add("MISSING_PROSPECTIVE_REGISTRATION_RECEIPT")

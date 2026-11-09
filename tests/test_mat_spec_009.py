@@ -71,6 +71,55 @@ class ChallengeTests(unittest.TestCase):
         self.assertIn("SOURCE_FAMILY_LEAKAGE_ACROSS_SPLITS", decision["reasons"])
         self.assertEqual(decision["status"], "BLOCKED")
 
+    def test_cross_partition_diagnostic_hash_and_events_cannot_be_replayed(
+        self,
+    ) -> None:
+        # Codex P2 reproduction: all other metadata satisfies the structural
+        # preflight, but HOLDOUT reuses TRAIN phase-diagnostic evidence.
+        records = mat_spec_009._synthetic_controls()
+        for record in records:
+            record.pop("synthetic_fixture")
+        for heldout, train in zip(records[2:], records[:2], strict=True):
+            heldout["diagnostic_sha256"] = train["diagnostic_sha256"]
+            heldout["diagnostic_event_id"] = train["diagnostic_event_id"]
+        decision = mat_spec_009.check_future_challenge(records)
+        self.assertEqual(decision["status"], "BLOCKED")
+        self.assertIn(
+            "DIAGNOSTIC_PROVENANCE_REUSED_ACROSS_CAMPAIGNS",
+            decision["reasons"],
+        )
+        self.assertIn(
+            "DIAGNOSTIC_PROVENANCE_LEAKAGE_ACROSS_SPLITS",
+            decision["reasons"],
+        )
+        self.assertNotIn(
+            "SYNTHETIC_FIXTURE_NOT_PHYSICAL_MEASUREMENT",
+            decision["reasons"],
+        )
+        self.assertFalse(decision["physical_evidence_admitted"])
+        self.assertFalse(decision["independence_authenticated"])
+        self.assertIsNone(decision["heldout_accuracy"])
+
+    def test_diagnostic_hash_or_event_reuse_alone_blocks(self) -> None:
+        for field in ("diagnostic_sha256", "diagnostic_event_id"):
+            with self.subTest(field=field):
+                records = mat_spec_009._synthetic_controls()
+                for record in records:
+                    record.pop("synthetic_fixture")
+                for heldout, train in zip(records[2:], records[:2], strict=True):
+                    heldout[field] = train[field]
+                decision = mat_spec_009.check_future_challenge(records)
+                self.assertEqual(decision["status"], "BLOCKED")
+                self.assertIn(
+                    "DIAGNOSTIC_PROVENANCE_REUSED_ACROSS_CAMPAIGNS",
+                    decision["reasons"],
+                )
+                self.assertIn(
+                    "DIAGNOSTIC_PROVENANCE_LEAKAGE_ACROSS_SPLITS",
+                    decision["reasons"],
+                )
+                self.assertIsNone(decision["heldout_accuracy"])
+
     def test_receiver_units_and_pressure_are_declared_before_split(self) -> None:
         cases = (
             ("measurement_unit", "M_PER_S", "INCOMMENSURATE_MEASUREMENT_UNITS"),
