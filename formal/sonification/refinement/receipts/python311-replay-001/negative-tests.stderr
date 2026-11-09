@@ -1,0 +1,31 @@
+test_decimal_domain_42_cases (test_interval.FrozenIntervalConformance.test_decimal_domain_42_cases) ... ok
+test_decimal_guard_mutation_rejected (test_interval.FrozenIntervalConformance.test_decimal_guard_mutation_rejected) ... ok
+test_interval_arithmetic_mutation_rejected (test_interval.FrozenIntervalConformance.test_interval_arithmetic_mutation_rejected) ... ok
+test_interval_domain_882_cases (test_interval.FrozenIntervalConformance.test_interval_domain_882_cases) ... ok
+test_long_decimal_acceptance_has_runtime_digit_bound (test_interval.FrozenIntervalConformance.test_long_decimal_acceptance_has_runtime_digit_bound) ... ok
+test_measured_zero_center_is_valid_positive_error_required (test_interval.FrozenIntervalConformance.test_measured_zero_center_is_valid_positive_error_required) ... ok
+test_missing_center_and_error_preserve_keyerror (test_interval.FrozenIntervalConformance.test_missing_center_and_error_preserve_keyerror) ... ok
+test_missing_value_not_numeric_zero (test_interval.FrozenIntervalConformance.test_missing_value_not_numeric_zero) ... ok
+test_unsupported_field_rejected_before_missing_keys (test_interval.FrozenIntervalConformance.test_unsupported_field_rejected_before_missing_keys) ... ok
+test_adapter_rejects_subclasses_and_lists (test_refinement.FrozenClassifyConformance.test_adapter_rejects_subclasses_and_lists) ... ok
+test_altered_expected_numerical_result_is_detected (test_refinement.FrozenClassifyConformance.test_altered_expected_numerical_result_is_detected) ... ok
+test_arbitrary_precision_separation (test_refinement.FrozenClassifyConformance.test_arbitrary_precision_separation) ... ok
+test_ast_guard_rejects_changed_comparison_even_without_hash_check (test_refinement.FrozenClassifyConformance.test_ast_guard_rejects_changed_comparison_even_without_hash_check) ... ok
+test_ast_guard_rejects_prohibited_call_even_without_hash_check (test_refinement.FrozenClassifyConformance.test_ast_guard_rejects_prohibited_call_even_without_hash_check) ... ok
+test_both_zero_intervals_are_overlap (test_refinement.FrozenClassifyConformance.test_both_zero_intervals_are_overlap) ... ok
+test_changed_source_rejected (test_refinement.FrozenClassifyConformance.test_changed_source_rejected) ... ok
+test_comparison_mutant_detected_by_touching_case (test_refinement.FrozenClassifyConformance.test_comparison_mutant_detected_by_touching_case) ... ok
+test_exact_source_pin (test_refinement.FrozenClassifyConformance.test_exact_source_pin) ... ok
+test_exception_mutant_detected (test_refinement.FrozenClassifyConformance.test_exception_mutant_detected) ... ok
+test_invalid_rejected_before_separation (test_refinement.FrozenClassifyConformance.test_invalid_rejected_before_separation) ... ok
+test_missing_does_not_become_zero (test_refinement.FrozenClassifyConformance.test_missing_does_not_become_zero) ... ok
+test_output_label_mutant_detected (test_refinement.FrozenClassifyConformance.test_output_label_mutant_detected) ... ok
+test_runtime_annotations_do_not_prevent_overridden_order (test_refinement.FrozenClassifyConformance.test_runtime_annotations_do_not_prevent_overridden_order) ... ok
+test_touching_is_overlap (test_refinement.FrozenClassifyConformance.test_touching_is_overlap) ... ok
+test_truncated_tuple_is_rejected (test_refinement.FrozenClassifyConformance.test_truncated_tuple_is_rejected) ... ok
+test_weakening_interval_guard_is_rejected (test_refinement.FrozenClassifyConformance.test_weakening_interval_guard_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.044s
+
+OK

@@ -1,0 +1,4 @@
+Sonification/Intervals.lean:97:19: warning: unused variable `center`
+note: this linter can be disabled with `set_option linter.unusedVariables false`
+Sonification/Intervals.lean:97:40: warning: unused variable `he`
+note: this linter can be disabled with `set_option linter.unusedVariables false`

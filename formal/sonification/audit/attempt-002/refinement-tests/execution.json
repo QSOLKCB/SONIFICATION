@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "/home/trent/sonification-formal-001/formal/sonification/refinement",
+    "-p",
+    "test_*.py",
+    "-v"
+  ],
+  "cwd": "/home/trent/sonification-formal-001",
+  "exit_code": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "02fabfc683d5c89501e30eb9590df66ff58de1bf96dc51e41c5e7e7df07ed56c",
+  "expected_zero": true,
+  "detected_as_expected": true
+}

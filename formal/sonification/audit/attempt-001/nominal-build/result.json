@@ -1,0 +1,151 @@
+{
+  "assurance": "MATHEMATICAL_MODEL_ONLY",
+  "baseline_commit": null,
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Sonification/Intervals.olean",
+        "Sonification/Intervals.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "/tmp/sonification-lean-zzuciok8"
+      },
+      "exit_code": 0,
+      "stderr_path": "00.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "00.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "working_directory": "/tmp/sonification-lean-zzuciok8"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Sonification/OrderedIntervals.olean",
+        "Sonification/OrderedIntervals.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "/tmp/sonification-lean-zzuciok8"
+      },
+      "exit_code": 0,
+      "stderr_path": "01.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "01.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "working_directory": "/tmp/sonification-lean-zzuciok8"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Sonification.olean",
+        "Sonification.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "/tmp/sonification-lean-zzuciok8"
+      },
+      "exit_code": 0,
+      "stderr_path": "02.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "02.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "working_directory": "/tmp/sonification-lean-zzuciok8"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Audit.olean",
+        "Audit.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "/tmp/sonification-lean-zzuciok8"
+      },
+      "exit_code": 0,
+      "stderr_path": "03.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "03.stdout",
+      "stdout_sha256": "1d6d02272996150f84b11a7a9615bdc3246fdb3a48e56524beac70d5eceaa482",
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "working_directory": "/tmp/sonification-lean-zzuciok8"
+    }
+  ],
+  "declaration_count": 217,
+  "expected_theorems": [
+    "Sonification.Ordered.asymmetric",
+    "Sonification.Ordered.classify_below_iff",
+    "Sonification.Ordered.classify_overlap_iff",
+    "Sonification.Ordered.exhaustive",
+    "Sonification.Ordered.integer_specialization",
+    "Sonification.Ordered.order_reflecting_map",
+    "Sonification.Ordered.separation_exclusive",
+    "Sonification.above_iff",
+    "Sonification.below_iff",
+    "Sonification.box_valid",
+    "Sonification.exclusive",
+    "Sonification.exhaustive",
+    "Sonification.inhabited_branches",
+    "Sonification.invalid_iff",
+    "Sonification.overlap_iff",
+    "Sonification.positive_scale",
+    "Sonification.reversal",
+    "Sonification.scale_lt_iff",
+    "Sonification.touching"
+  ],
+  "imported_modules": [
+    "Audit",
+    "Sonification",
+    "Sonification.Intervals",
+    "Sonification.OrderedIntervals"
+  ],
+  "input_sha256": {
+    "Audit.lean": "2e1c21f1efa0c8578430f909baab4ab7432363de33eedffb43f7dcd16a2a989b",
+    "Sonification.lean": "f6dcd6e0ec76edd86aeacc083aeea2a3cfe6aab692173dc34c0e64f419b435f5",
+    "Sonification/Intervals.lean": "ca748d78ca797898e546684355f3ccb24f15a1beb40c19264e62280e68991e1b",
+    "Sonification/OrderedIntervals.lean": "af532251f2a168ac49ae3324c17d3abe1e9e1e9341b63f77585d37ad15803370",
+    "check.py": "71a49c43e2697b4bb1e904a4ce47bbb6a6059a57e18d8f4f01182a58484c0020",
+    "expected-declarations.json": "5cdd580daa996c4fd879e18c0ce5bacd05adabddac8b9ae7cf28a80aa2fe19d1",
+    "lakefile.toml": "acb5782eaad912f790affc151ae1387a0c264256f09541ac0ab48d404dabe639",
+    "lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea"
+  },
+  "lean_executable": {
+    "path": "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023"
+  },
+  "observed_theorems": [
+    "Sonification.Ordered.asymmetric",
+    "Sonification.Ordered.classify_below_iff",
+    "Sonification.Ordered.classify_overlap_iff",
+    "Sonification.Ordered.exhaustive",
+    "Sonification.Ordered.integer_specialization",
+    "Sonification.Ordered.order_reflecting_map",
+    "Sonification.Ordered.separation_exclusive",
+    "Sonification.above_iff",
+    "Sonification.below_iff",
+    "Sonification.box_valid",
+    "Sonification.exclusive",
+    "Sonification.exhaustive",
+    "Sonification.inhabited_branches",
+    "Sonification.invalid_iff",
+    "Sonification.overlap_iff",
+    "Sonification.positive_scale",
+    "Sonification.reversal",
+    "Sonification.scale_lt_iff",
+    "Sonification.touching"
+  ],
+  "python_refinement": "OPEN",
+  "started_utc": "2026-11-09T21:58:07.106315+00:00",
+  "status": "PASS",
+  "trust": "Kernel and pinned Lean distribution, source-sensitive audit runner, OS execution; logical axioms disclosed per declaration. Compiler-only unsafe auxiliaries separately disclosed.",
+  "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "version_exit_code": 0
+}

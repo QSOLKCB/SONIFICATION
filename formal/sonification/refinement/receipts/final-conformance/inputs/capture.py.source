@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+"""Preserve append-only raw conformance execution receipts (stdlib only)."""
+
+from __future__ import annotations
+
+import argparse
+import ast
+import datetime
+import fractions
+import hashlib
+import json
+import numbers
+import platform
+import subprocess
+import sys
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parents[2]
+
+
+def sha(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--receipt-dir", type=Path, required=True)
+    args = parser.parse_args()
+    destination = args.receipt_dir.resolve()
+    destination.mkdir(parents=True, exist_ok=False)
+    snapshots = destination / "inputs"
+    snapshots.mkdir()
+    initial_inputs = {p.name: p.read_bytes() for p in sorted(HERE.glob("*.py"))}
+    for name, raw in initial_inputs.items():
+        (snapshots / (name + ".source")).write_bytes(raw)
+    commands = [
+        ("conformance", [sys.executable, str(HERE / "run.py"), "--root", str(ROOT)]),
+        (
+            "negative-tests",
+            [
+                sys.executable,
+                "-m",
+                "unittest",
+                "discover",
+                "-s",
+                str(HERE),
+                "-p",
+                "test_refinement.py",
+                "-v",
+            ],
+        ),
+    ]
+    records = []
+    for name, argv in commands:
+        completed = subprocess.run(argv, cwd=ROOT, capture_output=True, check=False, timeout=180)
+        stdout, stderr = destination / f"{name}.stdout", destination / f"{name}.stderr"
+        stdout.write_bytes(completed.stdout)
+        stderr.write_bytes(completed.stderr)
+        records.append(
+            {
+                "name": name,
+                "argv": argv,
+                "working_directory": str(ROOT),
+                "exit_code": completed.returncode,
+                "stdout": stdout.name,
+                "stdout_sha256": sha(stdout),
+                "stderr": stderr.name,
+                "stderr_sha256": sha(stderr),
+            }
+        )
+    receipt = {
+        "mission": "SONIFICATION-FORMAL-001",
+        "class": "FINITE_CONFORMANCE",
+        "universal_implementation_refinement": "OPEN",
+        "timestamp_utc": datetime.datetime.now(datetime.UTC).isoformat(),
+        "python": sys.version,
+        "executable": str(Path(sys.executable).resolve()),
+        "executable_sha256": sha(Path(sys.executable).resolve()),
+        "platform": platform.platform(),
+        "trusted_stdlib_sources": {
+            module.__name__: {
+                "path": module.__file__,
+                "sha256": sha(Path(module.__file__)),
+            }
+            for module in (fractions, numbers, ast)
+        },
+        "candidate_parent_commit": subprocess.run(
+            ["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, check=True
+        )
+        .stdout.decode()
+        .strip(),
+        "worktree_status": subprocess.run(
+            ["git", "status", "--porcelain=v1"], cwd=ROOT, capture_output=True, check=True
+        ).stdout.decode(),
+        "input_files": {
+            name: {
+                "sha256": hashlib.sha256(raw).hexdigest(),
+                "snapshot": f"inputs/{name}.source",
+            }
+            for name, raw in initial_inputs.items()
+        },
+        "inputs_unchanged_during_run": all(
+            (HERE / name).read_bytes() == raw for name, raw in initial_inputs.items()
+        ),
+        "commands": records,
+        "status": "PASS"
+        if all(record["exit_code"] == 0 for record in records)
+        and all((HERE / name).read_bytes() == raw for name, raw in initial_inputs.items())
+        else "FAIL",
+        "acceptance": "EXECUTION_ONLY_NOT_FORMAL_PROOF",
+    }
+    (destination / "receipt.json").write_text(json.dumps(receipt, sort_keys=True, indent=2) + "\n")
+    print(
+        json.dumps({"status": receipt["status"], "receipt_dir": str(destination)}, sort_keys=True)
+    )
+    return 0 if receipt["status"] == "PASS" else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

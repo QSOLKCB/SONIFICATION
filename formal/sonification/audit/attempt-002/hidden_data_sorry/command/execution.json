@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/tmp/sonification-independent-audit-e599zlde/check.py",
+    "--lean",
+    "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "--out",
+    "/home/trent/sonification-formal-001/formal/sonification/audit/attempt-002/hidden_data_sorry/checker"
+  ],
+  "cwd": "/home/trent/sonification-formal-001",
+  "exit_code": 1,
+  "stdout_sha256": "171e8a7213a6e66f4cd5706e7f7536533911280ff9761cd0c25662db68588202",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "expected_zero": false,
+  "detected_as_expected": true
+}

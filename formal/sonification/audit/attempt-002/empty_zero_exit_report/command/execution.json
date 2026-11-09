@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/tmp/sonification-independent-audit-0aioxh26/check.py",
+    "--lean",
+    "/tmp/sonification-independent-audit-0aioxh26/fake-lean",
+    "--out",
+    "/home/trent/sonification-formal-001/formal/sonification/audit/attempt-002/empty_zero_exit_report/checker"
+  ],
+  "cwd": "/home/trent/sonification-formal-001",
+  "exit_code": 1,
+  "stdout_sha256": "ea69cb1647573c8bc70598622b50e251f493a82f7005b38d58571cd18865fdc1",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "expected_zero": false,
+  "detected_as_expected": true
+}

@@ -1,0 +1,5 @@
+{
+  "status": "INVALID",
+  "reason": "Audit report construction raised NameError: runner_source not defined; command/mutation logs retained. No AUDIT acceptance derived from this attempt.",
+  "failed_run_exit_code": 1
+}

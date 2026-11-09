@@ -1,0 +1,479 @@
+{
+  "schema": "qsol.sonification-formal-001.independent-audit/v1",
+  "target_commit": "8c62517138e3b86a4672d8969e190b747f81c398",
+  "frozen_mat007_commit": "b97348ff8fcf3f57764dec21a8914f153f96a745",
+  "frozen_module_sha256": "2e363adea6c781ab68aec69d2ee5c7d712fc5e46346ae5be21d8cf3e929781c6",
+  "timestamp_utc": "2026-11-09T21:58:20.619774+00:00",
+  "auditor": "independent_auditor subagent; inspected actual sources and reexecuted commands",
+  "proof_input_sha256": {
+    "check.py": "71a49c43e2697b4bb1e904a4ce47bbb6a6059a57e18d8f4f01182a58484c0020",
+    "Audit.lean": "2e1c21f1efa0c8578430f909baab4ab7432363de33eedffb43f7dcd16a2a989b",
+    "Sonification.lean": "f6dcd6e0ec76edd86aeacc083aeea2a3cfe6aab692173dc34c0e64f419b435f5",
+    "Sonification/Intervals.lean": "ca748d78ca797898e546684355f3ccb24f15a1beb40c19264e62280e68991e1b",
+    "Sonification/OrderedIntervals.lean": "af532251f2a168ac49ae3324c17d3abe1e9e1e9341b63f77585d37ad15803370",
+    "lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+    "lakefile.toml": "acb5782eaad912f790affc151ae1387a0c264256f09541ac0ab48d404dabe639",
+    "expected-declarations.json": "5cdd580daa996c4fd879e18c0ce5bacd05adabddac8b9ae7cf28a80aa2fe19d1",
+    "theorem-statements.json": "ce5f623260aba4494ad4cf0b634a88531e33e53885ea0ff2fe5f7c6aeb778af7"
+  },
+  "inputs_stable_during_audit": true,
+  "nominal_proof_result": "PASS",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001/formal/sonification/lean/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "/home/trent/sonification-formal-001/formal/sonification/audit/attempt-001/nominal-build"
+      ],
+      "cwd": "/home/trent/sonification-formal-001",
+      "exit_code": 0,
+      "stdout_sha256": "54329273db68c9ffd09347704abd0172fccb190f10f66298330dff03f0aac49d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_zero": true,
+      "detected_as_expected": true
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/sonification-independent-audit-406jqqji/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "/home/trent/sonification-formal-001/formal/sonification/audit/attempt-001/false_theorem/checker"
+      ],
+      "cwd": "/home/trent/sonification-formal-001",
+      "exit_code": 1,
+      "stdout_sha256": "c50b1451e815ae7d6695d51839e045d589d9f9482d777e6cdb5681e8532d1d57",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_zero": false,
+      "detected_as_expected": true,
+      "mutation": "false_theorem"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/sonification-independent-audit-zfk3bhe2/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "/home/trent/sonification-formal-001/formal/sonification/audit/attempt-001/weaker_theorem/checker"
+      ],
+      "cwd": "/home/trent/sonification-formal-001",
+      "exit_code": 1,
+      "stdout_sha256": "7c541086a0e5f008479f2e2f275e7d5d5fece0825830de917caba90cccb8f74a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_zero": false,
+      "detected_as_expected": true,
+      "mutation": "weaker_theorem"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/sonification-independent-audit-u7slgx69/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "/home/trent/sonification-formal-001/formal/sonification/audit/attempt-001/hidden_data_sorry/checker"
+      ],
+      "cwd": "/home/trent/sonification-formal-001",
+      "exit_code": 1,
+      "stdout_sha256": "23f78b623810872a37de08a88ecb85dee15efd537e4c1101f14eef68733d0351",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_zero": false,
+      "detected_as_expected": true,
+      "mutation": "hidden_data_sorry"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/sonification-independent-audit-br5d6sdn/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "/home/trent/sonification-formal-001/formal/sonification/audit/attempt-001/custom_axiom/checker"
+      ],
+      "cwd": "/home/trent/sonification-formal-001",
+      "exit_code": 1,
+      "stdout_sha256": "3573fcd24b003a9a2bd2b864d0ee62aa9d5b1f658ab6fe12a8ae68fa60a6093d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_zero": false,
+      "detected_as_expected": true,
+      "mutation": "custom_axiom"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/sonification-independent-audit-3jw3y0fi/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "/home/trent/sonification-formal-001/formal/sonification/audit/attempt-001/unimported_nested_module/checker"
+      ],
+      "cwd": "/home/trent/sonification-formal-001",
+      "exit_code": 1,
+      "stdout_sha256": "ab111fa736018c82baea361a073f7579ad6a35e723f37229756c98419461337d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_zero": false,
+      "detected_as_expected": true,
+      "mutation": "unimported_nested_module"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/sonification-independent-audit-tqp8xb42/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "/home/trent/sonification-formal-001/formal/sonification/audit/attempt-001/missing_import/checker"
+      ],
+      "cwd": "/home/trent/sonification-formal-001",
+      "exit_code": 1,
+      "stdout_sha256": "627e10b5dc75ff9e63301e41d014831bad86507bd1140a2ec2b7d7612c2b41c2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_zero": false,
+      "detected_as_expected": true,
+      "mutation": "missing_import"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/sonification-independent-audit-5c34s8pb/check.py",
+        "--lean",
+        "/tmp/sonification-independent-audit-5c34s8pb/fake-lean",
+        "--out",
+        "/home/trent/sonification-formal-001/formal/sonification/audit/attempt-001/empty_zero_exit_report/checker"
+      ],
+      "cwd": "/home/trent/sonification-formal-001",
+      "exit_code": 1,
+      "stdout_sha256": "e5d0b222b617c3d119fe9dfbac4acca5b9b86bc5d8bd9d1b63c529ce16fbd405",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_zero": false,
+      "detected_as_expected": true,
+      "mutation": "empty_zero_exit_report"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/sonification-independent-audit-00qs0u7c/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "/home/trent/sonification-formal-001/formal/sonification/audit/attempt-001/missing_expected_inventory/checker"
+      ],
+      "cwd": "/home/trent/sonification-formal-001",
+      "exit_code": 1,
+      "stdout_sha256": "23cb5c1b66b64a82f5100bd1476d850306a711a5536e384f365db060afc0662f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_zero": false,
+      "detected_as_expected": true,
+      "mutation": "missing_expected_inventory"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001/formal/sonification/tools/inventory.py",
+        "--check"
+      ],
+      "cwd": "/home/trent/sonification-formal-001",
+      "exit_code": 0,
+      "stdout_sha256": "b628001e79c9d1fe253f06a4a3b694a06c7a345b581342093a771950aa8dac61",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_zero": true,
+      "detected_as_expected": true
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001/formal/sonification/refinement/run.py",
+        "--root",
+        "/home/trent/sonification-formal-001"
+      ],
+      "cwd": "/home/trent/sonification-formal-001",
+      "exit_code": 0,
+      "stdout_sha256": "994d771b4f81d9ac91fd9f76950b0c0f06a343bdfdc84e4eea7fc9304b0c1301",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_zero": true,
+      "detected_as_expected": true
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "/home/trent/sonification-formal-001/formal/sonification/refinement",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "cwd": "/home/trent/sonification-formal-001",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "3fe5aced9d364ed7064a733e8c81b218aa9a749c2cee23add30b7d1a9fa470ef",
+      "expected_zero": true,
+      "detected_as_expected": true
+    }
+  ],
+  "negative_observations": {
+    "pinned_source_mutation_rejected": true,
+    "altered_touching_case_result_rejected": true
+  },
+  "theorems": [
+    {
+      "declaration": "Sonification.Ordered.asymmetric",
+      "exact_observed_type": "\u2200 {\u03b1 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) {x y : \u03b1}, o.lt x y \u2192 \u00aco.lt y x",
+      "axioms": [],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    },
+    {
+      "declaration": "Sonification.Ordered.classify_below_iff",
+      "exact_observed_type": "\u2200 {\u03b1 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) (a b : Sonification.Ordered.Interval \u03b1),\n  Sonification.Ordered.classify o a b = some Sonification.Ordered.Relation.below \u2194\n    Sonification.Ordered.Valid o a \u2227 Sonification.Ordered.Valid o b \u2227 o.lt a.hi b.lo",
+      "axioms": [
+        "propext"
+      ],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    },
+    {
+      "declaration": "Sonification.Ordered.classify_overlap_iff",
+      "exact_observed_type": "\u2200 {\u03b1 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) (a b : Sonification.Ordered.Interval \u03b1),\n  Sonification.Ordered.classify o a b = some Sonification.Ordered.Relation.overlap \u2194\n    Sonification.Ordered.Valid o a \u2227 Sonification.Ordered.Valid o b \u2227 \u00aco.lt a.hi b.lo \u2227 \u00aco.lt b.hi a.lo",
+      "axioms": [
+        "propext"
+      ],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    },
+    {
+      "declaration": "Sonification.Ordered.exhaustive",
+      "exact_observed_type": "\u2200 {\u03b1 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) (a b : Sonification.Ordered.Interval \u03b1),\n  Sonification.Ordered.Valid o a \u2192\n    Sonification.Ordered.Valid o b \u2192\n      Sonification.Ordered.classify o a b = some Sonification.Ordered.Relation.below \u2228\n        Sonification.Ordered.classify o a b = some Sonification.Ordered.Relation.above \u2228\n          Sonification.Ordered.classify o a b = some Sonification.Ordered.Relation.overlap",
+      "axioms": [
+        "propext"
+      ],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    },
+    {
+      "declaration": "Sonification.Ordered.integer_specialization",
+      "exact_observed_type": "\u2200 (a b : Sonification.Interval),\n  Sonification.Ordered.classify Sonification.Ordered.integerOrder { lo := a.lo, hi := a.hi }\n      { lo := b.lo, hi := b.hi } =\n    Option.map\n      (fun r =>\n        match r with\n        | Sonification.Relation.below => Sonification.Ordered.Relation.below\n        | Sonification.Relation.above => Sonification.Ordered.Relation.above\n        | Sonification.Relation.overlap => Sonification.Ordered.Relation.overlap)\n      (Sonification.classify a b)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    },
+    {
+      "declaration": "Sonification.Ordered.order_reflecting_map",
+      "exact_observed_type": "\u2200 {\u03b1 \u03b2 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) (p : Sonification.Ordered.OrderSpec \u03b2) (f : \u03b1 \u2192 \u03b2),\n  (\u2200 (x y : \u03b1), p.lt (f x) (f y) \u2194 o.lt x y) \u2192\n    \u2200 (a b : Sonification.Ordered.Interval \u03b1),\n      Sonification.Ordered.classify p (Sonification.Ordered.map f a) (Sonification.Ordered.map f b) =\n        Sonification.Ordered.classify o a b",
+      "axioms": [
+        "propext"
+      ],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    },
+    {
+      "declaration": "Sonification.Ordered.separation_exclusive",
+      "exact_observed_type": "\u2200 {\u03b1 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) (a b : Sonification.Ordered.Interval \u03b1),\n  Sonification.Ordered.Valid o a \u2192 Sonification.Ordered.Valid o b \u2192 \u00ac(o.lt a.hi b.lo \u2227 o.lt b.hi a.lo)",
+      "axioms": [],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    },
+    {
+      "declaration": "Sonification.above_iff",
+      "exact_observed_type": "\u2200 (a b : Sonification.Interval),\n  Sonification.classify a b = some Sonification.Relation.above \u2194\n    Sonification.Valid a \u2227 Sonification.Valid b \u2227 b.hi < a.lo",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    },
+    {
+      "declaration": "Sonification.below_iff",
+      "exact_observed_type": "\u2200 (a b : Sonification.Interval),\n  Sonification.classify a b = some Sonification.Relation.below \u2194\n    Sonification.Valid a \u2227 Sonification.Valid b \u2227 a.hi < b.lo",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    },
+    {
+      "declaration": "Sonification.box_valid",
+      "exact_observed_type": "\u2200 (center error : Int), 0 \u2264 error \u2192 Sonification.Valid (Sonification.box center error)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    },
+    {
+      "declaration": "Sonification.exclusive",
+      "exact_observed_type": "\u2200 (a b : Sonification.Interval),\n  Sonification.Valid a \u2192\n    Sonification.Valid b \u2192\n      \u00ac(a.hi < b.lo \u2227 b.hi < a.lo) \u2227\n        \u00ac(a.hi < b.lo \u2227 a.lo \u2264 b.hi \u2227 b.lo \u2264 a.hi) \u2227 \u00ac(b.hi < a.lo \u2227 a.lo \u2264 b.hi \u2227 b.lo \u2264 a.hi)",
+      "axioms": [
+        "Classical.choice",
+        "propext",
+        "Quot.sound"
+      ],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    },
+    {
+      "declaration": "Sonification.exhaustive",
+      "exact_observed_type": "\u2200 (a b : Sonification.Interval),\n  Sonification.Valid a \u2192\n    Sonification.Valid b \u2192\n      Sonification.classify a b = some Sonification.Relation.below \u2228\n        Sonification.classify a b = some Sonification.Relation.above \u2228\n          Sonification.classify a b = some Sonification.Relation.overlap",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    },
+    {
+      "declaration": "Sonification.inhabited_branches",
+      "exact_observed_type": "Sonification.classify { lo := 0, hi := 1 } { lo := 2, hi := 3 } = some Sonification.Relation.below \u2227\n  Sonification.classify { lo := 2, hi := 3 } { lo := 0, hi := 1 } = some Sonification.Relation.above \u2227\n    Sonification.classify { lo := 0, hi := 1 } { lo := 1, hi := 2 } = some Sonification.Relation.overlap \u2227\n      Sonification.classify { lo := 1, hi := 0 } { lo := 0, hi := 0 } = none",
+      "axioms": [],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    },
+    {
+      "declaration": "Sonification.invalid_iff",
+      "exact_observed_type": "\u2200 (a b : Sonification.Interval), Sonification.classify a b = none \u2194 \u00acSonification.Valid a \u2228 \u00acSonification.Valid b",
+      "axioms": [
+        "propext"
+      ],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    },
+    {
+      "declaration": "Sonification.overlap_iff",
+      "exact_observed_type": "\u2200 (a b : Sonification.Interval),\n  Sonification.classify a b = some Sonification.Relation.overlap \u2194\n    Sonification.Valid a \u2227 Sonification.Valid b \u2227 a.lo \u2264 b.hi \u2227 b.lo \u2264 a.hi",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    },
+    {
+      "declaration": "Sonification.positive_scale",
+      "exact_observed_type": "\u2200 (k : Int) (a b : Sonification.Interval),\n  0 < k \u2192 Sonification.classify (Sonification.scale k a) (Sonification.scale k b) = Sonification.classify a b",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    },
+    {
+      "declaration": "Sonification.reversal",
+      "exact_observed_type": "\u2200 (a b : Sonification.Interval), Sonification.classify b a = Option.map Sonification.reverse (Sonification.classify a b)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    },
+    {
+      "declaration": "Sonification.scale_lt_iff",
+      "exact_observed_type": "\u2200 (k x y : Int), 0 < k \u2192 (k * x < k * y \u2194 x < y)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    },
+    {
+      "declaration": "Sonification.touching",
+      "exact_observed_type": "\u2200 (a b : Sonification.Interval),\n  Sonification.Valid a \u2192\n    Sonification.Valid b \u2192 a.hi = b.lo \u2192 Sonification.classify a b = some Sonification.Relation.overlap",
+      "axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS",
+      "scope": "Mathematical statement only; no production correspondence"
+    }
+  ],
+  "trust": [
+    "Lean 4.19.0 kernel and pinned standard library",
+    "propext, Quot.sound, Classical.choice as disclosed per theorem",
+    "Unsafe compiler-only auxiliaries may contain lcProof/lcUnreachable; never safe theorem dependencies",
+    "Source-sensitive checker and audit metaprogram; CPython, Git, OS and SHA-256",
+    "No independent authentication of Lean distribution origin"
+  ],
+  "open_obligations": [
+    "CPython semantics correspondence and Fraction refinement",
+    "Rational instantiation of the generic OrderSpec",
+    "Whole-program production caller/dependency closure",
+    "Owner review of intended scientific specification"
+  ],
+  "status": "PASS"
+}

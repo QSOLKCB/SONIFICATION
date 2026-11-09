@@ -1,0 +1,8 @@
+Sonification/Intervals.lean:113:9: error: application type mismatch
+  And.intro rfl
+argument
+  rfl
+has type
+  ?m.1576 = ?m.1576 : Prop
+but is expected to have type
+  classify { lo := 0, hi := 1 } { lo := 2, hi := 3 } = some Relation.above : Prop

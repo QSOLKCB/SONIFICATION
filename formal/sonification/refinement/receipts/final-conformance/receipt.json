@@ -1,0 +1,84 @@
+{
+  "acceptance": "EXECUTION_ONLY_NOT_FORMAL_PROOF",
+  "candidate_parent_commit": "8c62517138e3b86a4672d8969e190b747f81c398",
+  "class": "FINITE_CONFORMANCE",
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/bin/python3.12",
+        "/home/trent/sonification-formal-001/formal/sonification/refinement/run.py",
+        "--root",
+        "/home/trent/sonification-formal-001"
+      ],
+      "exit_code": 0,
+      "name": "conformance",
+      "stderr": "conformance.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "conformance.stdout",
+      "stdout_sha256": "04373f4854bb3f875f5c211f25765bf8d0484b9abd87d1e20f7fa418f44b7ef9",
+      "working_directory": "/home/trent/sonification-formal-001"
+    },
+    {
+      "argv": [
+        "/home/trent/.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/bin/python3.12",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "/home/trent/sonification-formal-001/formal/sonification/refinement",
+        "-p",
+        "test_refinement.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "name": "negative-tests",
+      "stderr": "negative-tests.stderr",
+      "stderr_sha256": "620e5fcd5bec596bed0f9413ad4840f5817fee63a9696e313915805c15d9f5a6",
+      "stdout": "negative-tests.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "working_directory": "/home/trent/sonification-formal-001"
+    }
+  ],
+  "executable": "/home/trent/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+  "executable_sha256": "1e4461092175d186c4bcdb19ee2849a45d6e4d8d1f6a871e45f63418d52a4e35",
+  "input_files": {
+    "capture.py": {
+      "sha256": "ed81eea8513139a0daae5563479eeea43cef5bb6c1145b5e5c00f22f4e381f37",
+      "snapshot": "inputs/capture.py.source"
+    },
+    "run.py": {
+      "sha256": "b36aefea36206c121bf2651c0c6796c8e1bb23e7da8a961674a9edff9aa6eaf1",
+      "snapshot": "inputs/run.py.source"
+    },
+    "source_adapter.py": {
+      "sha256": "46a278cbbfa9776e3ea942ab3a2e8aed83d4fd0aecc1aa03fc1072472920aa43",
+      "snapshot": "inputs/source_adapter.py.source"
+    },
+    "test_refinement.py": {
+      "sha256": "19e10fbfd60860435a14315f3387b5dc962bade27530f7e649600559680952ca",
+      "snapshot": "inputs/test_refinement.py.source"
+    }
+  },
+  "inputs_unchanged_during_run": true,
+  "mission": "SONIFICATION-FORMAL-001",
+  "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.43",
+  "python": "3.12.13 (main, Jul 23 2026, 14:43:28) [Clang 22.1.3 ]",
+  "status": "PASS",
+  "timestamp_utc": "2026-11-09T21:41:31.308450+00:00",
+  "trusted_stdlib_sources": {
+    "ast": {
+      "path": "/home/trent/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/ast.py",
+      "sha256": "b515c23dbbc459329d3b802a3aac742cc456d7472e66f7ed6e9dc97e40596d7d"
+    },
+    "fractions": {
+      "path": "/home/trent/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/fractions.py",
+      "sha256": "d52d1ab9d5be26924e4914a5e40069c992bbfa68f773694c2e5ee8452d0766a0"
+    },
+    "numbers": {
+      "path": "/home/trent/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/numbers.py",
+      "sha256": "ac381960a3dc1db0498b0bd43d8ef278d6599713121a186b153ff09d9552e0db"
+    }
+  },
+  "universal_implementation_refinement": "OPEN",
+  "worktree_status": "?? formal/\n"
+}

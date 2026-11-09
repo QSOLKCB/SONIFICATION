@@ -1,0 +1,127 @@
+{
+  "assurance_dimensions": {
+    "AUDIT_ACCEPTED": false,
+    "DIFFERENTIAL_TESTED": true,
+    "MODEL_PROVED": false,
+    "REFINEMENT_PROVED": false
+  },
+  "blockers": [
+    "No formal Python operational semantics or verified source-sensitive translation",
+    "No machine-checked CPython Fraction-to-rational representation theorem",
+    "No proved step/initial-state/observable relation to Lean model",
+    "Whole-module import/global binding behavior not covered",
+    "pairwise_fits collections, duplicate handling and dependency closure remain OPEN"
+  ],
+  "component": "MAT-SPEC-007 source-refinement investigation",
+  "counterexamples": [
+    {
+      "id": "PY-DYNAMIC-ORDER",
+      "result": "Fraction subclass overriding __lt__ produces overlap for rational values [0,0] and [1,1]",
+      "scope": "Excluded by exact-type input contract; caller annotations alone are insufficient",
+      "test": "test_runtime_annotations_do_not_prevent_overridden_order"
+    },
+    {
+      "id": "PY-DECIMAL-DIGIT-LIMIT",
+      "result": "Grammar-valid positive decimal of configured maximum digits +1 raises ValueError in Fraction(text)",
+      "scope": "Observed CPython with nonzero int string digit bound; formal parser totality requires bound semantics",
+      "test": "test_long_decimal_acceptance_has_runtime_digit_bound"
+    }
+  ],
+  "execution": {
+    "classify_cases": 50630,
+    "classify_corpus_sha256": "34ddbea814f45f7e821104959813e538dcea6823b2c514fb64ca7cc1272d8585",
+    "commands": [
+      {
+        "argv": [
+          "/home/trent/.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/bin/python3.12",
+          "/home/trent/sonification-formal-001/formal/sonification/refinement/run.py",
+          "--root",
+          "/home/trent/sonification-formal-001"
+        ],
+        "exit_code": 0,
+        "name": "conformance",
+        "stderr": "conformance.stderr",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "conformance.stdout",
+        "stdout_sha256": "04373f4854bb3f875f5c211f25765bf8d0484b9abd87d1e20f7fa418f44b7ef9",
+        "working_directory": "/home/trent/sonification-formal-001"
+      },
+      {
+        "argv": [
+          "/home/trent/.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/bin/python3.12",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "/home/trent/sonification-formal-001/formal/sonification/refinement",
+          "-p",
+          "test_*.py",
+          "-v"
+        ],
+        "exit_code": 0,
+        "name": "negative-tests",
+        "stderr": "negative-tests.stderr",
+        "stderr_sha256": "3fe5aced9d364ed7064a733e8c81b218aa9a749c2cee23add30b7d1a9fa470ef",
+        "stdout": "negative-tests.stdout",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "working_directory": "/home/trent/sonification-formal-001"
+      }
+    ],
+    "decimal_cases": 42,
+    "interval_cases": 882,
+    "observed_test_outcome": "26 tests OK; no skip on observed CPython; zero classify mismatches",
+    "python": "3.12.13 (main, Jul 23 2026, 14:43:28) [Clang 22.1.3 ]",
+    "receipt": "receipts/expanded-final-conformance/receipt.json",
+    "receipt_sha256": "9a4d72fa1b841168e388e2663675f0960dddb332ca9cd1464ed97f444be49cc9",
+    "unit_tests": 26
+  },
+  "formalization_worktree_status": "DIRTY: exact experimental source snapshots retained in receipt; containing commit must be recorded separately by integrator",
+  "independent_review": "PENDING",
+  "interpretation": "Only finite conformance is supported here. Mathematical proofs are separate. No formal Python refinement claim or independent audit acceptance.",
+  "mission": "SONIFICATION-FORMAL-001",
+  "next_action": "Define a formal small-step semantics for the closed classify AST, prove its result relation to the interval model, then separately establish source-translation and Fraction correspondence; preserve current counterexamples.",
+  "next_replay_argv": [
+    "uv",
+    "run",
+    "--no-project",
+    "--python",
+    "3.12",
+    "formal/sonification/refinement/capture.py",
+    "--receipt-dir",
+    "/tmp/sonification-formal-001-next-investigation"
+  ],
+  "observed_formalization_commit": "fde74641adbb0d0da029eea33c5536b9bddcfcaf",
+  "previous_attempts": [
+    "receipts/initial-conformance",
+    "receipts/reviewed-conformance",
+    "receipts/final-conformance",
+    "receipts/extended-conformance"
+  ],
+  "prohibited_promotions": [
+    "FINITE_CONFORMANCE to universal correctness",
+    "closed AST acceptance to formal implementation refinement",
+    "Lean model theorem to CPython correctness",
+    "source inspection to authenticated physical evidence"
+  ],
+  "target": {
+    "commit": "b97348ff8fcf3f57764dec21a8914f153f96a745",
+    "sha256": "2e363adea6c781ab68aec69d2ee5c7d712fc5e46346ae5be21d8cf3e929781c6",
+    "source": "materials/mat_spec_007.py",
+    "symbols": [
+      "classify",
+      "decimal",
+      "interval"
+    ],
+    "tag": "mat-spec-007-v0.1.0",
+    "tag_object": "8b933a5ab09b8e76afe4c8e169e089f251e23314",
+    "tree": "c1b842c6bace3ccb01714007b8d7ebb05bcecd31"
+  },
+  "trust": [
+    "Git object recovery and SHA-256",
+    "CPython AST parsing, compiler, evaluation and arbitrary-precision integers",
+    "fractions.Fraction normalization and methods",
+    "stdlib regex and error behavior",
+    "experimental adapter and independent oracle implementations; not verified"
+  ],
+  "working_directory": "/home/trent/sonification-formal-001"
+}
