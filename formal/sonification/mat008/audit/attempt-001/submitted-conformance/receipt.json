@@ -1,0 +1,25 @@
+{
+  "AUDIT_ACCEPTED": "OPEN",
+  "DIFFERENTIAL_TESTED": "PASS",
+  "MODEL_PROVED": "OPEN",
+  "REFINEMENT_PROVED": "OPEN",
+  "claim_scope": "exact built-in dict and str rows in generated finite cases",
+  "empty_report_omits_heldout_accuracy": true,
+  "exhaustive_generated_cases": 1296,
+  "function_span_sha256": {
+    "_decimal": "1813ff6c9f9be7b57199c94a325546466a3e038cf981a74e1b65171b1ccc0096",
+    "_identity": "8de0558da5d5324814881904302133e65ff1ba0fcb82f261d68744b5b3d445dc",
+    "validate_future_measurement_packet": "72c86ad19a4637dec04e05120786b001b2aefe9e3ff0e08f4f861e699959b247"
+  },
+  "module_sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08",
+  "named_fixture_cases": 2,
+  "numeric_one_synthetic_flag_structurally_passes": true,
+  "output_mutation_detected": true,
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "source_commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+  "source_mutation_detected": true,
+  "source_tree": "eb19f2e06a502442f621a73be1e5696c2fa25a65",
+  "status": "FINITE_CONFORMANCE_PASS",
+  "tag": "mat-spec-008-v0.1.0",
+  "tag_object": "a02088e3c68addb41c9c7145694c0f566e84f87f"
+}

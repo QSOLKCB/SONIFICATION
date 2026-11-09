@@ -1,0 +1,15 @@
+{
+  "REFINEMENT_PROVED": "OPEN",
+  "cases": 1296,
+  "collision_cases": 834,
+  "json_roundtrip_reuse_reason_present": true,
+  "json_roundtrip_status": "BLOCKED",
+  "module_sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08",
+  "noncollision_cases": 462,
+  "scope": "Finite built-in rows, ordinary grouping oracle; not Python refinement",
+  "source_commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+  "status": "PASS",
+  "str_subclass_equal_values_distinct_hashes": true,
+  "str_subclass_reuse_reason_present": false,
+  "str_subclass_status": "STRUCTURAL_ONLY_UNAUTHENTICATED"
+}

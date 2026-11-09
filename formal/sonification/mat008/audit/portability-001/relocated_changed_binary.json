@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/audit/verify.py",
+    "attempt-001",
+    "--lean-root",
+    "/home/trent/sonification-formal-001-mat008/mat008-relocated-e97senm5/other-home-lean"
+  ],
+  "exit_code": 1,
+  "expected_diagnostic": "local Lean executable digest mismatch",
+  "expected_exit_code": 1,
+  "name": "relocated_changed_binary",
+  "status": "PASS",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "48f722d44ba3c66f04e75284f2f7bab483abe630a8570d346f7c32f9a9c59074",
+  "timed_out": false
+}

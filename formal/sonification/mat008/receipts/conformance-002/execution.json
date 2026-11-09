@@ -1,0 +1,21 @@
+{
+  "REFINEMENT_PROVED": "OPEN",
+  "argv": [
+    "/usr/bin/python3",
+    "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/conformance.py",
+    "--out",
+    "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/receipts/conformance-002/result"
+  ],
+  "claim_class": "FINITE_CONFORMANCE_ONLY",
+  "cwd": "/home/trent/sonification-formal-001-mat008",
+  "exit_code": 0,
+  "input_sha256": {
+    "capture.py": "3003bd181e38a70670a1218aeeab603bbedd7f9964127ebb38976b8056f4ba54",
+    "conformance.py": "645ae27fcf222eef613bf16c3c9c87820e11472c8cbbb324ce7d431d1f5c8962"
+  },
+  "python_executable": "/usr/bin/python3.14",
+  "python_executable_sha256": "52e0a13e60a981d8c4b6478be2ba5176f69da07948a056bf49cf6f077e30cb41",
+  "receipt_sha256": "12bd27efe042b826b0116de26742a13e45e575de642bae00c16ebc39fd86c20d",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "4c85e85845684e9b00c58f7e439ebe1b76a4beb4c356c4b761ef2df20bf295fa"
+}

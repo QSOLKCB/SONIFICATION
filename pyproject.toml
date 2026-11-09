@@ -72,6 +72,13 @@ select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
 # Exact source bytes embedded in immutable, byte-reproducible release ZIPs.
 "materials/mat_spec_010_archive.py" = ["E501", "SIM117", "UP022"]
 "materials/spark_001_archive.py" = ["SIM117", "UP022"]
+# Retained independent audit source and input snapshots are hash-bound evidence.
+"formal/sonification/mat008/audit/verify.py" = ["E501"]
+"formal/sonification/mat008/audit/run.py" = ["E501"]
+"formal/sonification/mat008/audit/binder_negative.py" = ["E501"]
+"formal/sonification/mat008/audit/attempt-001/inputs/*.py" = ["E501"]
+"formal/sonification/mat008/audit/binder-hardening-*/inputs/*.py" = ["E501"]
+"formal/sonification/mat008/audit/portability-*/inputs/*.py" = ["E501"]
 
 [tool.coverage.run]
 branch = true

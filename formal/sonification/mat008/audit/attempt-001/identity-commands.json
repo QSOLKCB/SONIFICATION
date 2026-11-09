@@ -1,0 +1,49 @@
+{
+  "frozen-source": {
+    "argv": [
+      "git",
+      "show",
+      "b4247877dd471e2e9d4986c86bdc1f11b14e43f8:materials/mat_spec_008.py"
+    ],
+    "cwd": "/home/trent/sonification-formal-001-mat008",
+    "exit_code": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08"
+  },
+  "peeled-commit": {
+    "argv": [
+      "git",
+      "rev-parse",
+      "mat-spec-008-v0.1.0^{commit}"
+    ],
+    "cwd": "/home/trent/sonification-formal-001-mat008",
+    "exit_code": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "ba3b06be0062f36c3d51ae873001200fd30ea8a3fceb92b669ac2a734863f84e",
+    "value": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8"
+  },
+  "source-tree": {
+    "argv": [
+      "git",
+      "rev-parse",
+      "mat-spec-008-v0.1.0^{tree}"
+    ],
+    "cwd": "/home/trent/sonification-formal-001-mat008",
+    "exit_code": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "3f8d599ca17ca39e9248960ac824d3ea3d76b3fa68471d02e87d1b8d2f8ebdbe",
+    "value": "eb19f2e06a502442f621a73be1e5696c2fa25a65"
+  },
+  "tag-object": {
+    "argv": [
+      "git",
+      "rev-parse",
+      "refs/tags/mat-spec-008-v0.1.0"
+    ],
+    "cwd": "/home/trent/sonification-formal-001-mat008",
+    "exit_code": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "1592981af66e9f5c6fa80c304ea42fb3d3d4c9674bc751ab8a04ca06317a4eb5",
+    "value": "a02088e3c68addb41c9c7145694c0f566e84f87f"
+  }
+}

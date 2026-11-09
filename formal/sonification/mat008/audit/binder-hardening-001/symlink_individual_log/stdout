@@ -1,0 +1,1 @@
+{"status": "FAIL", "error": "symlink evidence rejected: /tmp/mat008-binder-mutation-sjc1xzq4/audit/attempt-001/fresh-negative/prohibited_data_assumption/verification/02.stderr", "error_type": "ValueError"}

@@ -1,0 +1,167 @@
+{
+  "direct_build": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Mat008/RunOwnership.olean",
+        "Mat008/RunOwnership.lean"
+      ],
+      "cwd": "/tmp/independent-mat008-_zbcbduc",
+      "exit_code": 0,
+      "explicit_environment": {
+        "LEAN_PATH": "/tmp/independent-mat008-_zbcbduc"
+      },
+      "started_utc": "2026-11-09T22:41:56.882278+00:00",
+      "stderr_path": "direct-00.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "direct-00.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Mat008.olean",
+        "Mat008.lean"
+      ],
+      "cwd": "/tmp/independent-mat008-_zbcbduc",
+      "exit_code": 0,
+      "explicit_environment": {
+        "LEAN_PATH": "/tmp/independent-mat008-_zbcbduc"
+      },
+      "started_utc": "2026-11-09T22:41:57.077743+00:00",
+      "stderr_path": "direct-01.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "direct-01.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Audit.olean",
+        "Audit.lean"
+      ],
+      "cwd": "/tmp/independent-mat008-_zbcbduc",
+      "exit_code": 0,
+      "explicit_environment": {
+        "LEAN_PATH": "/tmp/independent-mat008-_zbcbduc"
+      },
+      "started_utc": "2026-11-09T22:41:57.210914+00:00",
+      "stderr_path": "direct-02.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "direct-02.stdout",
+      "stdout_sha256": "777b8c6cc7ac87f8982ca8d7b3368b4a187e882ef661b8a38ff3300180034e28",
+      "timed_out": false
+    }
+  ],
+  "independent_jobs": {
+    "fresh-checker": {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/lean/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/audit/attempt-001/fresh-checker",
+        "--baseline-commit",
+        "c7889e3c9468ef4354d45d41b467263a0b5dea02"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat008",
+      "exit_code": 0,
+      "started_utc": "2026-11-09T22:42:15.279906+00:00",
+      "stderr_path": "fresh-checker.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "fresh-checker.stdout",
+      "stdout_sha256": "9831493e4ae9d7c77a855e4f28ae6a815d0c3d13ee132d43df3eb9c5d1d1a5fa",
+      "timed_out": false
+    },
+    "fresh-negative": {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/lean/negative.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/audit/attempt-001/fresh-negative"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat008",
+      "exit_code": 0,
+      "started_utc": "2026-11-09T22:42:15.280081+00:00",
+      "stderr_path": "fresh-negative.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "fresh-negative.stdout",
+      "stdout_sha256": "c45c22bd896a310d57fce63b480cbdd6f4aa83126a3bb3ac54bcc41396180ba6",
+      "timed_out": false
+    },
+    "independent-conformance": {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/audit/independent_conformance.py"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat008",
+      "exit_code": 0,
+      "started_utc": "2026-11-09T22:42:15.280439+00:00",
+      "stderr_path": "independent-conformance.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "independent-conformance.stdout",
+      "stdout_sha256": "41be9abf7b26999d7c0592a04767956a9487aaf0dbe1cb0b328eb2b2c221ed1d",
+      "timed_out": false
+    },
+    "submitted-conformance": {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/conformance.py",
+        "--out",
+        "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/audit/attempt-001/submitted-conformance"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat008",
+      "exit_code": 0,
+      "started_utc": "2026-11-09T22:42:15.280280+00:00",
+      "stderr_path": "submitted-conformance.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "submitted-conformance.stdout",
+      "stdout_sha256": "4c85e85845684e9b00c58f7e439ebe1b76a4beb4c356c4b761ef2df20bf295fa",
+      "timed_out": false
+    },
+    "targeted-tests": {
+      "argv": [
+        "/usr/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_sonification_formal_mat008_run_ownership.py",
+        "-v"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat008",
+      "exit_code": 0,
+      "started_utc": "2026-11-09T22:42:15.280778+00:00",
+      "stderr_path": "targeted-tests.stderr",
+      "stderr_sha256": "d44838ed9a1a8bb87f9c3c666cb5ca76955958bc52ff44f15bd3c818bc290f78",
+      "stdout_path": "targeted-tests.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false
+    }
+  },
+  "status": "PASS",
+  "version": {
+    "argv": [
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "--version"
+    ],
+    "cwd": "/home/trent/sonification-formal-001-mat008",
+    "exit_code": 0,
+    "started_utc": "2026-11-09T22:41:56.858346+00:00",
+    "stderr_path": "lean-version.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_path": "lean-version.stdout",
+    "stdout_sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+    "timed_out": false
+  }
+}

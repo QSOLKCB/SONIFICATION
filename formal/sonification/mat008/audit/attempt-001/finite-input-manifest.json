@@ -1,0 +1,22 @@
+{
+  "formal/sonification/mat008/capture.py": {
+    "commit": "c713b0c17f7b79b862e1581ac8aa166bf86935d2",
+    "current_equals_commit": true,
+    "sha256": "3003bd181e38a70670a1218aeeab603bbedd7f9964127ebb38976b8056f4ba54"
+  },
+  "formal/sonification/mat008/conformance.py": {
+    "commit": "c713b0c17f7b79b862e1581ac8aa166bf86935d2",
+    "current_equals_commit": true,
+    "sha256": "645ae27fcf222eef613bf16c3c9c87820e11472c8cbbb324ce7d431d1f5c8962"
+  },
+  "formal/sonification/mat008/verify_receipt.py": {
+    "commit": "c713b0c17f7b79b862e1581ac8aa166bf86935d2",
+    "current_equals_commit": true,
+    "sha256": "e10484ac37feaa6e58ea293edd9556bc9417c6038827e6b5d081ecc09c4dc32f"
+  },
+  "tests/test_sonification_formal_mat008_run_ownership.py": {
+    "commit": "c713b0c17f7b79b862e1581ac8aa166bf86935d2",
+    "current_equals_commit": true,
+    "sha256": "40d70f7bfda86a496474708ebe4b68ceee74698454cb4bd1aeb9f37bfccb3f33"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/tmp/mat008-binder-mutation-vjvle_6u/audit/verify.py",
+    "attempt-001"
+  ],
+  "case": "symlink_manifest",
+  "cwd": "/tmp/mat008-binder-mutation-vjvle_6u",
+  "exit_code": 1,
+  "expected_diagnostic": "symlink path rejected",
+  "expected_exit_code": 1,
+  "status": "PASS",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "63c7928b88ae739cae431b3e67886a42df67c109d4f0321695823b52718dceec",
+  "timed_out": false
+}

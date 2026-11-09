@@ -1,0 +1,35 @@
+[
+  {
+    "argv": [
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "-o",
+      "Mat008/RunOwnership.olean",
+      "Mat008/RunOwnership.lean"
+    ],
+    "cwd": "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/lean",
+    "exit_code": 0,
+    "source_sha256": "653f4638568e4e461176cca7659360737f3ac2632152163602c789fd65ead201"
+  },
+  {
+    "argv": [
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "-o",
+      "Mat008.olean",
+      "Mat008.lean"
+    ],
+    "cwd": "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/lean",
+    "exit_code": 0,
+    "source_sha256": "dc3d800f6d677de0d96f82fcb3de2768a8c8fae13d7b2b1e91ab42a7c0eaf8cc"
+  },
+  {
+    "argv": [
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "-o",
+      "Audit.olean",
+      "Audit.lean"
+    ],
+    "cwd": "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/lean",
+    "exit_code": 0,
+    "source_sha256": "df1a578cce8c1ee41ada11e0627ed8aa42bb263b19792a038b922edac8b83a5c"
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "-o",
+    "Mat008/RunOwnership.olean",
+    "Mat008/RunOwnership.lean"
+  ],
+  "cwd": "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/lean",
+  "exit_code": 1,
+  "source_sha256": "e05aab576bafb441eaa6c51ade4051265b673b1110ab475155d4e448c85e5097"
+}

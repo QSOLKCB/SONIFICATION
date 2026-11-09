@@ -1,0 +1,255 @@
+{
+  "assumptions": [
+    "Lean 4.19.0 kernel and installed distribution; executable/import identities recorded, independent binary provenance remains trusted.",
+    "propext: propositional extensionality; Quot.sound: quotient soundness; Classical.choice: classical selection. Per-declaration transitive lists retained.",
+    "Audit metaprogram and Python runner correctness, OS execution and hashing are trusted checking infrastructure, not themselves proved here.",
+    "Mathematical ParsedRow fields have exact Lean String equality. No CPython parsing or real-world identifier authentication is assumed proved.",
+    "The scan starts with an empty owner table and conflict=false by definition; positive nonvacuity examples witness satisfiable premises."
+  ],
+  "executed_commands": [
+    {
+      "argv": [
+        "python3",
+        "formal/sonification/mat008/lean/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "formal/sonification/mat008/lean/attempts/018-checked"
+      ],
+      "exit_code": 0,
+      "result": "attempts/018-checked/result.json",
+      "working_directory": "/home/trent/sonification-formal-001-mat008"
+    },
+    {
+      "argv": [
+        "python3",
+        "formal/sonification/mat008/lean/negative.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "formal/sonification/mat008/lean/attempts/019-negative"
+      ],
+      "exit_code": 0,
+      "result": "attempts/019-negative/result.json",
+      "working_directory": "/home/trent/sonification-formal-001-mat008"
+    },
+    {
+      "argv": [
+        "uv",
+        "tool",
+        "run",
+        "--offline",
+        "ruff",
+        "check",
+        "formal/sonification/mat008/lean/check.py",
+        "formal/sonification/mat008/lean/negative.py"
+      ],
+      "exit_code": 0,
+      "note": "Executed source lint; original model proof commands and outputs are preserved separately.",
+      "working_directory": "/home/trent/sonification-formal-001-mat008"
+    }
+  ],
+  "failed_attempts": [
+    {
+      "path": "attempts/001",
+      "reason": "Elaboration issues in helper projection and unavailable reverse induction principle.",
+      "status": "FAIL"
+    },
+    {
+      "path": "attempts/003",
+      "reason": "Trust audit rejected compiler-generated functional-map lambda axiom; exact diagnostic retained.",
+      "status": "FAIL"
+    },
+    {
+      "path": "attempts/004",
+      "reason": "Mechanical association-list refactor introduced duplicate lookup token; diagnostic retained.",
+      "status": "FAIL"
+    },
+    {
+      "path": "attempts/006",
+      "reason": "Trust audit rejected compiler-generated foldl specialization axiom; replaced with explicit recursive scan.",
+      "status": "FAIL"
+    },
+    {
+      "path": "attempts/007-checked",
+      "reason": "No expected-declaration inventory accepted before initial trust audit succeeded.",
+      "status": "FAIL"
+    },
+    {
+      "path": "attempts/010",
+      "reason": "Audit safety classification needed an explicit DefinitionSafety type.",
+      "status": "FAIL"
+    },
+    {
+      "path": "attempts/011-checked",
+      "reason": "Same audit elaboration failure preserved by full runner.",
+      "status": "FAIL"
+    },
+    {
+      "path": "attempts/016-negative",
+      "reason": "Fixture did not include expanded checker inputs, causing wrong-gate rejections; original false aggregate retained with INVALIDATED.md.",
+      "status": "INVALID"
+    },
+    {
+      "path": "attempts/017-negative",
+      "reason": "Strict negative expectation required sorryAx but audit encountered generated lcProof first; safe declarations are now inspected before unsafe compiler artifacts, with no allowance added.",
+      "status": "FAIL"
+    }
+  ],
+  "files_modified_outside_owned_subtree": [],
+  "formalization_inputs_committed": false,
+  "formalization_worktree_base_commit": "d7ae284ac186b332b7c0250f3b049db81464538b",
+  "frozen_production": {
+    "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+    "path": "materials/mat_spec_008.py",
+    "sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08",
+    "symbol": "validate_future_measurement_packet",
+    "tag": "mat-spec-008-v0.1.0"
+  },
+  "mission": "SONIFICATION-FORMAL-001",
+  "model_inputs_sha256": {
+    "Audit.lean": "42205261c134c4820976c71d89b99053fb6277f7adfb75d2e11364e270b1d2a8",
+    "Mat008.lean": "dc3d800f6d677de0d96f82fcb3de2768a8c8fae13d7b2b1e91ab42a7c0eaf8cc",
+    "Mat008/RunOwnership.lean": "653f4638568e4e461176cca7659360737f3ac2632152163602c789fd65ead201",
+    "check.py": "9be62fe0becdb7de309bd50ee6ca49932106d8b868eaac51f9b73336d9e625dc",
+    "expected-declarations.json": "b220d9e288eb2d76fddaadace632d434292eee3c218da3aec59e363461ce69b1",
+    "lakefile.toml": "bd2e5b74ad2973018878d3afea24243cf4a274d49ad10d3031a060b07a158758",
+    "lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+    "negative.py": "ec302629c41228ea2d18da10d217f6c4775d9a5252097285cfdb43cb750e5489",
+    "theorem-statements.json": "805aad10819bc30ddb4b4f421645d8c8ae4407db2920e4ac50f3922923a4688f"
+  },
+  "model_representation": "Owner map uses an association list with first-match lookup and cons updates; scanFrom is an explicit terminating recursion. Conflict is sticky Boolean OR.",
+  "next_action": "Root independently audits exact source and negative receipts, commits a reviewable snapshot, and reruns check.py --baseline-commit against that immutable commit before recording accepted mathematical scope.",
+  "open_obligations": [
+    "Independent exact-input review and baseline-commit replay after parent commits these source files.",
+    "Python source refinement for identity validation, rejected rows, mutable dict/set operations, short-circuit tests, exceptions, loop traversal and final observable output.",
+    "CPython string equality/hash/regex semantics and admissible input objects, including subclass behavior if permitted.",
+    "Remaining MAT-SPEC-008 gates including document and digest ownership, per-campaign consistency, missingness, diagnostics and physical-admission fields.",
+    "Independent external source identity authentication and all scientific evidence remain outside these mathematical results."
+  ],
+  "prover": {
+    "banner": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "path": "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "toolchain_import_digests": "attempts/018-checked/toolchain-imports.json"
+  },
+  "publication_or_merge_authorization": false,
+  "quantification": "All finite Lists of ParsedRow and all two member witnesses; equal originalRun identifiers and unequal campaign identifiers imply final conflict=true. No bound on list length or string length.",
+  "results": {
+    "active_modules": [
+      "Audit",
+      "Mat008",
+      "Mat008.RunOwnership"
+    ],
+    "all_origin_declarations": 99,
+    "compiler_axioms_in_final_closure": [],
+    "intended_model_and_support_theorem_count": 10,
+    "logical_axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "named_theorems": [
+      "Sonification.Mat008.nonvacuity",
+      "Sonification.Mat008.reused_run_blocks",
+      "Sonification.Mat008.scanFrom_append",
+      "Sonification.Mat008.scan_append",
+      "Sonification.Mat008.scan_clear_covers",
+      "Sonification.Mat008.snoc_induction",
+      "Sonification.Mat008.step_clear_before",
+      "Sonification.Mat008.step_clear_same_owner",
+      "Sonification.Mat008.step_conflict_sticky",
+      "Sonification.Mat008.step_covers"
+    ],
+    "negative_controls": [
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "/tmp/mat008-mutant-htw7nurp/check.py",
+          "--lean",
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "--out",
+          "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/lean/attempts/019-negative/drop_sticky_conflict/verification"
+        ],
+        "counterexample": {
+          "argv": [
+            "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+            "Counterexample.lean"
+          ],
+          "exit_code": 0,
+          "source_sha256": "5ad7110a3a3ed6b2975a9affd908d1a0263164ba68f391e9cdbe3686047afaa1",
+          "statement": "Mutant clears A/B collision after an independent row."
+        },
+        "detected": true,
+        "exit_code": 1,
+        "expected": "Lean rejected Mat008.RunOwnership",
+        "mutation": "drop_sticky_conflict",
+        "observed_error": "Lean rejected Mat008.RunOwnership; see original logs",
+        "source_sha256": "b5f5bac00f6005df187426ffe0777815be6e58c86fed4f978b6a539efee9e76b"
+      },
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "/tmp/mat008-mutant-1paatw20/check.py",
+          "--lean",
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "--out",
+          "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/lean/attempts/019-negative/weaker_same_name_theorem/verification"
+        ],
+        "detected": true,
+        "exit_code": 1,
+        "expected": "Lean rejected Audit",
+        "mutation": "weaker_same_name_theorem",
+        "observed_error": "Lean rejected Audit; see original logs",
+        "source_sha256": "24393ac9a7c843235dc4826c13d7bf3ce76a914fc6192c1a2c0df0eeb71c0968"
+      },
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "/tmp/mat008-mutant-kfk0_t6r/check.py",
+          "--lean",
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "--out",
+          "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/lean/attempts/019-negative/prohibited_data_assumption/verification"
+        ],
+        "detected": true,
+        "exit_code": 1,
+        "expected": "Lean rejected Audit",
+        "mutation": "prohibited_data_assumption",
+        "observed_error": "Lean rejected Audit; see original logs",
+        "source_sha256": "e595e116983d359026b33b819a10c71b69051ad65113d872aa30ffa2821c136c"
+      },
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "/tmp/mat008-mutant-y14s1uph/check.py",
+          "--lean",
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "--out",
+          "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/lean/attempts/019-negative/unimported_module/verification"
+        ],
+        "detected": true,
+        "exit_code": 1,
+        "expected": "module coverage mismatch",
+        "mutation": "unimported_module",
+        "observed_error": "module coverage mismatch: ['Audit.lean', 'Mat008.lean', 'Mat008/RunOwnership.lean', 'Unimported.lean']",
+        "source_sha256": "653f4638568e4e461176cca7659360737f3ac2632152163602c789fd65ead201"
+      }
+    ],
+    "nonvacuity": "Collision A/RUN then B/RUN followed by independent B/OTHER remains blocked; distinct A/RUN_A and B/RUN_B is conflict-free."
+  },
+  "scope": "MAT-SPEC-008 run-ownership mathematical model only",
+  "status": "EXECUTED_MODEL_PASS_REFINEMENT_OPEN",
+  "theorem": {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.Mat008.reused_run_blocks",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (rows : List Sonification.Mat008.ParsedRow) (a b : Sonification.Mat008.ParsedRow),\n  a \u2208 rows \u2192\n    b \u2208 rows \u2192 a.originalRun = b.originalRun \u2192 a.campaign \u2260 b.campaign \u2192 (Sonification.Mat008.scan rows).conflict = true",
+    "unsafe_definition": false
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/tmp/mat008-binder-mutation-idt0dep5/audit/verify.py",
+    "attempt-001"
+  ],
+  "case": "baseline",
+  "cwd": "/tmp/mat008-binder-mutation-idt0dep5",
+  "exit_code": 0,
+  "expected_diagnostic": "AUDIT_ACCEPTED_FOR_DECLARED_PARTIAL_SCOPE",
+  "expected_exit_code": 0,
+  "status": "PASS",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "a2ca7c4e249fddd8eff3ebda5a4cc0e020ced4bb9e23bf8f1e51308ea52263dd",
+  "timed_out": false
+}

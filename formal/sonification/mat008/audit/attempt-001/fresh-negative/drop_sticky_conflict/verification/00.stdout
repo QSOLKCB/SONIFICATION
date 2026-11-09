@@ -1,0 +1,33 @@
+Mat008/RunOwnership.lean:41:33: error: application type mismatch
+  Bool.or_eq_false_iff.mp h
+argument
+  h
+has type
+  (step s row).conflict = false : Prop
+but is expected to have type
+  (?m.1482 || ?m.1483) = false : Prop
+Mat008/RunOwnership.lean:40:64: error: unsolved goals
+s : State
+row : ParsedRow
+h : (step s row).conflict = false
+⊢ s.conflict = false
+Mat008/RunOwnership.lean:47:35: error: application type mismatch
+  Bool.or_eq_false_iff.mp h
+argument
+  h
+has type
+  (step s row).conflict = false : Prop
+but is expected to have type
+  (?m.1512 || ?m.1513) = false : Prop
+Mat008/RunOwnership.lean:118:62: error: unsolved goals
+s : State
+row : ParsedRow
+h : s.conflict = true
+⊢ differentOwner s row = true
+Mat008/RunOwnership.lean:124:2: error: tactic 'decide' proved that the proposition
+  (scan
+          [{ campaign := "A", originalRun := "RUN" }, { campaign := "B", originalRun := "RUN" },
+            { campaign := "B", originalRun := "OTHER" }]).conflict =
+      true ∧
+    (scan [{ campaign := "A", originalRun := "RUN_A" }, { campaign := "B", originalRun := "RUN_B" }]).conflict = false
+is false

@@ -1,0 +1,82 @@
+{
+  "assurance": "MATHEMATICAL_MODEL_ONLY",
+  "baseline_commit": null,
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Mat008/RunOwnership.olean",
+        "Mat008/RunOwnership.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "/tmp/sonification-lean-zhbo2xmn"
+      },
+      "exit_code": 0,
+      "stderr_path": "00.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "00.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "working_directory": "/tmp/sonification-lean-zhbo2xmn"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Mat008.olean",
+        "Mat008.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "/tmp/sonification-lean-zhbo2xmn"
+      },
+      "exit_code": 0,
+      "stderr_path": "01.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "01.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "working_directory": "/tmp/sonification-lean-zhbo2xmn"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Audit.olean",
+        "Audit.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "/tmp/sonification-lean-zhbo2xmn"
+      },
+      "exit_code": 1,
+      "stderr_path": "02.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "02.stdout",
+      "stdout_sha256": "d91b2eda5b68d706e224246f07a1387e03c800296554e9562766e6099a9d7f05",
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "working_directory": "/tmp/sonification-lean-zhbo2xmn"
+    }
+  ],
+  "error": "Lean rejected Audit; see original logs",
+  "input_sha256": {
+    "Audit.lean": "e4d29bdd87e89bae0bbc1cf9f0e8fdefa658c240df5ee3e7c2b883b210412f3f",
+    "Mat008.lean": "dc3d800f6d677de0d96f82fcb3de2768a8c8fae13d7b2b1e91ab42a7c0eaf8cc",
+    "Mat008/RunOwnership.lean": "653f4638568e4e461176cca7659360737f3ac2632152163602c789fd65ead201",
+    "check.py": "2f30e27f79ae51d6f1e86aa472ac348dabec0cb3f0759248b6af8622309d7d7c",
+    "expected-declarations.json": "98270d9fa0247d7b1b5a9da47dbd538650441c3a5990b749b97244c874169b38",
+    "lakefile.toml": "bd2e5b74ad2973018878d3afea24243cf4a274d49ad10d3031a060b07a158758",
+    "lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea"
+  },
+  "lean_executable": {
+    "path": "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023"
+  },
+  "python_refinement": "OPEN",
+  "started_utc": "2026-11-09T22:23:16.980401+00:00",
+  "status": "FAIL",
+  "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "version_exit_code": 0
+}

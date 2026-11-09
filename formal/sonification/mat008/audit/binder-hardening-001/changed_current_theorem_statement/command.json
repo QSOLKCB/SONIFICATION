@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/tmp/mat008-binder-mutation-9jvimxz7/audit/verify.py",
+    "attempt-001"
+  ],
+  "case": "changed_current_theorem_statement",
+  "cwd": "/tmp/mat008-binder-mutation-9jvimxz7",
+  "exit_code": 1,
+  "expected_diagnostic": "current proof input mismatch",
+  "expected_exit_code": 1,
+  "status": "PASS",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "d75c556fdcd2fedad1723f86149765b2b7c69a0e1f1cd41fe7fdd9d17d9604f5",
+  "timed_out": false
+}

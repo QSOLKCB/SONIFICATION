@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/tmp/mat008-binder-mutation-mwgg36me/audit/verify.py",
+    "attempt-001",
+    "--lean-root",
+    "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0"
+  ],
+  "case": "symlink_audit_root",
+  "cwd": "/tmp/mat008-binder-mutation-mwgg36me",
+  "exit_code": 1,
+  "expected_diagnostic": "symlink path rejected",
+  "expected_exit_code": 1,
+  "status": "PASS",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "a566dea8f9d066ddb6e8eb6d4e8c65cef005ffb77cb2a3f145c5878ae8326b64",
+  "timed_out": false
+}

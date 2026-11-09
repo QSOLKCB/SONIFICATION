@@ -106,7 +106,11 @@
         "AUDIT_ACCEPTED": "OPEN"
       },
       "evidence": {},
-      "independent_specification_review": "PENDING"
+      "independent_specification_review": "PENDING",
+      "partial_results": [
+        "MAT008.run_ownership.model",
+        "MAT008.run_ownership.finite_builtin_rows"
+      ]
     },
     {
       "id": "MAT009.partition",
@@ -519,6 +523,176 @@
       },
       "independent_specification_review": "PENDING",
       "audit_scope": "Finite conformance evidence only; no mathematical or implementation refinement acceptance"
+    },
+    {
+      "id": "MAT008.run_ownership.model",
+      "release": "mat-spec-008-v0.1.0",
+      "source_tag_object": "a02088e3c68addb41c9c7145694c0f566e84f87f",
+      "source_commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "source_tree": "eb19f2e06a502442f621a73be1e5696c2fa25a65",
+      "source_blob": "3117adbc3739c834f8203d5d2dd2b80d6caf862b",
+      "source_sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08",
+      "source_binding": "formal/sonification/mat008/SOURCE_BINDING.json",
+      "implementation": {
+        "path": "materials/mat_spec_008.py",
+        "symbol": "validate_future_measurement_packet",
+        "relevant_helpers": [
+          "_identity",
+          "_decimal"
+        ]
+      },
+      "intended_property": "Two rows with equal original-run identifiers and different campaign identifiers force the mathematical scan conflict flag, regardless of order or intervening rows.",
+      "model_scope": "All finite List ParsedRow values and all String values; both witnesses are members of the list. No packet eligibility or Python-source correspondence claimed.",
+      "formal_definition": "Sonification.Mat008.scan : List ParsedRow \u2192 State; conflict is a sticky Boolean and owner lookup uses the most recent association-list entry.",
+      "proof_path": "formal/sonification/mat008/lean/Mat008/RunOwnership.lean",
+      "typed_consumer": "formal/sonification/mat008/lean/Audit.lean",
+      "theorem_statement_source": "formal/sonification/mat008/lean/theorem-statements.json",
+      "main_theorem": "Sonification.Mat008.reused_run_blocks",
+      "main_theorem_exact_type": "\u2200 (rows : List Sonification.Mat008.ParsedRow) (a b : Sonification.Mat008.ParsedRow),\n  a \u2208 rows \u2192\n    b \u2208 rows \u2192 a.originalRun = b.originalRun \u2192 a.campaign \u2260 b.campaign \u2192 (Sonification.Mat008.scan rows).conflict = true",
+      "theorems": [
+        "Sonification.Mat008.reused_run_blocks",
+        "Sonification.Mat008.step_conflict_sticky",
+        "Sonification.Mat008.step_clear_same_owner",
+        "Sonification.Mat008.scan_clear_covers",
+        "Sonification.Mat008.step_covers",
+        "Sonification.Mat008.snoc_induction",
+        "Sonification.Mat008.nonvacuity",
+        "Sonification.Mat008.scan_append",
+        "Sonification.Mat008.scanFrom_append",
+        "Sonification.Mat008.step_clear_before"
+      ],
+      "proof_dependencies": [
+        "Lean 4.19.0 bundled Std and Init",
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "assumptions": [
+        "Lean kernel and distribution, verifier code, OS execution, and SHA-256 collision resistance are trusted.",
+        "ParsedRow fields are Lean Strings with exact equality; no Python parsing or real-world source authentication is modeled.",
+        "No project axiom, sorryAx, lcProof or lcUnreachable is accepted in the final theorem closure."
+      ],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "Formal CPython semantics and source-to-model correspondence for the frozen validator and helpers",
+        "Representation relation for parsed identifiers, rejected rows, dictionary/set ownership state, exceptions and observable output",
+        "Caller input-domain proof; equal-text str subclasses with inconsistent hashes are a recorded counterexample outside exact built-in strings",
+        "Remaining validator gates, module initialization and transitive dependency behavior"
+      ],
+      "executable_tests": [],
+      "assurance": {
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "AUDIT_ACCEPTED": "PASS"
+      },
+      "evidence": {
+        "MODEL_PROVED": [
+          "formal/sonification/mat008/lean/attempts/commit-bound-001/result.json"
+        ],
+        "NEGATIVE_CONTROLS": [
+          "formal/sonification/mat008/lean/attempts/commit-bound-negative-001/result.json"
+        ],
+        "AUDIT_ACCEPTED": [
+          "formal/sonification/mat008/audit/attempt-001/AUDIT.json",
+          "formal/sonification/mat008/audit/binder-hardening-002/result.json"
+        ],
+        "PREVIOUS_BINDER_CONTROL": [
+          "formal/sonification/mat008/audit/binder-hardening-001/result.json"
+        ],
+        "PORTABILITY_CONTROL": [
+          "formal/sonification/mat008/audit/portability-002/result.json"
+        ],
+        "HOTFIX_RECEIPT_INVENTORY": [
+          "formal/sonification/mat008/audit/hotfix-snapshot.json"
+        ],
+        "HOTFIX_INDEPENDENT_REVIEW": [
+          "formal/sonification/mat008/audit/hotfix-independent-audit.json"
+        ]
+      },
+      "independent_specification_review": "PENDING",
+      "audit_scope": "Ten exact mathematical model/support theorems; full Python validator and scientific admission remain OPEN"
+    },
+    {
+      "id": "MAT008.run_ownership.finite_builtin_rows",
+      "release": "mat-spec-008-v0.1.0",
+      "source_tag_object": "a02088e3c68addb41c9c7145694c0f566e84f87f",
+      "source_commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "source_tree": "eb19f2e06a502442f621a73be1e5696c2fa25a65",
+      "source_blob": "3117adbc3739c834f8203d5d2dd2b80d6caf862b",
+      "source_sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08",
+      "source_binding": "formal/sonification/mat008/SOURCE_BINDING.json",
+      "implementation": {
+        "path": "materials/mat_spec_008.py",
+        "symbol": "validate_future_measurement_packet",
+        "relevant_helpers": [
+          "_identity",
+          "_decimal"
+        ]
+      },
+      "intended_property": "The frozen validator reports the run-reuse reason and blocks on the recorded exact built-in row corpus precisely when a pairwise oracle finds cross-campaign reuse.",
+      "finite_scope": "1,296 generated four-row combinations plus named positive/adversarial fixtures; exact built-in dict and str inputs, CPython 3.14.4 in the retained receipt.",
+      "formal_definition": null,
+      "theorems": [],
+      "proof_dependencies": [],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "Formal CPython semantics and source-to-model correspondence for the frozen validator and helpers",
+        "Representation relation for parsed identifiers, rejected rows, dictionary/set ownership state, exceptions and observable output",
+        "Caller input-domain proof; equal-text str subclasses with inconsistent hashes are a recorded counterexample outside exact built-in strings",
+        "Remaining validator gates, module initialization and transitive dependency behavior"
+      ],
+      "executable_tests": [
+        {
+          "path": "formal/sonification/mat008/conformance.py",
+          "symbol": "pairwise_reuse and check_case"
+        },
+        {
+          "path": "formal/sonification/mat008/audit/independent_conformance.py",
+          "symbol": "independent grouping oracle"
+        },
+        {
+          "path": "tests/test_sonification_formal_mat008_run_ownership.py",
+          "symbol": "Mat008RunOwnershipConformance"
+        }
+      ],
+      "counterexamples": [
+        "Equal-text str subclasses with inconsistent hashes evade the production dictionary reuse reason; JSON-decoded built-in strings block.",
+        "synthetic_fixture=1 can pass the structural flag check because production tests identity with True; physical evidence remains unadmitted."
+      ],
+      "assumptions": [
+        "Exact frozen function bodies are selected by AST and executed by the recorded CPython interpreter; full import/caller semantics are not proved.",
+        "The finite oracle covers only the recorded rows and interpreter, not arbitrary Python objects or all packet gates."
+      ],
+      "assurance": {
+        "MODEL_PROVED": "OPEN",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "PASS",
+        "AUDIT_ACCEPTED": "PASS"
+      },
+      "evidence": {
+        "DIFFERENTIAL_TESTED": [
+          "formal/sonification/mat008/receipts/conformance-002/result/receipt.json"
+        ],
+        "AUDIT_ACCEPTED": [
+          "formal/sonification/mat008/audit/attempt-001/AUDIT.json",
+          "formal/sonification/mat008/audit/binder-hardening-002/result.json"
+        ],
+        "PREVIOUS_BINDER_CONTROL": [
+          "formal/sonification/mat008/audit/binder-hardening-001/result.json"
+        ],
+        "PORTABILITY_CONTROL": [
+          "formal/sonification/mat008/audit/portability-002/result.json"
+        ],
+        "HOTFIX_RECEIPT_INVENTORY": [
+          "formal/sonification/mat008/audit/hotfix-snapshot.json"
+        ],
+        "HOTFIX_INDEPENDENT_REVIEW": [
+          "formal/sonification/mat008/audit/hotfix-independent-audit.json"
+        ]
+      },
+      "independent_specification_review": "PENDING",
+      "audit_scope": "Finite run-ownership observation only; no universal Python or full packet result"
     }
   ]
 }

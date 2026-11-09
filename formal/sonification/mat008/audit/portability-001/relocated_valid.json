@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/audit/verify.py",
+    "attempt-001",
+    "--lean-root",
+    "/home/trent/sonification-formal-001-mat008/mat008-relocated-e97senm5/other-home-lean"
+  ],
+  "exit_code": 0,
+  "expected_diagnostic": "AUDIT_ACCEPTED_FOR_DECLARED_PARTIAL_SCOPE",
+  "expected_exit_code": 0,
+  "name": "relocated_valid",
+  "status": "PASS",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "f787a969f2c32363e02bdd21a40fa1e96674d45f7744544a87d709bc5fbced27",
+  "timed_out": false
+}

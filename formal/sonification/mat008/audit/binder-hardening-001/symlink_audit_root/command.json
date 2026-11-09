@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/tmp/mat008-binder-mutation-y70x1t7w/audit/verify.py",
+    "attempt-001"
+  ],
+  "case": "symlink_audit_root",
+  "cwd": "/tmp/mat008-binder-mutation-y70x1t7w",
+  "exit_code": 1,
+  "expected_diagnostic": "symlink path rejected",
+  "expected_exit_code": 1,
+  "status": "PASS",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "ad1858ca02e669c33f91457ac8c80d438d2d40f3fa6f1d096ef04e96ddf9d983",
+  "timed_out": false
+}

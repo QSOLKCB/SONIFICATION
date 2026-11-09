@@ -1,0 +1,26 @@
+{
+  "AUDIT_ACCEPTED": "PASS",
+  "DIFFERENTIAL_TESTED": "PASS",
+  "MODEL_PROVED": "PASS",
+  "REFINEMENT_PROVED": "OPEN",
+  "allowed_transitive_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "declaration_count": 99,
+  "finite_cases": 1296,
+  "mutation_count_per_run": 4,
+  "named_theorems": 10,
+  "proof_input_commit": "c7889e3c9468ef4354d45d41b467263a0b5dea02",
+  "required_negative_receipts": [
+    "lean/attempts/commit-bound-negative-001",
+    "audit/attempt-001/fresh-negative"
+  ],
+  "required_nominal_receipts": [
+    "lean/attempts/commit-bound-001",
+    "audit/attempt-001/fresh-checker"
+  ],
+  "scope": "Ten named mathematical theorems and finite run-ownership observations only",
+  "status": "AUDIT_ACCEPTED_FOR_DECLARED_PARTIAL_SCOPE"
+}

@@ -1,0 +1,9 @@
+{
+  "assurance": "MATHEMATICAL_MODEL_ONLY",
+  "baseline_commit": null,
+  "commands": [],
+  "error": "[Errno 2] No such file or directory: '/tmp/mat008-mutant-hitylqrc/negative.py'",
+  "python_refinement": "OPEN",
+  "started_utc": "2026-11-09T22:24:54.703426+00:00",
+  "status": "FAIL"
+}

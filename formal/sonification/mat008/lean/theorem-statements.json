@@ -1,0 +1,104 @@
+[
+  {
+    "unsafe_definition": false,
+    "type": "\u2200 (rows : List Sonification.Mat008.ParsedRow) (a b : Sonification.Mat008.ParsedRow),\n  a \u2208 rows \u2192\n    b \u2208 rows \u2192 a.originalRun = b.originalRun \u2192 a.campaign \u2260 b.campaign \u2192 (Sonification.Mat008.scan rows).conflict = true",
+    "origin": "Mat008.RunOwnership",
+    "kind": "theorem",
+    "declaration": "Sonification.Mat008.reused_run_blocks",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "unsafe_definition": false,
+    "type": "\u2200 (s : Sonification.Mat008.State) (row : Sonification.Mat008.ParsedRow),\n  s.conflict = true \u2192 (Sonification.Mat008.step s row).conflict = true",
+    "origin": "Mat008.RunOwnership",
+    "kind": "theorem",
+    "declaration": "Sonification.Mat008.step_conflict_sticky",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "unsafe_definition": false,
+    "type": "\u2200 (s : Sonification.Mat008.State) (row : Sonification.Mat008.ParsedRow) (campaign : String),\n  (Sonification.Mat008.step s row).conflict = false \u2192\n    Sonification.Mat008.lookup s.owner row.originalRun = some campaign \u2192 campaign = row.campaign",
+    "origin": "Mat008.RunOwnership",
+    "kind": "theorem",
+    "declaration": "Sonification.Mat008.step_clear_same_owner",
+    "axioms": [
+      "Classical.choice",
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "unsafe_definition": false,
+    "type": "\u2200 (rows : List Sonification.Mat008.ParsedRow),\n  (Sonification.Mat008.scan rows).conflict = false \u2192 Sonification.Mat008.Covers (Sonification.Mat008.scan rows) rows",
+    "origin": "Mat008.RunOwnership",
+    "kind": "theorem",
+    "declaration": "Sonification.Mat008.scan_clear_covers",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "unsafe_definition": false,
+    "type": "\u2200 (s : Sonification.Mat008.State) (rows : List Sonification.Mat008.ParsedRow) (row : Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.Covers s rows \u2192\n    (Sonification.Mat008.step s row).conflict = false \u2192\n      Sonification.Mat008.Covers (Sonification.Mat008.step s row) (rows ++ [row])",
+    "origin": "Mat008.RunOwnership",
+    "kind": "theorem",
+    "declaration": "Sonification.Mat008.step_covers",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "unsafe_definition": false,
+    "type": "\u2200 {\u03b1 : Type} (motive : List \u03b1 \u2192 Prop),\n  motive [] \u2192 (\u2200 (rows : List \u03b1) (row : \u03b1), motive rows \u2192 motive (rows ++ [row])) \u2192 \u2200 (rows : List \u03b1), motive rows",
+    "origin": "Mat008.RunOwnership",
+    "kind": "theorem",
+    "declaration": "Sonification.Mat008.snoc_induction",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "unsafe_definition": false,
+    "type": "(Sonification.Mat008.scan\n        [{ campaign := \"A\", originalRun := \"RUN\" }, { campaign := \"B\", originalRun := \"RUN\" },\n          { campaign := \"B\", originalRun := \"OTHER\" }]).conflict =\n    true \u2227\n  (Sonification.Mat008.scan\n        [{ campaign := \"A\", originalRun := \"RUN_A\" }, { campaign := \"B\", originalRun := \"RUN_B\" }]).conflict =\n    false",
+    "origin": "Mat008.RunOwnership",
+    "kind": "theorem",
+    "declaration": "Sonification.Mat008.nonvacuity",
+    "axioms": []
+  },
+  {
+    "unsafe_definition": false,
+    "type": "\u2200 (rows : List Sonification.Mat008.ParsedRow) (row : Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.scan (rows ++ [row]) = Sonification.Mat008.step (Sonification.Mat008.scan rows) row",
+    "origin": "Mat008.RunOwnership",
+    "kind": "theorem",
+    "declaration": "Sonification.Mat008.scan_append",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "unsafe_definition": false,
+    "type": "\u2200 (s : Sonification.Mat008.State) (xs ys : List Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.scanFrom s (xs ++ ys) = Sonification.Mat008.scanFrom (Sonification.Mat008.scanFrom s xs) ys",
+    "origin": "Mat008.RunOwnership",
+    "kind": "theorem",
+    "declaration": "Sonification.Mat008.scanFrom_append",
+    "axioms": []
+  },
+  {
+    "unsafe_definition": false,
+    "type": "\u2200 (s : Sonification.Mat008.State) (row : Sonification.Mat008.ParsedRow),\n  (Sonification.Mat008.step s row).conflict = false \u2192 s.conflict = false",
+    "origin": "Mat008.RunOwnership",
+    "kind": "theorem",
+    "declaration": "Sonification.Mat008.step_clear_before",
+    "axioms": []
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/tmp/mat008-binder-mutation-0617ywgt/audit/verify.py",
+    "attempt-001",
+    "--lean-root",
+    "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0"
+  ],
+  "case": "deleted_all_postcommit_receipts",
+  "cwd": "/tmp/mat008-binder-mutation-0617ywgt",
+  "exit_code": 1,
+  "expected_diagnostic": "required evidence root missing",
+  "expected_exit_code": 1,
+  "status": "PASS",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "15d5fcaead5e24353be0c99e5913f07cdb468a506787ef9dde5372bb3bce303c",
+  "timed_out": false
+}

@@ -1,0 +1,30 @@
+{
+  "AUDIT_ACCEPTED": "PASS",
+  "DIFFERENTIAL_TESTED": "PASS",
+  "MODEL_PROVED": "PASS",
+  "REFINEMENT_PROVED": "OPEN",
+  "accepted_audit_sha256": "34eef078032bfb168faec6ba3bfe82cbf7e6bdc0412fe56820bc2bf2e26665d8",
+  "allowed_transitive_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "declaration_count": 99,
+  "exact_evidence_files": 161,
+  "finite_cases": 1296,
+  "local_toolchain_root": "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0",
+  "mutation_count_per_run": 4,
+  "named_theorems": 10,
+  "proof_input_commit": "c7889e3c9468ef4354d45d41b467263a0b5dea02",
+  "required_negative_receipts": [
+    "lean/attempts/commit-bound-negative-001",
+    "audit/attempt-001/fresh-negative"
+  ],
+  "required_nominal_receipts": [
+    "lean/attempts/commit-bound-001",
+    "audit/attempt-001/fresh-checker"
+  ],
+  "scope": "Ten named mathematical theorems and finite run-ownership observations only",
+  "status": "AUDIT_ACCEPTED_FOR_DECLARED_PARTIAL_SCOPE",
+  "toolchain_imports_checked": 1303
+}

@@ -1,0 +1,1 @@
+{"status": "FAIL", "error": "symlink path rejected: /tmp/mat008-binder-mutation-vjvle_6u/audit/attempt-001/AUDIT.json", "error_type": "ValueError"}

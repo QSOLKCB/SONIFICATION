@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/conformance.py",
+    "--out",
+    "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/audit/attempt-001/submitted-conformance"
+  ],
+  "cwd": "/home/trent/sonification-formal-001-mat008",
+  "exit_code": 0,
+  "started_utc": "2026-11-09T22:42:15.280280+00:00",
+  "stderr_path": "submitted-conformance.stderr",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_path": "submitted-conformance.stdout",
+  "stdout_sha256": "4c85e85845684e9b00c58f7e439ebe1b76a4beb4c356c4b761ef2df20bf295fa",
+  "timed_out": false
+}

@@ -1,0 +1,1 @@
+{"status": "FAIL", "error": "optimized Python is rejected; assertions must remain enabled", "error_type": "ValueError"}
