@@ -101,6 +101,15 @@ Nearest 12-tone equal-temperament MIDI pitch (A4=440 Hz) is an intentionally
 lossy receiver. In particular, the 14 first-sound rows collapse to one
 symbolic MIDI pitch even though they contain distinct reported speeds.
 
+Executed source-pinned summaries: 14 first-sound rows represent eight distinct
+reported speed values but collapse to **one** MIDI pitch (91 colliding row pairs).
+The 12 heat-capacity rows represent 12 distinct values but only **eight** MIDI
+pitches (five colliding pairs). The nine positive second-sound values map to
+nine distinct MIDI pitches; the tenth tabulated row is the **unpitched lambda
+boundary zero**, not a tenth MIDI note. Of the two nearest cross-lambda
+rows, first sound maps to [69,69] but heat capacity to [84,78]. These
+outcomes describe the authored symbolic receiver, not listening behaviour.
+
 No MIDI playback, PCM buffer, WAV or audible synthesis is produced.
 
 ### Experimental evidence hierarchy

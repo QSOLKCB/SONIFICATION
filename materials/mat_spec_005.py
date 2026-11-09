@@ -55,7 +55,16 @@ IMPLEMENTATION_PATHS = (
 
 # Captured from CI by rebuilding MAT-SPEC-004 at its merged implementation;
 # replace with all six exact output SHA-256s before promotion from draft.
-PARENT_V4_SHA256: dict[str, str] | None = None
+PARENT_V4_SHA256 = {
+    "audit.json": "de8986aea4b20f207efd33977206a310d7164345dc50bc88397c57b22728771c",
+    "contract.json": "875ab3cc6c96b18a22ebf10593f09604bad2cf1c464622d7bb52b13bc61175eb",
+    "manifest.json": "dff08e5ebf6c9acaad2ab83f03b1e04df1bbf883aeae146445be3e6c3e64e637",
+    "observations.json": "71fa17c08b3a134b544a2565f3295a9bb9938ed6a7ffc2dbfd77e305381acc90",
+    "phase-gate.json": "63f4ee107086c10a9197678a2a99d5e8b99975f0e2107ceaeb37fe69ca84d52e",
+    "temperature-controls.csv": (
+        "7ce8853422f93a3dd98817cd14a41e66ba5720c5c79fdd58f25154f74c616715"
+    ),
+}
 
 
 EXPECTED_META = {
@@ -313,7 +322,7 @@ def crossing_reference(observations: list[dict], mapped: list[dict]) -> dict:
     ):
         raise ValueError("incomplete crossing comparison")
     return {
-        "contextual_lambda_K": str(LAMBDA),
+        "contextual_lambda_K": "2.1768",
         "pressure_condition": "SVP per evaluated Donnelly-Barenghi reference",
         "nearest_below_K": low["temperature_K"],
         "nearest_above_K": high["temperature_K"],
@@ -397,7 +406,9 @@ def audit(observations: list[dict], controls: list[dict]) -> dict:
             "missing": len(observations) - len(selected),
             "unique_reported_values": len(set(source)),
             "unique_frequency_targets": len(set(targets)),
-            "unique_symbolic_midi_notes": len(set(notes)),
+            "unique_symbolic_midi_notes": len({n for n in notes if n is not None}),
+            "unpitched_true_zero": sum(n is None for n in notes),
+            "unique_controls_including_unpitched": len(set(notes)),
             "colliding_row_pairs_after_midi": sum(
                 a == b for a, b in combinations(notes, 2)
             ),
@@ -444,7 +455,7 @@ def build_evidence(root: Path) -> dict[str, bytes]:
     if set(parent) != mat_spec_004.OUTPUT_NAMES:
         raise ValueError("unexpected MAT-SPEC-004 parent file membership")
     parent_hashes = {name: mat_spec.sha256(raw) for name, raw in parent.items()}
-    if PARENT_V4_SHA256 is not None and parent_hashes != PARENT_V4_SHA256:
+    if parent_hashes != PARENT_V4_SHA256:
         raise ValueError("frozen MAT-SPEC-004 parent SHA-256 mismatch")
     manifest = json.loads(parent["manifest.json"])
     if (

@@ -105,6 +105,12 @@ class SourceContracts(unittest.TestCase):
         u1 = result["source_property_counts"]["first_sound_m_per_s"]
         self.assertEqual(u1["unique_symbolic_midi_notes"], 1)
         self.assertEqual(u1["colliding_row_pairs_after_midi"], 91)
+        u2 = result["source_property_counts"]["second_sound_m_per_s"]
+        self.assertEqual(u2["unique_symbolic_midi_notes"], 9)
+        self.assertEqual(u2["unpitched_true_zero"], 1)
+        self.assertEqual(u2["unique_controls_including_unpitched"], 10)
+        heat = result["source_property_counts"]["heat_capacity_J_per_mol_K"]
+        self.assertEqual(heat["unique_symbolic_midi_notes"], 8)
         first = [row for row in self.mapped if row["property"] == "first_sound_m_per_s"]
         moved = [dict(row) for row in first]
         moved[8]["frequency_target_Hz"], moved[10]["frequency_target_Hz"] = (
@@ -133,6 +139,10 @@ class EvidenceBundles(unittest.TestCase):
         self.assertEqual(self.artifacts, mat_spec_005.build_evidence(ROOT))
         self.assertEqual(self.manifest["source"]["sha256"], mat_spec_005.DATA_SHA256)
         self.assertEqual(self.manifest["parent_commit"], mat_spec_005.PARENT_COMMIT)
+        self.assertEqual(
+            set(self.manifest["parent_v4_artifacts"]),
+            set(mat_spec_005.PARENT_V4_SHA256),
+        )
         self.assertIsNone(self.manifest["canonical_pcm_sha256"])
         self.assertIsNone(self.manifest["canonical_wav_sha256"])
         parent = mat_spec_004.build_evidence(ROOT)
@@ -144,6 +154,15 @@ class EvidenceBundles(unittest.TestCase):
 
     def test_refuses_phase_classifier_without_independent_witness(self) -> None:
         self.assertEqual(self.phase["cross_transition_reference"], "REPLAY_VERIFIED")
+        crossing = json.loads(self.artifacts["crossing.json"])
+        self.assertEqual(crossing["contextual_lambda_K"], "2.1768")
+        self.assertEqual(
+            crossing["receiver_notes_below_above"]["first_sound_m_per_s"], [69, 69]
+        )
+        self.assertEqual(
+            crossing["receiver_notes_below_above"]["heat_capacity_J_per_mol_K"],
+            [84, 78],
+        )
         self.assertEqual(
             self.phase["independent_phase_witness"],
             "BLOCKED_INSUFFICIENT_INDEPENDENCE_AND_UNCERTAINTY",
