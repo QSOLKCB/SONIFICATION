@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/tmp/mat008-binder-mutation-d9mvkb9c/audit/verify.py",
+    "attempt-001"
+  ],
+  "case": "changed_accepted_theorem_type",
+  "cwd": "/tmp/mat008-binder-mutation-d9mvkb9c",
+  "exit_code": 1,
+  "expected_diagnostic": "accepted audit SHA-256 mismatch",
+  "expected_exit_code": 1,
+  "status": "PASS",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "6b1c2c1225bb972469d57ddd6bca5f2a483fd7e58dd911bfab4a06948bff65d7",
+  "timed_out": false
+}

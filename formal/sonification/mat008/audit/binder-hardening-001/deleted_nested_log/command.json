@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/tmp/mat008-binder-mutation-5fen6db_/audit/verify.py",
+    "attempt-001"
+  ],
+  "case": "deleted_nested_log",
+  "cwd": "/tmp/mat008-binder-mutation-5fen6db_",
+  "exit_code": 1,
+  "expected_diagnostic": "evidence membership mismatch",
+  "expected_exit_code": 1,
+  "status": "PASS",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "a82cbb330f79653765993b4487479617668b5eed4798017b43cf0a6d33237c2c",
+  "timed_out": false
+}

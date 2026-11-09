@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/audit/verify.py",
+    "attempt-001"
+  ],
+  "cwd": "/home/trent/sonification-formal-001-mat008",
+  "exit_code": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "121ec6e8fd3ac9604c8cbd53665730b1ae43021933a61b9ee61c269306f25d3c",
+  "verifier_sha256": "1f5ec37c426569bd7da7d2872ae0d64acbc75630e40f4a016ada657eef03ad01"
+}

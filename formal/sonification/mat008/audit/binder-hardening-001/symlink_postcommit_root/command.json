@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/tmp/mat008-binder-mutation-znyc_94y/audit/verify.py",
+    "attempt-001"
+  ],
+  "case": "symlink_postcommit_root",
+  "cwd": "/tmp/mat008-binder-mutation-znyc_94y",
+  "exit_code": 1,
+  "expected_diagnostic": "symlink path rejected",
+  "expected_exit_code": 1,
+  "status": "PASS",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "a4784ca4334a9d2a2cf3b27aceb14590b127a16c2f54c9dc6c80e63d075203c2",
+  "timed_out": false
+}

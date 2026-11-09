@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/tmp/mat008-binder-mutation-lbo8yyup/audit/verify.py",
+    "attempt-001"
+  ],
+  "case": "deleted_all_postcommit_receipts",
+  "cwd": "/tmp/mat008-binder-mutation-lbo8yyup",
+  "exit_code": 1,
+  "expected_diagnostic": "required evidence root missing",
+  "expected_exit_code": 1,
+  "status": "PASS",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "7fd209f0a5bebfce6fe91637fb4176d6c9d5e05b306586dff6c9ee4b0aa54ccd",
+  "timed_out": false
+}

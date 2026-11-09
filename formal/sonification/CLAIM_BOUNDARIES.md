@@ -33,6 +33,23 @@ serialization where applicable. Restricting inputs must be stated, justified
 and linked to production callers. A theorem for integer endpoints does not
 cover arbitrary rational or floating point endpoints.
 
+## MAT-SPEC-008 partial result
+
+The `mat-spec-008-v0.1.0` run-ownership model has ten machine-checked Lean 4.19.0
+theorems, including the universal finite-list statement
+`Sonification.Mat008.reused_run_blocks`. Independent audit accepts those exact
+mathematical statements and the recorded 1,296-case finite Python observation.
+The model uses Lean String equality and an association-list owner map. It does
+not prove that the frozen Python dictionary scan refines that map.
+
+The finite Python tests use exact built-in dict and string rows. Equal-text
+`str` subclasses with inconsistent hashes provide a counterexample to an
+unrestricted Python-object version of the run-reuse claim. The accepted finite
+domain does not silently become a precondition for universal Python
+correctness. `REFINEMENT_PROVED` remains OPEN for the run gate and the complete
+MAT-SPEC-008 validator. The remaining source-identity, row, diagnostic,
+missingness, eligibility and evidence-admission obligations remain OPEN.
+
 ## Historical proof evidence
 
 SPARK-002 Phase 1A retains its owner-executed GNATprove receipt for 23/23

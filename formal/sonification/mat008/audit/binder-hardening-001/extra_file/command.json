@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/tmp/mat008-binder-mutation-gbxich81/audit/verify.py",
+    "attempt-001"
+  ],
+  "case": "extra_file",
+  "cwd": "/tmp/mat008-binder-mutation-gbxich81",
+  "exit_code": 1,
+  "expected_diagnostic": "evidence membership mismatch",
+  "expected_exit_code": 1,
+  "status": "PASS",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "ec60e82657e147f0d240334f3ffa78ef36f315dd5f9bfb7224e4074c6d10cac5",
+  "timed_out": false
+}

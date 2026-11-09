@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "-o",
+    "Audit.olean",
+    "Audit.lean"
+  ],
+  "cwd": "/tmp/independent-mat008-_zbcbduc",
+  "exit_code": 0,
+  "explicit_environment": {
+    "LEAN_PATH": "/tmp/independent-mat008-_zbcbduc"
+  },
+  "started_utc": "2026-11-09T22:41:57.210914+00:00",
+  "stderr_path": "direct-02.stderr",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_path": "direct-02.stdout",
+  "stdout_sha256": "777b8c6cc7ac87f8982ca8d7b3368b4a187e882ef661b8a38ff3300180034e28",
+  "timed_out": false
+}

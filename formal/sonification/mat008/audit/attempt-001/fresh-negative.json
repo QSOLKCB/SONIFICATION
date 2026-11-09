@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/lean/negative.py",
+    "--lean",
+    "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "--out",
+    "/home/trent/sonification-formal-001-mat008/formal/sonification/mat008/audit/attempt-001/fresh-negative"
+  ],
+  "cwd": "/home/trent/sonification-formal-001-mat008",
+  "exit_code": 0,
+  "started_utc": "2026-11-09T22:42:15.280081+00:00",
+  "stderr_path": "fresh-negative.stderr",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_path": "fresh-negative.stdout",
+  "stdout_sha256": "c45c22bd896a310d57fce63b480cbdd6f4aa83126a3bb3ac54bcc41396180ba6",
+  "timed_out": false
+}

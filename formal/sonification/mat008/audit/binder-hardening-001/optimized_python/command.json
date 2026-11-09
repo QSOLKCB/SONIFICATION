@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "-O",
+    "/tmp/mat008-binder-mutation-n2_gg2jv/audit/verify.py",
+    "attempt-001"
+  ],
+  "case": "optimized_python",
+  "cwd": "/tmp/mat008-binder-mutation-n2_gg2jv",
+  "exit_code": 1,
+  "expected_diagnostic": "optimized Python is rejected",
+  "expected_exit_code": 1,
+  "status": "PASS",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "f9fce35d93ecf4ca555037621896c4180932237f7f42d8b41a7cdda183fba754",
+  "timed_out": false
+}

@@ -1,0 +1,8 @@
+test_committed_finite_receipt_is_bound_to_inputs (test_sonification_formal_mat008_run_ownership.Mat008RunOwnershipConformance.test_committed_finite_receipt_is_bound_to_inputs) ... ok
+test_equal_text_str_subclass_with_inconsistent_hash_is_outside_domain (test_sonification_formal_mat008_run_ownership.Mat008RunOwnershipConformance.test_equal_text_str_subclass_with_inconsistent_hash_is_outside_domain) ... ok
+test_exact_builtin_rows_against_pairwise_oracle (test_sonification_formal_mat008_run_ownership.Mat008RunOwnershipConformance.test_exact_builtin_rows_against_pairwise_oracle) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.092s
+
+OK

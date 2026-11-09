@@ -1,0 +1,167 @@
+{
+  "assurance": "SOURCE_PINNED_ONLY",
+  "context_file_identities": [
+    {
+      "bytes": 6695,
+      "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "git_blob": "b92af42a4e04a9331d044b78bebc3ece2e0d728a",
+      "path": "data/materials/helium4/mat_spec_008_source_catalogue.json",
+      "role": "specification/test/build/data context; not called by target operation",
+      "sha256": "6b6a973f46d1a748c5f94760a69e95899b5cc06ea717e1403b444eecdd880d88"
+    },
+    {
+      "bytes": 7463,
+      "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "git_blob": "757576566d4a43c682c4ca41c8d3af2b1a34a4f9",
+      "path": "docs/MAT_SPEC_008.md",
+      "role": "specification/test/build/data context; not called by target operation",
+      "sha256": "dd94d01f4a1278fd36df45bb594db4638e67e2863abdb52d8f98c2591546f018"
+    },
+    {
+      "bytes": 133,
+      "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "git_blob": "c312e890ec82b20dfc9c90cf2ced65b9a3f28317",
+      "path": "materials/__init__.py",
+      "role": "transitive import/module initialization",
+      "sha256": "1a7d56f6231fc6ae77ef7701785939aca31327719ae85a31b0ebe32c7ce90055"
+    },
+    {
+      "bytes": 20302,
+      "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "git_blob": "803fd7eb5133fd218c28b6c9d9aa58f5bc673b44",
+      "path": "materials/mat_spec.py",
+      "role": "transitive import/module initialization",
+      "sha256": "38353087fadbfb2dac53a514fa9cae8e5d66778e9a5157f61a70466e2ca2ec6b"
+    },
+    {
+      "bytes": 15953,
+      "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "git_blob": "73c13b3b4d2d804ef221038d4c64d3b97d6d43f4",
+      "path": "materials/mat_spec_002.py",
+      "role": "transitive import/module initialization",
+      "sha256": "160e88c6b90eccb7f452be353c86b936c4b9931a6926296677d4512e9116bb3c"
+    },
+    {
+      "bytes": 24834,
+      "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "git_blob": "a3ae0ab28633e4bd138aacdb35fa8e52109391a7",
+      "path": "materials/mat_spec_003.py",
+      "role": "transitive import/module initialization",
+      "sha256": "deb6534e537fdba3e86aedfbd8d68a05d24079951f4680f5ec18842cc5ce5cfa"
+    },
+    {
+      "bytes": 17745,
+      "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "git_blob": "8ec584c77402d3dbe2e37c7fc9d4700e1284e99a",
+      "path": "materials/mat_spec_004.py",
+      "role": "transitive import/module initialization",
+      "sha256": "14a286b448369e93ace45477eafd98c2b340b2ec494c6ceaa7297cdffbb1eda4"
+    },
+    {
+      "bytes": 24811,
+      "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "git_blob": "db7dc7df1559565e8bd8de06a47a7abb50c70bc6",
+      "path": "materials/mat_spec_005.py",
+      "role": "transitive import/module initialization",
+      "sha256": "a73d9ead02e43c43e9c398cc210eb6dc5cfef2a32879e42e925c2bf6dc970f78"
+    },
+    {
+      "bytes": 28633,
+      "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "git_blob": "81a1b1aa022d0f5d7cf3ba2ce2e683c409f859e1",
+      "path": "materials/mat_spec_006.py",
+      "role": "transitive import/module initialization",
+      "sha256": "a69a0c67137faed5c24c6f7108fc414d956b7dab27799c5ed4fd282bfc98abcc"
+    },
+    {
+      "bytes": 18973,
+      "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "git_blob": "f93708315c3c487d758747a193fc28ed40025945",
+      "path": "materials/mat_spec_007.py",
+      "role": "transitive import/module initialization",
+      "sha256": "2e363adea6c781ab68aec69d2ee5c7d712fc5e46346ae5be21d8cf3e929781c6"
+    },
+    {
+      "bytes": 30876,
+      "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "git_blob": "3117adbc3739c834f8203d5d2dd2b80d6caf862b",
+      "path": "materials/mat_spec_008.py",
+      "role": "transitive import/module initialization",
+      "sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08"
+    },
+    {
+      "bytes": 1287,
+      "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "git_blob": "7b34ba8f5468b108350a095bb9eafb840d6f9c78",
+      "path": "scripts/build_mat_spec_008.py",
+      "role": "specification/test/build/data context; not called by target operation",
+      "sha256": "92f5d11e7e6bb965b635d3799a7171896c9b35d6e6704871d29749b13c7d50d3"
+    },
+    {
+      "bytes": 1149,
+      "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "git_blob": "391ed93cd6dc332439ed37414d267c8cfe5ab961",
+      "path": "spec/mat-spec-008.v0.1.json",
+      "role": "specification/test/build/data context; not called by target operation",
+      "sha256": "e3c87516182505faa716cb478ffccb50fb722b5a4c3e9ead81cf38b3f231c20b"
+    },
+    {
+      "bytes": 17177,
+      "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "git_blob": "60a458b48ae0d1204ba8b351f9c64a6dbe08e09d",
+      "path": "tests/test_mat_spec_008.py",
+      "role": "specification/test/build/data context; not called by target operation",
+      "sha256": "8563ed0d5166a74d706657df681d936b76ea655df3c94707703737987e29f952"
+    }
+  ],
+  "dynamic_python_semantics_and_whole_module_refinement": "OPEN",
+  "frozen_release": {
+    "peeled_commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+    "tag": "refs/tags/mat-spec-008-v0.1.0",
+    "tag_object": "a02088e3c68addb41c9c7145694c0f566e84f87f",
+    "tree": "eb19f2e06a502442f621a73be1e5696c2fa25a65"
+  },
+  "note": "No historical source blob or released artifact is modified.",
+  "schema": "sonification-mat008-source-binding-v1",
+  "span_hash_methods": {
+    "ast_source_segment_sha256": "SHA-256 of ast.get_source_segment, without the final line ending",
+    "inclusive_line_span_sha256": "SHA-256 of complete source lines from lineno through end_lineno, including final line ending"
+  },
+  "static_import_closure": [
+    "materials/mat_spec_008.py",
+    "materials/__init__.py",
+    "materials/mat_spec.py",
+    "materials/mat_spec_006.py",
+    "materials/mat_spec_007.py",
+    "materials/mat_spec_005.py",
+    "materials/mat_spec_004.py",
+    "materials/mat_spec_003.py",
+    "materials/mat_spec_002.py"
+  ],
+  "target": {
+    "git_blob": "3117adbc3739c834f8203d5d2dd2b80d6caf862b",
+    "path": "materials/mat_spec_008.py",
+    "sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08",
+    "spans": {
+      "_decimal": {
+        "ast_source_segment_sha256": "f9628dab124e40d9812b05257559d5afa5dd88d8c20f833b20e6ca508a323598",
+        "end_line": 225,
+        "inclusive_line_span_sha256": "1813ff6c9f9be7b57199c94a325546466a3e038cf981a74e1b65171b1ccc0096",
+        "start_line": 217
+      },
+      "_identity": {
+        "ast_source_segment_sha256": "1ba1775e7b8092aa1ca3addbf761247f5100f266a1d3726a9c1e360483d7f63f",
+        "end_line": 75,
+        "inclusive_line_span_sha256": "8de0558da5d5324814881904302133e65ff1ba0fcb82f261d68744b5b3d445dc",
+        "start_line": 69
+      },
+      "validate_future_measurement_packet": {
+        "ast_source_segment_sha256": "e514874f36bef4f416c4a0fc8c1ee8705e2a6fb8ed15e62fd53f76a1d665660e",
+        "end_line": 332,
+        "inclusive_line_span_sha256": "72c86ad19a4637dec04e05120786b001b2aefe9e3ff0e08f4f861e699959b247",
+        "start_line": 228
+      }
+    },
+    "symbol": "validate_future_measurement_packet"
+  }
+}

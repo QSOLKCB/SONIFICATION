@@ -1,0 +1,56 @@
+{
+  "audit_runner_sha256": "94ddb259ff916c2ffcdc2a7b8dd41bfe5595ec8890ccfca8ce1f908806df18f4",
+  "checkout_sha": "c713b0c17f7b79b862e1581ac8aa166bf86935d2",
+  "independent_conformance_sha256": "7a9f3869742ffb6bb0a8460af9f0ba8f322d533426a605ae3aeaddd7dbbe0951",
+  "input_files": {
+    "Audit.lean": {
+      "committed_sha256": "42205261c134c4820976c71d89b99053fb6277f7adfb75d2e11364e270b1d2a8",
+      "equal": true,
+      "sha256": "42205261c134c4820976c71d89b99053fb6277f7adfb75d2e11364e270b1d2a8"
+    },
+    "Mat008.lean": {
+      "committed_sha256": "dc3d800f6d677de0d96f82fcb3de2768a8c8fae13d7b2b1e91ab42a7c0eaf8cc",
+      "equal": true,
+      "sha256": "dc3d800f6d677de0d96f82fcb3de2768a8c8fae13d7b2b1e91ab42a7c0eaf8cc"
+    },
+    "Mat008/RunOwnership.lean": {
+      "committed_sha256": "653f4638568e4e461176cca7659360737f3ac2632152163602c789fd65ead201",
+      "equal": true,
+      "sha256": "653f4638568e4e461176cca7659360737f3ac2632152163602c789fd65ead201"
+    },
+    "check.py": {
+      "committed_sha256": "9be62fe0becdb7de309bd50ee6ca49932106d8b868eaac51f9b73336d9e625dc",
+      "equal": true,
+      "sha256": "9be62fe0becdb7de309bd50ee6ca49932106d8b868eaac51f9b73336d9e625dc"
+    },
+    "expected-declarations.json": {
+      "committed_sha256": "b220d9e288eb2d76fddaadace632d434292eee3c218da3aec59e363461ce69b1",
+      "equal": true,
+      "sha256": "b220d9e288eb2d76fddaadace632d434292eee3c218da3aec59e363461ce69b1"
+    },
+    "lakefile.toml": {
+      "committed_sha256": "bd2e5b74ad2973018878d3afea24243cf4a274d49ad10d3031a060b07a158758",
+      "equal": true,
+      "sha256": "bd2e5b74ad2973018878d3afea24243cf4a274d49ad10d3031a060b07a158758"
+    },
+    "lean-toolchain": {
+      "committed_sha256": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+      "equal": true,
+      "sha256": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea"
+    },
+    "negative.py": {
+      "committed_sha256": "ec302629c41228ea2d18da10d217f6c4775d9a5252097285cfdb43cb750e5489",
+      "equal": true,
+      "sha256": "ec302629c41228ea2d18da10d217f6c4775d9a5252097285cfdb43cb750e5489"
+    },
+    "theorem-statements.json": {
+      "committed_sha256": "805aad10819bc30ddb4b4f421645d8c8ae4407db2920e4ac50f3922923a4688f",
+      "equal": true,
+      "sha256": "805aad10819bc30ddb4b4f421645d8c8ae4407db2920e4ac50f3922923a4688f"
+    }
+  },
+  "lean_binary_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "proof_input_commit": "c7889e3c9468ef4354d45d41b467263a0b5dea02",
+  "python_executable": "/usr/bin/python3",
+  "python_version": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]"
+}

@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_sonification_formal_mat008_run_ownership.py",
+    "-v"
+  ],
+  "cwd": "/home/trent/sonification-formal-001-mat008",
+  "exit_code": 0,
+  "started_utc": "2026-11-09T22:42:15.280778+00:00",
+  "stderr_path": "targeted-tests.stderr",
+  "stderr_sha256": "d44838ed9a1a8bb87f9c3c666cb5ca76955958bc52ff44f15bd3c818bc290f78",
+  "stdout_path": "targeted-tests.stdout",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "timed_out": false
+}

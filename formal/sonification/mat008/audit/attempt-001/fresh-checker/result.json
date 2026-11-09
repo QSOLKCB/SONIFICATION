@@ -1,0 +1,114 @@
+{
+  "assurance": "MATHEMATICAL_MODEL_ONLY",
+  "baseline_commit": "c7889e3c9468ef4354d45d41b467263a0b5dea02",
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Mat008/RunOwnership.olean",
+        "Mat008/RunOwnership.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "/tmp/sonification-lean-ngq8peoa"
+      },
+      "exit_code": 0,
+      "stderr_path": "00.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "00.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "working_directory": "/tmp/sonification-lean-ngq8peoa"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Mat008.olean",
+        "Mat008.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "/tmp/sonification-lean-ngq8peoa"
+      },
+      "exit_code": 0,
+      "stderr_path": "01.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "01.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "working_directory": "/tmp/sonification-lean-ngq8peoa"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Audit.olean",
+        "Audit.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "/tmp/sonification-lean-ngq8peoa"
+      },
+      "exit_code": 0,
+      "stderr_path": "02.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "02.stdout",
+      "stdout_sha256": "777b8c6cc7ac87f8982ca8d7b3368b4a187e882ef661b8a38ff3300180034e28",
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "working_directory": "/tmp/sonification-lean-ngq8peoa"
+    }
+  ],
+  "declaration_count": 99,
+  "expected_theorems": [
+    "Sonification.Mat008.nonvacuity",
+    "Sonification.Mat008.reused_run_blocks",
+    "Sonification.Mat008.scanFrom_append",
+    "Sonification.Mat008.scan_append",
+    "Sonification.Mat008.scan_clear_covers",
+    "Sonification.Mat008.snoc_induction",
+    "Sonification.Mat008.step_clear_before",
+    "Sonification.Mat008.step_clear_same_owner",
+    "Sonification.Mat008.step_conflict_sticky",
+    "Sonification.Mat008.step_covers"
+  ],
+  "imported_modules": [
+    "Audit",
+    "Mat008",
+    "Mat008.RunOwnership"
+  ],
+  "input_sha256": {
+    "Audit.lean": "42205261c134c4820976c71d89b99053fb6277f7adfb75d2e11364e270b1d2a8",
+    "Mat008.lean": "dc3d800f6d677de0d96f82fcb3de2768a8c8fae13d7b2b1e91ab42a7c0eaf8cc",
+    "Mat008/RunOwnership.lean": "653f4638568e4e461176cca7659360737f3ac2632152163602c789fd65ead201",
+    "check.py": "9be62fe0becdb7de309bd50ee6ca49932106d8b868eaac51f9b73336d9e625dc",
+    "expected-declarations.json": "b220d9e288eb2d76fddaadace632d434292eee3c218da3aec59e363461ce69b1",
+    "lakefile.toml": "bd2e5b74ad2973018878d3afea24243cf4a274d49ad10d3031a060b07a158758",
+    "lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+    "negative.py": "ec302629c41228ea2d18da10d217f6c4775d9a5252097285cfdb43cb750e5489",
+    "theorem-statements.json": "805aad10819bc30ddb4b4f421645d8c8ae4407db2920e4ac50f3922923a4688f"
+  },
+  "lean_executable": {
+    "path": "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023"
+  },
+  "observed_theorems": [
+    "Sonification.Mat008.nonvacuity",
+    "Sonification.Mat008.reused_run_blocks",
+    "Sonification.Mat008.scanFrom_append",
+    "Sonification.Mat008.scan_append",
+    "Sonification.Mat008.scan_clear_covers",
+    "Sonification.Mat008.snoc_induction",
+    "Sonification.Mat008.step_clear_before",
+    "Sonification.Mat008.step_clear_same_owner",
+    "Sonification.Mat008.step_conflict_sticky",
+    "Sonification.Mat008.step_covers"
+  ],
+  "python_refinement": "OPEN",
+  "started_utc": "2026-11-09T22:42:15.314907+00:00",
+  "status": "PASS",
+  "trust": "Kernel and pinned Lean distribution, source-sensitive audit runner, OS execution; logical axioms disclosed per declaration. Compiler-only unsafe auxiliaries Compiler axioms are forbidden.",
+  "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "version_exit_code": 0
+}

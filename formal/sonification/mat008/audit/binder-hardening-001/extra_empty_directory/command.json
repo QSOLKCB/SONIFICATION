@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/tmp/mat008-binder-mutation-ihcsa0ms/audit/verify.py",
+    "attempt-001"
+  ],
+  "case": "extra_empty_directory",
+  "cwd": "/tmp/mat008-binder-mutation-ihcsa0ms",
+  "exit_code": 1,
+  "expected_diagnostic": "evidence directory membership mismatch",
+  "expected_exit_code": 1,
+  "status": "PASS",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "6d8e0517ec813f03683bbc820f2fe16facbb41f0f203b4731520d9a1a1234a27",
+  "timed_out": false
+}

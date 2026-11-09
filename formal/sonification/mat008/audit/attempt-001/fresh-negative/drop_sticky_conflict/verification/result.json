@@ -1,0 +1,46 @@
+{
+  "assurance": "MATHEMATICAL_MODEL_ONLY",
+  "baseline_commit": null,
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Mat008/RunOwnership.olean",
+        "Mat008/RunOwnership.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "/tmp/sonification-lean-_4wvkea6"
+      },
+      "exit_code": 1,
+      "stderr_path": "00.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "00.stdout",
+      "stdout_sha256": "2730fd5db1dbc69bd37d79b11972e7e27fa64532334cce5f337feffb4a96a08c",
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "working_directory": "/tmp/sonification-lean-_4wvkea6"
+    }
+  ],
+  "error": "Lean rejected Mat008.RunOwnership; see original logs",
+  "input_sha256": {
+    "Audit.lean": "42205261c134c4820976c71d89b99053fb6277f7adfb75d2e11364e270b1d2a8",
+    "Mat008.lean": "dc3d800f6d677de0d96f82fcb3de2768a8c8fae13d7b2b1e91ab42a7c0eaf8cc",
+    "Mat008/RunOwnership.lean": "b5f5bac00f6005df187426ffe0777815be6e58c86fed4f978b6a539efee9e76b",
+    "check.py": "9be62fe0becdb7de309bd50ee6ca49932106d8b868eaac51f9b73336d9e625dc",
+    "expected-declarations.json": "b220d9e288eb2d76fddaadace632d434292eee3c218da3aec59e363461ce69b1",
+    "lakefile.toml": "bd2e5b74ad2973018878d3afea24243cf4a274d49ad10d3031a060b07a158758",
+    "lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+    "negative.py": "ec302629c41228ea2d18da10d217f6c4775d9a5252097285cfdb43cb750e5489",
+    "theorem-statements.json": "805aad10819bc30ddb4b4f421645d8c8ae4407db2920e4ac50f3922923a4688f"
+  },
+  "lean_executable": {
+    "path": "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023"
+  },
+  "python_refinement": "OPEN",
+  "started_utc": "2026-11-09T22:42:15.350637+00:00",
+  "status": "FAIL",
+  "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "version_exit_code": 0
+}
