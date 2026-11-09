@@ -1,0 +1,28 @@
+{
+  "schema": "qsol.sonification-formal-001.execution/v1",
+  "argv": [
+    "python3",
+    "scripts/verify_spark_002_phase_1a_receipts.py"
+  ],
+  "cwd": "/home/trent/sonification-formal-001",
+  "started_utc": "2026-11-09T21:45:29.800468+00:00",
+  "ended_utc": "2026-11-09T21:45:29.830130+00:00",
+  "exit_code": 0,
+  "checkout_commit": "8c62517138e3b86a4672d8969e190b747f81c398",
+  "worktree_status": "DIRTY",
+  "inputs": {
+    "scripts/verify_spark_002_phase_1a_receipts.py": "1a6ab1d038a8b60173352fa770e2543c52956db8ea50e54c03169467992f6ce8"
+  },
+  "environment": "Linux-7.0.0-42-generic-x86_64-with-glibc2.43",
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "python_executable_sha256": "52e0a13e60a981d8c4b6478be2ba5176f69da07948a056bf49cf6f077e30cb41",
+  "command_executable": "/usr/bin/python3.14",
+  "command_executable_sha256": "52e0a13e60a981d8c4b6478be2ba5176f69da07948a056bf49cf6f077e30cb41",
+  "stdout_sha256": "3ecc9294f441dd8bf4b80816df491983e01538cc8aaa55663fc002e00073a96d",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "limits": [
+    "Locally observed execution; no author or external execution attestation",
+    "Input list is explicit; dependency closure requires separate review",
+    "A zero exit status does not establish theorem or coverage acceptance"
+  ]
+}

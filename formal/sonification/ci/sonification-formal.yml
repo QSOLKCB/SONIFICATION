@@ -1,0 +1,20 @@
+name: SONIFICATION formal inventory
+on:
+  pull_request:
+    paths: ['formal/sonification/**', '.github/workflows/sonification-formal.yml']
+  push:
+    branches: [main]
+    paths: ['formal/sonification/**', '.github/workflows/sonification-formal.yml']
+permissions:
+  contents: read
+jobs:
+  historical-source-inventory:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Check frozen historical inventory and independent assurance states
+        run: python3 formal/sonification/tools/check_inventory.py

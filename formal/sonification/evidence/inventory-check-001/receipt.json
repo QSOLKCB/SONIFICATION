@@ -1,0 +1,32 @@
+{
+  "schema": "qsol.sonification-formal-001.execution/v1",
+  "argv": [
+    "python3",
+    "formal/sonification/tools/check_inventory.py"
+  ],
+  "cwd": "/home/trent/sonification-formal-001",
+  "started_utc": "2026-11-09T21:45:29.119373+00:00",
+  "ended_utc": "2026-11-09T21:45:29.729968+00:00",
+  "exit_code": 0,
+  "checkout_commit": "8c62517138e3b86a4672d8969e190b747f81c398",
+  "worktree_status": "DIRTY",
+  "inputs": {
+    "formal/sonification/tools/inventory.py": "b0f6dbd3f142c6d7495f0ee6cdd528a173b298e0ce30aaa8d18bbb3928f097e3",
+    "formal/sonification/tools/check_inventory.py": "5e23cbcbeb4743ad6def632afe74adcb86327da2d7fb91c6a267ffad1c207146",
+    "formal/sonification/SOURCE_MANIFEST.json": "b6e17568b55d29d6fdfd82d1076b96aebcbfb2aab4eb33693b0231fab016de1a",
+    "formal/sonification/SOURCE_INVENTORY.json": "9b4cd041b9c1a8891fd8605160decb84316851acc9c1a3113e8b706fbb5b259d",
+    "formal/sonification/theorem-map.json": "d9b7688865b68408d77c35dde43de1321eadfa6a1dbccbabb698014e2f037e30"
+  },
+  "environment": "Linux-7.0.0-42-generic-x86_64-with-glibc2.43",
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "python_executable_sha256": "52e0a13e60a981d8c4b6478be2ba5176f69da07948a056bf49cf6f077e30cb41",
+  "command_executable": "/usr/bin/python3.14",
+  "command_executable_sha256": "52e0a13e60a981d8c4b6478be2ba5176f69da07948a056bf49cf6f077e30cb41",
+  "stdout_sha256": "0e59ad1f287b12e4d8e469c625abb03e25f644d90240870b395a46d538f7f444",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "limits": [
+    "Locally observed execution; no author or external execution attestation",
+    "Input list is explicit; dependency closure requires separate review",
+    "A zero exit status does not establish theorem or coverage acceptance"
+  ]
+}
