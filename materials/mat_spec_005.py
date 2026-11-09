@@ -233,7 +233,7 @@ def parse_reference(raw: bytes) -> list[dict]:
                 "LAMBDA_UNDEFINED"
                 if regime == "LAMBDA_REFERENCE_BOUNDARY"
                 else "NOT_TABULATED_AT_SELECTED_T"
-                if heat is None
+                if original["heat_capacity_J_per_mol_K"] is None
                 else "RECOMMENDED"
             ),
             "reported_measurement_uncertainty": {
