@@ -1,0 +1,58 @@
+name: SPARK-002 Phase 1B bounded partition differential
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'verification/spark002/phase1b/**'
+      - 'scripts/verify_spark_002_phase_1b.py'
+      - 'scripts/run_spark_002_phase_1b_proof.sh'
+      - 'tests/test_spark_002_phase_1b.py'
+      - 'docs/SPARK_002_PHASE_1B.md'
+      - '.github/workflows/spark-002-phase-1b.yml'
+  pull_request:
+    paths:
+      - 'verification/spark002/phase1b/**'
+      - 'scripts/verify_spark_002_phase_1b.py'
+      - 'scripts/run_spark_002_phase_1b_proof.sh'
+      - 'tests/test_spark_002_phase_1b.py'
+      - 'docs/SPARK_002_PHASE_1B.md'
+      - '.github/workflows/spark-002-phase-1b.yml'
+permissions:
+  contents: read
+jobs:
+  native-differential:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install pinned major GNAT 13
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends gnat-13
+          gnatmake-13 --version
+      - name: Compile Phase 1B without touching Phase 1A
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/qsol-spark-002-phase1b
+          cd /tmp/qsol-spark-002-phase1b
+          gnatmake-13 -gnat2022 -gnata \
+            -I"$GITHUB_WORKSPACE/verification/spark002/phase1b" \
+            "$GITHUB_WORKSPACE/verification/spark002/phase1b/spark_002_partition_probe.adb" \
+            -o /tmp/qsol-spark-002-phase1b/spark_002_partition_probe
+      - name: Oracle unit tests and executed Ada differential
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest tests.test_spark_002_phase_1b -v
+          python3 scripts/verify_spark_002_phase_1b.py \
+            --exe /tmp/qsol-spark-002-phase1b/spark_002_partition_probe
+      - name: Declare accurate formal evidence level
+        shell: bash
+        run: |
+          echo 'SPARK_002_PHASE_1B_FORMAL_PROOF=NOT_EXECUTED_BY_CI' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Native tests are NOT GNATprove, source authentication, physical admission, or a classifier result.' >> "$GITHUB_STEP_SUMMARY"
