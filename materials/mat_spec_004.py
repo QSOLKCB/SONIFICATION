@@ -38,7 +38,7 @@ OUTPUT_NAMES = frozenset({
     "contract.json", "observations.json", "temperature-controls.csv",
     "audit.json", "phase-gate.json", "manifest.json",
 })
-# Frozen eight-artifact baseline from merged MAT-SPEC-003 commit c15ef3223e78cffad1494d99ad6edbdb41195362.
+# Frozen eight-output baseline from the merged MAT-SPEC-003 release commit.
 PARENT_V3_SHA256 = {
     "contract.json": "4c420517147690dc55de3af1d45a3e9256d7173a43d347bb19d4ce1eff407fa7",
     "controls.json": "e3bedbebf1d2cce1ae6924a02ec0d7e9dd47d474a4c77bb5466a9611eb1f0246",
@@ -47,7 +47,9 @@ PARENT_V3_SHA256 = {
     "feature-intervals.json": "515f423f5fbb782405bfaa5e42328ce1938991624f1ca9a6d42bc4e002ad58dd",
     "features.csv": "e7e8c6f08b5d504cc7cdf8a4ca4a9b009f7b11183fce447357e9b61d417015bd",
     "manifest.json": "07feb3da87f7ea4b32ddabc562587e5050e516b0644ea806f14c7af866d19ee9",
-    "pressure-discrimination.csv": "28d42ed32f17a4a16b906ae535d459dcf44614e6e2f81c136aad96046d8acf8e",
+    "pressure-discrimination.csv": (
+        "28d42ed32f17a4a16b906ae535d459dcf44614e6e2f81c136aad96046d8acf8e"
+    ),
 }
 
 EXPECTED_META = {
