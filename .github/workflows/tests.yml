@@ -43,6 +43,22 @@ jobs:
           PY
       - name: Build MAT-SPEC-003 physical-mode evidence
         run: python scripts/build_mat_spec_003.py --out dist/mat-spec-003
+      - name: Print MAT-SPEC-003 eight-file baseline digest inventory
+        run: |
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+
+          for path in sorted(Path("dist/mat-spec-003").iterdir()):
+              if path.is_file():
+                  print(
+                      "MAT_SPEC_003_DIGEST",
+                      path.name,
+                      hashlib.sha256(path.read_bytes()).hexdigest(),
+                  )
+          PY
+      - name: Build MAT-SPEC-004 temperature preservation evidence
+        run: python scripts/build_mat_spec_004.py --out dist/mat-spec-004
       - name: Report measured finite-window mode diagnostics
         run: |
           python - <<'PY'

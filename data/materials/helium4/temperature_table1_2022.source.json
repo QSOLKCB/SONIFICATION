@@ -1,0 +1,21 @@
+{
+  "authors": [
+    "Abhiroop Bhadra",
+    "Pankaj Kumar Mishra"
+  ],
+  "source_doi": "10.1063/5.0083847",
+  "source_title": "Energy spectrum and energy budget of superfluid turbulence using two-fluid shell model",
+  "source_journal": "AIP Advances 12, 025021 (2022)",
+  "table": "Table I: Parameters for superfluid helium-4 at different temperatures",
+  "url": "https://doi.org/10.1063/5.0083847",
+  "licence": "CC BY 4.0 (source article; numerical transcriptions attributed)",
+  "data_kind": "eight published parameter-table entries used in a two-fluid shell-model study; not raw measurements",
+  "temperature_units": "K",
+  "normal_fraction_units": "dimensionless rho_n/rho",
+  "mutual_friction_alpha_units": "dimensionless",
+  "fraction_uncertainty": "not reported in Table I",
+  "phase_diagnostic": "not supplied in Table I",
+  "pressure_condition": "not independently specified for these table entries; do not assert SVP",
+  "comparison_to_mat_spec_003": "different temperature/pressure scope; cross-profile physical matching prohibited",
+  "provenance_note": "The numerical source is distinct from the Godfrin et al. helium dispersion table used in MAT-SPEC-001/003."
+}
