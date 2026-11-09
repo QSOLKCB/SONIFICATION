@@ -113,7 +113,8 @@ from the Stanford Lipa–Chui 1984 data release (NASA-CR-177037, Appendix A).
 Six values are below and six above the SVP lambda point, recorded as signed
 **microkelvin offsets**, not inferred absolute temperatures. The excerpt
 is pinned by SHA-256 with source metadata and a five-source provenance
-inventory. These measurements are experimentally reported, not raw
+inventory. Exact controls retain 12 distinct heat capacities but yield 7
+quantized MIDI notes and 7 colliding sample pairs. These measurements are experimentally reported, not raw
 per-instrument event files.
 
 A future **source-family-separated** validation protocol rejects row

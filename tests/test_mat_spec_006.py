@@ -87,6 +87,9 @@ class SourceTests(unittest.TestCase):
         )
         self.assertFalse(audit["near_pair_offsets_equal_magnitude"])
         self.assertFalse(audit["infer_transition_jump_or_significance"])
+        self.assertEqual(audit["distinct_reported_values"], 12)
+        self.assertEqual(audit["receiver_distinct_midi_notes"], 7)
+        self.assertEqual(audit["receiver_colliding_row_pairs"], 7)
         shifted = [dict(r) for r in self.receiver]
         shifted[0]["frequency_target_Hz"] = "999"
         with self.assertRaisesRegex(ValueError, "roundtrip"):
@@ -183,6 +186,10 @@ class BundleTests(unittest.TestCase):
         self.assertEqual(set(self.bundle), mat_spec_006.OUTPUT_NAMES)
         parent = mat_spec_005.build_evidence(ROOT)
         self.assertEqual(set(parent), set(self.manifest["parent"]["artifacts"]))
+        self.assertEqual(
+            {name: mat_spec.sha256(data) for name, data in parent.items()},
+            mat_spec_006.PARENT_V5_SHA256,
+        )
         for name, record in self.manifest["outputs"].items():
             self.assertEqual(mat_spec.sha256(self.bundle[name]), record["sha256"])
         for name, record in self.manifest["parent"]["artifacts"].items():
@@ -231,6 +238,19 @@ class BundleTests(unittest.TestCase):
             self.assertRaisesRegex(ValueError, "parent membership"),
         ):
             mat_spec_006.build_evidence(ROOT)
+        inventory = json.loads(mat_spec.read_regular(ROOT / mat_spec_006.INVENTORY_PATH))
+        observations = mat_spec_006.parse_measurements(
+            mat_spec.read_regular(ROOT / mat_spec_006.DATA_PATH)
+        )
+        forgery = [dict(row) for row in observations]
+        forgery[0]["row_uncertainty_J_per_mol_K"] = "0.01"
+        with self.assertRaisesRegex(ValueError, "forged experimental witness"):
+            mat_spec_006.phase_gate(forgery, inventory)
+        forgery = [dict(row) for row in observations]
+        forgery[0]["independent_phase_label"] = "HE_II"
+        with self.assertRaisesRegex(ValueError, "forged experimental witness"):
+            mat_spec_006.phase_gate(forgery, inventory)
+
         drift = dict(parent)
         drift["phase-gate.json"] = b"tamper"
         with (

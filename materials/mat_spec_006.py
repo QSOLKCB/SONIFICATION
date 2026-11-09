@@ -45,9 +45,18 @@ OUTPUT_NAMES = frozenset({
 IMPLEMENTATION_PATHS = (
     "materials/mat_spec_006.py", "scripts/build_mat_spec_006.py",
 )
-# Frozen MAT-SPEC-005 parent outputs will be hard-pinned from CI on
-# the immutable merge commit before promotion from draft.
-PARENT_V5_SHA256: dict[str, str] | None = None
+# Frozen seven-artifact MAT-SPEC-005 baseline from merged-main CI.
+PARENT_V5_SHA256 = {
+    "audit.json": "0c74472e83808c466445a091be863083bc5f2f905c27b391980dc808d7d7f739",
+    "contract.json": "15e7118fdc69d9d6e46be661fa14ef7f9f6965b31b4b5324fa303f79f051cdf6",
+    "crossing.json": "c1c1287f61883ee940ed60e80e9b65457d34f90b330fcbb8219230582fadd40d",
+    "manifest.json": "a88a0e5acca0824bd1471b9bf805acec0dcdf252a55fc435ae8671b21cf875bd",
+    "observations.json": "34724d26f1ba76ca05139bcabb0468178d1004cc8988f56bf5a9e74fe2b8fdfd",
+    "phase-gate.json": "f80bc1144b3f35e8f2a48c0debd735876aa6cbcb39b88dd7661d928df44a9661",
+    "receiver-controls.csv": (
+        "950a80a6398d37ff66049b77e0bacb900b9a5078a999e587a108aa9c8a5dc3ae"
+    ),
+}
 
 
 EXPECTED_META = json.loads(
@@ -431,7 +440,7 @@ def build_evidence(root: Path) -> dict[str, bytes]:
     if set(parent) != mat_spec_005.OUTPUT_NAMES:
         raise ValueError("MAT-SPEC-005 parent membership mismatch")
     parent_hashes = {name: mat_spec.sha256(raw) for name, raw in parent.items()}
-    if PARENT_V5_SHA256 is not None and parent_hashes != PARENT_V5_SHA256:
+    if parent_hashes != PARENT_V5_SHA256:
         raise ValueError("MAT-SPEC-005 frozen output SHA-256 mismatch")
     ancestor_manifest = json.loads(parent["manifest.json"])
     if (

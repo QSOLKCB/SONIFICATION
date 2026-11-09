@@ -77,6 +77,12 @@ capacity frequency. The mapping is reversible as an exact rational
 transformation of the printed numbers. Nearest 12-TET MIDI notes are only a
 lossy numerical receiver; no MIDI or sampled audio is rendered.
 
+Source-pinned audit findings: **12/12 distinct reported heat-capacity values**
+and exact rational roundtrips, but only **7 unique 12-TET notes**, with
+**7 colliding row pairs** under the fixed 5 Hz/(J/mol·K) mapping.
+This is measured-table-to-symbolic information loss, not a hearing test
+or phase classifier accuracy.
+
 The nearest *selected* reference records on either side are
 `-0.029 microK, 105.50 J/(mol K)` (below) and
 `+0.075 microK, 82.04 J/(mol K)` (above), difference
