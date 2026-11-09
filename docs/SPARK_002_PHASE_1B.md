@@ -1,6 +1,9 @@
 # SPARK-002 Phase 1B — Fixed-capacity campaign partition and missingness kernel
 
-**Implementation candidate; no Phase 1B GNATprove result is claimed.**
+**Phase 1B merged; owner-executed GNATprove proof receipts verified (9/9 reported checks) at source commit `6f0f1be1ba8885fa708d7328bcb92fbf4ecc324f`.**
+The historical receipts and an offline integrity verifier are preserved in
+[publication/spark-002/phase-1b](../publication/spark-002/phase-1b/README.md).
+This is not a new prover execution by CI.
 This is an extension of SPARK-002, not a new MAT-SPEC profile. Phase 1A
 proof receipts (23/23 at `06b1294bf1617e9eb3b825051e8bfbf7470e395c`)
 remain source-pinned and unchanged. No SPARK-001 or MAT-SPEC release is modified.
@@ -44,7 +47,20 @@ remain source-pinned and unchanged. No SPARK-001 or MAT-SPEC release is modified
   outside the Ada/SPARK proof boundary. The `T` command deliberately corrupts
   an unused slot for a negative padding test.
 
-## Formal proof targets — not claimed until owner execution
+## Formal proof targets and executed result
+
+The owner-executed strict GNATprove FSF 16.1.0 run at the merged Phase 1B
+commit reported **Success: all checks proved (9 checks)** with exit status 0.
+The reported checks are **2 functional contracts** (`Compare_Readings` and
+`Audit`) and **7 termination checks** (flow), with 0 unproved and 0 justified.
+No separately counted runtime checks appear in this summary; the non-SPARK
+probe was excluded and no `pragma Assume` statements were reported. The
+contract predicates remain authored specifications, not independently proven
+experiment identities or a Python semantic-refinement theorem.
+
+The following requirements describe the bounded properties and design targets;
+they must not be read as independently discharged, stronger theorems beyond
+the actual GNATprove summary:
 
 1. A `STRUCTURAL_ONLY_UNAUTHENTICATED` result implies the defined all-row,
    all-pair and phase-presence predicates.
@@ -57,9 +73,9 @@ remain source-pinned and unchanged. No SPARK-001 or MAT-SPEC release is modified
    matching campaign or phase; non-empty padding fails closed.
 
 `Packet_Eligible`, `Compatible`, and `Declared_Row_Valid` are explicit
-**authored predicates**. A later GNATprove run can discharge generated proof
-obligations for their use in `Audit`; it cannot prove the external identity
-codes were assigned faithfully. No universal refinement of MAT-SPEC Python
+**authored predicates**. The historical GNATprove run discharged the reported `Audit` postcondition
+and termination obligations under the authored predicates; it cannot prove
+the external identity codes were assigned faithfully. No universal refinement of MAT-SPEC Python
 implementations or complete grammar equivalence is asserted.
 
 ## Test and proof workflow
@@ -86,8 +102,9 @@ toolchain, `PROOF.log`, strict GNATprove exit status, summary (if produced),
 prior summary (if present) and a checksum manifest under a unique local
 `SPARK-002-1B-*` receipt directory. It never changes Phase 1A receipts.
 
-**Admission rule:** Native CI must report `NOT_EXECUTED_BY_CI` for GNATprove;
-only an actual strict owner-executed prover run can upgrade the formal status.
+**Admission rule:** Native differential CI still reports `NOT_EXECUTED_BY_CI`.
+The separate strict owner-run proof is recorded and preserved at its exact
+merged source identity. Future code changes require their own fresh proof.
 The software proof is not independent helium data, calibrated uncertainty,
 external source authentication, human perception or E8 physics. The final
 MAT-SPEC gate remains `NUMBERED_SERIES_CLOSED_AT_010_WITH_OPEN_SCIENTIFIC_GATES`.
