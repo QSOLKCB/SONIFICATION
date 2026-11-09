@@ -1,0 +1,97 @@
+{
+  "profile": "MAT-SPEC-010",
+  "version": "0.1.0",
+  "foundational_mat_spec_001_doi": "10.5281/zenodo.24062652",
+  "stages": [
+    {
+      "profile": "MAT-SPEC-001",
+      "version": "1.0.0",
+      "merged_commit": "195b325097cd01f16e9ca909edd95482d4863c27",
+      "tag": null,
+      "grade": "MEASURED_SPECTRAL_NUMERICAL_REPLAY",
+      "finding": "Seven-pressure helium-4 neutron-dispersion table preserved with symbolic mappings, observed/missing cells and reproducible provenance",
+      "evidence_file": "audit.json",
+      "boundary": "No inference of new helium phase law, listening perception, or unification"
+    },
+    {
+      "profile": "MAT-SPEC-002",
+      "version": "0.1.0",
+      "merged_commit": "c400a27e16cc1ed63efc6657dbdd25d003b7bdbb",
+      "tag": null,
+      "grade": "MEASURED_INTERVAL_AND_SAMPLING_AUDIT",
+      "finding": "Matched-q interval ordering and sampling invariants over the frozen neutron-dispersion source",
+      "evidence_file": "audit.json",
+      "boundary": "Reported errors are not covariance or calibrated probability distributions"
+    },
+    {
+      "profile": "MAT-SPEC-003",
+      "version": "0.1.0",
+      "merged_commit": "c15ef3223e78cffad1494d99ad6edbdb41195362",
+      "tag": "mat-spec-003-v0.1.0",
+      "grade": "MEASURED_MODE_FEATURE_ANALYSIS",
+      "finding": "Phonon, maxon and roton feature comparisons retain missingness and mark post-hoc common coverage as exploratory",
+      "evidence_file": "controls.json",
+      "boundary": "Coverage-core roton results are exploratory, not preregistered discovery"
+    },
+    {
+      "profile": "MAT-SPEC-004",
+      "version": "0.1.0",
+      "merged_commit": "eac0659cbae1392bf63632ec8138005367e63304",
+      "tag": "mat-spec-004-v0.1.0",
+      "grade": "MODEL_INPUT_TEMPERATURE_SYMBOLIC_ANALYSIS",
+      "finding": "Eight published helium-II temperature model inputs mapped with exact mass-fraction closure",
+      "evidence_file": "audit.json",
+      "boundary": "Published model inputs are not independently observed phase labels"
+    },
+    {
+      "profile": "MAT-SPEC-005",
+      "version": "0.1.0",
+      "merged_commit": "5b4c89b795beb7fc8c4f7d86ce2a2fb510cb6cb2",
+      "tag": "mat-spec-005-v0.1.0",
+      "grade": "EVALUATED_REFERENCE_CROSS_TRANSITION_REPLAY",
+      "finding": "Fourteen evaluated SVP reference temperatures span the lambda boundary, preserving zero versus out-of-domain null distinctions",
+      "evidence_file": "phase-gate.json",
+      "boundary": "Reference values are not a new measured discontinuity or independent phase classifier"
+    },
+    {
+      "profile": "MAT-SPEC-006",
+      "version": "0.1.0",
+      "merged_commit": "c1abb62e8914f6790b5da5a51adf330b813b0530",
+      "tag": "mat-spec-006-v0.1.0",
+      "grade": "PRIMARY_PROCESSED_EXPERIMENTAL_TABLE_REPLAY",
+      "finding": "Twelve published gravity-corrected and averaged Lipa-Chui experimental heat-capacity rows preserved across lambda",
+      "evidence_file": "phase-gate.json",
+      "boundary": "One original processed campaign, no per-row errors or orthogonal phase diagnostics"
+    },
+    {
+      "profile": "MAT-SPEC-007",
+      "version": "0.1.0",
+      "merged_commit": "b97348ff8fcf3f57764dec21a8914f153f96a745",
+      "tag": null,
+      "grade": "SECONDARY_PUBLISHED_FIT_CONCORDANCE",
+      "finding": "Four published critical-fit summaries trace four acquisition campaigns across three laboratory families",
+      "evidence_file": "replication-gate.json",
+      "boundary": "Secondary fit uncertainty boxes do not authenticate original measurement rows or new experimental replication"
+    },
+    {
+      "profile": "MAT-SPEC-008",
+      "version": "0.1.0",
+      "merged_commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "tag": null,
+      "grade": "DOCUMENT_LINEAGE_AND_NEGATIVE_MEASUREMENT_ADMISSION",
+      "finding": "Ten literature records, four campaigns and only one campaign with source-pinned processed measurements",
+      "evidence_file": "admission.json",
+      "boundary": "Zero eligible independently sourced measurement-campaign pairs; no classifier score"
+    },
+    {
+      "profile": "MAT-SPEC-009",
+      "version": "0.1.0",
+      "merged_commit": "0758a96360726aafbb07abed34620eda178407ae",
+      "tag": null,
+      "grade": "PROSPECTIVE_PROTOCOL_AND_SYNTHETIC_NEGATIVE_CONTROLS",
+      "finding": "Fourteen synthetic provenance/holdout controls reject evidence leakage; prospective protocol remains blocked for actual physics",
+      "evidence_file": "split-protocol.json",
+      "boundary": "Synthetic controls and prospective metadata are not physical training, source-separated accuracy or preregistered old experiments"
+    }
+  ]
+}

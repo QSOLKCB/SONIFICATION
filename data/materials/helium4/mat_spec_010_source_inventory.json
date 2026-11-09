@@ -1,0 +1,79 @@
+{
+  "profile": "MAT-SPEC-010",
+  "version": "0.1.0",
+  "source_stages": [
+    {
+      "profile": "MAT-SPEC-001",
+      "data_kind": "PUBLISHED_NEUTRON_SPECTRAL_MEASUREMENTS",
+      "paths": [
+        "data/materials/helium4/DispersionAllPressures.txt",
+        "data/materials/helium4/source.json"
+      ],
+      "note": "Original attributed measured neutron-dispersion table; finite cells with missing values"
+    },
+    {
+      "profile": "MAT-SPEC-002",
+      "data_kind": "REUSES_MAT_SPEC_001_MEASUREMENTS",
+      "paths": [],
+      "note": "No independently acquired data; exact interval and sampling controls on frozen MAT-SPEC-001"
+    },
+    {
+      "profile": "MAT-SPEC-003",
+      "data_kind": "REUSES_MAT_SPEC_001_MEASUREMENTS",
+      "paths": [],
+      "note": "No new measured source; phonon/maxon/roton features preserve missingness"
+    },
+    {
+      "profile": "MAT-SPEC-004",
+      "data_kind": "PUBLISHED_MODEL_INPUT_TABLE",
+      "paths": [
+        "data/materials/helium4/temperature_table1_2022.csv",
+        "data/materials/helium4/temperature_table1_2022.source.json"
+      ],
+      "note": "Eight published model-input temperature rows, not original independent phase measurements"
+    },
+    {
+      "profile": "MAT-SPEC-005",
+      "data_kind": "EVALUATED_REFERENCE_COMPILATION",
+      "paths": [
+        "data/materials/helium4/nist_svp_lambda_reference_1998.csv",
+        "data/materials/helium4/nist_svp_lambda_reference_1998.source.json"
+      ],
+      "note": "Donnelly-Barenghi recommended experimental-reference property values, not one raw run"
+    },
+    {
+      "profile": "MAT-SPEC-006",
+      "data_kind": "ORIGINAL_EXPERIMENTER_PROCESSED_MEASUREMENTS",
+      "paths": [
+        "data/materials/helium4/lipa_chui_1984_excerpt.csv",
+        "data/materials/helium4/lipa_chui_1984.source.json",
+        "data/materials/helium4/mat_spec_006_source_inventory.json"
+      ],
+      "note": "Twelve gravity-corrected and averaged Lipa-Chui rows from one campaign, no row-level uncertainties"
+    },
+    {
+      "profile": "MAT-SPEC-007",
+      "data_kind": "SECONDARY_CRITICAL_FIT_SUMMARY",
+      "paths": [
+        "data/materials/helium4/mat_spec_007_svp_fit_summaries.csv",
+        "data/materials/helium4/mat_spec_007_svp_fit_summaries.source.json"
+      ],
+      "note": "Four review fit summaries with original acquisition lineage; not four source-pinned raw measurement corpora"
+    },
+    {
+      "profile": "MAT-SPEC-008",
+      "data_kind": "DOCUMENT_PROVENANCE_CATALOGUE",
+      "paths": [
+        "data/materials/helium4/mat_spec_008_source_catalogue.json"
+      ],
+      "note": "Ten publication records; one source-pinned original processed measurement campaign"
+    },
+    {
+      "profile": "MAT-SPEC-009",
+      "data_kind": "PROSPECTIVE_TEST_PROTOCOL",
+      "paths": [],
+      "note": "No new physical data; fourteen synthetic negative controls are not experimental measurements"
+    }
+  ],
+  "notes": "Exact attributed source data at each stage, rather than treating publications, fitted models or synthetic controls as independent experiments."
+}
