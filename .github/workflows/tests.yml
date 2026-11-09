@@ -43,6 +43,31 @@ jobs:
           PY
       - name: Build MAT-SPEC-003 physical-mode evidence
         run: python scripts/build_mat_spec_003.py --out dist/mat-spec-003
+      - name: Report measured finite-window mode diagnostics
+        run: |
+          python - <<'PY'
+          import csv
+          import json
+          from pathlib import Path
+
+          root = Path("dist/mat-spec-003")
+          controls = json.loads((root / "controls.json").read_text())
+          print(
+              "MAT_SPEC_003_INTERVAL_COUNTS",
+              json.dumps(controls["pressure_pair_interval_counts"], sort_keys=True),
+          )
+          print(
+              "MAT_SPEC_003_RECEIVER_COLLISIONS",
+              json.dumps(controls["receiver"]["collision_audit"], sort_keys=True),
+          )
+          for row in csv.DictReader((root / "features.csv").open(newline="")):
+              print(
+                  "MAT_SPEC_003_MODE",
+                  row["pressure_bar"], row["mode"], row["status"],
+                  row["nominal"], row["lower"], row["upper"],
+                  row["nominal_q_inverse_angstrom"], row["candidate_q_count"],
+              )
+          PY
 
   test:
     runs-on: ubuntu-latest
