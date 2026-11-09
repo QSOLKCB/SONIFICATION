@@ -264,7 +264,6 @@ def _repo_inputs(sources: dict) -> list[tuple[str, str]]:
         ("docs/MAT_SPEC_007_TO_010.md", "ORIGINAL_STOP_AT_010_DECISION"),
         (CLAIMS_PATH, "FROZEN_CLAIM_REGISTRY"),
         (SOURCES_PATH, "FROZEN_SOURCE_INVENTORY"),
-        (SPEC_PATH, "FROZEN_010_CONTRACT"),
         ("docs/MAT_SPEC_010_HANDOFF.md", "POST_RESEARCH_HANDOFF"),
     ]
     for n in range(1, FINAL_NUMBER + 1):
