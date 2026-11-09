@@ -83,11 +83,7 @@ class FitTests(unittest.TestCase):
         )
         self.assertEqual(self.counts["cross_lab_family_pairs"], 5)
         self.assertEqual(self.counts["same_lab_distinct_campaign_pairs"], 1)
-        self.assertTrue(self.counts["closed_error_boxes_not_confidence_intervals"]) if (
-            "closed_error_boxes_not_confidence_intervals" in self.counts
-        ) else self.assertEqual(
-            self.counts["statistical_significance"], "NOT_TESTED"
-        )
+        self.assertEqual(self.counts["statistical_significance"], "NOT_TESTED")
 
     def test_closed_boundary_rescaling_and_reversal(self) -> None:
         a = (Fraction(1), Fraction(2))
@@ -133,7 +129,7 @@ class FitTests(unittest.TestCase):
     def test_lineage_gate_is_not_an_independent_phase_classifier(self) -> None:
         result = mat_spec_007.gate(self.rows, self.counts)
         self.assertEqual(result["status"], "PUBLISHED_FIT_CONCORDANCE_ONLY")
-        self.assertEqual(result["different_lab_families"], 3)
+        self.assertEqual(result["distinct_lab_families"], 3)
         self.assertEqual(result["raw_measurement_replication"], "NOT_PERFORMED")
         self.assertEqual(result["phase_classifier_training"], "NOT_PERFORMED")
         self.assertIsNone(result["phase_classifier_heldout_score"])
