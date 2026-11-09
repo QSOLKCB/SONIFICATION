@@ -55,6 +55,11 @@ discrimination, an E8-in-helium result or unification.
 
 ## Deterministic archive *index* (not a deposited archive)
 
+The executed inventory covers **63 pinned predecessor artifact identities**
+across nine profiles and **68 hashed repository inputs** (source data,
+code, tests, contracts, methods and policy). All seven MAT-SPEC-009
+output hashes are separately pinned and required before 010 builds.
+
 Eight final JSON output files:
 
 - contract.json — frozen final contract and MAT-SPEC-010 stop rule

@@ -16,8 +16,15 @@ from contextlib import suppress
 from pathlib import Path, PurePosixPath
 
 from materials import (
-    mat_spec, mat_spec_002, mat_spec_003, mat_spec_004, mat_spec_005,
-    mat_spec_006, mat_spec_007, mat_spec_008, mat_spec_009,
+    mat_spec,
+    mat_spec_002,
+    mat_spec_003,
+    mat_spec_004,
+    mat_spec_005,
+    mat_spec_006,
+    mat_spec_007,
+    mat_spec_008,
+    mat_spec_009,
 )
 
 PROFILE = "MAT-SPEC-010"
@@ -37,8 +44,22 @@ OUTPUT_NAMES = frozenset({
     "audit.json", "manifest.json",
 })
 STAGES = tuple(f"MAT-SPEC-{n:03d}" for n in range(1, 10))
-# Pin the seven MAT-SPEC-009 receipts from merged-main CI before review.
-PARENT_V9_SHA256: dict[str, str] | None = None
+# Seven original MAT-SPEC-009 output SHA-256s, replayed from merged-main.
+PARENT_V9_SHA256 = {
+    "audit.json": "5b4b275ec4058e8709530e8ed9947151287b2b717909aa431474799ebd3a43d9",
+    "contract.json": "86abb04533c01d4d1dca6e60163a82068edf7e7bfc1713ecf80eec075634aca5",
+    "manifest.json": "689058ff1273699a8107cb4423768cb40ff7e4747089d9ca29269e9a5724c749",
+    "receiver-gate.json": (
+        "34a04baf3bd7a180385e0959aa9fb24799008146a278989b9a4d5816da8517da"
+    ),
+    "source-gate.json": "adb48558ecc46c1d513a26d025d066bb94b4727047264acaaff515b33699f57d",
+    "split-protocol.json": (
+        "d3c0395d05bda46337cc9411121a9e2b81f265023496fb097bc81abd5d5709f7"
+    ),
+    "synthetic-controls.csv": (
+        "3d33b847f628fa0849a62be98b16fa2a8f7ee2a0e44ad16f986d1d0a59c8a77b"
+    ),
+}
 
 EXPECTED_SPEC = json.loads(
     "{\"profile\":\"MAT-SPEC-010\",\"version\":\"0.1.0\",\"name\":\"Final numbere"
@@ -186,9 +207,7 @@ def _read_frozen_json(root: Path, path: str, frozen: dict) -> tuple[dict, bytes]
     return parsed, source
 
 
-def ancestor_artifact_maps(
-    stage_009: dict[str, str] | None = None,
-) -> list[tuple[str, str, dict[str, str]]]:
+def ancestor_artifact_maps() -> list[tuple[str, str, dict[str, str]]]:
     """Recover pinned receipts from the executed, linked 001..009 code."""
     return [
         ("MAT-SPEC-001", "1.0.0", mat_spec_002.PARENT_ARTIFACT_SHA256),
@@ -199,7 +218,7 @@ def ancestor_artifact_maps(
         ("MAT-SPEC-006", "0.1.0", mat_spec_007.PARENT_V6_SHA256),
         ("MAT-SPEC-007", "0.1.0", mat_spec_008.PARENT_V7_SHA256),
         ("MAT-SPEC-008", "0.1.0", mat_spec_009.PARENT_V8_SHA256),
-        ("MAT-SPEC-009", "0.1.0", PARENT_V9_SHA256 or stage_009),
+        ("MAT-SPEC-009", "0.1.0", PARENT_V9_SHA256),
     ]
 
 
@@ -308,7 +327,7 @@ def verify_parent(parent: dict[str, bytes]) -> tuple[dict, dict, dict]:
     if set(parent) != mat_spec_009.OUTPUT_NAMES:
         raise ValueError("MAT-SPEC-009 ancestor file membership drift")
     checks = {name: mat_spec.sha256(data) for name, data in parent.items()}
-    if PARENT_V9_SHA256 is not None and checks != PARENT_V9_SHA256:
+    if checks != PARENT_V9_SHA256:
         raise ValueError("MAT-SPEC-009 immutable output SHA-256 mismatch")
     manifest = json.loads(parent["manifest.json"])
     if (
@@ -437,9 +456,7 @@ def build_evidence(root: Path) -> dict[str, bytes]:
     ):
         raise ValueError("MAT-SPEC-010 final programme closure drift")
 
-    frozen = ancestor_artifact_maps(
-        {name: mat_spec.sha256(raw) for name, raw in parent.items()}
-    )
+    frozen = ancestor_artifact_maps()
     archive_members = validate_archive_membership(claims, frozen)
     inputs = _source_index(root, sources)
     closure = science_closure(split, audit, source_gate)

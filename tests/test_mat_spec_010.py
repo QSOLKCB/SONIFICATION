@@ -33,8 +33,7 @@ class ClosureTests(unittest.TestCase):
         parent_hashes = {
             name: mat_spec.sha256(raw) for name, raw in self.parent.items()
         }
-        if mat_spec_010.PARENT_V9_SHA256 is not None:
-            self.assertEqual(parent_hashes, mat_spec_010.PARENT_V9_SHA256)
+        self.assertEqual(parent_hashes, mat_spec_010.PARENT_V9_SHA256)
         for name, record in self.manifest["parent_artifacts"].items():
             self.assertEqual(parent_hashes[name], record["sha256"])
         self.assertEqual(self.manifest["parent_commit"], mat_spec_010.PARENT_COMMIT)
@@ -50,9 +49,7 @@ class ClosureTests(unittest.TestCase):
         self.assertEqual(self.archive["ancestor_artifact_count"], len(records))
         self.assertEqual(
             len(records),
-            sum(len(record[2]) for record in mat_spec_010.ancestor_artifact_maps(
-                {name: mat_spec.sha256(data) for name, data in self.parent.items()}
-            )),
+            sum(len(record[2]) for record in mat_spec_010.ancestor_artifact_maps()),
         )
         self.assertEqual(
             len({record["logical_path"] for record in records}), len(records)
@@ -150,9 +147,7 @@ class ClosureTests(unittest.TestCase):
             mat_spec_010.verify_parent(changed)
 
     def test_no_eleventh_profile_or_claim_evidence_laundering(self) -> None:
-        existing = mat_spec_010.ancestor_artifact_maps({
-            name: mat_spec.sha256(raw) for name, raw in self.parent.items()
-        })
+        existing = mat_spec_010.ancestor_artifact_maps()
         changed = deepcopy(mat_spec_010.EXPECTED_CLAIMS)
         changed["stages"][0]["profile"] = "MAT-SPEC-011"
         with self.assertRaisesRegex(ValueError, "missing, repeated"):
