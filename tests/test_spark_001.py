@@ -1,12 +1,44 @@
+Failed to create stream fd: Operation not permitted
+Failed to create stream fd: Operation not permitted
+Failed to create stream fd: Operation not permitted
 """SPARK-001 independent Python oracle tests. SPDX-License-Identifier: MPL-2.0"""
 from __future__ import annotations
 
+import subprocess
+import sys
+import tempfile
 import unittest
+from pathlib import Path
+from unittest import mock
 
-from scripts.verify_spark_001 import interval_oracle, parse_oracle, vectors
+from scripts.verify_spark_001 import interval_oracle, parse_oracle, vectors, verify
 
 
 class SparkReferenceTests(unittest.TestCase):
+    def test_verify_uses_validated_argv_without_a_shell(self) -> None:
+        expected_output = "\n".join(expected for _, expected in vectors()) + "\n"
+        with mock.patch(
+            "scripts.verify_spark_001.subprocess.run",
+            return_value=subprocess.CompletedProcess([], 0, expected_output, ""),
+        ) as run:
+            receipt = verify(Path(sys.executable))
+
+        argv = run.call_args.args[0]
+        self.assertEqual(argv, [str(Path(sys.executable).resolve(strict=True))])
+        self.assertIs(run.call_args.kwargs["shell"], False)
+        self.assertEqual(receipt["vectors"], len(vectors()))
+
+    def test_verify_rejects_missing_and_non_executable_probes(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            with self.assertRaisesRegex(ValueError, "does not exist"):
+                verify(root / "missing-probe")
+
+            probe = root / "probe"
+            probe.touch(mode=0o600)
+            with self.assertRaisesRegex(ValueError, "is not executable"):
+                verify(probe)
+
     def test_decimal_boundaries_and_invalid_input(self) -> None:
         for source, expected in (
             ("9999.99", "OK 999999"),
@@ -30,8 +62,6 @@ class SparkReferenceTests(unittest.TestCase):
         self.assertEqual(interval_oracle(2, 1, 1, 1, 0, 0), "INVALID")
 
     def test_local_proof_is_only_owner_authorized_main_dispatch(self) -> None:
-        from pathlib import Path
-
         root = Path(__file__).resolve().parents[1]
         source = (root / ".github/workflows/spark-001-proof.yml").read_text()
         self.assertIn("workflow_dispatch:", source)
@@ -43,8 +73,6 @@ class SparkReferenceTests(unittest.TestCase):
         self.assertNotIn("  push:", source)
 
     def test_local_proof_fails_on_unproved_checks_and_warnings(self) -> None:
-        from pathlib import Path
-
         root = Path(__file__).resolve().parents[1]
         workflow = (root / ".github/workflows/spark-001-proof.yml").read_text()
         proof_step = workflow.split("      - name: Run GNATprove", 1)[1].split(

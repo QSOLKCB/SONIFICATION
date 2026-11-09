@@ -1,3 +1,6 @@
+Failed to create stream fd: Operation not permitted
+Failed to create stream fd: Operation not permitted
+Failed to create stream fd: Operation not permitted
 #!/usr/bin/env python3
 """Deterministic Ada/Python differential oracle for SPARK-001. MPL-2.0.
 
@@ -7,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import random
 import re
 import subprocess
@@ -86,11 +90,32 @@ def vectors() -> list[tuple[str, str]]:
     return result
 
 
+def validated_executable(executable: Path) -> Path:
+    try:
+        resolved = executable.resolve(strict=True)
+    except OSError as error:
+        raise ValueError(f"probe executable does not exist: {executable}") from error
+    if not resolved.is_file():
+        raise ValueError(f"probe executable is not a regular file: {resolved}")
+    if not os.access(resolved, os.X_OK):
+        raise ValueError(f"probe executable is not executable: {resolved}")
+    return resolved
+
+
 def verify(executable: Path) -> dict:
     cases = vectors()
-    response = subprocess.run(
-        [str(executable)], input="\n".join(x for x, _ in cases) + "\n",
-        text=True, capture_output=True, encoding="utf-8", timeout=45, check=False,
+    probe = validated_executable(executable)
+    # The caller intentionally selects this validated probe. A one-element argv
+    # with shell parsing disabled prevents shell metacharacters from being evaluated.
+    response = subprocess.run(  # nosemgrep
+        [str(probe)],
+        input="\n".join(x for x, _ in cases) + "\n",
+        text=True,
+        capture_output=True,
+        encoding="utf-8",
+        timeout=45,
+        check=False,
+        shell=False,
     )
     if response.returncode:
         raise RuntimeError(f"native probe exit {response.returncode}: {response.stderr}")
@@ -119,7 +144,7 @@ def verify(executable: Path) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--exe", type=Path, required=True)
-    receipt = verify(parser.parse_args().exe.resolve())
+    receipt = verify(parser.parse_args().exe)
     print(json.dumps(receipt, sort_keys=True))
     return 0
 
