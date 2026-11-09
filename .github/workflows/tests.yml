@@ -16,9 +16,21 @@ jobs:
         with:
           python-version: "3.12"
       - name: Verify MAT-SPEC-001 without project dependencies
-        run: python -m unittest discover -s tests -p test_mat_spec.py -v
-      - name: Build symbolic material profile
+        run: python -m unittest discover -s tests -p 'test_mat_spec*.py' -v
+      - name: Build frozen MAT-SPEC-001
         run: python scripts/build_mat_spec.py --out dist/mat-spec-001
+      - name: Print frozen MAT-SPEC-001 baseline digests for successor pinning
+        run: |
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+
+          for path in sorted(Path("dist/mat-spec-001").iterdir()):
+              if path.is_file():
+                  print("MAT_SPEC_PARENT_DIGEST", path.name, hashlib.sha256(path.read_bytes()).hexdigest())
+          PY
+      - name: Build successor MAT-SPEC-002 interval evidence
+        run: python scripts/build_mat_spec_002.py --out dist/mat-spec-002
 
   test:
     runs-on: ubuntu-latest

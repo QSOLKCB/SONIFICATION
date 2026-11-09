@@ -6,7 +6,7 @@ This repository contains three separately versioned research lines:
 
 - **ETQ-303 v3.0.1** — the current documentation/publication release for the exact ETQ-303 protocol. The canonical runtime contract and deterministic outputs remain **v3.0.0**.
 - **D4-TIA** — exact D4 triality covariants, an exact S3 symmetry harness, and a symbolic sonification profile built on top of them.
-- **MAT-SPEC-001 v1.0.0** — attributed superfluid-helium measurements, an exact common-scale frequency mapping, and explicit comparisons with rank contours and quantized MIDI. Prepared for [DOI 10.5281/zenodo.24062652](https://doi.org/10.5281/zenodo.24062652).
+- **MAT-SPEC-001 v1.0.0** — attributed superfluid-helium measurements, an exact common-scale frequency mapping, and explicit comparisons with rank contours and quantized MIDI. Record DOI: [10.5281/zenodo.24062652](https://doi.org/10.5281/zenodo.24062652).
 
 ETQ and D4-TIA share D4 triality context. MAT-SPEC-001 adds an independent physical-data profile. Neither extension changes ETQ-101 or ETQ-303 protocol identity.
 
@@ -31,6 +31,14 @@ The output directory must be new. Runtime artifacts are JSON, CSV and symbolic
 MIDI only. [The profile specification](docs/MAT_SPEC_001.md) describes the
 mapping, controls and provenance. The [original feasibility study](docs/materials/FEASIBILITY.md)
 is preserved as its research background.
+
+## MAT-SPEC-002: uncertainty and sampling sensitivity
+
+A separately versioned, symbolic-only successor adds **22,050 matched-q pressure comparisons**, exact reported-interval checks, stream/tile parity, and GLUBALL uniform-floor sampling controls at 6/12/24/48 positions. It borrows invariant/evidence engineering from QEC, OPT, SPECTRAL, GALAXY, GLUBALL and UFF while keeping physical-model and listener claims explicitly untested.
+
+Reproduce: `uv run --no-project python scripts/build_mat_spec_002.py --out dist/mat-spec-002`.
+
+See [MAT-SPEC-002 experimental controls](docs/MAT_SPEC_002.md). The frozen MAT-SPEC-001 package and archived DOI remain unchanged.
 
 ## The short version
 
