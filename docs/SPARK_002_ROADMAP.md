@@ -1,6 +1,7 @@
 # SPARK-002 proposed roadmap — bounded evidence-kernel verification
 
-Status: **design only; not implemented or proved**.
+Status: **Phase 1A candidate implementation; not formally proved**. See
+[SPARK-002 Phase 1A specification](SPARK_002_SPEC.md).
 
 SPARK-002 would be a separately versioned software-verification project. It
 must not alter the frozen MAT-SPEC-010 source, artifacts, claims, release tag
@@ -16,9 +17,10 @@ should favour exact bounded integers, explicit discriminants, fixed-capacity
 records and total fail-closed functions. It should avoid attempting to prove
 the Python implementation wholesale.
 
-The first deliverable would be a written formal specification, traceability
-matrix and finite-domain model. Implementation and GNATprove execution require
-a later owner-approved milestone.
+The owner has authorized a bounded Phase 1A candidate implementation alongside
+the written specification, traceability matrix and finite-domain model.
+GNATprove execution and proof admission remain separate gates; the native
+Ada/Python CI is not a substitute for formal verification.
 
 ## Candidate proof domains
 
