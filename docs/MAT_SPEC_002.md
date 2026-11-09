@@ -59,6 +59,19 @@ eligible for complete contour comparison, and exact common-scale / rank /
 quantized-MIDI pairwise collisions. Lane i mod 3 is execution metadata only:
 it is neither D4 triality nor a physical ternary symmetry.
 
+### Frozen seven-output baseline acceptance gate
+
+A fresh GitHub CI replay of MAT-SPEC-001 at its unchanged v1 implementation
+records the SHA-256 of all seven original runtime artifacts. MAT-SPEC-002 now
+requires equality to these **specific expected digests** before analyzing
+observations; computing a new internally consistent v1 manifest alone is
+insufficient. A negative control tampers with one output and expects hard
+rejection. The complete seven-value map is
+`materials/mat_spec_002.py:PARENT_ARTIFACT_SHA256` and is repeated in the
+successor provenance manifest. CI also prints the parent digest inventory for
+inspection. These receipts establish reproducibility under the pinned source
+and version, not the physical correctness of the measurements.
+
 The original MAT-SPEC-001 authored six-q choice remains untouched and is
 **not** silently replaced by uniform-floor sampling.
 

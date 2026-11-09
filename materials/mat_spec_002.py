@@ -42,6 +42,16 @@ IMPLEMENTATION_PATHS = ("materials/mat_spec_002.py", "scripts/build_mat_spec_002
 OUTPUT_NAMES = frozenset({
     "contract.json", "pressure-pairs.csv", "sampling.json", "audit.json", "manifest.json"
 })
+PARENT_ARTIFACT_SHA256 = {
+    "audit.json": "1e25cf454b81b44ebb4e8e84853565cf86abfbda3227763978245a3042032b5e",
+    "contract.json": "bca158b4e8512997dd830529dcc30c9ffffb1e7d64d1ee7d021b99d06be0d23b",
+    "events.csv": "942437acdbbad80e925ed85d3d9e2dbe72ba166ec06e2bf23891a3dcb388908b",
+    "manifest.json": "f0069f171d0c690bcaf90adbec83f38142717f0cbc62f784db3fe44cd60f70dd",
+    "observations.json": "3f70d04b29cda66af423176ba67262b0ae0f6462631ad390bb0be95960317124",
+    "quantized.mid": "741cfb04c19164b320758af7dc4b9dd15b36efd4007311355b28ffcd591dc997",
+    "rank.mid": "db2c0e1293637265a373ae8af8f4cd3f07886fb7a9458866ea200d5dbf588d0a",
+}
+
 RELATIONS = ("a_below_b", "b_below_a", "overlap", "missing")
 REVERSE = {
     "a_below_b": "b_below_a", "b_below_a": "a_below_b",
@@ -206,6 +216,9 @@ def audit_sampling(by_pressure: dict[str, list[dict]]) -> list[dict]:
 def build_evidence(root: Path) -> dict[str, bytes]:
     """Derive a separate successor receipt from an independently replayed v1 bundle."""
     original = build_v1(root)
+    original_receipts = {name: sha256(raw) for name, raw in original.items()}
+    if original_receipts != PARENT_ARTIFACT_SHA256:
+        raise ValueError("frozen MAT-SPEC-001 archived output SHA-256 mismatch")
     v1_manifest = json.loads(original["manifest.json"])
     if (
         v1_manifest.get("profile") != "MAT-SPEC-001"
@@ -282,7 +295,7 @@ def build_evidence(root: Path) -> dict[str, bytes]:
     manifest = {
         "profile": PROFILE, "version": VERSION,
         "parent_commit": PARENT_COMMIT, "parent_doi": PARENT_DOI,
-        "parent_manifest_sha256": sha256(original["manifest.json"]),
+        "parent_manifest_sha256": PARENT_ARTIFACT_SHA256["manifest.json"],
         "parent_artifacts": {
             k: {"sha256": sha256(v), "bytes": len(v)} for k, v in sorted(original.items())
         },

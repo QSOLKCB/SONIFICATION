@@ -11,10 +11,12 @@ import tempfile
 import unittest
 from itertools import combinations
 from pathlib import Path
+from unittest.mock import patch
 
 from materials.mat_spec import build_bundle, sha256
 from materials.mat_spec_002 import (
     OUTPUT_NAMES,
+    PARENT_ARTIFACT_SHA256,
     SAMPLE_COUNTS,
     audit_pairs,
     build_evidence,
@@ -119,6 +121,19 @@ class EvidenceTests(unittest.TestCase):
             )
             self.assertGreaterEqual(item["missing_selected_cells"], 0)
         self.assertNotEqual(self.sampling[0]["indices"], [0, 175, 475, 725, 875, 975])
+
+    def test_archived_parent_hash_pins_and_negative_control(self) -> None:
+        self.assertEqual(
+            {name: sha256(raw) for name, raw in self.original.items()},
+            PARENT_ARTIFACT_SHA256,
+        )
+        tampered = dict(self.original)
+        tampered["audit.json"] += b"\\n"
+        with (
+            patch("materials.mat_spec_002.build_v1", return_value=tampered),
+            self.assertRaisesRegex(ValueError, "archived output SHA-256 mismatch"),
+        ):
+            build_evidence(ROOT)
 
     def test_replay_manifest_and_original_byte_identity(self) -> None:
         self.assertEqual(self.outputs, build_evidence(ROOT))
