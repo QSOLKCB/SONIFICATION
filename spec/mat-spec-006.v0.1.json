@@ -1,0 +1,23 @@
+{
+  "profile": "MAT-SPEC-006",
+  "version": "0.1.0",
+  "name": "Primary calorimetry evidence and source-separated validation preflight",
+  "parent_profile": "MAT-SPEC-005 v0.1.0",
+  "parent_commit": "5b4c89b795beb7fc8c4f7d86ce2a2fb510cb6cb2",
+  "foundational_record_doi": "10.5281/zenodo.24062652",
+  "source_id": "NASA-CR-177037-APPENDIX-A-1984",
+  "source_data_sha256": "06c405f1b13f90c2bd83322c512e116dafcf1f8e281618a59c3fcd4cf1510a04",
+  "row_count": 12,
+  "source_groups": 1,
+  "numeric_input": "reported microkelvin signed offset, gravity-corrected and averaged C_s J/(mol K)",
+  "physical_label": "table caption ABOVE/BELOW, NOT independent phase diagnosis",
+  "symbolic_scale": "5 Hz/(J/mol K), authored, not a physical sound frequency",
+  "uncertainty": "missing per row, null, no zero imputation",
+  "split_protocol": "future study-level source-frozen holdout, no row leakage, independent physical diagnostic labels, per-row positive errors, lineage audit",
+  "retrospective_status": "protocol written after inspection of the 1984 table; not preregistered relative to this dataset",
+  "holdout_accuracy": "never compute from published table-side context or synthetic test fixtures",
+  "invalid_source_independence": "MAT-SPEC-005 compilation and 1984 report may share experimental lineage",
+  "output_rule": "canonical ASCII JSON and CSV only; no WAV, PCM, other sampled audio or MIDI playback",
+  "missingness": "never fabricate measured phase absence, per-row uncertainties or absolute Kelvin temperatures",
+  "source_rights": "source numerical facts excerpted with attribution; original publication rights retained"
+}

@@ -105,6 +105,28 @@ Reproduce: \`uv run --no-project python scripts/build_mat_spec_005.py --out dist
 [Methods and nonclaims](docs/MAT_SPEC_005.md). The MAT-SPEC-001 DOI
 10.5281/zenodo.24062652 remains assigned to the original record.
 
+## MAT-SPEC-006 — primary calorimetry evidence and phase validation preflight
+
+A separately versioned scientific evidence layer transcribes twelve
+gravity-corrected and averaged **original experimental heat-capacity values**
+from the Stanford Lipa–Chui 1984 data release (NASA-CR-177037, Appendix A).
+Six values are below and six above the SVP lambda point, recorded as signed
+**microkelvin offsets**, not inferred absolute temperatures. The excerpt
+is pinned by SHA-256 with source metadata and a five-source provenance
+inventory. These measurements are experimentally reported, not raw
+per-instrument event files.
+
+A future **source-family-separated** validation protocol rejects row
+leakage, temperature-derived labels, fabricated error bars and missing
+orthogonal phase witnesses. There is **no independently validated phase
+classifier or held-out accuracy** in this release: only one primary
+experimental campaign is admitted, per-row uncertainty is missing, and
+experimental overlap with the MAT-SPEC-005 compilation remains unverified.
+
+Reproduce: \`uv run --no-project python scripts/build_mat_spec_006.py --out dist/mat-spec-006\`.
+[Physical provenance and limits](docs/MAT_SPEC_006.md).
+The DOI 10.5281/zenodo.24062652 remains MAT-SPEC-001's record only.
+
 ## The short version
 
 ETQ-303:
