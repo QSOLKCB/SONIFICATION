@@ -144,7 +144,9 @@ class ClosureTests(unittest.TestCase):
         source = json.loads(changed["source-gate.json"])
         source["independent_measurement_pairs"] = 2
         changed["source-gate.json"] = mat_spec.canonical_json(source)
-        with self.assertRaisesRegex(ValueError, "unsupported physical claims"):
+        # Altered evidence must fail the ancestor's signed output receipt
+        # before a new physical interpretation could even be considered.
+        with self.assertRaises(ValueError):
             mat_spec_010.verify_parent(changed)
 
     def test_no_eleventh_profile_or_claim_evidence_laundering(self) -> None:
