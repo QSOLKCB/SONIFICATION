@@ -143,6 +143,24 @@ Reproduce: uv run --no-project python scripts/build_mat_spec_007.py
 repair the outstanding VANILLAJS Lean-to-ECMAScript refinement obligation.
 See docs/MAT_SPEC_007_TO_010.md for explicit acceptance gates.
 
+## MAT-SPEC-008 — Measurement-level independence admission
+
+Audits ten attributed publications covering four experimental helium
+acquisitions and three lab families, while differentiating *original
+processed heat-capacity observations* from reanalyses and reviews.
+
+Only the existing 12 source-pinned Lipa–Chui measurements (MAT-SPEC-006)
+currently meet the pinned numeric-row requirement. **No other acquisition
+has a verified original measurement packet**, so there are zero
+independently replicable source-pair comparisons and no classifier score.
+This is an explicit evidence-gate result, not a scientific falsification.
+
+Run \`uv run --no-project python scripts/build_mat_spec_008.py --out
+dist/mat-spec-008\`. See [full source admission audit](docs/MAT_SPEC_008.md).
+
+The programme still **stops at MAT-SPEC-010**, then moves to the separate
+SPARK/Ada verification and VANILLAJS Lean-to-ECMAScript repair plan.
+
 ## The short version
 
 ETQ-303:
