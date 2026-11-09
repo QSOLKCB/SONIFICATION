@@ -1,0 +1,54 @@
+{
+  "class": "FINITE_CONFORMANCE",
+  "corpus_sha256": "34ddbea814f45f7e821104959813e538dcea6823b2c514fb64ca7cc1272d8585",
+  "finite_domain": {
+    "additional_4096_bit_cases": 5,
+    "cartesian_case_count": 50625,
+    "comparison": "exact return strings or exact exception class and message",
+    "enumeration": "all ordered endpoint quadruples from distinct Fraction(n,d), -3<=n<=3, 1<=d<=3",
+    "expected_case_count": 50630,
+    "observed_case_count": 50630,
+    "ordering": "ascending exact rational endpoint value; lexicographic Cartesian product; then documented stress order",
+    "unique_endpoint_count": 15
+  },
+  "implementation": "CPython",
+  "implementation_refinement": "OPEN",
+  "limits": [
+    "Finite evidence only; no universal refinement theorem",
+    "Source AST and Python runtime remain trusted"
+  ],
+  "mismatches": [],
+  "outcomes": {
+    "ValueError": 36226,
+    "a_below_b": 2382,
+    "b_below_a": 2380,
+    "overlap": 9642
+  },
+  "python": "3.11.15 (main, Jul 23 2026, 14:43:45) [Clang 22.1.3 ]",
+  "source": {
+    "ast_sha256": "0f5f3be0cbbbf369b8e559066a2597593384efcf7cb9acc20d308d4209bdc24c",
+    "claim_class": "FINITE_CONFORMANCE",
+    "closed_ast": "FunctionDef(name='classify', args=arguments(posonlyargs=[], args=[arg(arg='a', annotation=Subscript(value=Name(id='tuple', ctx=Load()), slice=Tuple(elts=[Name(id='Fraction', ctx=Load()), Name(id='Fraction', ctx=Load())], ctx=Load()), ctx=Load())), arg(arg='b', annotation=Subscript(value=Name(id='tuple', ctx=Load()), slice=Tuple(elts=[Name(id='Fraction', ctx=Load()), Name(id='Fraction', ctx=Load())], ctx=Load()), ctx=Load()))], kwonlyargs=[], kw_defaults=[], defaults=[]), body=[If(test=BoolOp(op=Or(), values=[Compare(left=Subscript(value=Name(id='a', ctx=Load()), slice=Constant(value=0), ctx=Load()), ops=[Gt()], comparators=[Subscript(value=Name(id='a', ctx=Load()), slice=Constant(value=1), ctx=Load())]), Compare(left=Subscript(value=Name(id='b', ctx=Load()), slice=Constant(value=0), ctx=Load()), ops=[Gt()], comparators=[Subscript(value=Name(id='b', ctx=Load()), slice=Constant(value=1), ctx=Load())])]), body=[Raise(exc=Call(func=Name(id='ValueError', ctx=Load()), args=[Constant(value='invalid reported-fit interval')], keywords=[]))], orelse=[]), If(test=Compare(left=Subscript(value=Name(id='a', ctx=Load()), slice=Constant(value=1), ctx=Load()), ops=[Lt()], comparators=[Subscript(value=Name(id='b', ctx=Load()), slice=Constant(value=0), ctx=Load())]), body=[Return(value=Constant(value='a_below_b'))], orelse=[]), If(test=Compare(left=Subscript(value=Name(id='b', ctx=Load()), slice=Constant(value=1), ctx=Load()), ops=[Lt()], comparators=[Subscript(value=Name(id='a', ctx=Load()), slice=Constant(value=0), ctx=Load())]), body=[Return(value=Constant(value='b_below_a'))], orelse=[]), Return(value=Constant(value='overlap'))], decorator_list=[], returns=Name(id='str', ctx=Load()))",
+    "commit": "b97348ff8fcf3f57764dec21a8914f153f96a745",
+    "end_line": 180,
+    "function_sha256": "0be0b19a40a953200213f7577c1ed7fdea563c48dc1d86f2ae400c40f681dba2",
+    "implementation_refinement": "OPEN",
+    "module_sha256": "2e363adea6c781ab68aec69d2ee5c7d712fc5e46346ae5be21d8cf3e929781c6",
+    "path": "materials/mat_spec_007.py",
+    "start_line": 173,
+    "symbol": "classify",
+    "tag": "mat-spec-007-v0.1.0",
+    "tag_object": "8b933a5ab09b8e76afe4c8e169e089f251e23314",
+    "tree": "c1b842c6bace3ccb01714007b8d7ebb05bcecd31",
+    "unsupported_semantics": [
+      "CPython parser, bytecode/compiler and evaluator correctness",
+      "Universal correspondence of this AST adapter to CPython",
+      "fractions.Fraction implementation and its transitive Python dependencies",
+      "Subclass overrides and dynamic user-defined comparison operators",
+      "Arbitrary sequences, malformed arguments and non-Fraction numeric types",
+      "Allocation/resource failure, tracing, concurrent mutation and runtime monkey-patching",
+      "decimal, interval, pairwise_fits and whole-module import behavior"
+    ]
+  },
+  "status": "PASS"
+}

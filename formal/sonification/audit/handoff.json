@@ -1,0 +1,24 @@
+{
+  "target_commit": "8c62517138e3b86a4672d8969e190b747f81c398",
+  "frozen_mat007_commit": "b97348ff8fcf3f57764dec21a8914f153f96a745",
+  "formalization_parent_commit": "fde74641adbb0d0da029eea33c5536b9bddcfcaf",
+  "status": "PASS_FOR_MODEL_SCOPE",
+  "accepted_receipt": "attempt-003/AUDIT.json",
+  "MODEL_PROVED": "PASS_FOR_19_EXACT_STATEMENTS",
+  "REFINEMENT_PROVED": "OPEN",
+  "DIFFERENTIAL_TESTED": "PASS_FOR_50630_CLASSIFIER_CASES_AND_26_TESTS",
+  "AUDIT_ACCEPTED": "PASS_FOR_RECORDED_MODEL_STATEMENTS",
+  "executed_commands": [
+    "python3 formal/sonification/audit/run.py --out formal/sonification/audit/attempt-003"
+  ],
+  "next_action": "Owner reviews exact model specification; establish checked Fraction/source semantics correspondence before production refinement promotion",
+  "remaining": [
+    "Universal Python refinement",
+    "Rational order instantiation",
+    "Global semantic dependency closure",
+    "Scientific specification owner review"
+  ],
+  "preserved_failed_attempts": [
+    "attempt-002/INVALID.json"
+  ]
+}
