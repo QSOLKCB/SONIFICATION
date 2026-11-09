@@ -1,0 +1,149 @@
+Audit.lean:9:49: error: type mismatch
+  invalid_iff
+has type
+  ∀ (a b : Interval), classify a b = none ↔ ¬Valid a ∨ ¬Valid b : Prop
+but is expected to have type
+  classify a b = none ↔ ¬Valid a ∨ ¬Valid b : Prop
+Audit.lean:12:68: error: type mismatch
+  below_iff
+has type
+  ∀ (a b : Interval), classify a b = some Relation.below ↔ Valid a ∧ Valid b ∧ a.hi < b.lo : Prop
+but is expected to have type
+  classify a b = some Relation.below ↔ Valid a ∧ Valid b ∧ a.hi < b.lo : Prop
+Audit.lean:15:68: error: type mismatch
+  above_iff
+has type
+  ∀ (a b : Interval), classify a b = some Relation.above ↔ Valid a ∧ Valid b ∧ b.hi < a.lo : Prop
+but is expected to have type
+  classify a b = some Relation.above ↔ Valid a ∧ Valid b ∧ b.hi < a.lo : Prop
+Audit.lean:19:55: error: type mismatch
+  overlap_iff
+has type
+  ∀ (a b : Interval), classify a b = some Relation.overlap ↔ Valid a ∧ Valid b ∧ a.lo ≤ b.hi ∧ b.lo ≤ a.hi : Prop
+but is expected to have type
+  classify a b = some Relation.overlap ↔ Valid a ∧ Valid b ∧ a.lo ≤ b.hi ∧ b.lo ≤ a.hi : Prop
+Audit.lean:23:38: error: type mismatch
+  exhaustive
+has type
+  ∀ (a b : Interval),
+    Valid a →
+      Valid b →
+        classify a b = some Relation.below ∨
+          classify a b = some Relation.above ∨ classify a b = some Relation.overlap : Prop
+but is expected to have type
+  classify a b = some Relation.below ∨ classify a b = some Relation.above ∨ classify a b = some Relation.overlap : Prop
+Audit.lean:28:52: error: type mismatch
+  exclusive
+has type
+  ∀ (a b : Interval),
+    Valid a →
+      Valid b →
+        ¬(a.hi < b.lo ∧ b.hi < a.lo) ∧
+          ¬(a.hi < b.lo ∧ a.lo ≤ b.hi ∧ b.lo ≤ a.hi) ∧ ¬(b.hi < a.lo ∧ a.lo ≤ b.hi ∧ b.lo ≤ a.hi) : Prop
+but is expected to have type
+  ¬(a.hi < b.lo ∧ b.hi < a.lo) ∧
+    ¬(a.hi < b.lo ∧ a.lo ≤ b.hi ∧ b.lo ≤ a.hi) ∧ ¬(b.hi < a.lo ∧ a.lo ≤ b.hi ∧ b.lo ≤ a.hi) : Prop
+Audit.lean:31:49: error: type mismatch
+  reversal
+has type
+  ∀ (a b : Interval), classify b a = Option.map reverse (classify a b) : Prop
+but is expected to have type
+  classify b a = Option.map reverse (classify a b) : Prop
+Audit.lean:34:29: error: type mismatch
+  scale_lt_iff
+has type
+  ∀ (k x y : Int), 0 < k → (k * x < k * y ↔ x < y) : Prop
+but is expected to have type
+  k * x < k * y ↔ x < y : Prop
+Audit.lean:37:55: error: type mismatch
+  positive_scale
+has type
+  ∀ (k : Int) (a b : Interval), 0 < k → classify (scale k a) (scale k b) = classify a b : Prop
+but is expected to have type
+  classify (scale k a) (scale k b) = classify a b : Prop
+Audit.lean:40:32: error: type mismatch
+  box_valid
+has type
+  ∀ (center error : Int), 0 ≤ error → Valid (box center error) : Prop
+but is expected to have type
+  Valid (box center error) : Prop
+Audit.lean:43:56: error: type mismatch
+  touching
+has type
+  ∀ (a b : Interval), Valid a → Valid b → a.hi = b.lo → classify a b = some Relation.overlap : Prop
+but is expected to have type
+  classify a b = some Relation.overlap : Prop
+Audit.lean:57:42: error: type mismatch
+  separation_exclusive
+has type
+  ∀ (o : OrderSpec ?m.2439) (a b : Ordered.Interval ?m.2439),
+    Ordered.Valid o a → Ordered.Valid o b → ¬(o.lt a.hi b.lo ∧ o.lt b.hi a.lo) : Prop
+but is expected to have type
+  ¬(o.lt a.hi b.lo ∧ o.lt b.hi a.lo) : Prop
+Audit.lean:59:94: error: type mismatch
+  asymmetric
+has type
+  ∀ (o : OrderSpec ?m.2707) {x y : ?m.2707}, o.lt x y → ¬o.lt y x : Prop
+but is expected to have type
+  ¬o.lt y x : Prop
+Audit.lean:62:77: error: type mismatch
+  classify_below_iff
+has type
+  ∀ (o : OrderSpec ?m.3114) (a b : Ordered.Interval ?m.3114),
+    Ordered.classify o a b = some Ordered.Relation.below ↔ Ordered.Valid o a ∧ Ordered.Valid o b ∧ o.lt a.hi b.lo : Prop
+but is expected to have type
+  Ordered.classify o a b = some Ordered.Relation.below ↔ Ordered.Valid o a ∧ Ordered.Valid o b ∧ o.lt a.hi b.lo : Prop
+Audit.lean:66:67: error: type mismatch
+  classify_overlap_iff
+has type
+  ∀ (o : OrderSpec ?m.3492) (a b : Ordered.Interval ?m.3492),
+    Ordered.classify o a b = some Ordered.Relation.overlap ↔
+      Ordered.Valid o a ∧ Ordered.Valid o b ∧ ¬o.lt a.hi b.lo ∧ ¬o.lt b.hi a.lo : Prop
+but is expected to have type
+  Ordered.classify o a b = some Ordered.Relation.overlap ↔
+    Ordered.Valid o a ∧ Ordered.Valid o b ∧ ¬o.lt a.hi b.lo ∧ ¬o.lt b.hi a.lo : Prop
+Audit.lean:71:40: error: type mismatch
+  Ordered.exhaustive
+has type
+  ∀ (o : OrderSpec ?m.3934) (a b : Ordered.Interval ?m.3934),
+    Ordered.Valid o a →
+      Ordered.Valid o b →
+        Ordered.classify o a b = some Ordered.Relation.below ∨
+          Ordered.classify o a b = some Ordered.Relation.above ∨
+            Ordered.classify o a b = some Ordered.Relation.overlap : Prop
+but is expected to have type
+  Ordered.classify o a b = some Ordered.Relation.below ∨
+    Ordered.classify o a b = some Ordered.Relation.above ∨ Ordered.classify o a b = some Ordered.Relation.overlap : Prop
+Audit.lean:76:55: error: type mismatch
+  order_reflecting_map
+has type
+  ∀ (o : OrderSpec ?m.4454) (p : OrderSpec ?m.4455) (f : ?m.4454 → ?m.4455),
+    (∀ (x y : ?m.4454), p.lt (f x) (f y) ↔ o.lt x y) →
+      ∀ (a b : Ordered.Interval ?m.4454), Ordered.classify p (map f a) (map f b) = Ordered.classify o a b : Prop
+but is expected to have type
+  Ordered.classify p (map f a) (map f b) = Ordered.classify o a b : Prop
+Audit.lean:81:73: error: type mismatch
+  integer_specialization
+has type
+  ∀ (a b : Sonification.Interval),
+    Ordered.classify integerOrder { lo := a.lo, hi := a.hi } { lo := b.lo, hi := b.hi } =
+      Option.map
+        (fun r =>
+          match r with
+          | Sonification.Relation.below => Ordered.Relation.below
+          | Sonification.Relation.above => Ordered.Relation.above
+          | Sonification.Relation.overlap => Ordered.Relation.overlap)
+        (Sonification.classify a b) : Prop
+but is expected to have type
+  Ordered.classify integerOrder { lo := a.lo, hi := a.hi } { lo := b.lo, hi := b.hi } =
+    Option.map
+      (fun r =>
+        match r with
+        | Sonification.Relation.below => Ordered.Relation.below
+        | Sonification.Relation.above => Ordered.Relation.above
+        | Sonification.Relation.overlap => Ordered.Relation.overlap)
+      (Sonification.classify a b) : Prop
+Audit.lean:113:27: error: unknown identifier 'ppExpr'
+Audit.lean:122:0: error: aborting evaluation since the expression depends on the 'sorry' axiom, which can lead to runtime instability and crashes.
+
+To attempt to evaluate anyway despite the risks, use the '#eval!' command.

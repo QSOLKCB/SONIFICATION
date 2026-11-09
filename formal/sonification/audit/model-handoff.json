@@ -1,0 +1,27 @@
+{
+  "project": "SONIFICATION-FORMAL-001",
+  "stage": "PR_B_MATHEMATICAL_MODEL_AUDIT",
+  "target_commit": "8c62517138e3b86a4672d8969e190b747f81c398",
+  "frozen_mat007_commit": "b97348ff8fcf3f57764dec21a8914f153f96a745",
+  "formalization_parent_commit": "fde74641adbb0d0da029eea33c5536b9bddcfcaf",
+  "status": "PASS_FOR_19_EXACT_MODEL_STATEMENTS",
+  "accepted_receipt": "attempt-004-model/AUDIT.json",
+  "receipt_sha256": "6604bdf24e72d2a307c19581756ca90df9dc7f68553462f9dfb5c54747e29c52",
+  "MODEL_PROVED": "PASS_FOR_19_EXACT_STATEMENTS",
+  "REFINEMENT_PROVED": "OPEN",
+  "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+  "AUDIT_ACCEPTED": "PASS_FOR_RECORDED_MODEL_STATEMENTS",
+  "executed_commands": [
+    "python3 formal/sonification/audit/model_run.py --out formal/sonification/audit/attempt-004-model",
+    "python3 formal/sonification/audit/model_verify.py"
+  ],
+  "negative_controls": 8,
+  "refinement_artifacts_required": false,
+  "next_action": "Review exact model specification; investigate source-sensitive Fraction/CPython semantic bridge separately",
+  "remaining": [
+    "Universal Python refinement",
+    "Rational OrderSpec instance",
+    "Whole-production semantic dependency closure",
+    "Owner scientific specification review"
+  ]
+}

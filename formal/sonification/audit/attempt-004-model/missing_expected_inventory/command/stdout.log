@@ -1,0 +1,1 @@
+{"status": "FAIL", "out": "/home/trent/sonification-formal-001/formal/sonification/audit/attempt-004-model/missing_expected_inventory/checker", "error": "[Errno 2] No such file or directory: '/tmp/sonification-independent-audit-qhysp6g3/expected-declarations.json'"}

@@ -1,0 +1,4 @@
+Audit.lean:104:35: error: failed to synthesize
+  Repr ConstantInfo
+
+Additional diagnostic information may be available using the `set_option diagnostics true` command.

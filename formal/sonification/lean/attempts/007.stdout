@@ -1,0 +1,14 @@
+Sonification/OrderedIntervals.lean:39:156: error: type mismatch
+  h''
+has type
+  o.lt a.hi b.hi : Prop
+but is expected to have type
+  False : Prop
+Sonification/OrderedIntervals.lean:45:65: error: application type mismatch
+  o.irrefl y he
+argument
+  he
+has type
+  o.lt x y : Prop
+but is expected to have type
+  o.lt y y : Prop

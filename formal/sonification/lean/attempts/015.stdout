@@ -1,0 +1,2 @@
+SONIFICATION_DECL {"type":"_obj","origin":"Audit","kind":"non_theorem","declaration":"List.forIn'.loop._at.SonificationAudit.audit._spec_11._lambda_3._closed_2._cstage2","axioms":["propext","Quot.sound"]}
+Audit.lean:122:0: error: unapproved transitive axiom Std.DHashMap.Internal.AssocList.foldlM._at.SonificationAudit.audit._spec_3 in Std.DHashMap.Internal.AssocList.foldlM._at.SonificationAudit.audit._spec_3._rarg._cstage2 (origin Audit)

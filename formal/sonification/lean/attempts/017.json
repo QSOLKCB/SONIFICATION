@@ -1,0 +1,46 @@
+[
+  {
+    "argv": [
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "-o",
+      "Sonification/Intervals.olean",
+      "Sonification/Intervals.lean"
+    ],
+    "exit_code": 0,
+    "stdout": "attempts/017-0.stdout",
+    "stderr": "attempts/017-0.stderr"
+  },
+  {
+    "argv": [
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "-o",
+      "Sonification/OrderedIntervals.olean",
+      "Sonification/OrderedIntervals.lean"
+    ],
+    "exit_code": 0,
+    "stdout": "attempts/017-1.stdout",
+    "stderr": "attempts/017-1.stderr"
+  },
+  {
+    "argv": [
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "-o",
+      "Sonification.olean",
+      "Sonification.lean"
+    ],
+    "exit_code": 0,
+    "stdout": "attempts/017-2.stdout",
+    "stderr": "attempts/017-2.stderr"
+  },
+  {
+    "argv": [
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "-o",
+      "Audit.olean",
+      "Audit.lean"
+    ],
+    "exit_code": 1,
+    "stdout": "attempts/017-3.stdout",
+    "stderr": "attempts/017-3.stderr"
+  }
+]

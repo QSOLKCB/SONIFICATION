@@ -1,0 +1,1928 @@
+[
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "SonificationStatementChecks.IntegerChecks.Sonification_reversal",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (a b : Sonification.Interval), Sonification.classify b a = Option.map Sonification.reverse (Sonification.classify a b)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "declaration": "SonificationStatementChecks.IntegerChecks.Sonification_below_iff",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (a b : Sonification.Interval),\n  Sonification.classify a b = some Sonification.Relation.below \u2194\n    Sonification.Valid a \u2227 Sonification.Valid b \u2227 a.hi < b.lo",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "SonificationStatementChecks.OrderedChecks.Sonification_Ordered_order_reflecting_map",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 {\u03b1 \u03b2 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) (p : Sonification.Ordered.OrderSpec \u03b2) (f : \u03b1 \u2192 \u03b2),\n  (\u2200 (x y : \u03b1), p.lt (f x) (f y) \u2194 o.lt x y) \u2192\n    \u2200 (a b : Sonification.Ordered.Interval \u03b1),\n      Sonification.Ordered.classify p (Sonification.Ordered.map f a) (Sonification.Ordered.map f b) =\n        Sonification.Ordered.classify o a b",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "declaration": "SonificationStatementChecks.IntegerChecks.Sonification_touching",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (a b : Sonification.Interval),\n  Sonification.Valid a \u2192\n    Sonification.Valid b \u2192 a.hi = b.lo \u2192 Sonification.classify a b = some Sonification.Relation.overlap",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "SonificationStatementChecks.OrderedChecks.Sonification_Ordered_integer_specialization.match_1._cstage1",
+    "kind": "compiler_auxiliary",
+    "origin": "Audit",
+    "type": "(motive : Sonification.Relation \u2192 Sort u_1) \u2192\n  (r : Sonification.Relation) \u2192\n    (Unit \u2192 motive Sonification.Relation.below) \u2192\n      (Unit \u2192 motive Sonification.Relation.above) \u2192 (Unit \u2192 motive Sonification.Relation.overlap) \u2192 motive r",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "SonificationStatementChecks.IntegerChecks.Sonification_box_valid",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (center error : Int), 0 \u2264 error \u2192 Sonification.Valid (Sonification.box center error)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "declaration": "SonificationStatementChecks.IntegerChecks.Sonification_above_iff",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (a b : Sonification.Interval),\n  Sonification.classify a b = some Sonification.Relation.above \u2194\n    Sonification.Valid a \u2227 Sonification.Valid b \u2227 b.hi < a.lo",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "declaration": "SonificationStatementChecks.IntegerChecks.Sonification_overlap_iff",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (a b : Sonification.Interval),\n  Sonification.classify a b = some Sonification.Relation.overlap \u2194\n    Sonification.Valid a \u2227 Sonification.Valid b \u2227 a.lo \u2264 b.hi \u2227 b.lo \u2264 a.hi",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "SonificationStatementChecks.OrderedChecks.Sonification_Ordered_exhaustive",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 {\u03b1 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) (a b : Sonification.Ordered.Interval \u03b1),\n  Sonification.Ordered.Valid o a \u2192\n    Sonification.Ordered.Valid o b \u2192\n      Sonification.Ordered.classify o a b = some Sonification.Ordered.Relation.below \u2228\n        Sonification.Ordered.classify o a b = some Sonification.Ordered.Relation.above \u2228\n          Sonification.Ordered.classify o a b = some Sonification.Ordered.Relation.overlap",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "SonificationStatementChecks.OrderedChecks.Sonification_Ordered_separation_exclusive",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 {\u03b1 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) (a b : Sonification.Ordered.Interval \u03b1),\n  Sonification.Ordered.Valid o a \u2192 Sonification.Ordered.Valid o b \u2192 \u00ac(o.lt a.hi b.lo \u2227 o.lt b.hi a.lo)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "SonificationStatementChecks.IntegerChecks.Sonification_positive_scale",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (k : Int) (a b : Sonification.Interval),\n  0 < k \u2192 Sonification.classify (Sonification.scale k a) (Sonification.scale k b) = Sonification.classify a b",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "SonificationStatementChecks.IntegerChecks.Sonification_inhabited_branches",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "Sonification.classify { lo := 0, hi := 1 } { lo := 2, hi := 3 } = some Sonification.Relation.below \u2227\n  Sonification.classify { lo := 2, hi := 3 } { lo := 0, hi := 1 } = some Sonification.Relation.above \u2227\n    Sonification.classify { lo := 0, hi := 1 } { lo := 1, hi := 2 } = some Sonification.Relation.overlap \u2227\n      Sonification.classify { lo := 1, hi := 0 } { lo := 0, hi := 0 } = none",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "SonificationStatementChecks.OrderedChecks.Sonification_Ordered_classify_below_iff",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 {\u03b1 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) (a b : Sonification.Ordered.Interval \u03b1),\n  Sonification.Ordered.classify o a b = some Sonification.Ordered.Relation.below \u2194\n    Sonification.Ordered.Valid o a \u2227 Sonification.Ordered.Valid o b \u2227 o.lt a.hi b.lo",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "SonificationStatementChecks.IntegerChecks.Sonification_exhaustive",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (a b : Sonification.Interval),\n  Sonification.Valid a \u2192\n    Sonification.Valid b \u2192\n      Sonification.classify a b = some Sonification.Relation.below \u2228\n        Sonification.classify a b = some Sonification.Relation.above \u2228\n          Sonification.classify a b = some Sonification.Relation.overlap",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Classical.choice",
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "SonificationStatementChecks.IntegerChecks.Sonification_exclusive",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (a b : Sonification.Interval),\n  Sonification.Valid a \u2192\n    Sonification.Valid b \u2192\n      \u00ac(a.hi < b.lo \u2227 b.hi < a.lo) \u2227\n        \u00ac(a.hi < b.lo \u2227 a.lo \u2264 b.hi \u2227 b.lo \u2264 a.hi) \u2227 \u00ac(b.hi < a.lo \u2227 a.lo \u2264 b.hi \u2227 b.lo \u2264 a.hi)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "SonificationStatementChecks.OrderedChecks.Sonification_Ordered_integer_specialization",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (a b : Sonification.Interval),\n  Sonification.Ordered.classify Sonification.Ordered.integerOrder { lo := a.lo, hi := a.hi }\n      { lo := b.lo, hi := b.hi } =\n    Option.map\n      (fun r =>\n        match r with\n        | Sonification.Relation.below => Sonification.Ordered.Relation.below\n        | Sonification.Relation.above => Sonification.Ordered.Relation.above\n        | Sonification.Relation.overlap => Sonification.Ordered.Relation.overlap)\n      (Sonification.classify a b)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "SonificationStatementChecks.IntegerChecks.Sonification_scale_lt_iff",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (k x y : Int), 0 < k \u2192 (k * x < k * y \u2194 x < y)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "SonificationStatementChecks.OrderedChecks.Sonification_Ordered_classify_overlap_iff",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 {\u03b1 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) (a b : Sonification.Ordered.Interval \u03b1),\n  Sonification.Ordered.classify o a b = some Sonification.Ordered.Relation.overlap \u2194\n    Sonification.Ordered.Valid o a \u2227 Sonification.Ordered.Valid o b \u2227 \u00aco.lt a.hi b.lo \u2227 \u00aco.lt b.hi a.lo",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "SonificationStatementChecks.OrderedChecks.Sonification_Ordered_asymmetric",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 {\u03b1 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) {x y : \u03b1}, o.lt x y \u2192 \u00aco.lt y x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "SonificationStatementChecks.OrderedChecks.Sonification_Ordered_integer_specialization.match_1",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "(motive : Sonification.Relation \u2192 Sort u_1) \u2192\n  (r : Sonification.Relation) \u2192\n    (Unit \u2192 motive Sonification.Relation.below) \u2192\n      (Unit \u2192 motive Sonification.Relation.above) \u2192 (Unit \u2192 motive Sonification.Relation.overlap) \u2192 motive r",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "SonificationStatementChecks.IntegerChecks.Sonification_invalid_iff",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (a b : Sonification.Interval), Sonification.classify a b = none \u2194 \u00acSonification.Valid a \u2228 \u00acSonification.Valid b",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation.recOn",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "{motive : Sonification.Relation \u2192 Sort u} \u2192\n  (t : Sonification.Relation) \u2192\n    motive Sonification.Relation.below \u2192\n      motive Sonification.Relation.above \u2192 motive Sonification.Relation.overlap \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.map._cstage1",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 \u03b2 : Type} \u2192 (\u03b1 \u2192 \u03b2) \u2192 Sonification.Ordered.Interval \u03b1 \u2192 Sonification.Ordered.Interval \u03b2",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.box._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Interval.casesOn",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192\n  {motive : Sonification.Ordered.Interval \u03b1 \u2192 Sort u} \u2192\n    (t : Sonification.Ordered.Interval \u03b1) \u2192 ((lo hi : \u03b1) \u2192 motive { lo := lo, hi := hi }) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.map._rarg._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.classify._cstage1",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "Sonification.Interval \u2192 Sonification.Interval \u2192 Option Sonification.Relation",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation._sizeOf_inst",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "SizeOf Sonification.Relation",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.below_iff._proof_2",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval), a.lo > a.hi \u2228 b.lo > b.hi \u2192 a.lo \u2264 a.hi \u2192 \u00acb.hi < b.lo \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Classical.choice",
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.overlap_iff._proof_2",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval),\n  \u00ac(a.lo > a.hi \u2228 b.lo > b.hi) \u2192\n    \u00aca.hi < b.lo \u2192 \u00acb.hi < a.lo \u2192 \u00ac(a.lo \u2264 a.hi \u2227 b.lo \u2264 b.hi \u2227 a.lo \u2264 b.hi \u2227 b.lo \u2264 a.hi) \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.reverse.match_1",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "(motive : Sonification.Relation \u2192 Sort u_1) \u2192\n  (x : Sonification.Relation) \u2192\n    (Unit \u2192 motive Sonification.Relation.below) \u2192\n      (Unit \u2192 motive Sonification.Relation.above) \u2192 (Unit \u2192 motive Sonification.Relation.overlap) \u2192 motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Valid",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192 Sonification.Ordered.OrderSpec \u03b1 \u2192 Sonification.Ordered.Interval \u03b1 \u2192 Prop",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation.noConfusion._rarg._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "UInt8 \u2192 UInt8 \u2192 _neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.scale_lt_iff._proof_2",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (k x y : Int), k * x < k * y \u2192 k * y \u2264 k * x \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.Ordered.integerOrder._proof_3",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {x y z : Int}, x < y \u2192 \u00acz < y \u2192 \u00acx < z \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.integer_specialization.match_1._cstage1",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "(motive : Sonification.Relation \u2192 Sort u_1) \u2192\n  (r : Sonification.Relation) \u2192\n    (Unit \u2192 motive Sonification.Relation.below) \u2192\n      (Unit \u2192 motive Sonification.Relation.above) \u2192 (Unit \u2192 motive Sonification.Relation.overlap) \u2192 motive r",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.OrderSpec._sizeOf_inst",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "(\u03b1 : Type) \u2192 [inst : SizeOf \u03b1] \u2192 SizeOf (Sonification.Ordered.OrderSpec \u03b1)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.map._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "_neutral \u2192 _neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Interval",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Interval.noConfusion",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "{P : Sort u} \u2192 {v1 v2 : Sonification.Interval} \u2192 v1 = v2 \u2192 Sonification.Interval.noConfusionType P v1 v2",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Interval.mk._flat_ctor",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192 \u03b1 \u2192 \u03b1 \u2192 Sonification.Ordered.Interval \u03b1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.Ordered.integer_specialization",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 (a b : Sonification.Interval),\n  Sonification.Ordered.classify Sonification.Ordered.integerOrder { lo := a.lo, hi := a.hi }\n      { lo := b.lo, hi := b.hi } =\n    Option.map\n      (fun r =>\n        match r with\n        | Sonification.Relation.below => Sonification.Ordered.Relation.below\n        | Sonification.Relation.above => Sonification.Ordered.Relation.above\n        | Sonification.Relation.overlap => Sonification.Ordered.Relation.overlap)\n      (Sonification.classify a b)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation.noConfusionType",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Sort v\u271d \u2192 Sonification.Relation \u2192 Sonification.Relation \u2192 Sort v\u271d",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Sonification.OrderedIntervals.0.Sonification.Ordered.integer_specialization.match_1.splitter._rarg._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "UInt8 \u2192 _obj \u2192 _obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.reversal._proof_1",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 {a b : Prop}, (a \u2228 b) = (b \u2228 a)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.integerOrder._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.Ordered.integerOrder.eq_1",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "Sonification.Ordered.integerOrder =\n  { lt := fun x1 x2 => x1 < x2, decLt := inferInstance, irrefl := \u22ef,\n    trans := @Sonification.Ordered.integerOrder._proof_4,\n    lt_of_lt_of_not_gt := @Sonification.Ordered.integerOrder._proof_5 }",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.reversal",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval), Sonification.classify b a = Option.map Sonification.reverse (Sonification.classify a b)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "declaration": "Sonification.above_iff",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval),\n  Sonification.classify a b = some Sonification.Relation.above \u2194\n    Sonification.Valid a \u2227 Sonification.Valid b \u2227 b.hi < a.lo",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.integerOrder._closed_1._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "Classical.choice",
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.exclusive",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval),\n  Sonification.Valid a \u2192\n    Sonification.Valid b \u2192\n      \u00ac(a.hi < b.lo \u2227 b.hi < a.lo) \u2227\n        \u00ac(a.hi < b.lo \u2227 a.lo \u2264 b.hi \u2227 b.lo \u2264 a.hi) \u2227 \u00ac(b.hi < a.lo \u2227 a.lo \u2264 b.hi \u2227 b.lo \u2264 a.hi)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation.recOn",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{motive : Sonification.Ordered.Relation \u2192 Sort u} \u2192\n  (t : Sonification.Ordered.Relation) \u2192\n    motive Sonification.Ordered.Relation.below \u2192\n      motive Sonification.Ordered.Relation.above \u2192 motive Sonification.Ordered.Relation.overlap \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.OrderSpec._sizeOf_1",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192 [inst : SizeOf \u03b1] \u2192 Sonification.Ordered.OrderSpec \u03b1 \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.below_iff._proof_3",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval), \u00ac(a.lo > a.hi \u2228 b.lo > b.hi) \u2192 a.hi < b.lo \u2192 b.hi < a.lo \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "declaration": "Sonification.overlap_iff",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval),\n  Sonification.classify a b = some Sonification.Relation.overlap \u2194\n    Sonification.Valid a \u2227 Sonification.Valid b \u2227 a.lo \u2264 b.hi \u2227 b.lo \u2264 a.hi",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation.overlap",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "Sonification.Ordered.Relation",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Ordered.order_reflecting_map",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {\u03b1 \u03b2 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) (p : Sonification.Ordered.OrderSpec \u03b2) (f : \u03b1 \u2192 \u03b2),\n  (\u2200 (x y : \u03b1), p.lt (f x) (f y) \u2194 o.lt x y) \u2192\n    \u2200 (a b : Sonification.Ordered.Interval \u03b1),\n      Sonification.Ordered.classify p (Sonification.Ordered.map f a) (Sonification.Ordered.map f b) =\n        Sonification.Ordered.classify o a b",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.positive_scale",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (k : Int) (a b : Sonification.Interval),\n  0 < k \u2192 Sonification.classify (Sonification.scale k a) (Sonification.scale k b) = Sonification.classify a b",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation._sizeOf_inst",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "SizeOf Sonification.Ordered.Relation",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Sonification.Intervals.0.Sonification.reverse.match_1.splitter._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "_neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Interval.lo",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192 Sonification.Ordered.Interval \u03b1 \u2192 \u03b1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation.noConfusionType",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "Sort v\u271d \u2192 Sonification.Ordered.Relation \u2192 Sonification.Ordered.Relation \u2192 Sort v\u271d",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Interval.mk",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192 \u03b1 \u2192 \u03b1 \u2192 Sonification.Ordered.Interval \u03b1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Interval.hi",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192 Sonification.Ordered.Interval \u03b1 \u2192 \u03b1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation._sizeOf_1",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "Sonification.Ordered.Relation \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.classify._rarg._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "_obj \u2192 _obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.map.eq_1",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {\u03b1 \u03b2 : Type} (f : \u03b1 \u2192 \u03b2) (a : Sonification.Ordered.Interval \u03b1),\n  Sonification.Ordered.map f a = { lo := f a.lo, hi := f a.hi }",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Interval",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "Type \u2192 Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.Ordered.integerOrder._proof_2",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {x y z : Int}, x < y \u2192 y < z \u2192 \u00acx < z \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.box_valid",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (center error : Int), 0 \u2264 error \u2192 Sonification.Valid (Sonification.box center error)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Classical.choice",
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.touching._proof_1",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval),\n  a.lo \u2264 a.hi \u2192 b.lo \u2264 b.hi \u2192 a.hi = b.lo \u2192 \u00ac(a.lo \u2264 a.hi \u2227 b.lo \u2264 b.hi \u2227 a.lo \u2264 b.hi \u2227 b.lo \u2264 a.hi) \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Interval.lo",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Sonification.Interval \u2192 Int",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.scale_lt_iff._proof_1",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Int \u2192 \u2200 (x y : Int), \u00acx < y \u2192 \u00acy \u2264 x \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.OrderSpec.recOn",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192\n  {motive : Sonification.Ordered.OrderSpec \u03b1 \u2192 Sort u} \u2192\n    (t : Sonification.Ordered.OrderSpec \u03b1) \u2192\n      ((lt : \u03b1 \u2192 \u03b1 \u2192 Prop) \u2192\n          (decLt : DecidableRel lt) \u2192\n            (irrefl : \u2200 (x : \u03b1), \u00aclt x x) \u2192\n              (trans : \u2200 {x y z : \u03b1}, lt x y \u2192 lt y z \u2192 lt x z) \u2192\n                (lt_of_lt_of_not_gt : \u2200 {x y z : \u03b1}, lt x y \u2192 \u00aclt z y \u2192 lt x z) \u2192\n                  motive\n                    { lt := lt, decLt := decLt, irrefl := irrefl, trans := trans,\n                      lt_of_lt_of_not_gt := lt_of_lt_of_not_gt }) \u2192\n        motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation.noConfusion",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{P : Sort v\u271d} \u2192 {x y : Sonification.Ordered.Relation} \u2192 x = y \u2192 Sonification.Ordered.Relation.noConfusionType P x y",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Classical.choice",
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.below_iff._proof_4",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval), \u00ac(a.lo > a.hi \u2228 b.lo > b.hi) \u2192 \u00ac(a.lo \u2264 a.hi \u2227 b.lo \u2264 b.hi) \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.OrderSpec.irrefl",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {\u03b1 : Type} (self : Sonification.Ordered.OrderSpec \u03b1) (x : \u03b1), \u00acself.lt x x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.scale._cstage1",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "Int \u2192 Sonification.Interval \u2192 Sonification.Interval",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Sonification.OrderedIntervals.0.Sonification.Ordered.integer_specialization.match_1.eq_1",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 (motive : Sonification.Relation \u2192 Sort u_1) (h_1 : Unit \u2192 motive Sonification.Relation.below)\n  (h_2 : Unit \u2192 motive Sonification.Relation.above) (h_3 : Unit \u2192 motive Sonification.Relation.overlap),\n  (match Sonification.Relation.below with\n    | Sonification.Relation.below => h_1 ()\n    | Sonification.Relation.above => h_2 ()\n    | Sonification.Relation.overlap => h_3 ()) =\n    h_1 ()",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Interval._sizeOf_inst",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "(\u03b1 : Type) \u2192 [inst : SizeOf \u03b1] \u2192 SizeOf (Sonification.Ordered.Interval \u03b1)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.above_iff._proof_3",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval), \u00ac(a.lo > a.hi \u2228 b.lo > b.hi) \u2192 a.hi < b.lo \u2192 b.hi < a.lo \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.map",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 \u03b2 : Type} \u2192 (\u03b1 \u2192 \u03b2) \u2192 Sonification.Ordered.Interval \u03b1 \u2192 Sonification.Ordered.Interval \u03b2",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.box._cstage1",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "Int \u2192 Int \u2192 Sonification.Interval",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.OrderSpec.casesOn",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192\n  {motive : Sonification.Ordered.OrderSpec \u03b1 \u2192 Sort u} \u2192\n    (t : Sonification.Ordered.OrderSpec \u03b1) \u2192\n      ((lt : \u03b1 \u2192 \u03b1 \u2192 Prop) \u2192\n          (decLt : DecidableRel lt) \u2192\n            (irrefl : \u2200 (x : \u03b1), \u00aclt x x) \u2192\n              (trans : \u2200 {x y z : \u03b1}, lt x y \u2192 lt y z \u2192 lt x z) \u2192\n                (lt_of_lt_of_not_gt : \u2200 {x y z : \u03b1}, lt x y \u2192 \u00aclt z y \u2192 lt x z) \u2192\n                  motive\n                    { lt := lt, decLt := decLt, irrefl := irrefl, trans := trans,\n                      lt_of_lt_of_not_gt := lt_of_lt_of_not_gt }) \u2192\n        motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Sonification.OrderedIntervals.0.Sonification.Ordered.integer_specialization.match_1.splitter",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "(motive : Sonification.Relation \u2192 Sort u_1) \u2192\n  (r : Sonification.Relation) \u2192\n    motive Sonification.Relation.below \u2192\n      motive Sonification.Relation.above \u2192 motive Sonification.Relation.overlap \u2192 motive r",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.scale",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Int \u2192 Sonification.Interval \u2192 Sonification.Interval",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Ordered.OrderSpec.mk.injEq",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {\u03b1 : Type} (lt : \u03b1 \u2192 \u03b1 \u2192 Prop) (decLt : DecidableRel lt) (irrefl : \u2200 (x : \u03b1), \u00aclt x x)\n  (trans : \u2200 {x y z : \u03b1}, lt x y \u2192 lt y z \u2192 lt x z) (lt_of_lt_of_not_gt : \u2200 {x y z : \u03b1}, lt x y \u2192 \u00aclt z y \u2192 lt x z)\n  (lt_1 : \u03b1 \u2192 \u03b1 \u2192 Prop) (decLt_1 : DecidableRel lt_1) (irrefl_1 : \u2200 (x : \u03b1), \u00aclt_1 x x)\n  (trans_1 : \u2200 {x y z : \u03b1}, lt_1 x y \u2192 lt_1 y z \u2192 lt_1 x z)\n  (lt_of_lt_of_not_gt_1 : \u2200 {x y z : \u03b1}, lt_1 x y \u2192 \u00aclt_1 z y \u2192 lt_1 x z),\n  ({ lt := lt, decLt := decLt, irrefl := irrefl, trans := trans, lt_of_lt_of_not_gt := lt_of_lt_of_not_gt } =\n      { lt := lt_1, decLt := decLt_1, irrefl := irrefl_1, trans := trans_1,\n        lt_of_lt_of_not_gt := lt_of_lt_of_not_gt_1 }) =\n    (lt = lt_1 \u2227 HEq decLt decLt_1)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.Ordered.integerOrder._proof_4",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {x y z : Int}, x < y \u2192 y < z \u2192 x < z",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Sonification.Intervals.0.Sonification.reverse.match_1.eq_1",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (motive : Sonification.Relation \u2192 Sort u_1) (h_1 : Unit \u2192 motive Sonification.Relation.below)\n  (h_2 : Unit \u2192 motive Sonification.Relation.above) (h_3 : Unit \u2192 motive Sonification.Relation.overlap),\n  (match Sonification.Relation.below with\n    | Sonification.Relation.below => h_1 ()\n    | Sonification.Relation.above => h_2 ()\n    | Sonification.Relation.overlap => h_3 ()) =\n    h_1 ()",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation.toCtorIdx",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "Sonification.Ordered.Relation \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation.noConfusion._rarg._lambda_1._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "_obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Interval.mk.inj",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {\u03b1 : Type} {lo hi lo_1 hi_1 : \u03b1}, { lo := lo, hi := hi } = { lo := lo_1, hi := hi_1 } \u2192 lo = lo_1 \u2227 hi = hi_1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Sonification.Intervals.0.Sonification.reverse.match_1.splitter",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "(motive : Sonification.Relation \u2192 Sort u_1) \u2192\n  (x : Sonification.Relation) \u2192\n    motive Sonification.Relation.below \u2192\n      motive Sonification.Relation.above \u2192 motive Sonification.Relation.overlap \u2192 motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.classify.eq_1",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {\u03b1 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) (a b : Sonification.Ordered.Interval \u03b1),\n  Sonification.Ordered.classify o a b =\n    if o.lt a.hi a.lo \u2228 o.lt b.hi b.lo then none\n    else\n      if o.lt a.hi b.lo then some Sonification.Ordered.Relation.below\n      else\n        if o.lt b.hi a.lo then some Sonification.Ordered.Relation.above else some Sonification.Ordered.Relation.overlap",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.box.eq_1",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (center error : Int), Sonification.box center error = { lo := center - error, hi := center + error }",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.separation_exclusive",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {\u03b1 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) (a b : Sonification.Ordered.Interval \u03b1),\n  Sonification.Ordered.Valid o a \u2192 Sonification.Ordered.Valid o b \u2192 \u00ac(o.lt a.hi b.lo \u2227 o.lt b.hi a.lo)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.reverse.eq_3",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Sonification.reverse Sonification.Relation.overlap = Sonification.Relation.overlap",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.below_iff._proof_1",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval), a.hi < b.lo \u2192 b.hi < a.lo \u2192 a.lo \u2264 a.hi \u2192 \u00acb.hi < b.lo \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation.below",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "Sonification.Ordered.Relation",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.exhaustive._proof_2",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval), a.lo \u2264 a.hi \u2192 b.lo \u2264 b.hi \u2192 a.lo > a.hi \u2228 b.lo > b.hi \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Interval.noConfusionType",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Sort u \u2192 Sonification.Interval \u2192 Sonification.Interval \u2192 Sort u",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation.above",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Sonification.Relation",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation._sizeOf_1",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Sonification.Relation \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.asymmetric",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {\u03b1 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) {x y : \u03b1}, o.lt x y \u2192 \u00aco.lt y x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.classify.eq_1",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval),\n  Sonification.classify a b =\n    if a.lo > a.hi \u2228 b.lo > b.hi then none\n    else\n      if a.hi < b.lo then some Sonification.Relation.below\n      else if b.hi < a.lo then some Sonification.Relation.above else some Sonification.Relation.overlap",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.OrderSpec.mk.inj",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {\u03b1 : Type} {lt : \u03b1 \u2192 \u03b1 \u2192 Prop} {decLt : DecidableRel lt} {irrefl : \u2200 (x : \u03b1), \u00aclt x x}\n  {trans : \u2200 {x y z : \u03b1}, lt x y \u2192 lt y z \u2192 lt x z} {lt_of_lt_of_not_gt : \u2200 {x y z : \u03b1}, lt x y \u2192 \u00aclt z y \u2192 lt x z}\n  {lt_1 : \u03b1 \u2192 \u03b1 \u2192 Prop} {decLt_1 : DecidableRel lt_1} {irrefl_1 : \u2200 (x : \u03b1), \u00aclt_1 x x}\n  {trans_1 : \u2200 {x y z : \u03b1}, lt_1 x y \u2192 lt_1 y z \u2192 lt_1 x z}\n  {lt_of_lt_of_not_gt_1 : \u2200 {x y z : \u03b1}, lt_1 x y \u2192 \u00aclt_1 z y \u2192 lt_1 x z},\n  { lt := lt, decLt := decLt, irrefl := irrefl, trans := trans, lt_of_lt_of_not_gt := lt_of_lt_of_not_gt } =\n      { lt := lt_1, decLt := decLt_1, irrefl := irrefl_1, trans := trans_1,\n        lt_of_lt_of_not_gt := lt_of_lt_of_not_gt_1 } \u2192\n    lt = lt_1 \u2227 HEq decLt decLt_1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Interval.mk.sizeOf_spec",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (lo hi : Int), sizeOf { lo := lo, hi := hi } = 1 + sizeOf lo + sizeOf hi",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Sonification.Intervals.0.Sonification.reverse.match_1.eq_2",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (motive : Sonification.Relation \u2192 Sort u_1) (h_1 : Unit \u2192 motive Sonification.Relation.below)\n  (h_2 : Unit \u2192 motive Sonification.Relation.above) (h_3 : Unit \u2192 motive Sonification.Relation.overlap),\n  (match Sonification.Relation.above with\n    | Sonification.Relation.below => h_1 ()\n    | Sonification.Relation.above => h_2 ()\n    | Sonification.Relation.overlap => h_3 ()) =\n    h_2 ()",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation.rec",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "{motive : Sonification.Relation \u2192 Sort u} \u2192\n  motive Sonification.Relation.below \u2192\n    motive Sonification.Relation.above \u2192 motive Sonification.Relation.overlap \u2192 (t : Sonification.Relation) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Valid.eq_1",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {\u03b1 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) (a : Sonification.Ordered.Interval \u03b1),\n  Sonification.Ordered.Valid o a = \u00aco.lt a.hi a.lo",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.scale_lt_iff",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (k x y : Int), 0 < k \u2192 (k * x < k * y \u2194 x < y)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.classify",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192\n  Sonification.Ordered.OrderSpec \u03b1 \u2192\n    Sonification.Ordered.Interval \u03b1 \u2192 Sonification.Ordered.Interval \u03b1 \u2192 Option Sonification.Ordered.Relation",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Interval.rec",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192\n  {motive : Sonification.Ordered.Interval \u03b1 \u2192 Sort u} \u2192\n    ((lo hi : \u03b1) \u2192 motive { lo := lo, hi := hi }) \u2192 (t : Sonification.Ordered.Interval \u03b1) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.above_iff._proof_1",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval), a.hi < b.lo \u2192 b.hi < a.lo \u2192 a.lo \u2264 a.hi \u2192 \u00acb.hi < b.lo \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.reverse",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Sonification.Relation \u2192 Sonification.Relation",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.classify._rarg._closed_3._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.OrderSpec.decLt",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192 (self : Sonification.Ordered.OrderSpec \u03b1) \u2192 DecidableRel self.lt",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.classify",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Sonification.Interval \u2192 Sonification.Interval \u2192 Option Sonification.Relation",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.Ordered.integerOrder",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "Sonification.Ordered.OrderSpec Int",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Classical.choice",
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.exclusive._proof_1",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval),\n  a.lo \u2264 a.hi \u2192\n    b.lo \u2264 b.hi \u2192\n      \u00ac(\u00ac(a.hi < b.lo \u2227 b.hi < a.lo) \u2227\n            \u00ac(a.hi < b.lo \u2227 a.lo \u2264 b.hi \u2227 b.lo \u2264 a.hi) \u2227 \u00ac(b.hi < a.lo \u2227 a.lo \u2264 b.hi \u2227 b.lo \u2264 a.hi)) \u2192\n        False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.integer_specialization.match_1",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "(motive : Sonification.Relation \u2192 Sort u_1) \u2192\n  (r : Sonification.Relation) \u2192\n    (Unit \u2192 motive Sonification.Relation.below) \u2192\n      (Unit \u2192 motive Sonification.Relation.above) \u2192 (Unit \u2192 motive Sonification.Relation.overlap) \u2192 motive r",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.classify._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.reversal._proof_2",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval), \u00ac(a.lo > a.hi \u2228 b.lo > b.hi) \u2192 a.hi < b.lo \u2192 b.hi < a.lo \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation.toCtorIdx._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "UInt8 \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.box",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Int \u2192 Int \u2192 Sonification.Interval",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.OrderSpec.lt_of_lt_of_not_gt",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {\u03b1 : Type} (self : Sonification.Ordered.OrderSpec \u03b1) {x y z : \u03b1}, self.lt x y \u2192 \u00acself.lt z y \u2192 self.lt x z",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Ordered.classify_overlap_iff",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {\u03b1 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) (a b : Sonification.Ordered.Interval \u03b1),\n  Sonification.Ordered.classify o a b = some Sonification.Ordered.Relation.overlap \u2194\n    Sonification.Ordered.Valid o a \u2227 Sonification.Ordered.Valid o b \u2227 \u00aco.lt a.hi b.lo \u2227 \u00aco.lt b.hi a.lo",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.OrderSpec.rec",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192\n  {motive : Sonification.Ordered.OrderSpec \u03b1 \u2192 Sort u} \u2192\n    ((lt : \u03b1 \u2192 \u03b1 \u2192 Prop) \u2192\n        (decLt : DecidableRel lt) \u2192\n          (irrefl : \u2200 (x : \u03b1), \u00aclt x x) \u2192\n            (trans : \u2200 {x y z : \u03b1}, lt x y \u2192 lt y z \u2192 lt x z) \u2192\n              (lt_of_lt_of_not_gt : \u2200 {x y z : \u03b1}, lt x y \u2192 \u00aclt z y \u2192 lt x z) \u2192\n                motive\n                  { lt := lt, decLt := decLt, irrefl := irrefl, trans := trans,\n                    lt_of_lt_of_not_gt := lt_of_lt_of_not_gt }) \u2192\n      (t : Sonification.Ordered.OrderSpec \u03b1) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.OrderSpec",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "Type \u2192 Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.OrderSpec.mk",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192\n  (lt : \u03b1 \u2192 \u03b1 \u2192 Prop) \u2192\n    DecidableRel lt \u2192\n      (\u2200 (x : \u03b1), \u00aclt x x) \u2192\n        (\u2200 {x y z : \u03b1}, lt x y \u2192 lt y z \u2192 lt x z) \u2192\n          (\u2200 {x y z : \u03b1}, lt x y \u2192 \u00aclt z y \u2192 lt x z) \u2192 Sonification.Ordered.OrderSpec \u03b1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation.above.sizeOf_spec",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "sizeOf Sonification.Relation.above = 1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation.noConfusion._rarg._closed_1._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.OrderSpec.noConfusion",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192\n  {P : Sort u} \u2192\n    {v1 v2 : Sonification.Ordered.OrderSpec \u03b1} \u2192 v1 = v2 \u2192 Sonification.Ordered.OrderSpec.noConfusionType P v1 v2",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Sonification.OrderedIntervals.0.Sonification.Ordered.integer_specialization.match_1.eq_2",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 (motive : Sonification.Relation \u2192 Sort u_1) (h_1 : Unit \u2192 motive Sonification.Relation.below)\n  (h_2 : Unit \u2192 motive Sonification.Relation.above) (h_3 : Unit \u2192 motive Sonification.Relation.overlap),\n  (match Sonification.Relation.above with\n    | Sonification.Relation.below => h_1 ()\n    | Sonification.Relation.above => h_2 ()\n    | Sonification.Relation.overlap => h_3 ()) =\n    h_2 ()",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation.rec",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{motive : Sonification.Ordered.Relation \u2192 Sort u} \u2192\n  motive Sonification.Ordered.Relation.below \u2192\n    motive Sonification.Ordered.Relation.above \u2192\n      motive Sonification.Ordered.Relation.overlap \u2192 (t : Sonification.Ordered.Relation) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.scale.eq_1",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (k : Int) (a : Sonification.Interval), Sonification.scale k a = { lo := k * a.lo, hi := k * a.hi }",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation.overlap.sizeOf_spec",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "sizeOf Sonification.Relation.overlap = 1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Sonification.Intervals.0.Sonification.reverse.match_1.splitter._rarg._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "UInt8 \u2192 _obj \u2192 _obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "lcUnreachable"
+    ],
+    "declaration": "Sonification.Relation.noConfusion._cstage1",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "{P : Sort v\u271d} \u2192 {x y : Sonification.Relation} \u2192 x = y \u2192 Sonification.Relation.noConfusionType P x y",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.OrderSpec.noConfusionType",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192 Sort u \u2192 Sonification.Ordered.OrderSpec \u03b1 \u2192 Sonification.Ordered.OrderSpec \u03b1 \u2192 Sort u",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation.above.sizeOf_spec",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "sizeOf Sonification.Ordered.Relation.above = 1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation.noConfusion",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "{P : Sort v\u271d} \u2192 {x y : Sonification.Relation} \u2192 x = y \u2192 Sonification.Relation.noConfusionType P x y",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Interval.rec",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "{motive : Sonification.Interval \u2192 Sort u} \u2192\n  ((lo hi : Int) \u2192 motive { lo := lo, hi := hi }) \u2192 (t : Sonification.Interval) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.classify._rarg._closed_1._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation.below.sizeOf_spec",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "sizeOf Sonification.Ordered.Relation.below = 1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Interval.noConfusionType",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192 Sort u \u2192 Sonification.Ordered.Interval \u03b1 \u2192 Sonification.Ordered.Interval \u03b1 \u2192 Sort u",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Classical.choice",
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.above_iff._proof_4",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval), \u00ac(a.lo > a.hi \u2228 b.lo > b.hi) \u2192 \u00ac(a.lo \u2264 a.hi \u2227 b.lo \u2264 b.hi) \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Sonification.Intervals.0.Sonification.reverse.match_1.splitter._cstage1",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "(motive : Sonification.Relation \u2192 Sort u_1) \u2192\n  (x : Sonification.Relation) \u2192\n    motive Sonification.Relation.below \u2192\n      motive Sonification.Relation.above \u2192 motive Sonification.Relation.overlap \u2192 motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation.below",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Sonification.Relation",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Interval.hi",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Sonification.Interval \u2192 Int",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation.noConfusion._rarg._closed_1._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.inhabited_branches",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Sonification.classify { lo := 0, hi := 1 } { lo := 2, hi := 3 } = some Sonification.Relation.below \u2227\n  Sonification.classify { lo := 2, hi := 3 } { lo := 0, hi := 1 } = some Sonification.Relation.above \u2227\n    Sonification.classify { lo := 0, hi := 1 } { lo := 1, hi := 2 } = some Sonification.Relation.overlap \u2227\n      Sonification.classify { lo := 1, hi := 0 } { lo := 0, hi := 0 } = none",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.classify._closed_3._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Sonification.OrderedIntervals.0.Sonification.Ordered.integer_specialization.match_1.splitter._cstage1",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "(motive : Sonification.Relation \u2192 Sort u_1) \u2192\n  (r : Sonification.Relation) \u2192\n    motive Sonification.Relation.below \u2192\n      motive Sonification.Relation.above \u2192 motive Sonification.Relation.overlap \u2192 motive r",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.above_iff._proof_2",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval), a.lo > a.hi \u2228 b.lo > b.hi \u2192 a.lo \u2264 a.hi \u2192 \u00acb.hi < b.lo \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "lcProof"
+    ],
+    "declaration": "Sonification.Ordered.integerOrder._cstage1",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "Sonification.Ordered.OrderSpec Int",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.classify._closed_2._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Interval._sizeOf_1",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192 [inst : SizeOf \u03b1] \u2192 Sonification.Ordered.Interval \u03b1 \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation.toCtorIdx._cstage1",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "Sonification.Ordered.Relation \u2192 Nat",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Interval._sizeOf_inst",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "SizeOf Sonification.Interval",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.overlap_iff._proof_1",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval), a.lo > a.hi \u2228 b.lo > b.hi \u2192 a.lo \u2264 a.hi \u2192 \u00acb.hi < b.lo \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "declaration": "Sonification.touching",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval),\n  Sonification.Valid a \u2192\n    Sonification.Valid b \u2192 a.hi = b.lo \u2192 Sonification.classify a b = some Sonification.Relation.overlap",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation.toCtorIdx._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "UInt8 \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.classify._closed_1._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "declaration": "Sonification.below_iff",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval),\n  Sonification.classify a b = some Sonification.Relation.below \u2194\n    Sonification.Valid a \u2227 Sonification.Valid b \u2227 a.hi < b.lo",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.OrderSpec.trans",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {\u03b1 : Type} (self : Sonification.Ordered.OrderSpec \u03b1) {x y z : \u03b1}, self.lt x y \u2192 self.lt y z \u2192 self.lt x z",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Ordered.Interval.mk.injEq",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {\u03b1 : Type} (lo hi lo_1 hi_1 : \u03b1), ({ lo := lo, hi := hi } = { lo := lo_1, hi := hi_1 }) = (lo = lo_1 \u2227 hi = hi_1)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Valid",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Sonification.Interval \u2192 Prop",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Interval.mk._flat_ctor",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Int \u2192 Int \u2192 Sonification.Interval",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Sonification.Intervals.0.Sonification.reverse.match_1.eq_3",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (motive : Sonification.Relation \u2192 Sort u_1) (h_1 : Unit \u2192 motive Sonification.Relation.below)\n  (h_2 : Unit \u2192 motive Sonification.Relation.above) (h_3 : Unit \u2192 motive Sonification.Relation.overlap),\n  (match Sonification.Relation.overlap with\n    | Sonification.Relation.below => h_1 ()\n    | Sonification.Relation.above => h_2 ()\n    | Sonification.Relation.overlap => h_3 ()) =\n    h_3 ()",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Valid.eq_1",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a : Sonification.Interval), Sonification.Valid a = (a.lo \u2264 a.hi)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.scale._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation.toCtorIdx",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Sonification.Relation \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.classify._cstage1",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192\n  Sonification.Ordered.OrderSpec \u03b1 \u2192\n    Sonification.Ordered.Interval \u03b1 \u2192 Sonification.Ordered.Interval \u03b1 \u2192 Option Sonification.Ordered.Relation",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.OrderSpec.mk.sizeOf_spec",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {\u03b1 : Type} [inst : SizeOf \u03b1] (lt : \u03b1 \u2192 \u03b1 \u2192 Prop) (decLt : DecidableRel lt) (irrefl : \u2200 (x : \u03b1), \u00aclt x x)\n  (trans : \u2200 {x y z : \u03b1}, lt x y \u2192 lt y z \u2192 lt x z) (lt_of_lt_of_not_gt : \u2200 {x y z : \u03b1}, lt x y \u2192 \u00aclt z y \u2192 lt x z),\n  sizeOf { lt := lt, decLt := decLt, irrefl := irrefl, trans := trans, lt_of_lt_of_not_gt := lt_of_lt_of_not_gt } = 1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Interval._sizeOf_1",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Sonification.Interval \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "lcUnreachable"
+    ],
+    "declaration": "Sonification.Ordered.Relation.noConfusion._cstage1",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{P : Sort v\u271d} \u2192 {x y : Sonification.Ordered.Relation} \u2192 x = y \u2192 Sonification.Ordered.Relation.noConfusionType P x y",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.box_valid._proof_1",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (center error : Int), 0 \u2264 error \u2192 \u00accenter - error \u2264 center + error \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Interval.recOn",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "{motive : Sonification.Interval \u2192 Sort u} \u2192\n  (t : Sonification.Interval) \u2192 ((lo hi : Int) \u2192 motive { lo := lo, hi := hi }) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Interval.mk.sizeOf_spec",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {\u03b1 : Type} [inst : SizeOf \u03b1] (lo hi : \u03b1), sizeOf { lo := lo, hi := hi } = 1 + sizeOf lo + sizeOf hi",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation.overlap.sizeOf_spec",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "sizeOf Sonification.Ordered.Relation.overlap = 1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Ordered.exhaustive",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {\u03b1 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) (a b : Sonification.Ordered.Interval \u03b1),\n  Sonification.Ordered.Valid o a \u2192\n    Sonification.Ordered.Valid o b \u2192\n      Sonification.Ordered.classify o a b = some Sonification.Ordered.Relation.below \u2228\n        Sonification.Ordered.classify o a b = some Sonification.Ordered.Relation.above \u2228\n          Sonification.Ordered.classify o a b = some Sonification.Ordered.Relation.overlap",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Interval.mk.injEq",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (lo hi lo_1 hi_1 : Int), ({ lo := lo, hi := hi } = { lo := lo_1, hi := hi_1 }) = (lo = lo_1 \u2227 hi = hi_1)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Interval.mk",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Int \u2192 Int \u2192 Sonification.Interval",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Sonification.OrderedIntervals.0.Sonification.Ordered.integer_specialization.match_1.splitter._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "_neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.exhaustive",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval),\n  Sonification.Valid a \u2192\n    Sonification.Valid b \u2192\n      Sonification.classify a b = some Sonification.Relation.below \u2228\n        Sonification.classify a b = some Sonification.Relation.above \u2228\n          Sonification.classify a b = some Sonification.Relation.overlap",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Sonification.OrderedIntervals.0.Sonification.Ordered.integer_specialization.match_1.eq_3",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 (motive : Sonification.Relation \u2192 Sort u_1) (h_1 : Unit \u2192 motive Sonification.Relation.below)\n  (h_2 : Unit \u2192 motive Sonification.Relation.above) (h_3 : Unit \u2192 motive Sonification.Relation.overlap),\n  (match Sonification.Relation.overlap with\n    | Sonification.Relation.below => h_1 ()\n    | Sonification.Relation.above => h_2 ()\n    | Sonification.Relation.overlap => h_3 ()) =\n    h_3 ()",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Interval.mk.inj",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 {lo hi lo_1 hi_1 : Int}, { lo := lo, hi := hi } = { lo := lo_1, hi := hi_1 } \u2192 lo = lo_1 \u2227 hi = hi_1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation.overlap",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Sonification.Relation",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation.noConfusion._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "_neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation.below.sizeOf_spec",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "sizeOf Sonification.Relation.below = 1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation.noConfusion._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "_neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.classify._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "_neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.Ordered.integerOrder._proof_5",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {x y z : Int}, x < y \u2192 \u00acz < y \u2192 x < z",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Interval.recOn",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192\n  {motive : Sonification.Ordered.Interval \u03b1 \u2192 Sort u} \u2192\n    (t : Sonification.Ordered.Interval \u03b1) \u2192 ((lo hi : \u03b1) \u2192 motive { lo := lo, hi := hi }) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.Ordered.integerOrder._proof_1",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 (x : Int), x < x \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation.casesOn",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "{motive : Sonification.Relation \u2192 Sort u} \u2192\n  (t : Sonification.Relation) \u2192\n    motive Sonification.Relation.below \u2192\n      motive Sonification.Relation.above \u2192 motive Sonification.Relation.overlap \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation.noConfusion._rarg._lambda_1._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "_obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Interval.noConfusion",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192\n  {P : Sort u} \u2192\n    {v1 v2 : Sonification.Ordered.Interval \u03b1} \u2192 v1 = v2 \u2192 Sonification.Ordered.Interval.noConfusionType P v1 v2",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.classify._rarg._closed_2._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.reverse.eq_2",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Sonification.reverse Sonification.Relation.above = Sonification.Relation.below",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.reverse.eq_1",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "Sonification.reverse Sonification.Relation.below = Sonification.Relation.above",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.reverse._cstage1",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "Sonification.Relation \u2192 Sonification.Relation",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation.above",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "Sonification.Ordered.Relation",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.invalid_iff",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval), Sonification.classify a b = none \u2194 \u00acSonification.Valid a \u2228 \u00acSonification.Valid b",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.reverse._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "UInt8 \u2192 UInt8",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.exhaustive._proof_1",
+    "kind": "theorem",
+    "origin": "Sonification.Intervals",
+    "type": "\u2200 (a b : Sonification.Interval), a.lo \u2264 a.hi \u2192 b.lo \u2264 b.hi \u2192 a.hi < b.lo \u2192 b.hi < a.lo \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.OrderSpec.mk._flat_ctor",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192\n  (lt : \u03b1 \u2192 \u03b1 \u2192 Prop) \u2192\n    DecidableRel lt \u2192\n      (\u2200 (x : \u03b1), \u00aclt x x) \u2192\n        (\u2200 {x y z : \u03b1}, lt x y \u2192 lt y z \u2192 lt x z) \u2192\n          (\u2200 {x y z : \u03b1}, lt x y \u2192 \u00aclt z y \u2192 lt x z) \u2192 Sonification.Ordered.OrderSpec \u03b1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.OrderSpec.lt",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{\u03b1 : Type} \u2192 Sonification.Ordered.OrderSpec \u03b1 \u2192 \u03b1 \u2192 \u03b1 \u2192 Prop",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Ordered.classify_below_iff",
+    "kind": "theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "\u2200 {\u03b1 : Type} (o : Sonification.Ordered.OrderSpec \u03b1) (a b : Sonification.Ordered.Interval \u03b1),\n  Sonification.Ordered.classify o a b = some Sonification.Ordered.Relation.below \u2194\n    Sonification.Ordered.Valid o a \u2227 Sonification.Ordered.Valid o b \u2227 o.lt a.hi b.lo",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.reverse.match_1._cstage1",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "(motive : Sonification.Relation \u2192 Sort u_1) \u2192\n  (x : Sonification.Relation) \u2192\n    (Unit \u2192 motive Sonification.Relation.below) \u2192\n      (Unit \u2192 motive Sonification.Relation.above) \u2192 (Unit \u2192 motive Sonification.Relation.overlap) \u2192 motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Interval.casesOn",
+    "kind": "non_theorem",
+    "origin": "Sonification.Intervals",
+    "type": "{motive : Sonification.Interval \u2192 Sort u} \u2192\n  (t : Sonification.Interval) \u2192 ((lo hi : Int) \u2192 motive { lo := lo, hi := hi }) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Ordered.Relation.casesOn",
+    "kind": "non_theorem",
+    "origin": "Sonification.OrderedIntervals",
+    "type": "{motive : Sonification.Ordered.Relation \u2192 Sort u} \u2192\n  (t : Sonification.Ordered.Relation) \u2192\n    motive Sonification.Ordered.Relation.below \u2192\n      motive Sonification.Ordered.Relation.above \u2192 motive Sonification.Ordered.Relation.overlap \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation.noConfusion._rarg._cstage2",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "UInt8 \u2192 UInt8 \u2192 _neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Relation.toCtorIdx._cstage1",
+    "kind": "compiler_auxiliary",
+    "origin": "Sonification.Intervals",
+    "type": "Sonification.Relation \u2192 Nat",
+    "unsafe_definition": true
+  }
+]

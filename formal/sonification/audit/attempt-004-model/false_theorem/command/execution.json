@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/tmp/sonification-independent-audit-4ry_ada8/check.py",
+    "--lean",
+    "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "--out",
+    "/home/trent/sonification-formal-001/formal/sonification/audit/attempt-004-model/false_theorem/checker"
+  ],
+  "cwd": "/home/trent/sonification-formal-001",
+  "exit_code": 1,
+  "stdout_sha256": "f537ae870f1a5a58e48549f981cc837be23462fe4f0961c8846a57c555beeba8",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "expected_zero": false,
+  "detected_as_expected": true
+}
