@@ -132,7 +132,8 @@ package Spark_002_Partition with SPARK_Mode => On is
       (for all I in Row_Index =>
          (for all J in Row_Index =>
             (if I < J and then J <= Data.Count then
-               Compatible (Data.Rows (I), Data.Rows (J))))) and then
+               Compatible (Data.Rows (I), Data.Rows (J))
+             else True))) and then
       Both_Phases (Data, Train) and then Both_Phases (Data, Holdout));
 
    type Gate_Status is (Blocked, Structural_Only_Unauthenticated);

@@ -52,13 +52,13 @@ begin
       begin
          if Command = "O" then
             declare
-               Left : constant Reading :=
-                 (Kind => Value_Kind'Val (Number (Text, Cursor)),
-                  Value => Sample_Value (Number (Text, Cursor)));
-               Right : constant Reading :=
-                 (Kind => Value_Kind'Val (Number (Text, Cursor)),
-                  Value => Sample_Value (Number (Text, Cursor)));
+               Left  : Reading := (Kind => Measured, Value => 0);
+               Right : Reading := (Kind => Measured, Value => 0);
             begin
+               Left.Kind := Value_Kind'Val (Number (Text, Cursor));
+               Left.Value := Sample_Value (Number (Text, Cursor));
+               Right.Kind := Value_Kind'Val (Number (Text, Cursor));
+               Right.Value := Sample_Value (Number (Text, Cursor));
                Require_End (Text, Cursor);
                Put_Line (Comparison'Image (Compare_Readings (Left, Right)));
             end;
@@ -69,25 +69,29 @@ begin
                   Rows => (others => Empty_Row));
             begin
                for I in 1 .. Data.Count loop
-                  Data.Rows (I) :=
-                    (Row_Id => Code (Number (Text, Cursor)),
-                     Campaign => Code (Number (Text, Cursor)),
-                     Lab_Family => Code (Number (Text, Cursor)),
-                     Run_Id => Code (Number (Text, Cursor)),
-                     Document_Id => Code (Number (Text, Cursor)),
-                     Measurement_Hash => Code (Number (Text, Cursor)),
-                     Diagnostic_Hash => Code (Number (Text, Cursor)),
-                     Diagnostic_Event => Code (Number (Text, Cursor)),
-                     Registration => Code (Number (Text, Cursor)),
-                     Role => Role_Kind'Val (Number (Text, Cursor)),
-                     Phase => Phase_Kind'Val (Number (Text, Cursor)),
-                     Source => Source_Kind'Val (Number (Text, Cursor)),
-                     Observation =>
-                       (Kind => Value_Kind'Val (Number (Text, Cursor)),
-                        Value => Sample_Value (Number (Text, Cursor))),
-                     Calibrated_Error => Code (Number (Text, Cursor)),
-                     Diagnostic_Error => Code (Number (Text, Cursor)),
-                     Conditions_Match => Bool_Value (Text, Cursor));
+                  --  Read sequentially: Ada aggregate evaluation order is
+                  --  unspecified, and Number mutates the shared cursor.
+                  Data.Rows (I).Row_Id := Code (Number (Text, Cursor));
+                  Data.Rows (I).Campaign := Code (Number (Text, Cursor));
+                  Data.Rows (I).Lab_Family := Code (Number (Text, Cursor));
+                  Data.Rows (I).Run_Id := Code (Number (Text, Cursor));
+                  Data.Rows (I).Document_Id := Code (Number (Text, Cursor));
+                  Data.Rows (I).Measurement_Hash := Code (Number (Text, Cursor));
+                  Data.Rows (I).Diagnostic_Hash := Code (Number (Text, Cursor));
+                  Data.Rows (I).Diagnostic_Event := Code (Number (Text, Cursor));
+                  Data.Rows (I).Registration := Code (Number (Text, Cursor));
+                  Data.Rows (I).Role := Role_Kind'Val (Number (Text, Cursor));
+                  Data.Rows (I).Phase := Phase_Kind'Val (Number (Text, Cursor));
+                  Data.Rows (I).Source := Source_Kind'Val (Number (Text, Cursor));
+                  Data.Rows (I).Observation.Kind :=
+                    Value_Kind'Val (Number (Text, Cursor));
+                  Data.Rows (I).Observation.Value :=
+                    Sample_Value (Number (Text, Cursor));
+                  Data.Rows (I).Calibrated_Error :=
+                    Code (Number (Text, Cursor));
+                  Data.Rows (I).Diagnostic_Error :=
+                    Code (Number (Text, Cursor));
+                  Data.Rows (I).Conditions_Match := Bool_Value (Text, Cursor);
                end loop;
                Require_End (Text, Cursor);
                if Command = "T" then
