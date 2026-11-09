@@ -161,6 +161,24 @@ dist/mat-spec-008\`. See [full source admission audit](docs/MAT_SPEC_008.md).
 The programme still **stops at MAT-SPEC-010**, then moves to the separate
 SPARK/Ada verification and VANILLAJS Lean-to-ECMAScript repair plan.
 
+## MAT-SPEC-009 — Prospective physical challenge, synthetic controls
+
+MAT-SPEC-008 admits no independent two-experiment source-bound measurements.
+MAT-SPEC-009 therefore refuses to generate a physical phase-classifier
+score, defines a prospective source-family-separated TRAIN/HOLDOUT
+protocol, and executes 14 synthetic negative-control tests for
+same-experiment leakage, forged source independence, circular labels,
+missing errors, post hoc receiver changes and malformed preregistration
+receipts. Even a structural candidate pass never authenticates physics.
+
+Reproduce with
+\`uv run --no-project python scripts/build_mat_spec_009.py --out dist/mat-spec-009\`.
+See [scientific protocol and negative evidence](docs/MAT_SPEC_009.md).
+
+**MAT-SPEC-010 closes the numbered series.** After that, SPARK/Ada
+verification and the separate VANILLAJS Lean-to-ECMAScript refinement
+repair follow.
+
 ## The short version
 
 ETQ-303:

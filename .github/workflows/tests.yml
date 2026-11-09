@@ -120,6 +120,44 @@ jobs:
           sha256sum data/materials/helium4/mat_spec_008_source_catalogue.json
       - name: Build MAT-SPEC-008 source admission and identity evidence
         run: python scripts/build_mat_spec_008.py --out dist/mat-spec-008
+      - name: Capture eight MAT-SPEC-008 parent artifact digests
+        run: |
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          for path in sorted(Path("dist/mat-spec-008").iterdir()):
+              if path.is_file():
+                  print(
+                      "MAT_SPEC_008_DIGEST", path.name,
+                      hashlib.sha256(path.read_bytes()).hexdigest(),
+                  )
+          PY
+      - name: Build MAT-SPEC-009 prospective blocked challenge
+        run: python scripts/build_mat_spec_009.py --out dist/mat-spec-009
+      - name: Assert synthetic controls and scientific hold are reported
+        run: |
+          python - <<'PY'
+          import csv
+          import json
+          from pathlib import Path
+          root = Path("dist/mat-spec-009")
+          split = json.loads((root / "split-protocol.json").read_bytes())
+          audit = json.loads((root / "audit.json").read_bytes())
+          receiver = json.loads((root / "receiver-gate.json").read_bytes())
+          controls = list(csv.DictReader(
+              (root / "synthetic-controls.csv").open(newline="")
+          ))
+          assert len(controls) == 14
+          assert all(row["result"] == "PASS_REJECTED" for row in controls)
+          assert split["classifier_trained"] is False
+          assert split["holdout_accuracy"] is None
+          assert receiver["physical_performance"] is None
+          print("MAT_SPEC_009_SOURCE_HOLD", split["status"])
+          print(
+              "MAT_SPEC_009_NEGATIVE_CONTROLS",
+              audit["synthetic_negative_controls_passed"],
+          )
+          PY
       - name: Report MAT-SPEC-008 actual admission and independence audit
         run: |
           python - <<'PY'
