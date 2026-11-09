@@ -29,6 +29,19 @@ class SparkReferenceTests(unittest.TestCase):
         self.assertEqual(interval_oracle(2, 0, 0, 1, 0, 0), "OVERLAP")
         self.assertEqual(interval_oracle(2, 1, 1, 1, 0, 0), "INVALID")
 
+    def test_local_proof_is_only_owner_authorized_main_dispatch(self) -> None:
+        from pathlib import Path
+
+        root = Path(__file__).resolve().parents[1]
+        source = (root / ".github/workflows/spark-001-proof.yml").read_text()
+        self.assertIn("workflow_dispatch:", source)
+        self.assertIn("github.ref == 'refs/heads/main'", source)
+        self.assertIn("github.actor == 'EmergentMonk'", source)
+        self.assertIn("inputs.authorize_proof == true", source)
+        self.assertIn("persist-credentials: false", source)
+        self.assertNotIn("  pull_request:", source)
+        self.assertNotIn("  push:", source)
+
     def test_fixed_seed_vectors_and_source_identities(self) -> None:
         result = vectors()
         self.assertEqual(result, vectors())

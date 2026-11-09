@@ -53,9 +53,17 @@ From the SONIFICATION checkout, with GNAT 13 already installed:
       --exe /tmp/qsol-spark-001/spark_probe
 
 Run a separately installed GNATprove (with a compatible GNAT):
- 
+
     mkdir -p verification/spark/obj
     gnatprove -P verification/spark/spark_core.gpr --mode=all --level=2
+
+The dedicated workflow (.github/workflows/spark-001-proof.yml) is
+**workflow_dispatch only** and guarded for reviewed main, the explicit
+owner authorizer, and the trusted qsol-rtx5060ti runner label.
+It refuses absent tools and retains the executed logs locally in a
+new immutable-by-path run directory; uploading evidence requires a
+second explicit opt-in. It does not run automatically on pull requests
+or unmerged branches.
 
 If the prover is missing, a VC is unproved, or any assumption is unresolved,
 mark the result UNPROVED. Do not replace failed proof with successful tests.
