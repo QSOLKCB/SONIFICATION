@@ -244,6 +244,9 @@ def validate_future_measurement_packet(records: list[dict]) -> dict:
     campaigns = set()
     labs = set()
     for row in records:
+        if not isinstance(row, dict):
+            reasons.add("MALFORMED_CANDIDATE_RECORD")
+            continue
         try:
             camp = _identity(row.get("campaign_id"))
             lab = _identity(row.get("lab_family_id"))
@@ -274,14 +277,18 @@ def validate_future_measurement_packet(records: list[dict]) -> dict:
             if prior in owner and owner[prior] != camp:
                 reasons.add(key)
             owner[prior] = camp
-        phases_by_campaign.setdefault(camp, set()).add(row.get("phase"))
+        declared_phase = row.get("phase")
+        if not isinstance(declared_phase, str):
+            reasons.add("UNVERIFIED_PHASE_LABEL")
+            declared_phase = "INVALID"
+        phases_by_campaign.setdefault(camp, set()).add(declared_phase)
         if row.get("source_type") != "ORIGINAL_EXPERIMENTAL_RECORD":
             reasons.add("DERIVED_FIT_OR_COMPILATION_IS_NOT_PRIMARY_DATA")
         if row.get("synthetic_fixture") is True:
             reasons.add("SYNTHETIC_FIXTURE_NOT_PHYSICAL_MEASUREMENT")
         if row.get("diagnostic_basis") != "INDEPENDENT_NON_TEMPERATURE_DIAGNOSTIC":
             reasons.add("CIRCULAR_OR_MISSING_PHASE_DIAGNOSTIC")
-        if row.get("phase") not in {"HE_I", "HE_II"}:
+        if declared_phase not in ("HE_I", "HE_II"):
             reasons.add("UNVERIFIED_PHASE_LABEL")
         try:
             _decimal(row.get("measurement_value"))
@@ -293,9 +300,9 @@ def validate_future_measurement_packet(records: list[dict]) -> dict:
         if (
             not isinstance(digest, str)
             or re.fullmatch(r"[0-9a-f]{64}", digest) is None
-            or row.get("pressure_condition") not in {
+            or row.get("pressure_condition") not in (
                 "HE4_SVP", "DOCUMENTED_FIXED_PRESSURE"
-            }
+            )
         ):
             reasons.add("SOURCE_HASH_OR_PHYSICAL_CONDITION_NOT_DOCUMENTED")
         else:

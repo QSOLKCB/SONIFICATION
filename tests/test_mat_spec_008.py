@@ -206,6 +206,24 @@ class FuturePacketTests(unittest.TestCase):
         result = mat_spec_008.validate_future_measurement_packet(records)
         self.assertIn("BOTH_PHASES_REQUIRED_FOR_EACH_CAMPAIGN", result["reasons"])
 
+    def test_nonhashable_and_nonrecord_candidates_fail_closed(self) -> None:
+        records = two_campaign_fixture()
+        records[0]["phase"] = []
+        outcome = mat_spec_008.validate_future_measurement_packet(records)
+        self.assertEqual(outcome["status"], "BLOCKED")
+        self.assertIn("UNVERIFIED_PHASE_LABEL", outcome["reasons"])
+        records = two_campaign_fixture()
+        records[0]["pressure_condition"] = []
+        outcome = mat_spec_008.validate_future_measurement_packet(records)
+        self.assertIn(
+            "SOURCE_HASH_OR_PHYSICAL_CONDITION_NOT_DOCUMENTED", outcome["reasons"]
+        )
+        records = two_campaign_fixture()
+        records[0] = None
+        outcome = mat_spec_008.validate_future_measurement_packet(records)
+        self.assertIn("MALFORMED_CANDIDATE_RECORD", outcome["reasons"])
+        self.assertFalse(outcome["physical_evidence_admitted"])
+
     def test_empty_padded_duplicate_and_reused_run_identifiers(self) -> None:
         for field, value in (
             ("campaign_id", ""), ("lab_family_id", "  "),
