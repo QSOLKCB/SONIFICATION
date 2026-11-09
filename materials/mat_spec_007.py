@@ -45,8 +45,16 @@ FIELDS = (
     "amplitude_ratio", "amplitude_ratio_reported_error",
     "reference_condition", "provenance_note",
 )
-# Promote to a fixed seven-output SHA-256 baseline after merged-main CI replay.
-PARENT_V6_SHA256: dict[str, str] | None = None
+# Frozen seven-output MAT-SPEC-006 baseline from merged-main CI.
+PARENT_V6_SHA256 = {
+    "contract.json": "7123827c61661ff778f5b71a549063498993e34dd9dae83835b1d945b4aa7fdd",
+    "heldout.json": "7d14cdee77ece859979f3dec8aab88458a7db2992e89f804ecf55888beb32e45",
+    "manifest.json": "ad28104ad2633c95f30130724d2c1f48652701305fc9615c0e29f90b23424d27",
+    "observations.json": "140f954eb82879196af55c6e374d27b3ec40fbfee889566781fcf49737706bca",
+    "phase-gate.json": "dc25fe60243e178808b6e6fb3ff7bce02c5d7a9b6cfd01108147227b19e5e319",
+    "receiver-controls.csv": "1e1587ab1570969737905adf0d1cc8c2448371f9d4f6bf276e4feec8218e25fc",
+    "source-audit.json": "43bbba20e41360cbc859d9d324cbc2a3517e83557f40928816c13285f29ab623",
+}
 
 EXPECTED_META = json.loads(
     "{\"profile\":\"MAT-SPEC-007\",\"version\":\"0.1.0\",\"review_title\":\""

@@ -152,6 +152,10 @@ class BundleTests(unittest.TestCase):
         self.assertFalse(self.manifest["audio_generated"])
         parent = mat_spec_006.build_evidence(ROOT)
         self.assertEqual(set(parent), set(self.manifest["parent_artifacts"]))
+        self.assertEqual(
+            {name: mat_spec.sha256(raw) for name, raw in parent.items()},
+            mat_spec_007.PARENT_V6_SHA256,
+        )
         for name, record in self.manifest["parent_artifacts"].items():
             self.assertEqual(mat_spec.sha256(parent[name]), record["sha256"])
         for name, record in self.manifest["outputs"].items():
