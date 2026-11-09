@@ -160,6 +160,35 @@ class SplitProtocolTests(unittest.TestCase):
             ["EMPTY_CANDIDATE"],
         )
 
+    def test_rejects_empty_whitespace_and_malformed_source_identities(self) -> None:
+        # Reproduce the reviewer finding: both TRAIN identifiers are empty.
+        rows = self.rows()
+        for row in rows:
+            row.pop("synthetic_fixture")
+        for row in rows[:2]:
+            row["source_id"] = ""
+            row["experimental_family_id"] = ""
+        result = mat_spec_006.check_future_split_structure(rows)
+        self.assertEqual(result["status"], "BLOCKED")
+        self.assertEqual(result["reasons"], ["MISSING_SOURCE_IDENTITY"])
+        self.assertFalse(result["physical_validation_admitted"])
+        self.assertIsNone(result["holdout_accuracy"])
+
+        # Exercise each identity dimension independently, including nonstrings.
+        for field in ("source_id", "experimental_family_id"):
+            for invalid in ("", " \t\n", None, [], 0, " PADDED "):
+                with self.subTest(field=field, invalid=invalid):
+                    candidate = self.rows()
+                    for row in candidate:
+                        row.pop("synthetic_fixture")
+                    for row in candidate[:2]:
+                        row[field] = invalid
+                    outcome = mat_spec_006.check_future_split_structure(candidate)
+                    self.assertEqual(outcome["status"], "BLOCKED")
+                    self.assertIn("MISSING_SOURCE_IDENTITY", outcome["reasons"])
+                    self.assertFalse(outcome["independence_authenticated"])
+                    self.assertIsNone(outcome["holdout_accuracy"])
+
     def test_no_row_random_split_or_single_phase_holdout(self) -> None:
         rows = self.rows()
         for row in rows:

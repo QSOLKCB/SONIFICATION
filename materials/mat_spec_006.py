@@ -321,14 +321,24 @@ def check_future_split_structure(rows: list[dict]) -> dict:
     heldout = [r for r in rows if r.get("split") == "HOLDOUT"]
     if len(train) + len(heldout) != len(rows) or not train or not heldout:
         reasons.append("TRAIN_HOLDOUT_PARTITIONS_REQUIRED")
-    train_ids = {r.get("source_id") for r in train}
-    heldout_ids = {r.get("source_id") for r in heldout}
-    families_train = {r.get("experimental_family_id") for r in train}
-    families_holdout = {r.get("experimental_family_id") for r in heldout}
+    # Canonicalize before lineage intersection; missing, padded, blank, and
+    # non-string IDs cannot establish independently identified sources.
+    def source_identity(value: object) -> str | None:
+        if not isinstance(value, str) or not value.strip() or value != value.strip():
+            return None
+        return value
+
+    train_ids = {source_identity(r.get("source_id")) for r in train}
+    heldout_ids = {source_identity(r.get("source_id")) for r in heldout}
+    families_train = {source_identity(r.get("experimental_family_id")) for r in train}
+    families_holdout = {source_identity(r.get("experimental_family_id")) for r in heldout}
+    if any(
+        None in identities
+        for identities in (train_ids, heldout_ids, families_train, families_holdout)
+    ):
+        reasons.append("MISSING_SOURCE_IDENTITY")
     if train_ids & heldout_ids or families_train & families_holdout:
         reasons.append("SOURCE_LINEAGE_LEAKAGE")
-    if None in train_ids | heldout_ids or None in families_train | families_holdout:
-        reasons.append("MISSING_SOURCE_IDENTITY")
     if not any(r.get("phase") == "HE_I" for r in train) or not any(
         r.get("phase") == "HE_II" for r in train
     ):
