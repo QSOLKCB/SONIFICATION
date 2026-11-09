@@ -64,6 +64,24 @@ class SourceContracts(unittest.TestCase):
             mat_spec_005._strict_number("NaN")
         with self.assertRaises(ValueError):
             mat_spec_005._strict_number("-0.1")
+        for invalid in ("1/2", " 2.1", "0x10", "Infinity"):
+            with self.assertRaises(ValueError):
+                mat_spec_005._strict_number(invalid)
+        corrupted = [dict(row) for row in self.rows]
+        corrupted[0]["data_kind"] = "raw_measurement"
+        with self.assertRaisesRegex(ValueError, "forged phase"):
+            mat_spec_005.evidence_gate(corrupted)
+        corrupted = [dict(row) for row in self.rows]
+        corrupted[0]["reported_measurement_uncertainty"] = {
+            name: ("0.01" if name == "first_sound_m_per_s" else None)
+            for name in mat_spec_005.SOURCE_PROPERTIES
+        }
+        with self.assertRaisesRegex(ValueError, "forged phase"):
+            mat_spec_005.evidence_gate(corrupted)
+        corrupted = [dict(row) for row in self.rows]
+        corrupted[0]["temperature_regime_context"] = "CONTEXT_HE_I"
+        with self.assertRaisesRegex(ValueError, "forged phase"):
+            mat_spec_005.evidence_gate(corrupted)
 
     def test_zero_second_sound_distinct_from_out_of_domain(self) -> None:
         u2 = [r for r in self.mapped if r["property"] == "second_sound_m_per_s"]

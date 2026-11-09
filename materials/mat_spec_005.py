@@ -11,6 +11,7 @@ import csv
 import io
 import json
 import os
+import re
 import stat
 from contextlib import suppress
 from fractions import Fraction
@@ -173,8 +174,13 @@ EXPECTED_SPEC = {
 }
 
 def _strict_number(value: str) -> Fraction:
-    """Only positive finite source decimal/scientific-notation strings."""
-    if not value or value.strip() != value or len(value) > 32:
+    """Only non-negative finite decimal/scientific-notation source strings."""
+    if (
+        not isinstance(value, str)
+        or len(value) > 32
+        or re.fullmatch(r"(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[Ee][+-]?[0-9]+)?", value)
+        is None
+    ):
         raise ValueError("invalid reference numeric representation")
     try:
         out = Fraction(value)
@@ -354,7 +360,22 @@ def evidence_gate(observations: list[dict]) -> dict:
         or regimes.count("CONTEXT_HE_II") != 9
         or regimes.count("LAMBDA_REFERENCE_BOUNDARY") != 1
         or regimes.count("CONTEXT_HE_I") != 4
-        or any(row["independent_row_phase_witness"] is not None for row in observations)
+        or tuple(row["temperature_K"] for row in observations) != SELECTED_T
+        or any(
+            row["temperature_regime_context"] != _context(Fraction(row["temperature_K"]))
+            or row.get("data_kind") != "evaluated_reference_compilation"
+            or row.get("context_is_independent_phase_label") is not False
+            or row.get("independent_row_phase_witness") is not None
+            or (
+                not isinstance(row.get("reported_measurement_uncertainty"), dict)
+                or set(row["reported_measurement_uncertainty"]) != set(SOURCE_PROPERTIES)
+                or any(
+                    row["reported_measurement_uncertainty"][name] is not None
+                    for name in SOURCE_PROPERTIES
+                )
+            )
+            for row in observations
+        )
     ):
         raise ValueError("unfrozen or forged phase reference label")
     return {
