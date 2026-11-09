@@ -32,7 +32,7 @@ package body Spark_Core with SPARK_Mode => On is
          return Invalid_Result;
       end if;
       if Start_Digit > Source'Last - 3 or else
-        Source'Last - 2 - Start_Digit > 3
+        Source'Last - 2 - Start_Digit > 4
       then
          return Invalid_Result;
       end if;

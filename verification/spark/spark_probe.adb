@@ -1,9 +1,6 @@
 --  SPDX-License-Identifier: MPL-2.0
 --  Differential CLI only. This driver is Ada, not SPARK proof code.
 with Ada.Text_IO;
-with Ada.Integer_Text_IO;
-with Ada.Strings.Fixed;
-with Ada.Strings;
 with Spark_Core;
 procedure Spark_Probe is
    use Ada.Text_IO;
