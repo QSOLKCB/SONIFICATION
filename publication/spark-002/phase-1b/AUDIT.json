@@ -1,0 +1,43 @@
+{
+  "schema": "qsol.spark-002.phase-1b.proof-receipt-audit/v1",
+  "profile": "SPARK-002",
+  "milestone": "phase-1b",
+  "repository": "QSOLKCB/SONIFICATION",
+  "source_commit": "6f0f1be1ba8885fa708d7328bcb92fbf4ecc324f",
+  "source_tag": null,
+  "gnatprove": {
+    "version": "FSF 16.1.0",
+    "exit_status": 0,
+    "reported_checks": 9,
+    "functional_contract_checks": 2,
+    "termination_checks": 7,
+    "runtime_checks_separately_reported": 0,
+    "unproved": 0,
+    "justified": 0,
+    "pragma_assume_statements_reported": 0,
+    "analyzed_spark_units": 1,
+    "non_spark_probe_excluded": true,
+    "status": "ALL_9_REPORTED_CHECKS_PROVED"
+  },
+  "receipt_sha256": {
+    "GNATPROVE_SUMMARY.txt": "ba472f544021d95b9b98a0e9bd99c0f3b57405120694653b59253aff11b6a00e",
+    "PROOF.log": "5ec7eb817083d4d4466efe08a8d221576ee418bc58d3cdc33adc0fe0a63bf335",
+    "RESULT.txt": "b577143f56c972bebd14855c00a4ba58cfd5ac93e8e8cccf56367c8025bf20da",
+    "SHA256SUMS": "3299ff07ff6e3a2c104956dc9b2a168ea028291a90708dee3071077c4368efa1",
+    "SOURCES.sha256": "f8993becc76f30d8669b3211afb50d0f24f3cc026936f6fbdb774a9b81fc5872",
+    "SOURCE_COMMIT.txt": "8a663cd33dd12b70edd85343dd2df962660bd1bb72cea3b644f64a208e21d0b1",
+    "TOOLCHAIN.txt": "d0ec78c178655565104dd97553954ba573633797216446fad8b3254aad79de55"
+  },
+  "source_sha256": {
+    "verification/spark002/phase1b/spark_002_partition.ads": "7242919b7385a0726064ffc22ac20133099564cdcf5bcd811944ab176cb87ac0",
+    "verification/spark002/phase1b/spark_002_partition.adb": "6b9887c12694001be9f627a91d159cd57d57af65770023c2bfd7c791f12760a2",
+    "verification/spark002/phase1b/spark_002_partition.gpr": "41a00e231762e0907fccc2e2f06d99f6bbf470d7d2a19845b0efaac0654c6a9d"
+  },
+  "evidence_description": "Original owner-executed proof receipts; this PR does not rerun GNATprove",
+  "admission_boundary": {
+    "physical_evidence_authenticated": false,
+    "classifier_score_established": false,
+    "mat_spec_closure": "NUMBERED_SERIES_CLOSED_AT_010_WITH_OPEN_SCIENTIFIC_GATES"
+  },
+  "publication_state": "GIT_PROOF_RECEIPT_PRESERVATION_ONLY"
+}

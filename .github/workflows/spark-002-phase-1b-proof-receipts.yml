@@ -1,0 +1,35 @@
+name: SPARK-002 Phase 1B historical GNATprove proof receipts
+on:
+  pull_request:
+    paths:
+      - 'publication/spark-002/phase-1b/**'
+      - 'scripts/verify_spark_002_phase_1b_receipts.py'
+      - 'tests/test_spark_002_phase_1b_receipts.py'
+      - '.github/workflows/spark-002-phase-1b-proof-receipts.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'publication/spark-002/phase-1b/**'
+      - 'scripts/verify_spark_002_phase_1b_receipts.py'
+      - 'tests/test_spark_002_phase_1b_receipts.py'
+      - '.github/workflows/spark-002-phase-1b-proof-receipts.yml'
+permissions:
+  contents: read
+jobs:
+  verify-archived-evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify original receipts and historical Git source SHA-256
+        run: python3 scripts/verify_spark_002_phase_1b_receipts.py
+      - name: Negative tests (tamper, bad manifest and invalid provenance)
+        run: python3 -m unittest tests.test_spark_002_phase_1b_receipts -v
+      - name: Record evidence boundary
+        run: |
+          echo 'SPARK-002 Phase 1B: historical GNATprove 9/9 checks; 0 unproved.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Historical receipts checked; GNATprove NOT executed in CI.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Physical evidence and classifier score remain NOT ADMITTED.' >> "$GITHUB_STEP_SUMMARY"
