@@ -466,7 +466,19 @@ def build_evidence(root: Path) -> dict[str, bytes]:
         "status": "REPLAYABLE_INDEX_NOT_AN_EXTERNAL_ARCHIVE",
         "archive_release_tag": None,
         "external_doi": None,
-        "source_repository_commit": PARENT_COMMIT,
+        # The parent merge predates this profile. Never misattribute the
+        # current checkout's source hashes to the predecessor Git tree.
+        "predecessor_commit": PARENT_COMMIT,
+        "indexed_source_commit": None,
+        "indexed_source_revision_status": (
+            "UNBOUND_REQUIRES_POST_BUILD_COMMIT_ATTESTATION"
+        ),
+        "indexed_source_snapshot_sha256": mat_spec.sha256(
+            mat_spec.canonical_json(inputs)
+        ),
+        "indexed_source_snapshot_kind": (
+            "SHA256_OF_CANONICAL_INDEXED_FILE_RECEIPTS_NOT_GIT_COMMIT"
+        ),
         "profiles_indexed": [item[0] for item in frozen],
         "ancestor_artifact_count": len(archive_members),
         "ancestor_artifacts": archive_members,

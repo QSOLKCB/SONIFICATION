@@ -67,6 +67,72 @@ class ClosureTests(unittest.TestCase):
         self.assertIsNone(self.archive["external_doi"])
         self.assertIsNone(self.archive["archive_release_tag"])
 
+    def test_indexed_checkout_is_not_mislabeled_as_parent_commit(self) -> None:
+        self.assertEqual(
+            self.archive["predecessor_commit"], mat_spec_010.PARENT_COMMIT
+        )
+        self.assertNotIn("source_repository_commit", self.archive)
+        self.assertIsNone(self.archive["indexed_source_commit"])
+        self.assertEqual(
+            self.archive["indexed_source_revision_status"],
+            "UNBOUND_REQUIRES_POST_BUILD_COMMIT_ATTESTATION",
+        )
+        self.assertEqual(
+            self.archive["indexed_source_snapshot_kind"],
+            "SHA256_OF_CANONICAL_INDEXED_FILE_RECEIPTS_NOT_GIT_COMMIT",
+        )
+        self.assertEqual(
+            self.archive["indexed_source_snapshot_sha256"],
+            mat_spec.sha256(
+                mat_spec.canonical_json(self.archive["repository_files"])
+            ),
+        )
+        self.assertNotEqual(
+            self.archive["predecessor_commit"],
+            self.archive["indexed_source_snapshot_sha256"],
+        )
+
+    def test_index_snapshot_tracks_current_files_not_parent_revision(self) -> None:
+        original = mat_spec.read_regular
+
+        def changed(path: Path, limit: int = 1_048_576) -> bytes:
+            raw = original(path, limit)
+            if path.name == "README.md":
+                return raw + b"\n"
+            return raw
+
+        with (
+            patch(
+                "materials.mat_spec_010.mat_spec_009.build_evidence",
+                return_value=self.parent,
+            ),
+            patch("materials.mat_spec_010.mat_spec.read_regular", side_effect=changed),
+        ):
+            changed_index = json.loads(
+                mat_spec_010.build_evidence(ROOT)["archive-index.json"]
+            )
+        self.assertEqual(
+            changed_index["predecessor_commit"],
+            self.archive["predecessor_commit"],
+        )
+        self.assertIsNone(changed_index["indexed_source_commit"])
+        self.assertNotEqual(
+            changed_index["indexed_source_snapshot_sha256"],
+            self.archive["indexed_source_snapshot_sha256"],
+        )
+        before = {
+            item["path"]: item["sha256"]
+            for item in self.archive["repository_files"]
+        }
+        after = {
+            item["path"]: item["sha256"]
+            for item in changed_index["repository_files"]
+        }
+        self.assertEqual(
+            {name for name in before if before[name] != after[name]},
+            {"README.md"},
+        )
+
     def test_all_declared_inputs_are_sha256_indexed(self) -> None:
         records = self.archive["repository_files"]
         self.assertEqual(len(records), self.archive["repository_file_count"])

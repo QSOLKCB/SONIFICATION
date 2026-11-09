@@ -24,7 +24,29 @@ The inventory includes source data excerpts, attributions, profile
 contracts, prior implementation modules, builders, tests, method
 documents, root output policy and CI recipe. Inputs are regular
 files read with no-follow controls, indexed by content SHA-256
-and byte length. Each grade and nonclaim in the scientific claim
+and byte length.
+
+### Indexed checkout identity versus predecessor commit
+
+The archive index distinguishes **`predecessor_commit`** (the merged
+MAT-SPEC-009 baseline) from the inputs actually hashed during the
+MAT-SPEC-010 build. The predecessor commit **cannot reproduce the new
+010 files** or the changed README and CI workflow.
+
+The offline builder therefore sets `indexed_source_commit: null` and
+`indexed_source_revision_status:
+UNBOUND_REQUIRES_POST_BUILD_COMMIT_ATTESTATION`. It records
+`indexed_source_snapshot_sha256`, a SHA-256 of the canonical
+`repository_files` path/size/hash inventory. This identifies the
+**observed file contents**, not a Git commit, Git tree or release tag.
+If any indexed file changes, the snapshot digest changes while the
+predecessor identity remains fixed.
+
+Following the owner-approved merge, the actual checkout commit can be
+reported separately by a CI or release receipt **after checking** that
+its source files match the archived content hashes. Embedding an
+unverified Git SHA (or the build's own eventual merge commit) inside
+the deterministic index would create misleading or circular provenance. Each grade and nonclaim in the scientific claim
 registry is frozen by source JSON and a separate implementation
 constant; edit drift is rejected.
 
