@@ -68,6 +68,11 @@ target-version = "py311"
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
 
+[tool.ruff.lint.per-file-ignores]
+# Exact source bytes embedded in immutable, byte-reproducible release ZIPs.
+"materials/mat_spec_010_archive.py" = ["E501", "SIM117", "UP022"]
+"materials/spark_001_archive.py" = ["SIM117", "UP022"]
+
 [tool.coverage.run]
 branch = true
 source = ["sonification"]

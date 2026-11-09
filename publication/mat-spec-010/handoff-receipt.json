@@ -1,0 +1,65 @@
+{
+  "schema": "qsol.mat-spec-010.publication-handoff-receipt/v1",
+  "verification_date": "2026-11-10",
+  "status": "VERIFIED_REPRODUCIBLE",
+  "immutable_release": {
+    "release_id": 439286691,
+    "asset_id": 727925396,
+    "filename": "MAT-SPEC-010-v0.1.0-research-archive.zip",
+    "bytes": 3161581,
+    "sha256": "c135f24c4a51a91444e2645c4850f326620dc54cb95b3b98d9bbae6d59235993",
+    "source_tag": "mat-spec-010-v0.1.0",
+    "source_commit": "9d12c6a5098f4edba972bb6b1067555d8f48f693",
+    "state": "PUBLISHED_IMMUTABLE_UNCHANGED"
+  },
+  "pre_extraction_inventory": {
+    "members": 168,
+    "compression": "ZIP_STORED",
+    "timestamp": "1980-01-01T00:00:00",
+    "mode": "0100644",
+    "canonical_order": true,
+    "duplicate_members": 0,
+    "path_traversal_members": 0,
+    "symlink_members": 0,
+    "non_regular_members": 0,
+    "encrypted_members": 0,
+    "crc_verified": true,
+    "sha256sums_verified": 167,
+    "manifest_records_verified": 166
+  },
+  "recovered_packaging_implementation": {
+    "tooling/build_mat_spec_010_archive.py": "61c384e7057c58f048ee44c4dd21e7da8ec09264562eb61fdcb4816b489ca94a",
+    "tooling/mat_spec_010_archive.py": "f010e16e4a82a5a8df0af3b40a973dc3bf8bd36a7914e2b6d0ebb0538dc67ed1",
+    "provenance": "Both files were covered by the immutable archive manifest and SHA256SUMS before recovery"
+  },
+  "isolated_rebuilds": {
+    "count": 2,
+    "separate_detached_worktrees": true,
+    "separate_publication_roots": true,
+    "separate_uv_caches": true,
+    "each_source_commit": "9d12c6a5098f4edba972bb6b1067555d8f48f693",
+    "each_bytes": 3161581,
+    "each_sha256": "c135f24c4a51a91444e2645c4850f326620dc54cb95b3b98d9bbae6d59235993",
+    "byte_equal_to_download": true,
+    "metadata_equal_to_download": true
+  },
+  "post_release_correction": {
+    "reason": "The frozen logical source index omitted materials/__init__.py from source/repository",
+    "initializer_bytes": 133,
+    "initializer_sha256": "1a7d56f6231fc6ae77ef7701785939aca31327719ae85a31b0ebe32c7ce90055",
+    "scientific_results_changed": false,
+    "immutable_release_changed": false
+  },
+  "corrected_zenodo_handoff": {
+    "filename": "MAT-SPEC-010-v0.1.0-zenodo-deposit.zip",
+    "bytes": 3176870,
+    "sha256": "daa8c2015db0c1865c5e14daaf59788a30e45ebfdc279d3d3eac3775595abe27",
+    "members": 173,
+    "internal_checksums": 172,
+    "two_byte_identical_builds": true,
+    "extraction_verified": true,
+    "standalone_materials_package_import": "PASS",
+    "zenodo_state": "PREPARED_NOT_CREATED",
+    "owner_approval_required": true
+  }
+}

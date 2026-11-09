@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -11,8 +12,27 @@ from materials import spark_001_archive as archive
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def source_tag_available() -> bool:
+    result = subprocess.run(
+        [
+            "git",
+            "-C",
+            str(ROOT),
+            "cat-file",
+            "-e",
+            f"refs/tags/{archive.SOURCE_TAG}^{{commit}}",
+        ],
+        stdin=subprocess.DEVNULL,
+        capture_output=True,
+        check=False,
+    )
+    return result.returncode == 0
+
+
 class SparkArchiveTests(unittest.TestCase):
     def test_annotated_source_tag_resolves_exactly(self) -> None:
+        if not source_tag_available():
+            self.skipTest("integration check requires the fetched SPARK-001 tag")
         with tempfile.TemporaryDirectory() as temporary:
             identity = archive.resolve_source(ROOT, Path(temporary))
         self.assertEqual(identity["tag"], archive.SOURCE_TAG)

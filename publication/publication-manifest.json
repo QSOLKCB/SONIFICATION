@@ -196,6 +196,21 @@
       "github_asset_id": 727925396,
       "github_release_id": 439286691,
       "github_state": "PUBLISHED_IMMUTABLE",
+      "reproduction_status": "VERIFIED_REPRODUCIBLE",
+      "source_subtree_status": "MISSING_MATERIALS_PACKAGE_INITIALIZER",
+      "zenodo_state": "NOT_SELECTED_FOR_ZENODO_UPLOAD_CORRECTED_HANDOFF_PREPARED"
+    },
+    {
+      "purpose": "MAT-SPEC-010_CORRECTED_ZENODO_HANDOFF",
+      "filename": "MAT-SPEC-010-v0.1.0-zenodo-deposit.zip",
+      "bytes": 3176870,
+      "sha256": "daa8c2015db0c1865c5e14daaf59788a30e45ebfdc279d3d3eac3775595abe27",
+      "members": 173,
+      "internal_checksums": 172,
+      "github_asset_id": null,
+      "github_state": "NOT_ATTACHED_POST_RELEASE_HANDOFF",
+      "immutable_release_parent_sha256": "c135f24c4a51a91444e2645c4850f326620dc54cb95b3b98d9bbae6d59235993",
+      "correction": "Adds exact pinned materials/__init__.py and explicit post-release provenance",
       "zenodo_state": "PREPARED_NOT_CREATED"
     },
     {
@@ -224,7 +239,19 @@
     {
       "scope": "publication branch MAT-SPEC suite",
       "command": "python -m unittest discover -s tests -p test_mat_spec*.py",
-      "tests": 128,
+      "tests": 131,
+      "result": "PASS"
+    },
+    {
+      "scope": "full Python test suite",
+      "command": "python -m pytest",
+      "python": "3.13.14",
+      "tests": 205,
+      "result": "PASS"
+    },
+    {
+      "scope": "Python static analysis",
+      "command": "ruff check .",
       "result": "PASS"
     },
     {
@@ -246,11 +273,24 @@
       "result": "PASS"
     },
     {
-      "scope": "MAT-SPEC-010 deterministic archive",
-      "result": "TWO_BYTE_IDENTICAL_BUILDS_AND_EXTRACTION_PASS",
+      "scope": "immutable MAT-SPEC-010 GitHub archive handoff",
+      "result": "VERIFIED_REPRODUCIBLE_DOWNLOADED_ASSET_AND_TWO_RECOVERED_BUILDS_BYTE_IDENTICAL",
+      "safe_inventory_before_extraction": true,
+      "path_traversal_members": 0,
+      "symlink_members": 0,
+      "members": 168,
       "internal_checksums": 167,
       "logical_artifacts_materialized": 63,
       "repository_inputs_materialized": 68
+    },
+    {
+      "scope": "corrected MAT-SPEC-010 Zenodo handoff archive",
+      "result": "TWO_BYTE_IDENTICAL_BUILDS_AND_EXTRACTION_PASS",
+      "members": 173,
+      "internal_checksums": 172,
+      "indexed_repository_inputs_materialized": 68,
+      "supplemental_repository_inputs_materialized": 1,
+      "standalone_materials_package_import": "PASS"
     },
     {
       "scope": "SPARK-001 deterministic archive",
