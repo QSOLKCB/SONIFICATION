@@ -1,0 +1,19 @@
+{
+  "profile": "MAT-SPEC-008",
+  "version": "0.1.0",
+  "parent_profile": "MAT-SPEC-007 v0.1.0",
+  "parent_merge_commit": "b97348ff8fcf3f57764dec21a8914f153f96a745",
+  "foundational_mat_spec_001_doi": "10.5281/zenodo.24062652",
+  "source_catalogue": "data/materials/helium4/mat_spec_008_source_catalogue.json",
+  "source_of_numerical_rows": "MAT-SPEC-006 SHA-pinned original processed Lipa-Chui table",
+  "review_fit_source": "MAT-SPEC-007 SHA-pinned secondary fit table",
+  "min_independent_measurement_campaigns": 2,
+  "require_source_bound_rows": true,
+  "require_measurement_level_uncertainty": true,
+  "require_orthogonal_diagnostic": true,
+  "require_lineage_verified_no_shared_run": true,
+  "candidate_output": "STRUCTURAL_ONLY_UNAUTHENTICATED at best; never label it empirical admission",
+  "physical_results": "NO_PHASE_CLASSIFIER_NO_HOLDOUT_ACCURACY_NO_RAW_INDEPENDENT_REPLICATION",
+  "runtime_artifacts": "canonical JSON/CSV symbolic evidence only, no audio PCM WAV MIDI playback",
+  "future": "MAT-SPEC-009 only if this gate admits adequate independent campaigns; MAT-SPEC-010 closes numbered series; SPARK/Ada and Lean/ECMA after 010"
+}
