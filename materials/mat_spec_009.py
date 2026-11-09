@@ -191,7 +191,10 @@ def check_future_challenge(records: object) -> dict:
         "independence_authenticated": False,
         "heldout_accuracy": None,
         "trained_classifier": False,
-        "meaning": "Synthetic or self-declared metadata never establishes external physical validation",
+        "meaning": (
+            "Synthetic or self-declared metadata never establishes "
+            "external physical validation"
+        ),
     }
 
 
