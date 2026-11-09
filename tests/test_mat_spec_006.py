@@ -174,6 +174,16 @@ class SplitProtocolTests(unittest.TestCase):
         self.assertFalse(result["physical_validation_admitted"])
         self.assertIsNone(result["holdout_accuracy"])
 
+        # Even when both groups have unknown identities, missing identity
+        # is not itself evidence that the two physical campaigns are the same.
+        both_unknown = self.rows()
+        for row in both_unknown:
+            row.pop("synthetic_fixture")
+            row["source_id"] = ""
+            row["experimental_family_id"] = " "
+        unknown = mat_spec_006.check_future_split_structure(both_unknown)
+        self.assertEqual(unknown["reasons"], ["MISSING_SOURCE_IDENTITY"])
+
         # Exercise each identity dimension independently, including nonstrings.
         for field in ("source_id", "experimental_family_id"):
             for invalid in ("", " \t\n", None, [], 0, " PADDED "):

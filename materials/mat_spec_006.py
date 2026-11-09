@@ -337,7 +337,11 @@ def check_future_split_structure(rows: list[dict]) -> dict:
         for identities in (train_ids, heldout_ids, families_train, families_holdout)
     ):
         reasons.append("MISSING_SOURCE_IDENTITY")
-    if train_ids & heldout_ids or families_train & families_holdout:
+    # Unknown identities cannot establish a positive source-lineage match.
+    if (
+        (train_ids - {None}) & (heldout_ids - {None})
+        or (families_train - {None}) & (families_holdout - {None})
+    ):
         reasons.append("SOURCE_LINEAGE_LEAKAGE")
     if not any(r.get("phase") == "HE_I" for r in train) or not any(
         r.get("phase") == "HE_II" for r in train
