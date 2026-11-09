@@ -134,6 +134,42 @@ jobs:
           PY
       - name: Build MAT-SPEC-009 prospective blocked challenge
         run: python scripts/build_mat_spec_009.py --out dist/mat-spec-009
+      - name: Capture seven MAT-SPEC-009 final predecessor SHA-256s
+        run: |
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          for path in sorted(Path("dist/mat-spec-009").iterdir()):
+              if path.is_file():
+                  print(
+                      "MAT_SPEC_009_DIGEST", path.name,
+                      hashlib.sha256(path.read_bytes()).hexdigest(),
+                  )
+          PY
+      - name: Build MAT-SPEC-010 final archive index and research closure
+        run: python scripts/build_mat_spec_010.py --out dist/mat-spec-010
+      - name: Verify final stop rule and scientific status
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("dist/mat-spec-010")
+          gate = json.loads((root / "closure-gate.json").read_bytes())
+          archive = json.loads((root / "archive-index.json").read_bytes())
+          audit = json.loads((root / "audit.json").read_bytes())
+          assert gate["numbered_profiles"] == 10
+          assert gate["mat_spec_011_allowed"] is False
+          assert gate["real_classifier_trained"] is False
+          assert gate["real_heldout_accuracy"] is None
+          assert gate["external_research_archive_deposited"] is False
+          assert archive["external_archive_in_this_build"] is False
+          assert len(archive["profiles_indexed"]) == 9
+          assert audit["synthetic_controls_replayed"] == 14
+          assert audit["stage_010_final"] is True
+          print("MAT_SPEC_010_CLOSURE", gate["status"])
+          print("MAT_SPEC_010_ARCHIVE_MEMBERS", archive["ancestor_artifact_count"])
+          print("MAT_SPEC_010_SOURCE_FILES", archive["repository_file_count"])
+          PY
       - name: Assert synthetic controls and scientific hold are reported
         run: |
           python - <<'PY'

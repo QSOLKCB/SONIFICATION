@@ -179,6 +179,26 @@ See [scientific protocol and negative evidence](docs/MAT_SPEC_009.md).
 verification and the separate VANILLAJS Lean-to-ECMAScript refinement
 repair follow.
 
+## MAT-SPEC-010 — Final evidence freeze (no MAT-SPEC-011)
+
+The MAT-SPEC numbered research programme ends at 010. This stage
+replays the earlier profiles, inventories original measured data,
+model input tables, reference compilations, secondary fits and
+synthetic controls, and publishes a source-checked SHA-256 JSON
+archive *index* rather than a deposited scientific archive.
+
+The independent physical phase-classifier gate remains BLOCKED:
+only one campaign has pinned processed measurement rows, and no
+source-separated heldout phase evaluation has occurred. Hash replay
+is software reproducibility, not independent physical replication.
+
+Run: uv run --no-project python scripts/build_mat_spec_010.py
+--out dist/mat-spec-010.
+
+See docs/MAT_SPEC_010.md and docs/MAT_SPEC_010_HANDOFF.md.
+After 010: SPARK/Ada verification, then the separate VANILLAJS
+Lean-to-ECMAScript refinement repair. No MAT-SPEC-011.
+
 ## The short version
 
 ETQ-303:
