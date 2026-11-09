@@ -132,6 +132,39 @@ Strict comparisons are descriptive reported-error boxes, not statistical tests.
 The broad-window INELIGIBLE values remain untouched in the original
 `pressure-discrimination.csv` and `controls.json`.
 
+## Executed source-pinned findings
+
+The GitHub Actions run on this PR's pinned data and code reports the following
+**exact arithmetic comparisons of reported finite-grid descriptors**:
+
+| Comparison | Strictly rising with pressure | Strictly falling with pressure | Overlap | Ineligible |
+|---|---:|---:|---:|---:|
+| Phonon-region slope (primary) | 21 | 0 | 0 | 0 |
+| Maxon-like maximum (primary) | 21 | 0 | 0 | 0 |
+| Roton-like minimum (primary) | 0 | 0 | 0 | 21 |
+| Roton-core minimum (exploratory, common q) | 0 | 20 | 1 | 0 |
+
+The 21 pairs are ordered in ascending pressure. Higher reported pressures
+have greater nominal phonon-region slope proxies and greater maxon-like
+energy maxima in this sample. The observed roton-core minima tend to fall
+with pressure; one pair is not separated by the reported-error box bounds.
+These are *descriptive source-table inequalities*, not p-values, independent
+replications or proof of universal pressure trends.
+
+For seven complete *coverage-core* maxon/roton nominal energy pairs:
+
+| Receiver | Unique two-value contours | Colliding pressure pairs |
+|---|---:|---:|
+| Exact common scale (400 Hz/meV) | 7 / 7 | 0 / 21 |
+| Quantized 12-TET MIDI note pairs | 4 / 7 | 4 / 21 |
+| Dense two-value rank offsets | 1 / 7 | 21 / 21 |
+
+The collapse is a property of the stipulated symbolic mapping, **not a
+demonstration of audible listener discrimination**. Positions q are not
+encoded by the two-note receiver. The primary roton view remains ineligible.
+The complete-core measurement span was selected post hoc using missingness,
+so it cannot independently confirm a predeclared full-window hypothesis.
+
 ## Determinism, provenance and boundaries
 
 MAT-SPEC-003 first invokes MAT-SPEC-002 to validate the original MAT-SPEC-001

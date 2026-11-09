@@ -237,6 +237,32 @@ class RuntimeEvidenceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "coverage-core selection drift"):
             mat_spec_003.coverage_core_window(changed)
 
+    def test_pinned_measured_interval_and_receiver_information_loss(self) -> None:
+        first = self.controls["pressure_pair_interval_counts"]
+        core = self.controls["coverage_core_interval_counts"]
+        self.assertEqual(
+            first["phonon"],
+            {"a_below_b": 21, "b_below_a": 0, "overlap": 0, "INELIGIBLE": 0},
+        )
+        self.assertEqual(
+            first["maxon"],
+            {"a_below_b": 21, "b_below_a": 0, "overlap": 0, "INELIGIBLE": 0},
+        )
+        self.assertEqual(
+            first["roton"],
+            {"a_below_b": 0, "b_below_a": 0, "overlap": 0, "INELIGIBLE": 21},
+        )
+        self.assertEqual(
+            core["roton"],
+            {"a_below_b": 0, "b_below_a": 20, "overlap": 1, "INELIGIBLE": 0},
+        )
+        receiver = self.controls["coverage_core_receiver"]["collision_audit"]
+        self.assertEqual(
+            {key: (value["unique_contours"], value["colliding_pairs"])
+             for key, value in receiver.items()},
+            {"exact_common_scale": (7, 0), "quantized_midi": (4, 4), "rank": (1, 21)},
+        )
+
     def test_fresh_no_follow_output_and_audio_rejection(self) -> None:
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)

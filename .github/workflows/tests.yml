@@ -70,6 +70,12 @@ jobs:
                   controls["coverage_core_receiver"]["collision_audit"], sort_keys=True
               ),
           )
+          for row in csv.DictReader((root / "core-discrimination.csv").open(newline="")):
+              if row["mode"] == "roton" and row["comparison"] == "overlap":
+                  print(
+                      "MAT_SPEC_003_ROTON_CORE_OVERLAP",
+                      row["pressure_a_bar"], row["pressure_b_bar"],
+                  )
           for row in csv.DictReader((root / "features.csv").open(newline="")):
               print(
                   "MAT_SPEC_003_MODE",
