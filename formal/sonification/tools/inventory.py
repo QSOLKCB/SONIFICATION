@@ -156,6 +156,29 @@ def module_name(path: str) -> str:
     return stem.removesuffix(".__init__")
 
 
+def resolve_python_relative_import(path: str, imported: str, level: int) -> str | None:
+    """Resolve ImportFrom against the containing package, not an init module.
+
+    Level one stays in the package; each additional dot ascends one package.
+    A relative import that escapes the top-level package has no static target.
+    """
+    if level == 0:
+        return imported
+    if path == "__init__.py":
+        return None
+
+    package_parts = module_name(path).split(".")
+    if PurePosixPath(path).name != "__init__.py":
+        package_parts.pop()
+
+    ascents = level - 1
+    if ascents >= len(package_parts):
+        return None
+    return ".".join(
+        [*package_parts[: len(package_parts) - ascents], *([imported] if imported else [])]
+    )
+
+
 def python_inventory(path: str, raw: bytes) -> tuple[list[dict], list[dict], list[str]]:
     source = raw.decode("utf-8")
     tree = ast.parse(source, filename=path)
@@ -343,8 +366,11 @@ def generate(root: Path) -> tuple[dict, dict, str]:
                 candidates = [module]
                 if imp["kind"] == "python_from_import":
                     if imp.get("level"):
-                        parts = module_name(path).split(".")[: -imp["level"]]
-                        module = ".".join(parts + ([module] if module else []))
+                        module = resolve_python_relative_import(
+                            path, module, imp["level"]
+                        )
+                        if module is None:
+                            continue
                     candidates = [module, *(module + "." + name for name in imp["names"])]
                 for candidate in candidates:
                     if candidate in module_paths:
