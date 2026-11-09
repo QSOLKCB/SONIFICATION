@@ -31,6 +31,99 @@ jobs:
           PY
       - name: Build successor MAT-SPEC-002 interval evidence
         run: python scripts/build_mat_spec_002.py --out dist/mat-spec-002
+      - name: Print MAT-SPEC-002 digests for MAT-SPEC-003 parent pinning
+        run: |
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+
+          for path in sorted(Path("dist/mat-spec-002").iterdir()):
+              if path.is_file():
+                  print("MAT_SPEC_002_DIGEST", path.name, hashlib.sha256(path.read_bytes()).hexdigest())
+          PY
+      - name: Build MAT-SPEC-003 physical-mode evidence
+        run: python scripts/build_mat_spec_003.py --out dist/mat-spec-003
+      - name: Report measured finite-window mode diagnostics
+        run: |
+          python - <<'PY'
+          import csv
+          import json
+          from pathlib import Path
+
+          root = Path("dist/mat-spec-003")
+          controls = json.loads((root / "controls.json").read_text())
+          print(
+              "MAT_SPEC_003_INTERVAL_COUNTS",
+              json.dumps(controls["pressure_pair_interval_counts"], sort_keys=True),
+          )
+          print(
+              "MAT_SPEC_003_RECEIVER_COLLISIONS",
+              json.dumps(controls["receiver"]["collision_audit"], sort_keys=True),
+          )
+          print(
+              "MAT_SPEC_003_COVERAGE_CORE_COUNTS",
+              json.dumps(controls["coverage_core_interval_counts"], sort_keys=True),
+          )
+          print(
+              "MAT_SPEC_003_COVERAGE_CORE_RECEIVERS",
+              json.dumps(
+                  controls["coverage_core_receiver"]["collision_audit"], sort_keys=True
+              ),
+          )
+          for row in csv.DictReader((root / "core-discrimination.csv").open(newline="")):
+              if row["mode"] == "roton" and row["comparison"] == "overlap":
+                  print(
+                      "MAT_SPEC_003_ROTON_CORE_OVERLAP",
+                      row["pressure_a_bar"], row["pressure_b_bar"],
+                  )
+          for row in csv.DictReader((root / "features.csv").open(newline="")):
+              print(
+                  "MAT_SPEC_003_MODE",
+                  row["pressure_bar"], row["mode"], row["status"],
+                  row["nominal"], row["lower"], row["upper"],
+                  row["nominal_q_inverse_angstrom"], row["candidate_q_count"],
+              )
+          PY
+      - name: Diagnose measured roton missingness without inferring absent values
+        run: |
+          python - <<'PY'
+          from fractions import Fraction
+          from pathlib import Path
+
+          from materials import mat_spec
+          from materials.mat_spec_002 import index_observations
+
+          root = Path("data/materials/helium4/DispersionAllPressures.txt")
+          by = index_observations(mat_spec.parse_helium(mat_spec.read_regular(root)))
+          for pressure in mat_spec.PRESSURES:
+              missing = [
+                  r["q_inverse_angstrom"]
+                  for r in by[pressure]
+                  if Fraction("1.600") <= Fraction(r["q_inverse_angstrom"]) <= Fraction("2.150")
+                  and r["status"] == "missing"
+              ]
+              print(
+                  "MAT_SPEC_003_ROTON_MISSING",
+                  pressure, len(missing), missing[:8], missing[-8:],
+              )
+          contiguous = []
+          for i, r in enumerate(by[mat_spec.PRESSURES[0]]):
+              q = Fraction(r["q_inverse_angstrom"])
+              if Fraction("1.600") <= q <= Fraction("2.150") and all(
+                  by[p][i]["status"] == "tabulated" for p in mat_spec.PRESSURES
+              ):
+                  contiguous.append(r["q_inverse_angstrom"])
+          runs = []
+          for q in contiguous:
+              if not runs or Fraction(q) - Fraction(runs[-1][-1]) != Fraction("0.002"):
+                  runs.append([q])
+              else:
+                  runs[-1].append(q)
+          print(
+              "MAT_SPEC_003_ALL_PRESSURE_COMPLETE_RUNS",
+              [(run[0], run[-1], len(run)) for run in runs if len(run) >= 5],
+          )
+          PY
 
   test:
     runs-on: ubuntu-latest
