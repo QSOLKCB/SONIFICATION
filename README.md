@@ -70,6 +70,10 @@ superfluid-helium **model-parameter** entries from Bhadra and Mishra
 two-fluid fractions and symbolic receiver controls while preserving
 missing uncertainty metadata.
 
+The eight exact fractions remain distinct; authored 12-TET controls retain
+six distinct notes (three pair collisions). This is numerical quantization,
+not evidence of audibility.
+
 **Scientific gate:** All published inputs are He-II model parameters, not
 independently phase-labelled measurements spanning the transition.
 MAT-SPEC-004 therefore explicitly reports

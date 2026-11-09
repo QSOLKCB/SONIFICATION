@@ -99,6 +99,11 @@ class BundleTests(unittest.TestCase):
         self.assertEqual(
             self.manifest["source"]["sha256"], mat_spec_004.DATA_SHA256
         )
+        self.assertIsNotNone(mat_spec_004.PARENT_V3_SHA256)
+        self.assertEqual(
+            set(self.manifest["parent_artifacts"]),
+            set(mat_spec_004.PARENT_V3_SHA256),
+        )
         for name, record in self.manifest["outputs"].items():
             self.assertEqual(mat_spec.sha256(self.bundle[name]), record["sha256"])
         self.assertIsNone(self.manifest["canonical_pcm_sha256"])

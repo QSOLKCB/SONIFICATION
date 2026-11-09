@@ -64,6 +64,19 @@ negative control. Rank scores and quantized notes cannot make a temperature
 series into evidence of a phase transition. Alpha is retained separately;
 it is **not** an independent phase label.
 
+## Executed numerical preservation result
+
+The source-pinned eight-point Table I series produces eight distinct exact
+superfluid fractions and passes all eight mass-closure and eight authored
+frequency-target roundtrips.
+
+At the fixed, declared 400 Hz/fraction scale, the eight exact frequency
+targets yield **six distinct 12-TET MIDI notes** and **three colliding
+temperature pairs**. The eight dense ranks preserve the source ordering but
+discard value magnitudes. These are comparisons of symbolic controls;
+there were no listening tests. Exact rational arithmetic preserves the
+represented decimal strings, **not any unstated physical error bounds**.
+
 ## Nonclaims and fail-closed phase gate
 
 All eight observations come from one *He-II* model-parameter table.
