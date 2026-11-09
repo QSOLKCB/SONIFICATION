@@ -1,6 +1,6 @@
 # SPARK-002 proposed roadmap — bounded evidence-kernel verification
 
-Status: **Phase 1A merged and owner-executed proof receipts verified (23/23 reported checks); Phase 1B implementation candidate under review — no Phase 1B formal proof claimed**. See
+Status: **Phase 1A merged with 23/23 reported checks proved; Phase 1B merged with 9/9 reported checks proved by a separate owner-executed strict GNATprove run.** See
 [SPARK-002 Phase 1A specification](SPARK_002_SPEC.md).
 
 SPARK-002 would be a separately versioned software-verification project. It
@@ -24,8 +24,13 @@ The separate owner-executed strict GNATprove run at merge commit `06b1294bf1617e
 The Phase 1B candidate adds an isolated `Spark_002_Partition` package for a
 fixed eight-row campaign-wide TRAIN/HOLDOUT audit and typed missingness
 comparisons. See [Phase 1B implementation specification](SPARK_002_PHASE_1B.md).
-The new owner proof is **NOT EXECUTED** until an independently reviewed,
-source-pinned strict GNATprove run produces retained receipts.
+The Phase 1B owner-executed strict GNATprove run at merged commit
+`6f0f1be1ba8885fa708d7328bcb92fbf4ecc324f` reported 9/9 checks proved
+(2 functional contracts, 7 termination, no unproved checks), exit status 0.
+The seven byte-preserved original receipts and verifier are in
+[Phase 1B proof preservation](../publication/spark-002/phase-1b/README.md).
+Native Ada/Python CI did not rerun GNATprove. The result establishes only the
+declared bounded Ada/SPARK properties, not experimental authentication.
 
 ## Candidate proof domains
 

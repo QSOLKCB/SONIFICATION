@@ -1,0 +1,31 @@
+Phase 1 of 3: generation of data representation information ...
+Phase 2 of 3: generation of Global contracts ...
+Phase 3 of 3: flow analysis and proof ...
+ info: implicit aspect Always_Terminates on "Usable" has been proved, subprogram will terminate
+--> spark_002_partition.ads:21:13
+
+ info: implicit aspect Always_Terminates on "Compare_Readings" has been proved, subprogram will terminate
+--> spark_002_partition.ads:28:13
+
+ info: postcondition proved (CVC5: 5 VC in max 0.0 seconds and 1 step)
+--> spark_002_partition.ads:30:08
+
+ info: implicit aspect Always_Terminates on "Declared_Row_Valid" has been proved, subprogram will terminate
+--> spark_002_partition.ads:78:13
+
+ info: implicit aspect Always_Terminates on "Compatible" has been proved, subprogram will terminate
+--> spark_002_partition.ads:95:13
+
+ info: implicit aspect Always_Terminates on "Both_Phases" has been proved, subprogram will terminate
+--> spark_002_partition.ads:116:13
+
+ info: implicit aspect Always_Terminates on "Packet_Eligible" has been proved, subprogram will terminate
+--> spark_002_partition.ads:127:13
+
+ info: implicit aspect Always_Terminates on "Audit" has been proved, subprogram will terminate
+--> spark_002_partition.ads:146:13
+
+ info: postcondition proved (CVC5: 9 VC in max 0.0 seconds and 1 step; Trivial: 2 VC in max 0.0 seconds and 2 steps)
+--> spark_002_partition.ads:148:08
+Success: all checks proved (9 checks).
+Summary logged in /home/trent/sonification-spark-002-phase1b-proof/verification/spark002/phase1b/obj/gnatprove/gnatprove.out

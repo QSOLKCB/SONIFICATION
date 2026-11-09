@@ -1,0 +1,45 @@
+=========================
+Summary of SPARK analysis
+=========================
+
+--------------------------------------------------------------------------------------------------
+SPARK Analysis results        Total       Flow                      Provers   Justified   Unproved
+--------------------------------------------------------------------------------------------------
+Data Dependencies                 .          .                            .           .          .
+Flow Dependencies                 .          .                            .           .          .
+Initialization                    .          .                            .           .          .
+Non-Aliasing                      .          .                            .           .          .
+Run-time Checks                   .          .                            .           .          .
+Assertions                        .          .                            .           .          .
+Functional Contracts              2          .    2 (CVC5 88%, Trivial 13%)           .          .
+LSP Verification                  .          .                            .           .          .
+Termination                       7          7                            .           .          .
+Concurrency                       .          .                            .           .          .
+--------------------------------------------------------------------------------------------------
+Total                             9    7 (78%)                      2 (22%)           .          .
+
+
+max steps used for successful proof: 2
+
+============================
+Most difficult proved checks
+============================
+
+No check found with max time greater than 1 second
+
+========================
+Detailed analysis report
+========================
+
+Analyzed 2 units
+in unit spark_002_partition, 8 subprograms and packages out of 8 analyzed
+  Spark_002_Partition at spark_002_partition.ads:4 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Spark_002_Partition.Audit at spark_002_partition.ads:146 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Spark_002_Partition.Both_Phases at spark_002_partition.ads:116 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Spark_002_Partition.Compare_Readings at spark_002_partition.ads:28 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Spark_002_Partition.Compatible at spark_002_partition.ads:95 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Spark_002_Partition.Declared_Row_Valid at spark_002_partition.ads:78 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Spark_002_Partition.Packet_Eligible at spark_002_partition.ads:127 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Spark_002_Partition.Usable at spark_002_partition.ads:21 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+in unit spark_002_partition_probe, 0 subprograms and packages out of 1 analyzed
+  Spark_002_Partition_Probe at spark_002_partition_probe.adb:5 skipped; SPARK_Mode => Off
