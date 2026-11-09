@@ -16,7 +16,7 @@ import re
 import stat
 from contextlib import suppress
 from fractions import Fraction
-from itertools import combinations
+from itertools import combinations, pairwise
 from pathlib import Path, PurePosixPath
 
 from materials import mat_spec, mat_spec_005
@@ -209,7 +209,7 @@ def parse_measurements(raw: bytes) -> list[dict]:
         })
     if not all(
         Fraction(a["delta_T_microkelvin"]) < Fraction(b["delta_T_microkelvin"])
-        for a, b in zip(output, output[1:], strict=False)
+        for a, b in pairwise(output)
     ):
         raise ValueError("source temperature offset order drift")
     return output
