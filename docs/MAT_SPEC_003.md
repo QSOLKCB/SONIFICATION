@@ -100,7 +100,8 @@ negative energy/scale rejection and q-energy permutation. None is new physics.
 
 MAT-SPEC-003 first invokes MAT-SPEC-002 to validate the original MAT-SPEC-001
 seven-output SHA-256 baseline and the MAT-SPEC-002 receipt. It additionally
-records the SHA-256 of the MAT-SPEC-002 artifacts, its own frozen contract,
+requires equality against the five explicit MAT-SPEC-002 output SHA-256
+pins captured from merged-main CI. It also records its own frozen contract,
 implementation and symbolic output files. SHA-256 is an identity witness, not
 a proof of measurement correctness, audit chronology or scientific truth.
 

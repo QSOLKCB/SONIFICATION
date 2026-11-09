@@ -143,6 +143,17 @@ class RuntimeEvidenceTests(unittest.TestCase):
             self.assertEqual(set(self.features[pressure]), set(mat_spec_003.MODES))
         self.assertTrue(self.controls["no_sampled_audio_generated"])
 
+    def test_merged_mat_spec_002_five_output_hash_pins(self) -> None:
+        ancestor = mat_spec_002.build_evidence(ROOT)
+        self.assertEqual(
+            {name: mat_spec.sha256(raw) for name, raw in ancestor.items()},
+            mat_spec_003.PARENT_V2_SHA256,
+        )
+        self.assertEqual(
+            set(self.manifest["parent_v2_artifacts"]),
+            set(mat_spec_003.PARENT_V2_SHA256),
+        )
+
     def test_manifest_parent_receipts_and_replay(self) -> None:
         self.assertEqual(self.bundle, mat_spec_003.build_evidence(ROOT))
         self.assertEqual(self.manifest["profile"], mat_spec_003.PROFILE)
@@ -161,8 +172,6 @@ class RuntimeEvidenceTests(unittest.TestCase):
 
     def test_contract_drift_and_parent_mutation_are_rejected(self) -> None:
         baseline = mat_spec_002.build_evidence(ROOT)
-        altered = dict(baseline)
-        altered["controls.json"] = b"tamper"  # Not a v2 artifact; see below.
         alternate = {name: data for name, data in baseline.items()}
         alternate["audit.json"] = b"tampered"
         with (

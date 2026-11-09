@@ -14,7 +14,7 @@ import os
 import stat
 from contextlib import suppress
 from fractions import Fraction
-from itertools import combinations
+from itertools import combinations, pairwise
 from pathlib import Path, PurePosixPath
 
 from materials import mat_spec, mat_spec_002
@@ -48,7 +48,13 @@ ALTERNATE_WINDOWS = {
     "roton": ("1.800", "2.050"),
 }
 MODES = ("phonon", "maxon", "roton")
-PARENT_V2_SHA256 = None  # Replace with all five captured CI baseline digests.
+PARENT_V2_SHA256 = {
+    "audit.json": "782a432c29daba27f717d7d31a8d23dc8f9076eb75b3162b0b9e30c769e6d13e",
+    "contract.json": "7a552ffc237ab742ba8a9f5d30c1ef5426e40a8508941f63f01547411d234507",
+    "manifest.json": "f4910153c7201287fc897ad0adb3d50f03e2712fb7d76191417d30f5441adc28",
+    "pressure-pairs.csv": "06dd8d1b56c37653ac9d5041a55bf1eb01e6a0e4c57a50a9d0761e9e5953abc8",
+    "sampling.json": "0c9b6bfebb57a3fec3784416bea25c925632a120e8bc95aefd6c10db48d12e05",
+}
 EXPECTED_SPEC = {
     "profile": PROFILE,
     "version": VERSION,
@@ -118,7 +124,7 @@ def mode_feature(
         r for r in series if lo <= Fraction(r["q_inverse_angstrom"]) <= hi
     ]
     q_values = [Fraction(r["q_inverse_angstrom"]) for r in selected]
-    if not selected or any(a >= b for a, b in zip(q_values, q_values[1:])):
+    if not selected or any(a >= b for a, b in pairwise(q_values)):
         raise ValueError("empty, unordered or duplicate wavevector window")
     if any(r["status"] not in {"tabulated", "missing"} for r in selected):
         raise ValueError("invalid observation status")
@@ -161,16 +167,21 @@ def mode_feature(
         return result
 
     is_max = mode == "maxon"
-    rank_key = (lambda row: _observation_values(row)[0])
     if is_max:
-        selected_row = min(valid, key=lambda r: (-rank_key(r), Fraction(r["q_inverse_angstrom"])))
+        selected_row = min(
+            valid,
+            key=lambda r: (-_observation_values(r)[0], Fraction(r["q_inverse_angstrom"])),
+        )
         lower = max(_bounds(row)[0] for row in valid)
         upper = max(_bounds(row)[1] for row in valid)
         candidates = [
             r for r in valid if _bounds(r)[1] >= lower
         ]
     else:
-        selected_row = min(valid, key=lambda r: (rank_key(r), Fraction(r["q_inverse_angstrom"])))
+        selected_row = min(
+            valid,
+            key=lambda r: (_observation_values(r)[0], Fraction(r["q_inverse_angstrom"])),
+        )
         lower = min(_bounds(row)[0] for row in valid)
         upper = min(_bounds(row)[1] for row in valid)
         candidates = [
@@ -366,7 +377,7 @@ def build_evidence(root: Path) -> dict[str, bytes]:
     """Run fully verified MAT-SPEC-002 and seal a separate physical-mode view."""
     parent = mat_spec_002.build_evidence(root)
     parent_digests = {name: mat_spec.sha256(data) for name, data in parent.items()}
-    if PARENT_V2_SHA256 is not None and parent_digests != PARENT_V2_SHA256:
+    if parent_digests != PARENT_V2_SHA256:
         raise ValueError("archived MAT-SPEC-002 baseline output SHA-256 mismatch")
     parent_manifest = json.loads(parent["manifest.json"])
     if (
