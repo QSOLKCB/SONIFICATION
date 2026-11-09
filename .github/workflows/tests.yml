@@ -103,6 +103,33 @@ jobs:
           PY
       - name: Build MAT-SPEC-007 independent fit concordance
         run: python scripts/build_mat_spec_007.py --out dist/mat-spec-007
+      - name: Capture immutable MAT-SPEC-007 output digests
+        run: |
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          for path in sorted(Path("dist/mat-spec-007").iterdir()):
+              if path.is_file():
+                  print(
+                      "MAT_SPEC_007_DIGEST", path.name,
+                      hashlib.sha256(path.read_bytes()).hexdigest(),
+                  )
+          PY
+      - name: Print MAT-SPEC-008 candidate source file SHA-256
+        run: |
+          sha256sum data/materials/helium4/mat_spec_008_source_catalogue.json
+      - name: Build MAT-SPEC-008 source admission and identity evidence
+        run: python scripts/build_mat_spec_008.py --out dist/mat-spec-008
+      - name: Report MAT-SPEC-008 actual admission and independence audit
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          out = Path("dist/mat-spec-008")
+          for name in ("measurement-audit.json", "admission.json"):
+              data = json.loads((out / name).read_bytes())
+              print("MAT_SPEC_008_RECEIPT", name, json.dumps(data, sort_keys=True))
+          PY
       - name: Print MAT-SPEC-007 interval and receiver summaries
         run: |
           python - <<'PY'
