@@ -15,7 +15,7 @@ import os
 import stat
 from contextlib import suppress
 from fractions import Fraction
-from itertools import combinations
+from itertools import combinations, pairwise
 from pathlib import Path, PurePosixPath
 
 from materials import mat_spec, mat_spec_002, mat_spec_003
@@ -153,7 +153,7 @@ def parse_source(source_bytes: bytes) -> list[dict]:
 
 
 def is_strictly_decreasing(values: list[Fraction]) -> bool:
-    return all(a > b for a, b in zip(values, values[1:], strict=False))
+    return all(a > b for a, b in pairwise(values))
 
 
 def map_temperature(rows: list[dict]) -> list[dict]:
@@ -306,7 +306,7 @@ def build_evidence(root: Path) -> dict[str, bytes]:
     spec = json.loads(spec_bytes)
     if metadata != EXPECTED_META or spec != EXPECTED_SPEC:
         raise ValueError("MAT-SPEC-004 source provenance or contract drift")
-    if source != source.encode("ascii").decode("ascii").encode("ascii"):
+    if source.decode("ascii").encode("ascii") != source:
         raise ValueError("unexpected source encoding")
     observations = parse_source(source)
     mapped = map_temperature(observations)
