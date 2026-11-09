@@ -1,0 +1,24 @@
+{
+  "profile": "MAT-SPEC-010",
+  "version": "0.1.0",
+  "name": "Final numbered MAT-SPEC evidence closure and reproducible archive index",
+  "final_numbered_profile": "MAT-SPEC-010",
+  "numbered_profiles_total": 10,
+  "parent_profile": "MAT-SPEC-009 v0.1.0",
+  "parent_commit": "0758a96360726aafbb07abed34620eda178407ae",
+  "source_replay_requirement": "All prior nine profiles replayed by MAT-SPEC-009 descendant chain, with known digests for each logical output",
+  "latest_profile_status": "BLOCKED_NO_ADMITTED_SOURCE_SEPARATED_PHYSICAL_EVIDENCE",
+  "scientific_claims": "Frozen claim levels and exclusions for each of MAT-SPEC-001 through -009; no new helium phase inference in this closing profile",
+  "archive_definition": "Deterministic JSON index of logical artifact paths and input files with SHA-256; NOT ZIP, TAR, deposited data or independent DOI",
+  "release_rule": "External immutable tag and release may be created only after owner merge and CI; no release SHA anticipated inside its own contents",
+  "allowed_runtime_outputs": "Canonical ASCII JSON/CSV only, including preexisting symbolic MIDI SHA-256 identities but no rendered audio",
+  "closure": "NUMBERED_SERIES_CLOSED_AT_010_WITH_OPEN_SCIENTIFIC_GATES",
+  "post_010_order": [
+    "SONIFICATION_SPARK_ADA_PROOF_AND_DIFFERENTIAL_EXECUTION",
+    "VANILLAJS_LEAN_TO_ECMA_REFINEMENT_REPAIR"
+  ],
+  "future_material_research": "separate post-MAT-SPEC programme; never add MAT-SPEC-011",
+  "claim_policy": "Executed numerical proofs/tests distinct from physics, source independence, listener perception, statistical significance and formal verification",
+  "foundational_doi": "10.5281/zenodo.24062652",
+  "new_doi": null
+}
