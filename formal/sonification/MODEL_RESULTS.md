@@ -12,7 +12,7 @@ The mathematical model is defined in `lean/Sonification/Intervals.lean` and
 under Lean 4.19.0. Their exact types and transitive axiom lists are in
 `lean/theorem-statements.json`; typed consumers in `lean/Audit.lean` require
 the intended propositions. The fresh replay at
-`lean/attempts/root-replay-001/result.json` records 19 expected and 19 observed
+`lean/attempts/commit-bound-001/result.json` binds the proof inputs to Git commit `1bb4ca67681123b2f25ff7f5fd04e958046a4f9d` and records 19 expected and 19 observed
 theorems, 217 origin-module declarations, executable identity, imported
 toolchain hashes, command lines, return codes and original logs.
 

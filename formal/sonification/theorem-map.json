@@ -242,7 +242,7 @@
       },
       "evidence": {
         "MODEL_PROVED": [
-          "formal/sonification/lean/attempts/root-replay-001/result.json"
+          "formal/sonification/lean/attempts/commit-bound-001/result.json"
         ],
         "AUDIT_ACCEPTED": [
           "formal/sonification/audit/attempt-004-model/AUDIT.json"
@@ -296,7 +296,7 @@
       },
       "evidence": {
         "MODEL_PROVED": [
-          "formal/sonification/lean/attempts/root-replay-001/result.json"
+          "formal/sonification/lean/attempts/commit-bound-001/result.json"
         ],
         "AUDIT_ACCEPTED": [
           "formal/sonification/audit/attempt-004-model/AUDIT.json"
@@ -356,7 +356,7 @@
       },
       "evidence": {
         "MODEL_PROVED": [
-          "formal/sonification/lean/attempts/root-replay-001/result.json"
+          "formal/sonification/lean/attempts/commit-bound-001/result.json"
         ],
         "AUDIT_ACCEPTED": [
           "formal/sonification/audit/attempt-004-model/AUDIT.json"
