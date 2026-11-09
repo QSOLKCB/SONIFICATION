@@ -1,0 +1,63 @@
+{
+  "metadata": {
+    "resource_type": {"id": "dataset"},
+    "title": "MAT-SPEC-010: Final Evidence Freeze and Reproducible Archive of the MAT-SPEC-001–010 Materials Sonification Research Programme",
+    "creators": [
+      {
+        "person_or_org": {
+          "type": "personal",
+          "given_name": "Trent",
+          "family_name": "Slade",
+          "name": "Slade, Trent"
+        },
+        "affiliations": [{"name": "QSOL-IMC"}]
+      }
+    ],
+    "publisher": "Zenodo",
+    "publication_date": "2026-11-10",
+    "version": "0.1.0",
+    "description": "A deterministic post-release handoff archive of the closed MAT-SPEC-001–010 research programme. It preserves the byte-verified immutable GitHub release as its parent and adds the exact pinned materials package initializer omitted by the frozen logical source index, making the deposited source subtree importable without external recovery. It contains generated artifact bytes, attributed source excerpts, source-rights and literature records, methodology, tests, claim and source inventories, and SHA-256 provenance. The packaging correction changes no scientific result or admission gate and does not establish independent helium phase classification, independent experimental replication, human auditory validation, E8 physics, or a new physical law.",
+    "rights": [
+      {
+        "title": "Mixed rights: MPL-2.0 repository work and source-specific third-party terms; see SOURCE_RIGHTS.json"
+      }
+    ],
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.24062652",
+        "relation_type": {"id": "isderivedfrom"},
+        "resource_type": {"id": "dataset"}
+      },
+      {
+        "identifier": "https://github.com/QSOLKCB/SONIFICATION/tree/mat-spec-010-v0.1.0",
+        "relation_type": {"id": "issupplementto"},
+        "resource_type": {"id": "software"}
+      },
+      {
+        "identifier": "https://github.com/QSOLKCB/SONIFICATION/releases/tag/mat-spec-010-v0.1.0",
+        "relation_type": {"id": "isderivedfrom"},
+        "resource_type": {"id": "dataset"}
+      }
+    ],
+    "subjects": [
+      {"subject": "reproducible research"},
+      {"subject": "materials sonification"},
+      {"subject": "helium-4"},
+      {"subject": "scientific provenance"}
+    ]
+  },
+  "files": [
+    {
+      "key": "MAT-SPEC-010-v0.1.0-zenodo-deposit.zip",
+      "sha256": "daa8c2015db0c1865c5e14daaf59788a30e45ebfdc279d3d3eac3775595abe27",
+      "bytes": 3176870,
+      "state": "VALIDATED_READY_FOR_DRAFT_UPLOAD"
+    }
+  ],
+  "record": {
+    "id": null,
+    "reserved_doi": null,
+    "state": "PREPARED_NOT_CREATED",
+    "publication_requires_owner_approval": true
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "repository": "QSOLKCB/SONIFICATION",
+  "source_commit": "95cc7c455535c1c4562d4241f5b387c811d90e5d",
+  "runs": [
+    {
+      "id": 42633492983,
+      "name": "SPARK-001 native Ada differential verification",
+      "url": "https://github.com/QSOLKCB/SONIFICATION/actions/runs/42633492983",
+      "event": "push",
+      "conclusion": "success",
+      "started_at": "2026-11-09T14:19:07Z",
+      "completed_at": "2026-11-09T14:19:25Z",
+      "jobs": [
+        {
+          "id": 129215500478,
+          "name": "native-differential",
+          "conclusion": "success",
+          "vectors": 372
+        }
+      ]
+    },
+    {
+      "id": 42633492559,
+      "name": "tests",
+      "url": "https://github.com/QSOLKCB/SONIFICATION/actions/runs/42633492559",
+      "event": "push",
+      "conclusion": "success",
+      "started_at": "2026-11-09T14:19:07Z",
+      "completed_at": "2026-11-09T14:23:01Z",
+      "jobs": [
+        {"id": 129215498645, "name": "mat-spec-stdlib", "conclusion": "success"},
+        {"id": 129215499135, "name": "etq", "conclusion": "success"},
+        {"id": 129215499157, "name": "browser-app", "conclusion": "success"},
+        {"id": 129215499241, "name": "test (3.12)", "conclusion": "success"},
+        {"id": 129215499413, "name": "test (3.11)", "conclusion": "success"},
+        {"id": 129215499449, "name": "test (3.13)", "conclusion": "success"}
+      ]
+    }
+  ],
+  "formal_proof": {
+    "execution_location": "owner-executed GNATprove environment",
+    "tool": "GNATprove FSF 16.1.0",
+    "recorded_exit_status": 0,
+    "runtime_checks": 18,
+    "functional_contracts": 2,
+    "termination_checks": 6,
+    "total_checks": 26,
+    "unproved_checks": 0,
+    "pragma_assume_reported": 0,
+    "evidence_asset_id": 727770536
+  }
+}
+

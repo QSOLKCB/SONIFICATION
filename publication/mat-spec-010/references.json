@@ -1,0 +1,73 @@
+{
+  "profile": "MAT-SPEC-010",
+  "version": "0.1.0",
+  "publication_bytes_redistributed": false,
+  "references": [
+    {
+      "id": "GODFRIN_2021",
+      "doi": "10.1103/PhysRevB.103.104516",
+      "url": "https://arxiv.org/abs/2012.09067v1",
+      "role": "published neutron-dispersion measurements and ancillary data"
+    },
+    {
+      "id": "BHADRA_MISHRA_2022",
+      "doi": "10.1063/5.0083847",
+      "url": "https://doi.org/10.1063/5.0083847",
+      "role": "published two-fluid model-input table"
+    },
+    {
+      "id": "DONNELLY_BARENGHI_1998",
+      "doi": "10.1063/1.556028",
+      "url": "https://srd.nist.gov/jpcrdreprint/1.556028.pdf",
+      "role": "evaluated liquid-helium reference compilation"
+    },
+    {
+      "id": "LIPA_CHUI_1983_1984",
+      "doi": "10.1103/PhysRevLett.51.2291",
+      "url": "https://ntrs.nasa.gov/citations/19860021083",
+      "role": "original processed ground-calorimetry measurements"
+    },
+    {
+      "id": "AHLERS_1971",
+      "doi": "10.1103/PhysRevA.3.696",
+      "role": "original SVP calorimetry publication; no row packet admitted"
+    },
+    {
+      "id": "MUELLER_AHLERS_POBELL_1976",
+      "doi": "10.1103/PhysRevB.14.2096",
+      "role": "SVP fit reanalysis plus separate pressure experiment"
+    },
+    {
+      "id": "GASPARINI_MOLDOVER_1975",
+      "doi": "10.1103/PhysRevB.12.93",
+      "role": "original experiment publication; no row packet admitted"
+    },
+    {
+      "id": "GASPARINI_GAETA_1978",
+      "doi": "10.1103/PhysRevB.17.1466",
+      "role": "reanalysis of the earlier campaign"
+    },
+    {
+      "id": "LIPA_STS52_1992_1996",
+      "doi": "10.1103/PhysRevLett.76.944",
+      "url": "https://ntrs.nasa.gov/citations/19950007794",
+      "role": "orbital experiment report; no row packet admitted"
+    },
+    {
+      "id": "LIPA_STS52_REVISION_2003",
+      "doi": "10.1103/PhysRevB.68.174518",
+      "role": "revision of the same orbital campaign"
+    },
+    {
+      "id": "BARMATZ_2007",
+      "doi": "10.1103/RevModPhys.79.1",
+      "role": "secondary review and fitted-summary source"
+    },
+    {
+      "id": "MAT_SPEC_001_FOUNDATIONAL_RECORD",
+      "doi": "10.5281/zenodo.24062652",
+      "role": "foundational related work; not the identity of this archive"
+    }
+  ]
+}
+

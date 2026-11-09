@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "resource_type": {"id": "software"},
+    "title": "SPARK-001 v1.0.0: Formally Verified Bounded Numerical and Provenance Kernel — SONIFICATION / QSOL-IMC",
+    "creators": [
+      {
+        "person_or_org": {
+          "type": "personal",
+          "given_name": "Trent",
+          "family_name": "Slade",
+          "name": "Slade, Trent"
+        },
+        "affiliations": [{"name": "QSOL-IMC"}]
+      }
+    ],
+    "publisher": "Zenodo",
+    "publication_date": "2026-11-10",
+    "version": "1.0.0",
+    "description": "Pinned Ada/SPARK source and verified proof receipts for SPARK-001 v1.0.0. GNATprove FSF 16.1.0 discharged 18 runtime checks, 2 functional contracts and 6 termination checks (26/26), with zero unproved checks and zero reported pragma Assume statements. The formal scope is limited to the declared Spark_Core properties. Spark_Probe is excluded; the parser postcondition is not a complete grammar-equivalence theorem; source identities do not establish external authenticity; and no helium phase validation, E8 physical theory, auditory-perception result or material classifier is established.",
+    "rights": [{"id": "mpl-2.0"}],
+    "related_identifiers": [
+      {
+        "identifier": "https://github.com/QSOLKCB/SONIFICATION/releases/tag/spark-001-v1.0.0",
+        "relation_type": {"id": "issupplementto"},
+        "resource_type": {"id": "software"}
+      },
+      {
+        "identifier": "10.5281/zenodo.24062652",
+        "relation_type": {"id": "references"},
+        "resource_type": {"id": "dataset"}
+      }
+    ],
+    "subjects": [
+      {"subject": "SPARK"},
+      {"subject": "formal verification"},
+      {"subject": "Ada"},
+      {"subject": "reproducible software"}
+    ]
+  },
+  "files": [
+    {
+      "key": "SPARK-001-v1.0.0-zenodo-software.zip",
+      "sha256": "399febb4b34b6f6774c0f2d39f7bc853fce5bc4dd6416ad405330e8d91fcf540",
+      "bytes": 126847,
+      "state": "VALIDATED_READY_FOR_DRAFT_UPLOAD"
+    }
+  ],
+  "record": {
+    "id": null,
+    "reserved_doi": null,
+    "state": "PREPARED_NOT_CREATED",
+    "publication_requires_owner_approval": true
+  }
+}

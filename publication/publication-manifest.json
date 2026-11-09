@@ -1,0 +1,340 @@
+{
+  "schema": "qsol.sonification.publication-manifest/v1",
+  "audit_date": "2026-11-10",
+  "repository": "QSOLKCB/SONIFICATION",
+  "repository_url": "https://github.com/QSOLKCB/SONIFICATION",
+  "research_stages": [
+    {
+      "profile": "MAT-SPEC-001",
+      "version": "1.0.0",
+      "tag": null,
+      "tag_state": "NO_GIT_TAG_RECORDED_BY_FROZEN_CLAIM_REGISTRY",
+      "source_commit": "195b325097cd01f16e9ca909edd95482d4863c27",
+      "github_release": null,
+      "scientific_admission": "MEASURED_SPECTRAL_NUMERICAL_REPLAY",
+      "boundary": "No inference of a new helium phase law, listening perception or unification"
+    },
+    {
+      "profile": "MAT-SPEC-002",
+      "version": "0.1.0",
+      "tag": null,
+      "tag_state": "NO_GIT_TAG_RECORDED_BY_FROZEN_CLAIM_REGISTRY",
+      "source_commit": "c400a27e16cc1ed63efc6657dbdd25d003b7bdbb",
+      "github_release": null,
+      "scientific_admission": "MEASURED_INTERVAL_AND_SAMPLING_AUDIT",
+      "boundary": "Reported errors are not covariance or calibrated probability distributions"
+    },
+    {
+      "profile": "MAT-SPEC-003",
+      "version": "0.1.0",
+      "tag": "mat-spec-003-v0.1.0",
+      "tag_object_type": "commit",
+      "peeled_commit": "c15ef3223e78cffad1494d99ad6edbdb41195362",
+      "github_release": {
+        "id": 438671244,
+        "url": "https://github.com/QSOLKCB/SONIFICATION/releases/tag/mat-spec-003-v0.1.0",
+        "published_at": "2026-11-09T02:06:32Z",
+        "immutable": true
+      },
+      "scientific_admission": "MEASURED_MODE_FEATURE_ANALYSIS"
+    },
+    {
+      "profile": "MAT-SPEC-004",
+      "version": "0.1.0",
+      "tag": "mat-spec-004-v0.1.0",
+      "tag_object_type": "commit",
+      "peeled_commit": "eac0659cbae1392bf63632ec8138005367e63304",
+      "github_release": {
+        "id": 438677473,
+        "url": "https://github.com/QSOLKCB/SONIFICATION/releases/tag/mat-spec-004-v0.1.0",
+        "published_at": "2026-11-09T02:18:45Z",
+        "immutable": true
+      },
+      "scientific_admission": "MODEL_INPUT_TEMPERATURE_SYMBOLIC_ANALYSIS"
+    },
+    {
+      "profile": "MAT-SPEC-005",
+      "version": "0.1.0",
+      "tag": "mat-spec-005-v0.1.0",
+      "tag_object_type": "commit",
+      "peeled_commit": "5b4c89b795beb7fc8c4f7d86ce2a2fb510cb6cb2",
+      "github_release": {
+        "id": 438722505,
+        "url": "https://github.com/QSOLKCB/SONIFICATION/releases/tag/mat-spec-005-v0.1.0",
+        "published_at": "2026-11-09T03:47:28Z",
+        "immutable": true
+      },
+      "scientific_admission": "EVALUATED_REFERENCE_CROSS_TRANSITION_REPLAY"
+    },
+    {
+      "profile": "MAT-SPEC-006",
+      "version": "0.1.0",
+      "tag": "mat-spec-006-v0.1.0",
+      "tag_object_type": "commit",
+      "peeled_commit": "c1abb62e8914f6790b5da5a51adf330b813b0530",
+      "github_release": {
+        "id": 438765808,
+        "url": "https://github.com/QSOLKCB/SONIFICATION/releases/tag/mat-spec-006-v0.1.0",
+        "published_at": "2026-11-09T05:14:47Z",
+        "immutable": true
+      },
+      "scientific_admission": "PRIMARY_PROCESSED_EXPERIMENTAL_TABLE_REPLAY"
+    },
+    {
+      "profile": "MAT-SPEC-007",
+      "version": "0.1.0",
+      "tag": "mat-spec-007-v0.1.0",
+      "tag_object_type": "tag",
+      "tag_object_sha1": "8b933a5ab09b8e76afe4c8e169e089f251e23314",
+      "peeled_commit": "b97348ff8fcf3f57764dec21a8914f153f96a745",
+      "github_release": {
+        "id": 439259092,
+        "url": "https://github.com/QSOLKCB/SONIFICATION/releases/tag/mat-spec-007-v0.1.0",
+        "published_at": "2026-11-09T15:15:27Z",
+        "immutable": true
+      },
+      "post_merge_ci_run_id": 42572699655,
+      "scientific_admission": "PUBLISHED_FIT_CONCORDANCE_ONLY",
+      "boundary": "Published fit-summary concordance, not independent reproduction of raw measurements"
+    },
+    {
+      "profile": "MAT-SPEC-008",
+      "version": "0.1.0",
+      "tag": "mat-spec-008-v0.1.0",
+      "tag_object_type": "tag",
+      "tag_object_sha1": "a02088e3c68addb41c9c7145694c0f566e84f87f",
+      "peeled_commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "github_release": {
+        "id": 439259189,
+        "url": "https://github.com/QSOLKCB/SONIFICATION/releases/tag/mat-spec-008-v0.1.0",
+        "published_at": "2026-11-09T15:15:36Z",
+        "immutable": true
+      },
+      "post_merge_ci_run_id": 42579096317,
+      "scientific_admission": "BLOCKED_INSUFFICIENT_INDEPENDENT_MEASUREMENT_DATA",
+      "boundary": "One source-pinned campaign and zero eligible independent measurement pairs"
+    },
+    {
+      "profile": "MAT-SPEC-009",
+      "version": "0.1.0",
+      "tag": "mat-spec-009-v0.1.0",
+      "tag_object_type": "tag",
+      "tag_object_sha1": "ad99d9e52f9ede423a4fb9d6a622624e32955263",
+      "peeled_commit": "0758a96360726aafbb07abed34620eda178407ae",
+      "github_release": {
+        "id": 439259277,
+        "url": "https://github.com/QSOLKCB/SONIFICATION/releases/tag/mat-spec-009-v0.1.0",
+        "published_at": "2026-11-09T15:15:44Z",
+        "immutable": true
+      },
+      "post_merge_ci_run_id": 42585585951,
+      "scientific_admission": "PHYSICAL_EVALUATION_BLOCKED_14_SYNTHETIC_CONTROLS",
+      "boundary": "Prospective protocol and synthetic rejection controls, not physical classification results"
+    },
+    {
+      "profile": "MAT-SPEC-010",
+      "version": "0.1.0",
+      "tag": "mat-spec-010-v0.1.0",
+      "tag_object_type": "tag",
+      "tag_object_sha1": "b8e88a0a32db30558e00704669eeaafee3a8d5f5",
+      "peeled_commit": "9d12c6a5098f4edba972bb6b1067555d8f48f693",
+      "github_release": {
+        "id": 439286691,
+        "url": "https://github.com/QSOLKCB/SONIFICATION/releases/tag/mat-spec-010-v0.1.0",
+        "published_at": "2026-11-09T15:15:52Z",
+        "immutable": true
+      },
+      "post_merge_ci_run_id": 42596816492,
+      "scientific_admission": "NUMBERED_SERIES_CLOSED_AT_010_WITH_OPEN_SCIENTIFIC_GATES",
+      "boundary": "No MAT-SPEC-011 and no upgrade of blocked independent physical validation"
+    }
+  ],
+  "spark_001": {
+    "version": "1.0.0",
+    "tag": "spark-001-v1.0.0",
+    "tag_object_type": "tag",
+    "tag_object_sha1": "d4a0aeb1a5d07e4c41935d4a5c7c672685c98b20",
+    "peeled_commit": "95cc7c455535c1c4562d4241f5b387c811d90e5d",
+    "github_release": {
+      "id": 439229831,
+      "url": "https://github.com/QSOLKCB/SONIFICATION/releases/tag/spark-001-v1.0.0",
+      "published_at": "2026-11-09T14:39:06Z",
+      "immutable": true
+    },
+    "proof_evidence_asset": {
+      "id": 727770536,
+      "filename": "SPARK-001-v1.0.0-proof-evidence.zip",
+      "bytes": 9051,
+      "sha256": "69ae22cf1e88407c26e98e657ec80b92aba89b28f7bbd683887266e4dd0f23d8"
+    },
+    "proof_outcome": {
+      "gnatprove": "FSF 16.1.0",
+      "runtime_checks": 18,
+      "functional_contracts": 2,
+      "termination_checks": 6,
+      "total_checks": 26,
+      "unproved_checks": 0,
+      "pragma_assume_reported": 0,
+      "recorded_exit_status": 0,
+      "differential_ci_vectors": 372
+    },
+    "limitations": [
+      "Only declared Spark_Core properties are formally verified",
+      "Spark_Probe is outside formal analysis",
+      "Parser postcondition is not a complete grammar-equivalence theorem",
+      "Source identity comparison is not external cryptographic authenticity",
+      "No independent helium physical phase validation",
+      "No E8 physical theory, audio perception result or material classifier"
+    ]
+  },
+  "publication_artifacts": [
+    {
+      "purpose": "MAT-SPEC-010_RESEARCH_ARCHIVE",
+      "filename": "MAT-SPEC-010-v0.1.0-research-archive.zip",
+      "bytes": 3161581,
+      "sha256": "c135f24c4a51a91444e2645c4850f326620dc54cb95b3b98d9bbae6d59235993",
+      "github_asset_id": 727925396,
+      "github_release_id": 439286691,
+      "github_state": "PUBLISHED_IMMUTABLE",
+      "reproduction_status": "VERIFIED_REPRODUCIBLE",
+      "source_subtree_status": "MISSING_MATERIALS_PACKAGE_INITIALIZER",
+      "zenodo_state": "NOT_SELECTED_FOR_ZENODO_UPLOAD_CORRECTED_HANDOFF_PREPARED"
+    },
+    {
+      "purpose": "MAT-SPEC-010_CORRECTED_ZENODO_HANDOFF",
+      "filename": "MAT-SPEC-010-v0.1.0-zenodo-deposit.zip",
+      "bytes": 3176870,
+      "sha256": "daa8c2015db0c1865c5e14daaf59788a30e45ebfdc279d3d3eac3775595abe27",
+      "members": 173,
+      "internal_checksums": 172,
+      "github_asset_id": null,
+      "github_state": "NOT_ATTACHED_POST_RELEASE_HANDOFF",
+      "immutable_release_parent_sha256": "c135f24c4a51a91444e2645c4850f326620dc54cb95b3b98d9bbae6d59235993",
+      "correction": "Adds exact pinned materials/__init__.py and explicit post-release provenance",
+      "zenodo_state": "PREPARED_NOT_CREATED"
+    },
+    {
+      "purpose": "SPARK-001_ZENODO_SOFTWARE_ARCHIVE",
+      "filename": "SPARK-001-v1.0.0-zenodo-software.zip",
+      "bytes": 126847,
+      "sha256": "399febb4b34b6f6774c0f2d39f7bc853fce5bc4dd6416ad405330e8d91fcf540",
+      "github_asset_id": null,
+      "github_state": "NOT_ATTACHED_SEPARATE_ZENODO_PACKAGE",
+      "zenodo_state": "PREPARED_NOT_CREATED"
+    }
+  ],
+  "executed_tests": [
+    {
+      "scope": "exact MAT-SPEC-010 tagged source",
+      "command": "python -m unittest discover -s tests -p test_mat_spec*.py",
+      "tests": 123,
+      "result": "PASS"
+    },
+    {
+      "scope": "publication archive controls",
+      "command": "python3.11 -m unittest tests.test_mat_spec_010_archive tests.test_spark_001_archive -v",
+      "tests": 9,
+      "result": "PASS"
+    },
+    {
+      "scope": "publication branch MAT-SPEC suite",
+      "command": "python -m unittest discover -s tests -p test_mat_spec*.py",
+      "tests": 131,
+      "result": "PASS"
+    },
+    {
+      "scope": "full Python test suite",
+      "command": "python -m pytest",
+      "python": "3.13.14",
+      "tests": 205,
+      "result": "PASS"
+    },
+    {
+      "scope": "Python static analysis",
+      "command": "ruff check .",
+      "result": "PASS"
+    },
+    {
+      "scope": "SPARK archive and proof-evidence controls",
+      "command": "python3.11 -m unittest tests.test_spark_001_archive tests.test_spark_001",
+      "tests": 11,
+      "result": "PASS"
+    },
+    {
+      "scope": "root Node test entrypoint",
+      "command": "npm test",
+      "test_files": 9,
+      "result": "PASS"
+    },
+    {
+      "scope": "root deterministic verification entrypoint",
+      "command": "npm run verify",
+      "verification_scripts": 7,
+      "result": "PASS"
+    },
+    {
+      "scope": "immutable MAT-SPEC-010 GitHub archive handoff",
+      "result": "VERIFIED_REPRODUCIBLE_DOWNLOADED_ASSET_AND_TWO_RECOVERED_BUILDS_BYTE_IDENTICAL",
+      "safe_inventory_before_extraction": true,
+      "path_traversal_members": 0,
+      "symlink_members": 0,
+      "members": 168,
+      "internal_checksums": 167,
+      "logical_artifacts_materialized": 63,
+      "repository_inputs_materialized": 68
+    },
+    {
+      "scope": "corrected MAT-SPEC-010 Zenodo handoff archive",
+      "result": "TWO_BYTE_IDENTICAL_BUILDS_AND_EXTRACTION_PASS",
+      "members": 173,
+      "internal_checksums": 172,
+      "indexed_repository_inputs_materialized": 68,
+      "supplemental_repository_inputs_materialized": 1,
+      "standalone_materials_package_import": "PASS"
+    },
+    {
+      "scope": "SPARK-001 deterministic archive",
+      "result": "TWO_BYTE_IDENTICAL_BUILDS_AND_EXTRACTION_PASS",
+      "internal_checksums": 35
+    }
+  ],
+  "toolchains": {
+    "archive_python": "CPython 3.11.15",
+    "uv": "0.12.1",
+    "git": "git 2.53.0",
+    "github_cli": "gh 2.46.0",
+    "node": "22.18.0",
+    "npm": "10.9.3",
+    "gnatprove_recorded": "FSF 16.1.0",
+    "why3_recorded": "1.8.2+git",
+    "cvc5_recorded": "1.3.2",
+    "gnat_recorded": "native 16.1.0",
+    "gprbuild_recorded": "26.0.1"
+  },
+  "zenodo": {
+    "foundational_mat_spec_001_related_identifier": "10.5281/zenodo.24062652",
+    "foundational_identifier_action": "PRESERVED_NOT_REUSED",
+    "public_resolution_audit": "HTTP_404_ON_2026-11-10; MAY_BE_RESERVED_OR_NONPUBLIC; NO LINEAGE CHANGE ATTEMPTED",
+    "github_repository_webhooks_observed": 0,
+    "exact_title_duplicate_search_results": 0,
+    "mat_spec_010": {
+      "resource_type": "dataset",
+      "record_id": null,
+      "reserved_doi": null,
+      "state": "PREPARED_NOT_CREATED",
+      "publication_requires_owner_approval": true
+    },
+    "spark_001": {
+      "resource_type": "software",
+      "record_id": null,
+      "reserved_doi": null,
+      "state": "PREPARED_NOT_CREATED",
+      "publication_requires_owner_approval": true
+    }
+  },
+  "unresolved_blockers": [
+    "No authenticated Zenodo API token or interactive Zenodo session is available in this executor, so draft record IDs and reserved DOIs cannot be obtained.",
+    "Owner approval is required before irreversible Zenodo publication even after draft creation.",
+    "The supplied foundational MAT-SPEC-001 DOI did not resolve through the public DOI or Zenodo APIs during this audit; it was preserved unchanged and not reused."
+  ]
+}
