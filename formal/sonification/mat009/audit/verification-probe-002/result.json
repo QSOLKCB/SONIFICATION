@@ -1,0 +1,85 @@
+{
+  "results": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/source_drift_driver.py",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/verification-probe-002/source-drift"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009",
+      "exit_code": 1,
+      "expected_diagnostic": "working-tree target differs",
+      "expected_rejection": true,
+      "label": "mutated-source",
+      "stderr_sha256": "021e7103eb994405fddeba20cd66b8ca666395754f4ee87291c8eade04adba96",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/verify_evidence.py",
+        "--evidence",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/verification-probe-002/source-receipts"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009",
+      "exit_code": 1,
+      "expected_diagnostic": "receipt file inventory changed",
+      "expected_rejection": true,
+      "label": "missing-finite-stream",
+      "stderr_sha256": "fcce5190b7817e5decdc23ce4155c9f94d21c71c29e1888f23e942a4576855bc",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/lean/verify.py",
+        "--attempt",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/verification-probe-002/lean-attempt"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009",
+      "exit_code": 1,
+      "expected_diagnostic": "evidence file inventory changed",
+      "expected_rejection": true,
+      "label": "missing-lean-stream",
+      "stderr_sha256": "e8d665fbd4c7fc24de8d32efc6dd124738809c6c3e0d929ef9d5eb8d4cd46f44",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/lean/verify_negative.py",
+        "--archive",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/verification-probe-002/negative-archive"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009",
+      "exit_code": 1,
+      "expected_diagnostic": "archive file inventory changed",
+      "expected_rejection": true,
+      "label": "missing-negative-mutant",
+      "stderr_sha256": "a9e91f39be3d5749edd90f3cd159be517255a1b1d4374ea044f3f2e4d9f781ef",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/checker_mutant_driver.py",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/negative-probe-001/auxiliary_named_false_axiom/work",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/verification-probe-002/checker-result"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009",
+      "exit_code": 1,
+      "expected_diagnostic": "stale proof input: SplitModel.lean",
+      "expected_rejection": true,
+      "label": "mutated-proof-checker",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "f91aba630e0c84a57297364e187a1f87c803c3f29734be08a8ce17e93ab62e6f"
+    }
+  ],
+  "source_mutant_sha256": "c9e950367bdd918511b3407b76866682af273e1072f72f476ae7398221cd5c3e",
+  "status": "PASS"
+}

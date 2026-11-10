@@ -1,0 +1,42 @@
+SplitModel.lean:79:23: error: application type mismatch
+  And.intro (Or.inl htrain)
+argument
+  Or.inl htrain
+has type
+  s.campaigns Role.train key ∨ ?m.3876 : Prop
+but is expected to have type
+  (step s row).campaigns Role.train key : Prop
+SplitModel.lean:147:4: error: tactic 'rfl' failed, the left-hand side
+  (step s row).campaigns role key
+is not definitionally equal to the right-hand side
+  s.campaigns role key ∨ role = row.role ∧ key = row.campaign
+case refine_3
+s : State
+row : Row
+role : Role
+key : String
+⊢ (step s row).campaigns role key ↔ s.campaigns role key ∨ role = row.role ∧ key = row.campaign
+SplitModel.lean:169:4: error: type mismatch
+  Or.inl h
+has type
+  s.campaigns role campaign ∨ ?m.4953 : Prop
+but is expected to have type
+  (step s row).campaigns role campaign : Prop
+SplitModel.lean:222:21: error: unsolved goals
+case cons
+role : Role
+key : String
+row : Row
+rest : List Row
+ih :
+  ∀ (s : State),
+    (scan s rest).campaigns role key ↔ s.campaigns role key ∨ ∃ row, row ∈ rest ∧ row.role = role ∧ row.campaign = key
+s : State
+hhead :
+  (∃ r, r ∈ row :: rest ∧ r.role = role ∧ r.campaign = key) ↔
+    row.role = role ∧ row.campaign = key ∨ ∃ r, r ∈ rest ∧ r.role = role ∧ r.campaign = key
+⊢ (role = row.role ∧ key = row.campaign ∨ ∃ row, row ∈ rest ∧ role = row.role ∧ key = row.campaign) ↔
+    role = row.role ∧ key = row.campaign ∨
+      s.campaigns role key ∨ ∃ row, row ∈ rest ∧ role = row.role ∧ key = row.campaign
+SplitModel.lean:368:35: error: unsolved goals
+⊢ False

@@ -1,0 +1,51 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/negative-probe-001/weaken_final_leakage/work/SplitModel.olean",
+        "SplitModel.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/negative-probe-001/weaken_final_leakage/work",
+      "exit_code": 0,
+      "label": "build-00-SplitModel",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/negative-probe-001/weaken_final_leakage/work/DiagnosticFirstOwner.olean",
+        "DiagnosticFirstOwner.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/negative-probe-001/weaken_final_leakage/work",
+      "exit_code": 0,
+      "label": "build-01-DiagnosticFirstOwner",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/negative-probe-001/weaken_final_leakage/work/TypedConsumer.olean",
+        "TypedConsumer.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/negative-probe-001/weaken_final_leakage/work",
+      "exit_code": 1,
+      "label": "build-02-TypedConsumer",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "c015896a5cb42899f129d84e30b6b35b66b1e22834409e8375c107ca3b9a4743"
+    }
+  ],
+  "expected_observation": true,
+  "mutant_sha256": "61a2c2f1dc9b59050a60927232322079492bfb9dfffd0ac788cfc3b95382cff1",
+  "mutation": "weaken_final_leakage",
+  "observed_exit_code": 1,
+  "observed_last_job": "build-02-TypedConsumer"
+}

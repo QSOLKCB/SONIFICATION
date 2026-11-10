@@ -1,0 +1,23 @@
+import ExactTypes
+#print axioms MAT009.M009_R1_initial
+#print axioms MAT009.M009_R2_assignment_overwrite
+#print axioms MAT009.M009_R3_cross_role_trigger
+#print axioms MAT009.M009_R4_stickiness
+#print axioms MAT009.M009_R5_final_set_intersection
+#print axioms MAT009.M009_R5_parent_union
+#print axioms MAT009.M009_R6_cross_trigger_in_finite_scan
+#print axioms MAT009.M009_R6_arbitrary_finite_scan
+#print axioms MAT009.M009_R6_latest_owner
+#print axioms MAT009.M009_R6_parent_reason_survives
+#print axioms MAT009.M009_R6_final_leakage_iff
+#print axioms MAT009.M009_R7_accepted_example
+#print axioms MAT009.M009_R7_rejected_example
+#print axioms MAT009.M009_R7_nonvacuous
+#print axioms MAT009.Consumer.parent_reason_blocks_any_scan
+#print axioms MAT009.Consumer.shared_campaign_blocks_any_scan
+#print axioms MAT009.Diagnostic.register_first_owner
+#print axioms MAT009.Diagnostic.register_new_owner
+#print axioms MAT009.Diagnostic.register_other_identity
+#print axioms MAT009.Diagnostic.register_preserves_existing
+#print axioms MAT009.Diagnostic.scan_first_owner_sticky
+#print axioms MAT009.Diagnostic.first_owner_not_last_writer

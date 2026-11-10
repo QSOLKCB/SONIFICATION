@@ -1,0 +1,76 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat009-prohibited_project_axiom-q9car2xt/SplitModel.olean",
+        "SplitModel.lean"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat009-prohibited_project_axiom-q9car2xt/DiagnosticFirstOwner.olean",
+        "DiagnosticFirstOwner.lean"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat009-prohibited_project_axiom-q9car2xt/TypedConsumer.olean",
+        "TypedConsumer.lean"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "9078e77bdd2580d1ce506f685136b42d01255a0ebd4177589a7d493b4ad06522",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat009-prohibited_project_axiom-q9car2xt/ExactTypes.olean",
+        "ExactTypes.lean"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat009-prohibited_project_axiom-q9car2xt/LeanAudit.olean",
+        "LeanAudit.lean"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "7b4aa6633245762b38060efdfb37ae7368d68023f8fc0f27d981d44e1de75df5",
+      "timed_out": false
+    }
+  ],
+  "detected": true,
+  "expected_diagnostic_text": "project axiom declaration",
+  "expected_failure_module": "LeanAudit",
+  "mutant_sha256": "3cc93725fa438ed22a81bb98786cfc5bf57416b57dea03179003e7c344cc6ee1",
+  "mutation": "prohibited_project_axiom",
+  "observed_failure_module": "LeanAudit",
+  "target_module": "SplitModel"
+}

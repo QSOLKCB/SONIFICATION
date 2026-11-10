@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/count_gate_driver.py", line 26, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/count_gate_driver.py", line 21, in main
+    check.audit_output(raw, LEAN, AUDIT)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/lean/check.py", line 145, in audit_output
+    raise ValueError("complete declaration/theorem inventory changed")
+ValueError: complete declaration/theorem inventory changed
