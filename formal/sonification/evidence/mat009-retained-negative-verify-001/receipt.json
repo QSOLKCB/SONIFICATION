@@ -1,0 +1,29 @@
+{
+  "schema": "qsol.sonification-formal-001.execution/v1",
+  "argv": [
+    "python3",
+    "formal/sonification/mat009/lean/verify_negative.py"
+  ],
+  "cwd": "/home/trent/sonification-formal-001-mat009",
+  "started_utc": "2026-11-10T01:08:09.470293+00:00",
+  "ended_utc": "2026-11-10T01:08:09.512634+00:00",
+  "exit_code": 0,
+  "checkout_commit": "b9a828695b56b9caf73acbee0a5c35c2e66b4bef",
+  "worktree_status": "DIRTY",
+  "inputs": {
+    "formal/sonification/mat009/lean/verify_negative.py": "1800c46d660b7c1e96d2db7aeb356c847cb143af59985f9a7ea23e719cb86b20",
+    "formal/sonification/mat009/lean/negative/ARCHIVE_MANIFEST.json": "6d99b5c41017d87922ffd01f3b34eccab692806ca38b760299371cbcc0d0750b"
+  },
+  "environment": "Linux-7.0.0-42-generic-x86_64-with-glibc2.43",
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "python_executable_sha256": "52e0a13e60a981d8c4b6478be2ba5176f69da07948a056bf49cf6f077e30cb41",
+  "command_executable": "/usr/bin/python3.14",
+  "command_executable_sha256": "52e0a13e60a981d8c4b6478be2ba5176f69da07948a056bf49cf6f077e30cb41",
+  "stdout_sha256": "8cb3c759e0dd871f132cc1524700e3908fbc88e38b5b8e39901fcbd5d9f87c21",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "limits": [
+    "Locally observed execution; no author or external execution attestation",
+    "Input list is explicit; dependency closure requires separate review",
+    "A zero exit status does not establish theorem or coverage acceptance"
+  ]
+}

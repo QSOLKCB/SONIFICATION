@@ -1,0 +1,39 @@
+{
+  "schema": "qsol.sonification-formal-001.execution/v1",
+  "argv": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_sonification_formal_mat009_*.py",
+    "-q"
+  ],
+  "cwd": "/home/trent/sonification-formal-001-mat009",
+  "started_utc": "2026-11-10T01:07:49.901877+00:00",
+  "ended_utc": "2026-11-10T01:07:51.076219+00:00",
+  "exit_code": 0,
+  "checkout_commit": "b9a828695b56b9caf73acbee0a5c35c2e66b4bef",
+  "worktree_status": "CLEAN",
+  "inputs": {
+    "tests/test_sonification_formal_mat009_split.py": "beb02ce17f07807309e9cceba2a9e0dd6412dc578cc8362050890f38a5bdad73",
+    "tests/test_sonification_formal_mat009_receipts.py": "3bc91bcf7335de4c7d2c3f815ccc396085a8652e6d4b2c6b424c701854c6f78a",
+    "tests/test_sonification_formal_mat009_lean_receipts.py": "5ec12d741c59d46e240777cfe09e5cce7ea3684e83c8e7fc5eb881193982755f",
+    "tests/test_sonification_formal_mat009_negative_receipts.py": "87e1ed0a0d53c3b20f91fbe17f5672725ca9ad76a3befc4e2941bc8190cf4ecf",
+    "tests/test_sonification_formal_mat009_source_mutation.py": "afe6e19c7a044f97a9e8290f27c448ed9412665926852bc89d24918b0bc298bb"
+  },
+  "environment": "Linux-7.0.0-42-generic-x86_64-with-glibc2.43",
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "python_executable_sha256": "52e0a13e60a981d8c4b6478be2ba5176f69da07948a056bf49cf6f077e30cb41",
+  "command_executable": "/usr/bin/python3.14",
+  "command_executable_sha256": "52e0a13e60a981d8c4b6478be2ba5176f69da07948a056bf49cf6f077e30cb41",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "c8a7a5b27b342575f22e09ae0b04898daa4b34d815ce40967dbc2934857df86d",
+  "limits": [
+    "Locally observed execution; no author or external execution attestation",
+    "Input list is explicit; dependency closure requires separate review",
+    "A zero exit status does not establish theorem or coverage acceptance"
+  ]
+}
