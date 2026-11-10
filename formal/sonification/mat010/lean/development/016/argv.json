@@ -1,0 +1,8 @@
+[
+  [
+    "lean",
+    "-o",
+    "ArchiveModel.olean",
+    "ArchiveModel.lean"
+  ]
+]

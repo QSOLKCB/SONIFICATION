@@ -1,0 +1,17 @@
+ArchiveModel.lean:630:57: error: tactic 'decide' failed for proposition
+  ValidInput MAT010.Archive.demoClaims MAT010.Archive.demoSnapshots
+since its 'Decidable' instance
+  instDecidableValidInput MAT010.Archive.demoClaims MAT010.Archive.demoSnapshots
+did not reduce to 'isTrue' or 'isFalse'.
+
+After unfolding the instances 'decEq', 'decidable_of_decidable_of_iff', 'forall_prop_decidable', 'instDecidableAnd', 'instDecidableEqBitVec', 'instDecidableEqBool', 'instDecidableEqChar', 'instDecidableEqFin', 'instDecidableEqList', 'instDecidableEqNat', 'instDecidableEqPos', 'instDecidableEqString', 'instDecidableEqUInt32', 'instDecidableLeBitVec', 'instDecidableLeUInt32', 'instDecidableNot', 'instDecidableOr', 'BitVec.decEq', 'Bool.decEq', 'List.decidableBAll', 'List.hasDecEq', 'List.instDecidableMemOfLawfulBEq', 'List.instDecidablePairwise', 'List.nodupDecidable', 'Nat.decEq', 'Nat.decLe', 'Nat.decLt', 'String.decEq', 'UInt32.decEq', 'UInt32.decLe', 'instDecidableValidInput', 'instDecidableValidMember' and 'instDecidableValidPair', reduction got stuck at the 'Decidable' instance
+  (List.map Artifact.logicalPath (emit MAT010.Archive.demoClaims MAT010.Archive.demoSnapshots)).instDecidablePairwise
+ArchiveModel.lean:631:63: error: tactic 'decide' failed for proposition
+  ValidInput MAT010.Archive.demoClaims MAT010.Archive.demoSnapshotsExtra
+since its 'Decidable' instance
+  instDecidableValidInput MAT010.Archive.demoClaims MAT010.Archive.demoSnapshotsExtra
+did not reduce to 'isTrue' or 'isFalse'.
+
+After unfolding the instances 'decEq', 'decidable_of_decidable_of_iff', 'forall_prop_decidable', 'instDecidableAnd', 'instDecidableEqBitVec', 'instDecidableEqBool', 'instDecidableEqChar', 'instDecidableEqFin', 'instDecidableEqList', 'instDecidableEqNat', 'instDecidableEqPos', 'instDecidableEqString', 'instDecidableEqUInt32', 'instDecidableLeBitVec', 'instDecidableLeUInt32', 'instDecidableNot', 'instDecidableOr', 'BitVec.decEq', 'Bool.decEq', 'List.decidableBAll', 'List.hasDecEq', 'List.instDecidableMemOfLawfulBEq', 'List.instDecidablePairwise', 'List.nodupDecidable', 'Nat.decEq', 'Nat.decLe', 'Nat.decLt', 'String.decEq', 'UInt32.decEq', 'UInt32.decLe', 'instDecidableValidInput', 'instDecidableValidMember' and 'instDecidableValidPair', reduction got stuck at the 'Decidable' instance
+  (List.map Artifact.logicalPath
+      (emit MAT010.Archive.demoClaims MAT010.Archive.demoSnapshotsExtra)).instDecidablePairwise
