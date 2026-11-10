@@ -3,6 +3,37 @@
 Each phase must remain runnable and tested. Later phases extend the contracts;
 they do not retroactively relabel Phase 1 artifacts.
 
+## SONIFICATION formalization and independent VANILLAJS work — 2026-11-10
+
+**MAT-SPEC-010 remains the final numbered profile; no MAT-SPEC-011.**
+The completed numbered research series and later software formalization have
+distinct scientific and implementation assurance boundaries.
+
+- **MAT-SPEC formalization:** SONIFICATION PRs #40–#47 have delivered
+  source-pinned inventories, scoped Lean model proofs, finite conformance and
+  retained independent audits. MAT-010 archive-membership Phase A is merged
+  in [PR #47](https://github.com/QSOLKCB/SONIFICATION/pull/47). Its parent
+  integrity Phase B, scientific-closure Phase C and production Python
+  refinement remain **OPEN**.
+- **SPARK/Ada:** The separate owner-executed GNATprove receipts establish
+  26/26 reported checks for SPARK-001 v1.0.0, 23/23 for SPARK-002 Phase 1A,
+  and 9/9 for Phase 1B, each over its own source and contracts. These are
+  not Python refinement or experimental physics proofs.
+- **VANILLAJS corrective work: delivered, not pending.** Q16-FORMAL-001,
+  the independently sealed Q16-FORMAL-002 evidence and merged
+  [Q16-ECMA-001 PR #60](https://github.com/QSOLKCB/VANILLAJS/pull/60)
+  establish scoped mathematical integer-domain properties, source-pinned
+  JavaScript finite tests and explicit counterexamples. **Do not schedule
+  a new SONIFICATION phase to repeat this VANILLAJS work.** Universal
+  Lean-to-production-ECMAScript refinement remains `REFINEMENT_OPEN`
+  inside VANILLAJS and is not claimed by those completed milestones.
+
+**Next:** finish MAT-010 B/C; prepare a separately owner-reviewed
+formal-verification supplement for the main SONIFICATION research record;
+then PHOTOACOUSTIC formalization, cross-domain spectral analysis, and
+finally controlled physical photoacoustic experiments. No scientific
+admission gate is promoted by a software proof.
+
 ## Root ETQ-101 v2 — symbolic MIDI profile (implemented)
 
 - exact selected-root graph, stable 101-state basis, and D4 triality action;

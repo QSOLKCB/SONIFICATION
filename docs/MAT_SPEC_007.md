@@ -81,6 +81,7 @@ A fresh output directory is required.
 ## Finite completion programme
 
 See docs/MAT_SPEC_007_TO_010.md. **MAT-SPEC-010 is the final profile.**
-Only after -010 do we begin SPARK/Ada formal verification and a separate
-VANILLAJS Lean-to-ECMAScript refinement repair. These obligations are
-not completed or silently claimed by MAT-SPEC-007.
+The separately executed SPARK/Ada proofs and scoped VANILLAJS Q16-ECMA
+corrective work came later and are not claims of MAT-SPEC-007.
+Universal production-JS refinement remains OPEN inside VANILLAJS.
+See [current roadmap](ROADMAP.md).
