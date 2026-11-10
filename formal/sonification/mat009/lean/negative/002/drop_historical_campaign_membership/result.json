@@ -1,0 +1,24 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat009-drop_historical_campaign_membership-797k1qgn/SplitModel.olean",
+        "SplitModel.lean"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "0820f4f224e05616b307dc467503d76a038d19b0e5fca38ef72f5cf6c7ba18f6",
+      "timed_out": false
+    }
+  ],
+  "detected": true,
+  "expected_diagnostic_text": "unsolved goals",
+  "expected_failure_module": "SplitModel",
+  "mutant_sha256": "e2749a38389fe33c52882ec2d5dbb9a0e6de574f1a87f409bd493a89fe6192a2",
+  "mutation": "drop_historical_campaign_membership",
+  "observed_failure_module": "SplitModel",
+  "target_module": "SplitModel"
+}

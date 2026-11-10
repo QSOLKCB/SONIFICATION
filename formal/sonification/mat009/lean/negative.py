@@ -41,7 +41,7 @@ def variants() -> dict[str, tuple[str, str, str, str]]:
             "SplitModel",
             replace_once(split, "crossed := s.crossed \u2228\n    ∃ previous : Role,",
                          "crossed :=\n    ∃ previous : Role,"),
-            "SplitModel", "unsolved goals",
+            "SplitModel", "application type mismatch",
         ),
         "drop_historical_campaign_membership": (
             "SplitModel",
@@ -71,7 +71,7 @@ def variants() -> dict[str, tuple[str, str, str, str]]:
             "SplitModel",
             replace_once(split, "\nend MAT009\n",
                          "\ndef hidden_unproved : Nat := by sorry\n\nend MAT009\n"),
-            "SplitModel", "sorry",
+            "LeanAudit", "sorryAx",
         ),
     }
 

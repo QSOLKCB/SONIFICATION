@@ -1,0 +1,29 @@
+SplitModel.lean:157:2: error: tactic 'rfl' failed, the left-hand side
+  (step s row).crossed
+is not definitionally equal to the right-hand side
+  s.crossed ∨ ∃ previous, s.owner row.campaign = some previous ∧ previous ≠ row.role
+s : State
+row : Row
+⊢ (step s row).crossed ↔ s.crossed ∨ ∃ previous, s.owner row.campaign = some previous ∧ previous ≠ row.role
+SplitModel.lean:173:4: error: type mismatch
+  Or.inl h
+has type
+  s.crossed ∨ ?m.4965 : Prop
+but is expected to have type
+  (step s row).crossed : Prop
+SplitModel.lean:260:33: error: application type mismatch
+  ih (step s row) (Or.inl h)
+argument
+  Or.inl h
+has type
+  s.crossed ∨ ?m.5382 : Prop
+but is expected to have type
+  (step s row).crossed : Prop
+SplitModel.lean:285:36: error: application type mismatch
+  scan_crossed_sticky (step (scan s before) row) after (Or.inr h)
+argument
+  Or.inr h
+has type
+  ?m.5421 ∨ ∃ previous, (scan s before).owner row.campaign = some previous ∧ previous ≠ row.role : Prop
+but is expected to have type
+  (step (scan s before) row).crossed : Prop
