@@ -1,38 +1,37 @@
 <div align="center">
+  <img src="docs/assets/sonification-banner.svg" width="100%" alt="SONIFICATION — geometric research banner showing ETQ, D4 triality, material spectra and source-pinned formal verification">
 
-<img src="docs/assets/sonification-banner.svg" width="100%" alt="SONIFICATION — geometric research banner showing ETQ, D4 triality, material spectra and source-pinned formal verification">
+  <p><strong>Exact mathematics. Measured materials. Declared mappings. Reproducible evidence.</strong><br>
+  <em>A set of separately versioned research systems — not an assertion that mathematics, software output or symbolic MIDI proves a new physical law.</em></p>
 
-**Exact mathematics. Measured materials. Declared mappings. Reproducible evidence.**
+<p><strong>Foundational ETQ / D4 releases</strong><br>
+  <a href="https://doi.org/10.5281/zenodo.21432511"><img alt="ETQ-101 v2.0.0: DOI 10.5281/zenodo.21432511" src="https://zenodo.org/badge/DOI/10.5281/zenodo.21432511.svg"></a>
+  <a href="https://doi.org/10.5281/zenodo.21455181"><img alt="ETQ-303 v3.0.0: DOI 10.5281/zenodo.21455181" src="https://zenodo.org/badge/DOI/10.5281/zenodo.21455181.svg"></a>
+  <a href="https://doi.org/10.5281/zenodo.21494678"><img alt="ETQ-303 v3.0.1: DOI 10.5281/zenodo.21494678" src="https://zenodo.org/badge/DOI/10.5281/zenodo.21494678.svg"></a>
+  <a href="https://doi.org/10.5281/zenodo.22831753"><img alt="D4-TIA v2.0.0: DOI 10.5281/zenodo.22831753" src="https://zenodo.org/badge/DOI/10.5281/zenodo.22831753.svg"></a>
+</p>
 
-*A set of separately versioned research systems — not an assertion that mathematics, software output or symbolic MIDI proves a new physical law.*
+<p><strong>Materials / SPARK / formal-verification archives</strong><br>
+  <a href="https://doi.org/10.5281/zenodo.24062652"><img alt="MAT-SPEC-001 v1.0.0: DOI 10.5281/zenodo.24062652" src="https://zenodo.org/badge/DOI/10.5281/zenodo.24062652.svg"></a>
+  <a href="https://doi.org/10.5281/zenodo.24089846"><img alt="MAT-SPEC-010 v0.1.0: DOI 10.5281/zenodo.24089846" src="https://zenodo.org/badge/DOI/10.5281/zenodo.24089846.svg"></a>
+  <a href="https://doi.org/10.5281/zenodo.24090762"><img alt="SPARK-001 v1.0.0: DOI 10.5281/zenodo.24090762" src="https://zenodo.org/badge/DOI/10.5281/zenodo.24090762.svg"></a>
+  <a href="https://doi.org/10.5281/zenodo.24097287"><img alt="FORMAL-001 research.1: DOI 10.5281/zenodo.24097287" src="https://zenodo.org/badge/DOI/10.5281/zenodo.24097287.svg"></a>
+</p>
 
-<strong>Foundational ETQ / D4 releases</strong>
+<p><strong>Live GitHub Actions · tests, native differential checks and historical receipt integrity</strong><br>
+  <a href="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/tests.yml"><img alt="Test matrix workflow status" src="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/tests.yml/badge.svg?branch=main"></a>
+  <a href="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-001.yml"><img alt="SPARK-001 native workflow status" src="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-001.yml/badge.svg?branch=main"></a>
+  <a href="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002.yml"><img alt="SPARK-002 Phase 1A native workflow status" src="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002.yml/badge.svg?branch=main"></a>
+  <a href="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002-phase-1b.yml"><img alt="SPARK-002 Phase 1B native workflow status" src="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002-phase-1b.yml/badge.svg?branch=main"></a>
+  <a href="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002-proof-receipts.yml"><img alt="SPARK-002 Phase 1A receipt integrity workflow status" src="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002-proof-receipts.yml/badge.svg?branch=main"></a>
+  <a href="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002-phase-1b-proof-receipts.yml"><img alt="SPARK-002 Phase 1B receipt integrity workflow status" src="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002-phase-1b-proof-receipts.yml/badge.svg?branch=main"></a>
+</p>
 
-<a href="https://doi.org/10.5281/zenodo.21432511"><img alt="ETQ-101 v2.0.0: DOI 10.5281/zenodo.21432511" src="https://zenodo.org/badge/DOI/10.5281/zenodo.21432511.svg"></a>
-<a href="https://doi.org/10.5281/zenodo.21455181"><img alt="ETQ-303 v3.0.0: DOI 10.5281/zenodo.21455181" src="https://zenodo.org/badge/DOI/10.5281/zenodo.21455181.svg"></a>
-<a href="https://doi.org/10.5281/zenodo.21494678"><img alt="ETQ-303 v3.0.1: DOI 10.5281/zenodo.21494678" src="https://zenodo.org/badge/DOI/10.5281/zenodo.21494678.svg"></a>
-<a href="https://doi.org/10.5281/zenodo.22831753"><img alt="D4-TIA v2.0.0: DOI 10.5281/zenodo.22831753" src="https://zenodo.org/badge/DOI/10.5281/zenodo.22831753.svg"></a>
-
-<strong>Materials / SPARK / formal-verification archives</strong>
-
-<a href="https://doi.org/10.5281/zenodo.24062652"><img alt="MAT-SPEC-001 v1.0.0: DOI 10.5281/zenodo.24062652" src="https://zenodo.org/badge/DOI/10.5281/zenodo.24062652.svg"></a>
-<a href="https://doi.org/10.5281/zenodo.24089846"><img alt="MAT-SPEC-010 v0.1.0 archive: DOI 10.5281/zenodo.24089846" src="https://zenodo.org/badge/DOI/10.5281/zenodo.24089846.svg"></a>
-<a href="https://doi.org/10.5281/zenodo.24090762"><img alt="SPARK-001 v1.0.0: DOI 10.5281/zenodo.24090762" src="https://zenodo.org/badge/DOI/10.5281/zenodo.24090762.svg"></a>
-<a href="https://doi.org/10.5281/zenodo.24097287"><img alt="FORMAL-001 research.1: DOI 10.5281/zenodo.24097287" src="https://zenodo.org/badge/DOI/10.5281/zenodo.24097287.svg"></a>
-
-<strong>Live GitHub Actions · tests, native differential checks and historical receipt integrity</strong>
-
-<a href="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/tests.yml"><img alt="Test matrix workflow status" src="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/tests.yml/badge.svg?branch=main"></a>
-<a href="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-001.yml"><img alt="SPARK-001 native workflow status" src="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-001.yml/badge.svg?branch=main"></a>
-<a href="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002.yml"><img alt="SPARK-002 Phase 1A native workflow status" src="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002.yml/badge.svg?branch=main"></a>
-<a href="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002-phase-1b.yml"><img alt="SPARK-002 Phase 1B native workflow status" src="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002-phase-1b.yml/badge.svg?branch=main"></a>
-<a href="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002-proof-receipts.yml"><img alt="SPARK-002 Phase 1A receipt integrity workflow status" src="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002-proof-receipts.yml/badge.svg?branch=main"></a>
-<a href="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002-phase-1b-proof-receipts.yml"><img alt="SPARK-002 Phase 1B receipt integrity workflow status" src="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002-phase-1b-proof-receipts.yml/badge.svg?branch=main"></a>
-
-<a href="LICENSE"><img alt="Licence: MPL-2.0" src="https://img.shields.io/badge/license-MPL--2.0-3e789e"></a>
-<a href="https://www.python.org/"><img alt="MAT-SPEC: Python 3.11+" src="https://img.shields.io/badge/MAT--SPEC-Python%203.11%2B-2c8e90"></a>
-<a href="https://github.com/QSOLKCB/SONIFICATION/releases/tag/sonification-formal-001-research.1"><img alt="Research milestone: FORMAL-001 research.1" src="https://img.shields.io/badge/research-FORMAL--001-8067b7"></a>
-
+  <p>
+  <a href="LICENSE"><img alt="Licence: MPL-2.0" src="https://img.shields.io/badge/license-MPL--2.0-3e789e"></a>
+  <a href="https://www.python.org/"><img alt="MAT-SPEC: Python 3.11+" src="https://img.shields.io/badge/MAT--SPEC-Python%203.11%2B-2c8e90"></a>
+  <a href="https://github.com/QSOLKCB/SONIFICATION/releases/tag/sonification-formal-001-research.1"><img alt="Research milestone: FORMAL-001 research.1" src="https://img.shields.io/badge/research-FORMAL--001-8067b7"></a>
+  </p>
 </div>
 
 ---
