@@ -1,0 +1,66 @@
+{
+  "lean_receipt": {
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat009/lean/verify.py",
+      "--lean",
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean"
+    ],
+    "exit_code": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "c419e181e2b8bbecddb22cfbf98b41d848f22f725d939ecafcafaf326fea32d4"
+  },
+  "legacy_negative": {
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat009/lean/verify_negative.py"
+    ],
+    "exit_code": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "8cb3c759e0dd871f132cc1524700e3908fbc88e38b5b8e39901fcbd5d9f87c21"
+  },
+  "repair_receipt": {
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat009/lean/verify_repair.py"
+    ],
+    "exit_code": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "698f48a34790f50ec4fb32e63e4c8e1dc143f5ce7a1c8383d56d18aa2ab99204"
+  },
+  "source_binding": {
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat009/source/source_bind.py"
+    ],
+    "exit_code": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "5a3750fcbab24ba5889a7a5439b5445d7484ac50a497ab546df22139462902b7"
+  },
+  "source_receipts": {
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat009/verify_evidence.py"
+    ],
+    "exit_code": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "2c408e885fa4ac144dbd6bffc148095f09f3e67db1fb054de95953589e56c816"
+  },
+  "suffix_tests": {
+    "argv": [
+      "python3",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/test_sonification_formal_mat009_suffix_axiom.py"
+    ],
+    "exit_code": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "149e983c325e1215d8fe411fd58fb9c0fa38bc5dfa119c4a6a92d44ee61e3e10"
+  }
+}

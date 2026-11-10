@@ -1,0 +1,75 @@
+{
+  "candidate_commit": "b07942c77bebb15c99d8a70f52397d4077694ea0",
+  "jobs": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/repair-audit-001/suffix2-work/SplitModel.olean",
+        "SplitModel.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/repair-audit-001/suffix2-work",
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/repair-audit-001/suffix2-work/DiagnosticFirstOwner.olean",
+        "DiagnosticFirstOwner.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/repair-audit-001/suffix2-work",
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/repair-audit-001/suffix2-work/TypedConsumer.olean",
+        "TypedConsumer.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/repair-audit-001/suffix2-work",
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "9078e77bdd2580d1ce506f685136b42d01255a0ebd4177589a7d493b4ad06522"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/repair-audit-001/suffix2-work/ExactTypes.olean",
+        "ExactTypes.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/repair-audit-001/suffix2-work",
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/repair-audit-001/suffix2-work/LeanAudit.olean",
+        "LeanAudit.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/repair-audit-001/suffix2-work",
+      "exit_code": 1,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "2f67d8b6614f70178fd99565fc5db071b3a31da9862e79d694ac5490a0b1d03e"
+    }
+  ],
+  "lean_executable_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "mutant_sha256": "c77760060706b3a50125a2a96a437a8bf874903328681b274eb4eab49f3e0b09",
+  "mutation": "axiom auditor_false_cstage2 : False; theorem auditor_false_proof_cstage2 : False := auditor_false_cstage2",
+  "rejected_by_scanner": true,
+  "scanner_sha256": "867bb9c70345c525239e6cadd6da3ec1f186f586f431855de67aadefa429882c"
+}
