@@ -1,0 +1,23 @@
+{
+  "AUDIT_ACCEPTED": "OPEN",
+  "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+  "MODEL_PROVED": "NOT_EXECUTED",
+  "REFINEMENT_PROVED": "OPEN",
+  "baseline_commit": "bc5c6cb73a00df0bf9189075b776c4a5a78888bf",
+  "completed_utc": "2026-11-10T00:59:32.057933+00:00",
+  "error": "imported proof module coverage mismatch: ['DiagnosticFirstOwner', 'ExactTypes', 'SplitModel', 'TypedConsumer', 'formal.sonification.mat009.lean.LeanAudit']",
+  "input_sha256": {
+    "DiagnosticFirstOwner.lean": "7658fa0dc0b223e69a6f145a3ac68a3f7852c597fb9c2a83a0c6870023ca4d05",
+    "ExactTypes.lean": "ec371e7a14ad106fc52ecd31ca95fbc7b9aee124b7463e3f08811f215aec9fb6",
+    "LeanAudit.lean": "7aeabffbd65357e4ea41d773950bc7b52c892c5347b259f51d6a3831296aced8",
+    "PROOF_NOTES.md": "a7ffee569eab69bf4349fa6db14df5fae9e19164148d6711344080d2e6b53020",
+    "SplitModel.lean": "2d6f80e9749e846db5f7c54bcc189c1ae3f345e19677842c002c2bea69790795",
+    "TypedConsumer.lean": "422315ea1451327d960ddd81b9d8fdc2189d25b02406b44c9b1786d34c70b5fa",
+    "check.py": "9dadb76da2dd3a9ff8fed85ae85b468286bb294986dfcec8d62edf2893476fbc",
+    "lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea"
+  },
+  "lean_executable_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "lean_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "started_utc": "2026-11-10T00:59:12.443505+00:00",
+  "status": "FAIL"
+}

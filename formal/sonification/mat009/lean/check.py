@@ -230,10 +230,10 @@ def main() -> int:
             for number, module in enumerate(MODULES):
                 argv = [
                     str(lean), "--error=warning", "-o",
-                    str(build / f"{module}.olean"), str(HERE / f"{module}.lean"),
+                    str(build / f"{module}.olean"), f"{module}.lean",
                 ]
                 code, stdout, _, timeout = record_command(
-                    out, f"build-{number:02d}-{module}", argv, cwd=ROOT, env=env
+                    out, f"build-{number:02d}-{module}", argv, cwd=HERE, env=env
                 )
                 if timeout or code != 0:
                     raise ValueError(f"Lean rejected or timed out on {module}")

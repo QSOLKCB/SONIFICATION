@@ -10,6 +10,13 @@ Python source or CPython execution.
 
 ## Failed attempts retained
 
+- `attempts/001/` retains the first full checker execution against proof-input
+  commit `bc5c6cb73a00df0bf9189075b776c4a5a78888bf`. Every Lean module
+  compiled, but the checker rejected its own audit-module identity because it
+  invoked that file by an absolute path. The resulting main-module name was
+  `formal.sonification.mat009.lean.LeanAudit` rather than `LeanAudit`. This was
+  a receipt-binding defect, not a mathematical proof failure. The subsequent
+  checker invokes modules from their proof directory by basename.
 - The first direct `lean SplitModel.lean` pass left goals in R2 (a nonmatching
   key needed an introduced `key ≠ row.campaign` hypothesis), R4 (set/reason
   stickiness needed explicit `Or.inl`), and the scan membership proofs (the
