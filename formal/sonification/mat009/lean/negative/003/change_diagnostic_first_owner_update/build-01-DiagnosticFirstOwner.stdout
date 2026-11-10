@@ -1,0 +1,17 @@
+DiagnosticFirstOwner.lean:23:13: warning: unused variable `first`
+note: this linter can be disabled with `set_option linter.unusedVariables false`
+DiagnosticFirstOwner.lean:35:68: error: unsolved goals
+registry : Registry
+identity : String
+candidate first : Owner
+h : registry identity = some first
+⊢ candidate = first
+DiagnosticFirstOwner.lean:55:2: error: unsolved goals
+case pos
+registry : Registry
+identity : String
+candidate first : Owner
+h : registry identity = some first
+⊢ candidate = first
+DiagnosticFirstOwner.lean:75:38: error: unsolved goals
+⊢ False

@@ -1,0 +1,47 @@
+{
+  "REFINEMENT_PROVED": "OPEN",
+  "cases": [
+    {
+      "detected": true,
+      "expected_failure_module": "SplitModel",
+      "mutation": "drop_cross_conflict_stickiness",
+      "observed_failure_module": "SplitModel"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "SplitModel",
+      "mutation": "drop_historical_campaign_membership",
+      "observed_failure_module": "SplitModel"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "TypedConsumer",
+      "mutation": "weaken_final_leakage_theorem",
+      "observed_failure_module": "TypedConsumer"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "DiagnosticFirstOwner",
+      "mutation": "change_diagnostic_first_owner_update",
+      "observed_failure_module": "DiagnosticFirstOwner"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "LeanAudit",
+      "mutation": "prohibited_project_axiom",
+      "observed_failure_module": "LeanAudit"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "LeanAudit",
+      "mutation": "prohibited_sorry",
+      "observed_failure_module": "LeanAudit"
+    }
+  ],
+  "lean_executable_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "negative_runner_commit": "5620029fb724ac41827a0c41c4c677b9594464f3",
+  "negative_runner_sha256": "874ca7ff059394e97cc908d921dec51bbc0ff852c354baf1c8da7a7d557a352c",
+  "proof_input_commit": "a09aab6572fb9c3875d5f2940bdb17ec55c358d5",
+  "scope": "negative controls for mathematical proof and trust checker only",
+  "status": "PASS"
+}
