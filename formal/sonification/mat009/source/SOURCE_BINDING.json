@@ -1,0 +1,79 @@
+{
+  "schema": "sonification-mat009-split-source-binding-v1",
+  "assurance": "SOURCE_SYNTAX_PINNED_ONLY",
+  "refinement_to_cpython": "OPEN",
+  "frozen_release": {
+    "tag": "refs/tags/mat-spec-009-v0.1.0",
+    "tag_type": "tag",
+    "tag_object": "ad99d9e52f9ede423a4fb9d6a622624e32955263",
+    "peeled_commit": "0758a96360726aafbb07abed34620eda178407ae",
+    "tree": "a6a03e1227e666680d656b886201ee9dde9de32d"
+  },
+  "target": {
+    "path": "materials/mat_spec_009.py",
+    "git_blob": "c447f0ce76b91acf458221390ac4261166145a0b",
+    "sha256": "a68089df7d1901fb7c17ffc2889b844b3573024aec4b66348f9c2ef71930c690",
+    "bytes": 24623,
+    "functions": {
+      "_identifier": {
+        "start_line": 104,
+        "end_line": 109,
+        "ast_source_segment_sha256": "bf63bd67664078f2607e05e811de5ef78779f06839fa03ac40f90f00f2616391"
+      },
+      "_digest": {
+        "start_line": 112,
+        "end_line": 113,
+        "ast_source_segment_sha256": "30c65663c052ae676e95a5b3e42c17d9ebb6539e1ae575511dd5a82ad03ee048"
+      },
+      "check_future_challenge": {
+        "start_line": 116,
+        "end_line": 236,
+        "ast_source_segment_sha256": "fbea7ec4b3d903597ae9e9996c34120570ff12883b183074b15b61225fec48c0"
+      },
+      "_synthetic_controls": {
+        "start_line": 239,
+        "end_line": 270,
+        "ast_source_segment_sha256": "28c87edc176bdb4d2389167cd9e2128747f25c2a3c612f1b15c864f4bb8249bb"
+      },
+      "negative_controls": {
+        "start_line": 273,
+        "end_line": 347,
+        "ast_source_segment_sha256": "2d958f62ddd891dffb06254ab77088b8472413ca1e2bac09198f6dd40d9b2677"
+      }
+    }
+  },
+  "direct_parent": {
+    "path": "materials/mat_spec_008.py",
+    "git_blob": "3117adbc3739c834f8203d5d2dd2b80d6caf862b",
+    "sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08",
+    "bytes": 30876,
+    "functions": {
+      "_identity": {
+        "start_line": 69,
+        "end_line": 75,
+        "ast_source_segment_sha256": "1ba1775e7b8092aa1ca3addbf761247f5100f266a1d3726a9c1e360483d7f63f"
+      },
+      "_decimal": {
+        "start_line": 217,
+        "end_line": 225,
+        "ast_source_segment_sha256": "f9628dab124e40d9812b05257559d5afa5dd88d8c20f833b20e6ca508a323598"
+      },
+      "validate_future_measurement_packet": {
+        "start_line": 228,
+        "end_line": 332,
+        "ast_source_segment_sha256": "e514874f36bef4f416c4a0fc8c1ee8705e2a6fb8ed15e62fd53f76a1d665660e"
+      }
+    }
+  },
+  "selected_call_edge": {
+    "caller": "materials.mat_spec_009.check_future_challenge",
+    "callee": "materials.mat_spec_008.validate_future_measurement_packet",
+    "order": "outer list guard; parent call; parent reason set; child row scan; final checks; sorted normal result",
+    "parent_invocations_per_accepted_outer_list": 1
+  },
+  "limitations": [
+    "Full module and selected AST identities are pinned; this does not prove source-to-model correspondence or CPython behavior.",
+    "The MAT008 validator is a direct caller dependency; its transitive import closure and adversarial monkeypatching are outside this slice.",
+    "All candidate metadata and digests are assertions, not authenticated measurement or preregistration evidence."
+  ]
+}
