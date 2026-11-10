@@ -1,0 +1,81 @@
+{
+  "schema": "mat010-frozen-source-analysis/v1",
+  "frozen_source": {
+    "tag": "mat-spec-010-v0.1.0",
+    "tag_object": "b8e88a0a32db30558e00704669eeaafee3a8d5f5",
+    "peeled_commit": "9d12c6a5098f4edba972bb6b1067555d8f48f693",
+    "path": "materials/mat_spec_010.py",
+    "blob": "180e44dc81a0ff59cb08bd87d6a87538c275b054",
+    "sha256": "e062474d4435e769f8c6c8407bc44ad89cfb2dfa04677b820c3a035d604a9056",
+    "same_blob_at_main": "7be5ca176da5a1a044be507d817d6aa86399ddf2"
+  },
+  "functions": {
+    "validate_archive_membership": {
+      "lines": [225, 274],
+      "success_requires": [
+        "nine ordered claim profiles and snapshot identifiers equal STAGES",
+        "nine distinct hashable claim merged_commit values, each of length 40 with lowercase-hex characters when iterated; direct calls do not require str type",
+        "each digest map is nonempty dict or subclass, version matches, and claim evidence_file is a key",
+        "each emitted name has no slash or backslash, allowed Path suffix, and syntactic lowercase-hex 64-character digest",
+        "a .mid name belongs only to MAT-SPEC-001",
+        "constructed logical paths are unique and final emitted stage is MAT-SPEC-009"
+      ],
+      "does_not_require": [
+        "exact pinned artifact-map membership on a direct call",
+        "absence of additional valid members or presence of non-evidence members",
+        "digest uniqueness, byte-content verification, Git commit identity, or actual archive deposition"
+      ],
+      "normal_caller_count": 63,
+      "caller_stage_counts": [7, 5, 8, 6, 7, 7, 8, 8, 7]
+    },
+    "verify_parent": {
+      "lines": [326, 370],
+      "success_requires": [
+        "parent key set equals MAT009 OUTPUT_NAMES and SHA-256 map equals all seven PARENT_V9_SHA256 entries",
+        "selected manifest identity fields, six output names and their declared SHA-256 values match parent bytes",
+        "selected split, audit, source-gate status and count checks at lines 349-368"
+      ],
+      "does_not_check_individually": [
+        "manifest output byte lengths or unrelated manifest fields",
+        "gate.physical_evidence_admitted",
+        "all decoded split, audit, or gate fields"
+      ]
+    },
+    "science_closure": {
+      "lines": [373, 404],
+      "guard": "split.holdout_accuracy is None; audit.phase_classifier_accuracy is None; gate.physical_evidence_admitted is False",
+      "copied_unchecked_fields": [
+        "gate.parent_status",
+        "split.status",
+        "audit.synthetic_negative_controls_passed"
+      ],
+      "constant_output_examples": [
+        "numbered_profiles = 10",
+        "mat_spec_011_allowed = false",
+        "real_classifier_trained = false",
+        "real_heldout_accuracy = null",
+        "formal_proof_executed_in_this_profile = false"
+      ]
+    }
+  },
+  "caller_and_dependencies": {
+    "ancestor_maps": "lines 210-222: imported 002..009 digest constants and local PARENT_V9_SHA256",
+    "build_evidence": "lines 443-462: MAT009 build_evidence; verify_parent; parsed-equality frozen JSON checks; ancestor maps; archive membership; science closure",
+    "frozen_json": "lines 199-207: json.loads default behavior, parsed equality, not raw-byte equality or duplicate-key rejection",
+    "hash": "materials/mat_spec.py lines 63-64: hashlib.sha256(value).hexdigest()",
+    "mat009_source_gate": "materials/mat_spec_009.py lines 91-101 sets physical_evidence_admitted false in the actual generated gate",
+    "existing_formal_boundary": "formal/sonification/mat009/README.md and source/CALLER_DOMAIN.md retain model-versus-CPython refinement OPEN"
+  },
+  "model_boundary": {
+    "input_domain": "exact built-in dict/list/str/bytes as appropriate, stable during call, unpatched imports; separately state successful JSON parse and required keys",
+    "archive_theorem": "success implies ordered nine stages, evidence-member inclusion, syntactic artifact identities, MIDI restriction, and unique emitted logical paths; exact 63-member coverage only under explicit frozen-map and claim-value premises",
+    "parent_theorem": "success implies conditional name/digest and selected parsed-field predicates; treat SHA-256 as an external function or assumption, not proved collision resistance or byte identity",
+    "closure_theorem": "on successful return, the three identity predicates hold and constant output fields are fixed; copied fields equal inputs, with no unconditional claim about their values",
+    "refinement": "No theorem here establishes CPython semantics, exception fidelity, transitive MAT009 replay, physical evidence, or archive deposition"
+  },
+  "phase_recommendation": {
+    "A": "freeze source identity and exact caller contract; prove pure archive, parent-predicate, and closure model theorems with explicit preconditions",
+    "B": "add source AST/byte binder and finite exact-built-in conformance and negative cases, including direct-call extras, omissions, and exception boundary",
+    "C": "audit Lean declarations and evidence receipts independently; leave full source-to-CPython and transitive caller refinement OPEN unless separately proved"
+  }
+}
