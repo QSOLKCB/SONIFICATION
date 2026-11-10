@@ -1,0 +1,17 @@
+{
+  "assurance": "DEVELOPMENT_ONLY; final declaration closure OPEN",
+  "axioms_without_source_range": true,
+  "compiler_axiom_count": 15,
+  "gate_attempt": "audit-development/001",
+  "gate_result": "FAIL: project axiom declaration List.flatMapTR.go._at.MAT010.Archive.emit._spec_1",
+  "gate_stdout_sha256": "03a422734fb678647136cdabf85b1f7f0f32b253970319dead69eec91e8e342e",
+  "input": "development/003 Lean source snapshot, before final A1-A7 revision",
+  "probe_attempt": "audit-development/002",
+  "probe_stdout_sha256": "1594360145fbf997b4f7e15ebb4c99b3b704c3d3d1dca6e5071bdb19e32598f0",
+  "schema": "sonification-mat010-preliminary-compiler-probe/v1",
+  "summary": [
+    "PROBE_SUMMARY declarations=336 theorems=30"
+  ],
+  "unsafe_declaration_count": 215,
+  "unsafe_definition_count": 200
+}
