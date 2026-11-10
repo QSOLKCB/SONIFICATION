@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "python3",
+    "-m",
+    "pytest",
+    "-q"
+  ],
+  "cwd": "/home/trent/sonification-formal-001-mat010-closure",
+  "exit_code": 0,
+  "input_commit": "2792b1733b289f1e1a43b9c0d679b7afde182ad1",
+  "schema": "sonification-mat010-test-attempt/v1",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "368b4bf78fa951240f41dd4379d0823fc0bf1cff49cc0eb34410d894b7acb5f9"
+}

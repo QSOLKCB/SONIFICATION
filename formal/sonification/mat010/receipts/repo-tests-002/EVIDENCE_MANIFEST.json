@@ -1,0 +1,10 @@
+{
+  "files_sha256": {
+    "receipt.json": "9c517070325cf62cac00a27618d1d9282d3e3c4df29705a73beeca0a08db1f78",
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout.log": "368b4bf78fa951240f41dd4379d0823fc0bf1cff49cc0eb34410d894b7acb5f9"
+  },
+  "input_commit": "2792b1733b289f1e1a43b9c0d679b7afde182ad1",
+  "label": "repo-tests-002",
+  "schema": "sonification-mat010-execution-files/v1"
+}

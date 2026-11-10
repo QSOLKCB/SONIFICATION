@@ -25,3 +25,8 @@ is retained in numbered, append-only subdirectories. `proof-002` is the latest
 nominal accepted local proof receipt; independent audit is still pending. The
 mathematical proof scope, Python conformance scope, and scientific limits are
 listed in [CLAIM_BOUNDARIES.md](CLAIM_BOUNDARIES.md).
+
+The full repository suite at the checkpoint passed with 340 tests and 202
+subtests; full Ruff passed. The original failed isolated test attempt is
+preserved as `repo-tests-001`; the complete successful run is
+`repo-tests-002`.

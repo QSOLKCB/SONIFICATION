@@ -61,5 +61,15 @@
     "new_critical_exponent": "NOT_FITTED",
     "real_classifier_trained": false,
     "real_heldout_accuracy": null
+  },
+  "verification": {
+    "failed_full_suite_attempt": "repo-tests-001: isolated uvx environment lacked NumPy; retained",
+    "focused_pytest": "9 passed",
+    "full_repository_pytest": "340 passed, 202 subtests passed",
+    "full_repository_ruff": "PASS",
+    "negative_controls": "negative-002 PASS: 6/6 including _cstage1 and _cstage2",
+    "proof_build": "proof-002 PASS: 7 typed named theorems, 333 declarations, 1303 external imports",
+    "retained_integrity": "PASS: 9 execution receipts; 17 model and 5 audit development attempts",
+    "source_binding": "PASS"
   }
 }

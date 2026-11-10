@@ -31,6 +31,12 @@ PROOF_COMMITS = {
     "proof-002": "2f2ea6d3deffebc7a552ec79f42ea829b9812d3e",
     "negative-002": "2f2ea6d3deffebc7a552ec79f42ea829b9812d3e",
 }
+TEST_MANIFESTS = {
+    "repo-tests-001": "33f20bb2f013ab156598479075faa51420d842ffdde14d97934f90ba1fa8b88c",
+    "repo-tests-002": "9dd23963f06ed999e39923b6cd4ab03bba2bdf488b6927103feba148015c2000",
+    "ruff-001": "4c1cb8f4ff7d2e38cc0b3c34ba49136e04838c6a6fe80f149bebf8db6cece9e0",
+}
+TEST_COMMIT = "2792b1733b289f1e1a43b9c0d679b7afde182ad1"
 DEVELOPMENT_INVENTORY_SHA256 = (
     "2c990881ea2d45f55240aeb9bfd4f51a174d66f3b132db5fd8b1c78bb6140e83"
 )
@@ -95,7 +101,8 @@ def check_command(folder: Path, label: str) -> dict:
 
 def verify_proof_receipts(base: Path) -> dict:
     require({p.name for p in base.iterdir() if p.is_dir()} ==
-            set(MANIFESTS) | set(PROOF_MANIFESTS) | {"finite-dev-001"},
+            set(MANIFESTS) | set(PROOF_MANIFESTS) | set(TEST_MANIFESTS) |
+            {"finite-dev-001"},
             "MAT010 receipt directory coverage changed")
     dev = base / "finite-dev-001"
     dev_manifest = dev / "EVIDENCE_MANIFEST.json"
@@ -179,6 +186,35 @@ def verify_proof_receipts(base: Path) -> dict:
                                 command[f"{stream}_sha256"],
                                 f"negative command stream changed: {label}/{case.name}")
         results[label] = result["status"]
+    return results
+
+
+def verify_test_receipts(base: Path) -> dict:
+    expected_code = {"repo-tests-001": 2, "repo-tests-002": 0, "ruff-001": 0}
+    results = {}
+    for label, digest in TEST_MANIFESTS.items():
+        folder = base / label
+        check_manifest(folder, digest, label, TEST_COMMIT)
+        receipt = json.loads((folder / "receipt.json").read_text())
+        require(receipt["schema"] == "sonification-mat010-test-attempt/v1" and
+                receipt["input_commit"] == TEST_COMMIT and
+                receipt["exit_code"] == expected_code[label],
+                f"test receipt changed: {label}")
+        for stream in ("stdout", "stderr"):
+            require(sha((folder / f"{stream}.log").read_bytes()) ==
+                    receipt[f"{stream}_sha256"],
+                    f"test execution stream changed: {label}/{stream}")
+        output = (folder / "stdout.log").read_text()
+        if label == "repo-tests-001":
+            require("No module named 'numpy'" in output,
+                    "first full-suite failure changed")
+        elif label == "repo-tests-002":
+            require("340 passed, 202 subtests passed" in output,
+                    "full repository pytest summary changed")
+        else:
+            require("All checks passed!" in output,
+                    "full repository Ruff summary changed")
+        results[label] = receipt["exit_code"]
     return results
 
 
@@ -297,13 +333,15 @@ def verify(base: Path = RECEIPTS) -> dict:
             "finite conformance result changed")
     require(len(reports) == 2, "source/finite receipt coverage changed")
     proof = verify_proof_receipts(base)
+    tests = verify_test_receipts(base)
     development = verify_development()
     return {
         "status": "MAT010_ALL_RETAINED_RECEIPTS_BOUND",
-        "receipt_count": len(reports) + len(proof),
+        "receipt_count": len(reports) + len(proof) + len(tests),
         "finite_cases": finite["case_count"],
         "boundary_counterexamples": sorted(COUNTEREXAMPLES),
-        "proof_receipts": proof, "development_attempts": development,
+        "proof_receipts": proof, "test_receipts": tests,
+        "development_attempts": development,
         "REFINEMENT_PROVED": "OPEN",
     }
 

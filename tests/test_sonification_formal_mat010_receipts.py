@@ -22,14 +22,15 @@ class Mat010ReceiptTests(unittest.TestCase):
         self.root = Path(self.temp.name)
         for name in ("source-001", "finite-001", "finite-dev-001",
                      "proof-001", "negative-001",
-                     "proof-002", "negative-002"):
+                     "proof-002", "negative-002", "repo-tests-001",
+                     "repo-tests-002", "ruff-001"):
             shutil.copytree(RECEIPTS / name, self.root / name)
 
     def test_intact_receipts(self) -> None:
         result = verify(self.root)
         self.assertEqual(result["status"], "MAT010_ALL_RETAINED_RECEIPTS_BOUND")
         self.assertEqual(result["REFINEMENT_PROVED"], "OPEN")
-        self.assertEqual(result["receipt_count"], 6)
+        self.assertEqual(result["receipt_count"], 9)
 
     def test_missing_finite_stream(self) -> None:
         (self.root / "finite-001/stdout.log").unlink()
