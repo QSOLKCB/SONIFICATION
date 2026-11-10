@@ -46,7 +46,9 @@ def variants() -> dict[str, tuple[str, str, str, str]]:
         "drop_historical_campaign_membership": (
             "SplitModel",
             replace_once(split,
-                         "s.campaigns role key \u2228 (role = row.role ∧ key = row.campaign)",
+                         "campaigns := fun role key =>\n    s.campaigns role key \u2228 "
+                         "(role = row.role ∧ key = row.campaign)",
+                         "campaigns := fun role key =>\n    "
                          "(role = row.role ∧ key = row.campaign)"),
             "SplitModel", "unsolved goals",
         ),

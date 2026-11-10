@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "python3",
+    "formal/sonification/mat009/lean/negative.py",
+    "--lean",
+    "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "--out",
+    "formal/sonification/mat009/lean/negative/001/reproduction"
+  ],
+  "cause": "non-unique campaign mutation anchor; no mutation cases executed",
+  "exit_code": 1,
+  "script_commit": "574c9ec",
+  "script_sha256": "5c2894a70267b2eff82241b0aa2cf6e36079ecac451edc401eee9736368ebe2b",
+  "status": "FAILED_DEVELOPMENT_ATTEMPT",
+  "stderr_sha256": "405a13f88a20584865d5e7aba8059024eb0af7580e0f788a8c55cb3cda3cf466",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
