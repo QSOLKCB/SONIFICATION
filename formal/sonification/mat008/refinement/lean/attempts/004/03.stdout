@@ -1,0 +1,4 @@
+Audit.lean:177:17: error: failed to synthesize
+  ToJson (BaseIO String)
+
+Additional diagnostic information may be available using the `set_option diagnostics true` command.

@@ -1,0 +1,1564 @@
+MAT008_REFINE_MODULE Mat008.RunOwnership
+MAT008_REFINE_MODULE Refine.MapReason
+MAT008_REFINE_MODULE Refine
+MAT008_REFINE_MODULE Audit
+MAT008_REFINE_IMPORT Init.Prelude
+MAT008_REFINE_IMPORT Init.Coe
+MAT008_REFINE_IMPORT Init.Notation
+MAT008_REFINE_IMPORT Init.Tactics
+MAT008_REFINE_IMPORT Init.SizeOf
+MAT008_REFINE_IMPORT Init.Core
+MAT008_REFINE_IMPORT Init.BinderNameHint
+MAT008_REFINE_IMPORT Init.Control.Basic
+MAT008_REFINE_IMPORT Init.Control.Id
+MAT008_REFINE_IMPORT Init.Control.Except
+MAT008_REFINE_IMPORT Init.Control.State
+MAT008_REFINE_IMPORT Init.Data.Cast
+MAT008_REFINE_IMPORT Init.SimpLemmas
+MAT008_REFINE_IMPORT Init.Data.Zero
+MAT008_REFINE_IMPORT Init.Data.NeZero
+MAT008_REFINE_IMPORT Init.Data.Nat.Basic
+MAT008_REFINE_IMPORT Init.WF
+MAT008_REFINE_IMPORT Init.MetaTypes
+MAT008_REFINE_IMPORT Init.WFTactics
+MAT008_REFINE_IMPORT Init.Data.Nat.Div.Basic
+MAT008_REFINE_IMPORT Init.Data.Int.Basic
+MAT008_REFINE_IMPORT Init.Data.List.Notation
+MAT008_REFINE_IMPORT Init.Data.List.Basic
+MAT008_REFINE_IMPORT Init.Data.Nat.Bitwise.Basic
+MAT008_REFINE_IMPORT Init.Data.Fin.Basic
+MAT008_REFINE_IMPORT Init.Data.BitVec.BasicAux
+MAT008_REFINE_IMPORT Init.Data.UInt.BasicAux
+MAT008_REFINE_IMPORT Init.Data.Char.Basic
+MAT008_REFINE_IMPORT Init.Data.String.Basic
+MAT008_REFINE_IMPORT Init.Data.Format.Basic
+MAT008_REFINE_IMPORT Init.Data.Repr
+MAT008_REFINE_IMPORT Init.Data.Option.Basic
+MAT008_REFINE_IMPORT Init.Data.ToString.Basic
+MAT008_REFINE_IMPORT Init.Util
+MAT008_REFINE_IMPORT Init.GetElem
+MAT008_REFINE_IMPORT Init.Data.List.ToArrayImpl
+MAT008_REFINE_IMPORT Init.Data.Array.Set
+MAT008_REFINE_IMPORT Init.Data.Array.Basic
+MAT008_REFINE_IMPORT Init.Data.Array.Subarray
+MAT008_REFINE_IMPORT Init.Syntax
+MAT008_REFINE_IMPORT Init.Data.Array.GetLit
+MAT008_REFINE_IMPORT Init.Data.Option.BasicAux
+MAT008_REFINE_IMPORT Init.Meta
+MAT008_REFINE_IMPORT Init.Conv
+MAT008_REFINE_IMPORT Init.While
+MAT008_REFINE_IMPORT Init.NotationExtra
+MAT008_REFINE_IMPORT Init.TacticsExtra
+MAT008_REFINE_IMPORT Init.PropLemmas
+MAT008_REFINE_IMPORT Init.Classical
+MAT008_REFINE_IMPORT Init.ByCases
+MAT008_REFINE_IMPORT Init.RCases
+MAT008_REFINE_IMPORT Init.Control.EState
+MAT008_REFINE_IMPORT Init.Control.Reader
+MAT008_REFINE_IMPORT Init.System.ST
+MAT008_REFINE_IMPORT Init.Control.StateRef
+MAT008_REFINE_IMPORT Init.Control.Option
+MAT008_REFINE_IMPORT Init.Control.Lawful.Basic
+MAT008_REFINE_IMPORT Init.Data.ToString.Macro
+MAT008_REFINE_IMPORT Init.Ext
+MAT008_REFINE_IMPORT Init.Control.Lawful.Instances
+MAT008_REFINE_IMPORT Init.Control.Lawful.Lemmas
+MAT008_REFINE_IMPORT Init.Control.Lawful
+MAT008_REFINE_IMPORT Init.Control.StateCps
+MAT008_REFINE_IMPORT Init.Control.ExceptCps
+MAT008_REFINE_IMPORT Init.Control
+MAT008_REFINE_IMPORT Init.Data.Bool
+MAT008_REFINE_IMPORT Init.Data.Int.Lemmas
+MAT008_REFINE_IMPORT Init.Data.Nat.MinMax
+MAT008_REFINE_IMPORT Init.Data.Prod
+MAT008_REFINE_IMPORT Init.Data.RArray
+MAT008_REFINE_IMPORT Init.Data.Nat.Linear
+MAT008_REFINE_IMPORT Init.Data.Nat.Log2
+MAT008_REFINE_IMPORT Init.Data.Nat.Power2
+MAT008_REFINE_IMPORT Init.Data.Int.DivMod.Basic
+MAT008_REFINE_IMPORT Init.Data.Int.Order
+MAT008_REFINE_IMPORT Init.Data.Nat.Dvd
+MAT008_REFINE_IMPORT Init.Data.Int.DivMod.Bootstrap
+MAT008_REFINE_IMPORT Init.Omega.Int
+MAT008_REFINE_IMPORT Init.Data.Option.Instances
+MAT008_REFINE_IMPORT Init.Data.BEq
+MAT008_REFINE_IMPORT Init.Data.Option.Lemmas
+MAT008_REFINE_IMPORT Init.Data.List.BasicAux
+MAT008_REFINE_IMPORT Init.Data.List.Control
+MAT008_REFINE_IMPORT Init.BinderPredicates
+MAT008_REFINE_IMPORT Init.Data.List.Lemmas
+MAT008_REFINE_IMPORT Init.Data.List.TakeDrop
+MAT008_REFINE_IMPORT Init.Data.Function
+MAT008_REFINE_IMPORT Init.Data.List.Zip
+MAT008_REFINE_IMPORT Init.Data.Nat.Gcd
+MAT008_REFINE_IMPORT Init.Omega.IntList
+MAT008_REFINE_IMPORT Init.Omega.Coeffs
+MAT008_REFINE_IMPORT Init.Omega.LinearCombo
+MAT008_REFINE_IMPORT Init.Omega.Constraint
+MAT008_REFINE_IMPORT Init.Omega.Logic
+MAT008_REFINE_IMPORT Init.Omega
+MAT008_REFINE_IMPORT Init.Data.Nat.Lemmas
+MAT008_REFINE_IMPORT Init.Data.Int.Pow
+MAT008_REFINE_IMPORT Init.Data.Nat.Simproc
+MAT008_REFINE_IMPORT Init.Data.Nat.Bitwise.Lemmas
+MAT008_REFINE_IMPORT Init.Data.Int.Bitwise.Basic
+MAT008_REFINE_IMPORT Init.Data.Nat.Div.Lemmas
+MAT008_REFINE_IMPORT Init.Data.Int.DivMod.Lemmas
+MAT008_REFINE_IMPORT Init.Data.Int.Bitwise.Lemmas
+MAT008_REFINE_IMPORT Init.Data.Int.Bitwise
+MAT008_REFINE_IMPORT Init.Data.BitVec.Basic
+MAT008_REFINE_IMPORT Init.Data.UInt.Basic
+MAT008_REFINE_IMPORT Init.Data.Fin.Log2
+MAT008_REFINE_IMPORT Init.Data.UInt.Log2
+MAT008_REFINE_IMPORT Init.Data.Fin.Lemmas
+MAT008_REFINE_IMPORT Init.Data.Nat.Bitwise
+MAT008_REFINE_IMPORT Init.Data.Fin.Bitwise
+MAT008_REFINE_IMPORT Init.Data.Nat.Mod
+MAT008_REFINE_IMPORT Init.Data.Int.LemmasAux
+MAT008_REFINE_IMPORT Init.Data.BitVec.Lemmas
+MAT008_REFINE_IMPORT Init.Data.Fin.Iterate
+MAT008_REFINE_IMPORT Init.Data.BitVec.Folds
+MAT008_REFINE_IMPORT Init.Data.BitVec.Bitblast
+MAT008_REFINE_IMPORT Init.System.Platform
+MAT008_REFINE_IMPORT Init.Data.UInt.Lemmas
+MAT008_REFINE_IMPORT Init.Data.UInt.Bitwise
+MAT008_REFINE_IMPORT Init.Data.UInt
+MAT008_REFINE_IMPORT Init.Data.ByteArray.Basic
+MAT008_REFINE_IMPORT Init.Data.ByteArray
+MAT008_REFINE_IMPORT Init.Data.String.Extra
+MAT008_REFINE_IMPORT Init.Data.Basic
+MAT008_REFINE_IMPORT Init.Data.Nat.Control
+MAT008_REFINE_IMPORT Init.Data.Nat.SOM
+MAT008_REFINE_IMPORT Init.Data.Nat.Lcm
+MAT008_REFINE_IMPORT Init.Data.Char.Lemmas
+MAT008_REFINE_IMPORT Init.Data.List.Sublist
+MAT008_REFINE_IMPORT Init.Data.List.Count
+MAT008_REFINE_IMPORT Init.Data.Subtype
+MAT008_REFINE_IMPORT Init.Data.List.Attach
+MAT008_REFINE_IMPORT Init.Data.List.Pairwise
+MAT008_REFINE_IMPORT Init.Data.List.Range
+MAT008_REFINE_IMPORT Init.Data.List.Find
+MAT008_REFINE_IMPORT Init.Data.List.Nat.TakeDrop
+MAT008_REFINE_IMPORT Init.Data.List.Lex
+MAT008_REFINE_IMPORT Init.Data.String.Lemmas
+MAT008_REFINE_IMPORT Init.Data.String
+MAT008_REFINE_IMPORT Init.Data.SInt.Basic
+MAT008_REFINE_IMPORT Init.Data.List.Erase
+MAT008_REFINE_IMPORT Init.Data.List.Nat.Erase
+MAT008_REFINE_IMPORT Init.Data.List.Nat.Modify
+MAT008_REFINE_IMPORT Init.Data.List.MinMax
+MAT008_REFINE_IMPORT Init.Data.List.Nat.Basic
+MAT008_REFINE_IMPORT Init.Data.List.Monadic
+MAT008_REFINE_IMPORT Init.Data.Fin.Fold
+MAT008_REFINE_IMPORT Init.Data.List.OfFn
+MAT008_REFINE_IMPORT Init.Data.Array.Mem
+MAT008_REFINE_IMPORT Init.Data.List.Nat.BEq
+MAT008_REFINE_IMPORT Init.Data.Array.DecidableEq
+MAT008_REFINE_IMPORT Init.Data.Range.Basic
+MAT008_REFINE_IMPORT Init.Data.Range.Lemmas
+MAT008_REFINE_IMPORT Init.Data.Range
+MAT008_REFINE_IMPORT Init.Data.Array.Lex.Basic
+MAT008_REFINE_IMPORT Init.Data.Array.Bootstrap
+MAT008_REFINE_IMPORT Init.Data.List.Impl
+MAT008_REFINE_IMPORT Init.Data.List.Nat.InsertIdx
+MAT008_REFINE_IMPORT Init.Data.List.ToArray
+MAT008_REFINE_IMPORT Init.Data.Array.Lemmas
+MAT008_REFINE_IMPORT Init.Data.List.Nat.Count
+MAT008_REFINE_IMPORT Init.Data.Array.Count
+MAT008_REFINE_IMPORT Init.Data.Array.Attach
+MAT008_REFINE_IMPORT Init.Data.Array.OfFn
+MAT008_REFINE_IMPORT Init.Data.List.Nat.Range
+MAT008_REFINE_IMPORT Init.Data.Option.List
+MAT008_REFINE_IMPORT Init.Data.Option.Attach
+MAT008_REFINE_IMPORT Init.Data.List.MapIdx
+MAT008_REFINE_IMPORT Init.Data.Array.MapIdx
+MAT008_REFINE_IMPORT Init.Data.Array.InsertIdx
+MAT008_REFINE_IMPORT Init.Data.Array.TakeDrop
+MAT008_REFINE_IMPORT Init.Data.Array.Zip
+MAT008_REFINE_IMPORT Init.Data.Array.Range
+MAT008_REFINE_IMPORT Init.Data.Stream
+MAT008_REFINE_IMPORT Init.Data.Vector.Basic
+MAT008_REFINE_IMPORT Init.Data.List.Nat.Find
+MAT008_REFINE_IMPORT Init.Data.Array.Find
+MAT008_REFINE_IMPORT Init.Data.Vector.Lemmas
+MAT008_REFINE_IMPORT Init.Data.Array.Lex.Lemmas
+MAT008_REFINE_IMPORT Init.Data.Vector.Lex
+MAT008_REFINE_IMPORT Init.Data.Vector.Attach
+MAT008_REFINE_IMPORT Init.Data.Vector.MapIdx
+MAT008_REFINE_IMPORT Init.Data.Vector.Count
+MAT008_REFINE_IMPORT Init.Data.Vector.DecidableEq
+MAT008_REFINE_IMPORT Init.Data.Vector.Zip
+MAT008_REFINE_IMPORT Init.Data.Vector.OfFn
+MAT008_REFINE_IMPORT Init.Data.Vector.Range
+MAT008_REFINE_IMPORT Init.Data.Array.Erase
+MAT008_REFINE_IMPORT Init.Data.Vector.Erase
+MAT008_REFINE_IMPORT Init.Data.Array.Monadic
+MAT008_REFINE_IMPORT Init.Data.Vector.Monadic
+MAT008_REFINE_IMPORT Init.Data.Vector.InsertIdx
+MAT008_REFINE_IMPORT Init.Data.List.FinRange
+MAT008_REFINE_IMPORT Init.Data.Array.FinRange
+MAT008_REFINE_IMPORT Init.Data.Vector.FinRange
+MAT008_REFINE_IMPORT Init.Data.Array.Extract
+MAT008_REFINE_IMPORT Init.Data.Vector.Extract
+MAT008_REFINE_IMPORT Init.Data.Vector
+MAT008_REFINE_IMPORT Init.Data.Ord
+MAT008_REFINE_IMPORT Init.Data.Nat.Compare
+MAT008_REFINE_IMPORT Init.Data.Nat.Fold
+MAT008_REFINE_IMPORT Init.Data.Nat
+MAT008_REFINE_IMPORT Init.Data.BitVec
+MAT008_REFINE_IMPORT Init.Data.Char
+MAT008_REFINE_IMPORT Init.Data.List.Nat.Pairwise
+MAT008_REFINE_IMPORT Init.Data.List.Nat.Sublist
+MAT008_REFINE_IMPORT Init.Data.List.Perm
+MAT008_REFINE_IMPORT Init.Data.List.Nat.Perm
+MAT008_REFINE_IMPORT Init.Data.List.Nat
+MAT008_REFINE_IMPORT Init.Data.List.Sort.Basic
+MAT008_REFINE_IMPORT Init.Data.List.Sort.Lemmas
+MAT008_REFINE_IMPORT Init.Data.List.Sort.Impl
+MAT008_REFINE_IMPORT Init.Data.List.Sort
+MAT008_REFINE_IMPORT Init.Data.List
+MAT008_REFINE_IMPORT Init.Data.Int.DivMod
+MAT008_REFINE_IMPORT Init.Data.Int.Gcd
+MAT008_REFINE_IMPORT Init.Data.Int.Cooper
+MAT008_REFINE_IMPORT Init.Data.AC
+MAT008_REFINE_IMPORT Init.Data.Int.Linear
+MAT008_REFINE_IMPORT Init.Data.Int.OfNat
+MAT008_REFINE_IMPORT Init.Data.Int
+MAT008_REFINE_IMPORT Init.Data.Array.QSort
+MAT008_REFINE_IMPORT Init.Data.Array.BinSearch
+MAT008_REFINE_IMPORT Init.Data.Array.InsertionSort
+MAT008_REFINE_IMPORT Init.Data.Array.BasicAux
+MAT008_REFINE_IMPORT Init.Data.Array.Perm
+MAT008_REFINE_IMPORT Init.Data.Array.Lex
+MAT008_REFINE_IMPORT Init.Data.Array
+MAT008_REFINE_IMPORT Init.Data.Array.Subarray.Split
+MAT008_REFINE_IMPORT Init.Data.Float
+MAT008_REFINE_IMPORT Init.Data.FloatArray.Basic
+MAT008_REFINE_IMPORT Init.Data.FloatArray
+MAT008_REFINE_IMPORT Init.Data.Fin
+MAT008_REFINE_IMPORT Init.Data.SInt.Float
+MAT008_REFINE_IMPORT Init.Data.Float32
+MAT008_REFINE_IMPORT Init.Data.SInt.Float32
+MAT008_REFINE_IMPORT Init.Data.SInt.Lemmas
+MAT008_REFINE_IMPORT Init.Data.SInt.Bitwise
+MAT008_REFINE_IMPORT Init.Data.SInt
+MAT008_REFINE_IMPORT Init.Data.Option.Monadic
+MAT008_REFINE_IMPORT Init.Data.Option
+MAT008_REFINE_IMPORT Init.System.IOError
+MAT008_REFINE_IMPORT Init.System.FilePath
+MAT008_REFINE_IMPORT Init.System.IO
+MAT008_REFINE_IMPORT Init.Data.Random
+MAT008_REFINE_IMPORT Init.Data.ToString
+MAT008_REFINE_IMPORT Init.Data.Hashable
+MAT008_REFINE_IMPORT Init.Data.OfScientific
+MAT008_REFINE_IMPORT Init.Data.Format.Macro
+MAT008_REFINE_IMPORT Init.Data.Format.Instances
+MAT008_REFINE_IMPORT Init.Data.Format.Syntax
+MAT008_REFINE_IMPORT Init.Data.Format
+MAT008_REFINE_IMPORT Init.Data.Queue
+MAT008_REFINE_IMPORT Init.System.Promise
+MAT008_REFINE_IMPORT Init.System.Mutex
+MAT008_REFINE_IMPORT Init.Data.Channel
+MAT008_REFINE_IMPORT Init.Data.Sum.Basic
+MAT008_REFINE_IMPORT Init.Data.Sum.Lemmas
+MAT008_REFINE_IMPORT Init.Data.Sum
+MAT008_REFINE_IMPORT Init.Data.ULift
+MAT008_REFINE_IMPORT Init.Data.PLift
+MAT008_REFINE_IMPORT Init.Data
+MAT008_REFINE_IMPORT Init.System.Uri
+MAT008_REFINE_IMPORT Init.System
+MAT008_REFINE_IMPORT Init.Dynamic
+MAT008_REFINE_IMPORT Init.ShareCommon
+MAT008_REFINE_IMPORT Init.Hints
+MAT008_REFINE_IMPORT Init.Guard
+MAT008_REFINE_IMPORT Init.Simproc
+MAT008_REFINE_IMPORT Init.SizeOfLemmas
+MAT008_REFINE_IMPORT Init.MacroTrace
+MAT008_REFINE_IMPORT Init.Grind.Norm
+MAT008_REFINE_IMPORT Init.Grind.Tactics
+MAT008_REFINE_IMPORT Init.Grind.Util
+MAT008_REFINE_IMPORT Init.Grind.Lemmas
+MAT008_REFINE_IMPORT Init.Grind.Cases
+MAT008_REFINE_IMPORT Init.Grind.Propagator
+MAT008_REFINE_IMPORT Init.Grind.Offset
+MAT008_REFINE_IMPORT Init.Grind.PP
+MAT008_REFINE_IMPORT Init.Grind
+MAT008_REFINE_IMPORT Init.Internal.Order.Basic
+MAT008_REFINE_IMPORT Init.Internal.Order.Lemmas
+MAT008_REFINE_IMPORT Init.Internal.Order.Tactic
+MAT008_REFINE_IMPORT Init.Internal.Order
+MAT008_REFINE_IMPORT Init.Internal
+MAT008_REFINE_IMPORT Init.Try
+MAT008_REFINE_IMPORT Init.Task
+MAT008_REFINE_IMPORT Init
+MAT008_REFINE_IMPORT Std.Data.DHashMap.Internal.AssocList.Basic
+MAT008_REFINE_IMPORT Std.Data.DHashMap.RawDef
+MAT008_REFINE_IMPORT Std.Data.Internal.List.Defs
+MAT008_REFINE_IMPORT Std.Data.DHashMap.Internal.Index
+MAT008_REFINE_IMPORT Std.Data.DHashMap.Internal.Defs
+MAT008_REFINE_IMPORT Std.Data.DHashMap.Raw
+MAT008_REFINE_IMPORT Std.Data.DHashMap.Basic
+MAT008_REFINE_IMPORT Std.Data.DHashMap.Internal.Raw
+MAT008_REFINE_IMPORT Std.Classes.Ord
+MAT008_REFINE_IMPORT Std.Data.Internal.List.Associative
+MAT008_REFINE_IMPORT Std.Data.DHashMap.Internal.HashesTo
+MAT008_REFINE_IMPORT Std.Data.DHashMap.Internal.AssocList.Lemmas
+MAT008_REFINE_IMPORT Std.Data.DHashMap.Internal.Model
+MAT008_REFINE_IMPORT Std.Data.DHashMap.Internal.WF
+MAT008_REFINE_IMPORT Std.Data.DHashMap.Internal.RawLemmas
+MAT008_REFINE_IMPORT Std.Data.DHashMap.AdditionalOperations
+MAT008_REFINE_IMPORT Std.Data.DHashMap.Lemmas
+MAT008_REFINE_IMPORT Std.Data.DHashMap
+MAT008_REFINE_IMPORT Std.Data.HashMap.Basic
+MAT008_REFINE_IMPORT Std.Data.HashMap.Raw
+MAT008_REFINE_IMPORT Std.Data.HashMap.AdditionalOperations
+MAT008_REFINE_IMPORT Std.Data.HashMap.Lemmas
+MAT008_REFINE_IMPORT Std.Data.HashMap
+MAT008_REFINE_IMPORT Std.Data.HashSet.Basic
+MAT008_REFINE_IMPORT Std.Data.HashSet.Lemmas
+MAT008_REFINE_IMPORT Std.Data.HashSet
+MAT008_REFINE_IMPORT Std.Data.DTreeMap.Internal.Def
+MAT008_REFINE_IMPORT Std.Data.DTreeMap.Internal.Balanced
+MAT008_REFINE_IMPORT Std.Data.DTreeMap.Internal.Balancing
+MAT008_REFINE_IMPORT Std.Data.Internal.Cut
+MAT008_REFINE_IMPORT Std.Data.DTreeMap.Internal.Ordered
+MAT008_REFINE_IMPORT Std.Data.DTreeMap.Internal.Queries
+MAT008_REFINE_IMPORT Std.Data.DTreeMap.Internal.Operations
+MAT008_REFINE_IMPORT Std.Data.DTreeMap.Internal.WF.Defs
+MAT008_REFINE_IMPORT Std.Data.DTreeMap.Basic
+MAT008_REFINE_IMPORT Std.Data.DTreeMap.Raw.Basic
+MAT008_REFINE_IMPORT Std.Data.DTreeMap.Internal.Cell
+MAT008_REFINE_IMPORT Std.Data.DTreeMap.Internal.Model
+MAT008_REFINE_IMPORT Std.Data.DTreeMap.Internal.WF.Lemmas
+MAT008_REFINE_IMPORT Std.Data.DTreeMap.AdditionalOperations
+MAT008_REFINE_IMPORT Std.Data.DTreeMap
+MAT008_REFINE_IMPORT Std.Data.TreeMap.Basic
+MAT008_REFINE_IMPORT Std.Data.TreeMap.Raw.Basic
+MAT008_REFINE_IMPORT Std.Data.TreeMap.AdditionalOperations
+MAT008_REFINE_IMPORT Std.Data.TreeMap
+MAT008_REFINE_IMPORT Std.Data.TreeSet.Basic
+MAT008_REFINE_IMPORT Std.Data.TreeSet.Raw.Basic
+MAT008_REFINE_IMPORT Std.Data.TreeSet.AdditionalOperations
+MAT008_REFINE_IMPORT Std.Data.DTreeMap.Internal.Lemmas
+MAT008_REFINE_IMPORT Std.Data.DTreeMap.Lemmas
+MAT008_REFINE_IMPORT Std.Data.TreeMap.Lemmas
+MAT008_REFINE_IMPORT Std.Data.TreeSet.Lemmas
+MAT008_REFINE_IMPORT Std.Data.TreeSet
+MAT008_REFINE_IMPORT Std.Data.DHashMap.RawLemmas
+MAT008_REFINE_IMPORT Std.Data.HashMap.RawLemmas
+MAT008_REFINE_IMPORT Std.Data.HashSet.Raw
+MAT008_REFINE_IMPORT Std.Data.HashSet.RawLemmas
+MAT008_REFINE_IMPORT Std.Data
+MAT008_REFINE_IMPORT Std.Sat.AIG.Basic
+MAT008_REFINE_IMPORT Std.Sat.AIG.LawfulOperator
+MAT008_REFINE_IMPORT Std.Sat.AIG.Lemmas
+MAT008_REFINE_IMPORT Std.Sat.AIG.Cached
+MAT008_REFINE_IMPORT Std.Sat.AIG.CachedLemmas
+MAT008_REFINE_IMPORT Std.Sat.AIG.CachedGates
+MAT008_REFINE_IMPORT Std.Sat.AIG.CachedGatesLemmas
+MAT008_REFINE_IMPORT Std.Sat.CNF.Literal
+MAT008_REFINE_IMPORT Std.Sat.CNF.Basic
+MAT008_REFINE_IMPORT Std.Sat.CNF.Relabel
+MAT008_REFINE_IMPORT Std.Sat.CNF.RelabelFin
+MAT008_REFINE_IMPORT Std.Sat.CNF.Dimacs
+MAT008_REFINE_IMPORT Std.Sat.CNF
+MAT008_REFINE_IMPORT Std.Sat.AIG.CNF
+MAT008_REFINE_IMPORT Std.Sat.AIG.Relabel
+MAT008_REFINE_IMPORT Std.Sat.AIG.RelabelNat
+MAT008_REFINE_IMPORT Std.Sat.AIG.RefVec
+MAT008_REFINE_IMPORT Std.Sat.AIG.LawfulVecOperator
+MAT008_REFINE_IMPORT Std.Sat.AIG.RefVecOperator.Map
+MAT008_REFINE_IMPORT Std.Sat.AIG.RefVecOperator.Zip
+MAT008_REFINE_IMPORT Std.Sat.AIG.RefVecOperator.Fold
+MAT008_REFINE_IMPORT Std.Sat.AIG.RefVecOperator
+MAT008_REFINE_IMPORT Std.Sat.AIG.If
+MAT008_REFINE_IMPORT Std.Sat.AIG
+MAT008_REFINE_IMPORT Std.Sat
+MAT008_REFINE_IMPORT Std.Sync.Basic
+MAT008_REFINE_IMPORT Std.Sync.Mutex
+MAT008_REFINE_IMPORT Std.Sync.Channel
+MAT008_REFINE_IMPORT Std.Sync.RecursiveMutex
+MAT008_REFINE_IMPORT Std.Sync.Barrier
+MAT008_REFINE_IMPORT Std.Sync
+MAT008_REFINE_IMPORT Std.Time.Internal.Bounded
+MAT008_REFINE_IMPORT Std.Internal.Rat
+MAT008_REFINE_IMPORT Std.Time.Internal.UnitVal
+MAT008_REFINE_IMPORT Std.Time.Internal
+MAT008_REFINE_IMPORT Std.Time.Time.Unit.Nanosecond
+MAT008_REFINE_IMPORT Std.Time.Time.Unit.Second
+MAT008_REFINE_IMPORT Std.Time.Time.Unit.Minute
+MAT008_REFINE_IMPORT Std.Time.Time.Unit.Hour
+MAT008_REFINE_IMPORT Std.Time.Time.Unit.Millisecond
+MAT008_REFINE_IMPORT Std.Time.Time.Unit.Basic
+MAT008_REFINE_IMPORT Std.Time.Time.Basic
+MAT008_REFINE_IMPORT Std.Time.Time.HourMarker
+MAT008_REFINE_IMPORT Std.Time.Time.PlainTime
+MAT008_REFINE_IMPORT Std.Time.Time
+MAT008_REFINE_IMPORT Std.Time.Date.Unit.Day
+MAT008_REFINE_IMPORT Std.Time.Date.Unit.Month
+MAT008_REFINE_IMPORT Std.Time.Date.Unit.Year
+MAT008_REFINE_IMPORT Std.Time.Date.Unit.Weekday
+MAT008_REFINE_IMPORT Std.Time.Date.Unit.Week
+MAT008_REFINE_IMPORT Std.Time.Date.Unit.Basic
+MAT008_REFINE_IMPORT Std.Time.Date.ValidDate
+MAT008_REFINE_IMPORT Std.Time.Date.Basic
+MAT008_REFINE_IMPORT Std.Time.Date.PlainDate
+MAT008_REFINE_IMPORT Std.Time.Date
+MAT008_REFINE_IMPORT Std.Time.Duration
+MAT008_REFINE_IMPORT Std.Time.DateTime.Timestamp
+MAT008_REFINE_IMPORT Std.Time.DateTime.PlainDateTime
+MAT008_REFINE_IMPORT Std.Time.DateTime
+MAT008_REFINE_IMPORT Std.Time.Zoned.Offset
+MAT008_REFINE_IMPORT Std.Time.Zoned.TimeZone
+MAT008_REFINE_IMPORT Std.Time.Zoned.DateTime
+MAT008_REFINE_IMPORT Std.Time.Zoned.ZoneRules
+MAT008_REFINE_IMPORT Std.Time.Zoned.ZonedDateTime
+MAT008_REFINE_IMPORT Std.Internal.Parsec.Basic
+MAT008_REFINE_IMPORT Std.Internal.Parsec.String
+MAT008_REFINE_IMPORT Std.Internal.Parsec.ByteArray
+MAT008_REFINE_IMPORT Std.Internal.Parsec
+MAT008_REFINE_IMPORT Std.Time.Zoned.Database.TzIf
+MAT008_REFINE_IMPORT Std.Time.Zoned.Database.Basic
+MAT008_REFINE_IMPORT Std.Time.Zoned.Database.TZdb
+MAT008_REFINE_IMPORT Std.Time.Zoned.Database.Windows
+MAT008_REFINE_IMPORT Std.Time.Zoned.Database
+MAT008_REFINE_IMPORT Std.Time.Zoned
+MAT008_REFINE_IMPORT Std.Time.Format.Basic
+MAT008_REFINE_IMPORT Std.Time.Notation.Spec
+MAT008_REFINE_IMPORT Std.Time.Format
+MAT008_REFINE_IMPORT Std.Time.Notation
+MAT008_REFINE_IMPORT Std.Time
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BoolExpr.Basic
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BoolExpr
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Basic
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.Eq
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.Add
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Carry
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.Not
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.Ult
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.GetLsbD
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Var
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Const
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.ShiftLeft
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.ShiftRight
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.Append
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.Replicate
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.Extract
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.RotateLeft
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.RotateRight
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.Mul
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.Neg
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.Sub
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.ZeroExtend
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.Udiv
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.Umod
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Expr
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Pred
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Substructure
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Basic
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.Eq
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.Add
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Carry
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.Not
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.Ult
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.GetLsbD
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Const
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Var
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.ShiftLeft
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.ShiftRight
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.Append
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.Replicate
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.Extract
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.RotateLeft
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.RotateRight
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.Mul
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.Neg
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.Sub
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.ZeroExtend
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Normalize.Bool
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Normalize.Canonicalize
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Normalize.BitVec
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.Udiv
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.Umod
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Expr
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Pred
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast.BVExpr
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Bitblast
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Actions
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Internal.Entails
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Internal.PosFin
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Internal.Assignment
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Internal.Clause
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Internal.Formula.Class
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Internal.Formula.Implementation
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Internal.CNF
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Internal.Formula.Lemmas
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Internal.Formula.RupAddResult
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Internal.Formula.RupAddSound
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Internal.Formula.RatAddResult
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Internal.Formula.RatAddSound
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Internal.Formula.Instance
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Internal.Formula
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Internal.Convert
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Internal.LRATChecker
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Internal.Actions
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Internal.LRATCheckerSound
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Checker
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT.Parser
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.LRAT
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Normalize.Equal
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Normalize.Prop
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Normalize
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Reflect
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide.Syntax
+MAT008_REFINE_IMPORT Std.Tactic.BVDecide
+MAT008_REFINE_IMPORT Std.Tactic
+MAT008_REFINE_IMPORT Std.Internal.Async.Basic
+MAT008_REFINE_IMPORT Std.Internal.UV.Loop
+MAT008_REFINE_IMPORT Std.Internal.UV.Timer
+MAT008_REFINE_IMPORT Std.Net.Addr
+MAT008_REFINE_IMPORT Std.Net
+MAT008_REFINE_IMPORT Std.Internal.UV.TCP
+MAT008_REFINE_IMPORT Std.Internal.UV.UDP
+MAT008_REFINE_IMPORT Std.Internal.UV
+MAT008_REFINE_IMPORT Std.Internal.Async.Timer
+MAT008_REFINE_IMPORT Std.Internal.Async.TCP
+MAT008_REFINE_IMPORT Std.Internal.Async.UDP
+MAT008_REFINE_IMPORT Std.Internal.Async
+MAT008_REFINE_IMPORT Std.Internal
+MAT008_REFINE_IMPORT Std
+MAT008_REFINE_IMPORT Mat008.RunOwnership
+MAT008_REFINE_IMPORT Refine.MapReason
+MAT008_REFINE_IMPORT Refine
+MAT008_REFINE_IMPORT Lean.Data.AssocList
+MAT008_REFINE_IMPORT Lean.ImportingFlag
+MAT008_REFINE_IMPORT Lean.Data.KVMap
+MAT008_REFINE_IMPORT Lean.Data.RBMap
+MAT008_REFINE_IMPORT Lean.Data.RBTree
+MAT008_REFINE_IMPORT Lean.Data.PersistentHashMap
+MAT008_REFINE_IMPORT Lean.Data.SMap
+MAT008_REFINE_IMPORT Lean.Data.SSet
+MAT008_REFINE_IMPORT Lean.Data.Name
+MAT008_REFINE_IMPORT Lean.Data.NameMap
+MAT008_REFINE_IMPORT Lean.Data.Options
+MAT008_REFINE_IMPORT Lean.Data.Format
+MAT008_REFINE_IMPORT Lean.Data.Json.Basic
+MAT008_REFINE_IMPORT Lean.Data.Json.Parser
+MAT008_REFINE_IMPORT Lean.Data.Json.Printer
+MAT008_REFINE_IMPORT Lean.Data.Json.FromToJson
+MAT008_REFINE_IMPORT Lean.Data.Json.Stream
+MAT008_REFINE_IMPORT Lean.Syntax
+MAT008_REFINE_IMPORT Lean.Data.Json.Elab
+MAT008_REFINE_IMPORT Lean.Data.Json
+MAT008_REFINE_IMPORT Lean.Data.JsonRpc
+MAT008_REFINE_IMPORT Lean.Data.LBool
+MAT008_REFINE_IMPORT Lean.Data.LOption
+MAT008_REFINE_IMPORT Lean.Data.Lsp.Basic
+MAT008_REFINE_IMPORT Lean.Data.Lsp.CancelParams
+MAT008_REFINE_IMPORT Lean.Data.Lsp.TextSync
+MAT008_REFINE_IMPORT Lean.Data.Lsp.LanguageFeatures
+MAT008_REFINE_IMPORT Lean.Data.PersistentHashSet
+MAT008_REFINE_IMPORT Lean.Hygiene
+MAT008_REFINE_IMPORT Lean.Level
+MAT008_REFINE_IMPORT Lean.Expr
+MAT008_REFINE_IMPORT Lean.ToLevel
+MAT008_REFINE_IMPORT Lean.ToExpr
+MAT008_REFINE_IMPORT Lean.Data.Position
+MAT008_REFINE_IMPORT Lean.Data.DeclarationRange
+MAT008_REFINE_IMPORT Lean.Data.PrefixTree
+MAT008_REFINE_IMPORT Lean.Data.NameTrie
+MAT008_REFINE_IMPORT Lean.Declaration
+MAT008_REFINE_IMPORT Lean.Data.PersistentArray
+MAT008_REFINE_IMPORT Lean.LocalContext
+MAT008_REFINE_IMPORT Lean.Util.Path
+MAT008_REFINE_IMPORT Lean.Util.FindExpr
+MAT008_REFINE_IMPORT Lean.Util.Profile
+MAT008_REFINE_IMPORT Lean.Util.PtrSet
+MAT008_REFINE_IMPORT Lean.Util.ReplaceExpr
+MAT008_REFINE_IMPORT Lean.Util.InstantiateLevelParams
+MAT008_REFINE_IMPORT Lean.Util.FoldConsts
+MAT008_REFINE_IMPORT Lean.PrivateName
+MAT008_REFINE_IMPORT Lean.LoadDynlib
+MAT008_REFINE_IMPORT Lean.Environment
+MAT008_REFINE_IMPORT Lean.Data.OpenDecl
+MAT008_REFINE_IMPORT Lean.Util.MonadCache
+MAT008_REFINE_IMPORT Lean.MetavarContext
+MAT008_REFINE_IMPORT Lean.Server.Rpc.Basic
+MAT008_REFINE_IMPORT Lean.Widget.Types
+MAT008_REFINE_IMPORT Lean.Elab.InfoTree.Types
+MAT008_REFINE_IMPORT Lean.Util.PPExt
+MAT008_REFINE_IMPORT Lean.Util.Sorry
+MAT008_REFINE_IMPORT Lean.Message
+MAT008_REFINE_IMPORT Lean.InternalExceptionId
+MAT008_REFINE_IMPORT Lean.Exception
+MAT008_REFINE_IMPORT Lean.Log
+MAT008_REFINE_IMPORT Lean.AuxRecursor
+MAT008_REFINE_IMPORT Lean.Compiler.Old
+MAT008_REFINE_IMPORT Lean.MonadEnv
+MAT008_REFINE_IMPORT Lean.DeclarationRange
+MAT008_REFINE_IMPORT Lean.Data.Lsp.Utf16
+MAT008_REFINE_IMPORT Lean.Data.Lsp.Diagnostics
+MAT008_REFINE_IMPORT Lean.Data.Lsp.CodeActions
+MAT008_REFINE_IMPORT Lean.Data.Lsp.Capabilities
+MAT008_REFINE_IMPORT Lean.Data.Lsp.Client
+MAT008_REFINE_IMPORT Lean.Data.Lsp.Communication
+MAT008_REFINE_IMPORT Lean.Data.Lsp.Extra
+MAT008_REFINE_IMPORT Lean.Data.Lsp.Workspace
+MAT008_REFINE_IMPORT Lean.Data.Lsp.InitShutdown
+MAT008_REFINE_IMPORT Lean.Data.Lsp.Internal
+MAT008_REFINE_IMPORT Lean.Data.Lsp.Ipc
+MAT008_REFINE_IMPORT Lean.Data.Lsp.Window
+MAT008_REFINE_IMPORT Lean.Data.Lsp
+MAT008_REFINE_IMPORT Lean.Data.Trie
+MAT008_REFINE_IMPORT Lean.Data.Xml.Basic
+MAT008_REFINE_IMPORT Lean.Data.Xml.Parser
+MAT008_REFINE_IMPORT Lean.Data.Xml
+MAT008_REFINE_IMPORT Lean.Data.RArray
+MAT008_REFINE_IMPORT Lean.Data
+MAT008_REFINE_IMPORT Lean.Util.RecDepth
+MAT008_REFINE_IMPORT Lean.Elab.Exception
+MAT008_REFINE_IMPORT Lean.Util.Trace
+MAT008_REFINE_IMPORT Lean.Modifiers
+MAT008_REFINE_IMPORT Lean.Namespace
+MAT008_REFINE_IMPORT Lean.ResolveName
+MAT008_REFINE_IMPORT Lean.DocString.Links
+MAT008_REFINE_IMPORT Lean.DocString.Extension
+MAT008_REFINE_IMPORT Lean.Parser.Types
+MAT008_REFINE_IMPORT Lean.Language.Basic
+MAT008_REFINE_IMPORT Lean.CoreM
+MAT008_REFINE_IMPORT Lean.Attributes
+MAT008_REFINE_IMPORT Lean.Compiler.InlineAttrs
+MAT008_REFINE_IMPORT Lean.Class
+MAT008_REFINE_IMPORT Lean.ScopedEnvExtension
+MAT008_REFINE_IMPORT Lean.ReducibilityAttrs
+MAT008_REFINE_IMPORT Lean.Util.MonadBacktrack
+MAT008_REFINE_IMPORT Lean.Meta.TransparencyMode
+MAT008_REFINE_IMPORT Lean.Meta.Basic
+MAT008_REFINE_IMPORT Lean.Compiler.Specialize
+MAT008_REFINE_IMPORT Lean.Compiler.ConstFolding
+MAT008_REFINE_IMPORT Lean.Compiler.ClosedTermCache
+MAT008_REFINE_IMPORT Lean.ProjFns
+MAT008_REFINE_IMPORT Lean.Compiler.ExternAttr
+MAT008_REFINE_IMPORT Lean.Meta.InferType
+MAT008_REFINE_IMPORT Lean.Meta.PPGoal
+MAT008_REFINE_IMPORT Lean.ReservedNameAction
+MAT008_REFINE_IMPORT Lean.Elab.InfoTree.Main
+MAT008_REFINE_IMPORT Lean.Elab.InfoTree
+MAT008_REFINE_IMPORT Lean.Compiler.ImplementedByAttr
+MAT008_REFINE_IMPORT Lean.Compiler.NeverExtractAttr
+MAT008_REFINE_IMPORT Lean.Compiler.IR.Basic
+MAT008_REFINE_IMPORT Lean.Compiler.IR.Format
+MAT008_REFINE_IMPORT Lean.Compiler.IR.CompilerM
+MAT008_REFINE_IMPORT Lean.Compiler.IR.FreeVars
+MAT008_REFINE_IMPORT Lean.Compiler.IR.NormIds
+MAT008_REFINE_IMPORT Lean.Compiler.IR.PushProj
+MAT008_REFINE_IMPORT Lean.Compiler.IR.ElimDeadVars
+MAT008_REFINE_IMPORT Lean.Compiler.IR.SimpCase
+MAT008_REFINE_IMPORT Lean.Compiler.IR.LiveVars
+MAT008_REFINE_IMPORT Lean.Compiler.IR.ResetReuse
+MAT008_REFINE_IMPORT Lean.Compiler.IR.Checker
+MAT008_REFINE_IMPORT Lean.Compiler.ExportAttr
+MAT008_REFINE_IMPORT Lean.Compiler.IR.Borrow
+MAT008_REFINE_IMPORT Lean.Runtime
+MAT008_REFINE_IMPORT Lean.Compiler.IR.Boxing
+MAT008_REFINE_IMPORT Lean.Compiler.IR.RC
+MAT008_REFINE_IMPORT Lean.Compiler.IR.ExpandResetReuse
+MAT008_REFINE_IMPORT Lean.Compiler.IR.UnboxResult
+MAT008_REFINE_IMPORT Lean.Compiler.IR.ElimDeadBranches
+MAT008_REFINE_IMPORT Lean.Compiler.NameMangling
+MAT008_REFINE_IMPORT Lean.AddDecl
+MAT008_REFINE_IMPORT Lean.Compiler.InitAttr
+MAT008_REFINE_IMPORT Lean.Compiler.IR.EmitUtil
+MAT008_REFINE_IMPORT Lean.Compiler.IR.EmitC
+MAT008_REFINE_IMPORT Lean.Compiler.IR.CtorLayout
+MAT008_REFINE_IMPORT Lean.Compiler.IR.Sorry
+MAT008_REFINE_IMPORT Lean.Compiler.IR
+MAT008_REFINE_IMPORT Lean.Util.Recognizers
+MAT008_REFINE_IMPORT Lean.Compiler.CSimpAttr
+MAT008_REFINE_IMPORT Lean.Compiler.FFI
+MAT008_REFINE_IMPORT Lean.Compiler.NoncomputableAttr
+MAT008_REFINE_IMPORT Lean.Meta.GlobalInstances
+MAT008_REFINE_IMPORT Lean.Structure
+MAT008_REFINE_IMPORT Lean.Util.SafeExponentiation
+MAT008_REFINE_IMPORT Lean.Meta.GetUnfoldableConst
+MAT008_REFINE_IMPORT Lean.Meta.FunInfo
+MAT008_REFINE_IMPORT Lean.Meta.NatInstTesters
+MAT008_REFINE_IMPORT Lean.Meta.Offset
+MAT008_REFINE_IMPORT Lean.Meta.LitValues
+MAT008_REFINE_IMPORT Lean.Meta.CtorRecognizer
+MAT008_REFINE_IMPORT Lean.Meta.Match.MatcherInfo
+MAT008_REFINE_IMPORT Lean.Meta.Match.MatchPatternAttr
+MAT008_REFINE_IMPORT Lean.Meta.Transform
+MAT008_REFINE_IMPORT Lean.Meta.WHNF
+MAT008_REFINE_IMPORT Lean.Meta.DiscrTreeTypes
+MAT008_REFINE_IMPORT Lean.Meta.DiscrTree
+MAT008_REFINE_IMPORT Lean.Util.CollectMVars
+MAT008_REFINE_IMPORT Lean.Meta.CollectMVars
+MAT008_REFINE_IMPORT Lean.Meta.Instances
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Types
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Basic
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.AlphaEqv
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.LCtx
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.ConfigOptions
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.CompilerM
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.PassManager
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.PhaseExt
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.BaseTypes
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Util
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.MonoTypes
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.OtherDecl
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.InferType
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Bind
+MAT008_REFINE_IMPORT Lean.PrettyPrinter.Delaborator.Options
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Internalize
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.PrettyPrinter
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.CompatibleTypes
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Check
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.ToExpr
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.CSE
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.DependsOn
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.ElimDead
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.FixedParams
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.PullFunDecls
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.FVarUtil
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.ScopeM
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.JoinPoints
+MAT008_REFINE_IMPORT Lean.Util.CollectLevelParams
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Level
+MAT008_REFINE_IMPORT Lean.Compiler.Options
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.PullLetDecls
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.ReduceJpArity
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Renaming
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Simp.Basic
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Simp.FunDeclInfo
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Simp.DiscrM
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Simp.JpCases
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Simp.Config
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Simp.SimpM
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Simp.InlineCandidate
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Simp.InlineProj
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Simp.Used
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Simp.DefaultAlt
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Simp.SimpValue
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Simp.ConstantFold
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Simp.Main
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Simp
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.SpecInfo
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.MonadScope
+MAT008_REFINE_IMPORT Lean.Util.ForEachExprWhere
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Closure
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Specialize
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.ToMono
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.DeclHash
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.AuxDeclCache
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.LambdaLifting
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.FloatLetIn
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.ReduceArity
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.ElimDeadBranches
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Passes
+MAT008_REFINE_IMPORT Lean.Compiler.BorrowedAnnotation
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.ToLCNF
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.ToDecl
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Main
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF.Testing
+MAT008_REFINE_IMPORT Lean.Compiler.LCNF
+MAT008_REFINE_IMPORT Lean.Compiler.Main
+MAT008_REFINE_IMPORT Lean.Compiler.AtMostOnce
+MAT008_REFINE_IMPORT Lean.Compiler
+MAT008_REFINE_IMPORT Lean.Parser.Basic
+MAT008_REFINE_IMPORT Lean.BuiltinDocAttr
+MAT008_REFINE_IMPORT Lean.Parser.Extension
+MAT008_REFINE_IMPORT Lean.Parser.StrInterpolation
+MAT008_REFINE_IMPORT Lean.ParserCompiler.Attribute
+MAT008_REFINE_IMPORT Lean.KeyedDeclsAttribute
+MAT008_REFINE_IMPORT Lean.PrettyPrinter.Basic
+MAT008_REFINE_IMPORT Lean.PrettyPrinter.Parenthesizer
+MAT008_REFINE_IMPORT Lean.PrettyPrinter.Formatter
+MAT008_REFINE_IMPORT Lean.Parser.Extra
+MAT008_REFINE_IMPORT Lean.Parser.Level
+MAT008_REFINE_IMPORT Lean.Parser.Attr
+MAT008_REFINE_IMPORT Lean.Parser.Term.Doc
+MAT008_REFINE_IMPORT Lean.Parser.Term
+MAT008_REFINE_IMPORT Lean.Parser.Tactic.Doc
+MAT008_REFINE_IMPORT Lean.Parser.Tactic
+MAT008_REFINE_IMPORT Lean.Parser.Do
+MAT008_REFINE_IMPORT Lean.Parser.Command
+MAT008_REFINE_IMPORT Lean.Parser.Module
+MAT008_REFINE_IMPORT Lean.Parser.Syntax
+MAT008_REFINE_IMPORT Lean.Parser
+MAT008_REFINE_IMPORT Lean.Util.Paths
+MAT008_REFINE_IMPORT Lean.Elab.Import
+MAT008_REFINE_IMPORT Lean.Elab.Config
+MAT008_REFINE_IMPORT Lean.SubExpr
+MAT008_REFINE_IMPORT Lean.PrettyPrinter.Delaborator.SubExpr
+MAT008_REFINE_IMPORT Lean.Meta.AbstractMVars
+MAT008_REFINE_IMPORT Lean.Meta.Sorry
+MAT008_REFINE_IMPORT Lean.Meta.Check
+MAT008_REFINE_IMPORT Lean.Meta.SynthInstance
+MAT008_REFINE_IMPORT Lean.Util.FindMVar
+MAT008_REFINE_IMPORT Lean.Util.FindLevelMVar
+MAT008_REFINE_IMPORT Lean.Util.ReplaceLevel
+MAT008_REFINE_IMPORT Lean.PrettyPrinter.Delaborator.Attributes
+MAT008_REFINE_IMPORT Lean.PrettyPrinter.Delaborator.FieldNotation
+MAT008_REFINE_IMPORT Lean.PrettyPrinter.Delaborator.TopDownAnalyze
+MAT008_REFINE_IMPORT Lean.Meta.DecLevel
+MAT008_REFINE_IMPORT Lean.Meta.AppBuilder
+MAT008_REFINE_IMPORT Lean.Meta.Coe
+MAT008_REFINE_IMPORT Lean.Util.CollectLevelMVars
+MAT008_REFINE_IMPORT Lean.Linter.Basic
+MAT008_REFINE_IMPORT Lean.Linter.Deprecated
+MAT008_REFINE_IMPORT Lean.Elab.AutoBound
+MAT008_REFINE_IMPORT Lean.Elab.Level
+MAT008_REFINE_IMPORT Lean.Elab.Util
+MAT008_REFINE_IMPORT Lean.Elab.Attributes
+MAT008_REFINE_IMPORT Lean.DocString.Add
+MAT008_REFINE_IMPORT Lean.Elab.DeclModifiers
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.TerminationHint
+MAT008_REFINE_IMPORT Lean.Elab.DeclarationRange
+MAT008_REFINE_IMPORT Lean.Elab.InfoTree.InlayHints
+MAT008_REFINE_IMPORT Lean.Elab.Term
+MAT008_REFINE_IMPORT Lean.PrettyPrinter.Delaborator.Basic
+MAT008_REFINE_IMPORT Lean.Meta.CoeAttr
+MAT008_REFINE_IMPORT Lean.Meta.Structure
+MAT008_REFINE_IMPORT Lean.PrettyPrinter.Delaborator.Builtins
+MAT008_REFINE_IMPORT Lean.PrettyPrinter.Delaborator
+MAT008_REFINE_IMPORT Lean.Meta.ReduceEval
+MAT008_REFINE_IMPORT Lean.ParserCompiler
+MAT008_REFINE_IMPORT Lean.Util.NumObjs
+MAT008_REFINE_IMPORT Lean.Util.ShareCommon
+MAT008_REFINE_IMPORT Lean.PrettyPrinter
+MAT008_REFINE_IMPORT Lean.Meta.Diagnostics
+MAT008_REFINE_IMPORT Lean.Elab.Quotation.Util
+MAT008_REFINE_IMPORT Lean.Elab.Quotation.Precheck
+MAT008_REFINE_IMPORT Lean.Elab.BindersUtil
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Util
+MAT008_REFINE_IMPORT Lean.Util.ForEachExpr
+MAT008_REFINE_IMPORT Lean.Util.OccursCheck
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Basic
+MAT008_REFINE_IMPORT Lean.Elab.SyntheticMVars
+MAT008_REFINE_IMPORT Lean.Elab.Binders
+MAT008_REFINE_IMPORT Lean.Elab.SetOption
+MAT008_REFINE_IMPORT Lean.Elab.Command
+MAT008_REFINE_IMPORT Lean.Util.CollectFVars
+MAT008_REFINE_IMPORT Lean.HeadIndex
+MAT008_REFINE_IMPORT Lean.Meta.KAbstract
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.ElimInfo
+MAT008_REFINE_IMPORT Lean.Elab.Arg
+MAT008_REFINE_IMPORT Lean.Elab.RecAppSyntax
+MAT008_REFINE_IMPORT Lean.Elab.App
+MAT008_REFINE_IMPORT Lean.Elab.Syntax
+MAT008_REFINE_IMPORT Lean.Elab.MacroArgUtil
+MAT008_REFINE_IMPORT Lean.Meta.Eqns
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.AuxLemma
+MAT008_REFINE_IMPORT Lean.DocString
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.SimpTheorems
+MAT008_REFINE_IMPORT Lean.Meta.CongrTheorems
+MAT008_REFINE_IMPORT Lean.Meta.MatchUtil
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Clear
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Revert
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Intro
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.FVarSubst
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Assert
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Replace
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.SimpCongrTheorems
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.Types
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.Simproc
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.Attr
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.RegisterCommand
+MAT008_REFINE_IMPORT Lean.Server.InfoUtils
+MAT008_REFINE_IMPORT Lean.Linter.Util
+MAT008_REFINE_IMPORT Lean.Linter.MissingDocs
+MAT008_REFINE_IMPORT Lean.Elab.BinderPredicates
+MAT008_REFINE_IMPORT Lean.Elab.LetRec
+MAT008_REFINE_IMPORT Lean.Language.Util
+MAT008_REFINE_IMPORT Lean.Language.Lean.Types
+MAT008_REFINE_IMPORT Lean.Language.Lean
+MAT008_REFINE_IMPORT Lean.Server.Utils
+MAT008_REFINE_IMPORT Lean.Server.References
+MAT008_REFINE_IMPORT Lean.Util.Profiler
+MAT008_REFINE_IMPORT Lean.Elab.Frontend
+MAT008_REFINE_IMPORT Lean.Meta.Closure
+MAT008_REFINE_IMPORT Lean.Meta.Eval
+MAT008_REFINE_IMPORT Lean.Elab.Eval
+MAT008_REFINE_IMPORT Lean.Elab.BuiltinNotation
+MAT008_REFINE_IMPORT Lean.Elab.DeclUtil
+MAT008_REFINE_IMPORT Lean.Elab.DeclNameGen
+MAT008_REFINE_IMPORT Lean.Elab.DefView
+MAT008_REFINE_IMPORT Lean.Meta.RecursorInfo
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Induction
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Subst
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Injection
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.UnifyEq
+MAT008_REFINE_IMPORT Lean.Meta.ACLt
+MAT008_REFINE_IMPORT Lean.Meta.Match.MatchEqsExt
+MAT008_REFINE_IMPORT Lean.Util.SortExprs
+MAT008_REFINE_IMPORT Lean.Meta.KExprMap
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.Arith.Nat.Basic
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.Arith.Util
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.Arith.Nat.Simp
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.Arith.Nat
+MAT008_REFINE_IMPORT Lean.Meta.IntInstTesters
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.Arith.Int.Basic
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.Arith.Int.Simp
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.Arith.Int
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.Arith
+MAT008_REFINE_IMPORT Lean.Meta.BinderNameHint
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.Rewrite
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.Diagnostics
+MAT008_REFINE_IMPORT Lean.Meta.Match.Value
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.Main
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Acyclic
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Cases
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Assumption
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Apply
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Contradiction
+MAT008_REFINE_IMPORT Lean.Meta.GeneralizeTelescope
+MAT008_REFINE_IMPORT Lean.Meta.CollectFVars
+MAT008_REFINE_IMPORT Lean.Meta.Match.CaseValues
+MAT008_REFINE_IMPORT Lean.Meta.Match.CaseArraySizes
+MAT008_REFINE_IMPORT Lean.Meta.Match.Basic
+MAT008_REFINE_IMPORT Lean.Meta.Match.MatcherApp.Basic
+MAT008_REFINE_IMPORT Lean.Meta.Match.Match
+MAT008_REFINE_IMPORT Lean.Meta.GeneralizeVars
+MAT008_REFINE_IMPORT Lean.Meta.ForEachExpr
+MAT008_REFINE_IMPORT Lean.Elab.MatchAltView
+MAT008_REFINE_IMPORT Lean.Elab.PatternVar
+MAT008_REFINE_IMPORT Lean.Elab.Match
+MAT008_REFINE_IMPORT Lean.Elab.Deriving.Basic
+MAT008_REFINE_IMPORT Lean.Util.SCC
+MAT008_REFINE_IMPORT Lean.Util.NumApps
+MAT008_REFINE_IMPORT Lean.Meta.AbstractNestedProofs
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.Basic
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.TerminationMeasure
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.Mutual
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.Structural.Basic
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.FixedParams
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.Structural.IndGroupInfo
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.Structural.RecArgInfo
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.Structural.FindRecArg
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.Structural.Preprocess
+MAT008_REFINE_IMPORT Lean.Util.HasConstCache
+MAT008_REFINE_IMPORT Lean.Meta.PProdN
+MAT008_REFINE_IMPORT Lean.Meta.Reduce
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Refl
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Delta
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.SplitIf
+MAT008_REFINE_IMPORT Lean.Meta.Match.MatchEqs
+MAT008_REFINE_IMPORT Lean.Meta.Match
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Generalize
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Split
+MAT008_REFINE_IMPORT Lean.Meta.Match.MatcherApp.Transform
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.Structural.BRecOn
+MAT008_REFINE_IMPORT Lean.Meta.Constructions.CasesOn
+MAT008_REFINE_IMPORT Lean.LabelAttribute
+MAT008_REFINE_IMPORT Lean.Meta.Iterator
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.IndependentOf
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Backtrack
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Constructor
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Repeat
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Symm
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.SolveByElim
+MAT008_REFINE_IMPORT Lean.Meta.IndPredBelow
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.Structural.IndPred
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.Eqns
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.Structural.Eqns
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.Structural.SmartUnfolding
+MAT008_REFINE_IMPORT Lean.Elab.Do
+MAT008_REFINE_IMPORT Lean.Server.FileWorker.ExampleHover
+MAT008_REFINE_IMPORT Lean.Server.GoTo
+MAT008_REFINE_IMPORT Lean.Server.RequestCancellation
+MAT008_REFINE_IMPORT Lean.Server.ServerTask
+MAT008_REFINE_IMPORT Lean.Server.FileSource
+MAT008_REFINE_IMPORT Lean.Linter.UnusedVariables
+MAT008_REFINE_IMPORT Lean.Widget.TaggedText
+MAT008_REFINE_IMPORT Lean.Widget.Basic
+MAT008_REFINE_IMPORT Lean.Widget.InteractiveCode
+MAT008_REFINE_IMPORT Lean.Widget.InteractiveGoal
+MAT008_REFINE_IMPORT Lean.Widget.InteractiveDiagnostic
+MAT008_REFINE_IMPORT Lean.Server.Snapshots
+MAT008_REFINE_IMPORT Lean.Server.AsyncList
+MAT008_REFINE_IMPORT Lean.Server.FileWorker.Utils
+MAT008_REFINE_IMPORT Lean.Server.Requests
+MAT008_REFINE_IMPORT Lean.Server.FileWorker.InlayHints
+MAT008_REFINE_IMPORT Lean.Server.FileWorker.SemanticHighlighting
+MAT008_REFINE_IMPORT Lean.Data.FuzzyMatching
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Doc
+MAT008_REFINE_IMPORT Lean.Server.Completion.CompletionItemData
+MAT008_REFINE_IMPORT Lean.Server.Completion.CompletionUtils
+MAT008_REFINE_IMPORT Lean.Server.Completion.SyntheticCompletion
+MAT008_REFINE_IMPORT Lean.Server.Completion.CompletionInfoSelection
+MAT008_REFINE_IMPORT Lean.Server.Completion.CompletionResolution
+MAT008_REFINE_IMPORT Lean.Meta.CompletionName
+MAT008_REFINE_IMPORT Lean.Server.Completion.EligibleHeaderDecls
+MAT008_REFINE_IMPORT Lean.Server.Completion.CompletionCollectors
+MAT008_REFINE_IMPORT Lean.Server.Completion
+MAT008_REFINE_IMPORT Lean.Widget.Diff
+MAT008_REFINE_IMPORT Lean.Server.FileWorker.RequestHandling
+MAT008_REFINE_IMPORT Lean.Server.CodeActions.Basic
+MAT008_REFINE_IMPORT Lean.Server.CodeActions.Attr
+MAT008_REFINE_IMPORT Lean.Elab.Open
+MAT008_REFINE_IMPORT Lean.Elab.BuiltinTerm
+MAT008_REFINE_IMPORT Lean.Server.CodeActions.Provider
+MAT008_REFINE_IMPORT Lean.Server.CodeActions
+MAT008_REFINE_IMPORT Lean.Server.Rpc.RequestHandling
+MAT008_REFINE_IMPORT Lean.Widget.UserWidget
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.ExposeNames
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.TryThis
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.Structural.Main
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.Structural
+MAT008_REFINE_IMPORT Lean.Meta.ArgsPacker.Basic
+MAT008_REFINE_IMPORT Lean.Meta.ArgsPacker
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Rewrite
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.WF.Unfold
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.WF.Eqns
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.WF.PackMutual
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.WF.FloatRecApp
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Rename
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.WF.Rel
+MAT008_REFINE_IMPORT Lean.Data.Array
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.WF.Basic
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Cleanup
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.WF.Fix
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.SimpAll
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.BuiltinSimprocs.Core
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.BuiltinSimprocs.Util
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.BuiltinSimprocs.Nat
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.BuiltinSimprocs.Fin
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.BuiltinSimprocs.UInt
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.BuiltinSimprocs.Int
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.BuiltinSimprocs.SInt
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.BuiltinSimprocs.Char
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.BuiltinSimprocs.String
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.BuiltinSimprocs.BitVec
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.BuiltinSimprocs.List
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.BuiltinSimprocs.Array
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp.BuiltinSimprocs
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Simp
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Config
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.ElabTerm
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Location
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Simp
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.WF.Preprocess
+MAT008_REFINE_IMPORT Lean.Elab.Quotation
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.WF.GuessLex
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.WF.Main
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.MkInhabitant
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BuiltinTactic
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Conv.Basic
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Congr
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Conv.Congr
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Rewrite
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Conv.Rewrite
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Change
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Conv.Change
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Split
+MAT008_REFINE_IMPORT Lean.Elab.AuxDef
+MAT008_REFINE_IMPORT Lean.Elab.ElabRules
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.SimpTrace
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Conv.Simp
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Conv.Pattern
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Delta
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Conv.Delta
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Unfold
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Unfold
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Conv.Unfold
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Conv
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.PartialFixpoint.Eqns
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Monotonicity
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.PartialFixpoint.Main
+MAT008_REFINE_IMPORT Lean.Meta.Injective
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.PartialFixpoint.Induction
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.PartialFixpoint
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.Main
+MAT008_REFINE_IMPORT Lean.Elab.MutualDef
+MAT008_REFINE_IMPORT Lean.Meta.Constructions.NoConfusion
+MAT008_REFINE_IMPORT Lean.Meta.Constructions.RecOn
+MAT008_REFINE_IMPORT Lean.Meta.Constructions.BRecOn
+MAT008_REFINE_IMPORT Lean.Meta.Constructions
+MAT008_REFINE_IMPORT Lean.Meta.SizeOf
+MAT008_REFINE_IMPORT Lean.Elab.ComputedFields
+MAT008_REFINE_IMPORT Lean.Elab.MutualInductive
+MAT008_REFINE_IMPORT Lean.Elab.Declaration
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.FunIndInfo
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.FunIndCollect
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Generalize
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Induction
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Injection
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Match
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Simproc
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Meta
+MAT008_REFINE_IMPORT Lean.Elab.Calc
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Calc
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Congr
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Guard
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.RCases
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Repeat
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Ext
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Ext
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.FalseOrByContra
+MAT008_REFINE_IMPORT Lean.Meta.Canonicalizer
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Omega.OmegaM
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Omega.MinNatAbs
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Omega.Core
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Omega.Frontend
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Omega
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Simpa
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.NormCast
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.NormCast
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Symm
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.SolveByElim
+MAT008_REFINE_IMPORT Lean.Meta.LazyDiscrTree
+MAT008_REFINE_IMPORT Lean.Util.Heartbeats
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.LibrarySearch
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.LibrarySearch
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.ShowTerm
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Rfl
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Rfl
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Rewrites
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Rewrites
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.DiscrTreeKey
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.LRAT.Trim
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.LRAT
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.External
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.Attr
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.BVDecide.Reflect
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.BVDecide.ReifiedBVExpr
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.BVDecide.ReifiedBVPred
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.BVDecide.ReifiedBVLogical
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.BVDecide.ReifiedLemmas
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.BVDecide.Reify
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.BVDecide.SatAtBVLogical
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.Normalize.Basic
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.Normalize.ApplyControlFlow
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.Normalize.Simproc
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.Normalize.Rewrite
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.Normalize.AndFlatten
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.Normalize.EmbeddedConstraint
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.AC.Main
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.Normalize.AC
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.Normalize.Structures
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.Normalize.IntToBitVec
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.Normalize.TypeAnalysis
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.Normalize.Enums
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.Normalize.ShortCircuit
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.Normalize
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.LRAT
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.BVDecide
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.BVCheck
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend.BVTrace
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide.Frontend
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BVDecide
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.BoolToPropSimps
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Classical
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Util
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.EMatchTheorem
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Cases
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Attr
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.RevertAll
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.ENodeKey
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Util
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Offset.Util
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Offset.Types
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Cutsat.Types
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Types
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Types
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Injection
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Proof
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.MatchDiscrOnly
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.MarkNestedProofs
+MAT008_REFINE_IMPORT Lean.Util.FVarSubset
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Canon
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Simp
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.ProveEq
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.PropagatorAttr
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.MatchCond
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Offset.Proof
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Offset.Main
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Offset
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Cutsat.Util
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Cutsat.Nat
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Cutsat.Var
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Cutsat.Inv
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Inv
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Inv
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Offset.Model
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Cutsat.Model
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Model
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.PP
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Ctor
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Beta
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Diseq
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Cutsat.Proof
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Cutsat.Norm
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Cutsat.DvdCnstr
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Cutsat.LeCnstr
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Cutsat.EqCnstr
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Internalize
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Internalize
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Core
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Ext
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Propagate
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Parser
+MAT008_REFINE_IMPORT Lean.Meta.Match.MatcherApp
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.CasesMatch
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Combinators
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Intro
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.EMatch
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Proj
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.EqResolution
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.ForallProp
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Split
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Cutsat.SearchM
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Cutsat.Search
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Main
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.MBTC
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Cutsat.MBTC
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith.Cutsat
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Arith
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Solve
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.SimpUtil
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind.Main
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Grind
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Grind
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Try.Collect
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.Try
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.Try
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.AsAuxLemma
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.TreeTacAttr
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.ExposeNames
+MAT008_REFINE_IMPORT Lean.Elab.Tactic.SimpArith
+MAT008_REFINE_IMPORT Lean.Elab.Tactic
+MAT008_REFINE_IMPORT Lean.Elab.StructInst
+MAT008_REFINE_IMPORT Lean.Elab.Inductive
+MAT008_REFINE_IMPORT Lean.Elab.Structure
+MAT008_REFINE_IMPORT Lean.Util.CollectAxioms
+MAT008_REFINE_IMPORT Lean.Elab.Print
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.WF
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.Nonrec.Eqns
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition.EqUnfold
+MAT008_REFINE_IMPORT Lean.Elab.PreDefinition
+MAT008_REFINE_IMPORT Lean.Elab.Deriving.Util
+MAT008_REFINE_IMPORT Lean.Elab.Deriving.Inhabited
+MAT008_REFINE_IMPORT Lean.Elab.Deriving.Nonempty
+MAT008_REFINE_IMPORT Lean.Elab.Deriving.TypeName
+MAT008_REFINE_IMPORT Lean.Elab.Deriving.BEq
+MAT008_REFINE_IMPORT Lean.Meta.Inductive
+MAT008_REFINE_IMPORT Lean.Elab.Deriving.DecEq
+MAT008_REFINE_IMPORT Lean.Elab.Deriving.Repr
+MAT008_REFINE_IMPORT Lean.Elab.Deriving.FromToJson
+MAT008_REFINE_IMPORT Lean.Elab.Deriving.SizeOf
+MAT008_REFINE_IMPORT Lean.Elab.Deriving.Hashable
+MAT008_REFINE_IMPORT Lean.Elab.Deriving.Ord
+MAT008_REFINE_IMPORT Lean.Elab.Deriving.ToExpr
+MAT008_REFINE_IMPORT Lean.Elab.Deriving
+MAT008_REFINE_IMPORT Lean.Elab.Extra
+MAT008_REFINE_IMPORT Lean.Elab.GenInjective
+MAT008_REFINE_IMPORT Lean.Elab.Macro
+MAT008_REFINE_IMPORT Lean.Elab.Notation
+MAT008_REFINE_IMPORT Lean.Elab.Mixfix
+MAT008_REFINE_IMPORT Lean.Elab.MacroRules
+MAT008_REFINE_IMPORT Lean.Elab.BuiltinCommand
+MAT008_REFINE_IMPORT Lean.Elab.BuiltinEvalCommand
+MAT008_REFINE_IMPORT Lean.Elab.InheritDoc
+MAT008_REFINE_IMPORT Lean.Elab.ParseImportsFast
+MAT008_REFINE_IMPORT Lean.Util.Diff
+MAT008_REFINE_IMPORT Lean.Elab.GuardMsgs
+MAT008_REFINE_IMPORT Lean.Meta.CheckTactic
+MAT008_REFINE_IMPORT Lean.Elab.CheckTactic
+MAT008_REFINE_IMPORT Lean.Elab.MatchExpr
+MAT008_REFINE_IMPORT Lean.Elab.Time
+MAT008_REFINE_IMPORT Lean.Elab.RecommendedSpelling
+MAT008_REFINE_IMPORT Lean.Elab.InfoTrees
+MAT008_REFINE_IMPORT Lean.Elab
+MAT008_REFINE_IMPORT Lean.Meta.LevelDefEq
+MAT008_REFINE_IMPORT Lean.Meta.UnificationHint
+MAT008_REFINE_IMPORT Lean.Meta.ExprDefEq
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.AC
+MAT008_REFINE_IMPORT Lean.Meta.Tactic.FunInd
+MAT008_REFINE_IMPORT Lean.Meta.Tactic
+MAT008_REFINE_IMPORT Lean.Meta.ExprLens
+MAT008_REFINE_IMPORT Lean.Meta.ExprTraverse
+MAT008_REFINE_IMPORT Lean.Meta
+MAT008_REFINE_IMPORT Lean.Util.TestExtern
+MAT008_REFINE_IMPORT Lean.Util.LeanOptions
+MAT008_REFINE_IMPORT Lean.Util.FileSetupInfo
+MAT008_REFINE_IMPORT Lean.Util.SearchPath
+MAT008_REFINE_IMPORT Lean.Util
+MAT008_REFINE_IMPORT Lean.Server.Watchdog
+MAT008_REFINE_IMPORT Lean.Server.FileWorker.WidgetRequests
+MAT008_REFINE_IMPORT Lean.Util.LakePath
+MAT008_REFINE_IMPORT Lean.Server.FileWorker.SetupFile
+MAT008_REFINE_IMPORT Lean.Server.Completion.ImportCompletion
+MAT008_REFINE_IMPORT Lean.Server.FileWorker
+MAT008_REFINE_IMPORT Lean.Server.Rpc.Deriving
+MAT008_REFINE_IMPORT Lean.Server.Rpc
+MAT008_REFINE_IMPORT Lean.Server.Test.Cancel
+MAT008_REFINE_IMPORT Lean.Widget
+MAT008_REFINE_IMPORT Lean.Server.Test.Runner
+MAT008_REFINE_IMPORT Lean.Server.Test
+MAT008_REFINE_IMPORT Lean.Server
+MAT008_REFINE_IMPORT Lean.Linter.Builtin
+MAT008_REFINE_IMPORT Lean.Linter.ConstructorAsVariable
+MAT008_REFINE_IMPORT Lean.Linter.Omit
+MAT008_REFINE_IMPORT Lean.Linter.List
+MAT008_REFINE_IMPORT Lean.Linter
+MAT008_REFINE_IMPORT Lean.Replay
+MAT008_REFINE_IMPORT Lean.PremiseSelection
+MAT008_REFINE_IMPORT Lean
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)),\n  Sonification.Mat008.AbstractPy.eventScanFrom s events =\n    Sonification.Mat008.AbstractPy.pyScanFrom s (Sonification.Mat008.AbstractPy.acceptedProjection events)","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_event_projection","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow)\n  (arbitraryPriorFlag : Bool),\n  (Sonification.Mat008.AbstractPy.executeInstructions { state := s, row := row, mismatchFlag := arbitraryPriorFlag }\n        Sonification.Mat008.AbstractPy.runGateProgram).state =\n    Sonification.Mat008.AbstractPy.pyStep s row","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_instruction_program_correspondence","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (table : List (String × String)) (key : String),\n  Sonification.Mat008.lookup table key ≠ none → key ∈ List.map Prod.fst table","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_lookup_support","axioms":["propext","Quot.sound"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.mismatch s row = true ↔\n    ∃ oldCampaign, s.owners row.originalRun = some oldCampaign ∧ oldCampaign ≠ row.campaign","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_mismatch_iff","axioms":["propext","Quot.sound"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m →\n    Sonification.Mat008.AbstractPy.mismatch s row =\n      Sonification.Mat008.differentOwner m (Sonification.Mat008.AbstractPy.projectRow row)","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_mismatch_related","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  s.reasons Sonification.Mat008.AbstractPy.reuseReason = false →\n    ((Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason = true ↔\n      Sonification.Mat008.AbstractPy.mismatch s row = true)","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_new_reason_iff_mismatch","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"(Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty\n          [{ campaign := \"A\", originalRun := \"RUN\" }, { campaign := \"B\", originalRun := \"RUN\" },\n            { campaign := \"B\", originalRun := \"OTHER\" }]).reasons\n      Sonification.Mat008.AbstractPy.reuseReason =\n    true ∧\n  (Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty\n          [{ campaign := \"A\", originalRun := \"RUN_A\" }, { campaign := \"B\", originalRun := \"RUN_B\" }]).reasons\n      Sonification.Mat008.AbstractPy.reuseReason =\n    false","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_nonvacuity","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"let s := { owners := fun x => none, reasons := fun x => true };\nSonification.Mat008.AbstractPy.mismatch s { campaign := \"CAMPAIGN\", originalRun := \"RUN\" } = false ∧\n  (Sonification.Mat008.AbstractPy.pyStep s { campaign := \"CAMPAIGN\", originalRun := \"RUN\" }).reasons\n      Sonification.Mat008.AbstractPy.reuseReason =\n    true","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_preexisting_reason_counterexample","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.Related Sonification.Mat008.AbstractPy.empty Sonification.Mat008.initial","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_r1_empty_related","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State),\n  Sonification.Mat008.AbstractPy.Related s m → Sonification.Mat008.AbstractPy.FiniteSupport s.owners","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_r2_finite_support","axioms":["propext","Quot.sound"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State),\n  Sonification.Mat008.AbstractPy.Related s m → ∀ (key : String), s.owners key = Sonification.Mat008.lookup m.owner key","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_r2_lookup","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  (Sonification.Mat008.AbstractPy.pyStep s row).owners row.originalRun = some row.campaign","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_r3_latest_campaign","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m →\n    Sonification.Mat008.AbstractPy.OwnersRelated (Sonification.Mat008.AbstractPy.pyStep s row).owners\n      (Sonification.Mat008.step m (Sonification.Mat008.AbstractPy.projectRow row)).owner","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_r3_overwrite","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m →\n    ((Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason = true ↔\n      (Sonification.Mat008.step m (Sonification.Mat008.AbstractPy.projectRow row)).conflict = true)","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_r4_reason_iff","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  s.reasons Sonification.Mat008.AbstractPy.reuseReason = true →\n    (Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason = true","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_r5_reason_sticky","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (rows : List Sonification.Mat008.AbstractPy.AcceptedRow),\n  s.reasons Sonification.Mat008.AbstractPy.reuseReason = true →\n    (Sonification.Mat008.AbstractPy.pyScanFrom s rows).reasons Sonification.Mat008.AbstractPy.reuseReason = true","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_r5_sequence_sticky","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)),\n  Sonification.Mat008.AbstractPy.Related s m →\n    Sonification.Mat008.AbstractPy.Related (Sonification.Mat008.AbstractPy.eventScanFrom s events)\n      (Sonification.Mat008.scanFrom m\n        (Sonification.Mat008.AbstractPy.project (Sonification.Mat008.AbstractPy.acceptedProjection events)))","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_r6_accepted_projection","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (rows : List Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m →\n    Sonification.Mat008.AbstractPy.Related (Sonification.Mat008.AbstractPy.pyScanFrom s rows)\n      (Sonification.Mat008.scanFrom m (Sonification.Mat008.AbstractPy.project rows))","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_r6_sequence_related","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (rows : List Sonification.Mat008.AbstractPy.AcceptedRow) (a b : Sonification.Mat008.AbstractPy.AcceptedRow),\n  a ∈ rows →\n    b ∈ rows →\n      a.originalRun = b.originalRun →\n        a.campaign ≠ b.campaign →\n          (Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty rows).reasons\n              Sonification.Mat008.AbstractPy.reuseReason =\n            true","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_r7_collision_reason","axioms":["propext","Quot.sound","Classical.choice"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow) (reason : String),\n  reason ≠ Sonification.Mat008.AbstractPy.reuseReason →\n    (Sonification.Mat008.AbstractPy.pyStep s row).reasons reason = s.reasons reason","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_reason_frame","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  (Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason =\n    (s.reasons Sonification.Mat008.AbstractPy.reuseReason || Sonification.Mat008.AbstractPy.mismatch s row)","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_reason_step","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (before after : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State),\n  Sonification.Mat008.AbstractPy.Related before m →\n    (∀ (key : String), after.owners key = before.owners key) →\n      after.reasons Sonification.Mat008.AbstractPy.reuseReason =\n          before.reasons Sonification.Mat008.AbstractPy.reuseReason →\n        Sonification.Mat008.AbstractPy.Related after m","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_skip_frame","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m →\n    Sonification.Mat008.AbstractPy.Related (Sonification.Mat008.AbstractPy.pyStep s row)\n      (Sonification.Mat008.step m (Sonification.Mat008.AbstractPy.projectRow row))","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_step_related","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (owners : Sonification.Mat008.AbstractPy.OwnerMap) (key value query : String),\n  query ≠ key → Sonification.Mat008.AbstractPy.write owners key value query = owners query","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_write_other","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (owners : Sonification.Mat008.AbstractPy.OwnerMap) (table : List (String × String)) (key value : String),\n  Sonification.Mat008.AbstractPy.OwnersRelated owners table →\n    Sonification.Mat008.AbstractPy.OwnersRelated (Sonification.Mat008.AbstractPy.write owners key value)\n      ((key, value) :: table)","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_write_related","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (owners : Sonification.Mat008.AbstractPy.OwnerMap) (key value : String),\n  Sonification.Mat008.AbstractPy.write owners key value key = some value","origin":"Audit","kind":"non_theorem","declaration":"RefineStatementChecks.check_write_same","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Type","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.AcceptedRow","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.AcceptedRow → Nat","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.AcceptedRow._sizeOf_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"SizeOf Sonification.Mat008.AbstractPy.AcceptedRow","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.AcceptedRow._sizeOf_inst","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.AcceptedRow → String","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.AcceptedRow.campaign","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{motive : Sonification.Mat008.AbstractPy.AcceptedRow → Sort u} →\n  (t : Sonification.Mat008.AbstractPy.AcceptedRow) →\n    ((campaign originalRun : String) → motive { campaign := campaign, originalRun := originalRun }) → motive t","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.AcceptedRow.casesOn","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"String → String → Sonification.Mat008.AbstractPy.AcceptedRow","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.AcceptedRow.mk","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"String → String → Sonification.Mat008.AbstractPy.AcceptedRow","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.AcceptedRow.mk._flat_ctor","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ {campaign originalRun campaign_1 originalRun_1 : String},\n  { campaign := campaign, originalRun := originalRun } = { campaign := campaign_1, originalRun := originalRun_1 } →\n    campaign = campaign_1 ∧ originalRun = originalRun_1","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.AcceptedRow.mk.inj","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (campaign originalRun campaign_1 originalRun_1 : String),\n  ({ campaign := campaign, originalRun := originalRun } = { campaign := campaign_1, originalRun := originalRun_1 }) =\n    (campaign = campaign_1 ∧ originalRun = originalRun_1)","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.AcceptedRow.mk.injEq","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (campaign originalRun : String),\n  sizeOf { campaign := campaign, originalRun := originalRun } = 1 + sizeOf campaign + sizeOf originalRun","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.AcceptedRow.mk.sizeOf_spec","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{P : Sort u} →\n  {v1 v2 : Sonification.Mat008.AbstractPy.AcceptedRow} →\n    v1 = v2 → Sonification.Mat008.AbstractPy.AcceptedRow.noConfusionType P v1 v2","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.AcceptedRow.noConfusion","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sort u → Sonification.Mat008.AbstractPy.AcceptedRow → Sonification.Mat008.AbstractPy.AcceptedRow → Sort u","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.AcceptedRow.noConfusionType","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.AcceptedRow → String","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.AcceptedRow.originalRun","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{motive : Sonification.Mat008.AbstractPy.AcceptedRow → Sort u} →\n  ((campaign originalRun : String) → motive { campaign := campaign, originalRun := originalRun }) →\n    (t : Sonification.Mat008.AbstractPy.AcceptedRow) → motive t","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.AcceptedRow.rec","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{motive : Sonification.Mat008.AbstractPy.AcceptedRow → Sort u} →\n  (t : Sonification.Mat008.AbstractPy.AcceptedRow) →\n    ((campaign originalRun : String) → motive { campaign := campaign, originalRun := originalRun }) → motive t","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.AcceptedRow.recOn","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.OwnerMap → Prop","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.FiniteSupport","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Type","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.GateFrame","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.GateFrame → Nat","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.GateFrame._sizeOf_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"SizeOf Sonification.Mat008.AbstractPy.GateFrame","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.GateFrame._sizeOf_inst","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{motive : Sonification.Mat008.AbstractPy.GateFrame → Sort u} →\n  (t : Sonification.Mat008.AbstractPy.GateFrame) →\n    ((state : Sonification.Mat008.AbstractPy.PyState) →\n        (row : Sonification.Mat008.AbstractPy.AcceptedRow) →\n          (mismatchFlag : Bool) → motive { state := state, row := row, mismatchFlag := mismatchFlag }) →\n      motive t","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.GateFrame.casesOn","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.GateFrame → Bool","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.GateFrame.mismatchFlag","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.PyState →\n  Sonification.Mat008.AbstractPy.AcceptedRow → Bool → Sonification.Mat008.AbstractPy.GateFrame","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.GateFrame.mk","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.PyState →\n  Sonification.Mat008.AbstractPy.AcceptedRow → Bool → Sonification.Mat008.AbstractPy.GateFrame","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.GateFrame.mk._flat_ctor","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ {state : Sonification.Mat008.AbstractPy.PyState} {row : Sonification.Mat008.AbstractPy.AcceptedRow}\n  {mismatchFlag : Bool} {state_1 : Sonification.Mat008.AbstractPy.PyState}\n  {row_1 : Sonification.Mat008.AbstractPy.AcceptedRow} {mismatchFlag_1 : Bool},\n  { state := state, row := row, mismatchFlag := mismatchFlag } =\n      { state := state_1, row := row_1, mismatchFlag := mismatchFlag_1 } →\n    state = state_1 ∧ row = row_1 ∧ mismatchFlag = mismatchFlag_1","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.GateFrame.mk.inj","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (state : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow)\n  (mismatchFlag : Bool) (state_1 : Sonification.Mat008.AbstractPy.PyState)\n  (row_1 : Sonification.Mat008.AbstractPy.AcceptedRow) (mismatchFlag_1 : Bool),\n  ({ state := state, row := row, mismatchFlag := mismatchFlag } =\n      { state := state_1, row := row_1, mismatchFlag := mismatchFlag_1 }) =\n    (state = state_1 ∧ row = row_1 ∧ mismatchFlag = mismatchFlag_1)","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.GateFrame.mk.injEq","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (state : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow)\n  (mismatchFlag : Bool),\n  sizeOf { state := state, row := row, mismatchFlag := mismatchFlag } =\n    1 + sizeOf state + sizeOf row + sizeOf mismatchFlag","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.GateFrame.mk.sizeOf_spec","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{P : Sort u} →\n  {v1 v2 : Sonification.Mat008.AbstractPy.GateFrame} →\n    v1 = v2 → Sonification.Mat008.AbstractPy.GateFrame.noConfusionType P v1 v2","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.GateFrame.noConfusion","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sort u → Sonification.Mat008.AbstractPy.GateFrame → Sonification.Mat008.AbstractPy.GateFrame → Sort u","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.GateFrame.noConfusionType","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{motive : Sonification.Mat008.AbstractPy.GateFrame → Sort u} →\n  ((state : Sonification.Mat008.AbstractPy.PyState) →\n      (row : Sonification.Mat008.AbstractPy.AcceptedRow) →\n        (mismatchFlag : Bool) → motive { state := state, row := row, mismatchFlag := mismatchFlag }) →\n    (t : Sonification.Mat008.AbstractPy.GateFrame) → motive t","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.GateFrame.rec","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{motive : Sonification.Mat008.AbstractPy.GateFrame → Sort u} →\n  (t : Sonification.Mat008.AbstractPy.GateFrame) →\n    ((state : Sonification.Mat008.AbstractPy.PyState) →\n        (row : Sonification.Mat008.AbstractPy.AcceptedRow) →\n          (mismatchFlag : Bool) → motive { state := state, row := row, mismatchFlag := mismatchFlag }) →\n      motive t","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.GateFrame.recOn","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.GateFrame → Sonification.Mat008.AbstractPy.AcceptedRow","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.GateFrame.row","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.GateFrame → Sonification.Mat008.AbstractPy.PyState","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.GateFrame.state","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Type","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.GateInstruction","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.GateInstruction","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.GateInstruction.insertReasonIfMismatch","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.GateInstruction.insertReasonIfMismatch = 1","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.GateInstruction.insertReasonIfMismatch.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.GateInstruction","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.GateInstruction.overwriteOwner","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.GateInstruction.overwriteOwner = 2","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.GateInstruction.overwriteOwner.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.GateInstruction","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.GateInstruction.testExistingOwner","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.GateInstruction.testExistingOwner = 0","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.GateInstruction.testExistingOwner.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Type","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.OwnerMap","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.OwnerMap → List (String × String) → Prop","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.OwnersRelated","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Type","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.PyState","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.PyState → Nat","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.PyState._sizeOf_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"SizeOf Sonification.Mat008.AbstractPy.PyState","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.PyState._sizeOf_inst","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{motive : Sonification.Mat008.AbstractPy.PyState → Sort u} →\n  (t : Sonification.Mat008.AbstractPy.PyState) →\n    ((owners : Sonification.Mat008.AbstractPy.OwnerMap) →\n        (reasons : Sonification.Mat008.AbstractPy.ReasonSet) → motive { owners := owners, reasons := reasons }) →\n      motive t","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.PyState.casesOn","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.OwnerMap →\n  Sonification.Mat008.AbstractPy.ReasonSet → Sonification.Mat008.AbstractPy.PyState","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.PyState.mk","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.OwnerMap →\n  Sonification.Mat008.AbstractPy.ReasonSet → Sonification.Mat008.AbstractPy.PyState","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.PyState.mk._flat_ctor","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ {owners : Sonification.Mat008.AbstractPy.OwnerMap} {reasons : Sonification.Mat008.AbstractPy.ReasonSet}\n  {owners_1 : Sonification.Mat008.AbstractPy.OwnerMap} {reasons_1 : Sonification.Mat008.AbstractPy.ReasonSet},\n  { owners := owners, reasons := reasons } = { owners := owners_1, reasons := reasons_1 } →\n    owners = owners_1 ∧ reasons = reasons_1","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.PyState.mk.inj","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (owners : Sonification.Mat008.AbstractPy.OwnerMap) (reasons : Sonification.Mat008.AbstractPy.ReasonSet)\n  (owners_1 : Sonification.Mat008.AbstractPy.OwnerMap) (reasons_1 : Sonification.Mat008.AbstractPy.ReasonSet),\n  ({ owners := owners, reasons := reasons } = { owners := owners_1, reasons := reasons_1 }) =\n    (owners = owners_1 ∧ reasons = reasons_1)","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.PyState.mk.injEq","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (owners : Sonification.Mat008.AbstractPy.OwnerMap) (reasons : Sonification.Mat008.AbstractPy.ReasonSet),\n  sizeOf { owners := owners, reasons := reasons } = 1","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.PyState.mk.sizeOf_spec","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{P : Sort u} →\n  {v1 v2 : Sonification.Mat008.AbstractPy.PyState} →\n    v1 = v2 → Sonification.Mat008.AbstractPy.PyState.noConfusionType P v1 v2","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.PyState.noConfusion","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sort u → Sonification.Mat008.AbstractPy.PyState → Sonification.Mat008.AbstractPy.PyState → Sort u","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.PyState.noConfusionType","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.PyState → Sonification.Mat008.AbstractPy.OwnerMap","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.PyState.owners","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.PyState → Sonification.Mat008.AbstractPy.ReasonSet","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.PyState.reasons","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{motive : Sonification.Mat008.AbstractPy.PyState → Sort u} →\n  ((owners : Sonification.Mat008.AbstractPy.OwnerMap) →\n      (reasons : Sonification.Mat008.AbstractPy.ReasonSet) → motive { owners := owners, reasons := reasons }) →\n    (t : Sonification.Mat008.AbstractPy.PyState) → motive t","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.PyState.rec","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{motive : Sonification.Mat008.AbstractPy.PyState → Sort u} →\n  (t : Sonification.Mat008.AbstractPy.PyState) →\n    ((owners : Sonification.Mat008.AbstractPy.OwnerMap) →\n        (reasons : Sonification.Mat008.AbstractPy.ReasonSet) → motive { owners := owners, reasons := reasons }) →\n      motive t","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.PyState.recOn","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Type","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.ReasonSet","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.PyState → Sonification.Mat008.State → Prop","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.Related","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"List (Option Sonification.Mat008.AbstractPy.AcceptedRow) → List Sonification.Mat008.AbstractPy.AcceptedRow","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.acceptedProjection","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"List (Option Sonification.Mat008.AbstractPy.AcceptedRow) → List Sonification.Mat008.AbstractPy.AcceptedRow","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.acceptedProjection._sunfold","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"(motive : List (Option Sonification.Mat008.AbstractPy.AcceptedRow) → Sort u_1) →\n  (x : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)) →\n    (Unit → motive []) →\n      ((events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)) → motive (none :: events)) →\n        ((row : Sonification.Mat008.AbstractPy.AcceptedRow) →\n            (events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)) → motive (some row :: events)) →\n          motive x","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.acceptedProjection.match_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.PyState","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.empty","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.PyState →\n  List (Option Sonification.Mat008.AbstractPy.AcceptedRow) → Sonification.Mat008.AbstractPy.PyState","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.eventScanFrom","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.PyState →\n  List (Option Sonification.Mat008.AbstractPy.AcceptedRow) → Sonification.Mat008.AbstractPy.PyState","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.eventScanFrom._sunfold","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)),\n  Sonification.Mat008.AbstractPy.eventScanFrom s events =\n    Sonification.Mat008.AbstractPy.pyScanFrom s (Sonification.Mat008.AbstractPy.acceptedProjection events)","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.event_projection","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.GateInstruction →\n  Sonification.Mat008.AbstractPy.GateFrame → Sonification.Mat008.AbstractPy.GateFrame","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.executeInstruction","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (instruction : Sonification.Mat008.AbstractPy.GateInstruction) (frame : Sonification.Mat008.AbstractPy.GateFrame),\n  Sonification.Mat008.AbstractPy.executeInstruction instruction frame =\n    if instruction = Sonification.Mat008.AbstractPy.GateInstruction.testExistingOwner then\n      { state := frame.state, row := frame.row,\n        mismatchFlag := Sonification.Mat008.AbstractPy.mismatch frame.state frame.row }\n    else\n      if instruction = Sonification.Mat008.AbstractPy.GateInstruction.insertReasonIfMismatch then\n        if frame.mismatchFlag = true then\n          {\n            state :=\n              { owners := frame.state.owners,\n                reasons :=\n                  Sonification.Mat008.AbstractPy.insert frame.state.reasons\n                    Sonification.Mat008.AbstractPy.reuseReason },\n            row := frame.row, mismatchFlag := frame.mismatchFlag }\n        else frame\n      else\n        if instruction = Sonification.Mat008.AbstractPy.GateInstruction.overwriteOwner then\n          {\n            state :=\n              {\n                owners :=\n                  Sonification.Mat008.AbstractPy.write frame.state.owners frame.row.originalRun frame.row.campaign,\n                reasons := frame.state.reasons },\n            row := frame.row, mismatchFlag := frame.mismatchFlag }\n        else frame","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.executeInstruction.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.GateFrame →\n  List Sonification.Mat008.AbstractPy.GateInstruction → Sonification.Mat008.AbstractPy.GateFrame","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.executeInstructions","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.GateFrame →\n  List Sonification.Mat008.AbstractPy.GateInstruction → Sonification.Mat008.AbstractPy.GateFrame","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.executeInstructions._sunfold","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (frame : Sonification.Mat008.AbstractPy.GateFrame),\n  Sonification.Mat008.AbstractPy.executeInstructions frame [] = frame","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.executeInstructions.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (frame : Sonification.Mat008.AbstractPy.GateFrame) (instruction : Sonification.Mat008.AbstractPy.GateInstruction)\n  (instructions : List Sonification.Mat008.AbstractPy.GateInstruction),\n  Sonification.Mat008.AbstractPy.executeInstructions frame (instruction :: instructions) =\n    Sonification.Mat008.AbstractPy.executeInstructions\n      (Sonification.Mat008.AbstractPy.executeInstruction instruction frame) instructions","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.executeInstructions.eq_2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"(motive : List Sonification.Mat008.AbstractPy.GateInstruction → Sort u_1) →\n  (x : List Sonification.Mat008.AbstractPy.GateInstruction) →\n    (Unit → motive []) →\n      ((instruction : Sonification.Mat008.AbstractPy.GateInstruction) →\n          (instructions : List Sonification.Mat008.AbstractPy.GateInstruction) → motive (instruction :: instructions)) →\n        motive x","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.executeInstructions.match_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.ReasonSet → String → Sonification.Mat008.AbstractPy.ReasonSet","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.insert","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (reasons : Sonification.Mat008.AbstractPy.ReasonSet) (reason query : String),\n  Sonification.Mat008.AbstractPy.insert reasons reason query = if query = reason then true else reasons query","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.insert.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow)\n  (arbitraryPriorFlag : Bool),\n  (Sonification.Mat008.AbstractPy.executeInstructions { state := s, row := row, mismatchFlag := arbitraryPriorFlag }\n        Sonification.Mat008.AbstractPy.runGateProgram).state =\n    Sonification.Mat008.AbstractPy.pyStep s row","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.instruction_program_correspondence","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (table : List (String × String)) (key : String),\n  Sonification.Mat008.lookup table key ≠ none → key ∈ List.map Prod.fst table","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.lookup_support","axioms":["propext","Quot.sound"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.PyState → Sonification.Mat008.AbstractPy.AcceptedRow → Bool","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.mismatch","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.mismatch s row =\n    match s.owners row.originalRun with\n    | none => false\n    | some oldCampaign => decide (oldCampaign ≠ row.campaign)","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.mismatch.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"(motive : Option String → Sort u_1) →\n  (x : Option String) → (Unit → motive none) → ((oldCampaign : String) → motive (some oldCampaign)) → motive x","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.mismatch.match_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.mismatch s row = true ↔\n    ∃ oldCampaign, s.owners row.originalRun = some oldCampaign ∧ oldCampaign ≠ row.campaign","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.mismatch_iff","axioms":["propext","Quot.sound"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m →\n    Sonification.Mat008.AbstractPy.mismatch s row =\n      Sonification.Mat008.differentOwner m (Sonification.Mat008.AbstractPy.projectRow row)","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.mismatch_related","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  s.reasons Sonification.Mat008.AbstractPy.reuseReason = false →\n    ((Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason = true ↔\n      Sonification.Mat008.AbstractPy.mismatch s row = true)","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.new_reason_iff_mismatch","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"(Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty\n          [{ campaign := \"A\", originalRun := \"RUN\" }, { campaign := \"B\", originalRun := \"RUN\" },\n            { campaign := \"B\", originalRun := \"OTHER\" }]).reasons\n      Sonification.Mat008.AbstractPy.reuseReason =\n    true ∧\n  (Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty\n          [{ campaign := \"A\", originalRun := \"RUN_A\" }, { campaign := \"B\", originalRun := \"RUN_B\" }]).reasons\n      Sonification.Mat008.AbstractPy.reuseReason =\n    false","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.nonvacuity","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"let s := { owners := fun x => none, reasons := fun x => true };\nSonification.Mat008.AbstractPy.mismatch s { campaign := \"CAMPAIGN\", originalRun := \"RUN\" } = false ∧\n  (Sonification.Mat008.AbstractPy.pyStep s { campaign := \"CAMPAIGN\", originalRun := \"RUN\" }).reasons\n      Sonification.Mat008.AbstractPy.reuseReason =\n    true","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.preexisting_reason_counterexample","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"List Sonification.Mat008.AbstractPy.AcceptedRow → List Sonification.Mat008.ParsedRow","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.project","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.AcceptedRow → Sonification.Mat008.ParsedRow","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.projectRow","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.projectRow row = { campaign := row.campaign, originalRun := row.originalRun }","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.projectRow.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.PyState →\n  List Sonification.Mat008.AbstractPy.AcceptedRow → Sonification.Mat008.AbstractPy.PyState","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.pyScanFrom","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.PyState →\n  List Sonification.Mat008.AbstractPy.AcceptedRow → Sonification.Mat008.AbstractPy.PyState","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.pyScanFrom._sunfold","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"(motive : List Sonification.Mat008.AbstractPy.AcceptedRow → Sort u_1) →\n  (x : List Sonification.Mat008.AbstractPy.AcceptedRow) →\n    (Unit → motive []) →\n      ((row : Sonification.Mat008.AbstractPy.AcceptedRow) →\n          (rows : List Sonification.Mat008.AbstractPy.AcceptedRow) → motive (row :: rows)) →\n        motive x","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.pyScanFrom.match_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.PyState →\n  Sonification.Mat008.AbstractPy.AcceptedRow → Sonification.Mat008.AbstractPy.PyState","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.pyStep","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.pyStep s row =\n    { owners := Sonification.Mat008.AbstractPy.write s.owners row.originalRun row.campaign,\n      reasons :=\n        if Sonification.Mat008.AbstractPy.mismatch s row = true then\n          Sonification.Mat008.AbstractPy.insert s.reasons Sonification.Mat008.AbstractPy.reuseReason\n        else s.reasons }","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.pyStep.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.Related Sonification.Mat008.AbstractPy.empty Sonification.Mat008.initial","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.r1_empty_related","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State),\n  Sonification.Mat008.AbstractPy.Related s m → Sonification.Mat008.AbstractPy.FiniteSupport s.owners","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.r2_finite_support","axioms":["propext","Quot.sound"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State),\n  Sonification.Mat008.AbstractPy.Related s m → ∀ (key : String), s.owners key = Sonification.Mat008.lookup m.owner key","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.r2_lookup","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  (Sonification.Mat008.AbstractPy.pyStep s row).owners row.originalRun = some row.campaign","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.r3_latest_campaign","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m →\n    Sonification.Mat008.AbstractPy.OwnersRelated (Sonification.Mat008.AbstractPy.pyStep s row).owners\n      (Sonification.Mat008.step m (Sonification.Mat008.AbstractPy.projectRow row)).owner","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.r3_overwrite","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m →\n    ((Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason = true ↔\n      (Sonification.Mat008.step m (Sonification.Mat008.AbstractPy.projectRow row)).conflict = true)","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.r4_reason_iff","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  s.reasons Sonification.Mat008.AbstractPy.reuseReason = true →\n    (Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason = true","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.r5_reason_sticky","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (rows : List Sonification.Mat008.AbstractPy.AcceptedRow),\n  s.reasons Sonification.Mat008.AbstractPy.reuseReason = true →\n    (Sonification.Mat008.AbstractPy.pyScanFrom s rows).reasons Sonification.Mat008.AbstractPy.reuseReason = true","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.r5_sequence_sticky","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)),\n  Sonification.Mat008.AbstractPy.Related s m →\n    Sonification.Mat008.AbstractPy.Related (Sonification.Mat008.AbstractPy.eventScanFrom s events)\n      (Sonification.Mat008.scanFrom m\n        (Sonification.Mat008.AbstractPy.project (Sonification.Mat008.AbstractPy.acceptedProjection events)))","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.r6_accepted_projection","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (rows : List Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m →\n    Sonification.Mat008.AbstractPy.Related (Sonification.Mat008.AbstractPy.pyScanFrom s rows)\n      (Sonification.Mat008.scanFrom m (Sonification.Mat008.AbstractPy.project rows))","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.r6_sequence_related","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (rows : List Sonification.Mat008.AbstractPy.AcceptedRow) (a b : Sonification.Mat008.AbstractPy.AcceptedRow),\n  a ∈ rows →\n    b ∈ rows →\n      a.originalRun = b.originalRun →\n        a.campaign ≠ b.campaign →\n          (Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty rows).reasons\n              Sonification.Mat008.AbstractPy.reuseReason =\n            true","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.r7_collision_reason","axioms":["propext","Quot.sound","Classical.choice"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow) (reason : String),\n  reason ≠ Sonification.Mat008.AbstractPy.reuseReason →\n    (Sonification.Mat008.AbstractPy.pyStep s row).reasons reason = s.reasons reason","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.reason_frame","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  (Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason =\n    (s.reasons Sonification.Mat008.AbstractPy.reuseReason || Sonification.Mat008.AbstractPy.mismatch s row)","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.reason_step","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"String","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.reuseReason","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"List Sonification.Mat008.AbstractPy.GateInstruction","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.runGateProgram","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.runGateProgram =\n  [Sonification.Mat008.AbstractPy.GateInstruction.testExistingOwner,\n    Sonification.Mat008.AbstractPy.GateInstruction.insertReasonIfMismatch,\n    Sonification.Mat008.AbstractPy.GateInstruction.overwriteOwner]","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.runGateProgram.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (before after : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State),\n  Sonification.Mat008.AbstractPy.Related before m →\n    (∀ (key : String), after.owners key = before.owners key) →\n      after.reasons Sonification.Mat008.AbstractPy.reuseReason =\n          before.reasons Sonification.Mat008.AbstractPy.reuseReason →\n        Sonification.Mat008.AbstractPy.Related after m","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.skip_frame","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m →\n    Sonification.Mat008.AbstractPy.Related (Sonification.Mat008.AbstractPy.pyStep s row)\n      (Sonification.Mat008.step m (Sonification.Mat008.AbstractPy.projectRow row))","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.step_related","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.AbstractPy.OwnerMap → String → String → Sonification.Mat008.AbstractPy.OwnerMap","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.write","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (owners : Sonification.Mat008.AbstractPy.OwnerMap) (key value query : String),\n  Sonification.Mat008.AbstractPy.write owners key value query = if query = key then some value else owners query","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.write.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (owners : Sonification.Mat008.AbstractPy.OwnerMap) (key value query : String),\n  query ≠ key → Sonification.Mat008.AbstractPy.write owners key value query = owners query","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.write_other","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (owners : Sonification.Mat008.AbstractPy.OwnerMap) (table : List (String × String)) (key value : String),\n  Sonification.Mat008.AbstractPy.OwnersRelated owners table →\n    Sonification.Mat008.AbstractPy.OwnersRelated (Sonification.Mat008.AbstractPy.write owners key value)\n      ((key, value) :: table)","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.write_related","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (owners : Sonification.Mat008.AbstractPy.OwnerMap) (key value : String),\n  Sonification.Mat008.AbstractPy.write owners key value key = some value","origin":"Refine.MapReason","kind":"theorem","declaration":"Sonification.Mat008.AbstractPy.write_same","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.State → List Sonification.Mat008.ParsedRow → Prop","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.Covers","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Type","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.ParsedRow","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.ParsedRow → Nat","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.ParsedRow._sizeOf_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"SizeOf Sonification.Mat008.ParsedRow","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.ParsedRow._sizeOf_inst","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.ParsedRow → String","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.ParsedRow.campaign","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{motive : Sonification.Mat008.ParsedRow → Sort u} →\n  (t : Sonification.Mat008.ParsedRow) →\n    ((campaign originalRun : String) → motive { campaign := campaign, originalRun := originalRun }) → motive t","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.ParsedRow.casesOn","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"String → String → Sonification.Mat008.ParsedRow","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.ParsedRow.mk","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"String → String → Sonification.Mat008.ParsedRow","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.ParsedRow.mk._flat_ctor","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ {campaign originalRun campaign_1 originalRun_1 : String},\n  { campaign := campaign, originalRun := originalRun } = { campaign := campaign_1, originalRun := originalRun_1 } →\n    campaign = campaign_1 ∧ originalRun = originalRun_1","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.ParsedRow.mk.inj","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (campaign originalRun campaign_1 originalRun_1 : String),\n  ({ campaign := campaign, originalRun := originalRun } = { campaign := campaign_1, originalRun := originalRun_1 }) =\n    (campaign = campaign_1 ∧ originalRun = originalRun_1)","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.ParsedRow.mk.injEq","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (campaign originalRun : String),\n  sizeOf { campaign := campaign, originalRun := originalRun } = 1 + sizeOf campaign + sizeOf originalRun","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.ParsedRow.mk.sizeOf_spec","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{P : Sort u} → {v1 v2 : Sonification.Mat008.ParsedRow} → v1 = v2 → Sonification.Mat008.ParsedRow.noConfusionType P v1 v2","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.ParsedRow.noConfusion","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sort u → Sonification.Mat008.ParsedRow → Sonification.Mat008.ParsedRow → Sort u","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.ParsedRow.noConfusionType","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.ParsedRow → String","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.ParsedRow.originalRun","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{motive : Sonification.Mat008.ParsedRow → Sort u} →\n  ((campaign originalRun : String) → motive { campaign := campaign, originalRun := originalRun }) →\n    (t : Sonification.Mat008.ParsedRow) → motive t","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.ParsedRow.rec","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{motive : Sonification.Mat008.ParsedRow → Sort u} →\n  (t : Sonification.Mat008.ParsedRow) →\n    ((campaign originalRun : String) → motive { campaign := campaign, originalRun := originalRun }) → motive t","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.ParsedRow.recOn","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Type","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.State","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.State → Nat","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.State._sizeOf_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"SizeOf Sonification.Mat008.State","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.State._sizeOf_inst","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{motive : Sonification.Mat008.State → Sort u} →\n  (t : Sonification.Mat008.State) →\n    ((owner : List (String × String)) → (conflict : Bool) → motive { owner := owner, conflict := conflict }) → motive t","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.State.casesOn","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.State → Bool","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.State.conflict","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"List (String × String) → Bool → Sonification.Mat008.State","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.State.mk","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"List (String × String) → Bool → Sonification.Mat008.State","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.State.mk._flat_ctor","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ {owner : List (String × String)} {conflict : Bool} {owner_1 : List (String × String)} {conflict_1 : Bool},\n  { owner := owner, conflict := conflict } = { owner := owner_1, conflict := conflict_1 } →\n    owner = owner_1 ∧ conflict = conflict_1","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.State.mk.inj","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (owner : List (String × String)) (conflict : Bool) (owner_1 : List (String × String)) (conflict_1 : Bool),\n  ({ owner := owner, conflict := conflict } = { owner := owner_1, conflict := conflict_1 }) =\n    (owner = owner_1 ∧ conflict = conflict_1)","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.State.mk.injEq","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (owner : List (String × String)) (conflict : Bool),\n  sizeOf { owner := owner, conflict := conflict } = 1 + sizeOf owner + sizeOf conflict","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.State.mk.sizeOf_spec","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{P : Sort u} → {v1 v2 : Sonification.Mat008.State} → v1 = v2 → Sonification.Mat008.State.noConfusionType P v1 v2","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.State.noConfusion","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sort u → Sonification.Mat008.State → Sonification.Mat008.State → Sort u","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.State.noConfusionType","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.State → List (String × String)","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.State.owner","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{motive : Sonification.Mat008.State → Sort u} →\n  ((owner : List (String × String)) → (conflict : Bool) → motive { owner := owner, conflict := conflict }) →\n    (t : Sonification.Mat008.State) → motive t","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.State.rec","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"{motive : Sonification.Mat008.State → Sort u} →\n  (t : Sonification.Mat008.State) →\n    ((owner : List (String × String)) → (conflict : Bool) → motive { owner := owner, conflict := conflict }) → motive t","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.State.recOn","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.State → Sonification.Mat008.ParsedRow → Bool","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.differentOwner","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.State) (row : Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.differentOwner s row =\n    match Sonification.Mat008.lookup s.owner row.originalRun with\n    | none => false\n    | some campaign => decide (campaign ≠ row.campaign)","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.differentOwner.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"(motive : Option String → Sort u_1) →\n  (x : Option String) → (Unit → motive none) → ((campaign : String) → motive (some campaign)) → motive x","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.differentOwner.match_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.State","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.initial","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"List (String × String) → String → Option String","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.lookup","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"List (String × String) → String → Option String","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.lookup._sunfold","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"List (String × String) → String → Option String","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.lookup._unsafe_rec","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (x : String), Sonification.Mat008.lookup [] x = none","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.lookup.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (x run campaign : String) (rest : List (String × String)),\n  Sonification.Mat008.lookup ((run, campaign) :: rest) x =\n    if x = run then some campaign else Sonification.Mat008.lookup rest x","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.lookup.eq_2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"(motive : List (String × String) → String → Sort u_1) →\n  (x : List (String × String)) →\n    (x_1 : String) →\n      ((x : String) → motive [] x) →\n        ((run campaign : String) →\n            (rest : List (String × String)) → (key : String) → motive ((run, campaign) :: rest) key) →\n          motive x x_1","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.lookup.match_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"(Sonification.Mat008.scan\n        [{ campaign := \"A\", originalRun := \"RUN\" }, { campaign := \"B\", originalRun := \"RUN\" },\n          { campaign := \"B\", originalRun := \"OTHER\" }]).conflict =\n    true ∧\n  (Sonification.Mat008.scan\n        [{ campaign := \"A\", originalRun := \"RUN_A\" }, { campaign := \"B\", originalRun := \"RUN_B\" }]).conflict =\n    false","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.nonvacuity","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (rows : List Sonification.Mat008.ParsedRow) (a b : Sonification.Mat008.ParsedRow),\n  a ∈ rows →\n    b ∈ rows → a.originalRun = b.originalRun → a.campaign ≠ b.campaign → (Sonification.Mat008.scan rows).conflict = true","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.reused_run_blocks","axioms":["propext","Classical.choice","Quot.sound"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"List Sonification.Mat008.ParsedRow → Sonification.Mat008.State","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.scan","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (rows : List Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.scan rows = Sonification.Mat008.scanFrom Sonification.Mat008.initial rows","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.scan.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.State → List Sonification.Mat008.ParsedRow → Sonification.Mat008.State","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.scanFrom","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.State → List Sonification.Mat008.ParsedRow → Sonification.Mat008.State","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.scanFrom._sunfold","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.State → List Sonification.Mat008.ParsedRow → Sonification.Mat008.State","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.scanFrom._unsafe_rec","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.State), Sonification.Mat008.scanFrom s [] = s","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.scanFrom.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.State) (row : Sonification.Mat008.ParsedRow) (rows : List Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.scanFrom s (row :: rows) = Sonification.Mat008.scanFrom (Sonification.Mat008.step s row) rows","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.scanFrom.eq_2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"(motive : List Sonification.Mat008.ParsedRow → Sort u_1) →\n  (x : List Sonification.Mat008.ParsedRow) →\n    (Unit → motive []) →\n      ((row : Sonification.Mat008.ParsedRow) → (rows : List Sonification.Mat008.ParsedRow) → motive (row :: rows)) →\n        motive x","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.scanFrom.match_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.State) (xs ys : List Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.scanFrom s (xs ++ ys) = Sonification.Mat008.scanFrom (Sonification.Mat008.scanFrom s xs) ys","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.scanFrom_append","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (rows : List Sonification.Mat008.ParsedRow) (row : Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.scan (rows ++ [row]) = Sonification.Mat008.step (Sonification.Mat008.scan rows) row","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.scan_append","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (rows : List Sonification.Mat008.ParsedRow),\n  (Sonification.Mat008.scan rows).conflict = false → Sonification.Mat008.Covers (Sonification.Mat008.scan rows) rows","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.scan_clear_covers","axioms":["propext","Classical.choice","Quot.sound"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ {α : Type} (motive : List α → Prop),\n  motive [] → (∀ (rows : List α) (row : α), motive rows → motive (rows ++ [row])) → ∀ (rows : List α), motive rows","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.snoc_induction","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"Sonification.Mat008.State → Sonification.Mat008.ParsedRow → Sonification.Mat008.State","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.step","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.State) (row : Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.step s row =\n    { owner := (row.originalRun, row.campaign) :: s.owner,\n      conflict := s.conflict || Sonification.Mat008.differentOwner s row }","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.step.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.State) (row : Sonification.Mat008.ParsedRow),\n  (Sonification.Mat008.step s row).conflict = false → s.conflict = false","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.step_clear_before","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.State) (row : Sonification.Mat008.ParsedRow) (campaign : String),\n  (Sonification.Mat008.step s row).conflict = false →\n    Sonification.Mat008.lookup s.owner row.originalRun = some campaign → campaign = row.campaign","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.step_clear_same_owner","axioms":["Classical.choice","propext","Quot.sound"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ {p : Prop} {x : Decidable p}, (decide p = false) = ¬p","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.step_clear_same_owner._proof_1","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.State) (row : Sonification.Mat008.ParsedRow),\n  s.conflict = true → (Sonification.Mat008.step s row).conflict = true","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.step_conflict_sticky","axioms":["propext"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (s : Sonification.Mat008.State) (rows : List Sonification.Mat008.ParsedRow) (row : Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.Covers s rows →\n    (Sonification.Mat008.step s row).conflict = false →\n      Sonification.Mat008.Covers (Sonification.Mat008.step s row) (rows ++ [row])","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"Sonification.Mat008.step_covers","axioms":["propext","Classical.choice","Quot.sound"]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (motive : List (String × String) → String → Sort u_1) (x : String) (h_1 : (x : String) → motive [] x)\n  (h_2 :\n    (run campaign : String) → (rest : List (String × String)) → (key : String) → motive ((run, campaign) :: rest) key),\n  (match [], x with\n    | [], x => h_1 x\n    | (run, campaign) :: rest, key => h_2 run campaign rest key) =\n    h_1 x","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"_private.Mat008.RunOwnership.0.Sonification.Mat008.lookup.match_1.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (motive : List (String × String) → String → Sort u_1) (run campaign : String) (rest : List (String × String))\n  (key : String) (h_1 : (x : String) → motive [] x)\n  (h_2 :\n    (run campaign : String) → (rest : List (String × String)) → (key : String) → motive ((run, campaign) :: rest) key),\n  (match (run, campaign) :: rest, key with\n    | [], x => h_1 x\n    | (run, campaign) :: rest, key => h_2 run campaign rest key) =\n    h_2 run campaign rest key","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"_private.Mat008.RunOwnership.0.Sonification.Mat008.lookup.match_1.eq_2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"(motive : List (String × String) → String → Sort u_1) →\n  (x : List (String × String)) →\n    (x_1 : String) →\n      ((x : String) → motive [] x) →\n        ((run campaign : String) →\n            (rest : List (String × String)) → (key : String) → motive ((run, campaign) :: rest) key) →\n          motive x x_1","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"_private.Mat008.RunOwnership.0.Sonification.Mat008.lookup.match_1.splitter","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (motive : List Sonification.Mat008.ParsedRow → Sort u_1) (h_1 : Unit → motive [])\n  (h_2 : (row : Sonification.Mat008.ParsedRow) → (rows : List Sonification.Mat008.ParsedRow) → motive (row :: rows)),\n  (match [] with\n    | [] => h_1 ()\n    | row :: rows => h_2 row rows) =\n    h_1 ()","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"_private.Mat008.RunOwnership.0.Sonification.Mat008.scanFrom.match_1.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (motive : List Sonification.Mat008.ParsedRow → Sort u_1) (row : Sonification.Mat008.ParsedRow)\n  (rows : List Sonification.Mat008.ParsedRow) (h_1 : Unit → motive [])\n  (h_2 : (row : Sonification.Mat008.ParsedRow) → (rows : List Sonification.Mat008.ParsedRow) → motive (row :: rows)),\n  (match row :: rows with\n    | [] => h_1 ()\n    | row :: rows => h_2 row rows) =\n    h_2 row rows","origin":"Mat008.RunOwnership","kind":"theorem","declaration":"_private.Mat008.RunOwnership.0.Sonification.Mat008.scanFrom.match_1.eq_2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"(motive : List Sonification.Mat008.ParsedRow → Sort u_1) →\n  (x : List Sonification.Mat008.ParsedRow) →\n    motive [] →\n      ((row : Sonification.Mat008.ParsedRow) → (rows : List Sonification.Mat008.ParsedRow) → motive (row :: rows)) →\n        motive x","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"_private.Mat008.RunOwnership.0.Sonification.Mat008.scanFrom.match_1.splitter","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (motive : List Sonification.Mat008.AbstractPy.GateInstruction → Sort u_1) (h_1 : Unit → motive [])\n  (h_2 :\n    (instruction : Sonification.Mat008.AbstractPy.GateInstruction) →\n      (instructions : List Sonification.Mat008.AbstractPy.GateInstruction) → motive (instruction :: instructions)),\n  (match [] with\n    | [] => h_1 ()\n    | instruction :: instructions => h_2 instruction instructions) =\n    h_1 ()","origin":"Refine.MapReason","kind":"theorem","declaration":"_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.executeInstructions.match_1.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (motive : List Sonification.Mat008.AbstractPy.GateInstruction → Sort u_1)\n  (instruction : Sonification.Mat008.AbstractPy.GateInstruction)\n  (instructions : List Sonification.Mat008.AbstractPy.GateInstruction) (h_1 : Unit → motive [])\n  (h_2 :\n    (instruction : Sonification.Mat008.AbstractPy.GateInstruction) →\n      (instructions : List Sonification.Mat008.AbstractPy.GateInstruction) → motive (instruction :: instructions)),\n  (match instruction :: instructions with\n    | [] => h_1 ()\n    | instruction :: instructions => h_2 instruction instructions) =\n    h_2 instruction instructions","origin":"Refine.MapReason","kind":"theorem","declaration":"_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.executeInstructions.match_1.eq_2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"(motive : List Sonification.Mat008.AbstractPy.GateInstruction → Sort u_1) →\n  (x : List Sonification.Mat008.AbstractPy.GateInstruction) →\n    motive [] →\n      ((instruction : Sonification.Mat008.AbstractPy.GateInstruction) →\n          (instructions : List Sonification.Mat008.AbstractPy.GateInstruction) → motive (instruction :: instructions)) →\n        motive x","origin":"Refine.MapReason","kind":"non_theorem","declaration":"_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.executeInstructions.match_1.splitter","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (motive : Option String → Sort u_1) (h_1 : Unit → motive none)\n  (h_2 : (oldCampaign : String) → motive (some oldCampaign)),\n  (match none with\n    | none => h_1 ()\n    | some oldCampaign => h_2 oldCampaign) =\n    h_1 ()","origin":"Refine.MapReason","kind":"theorem","declaration":"_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.mismatch.match_1.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (motive : Option String → Sort u_1) (oldCampaign : String) (h_1 : Unit → motive none)\n  (h_2 : (oldCampaign : String) → motive (some oldCampaign)),\n  (match some oldCampaign with\n    | none => h_1 ()\n    | some oldCampaign => h_2 oldCampaign) =\n    h_2 oldCampaign","origin":"Refine.MapReason","kind":"theorem","declaration":"_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.mismatch.match_1.eq_2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"(motive : Option String → Sort u_1) →\n  (x : Option String) → motive none → ((oldCampaign : String) → motive (some oldCampaign)) → motive x","origin":"Refine.MapReason","kind":"non_theorem","declaration":"_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.mismatch.match_1.splitter","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (motive : Option String → Sort u_1) (h_1 : Unit → motive none) (h_2 : (campaign : String) → motive (some campaign)),\n  (match none with\n    | none => h_1 ()\n    | some campaign => h_2 campaign) =\n    h_1 ()","origin":"Refine.MapReason","kind":"theorem","declaration":"_private.Refine.MapReason.0.Sonification.Mat008.differentOwner.match_1.eq_1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"∀ (motive : Option String → Sort u_1) (campaign : String) (h_1 : Unit → motive none)\n  (h_2 : (campaign : String) → motive (some campaign)),\n  (match some campaign with\n    | none => h_1 ()\n    | some campaign => h_2 campaign) =\n    h_2 campaign","origin":"Refine.MapReason","kind":"theorem","declaration":"_private.Refine.MapReason.0.Sonification.Mat008.differentOwner.match_1.eq_2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":false,"type":"(motive : Option String → Sort u_1) →\n  (x : Option String) → motive none → ((campaign : String) → motive (some campaign)) → motive x","origin":"Refine.MapReason","kind":"non_theorem","declaration":"_private.Refine.MapReason.0.Sonification.Mat008.differentOwner.match_1.splitter","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"(motive : List (Option Sonification.Mat008.AbstractPy.AcceptedRow) → Sort u_1) →\n  (x : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)) →\n    (Unit → motive []) →\n      ((events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)) → motive (none :: events)) →\n        ((row : Sonification.Mat008.AbstractPy.AcceptedRow) →\n            (events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)) → motive (some row :: events)) →\n          motive x","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.acceptedProjection.match_1._cstage1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"(motive : List Sonification.Mat008.AbstractPy.GateInstruction → Sort u_1) →\n  (x : List Sonification.Mat008.AbstractPy.GateInstruction) →\n    (Unit → motive []) →\n      ((instruction : Sonification.Mat008.AbstractPy.GateInstruction) →\n          (instructions : List Sonification.Mat008.AbstractPy.GateInstruction) → motive (instruction :: instructions)) →\n        motive x","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.executeInstructions.match_1._cstage1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"(motive : Option String → Sort u_1) →\n  (x : Option String) → (Unit → motive none) → ((oldCampaign : String) → motive (some oldCampaign)) → motive x","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.mismatch.match_1._cstage1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"(motive : List Sonification.Mat008.AbstractPy.AcceptedRow → Sort u_1) →\n  (x : List Sonification.Mat008.AbstractPy.AcceptedRow) →\n    (Unit → motive []) →\n      ((row : Sonification.Mat008.AbstractPy.AcceptedRow) →\n          (rows : List Sonification.Mat008.AbstractPy.AcceptedRow) → motive (row :: rows)) →\n        motive x","origin":"Refine.MapReason","kind":"non_theorem","declaration":"Sonification.Mat008.AbstractPy.pyScanFrom.match_1._cstage1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"Sonification.Mat008.State → Sonification.Mat008.ParsedRow → Bool","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.differentOwner._cstage1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"_obj → _obj → UInt8","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.differentOwner._cstage2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"(motive : Option String → Sort u_1) →\n  (x : Option String) → (Unit → motive none) → ((campaign : String) → motive (some campaign)) → motive x","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.differentOwner.match_1._cstage1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"_obj","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.initial._closed_1._cstage2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"Sonification.Mat008.State","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.initial._cstage1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"_obj","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.initial._cstage2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"List (String × String) → String → Option String","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.lookup._cstage1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"_obj → _obj → _obj","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.lookup._cstage2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"(motive : List (String × String) → String → Sort u_1) →\n  (x : List (String × String)) →\n    (x_1 : String) →\n      ((x : String) → motive [] x) →\n        ((run campaign : String) →\n            (rest : List (String × String)) → (key : String) → motive ((run, campaign) :: rest) key) →\n          motive x x_1","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.lookup.match_1._cstage1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"List Sonification.Mat008.ParsedRow → Sonification.Mat008.State","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.scan._cstage1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"_obj → _obj","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.scan._cstage2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"Sonification.Mat008.State → List Sonification.Mat008.ParsedRow → Sonification.Mat008.State","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.scanFrom._cstage1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"_obj → _obj → _obj","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.scanFrom._cstage2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"(motive : List Sonification.Mat008.ParsedRow → Sort u_1) →\n  (x : List Sonification.Mat008.ParsedRow) →\n    (Unit → motive []) →\n      ((row : Sonification.Mat008.ParsedRow) → (rows : List Sonification.Mat008.ParsedRow) → motive (row :: rows)) →\n        motive x","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.scanFrom.match_1._cstage1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"Sonification.Mat008.State → Sonification.Mat008.ParsedRow → Sonification.Mat008.State","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.step._cstage1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"_obj → _obj → _obj","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"Sonification.Mat008.step._cstage2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"(motive : List (String × String) → String → Sort u_1) →\n  (x : List (String × String)) →\n    (x_1 : String) →\n      ((x : String) → motive [] x) →\n        ((run campaign : String) →\n            (rest : List (String × String)) → (key : String) → motive ((run, campaign) :: rest) key) →\n          motive x x_1","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"_private.Mat008.RunOwnership.0.Sonification.Mat008.lookup.match_1.splitter._cstage1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"_neutral → _obj","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"_private.Mat008.RunOwnership.0.Sonification.Mat008.lookup.match_1.splitter._cstage2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"_obj → _obj → _obj → _obj → _obj","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"_private.Mat008.RunOwnership.0.Sonification.Mat008.lookup.match_1.splitter._rarg._cstage2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"(motive : List Sonification.Mat008.ParsedRow → Sort u_1) →\n  (x : List Sonification.Mat008.ParsedRow) →\n    motive [] →\n      ((row : Sonification.Mat008.ParsedRow) → (rows : List Sonification.Mat008.ParsedRow) → motive (row :: rows)) →\n        motive x","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"_private.Mat008.RunOwnership.0.Sonification.Mat008.scanFrom.match_1.splitter._cstage1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"_neutral → _obj","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"_private.Mat008.RunOwnership.0.Sonification.Mat008.scanFrom.match_1.splitter._cstage2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"_obj → _obj → _obj → _obj","origin":"Mat008.RunOwnership","kind":"non_theorem","declaration":"_private.Mat008.RunOwnership.0.Sonification.Mat008.scanFrom.match_1.splitter._rarg._cstage2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"(motive : List Sonification.Mat008.AbstractPy.GateInstruction → Sort u_1) →\n  (x : List Sonification.Mat008.AbstractPy.GateInstruction) →\n    motive [] →\n      ((instruction : Sonification.Mat008.AbstractPy.GateInstruction) →\n          (instructions : List Sonification.Mat008.AbstractPy.GateInstruction) → motive (instruction :: instructions)) →\n        motive x","origin":"Refine.MapReason","kind":"non_theorem","declaration":"_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.executeInstructions.match_1.splitter._cstage1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"_neutral → _obj","origin":"Refine.MapReason","kind":"non_theorem","declaration":"_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.executeInstructions.match_1.splitter._cstage2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"_obj → _obj → _obj → _obj","origin":"Refine.MapReason","kind":"non_theorem","declaration":"_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.executeInstructions.match_1.splitter._rarg._cstage2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"(motive : Option String → Sort u_1) →\n  (x : Option String) → motive none → ((oldCampaign : String) → motive (some oldCampaign)) → motive x","origin":"Refine.MapReason","kind":"non_theorem","declaration":"_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.mismatch.match_1.splitter._cstage1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"_neutral → _obj","origin":"Refine.MapReason","kind":"non_theorem","declaration":"_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.mismatch.match_1.splitter._cstage2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"_obj → _obj → _obj → _obj","origin":"Refine.MapReason","kind":"non_theorem","declaration":"_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.mismatch.match_1.splitter._rarg._cstage2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"(motive : Option String → Sort u_1) →\n  (x : Option String) → motive none → ((campaign : String) → motive (some campaign)) → motive x","origin":"Refine.MapReason","kind":"non_theorem","declaration":"_private.Refine.MapReason.0.Sonification.Mat008.differentOwner.match_1.splitter._cstage1","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"_neutral → _obj","origin":"Refine.MapReason","kind":"non_theorem","declaration":"_private.Refine.MapReason.0.Sonification.Mat008.differentOwner.match_1.splitter._cstage2","axioms":[]}
+MAT008_REFINE_DECL {"unsafe_definition":true,"type":"_obj → _obj → _obj → _obj","origin":"Refine.MapReason","kind":"non_theorem","declaration":"_private.Refine.MapReason.0.Sonification.Mat008.differentOwner.match_1.splitter._rarg._cstage2","axioms":[]}
+MAT008_REFINE_AUDIT declarations=253 theorems=81

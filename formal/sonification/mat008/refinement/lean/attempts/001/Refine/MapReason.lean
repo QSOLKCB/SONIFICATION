@@ -1,0 +1,207 @@
+import Mat008.RunOwnership
+
+/- Independently defined mathematical dictionary/reason semantics.
+These definitions are NOT a semantics or verified translation of CPython.
+Noncomputable definitions retain kernel reduction but require no compiled map
+implementation; all source-sensitive Python correspondence remains OPEN. -/
+noncomputable section
+namespace Sonification.Mat008.AbstractPy
+
+abbrev OwnerMap := String → Option String
+abbrev ReasonSet := String → Bool
+
+def reuseReason : String := "REUSED_ORIGINAL_RUN_ACROSS_CAMPAIGNS"
+
+structure AcceptedRow where
+  campaign : String
+  originalRun : String
+
+structure PyState where
+  owners : OwnerMap
+  reasons : ReasonSet
+
+def empty : PyState := ⟨fun _ => none, fun _ => false⟩
+
+def write (owners : OwnerMap) (key value : String) : OwnerMap :=
+  fun query => if query = key then some value else owners query
+
+def insert (reasons : ReasonSet) (reason : String) : ReasonSet :=
+  fun query => if query = reason then true else reasons query
+
+/- A partial dictionary lookup is modeled by Option. In an actual Python bridge,
+membership and short-circuit behavior must separately justify this guard. -/
+def mismatch (s : PyState) (row : AcceptedRow) : Bool :=
+  match s.owners row.originalRun with
+  | none => false
+  | some oldCampaign => decide (oldCampaign ≠ row.campaign)
+
+def pyStep (s : PyState) (row : AcceptedRow) : PyState :=
+  let foundMismatch := mismatch s row
+  let nextReasons := if foundMismatch then insert s.reasons reuseReason else s.reasons
+  ⟨write s.owners row.originalRun row.campaign, nextReasons⟩
+
+def pyScanFrom (s : PyState) : List AcceptedRow → PyState
+  | [] => s
+  | row :: rows => pyScanFrom (pyStep s row) rows
+
+def projectRow (row : AcceptedRow) : ParsedRow := ⟨row.campaign, row.originalRun⟩
+
+def project (rows : List AcceptedRow) : List ParsedRow := rows.map projectRow
+
+def OwnersRelated (owners : OwnerMap) (table : List (String × String)) : Prop :=
+  ∀ key, owners key = lookup table key
+
+def Related (s : PyState) (m : State) : Prop :=
+  OwnersRelated s.owners m.owner ∧ s.reasons reuseReason = m.conflict
+
+theorem r1_empty_related : Related empty initial := by
+  constructor
+  · intro key
+    rfl
+  · rfl
+
+/- R2 is conditional on the explicit representation relation. It does not assert
+that any CPython dictionary has been proved to implement OwnerMap. -/
+theorem r2_lookup (s : PyState) (m : State) (h : Related s m) (key : String) :
+    s.owners key = lookup m.owner key := by
+  exact h.1 key
+
+theorem write_same (owners : OwnerMap) (key value : String) :
+    write owners key value key = some value := by
+  simp only [write, if_pos rfl]
+
+theorem write_other (owners : OwnerMap) (key value query : String) (h : query ≠ key) :
+    write owners key value query = owners query := by
+  simp only [write, if_neg h]
+
+theorem write_related (owners : OwnerMap) (table : List (String × String))
+    (key value : String) (h : OwnersRelated owners table) :
+    OwnersRelated (write owners key value) ((key, value) :: table) := by
+  intro query
+  simp only [write, lookup]
+  split
+  · rfl
+  · exact h query
+
+theorem r3_overwrite (s : PyState) (m : State) (row : AcceptedRow)
+    (h : Related s m) :
+    OwnersRelated (pyStep s row).owners (step m (projectRow row)).owner := by
+  exact write_related s.owners m.owner row.originalRun row.campaign h.1
+
+theorem mismatch_related (s : PyState) (m : State) (row : AcceptedRow)
+    (h : Related s m) : mismatch s row = differentOwner m (projectRow row) := by
+  simp only [mismatch, differentOwner, projectRow, h.1 row.originalRun]
+
+theorem reason_step (s : PyState) (row : AcceptedRow) :
+    (pyStep s row).reasons reuseReason =
+      (s.reasons reuseReason || mismatch s row) := by
+  unfold pyStep
+  cases hg : mismatch s row <;> simp [insert, hg]
+
+theorem step_related (s : PyState) (m : State) (row : AcceptedRow)
+    (h : Related s m) : Related (pyStep s row) (step m (projectRow row)) := by
+  constructor
+  · exact r3_overwrite s m row h
+  · rw [reason_step, h.2, mismatch_related s m row h]
+    rfl
+
+theorem r4_reason_iff (s : PyState) (m : State) (row : AcceptedRow)
+    (h : Related s m) :
+    (pyStep s row).reasons reuseReason = true ↔
+      (step m (projectRow row)).conflict = true := by
+  rw [(step_related s m row h).2]
+
+theorem new_reason_iff_mismatch (s : PyState) (row : AcceptedRow)
+    (h : s.reasons reuseReason = false) :
+    (pyStep s row).reasons reuseReason = true ↔ mismatch s row = true := by
+  rw [reason_step, h]
+  simp only [Bool.false_or]
+
+theorem r5_reason_sticky (s : PyState) (row : AcceptedRow)
+    (h : s.reasons reuseReason = true) :
+    (pyStep s row).reasons reuseReason = true := by
+  rw [reason_step, h]
+  simp only [Bool.true_or]
+
+theorem r5_sequence_sticky (s : PyState) (rows : List AcceptedRow)
+    (h : s.reasons reuseReason = true) :
+    (pyScanFrom s rows).reasons reuseReason = true := by
+  induction rows generalizing s with
+  | nil => exact h
+  | cons row rows ih => exact ih (pyStep s row) (r5_reason_sticky s row h)
+
+theorem reason_frame (s : PyState) (row : AcceptedRow) (reason : String)
+    (h : reason ≠ reuseReason) :
+    (pyStep s row).reasons reason = s.reasons reason := by
+  unfold pyStep
+  cases hg : mismatch s row <;> simp [insert, hg, h]
+
+theorem r6_sequence_related (s : PyState) (m : State) (rows : List AcceptedRow)
+    (h : Related s m) :
+    Related (pyScanFrom s rows) (scanFrom m (project rows)) := by
+  induction rows generalizing s m with
+  | nil => exact h
+  | cons row rows ih =>
+    exact ih (pyStep s row) (step m (projectRow row)) (step_related s m row h)
+
+/- This projection's None events are mathematical skip events, not parsed raw
+Python rows. Actual failed-parse frames must be independently established. -/
+def acceptedProjection : List (Option AcceptedRow) → List AcceptedRow
+  | [] => []
+  | none :: events => acceptedProjection events
+  | some row :: events => row :: acceptedProjection events
+
+def eventScanFrom (s : PyState) : List (Option AcceptedRow) → PyState
+  | [] => s
+  | none :: events => eventScanFrom s events
+  | some row :: events => eventScanFrom (pyStep s row) events
+
+theorem event_projection (s : PyState) (events : List (Option AcceptedRow)) :
+    eventScanFrom s events = pyScanFrom s (acceptedProjection events) := by
+  induction events generalizing s with
+  | nil => rfl
+  | cons event events ih =>
+    cases event with
+    | none => exact ih s
+    | some row => exact ih (pyStep s row)
+
+theorem r6_accepted_projection (s : PyState) (m : State)
+    (events : List (Option AcceptedRow)) (h : Related s m) :
+    Related (eventScanFrom s events) (scanFrom m (project (acceptedProjection events))) := by
+  rw [event_projection]
+  exact r6_sequence_related s m (acceptedProjection events) h
+
+theorem skip_frame (before after : PyState) (m : State)
+    (h : Related before m)
+    (howners : ∀ key, after.owners key = before.owners key)
+    (hreason : after.reasons reuseReason = before.reasons reuseReason) :
+    Related after m := by
+  constructor
+  · intro key
+    rw [howners, h.1 key]
+  · rw [hreason, h.2]
+
+theorem r7_collision_reason (rows : List AcceptedRow) (a b : AcceptedRow)
+    (ha : a ∈ rows) (hb : b ∈ rows)
+    (hr : a.originalRun = b.originalRun) (hc : a.campaign ≠ b.campaign) :
+    (pyScanFrom empty rows).reasons reuseReason = true := by
+  have hrep := r6_sequence_related empty initial rows r1_empty_related
+  have hma : projectRow a ∈ project rows := List.mem_map.mpr ⟨a, ha, rfl⟩
+  have hmb : projectRow b ∈ project rows := List.mem_map.mpr ⟨b, hb, rfl⟩
+  have hcollision := reused_run_blocks (project rows) (projectRow a) (projectRow b)
+    hma hmb hr hc
+  rw [hrep.2]
+  exact hcollision
+
+theorem preexisting_reason_counterexample :
+    let s : PyState := ⟨fun _ => none, fun _ => true⟩
+    mismatch s ⟨"CAMPAIGN", "RUN"⟩ = false ∧
+    (pyStep s ⟨"CAMPAIGN", "RUN"⟩).reasons reuseReason = true := by
+  exact ⟨rfl, rfl⟩
+
+theorem nonvacuity :
+    (pyScanFrom empty [⟨"A", "RUN"⟩, ⟨"B", "RUN"⟩, ⟨"B", "OTHER"⟩]).reasons reuseReason = true ∧
+    (pyScanFrom empty [⟨"A", "RUN_A"⟩, ⟨"B", "RUN_B"⟩]).reasons reuseReason = false := by
+  decide
+
+end Sonification.Mat008.AbstractPy

@@ -1,0 +1,142 @@
+{
+  "schema": "sonification-mat008-refinement-status-v1",
+  "milestone": "MAT-008-REFINE-001",
+  "result": "PARTIAL_CONDITIONAL_MODEL_CORRESPONDENCE",
+  "main_baseline": "ac1408cf0c459d79c3d0552287812a15ce644f0d",
+  "frozen_production_commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+  "frozen_production_sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08",
+  "scope": "The ordered rows that reach the original-run gate, represented as exact Lean Strings. Source syntax is pinned; CPython semantics and raw-input projection are not proved.",
+  "assurance": {
+    "MODEL_PROVED": "PASS",
+    "REFINEMENT_PROVED": "OPEN",
+    "DIFFERENTIAL_TESTED": "PASS",
+    "AUDIT_ACCEPTED": "OPEN"
+  },
+  "assurance_by_target": {
+    "abstract_state_correspondence": {
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS"
+    },
+    "focused_python_boundary_cases": {
+      "MODEL_PROVED": "OPEN",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "PASS",
+      "AUDIT_ACCEPTED": "OPEN"
+    }
+  },
+  "assurance_scope": {
+    "MODEL_PROVED": "Conditional mathematical correspondence between a functional owner map plus reason bit and the accepted association-list ownership model; not production Python.",
+    "REFINEMENT_PROVED": "No theorem connects frozen source execution and CPython operations to the abstract state; unrestricted API has retained counterexamples.",
+    "DIFFERENTIAL_TESTED": "Existing 1,296-case corpus plus focused accepted-row, skip, order and subclass cases under the recorded Python interpreters; finite observations only.",
+    "AUDIT_ACCEPTED": "The independent audit accepted the new abstract mathematical scope only. The focused finite receipt and final commit-bound replay remain pending. Prior PR #44 acceptance applies only to its own model and finite corpus."
+  },
+  "source_binding": {
+    "path": "formal/sonification/mat008/refinement/SOURCE_BINDING.json",
+    "checker": "formal/sonification/mat008/refinement/source_bind.py",
+    "status": "SOURCE_SYNTAX_PINNED_ONLY"
+  },
+  "theorem_inventory": "formal/sonification/mat008/refinement/lean/theorem-statements.json",
+  "typed_consumer": "formal/sonification/mat008/refinement/lean/Audit.lean",
+  "obligations": [
+    {
+      "id": "R1",
+      "model_theorem": "Sonification.Mat008.AbstractPy.r1_empty_related",
+      "model_status": "PASS",
+      "production_status": "OPEN"
+    },
+    {
+      "id": "R2",
+      "model_theorem": "Sonification.Mat008.AbstractPy.r2_lookup",
+      "model_status": "PASS",
+      "production_status": "OPEN",
+      "limit": "Lookup equality follows from an assumed Related prestate; CPython dict lookup is not proved."
+    },
+    {
+      "id": "R3",
+      "model_theorem": "Sonification.Mat008.AbstractPy.r3_overwrite",
+      "model_status": "PASS",
+      "production_status": "OPEN"
+    },
+    {
+      "id": "R4",
+      "model_theorem": "Sonification.Mat008.AbstractPy.r4_reason_iff",
+      "model_status": "PASS",
+      "production_status": "OPEN",
+      "limit": "The equivalence includes the prior reason bit; a newly added reason additionally requires a prior-false premise."
+    },
+    {
+      "id": "R5",
+      "model_theorem": "Sonification.Mat008.AbstractPy.r5_reason_sticky",
+      "model_status": "PASS",
+      "production_status": "OPEN"
+    },
+    {
+      "id": "R6",
+      "model_theorem": "Sonification.Mat008.AbstractPy.r6_sequence_related",
+      "model_status": "PASS",
+      "production_status": "OPEN",
+      "limit": "The finite sequence is already supplied as accepted rows; the event projection is abstract."
+    },
+    {
+      "id": "R7",
+      "model_theorem": "Sonification.Mat008.AbstractPy.r7_collision_reason",
+      "model_status": "PASS",
+      "production_status": "OPEN",
+      "limit": "The conclusion is an abstract reason bit, not an actual Python return value."
+    }
+  ],
+  "source_bridges": [
+    {
+      "id": "B1",
+      "status": "OPEN",
+      "obligation": "Prove or independently accept a source-sensitive translation from the frozen AST and control flow to the checked gate instruction sequence."
+    },
+    {
+      "id": "B2",
+      "status": "OPEN",
+      "obligation": "Prove the declared exact built-in str/dict/set operations and their equality, hashing, short-circuit, overwrite, and exception semantics correspond to the abstract transition."
+    },
+    {
+      "id": "B3",
+      "status": "OPEN",
+      "obligation": "Prove the raw-record to processed-row projection for the five ordered _identity calls, early continue paths, and non-dict rows."
+    },
+    {
+      "id": "B4",
+      "status": "OPEN",
+      "obligation": "Compose the reason-set invariant through later validator statements, normal returns, sorted output, and exceptional exits."
+    },
+    {
+      "id": "B5",
+      "status": "OPEN",
+      "obligation": "Establish a production caller guarantee for the exact built-in input domain or retain the claim as conditional."
+    }
+  ],
+  "caller_domain": "formal/sonification/mat008/refinement/CALLER_DOMAIN.md",
+  "python_semantics": "formal/sonification/mat008/refinement/PYTHON_SEMANTICS.json",
+  "counterexamples": [
+    "Equal-text str subclass run keys with inconsistent hashes evade dictionary reuse detection.",
+    "Campaign str subclasses overriding __ne__ can suppress the inequality branch even for exact built-in run keys.",
+    "Invalid identity rows continue before the run gate; their raw runs do not enter the ownership scan."
+  ],
+  "trust": [
+    "Lean 4.19.0 kernel and pinned standard-library distribution; permitted logical axioms propext, Quot.sound, Classical.choice.",
+    "Accepted MAT008 mathematical model at its recorded exact source bytes.",
+    "Python source binder, test harness, CPython runtime/stdlib and operating-system execution are trusted for source syntax and finite observations only.",
+    "No source-to-CPython semantic theorem or whole-validator execution proof is claimed."
+  ],
+  "evidence": {
+    "initial_lean_build": "formal/sonification/mat008/refinement/lean/attempts/013-checked/result.json",
+    "initial_negative_controls": "formal/sonification/mat008/refinement/lean/attempts/014-negative/result.json",
+    "independent_root_replay": "formal/sonification/mat008/refinement/lean/attempts/015-root-replay/result.json",
+    "independent_root_mutations": "formal/sonification/mat008/refinement/lean/attempts/016-root-negative/result.json",
+    "retained_lean_evidence_verifier": "formal/sonification/mat008/refinement/lean/attempts/019-retained-check/result.json",
+    "retained_lean_tamper_controls": "formal/sonification/mat008/refinement/lean/attempts/020-retained-tamper/result.json",
+    "retained_lean_handoff": "formal/sonification/mat008/refinement/lean/attempts/021-retained-handoff/handoff.json",
+    "independent_lean_audit": "formal/sonification/mat008/refinement/audit/LEAN_AUDIT.json",
+    "prior_mat008_model": "formal/sonification/mat008/lean/attempts/commit-bound-001/result.json",
+    "prior_mat008_conformance": "formal/sonification/mat008/receipts/conformance-002/result/receipt.json"
+  }
+}

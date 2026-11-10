@@ -1,0 +1,9 @@
+{
+  "REFINEMENT_PROVED": "OPEN",
+  "assurance": "RETAINED_ABSTRACT_MODEL_EVIDENCE_INTEGRITY_ONLY",
+  "commands": [],
+  "error": "missing retained file: counterexample-0.stdout",
+  "status": "FAIL",
+  "trust": "Reviewed verifier and fixed manifest pin; hashing/OS execution. This does not authenticate the original execution or rerun proof checking.",
+  "verifier_sha256": "9c0b9cea18d93ada2619eac982f8cd61909b8a976c46634dde0771b21f684e82"
+}

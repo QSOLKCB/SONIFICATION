@@ -1,0 +1,92 @@
+[
+  {
+    "name": "explicit_data_axiom",
+    "argv": [
+      "python3",
+      "-B",
+      "/tmp/independent-mat008-lean-kc9n2w3v/additional/explicit_data_axiom/project/check.py",
+      "--lean",
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "--accepted-model",
+      "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/lean/Mat008/RunOwnership.lean",
+      "--out",
+      "/tmp/independent-mat008-lean-kc9n2w3v/additional/explicit_data_axiom/receipt"
+    ],
+    "exit_code": 1,
+    "status": "FAIL",
+    "error": "Lean rejected Audit; see original logs",
+    "command_count": 4
+  },
+  {
+    "name": "empty_intended_inventory",
+    "argv": [
+      "python3",
+      "-B",
+      "/tmp/independent-mat008-lean-kc9n2w3v/additional/empty_intended_inventory/project/check.py",
+      "--lean",
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "--accepted-model",
+      "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/lean/Mat008/RunOwnership.lean",
+      "--out",
+      "/tmp/independent-mat008-lean-kc9n2w3v/additional/empty_intended_inventory/receipt"
+    ],
+    "exit_code": 1,
+    "status": "FAIL",
+    "error": "empty or duplicate intended theorem inventory",
+    "command_count": 0
+  },
+  {
+    "name": "empty_declaration_inventory",
+    "argv": [
+      "python3",
+      "-B",
+      "/tmp/independent-mat008-lean-kc9n2w3v/additional/empty_declaration_inventory/project/check.py",
+      "--lean",
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "--accepted-model",
+      "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/lean/Mat008/RunOwnership.lean",
+      "--out",
+      "/tmp/independent-mat008-lean-kc9n2w3v/additional/empty_declaration_inventory/receipt"
+    ],
+    "exit_code": 1,
+    "status": "FAIL",
+    "error": "exact declaration inventory mismatch",
+    "command_count": 4
+  },
+  {
+    "name": "wrong_numerical_witness",
+    "argv": [
+      "python3",
+      "-B",
+      "/tmp/independent-mat008-lean-kc9n2w3v/additional/wrong_numerical_witness/project/check.py",
+      "--lean",
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "--accepted-model",
+      "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/lean/Mat008/RunOwnership.lean",
+      "--out",
+      "/tmp/independent-mat008-lean-kc9n2w3v/additional/wrong_numerical_witness/receipt"
+    ],
+    "exit_code": 1,
+    "status": "FAIL",
+    "error": "Lean rejected Refine.MapReason; see original logs",
+    "command_count": 2
+  },
+  {
+    "name": "missing_aggregate_import",
+    "argv": [
+      "python3",
+      "-B",
+      "/tmp/independent-mat008-lean-kc9n2w3v/additional/missing_aggregate_import/project/check.py",
+      "--lean",
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "--accepted-model",
+      "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/lean/Mat008/RunOwnership.lean",
+      "--out",
+      "/tmp/independent-mat008-lean-kc9n2w3v/additional/missing_aggregate_import/receipt"
+    ],
+    "exit_code": 1,
+    "status": "FAIL",
+    "error": "Lean rejected Audit; see original logs",
+    "command_count": 4
+  }
+]

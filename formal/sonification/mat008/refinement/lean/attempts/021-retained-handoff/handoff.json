@@ -1,0 +1,213 @@
+{
+  "REFINEMENT_PROVED": "OPEN",
+  "checks": [
+    "Fixed SHA-256 byte anchor for existing EVIDENCE_MANIFEST and exact covered receipt-file membership.",
+    "Current source hashes and active source-module closure match pinned nominal checker inputs.",
+    "Four expected successful prover command receipts, exit statuses, timeout/environment contracts and raw stdout/stderr digests.",
+    "Raw audit declarations equal retained declarations JSON, exact253-name inventory, exact26 intended statements/axioms and fixed module origins.",
+    "All-origin declaration axiom lists limited to propext,Quot.sound,Classical.choice; prohibited axioms rejected.",
+    "Exact toolchain module membership derived from raw audit imports, lexical legacy-path consistency, then local relative .olean membership/digests under supplied Lean root.",
+    "All7 original negative cases,expected failure stages,mutant hashes,command/log receipts,version logs and erasure-counterexample source/command/log evidence."
+  ],
+  "cli": {
+    "optional": [
+      "--lean-root LOCAL_INSTALLATION_ROOT (verify.py only)",
+      "--nominal RELOCATED_COPY_OF_013_RECEIPTS",
+      "--negative RELOCATED_COPY_OF_014_RECEIPTS",
+      "--project RELOCATED_PROOF_SOURCE_ROOT (verify.py only)",
+      "--accepted-model EXACT_ACCEPTED_MODEL_SOURCE (verify.py only)"
+    ],
+    "required": [
+      "--lean PINNED_LOCAL_EXECUTABLE",
+      "--out NEW_OUTPUT_DIRECTORY"
+    ]
+  },
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "formal/sonification/mat008/refinement/lean/attempts/019-retained-check"
+      ],
+      "exit_code": 0,
+      "working_directory": "/home/trent/sonification-formal-001-mat008-refinement"
+    },
+    {
+      "argv": [
+        "python3",
+        "formal/sonification/mat008/refinement/lean/verify_negative.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "formal/sonification/mat008/refinement/lean/attempts/020-retained-tamper"
+      ],
+      "exit_code": 0,
+      "working_directory": "/home/trent/sonification-formal-001-mat008-refinement"
+    }
+  ],
+  "committed_or_pushed": false,
+  "existing_inputs_modified": false,
+  "file_sha256": {
+    "Audit.lean": "74bca9222a6d73b0778f3d9e64e63b2237a6726164073eb27219cc8c9c0e1b51",
+    "EVIDENCE_MANIFEST.json": "0fcc2432d35fe2c1a93e49da83ef9a5bfd031a41e36f23b74d4e0c66f7997159",
+    "Refine.lean": "57f158ca7fdee1e49e6b645edbae19668542eda7090a1b98fba0154635607371",
+    "Refine/MapReason.lean": "f1ce54798c837d020c1fdfacddaf0a5e9b85c7aaf608c21ad64e64ac4521d2ea",
+    "attempts/013-checked/result.json": "2fe92ab7e2bd37304b2b3dee28508d907f0c920f1cc159f74261ead9735ca388",
+    "attempts/014-negative/result.json": "6bb14ba720aa2d3c4bc9a51e1b21c383f928a2fca2c142876202a17bd64162b2",
+    "attempts/019-retained-check/result.json": "2f9c13704a28b036e5d44205e0ed54072d67925e921e83475af5ce70ef370555",
+    "attempts/020-retained-tamper/result.json": "69c8ae16fbc7eb3053c953923471f023ffdee446a5fbd4afd8a5f6840619a487",
+    "check.py": "1c8307e80fd1a38fecf4be86ac1ba13e34926505a5b89606f8ce33461a749b80",
+    "expected-declarations.json": "b7c45c77356cd7c5210bc93f6cd61274eb5941c145d7c7d60b43966bd30536a4",
+    "expected-theorems.json": "da0625a11aa3bfbf9604016001929f52d0c7e33070cb722abdcf669e99972518",
+    "negative.py": "8a254d34e5ddff515acee19e4bf576a0a7dc02bb8f9e2c7a9aeb45a73217107e",
+    "theorem-statements.json": "1d039b94c4eb18aa341dd1ad33bdfa9c97825d2884521446a9d973b97d81a1c2",
+    "verify.py": "1ad561f88287e0b039338cf6102905f757118ff0171a7b3d2d31c56f5d984c23",
+    "verify_negative.py": "bc25248f07785189ce4a36407462de8f8e84ab2f22caa8131bdd60312a007cb3"
+  },
+  "integrity_controls": {
+    "cases": [
+      {
+        "detected": true,
+        "expected_error": null,
+        "name": "unchanged_control"
+      },
+      {
+        "detected": true,
+        "expected_error": null,
+        "name": "relocated_toolchain_control"
+      },
+      {
+        "detected": true,
+        "expected_error": "declaration receipt differs from raw audit",
+        "name": "deleted_theorem_declaration"
+      },
+      {
+        "detected": true,
+        "expected_error": "nominal source hashes differ",
+        "name": "deleted_source_theorem"
+      },
+      {
+        "detected": true,
+        "expected_error": "execution receipt count mismatch",
+        "name": "deleted_command_receipt"
+      },
+      {
+        "detected": true,
+        "expected_error": "active source module coverage mismatch",
+        "name": "unimported_source_module"
+      },
+      {
+        "detected": true,
+        "expected_error": "missing retained file: verification/result.json",
+        "name": "missing_execution_receipt"
+      },
+      {
+        "detected": true,
+        "expected_error": "missing retained file: 01.stdout",
+        "name": "missing_execution_log"
+      },
+      {
+        "detected": true,
+        "expected_error": "execution stdout hash mismatch",
+        "name": "altered_stdout"
+      },
+      {
+        "detected": true,
+        "expected_error": "execution stderr hash mismatch",
+        "name": "altered_stderr"
+      },
+      {
+        "detected": true,
+        "expected_error": "toolchain import membership mismatch",
+        "name": "missing_import_membership"
+      },
+      {
+        "detected": true,
+        "expected_error": "missing retained file: lib/lean/Init.olean",
+        "name": "missing_local_import"
+      },
+      {
+        "detected": true,
+        "expected_error": "recorded import path mismatch",
+        "name": "recorded_import_path_traversal"
+      },
+      {
+        "detected": true,
+        "expected_error": "symlink forbidden: lib/lean/Init.olean",
+        "name": "local_import_symlink_escape"
+      },
+      {
+        "detected": true,
+        "expected_error": "missing retained file: result.json",
+        "name": "missing_negative_receipt"
+      },
+      {
+        "detected": true,
+        "expected_error": "execution stdout hash mismatch",
+        "name": "altered_negative_stdout"
+      },
+      {
+        "detected": true,
+        "expected_error": "missing retained file: counterexample-0.stdout",
+        "name": "missing_counterexample_log"
+      },
+      {
+        "detected": true,
+        "expected_error": "counterexample stderr changed",
+        "name": "altered_counterexample_stderr"
+      }
+    ],
+    "detected": 18,
+    "positive_controls": 2,
+    "receipt": "attempts/020-retained-tamper/result.json",
+    "status": "PASS",
+    "tamper_controls": 16,
+    "total": 18
+  },
+  "next_action": "Root and independent auditor review the final verifier code, commit reviewed sources, independently replay proofs with the source commit, and run retained-evidence verification on unused output directories.",
+  "nominal_retained_evidence": {
+    "audited_declarations": 253,
+    "executed_verification_receipt": "attempts/019-retained-check/result.json",
+    "imported_olean_members": 1303,
+    "intended_theorem_statements": 26,
+    "original_negative_controls": 7,
+    "original_negative_receipt": "attempts/014-negative/result.json",
+    "original_receipt": "attempts/013-checked/result.json",
+    "status": "PASS"
+  },
+  "owned_new_code": [
+    "formal/sonification/mat008/refinement/lean/verify.py",
+    "formal/sonification/mat008/refinement/lean/verify_negative.py"
+  ],
+  "path_policy": [
+    "Original absolute paths are checked only as receipt metadata; they are never opened.",
+    "Local import paths are derived from validated module names, not from original path strings.",
+    "Reject relative traversal,noncanonical relative paths,backslash/control characters and symlinks below chosen roots.",
+    "Explicit caller-supplied root is resolved once; imported files must remain regular files inside it.",
+    "Relocated toolchain positive control uses a different installation prefix with matching executable/import bytes."
+  ],
+  "prior_append_only_runs": [
+    "attempts/015-retained-check",
+    "attempts/016-retained-tamper",
+    "attempts/017-retained-check",
+    "attempts/018-retained-tamper"
+  ],
+  "prior_run_note": "All original raw logs and statuses preserved.015/016 are first implementation evidence;017/018 precede final report-string formatting.019/020 correspond exactly to final code hashes above.",
+  "schema": "mat008-retained-evidence-integrity-handoff-v1",
+  "scope": "Retained evidence integrity for the new abstract mathematical correspondence slice; no source-execution or CPython refinement claim.",
+  "status": "EXECUTED_REVIEW_PENDING",
+  "trust_and_limits": [
+    "Verifier code and its fixed manifest pin require independent source review; this checker does not prove itself correct.",
+    "Hashing,filesystem and OS execution are trusted. The checker is not an authentication or timestamp authority for the historical commands.",
+    "Retained evidence verification does not rerun the Lean proofs; source-commit-bound fresh proof replay remains a separate operation.",
+    "Only local --version is executed. Shared-library/system-runtime correctness is not proved or newly pinned by this verifier.",
+    "No existing proof completion claim is expanded. Frozen-source bridge and full CPython refinement remain OPEN."
+  ],
+  "validation": {
+    "diff_check": "git diff --check exit0.",
+    "ruff": "uv tool run --offline ruff check on both new files: All checks passed."
+  }
+}

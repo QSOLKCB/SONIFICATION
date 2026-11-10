@@ -1,0 +1,344 @@
+{
+  "assumed_for_ordinary_semantics": [
+    {
+      "id": "AS-EXACT-TYPES",
+      "statement": "Exact built-in finite list, row dicts or ordinary malformed JSON values, exact built-in strings for identity keys; no user-defined special methods."
+    },
+    {
+      "id": "AS-STABLE-STATE",
+      "statement": "No concurrent mutation, tracing-induced mutation, monkey-patching of globals/builtins/helpers, or external interference during evaluation."
+    },
+    {
+      "id": "AS-RESOURCES",
+      "statement": "Sufficient memory/stack/time; resource errors, process interruption and interpreter implementation failures are not modeled."
+    },
+    {
+      "id": "AS-STDLIB",
+      "statement": "Ordinary observed CPython str/dict/set/regex/Fraction semantics, with actual integer string-conversion limit; no proven correspondence to mathematical strings/maps/rationals yet."
+    }
+  ],
+  "assurance_dimensions": {
+    "AUDIT_ACCEPTED": "OPEN",
+    "DIFFERENTIAL_TESTED": "NOT_EXECUTED_HERE",
+    "MODEL_PROVED": "NOT_CLAIMED_HERE",
+    "REFINEMENT_PROVED": "OPEN"
+  },
+  "caller_guaranteed": [
+    {
+      "fact": "When MAT009 reaches the call, isinstance(records,list), truthiness and len(records)<=10000 have succeeded.",
+      "id": "CG-009-ENTRY",
+      "limits": "List subclasses may override truth, length and iteration; checks are executed expressions, not a static proof of stable exact-list representation."
+    },
+    {
+      "fact": "Ordinary fixture constructors use list/dict literals, string constants/concatenation and exact booleans.",
+      "id": "CG-FIXTURE-CONSTRUCTION",
+      "limits": "Specific fixture-construction fact under normal builtins; not an API-wide runtime type guarantee."
+    }
+  ],
+  "caller_inspection": {
+    "callers": [
+      {
+        "commit": "ac1408cf0c459d79c3d0552287812a15ce644f0d",
+        "domain_fact": "isinstance(records,list), nonempty, len<=10000; does not guarantee exact builtin types or all valid rows",
+        "module_sha256": "a68089df7d1901fb7c17ffc2889b844b3573024aec4b66348f9c2ef71930c690",
+        "path": "materials/mat_spec_009.py",
+        "symbol": "check_future_challenge"
+      },
+      {
+        "commit": "ac1408cf0c459d79c3d0552287812a15ce644f0d",
+        "domain_fact": "constructor emits built-in list, dict, strings and bool, by source inspection under normal builtin/global bindings",
+        "module_sha256": "a68089df7d1901fb7c17ffc2889b844b3573024aec4b66348f9c2ef71930c690",
+        "path": "materials/mat_spec_009.py",
+        "symbol": "_synthetic_controls"
+      },
+      {
+        "commit": "ac1408cf0c459d79c3d0552287812a15ce644f0d",
+        "domain_fact": "built-in fixture construction; tests also intentionally pass malformed values",
+        "module_sha256": "8563ed0d5166a74d706657df681d936b76ea655df3c94707703737987e29f952",
+        "path": "tests/test_mat_spec_008.py",
+        "symbol": "two_campaign_fixture"
+      },
+      {
+        "commit": "ac1408cf0c459d79c3d0552287812a15ce644f0d",
+        "domain_fact": "uses synthetic constructor and adversarial mutations",
+        "module_sha256": "b6041d67615c4203d435250bdc97403e61ca371e0c8f20f8abdeda69251ccbf8",
+        "path": "tests/test_mat_spec_009.py",
+        "symbol": "ChallengeTests"
+      },
+      {
+        "commit": "ac1408cf0c459d79c3d0552287812a15ce644f0d",
+        "domain_fact": "extracts source helpers, constructs finite ordinary fixtures; not whole-module Python semantic proof",
+        "module_sha256": "645ae27fcf222eef613bf16c3c9c87820e11472c8cbbb324ce7d431d1f5c8962",
+        "path": "formal/sonification/mat008/conformance.py",
+        "symbol": "compile_frozen_slice/check_case/verify"
+      },
+      {
+        "commit": "ac1408cf0c459d79c3d0552287812a15ce644f0d",
+        "domain_fact": "pins checkout bytes, finite oracle, intentionally supplies SaltedStr counterexample",
+        "module_sha256": "0e98a5a3f3e13e6d291dfebe7d5da24061440ff5eca4c282120943850f5895aa",
+        "path": "tests/test_sonification_formal_mat008_run_ownership.py",
+        "symbol": "Mat008RunOwnershipConformance"
+      }
+    ],
+    "frozen_release_callers": "Only tests directly call future packet validator at MAT008 frozen release; later MAT009 adds a production caller.",
+    "method": "git grep of exact symbol at pinned frozen and current commits; read complete source function and selected callers. Source inspection does not establish dynamic reachability completeness."
+  },
+  "complete_function_control_flow": [
+    {
+      "semantics": "Construct empty reasons set; if not records return short BLOCKED report, flags False; no heldout_accuracy key.",
+      "stage": "empty"
+    },
+    {
+      "semantics": "Six identity/owner dicts plus phases_by_campaign, three membership sets; all local fresh builtins under trusted builtin bindings.",
+      "stage": "initialize"
+    },
+    {
+      "semantics": "For row in records: isinstance(row,dict) failure adds MALFORMED_CANDIDATE_RECORD and continues.",
+      "stage": "skip_nonrecord"
+    },
+    {
+      "semantics": "Call _identity on campaign, lab, run, document, row ID in that order. Catch only ValueError; add identity reason and continue before any owner/count update.",
+      "stage": "identity_prefix"
+    },
+    {
+      "semantics": "Duplicate row ID reason, then add row/campaign/lab. Compare campaign lab and composite document:run consistency, then overwrite current campaign maps.",
+      "stage": "row_and_campaign"
+    },
+    {
+      "semantics": "For run then document registry: detect existing unequal campaign; add reason; overwrite owner. Earlier reasons are never removed.",
+      "stage": "run_document_owners"
+    },
+    {
+      "semantics": "Non-str phase adds reason and substitutes INVALID; add phase to campaign set; later exact membership HE_I/HE_II check.",
+      "stage": "phase"
+    },
+    {
+      "semantics": "Source type and diagnostic basis equality; synthetic flag checks identity is True, not truthiness or equality to True.",
+      "stage": "categorical_flags"
+    },
+    {
+      "semantics": "Call _decimal measurement_value, measurement_sigma, diagnostic_sigma in order within one try; first ValueError skips remaining calls, adds one common reason; row processing continues to digest.",
+      "stage": "numeric"
+    },
+    {
+      "semantics": "Short-circuit str/hash-regex/pressure checks; only valid digest+condition enters digest ownership/within-campaign consistency maps.",
+      "stage": "digest"
+    },
+    {
+      "semantics": "Require every recorded campaign phase set exactly HE_I/HE_II, at least two campaigns and labs, at least two distinct composite document:run values.",
+      "stage": "global_gates"
+    },
+    {
+      "semantics": "Status BLOCKED iff reasons nonempty; sorted unique reasons; candidate_rows=len(records) includes skipped rows; distinct described identities count only prefix-accepted rows; flags False and heldout_accuracy None.",
+      "stage": "observable"
+    }
+  ],
+  "counterexamples": {
+    "interpretation": "Counterexamples refute broader candidate theorem domains; they do not establish that validated physical experiments exist or that production should be altered.",
+    "retained_in_execution_below": [
+      "equal_text_inconsistent_hash_subclass",
+      "same_text_after_ordinary_json_decode",
+      "raw_reuse_with_invalid_lab_skipped",
+      "synthetic_1",
+      "empty_list",
+      "dict_subclass",
+      "list_subclass",
+      "json_duplicate_member_last_wins"
+    ],
+    "supplemental_executed": [
+      {
+        "execution_locator": "supplemental_executions[0]",
+        "id": "CAMPAIGN_STR_SUBCLASS_NE_EVASION",
+        "material_premise": "Exact built-in campaign strings with ordinary Python equality and inequality semantics.",
+        "result": "Distinct campaign texts evade reuse detection when __ne__ is overridden to False, despite exact built-in shared run IDs."
+      }
+    ]
+  },
+  "dependencies": {
+    "context_limits": "materials ancestors and json/csv export helpers are imported at module initialization but not called directly by this validator body. Isolated AST execution does not establish whole-module initialization/global binding correctness.",
+    "direct_body_globals": [
+      "_identity",
+      "_decimal",
+      "re",
+      "Fraction",
+      "builtins.set",
+      "builtins.isinstance",
+      "builtins.str",
+      "builtins.dict",
+      "builtins.len",
+      "builtins.any",
+      "builtins.sorted",
+      "builtins.ValueError"
+    ],
+    "module_imports_context": [
+      "csv",
+      "io",
+      "json",
+      "os",
+      "re",
+      "stat",
+      "contextlib.suppress",
+      "fractions.Fraction",
+      "itertools.combinations",
+      "pathlib.Path",
+      "pathlib.PurePosixPath",
+      "materials.mat_spec",
+      "materials.mat_spec_006",
+      "materials.mat_spec_007"
+    ],
+    "observed_selected_stdlib": {
+      "ast": {
+        "path": "/home/trent/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/ast.py",
+        "sha256": "b515c23dbbc459329d3b802a3aac742cc456d7472e66f7ed6e9dc97e40596d7d"
+      },
+      "fractions": {
+        "path": "/home/trent/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/fractions.py",
+        "sha256": "d52d1ab9d5be26924e4914a5e40069c992bbfa68f773694c2e5ee8452d0766a0"
+      },
+      "re": {
+        "path": "/home/trent/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/re/__init__.py",
+        "sha256": "8ff3c37c63b917fcf8dc8d50993a502292a3dc159e41de4f4018c72a53d1c07b"
+      }
+    }
+  },
+  "excluded_not_caller_guaranteed": [
+    "Arbitrary list/dict/str subclasses, overriding hash/equality/get/iteration/len/truth methods",
+    "Generators and arbitrary iterables as direct top-level inputs",
+    "Claims about raw JSON duplicate members, custom decoder hooks or a mandatory input decoder",
+    "Authentication of source bytes, identity owners, laboratory independence or physical phase labels"
+  ],
+  "execution": {
+    "classification": "Semantic observations and asserted counterexamples; no independent finite oracle or formal proof in this command.",
+    "command_argv": [
+      "/home/trent/.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/bin/python3.12",
+      "-c",
+      "\nimport ast,hashlib,json,re,subprocess,sys\nfrom fractions import Fraction\nraw=subprocess.check_output(['git','show','b4247877dd471e2e9d4986c86bdc1f11b14e43f8:materials/mat_spec_008.py'])\nassert hashlib.sha256(raw).hexdigest()=='e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08'\nnodes=[n for n in ast.parse(raw).body if isinstance(n,ast.FunctionDef) and n.name in ('_identity','_decimal','validate_future_measurement_packet')]\nassert len(nodes)==3\nscope={'Fraction':Fraction,'re':re}\nexec(compile(ast.Module(body=nodes,type_ignores=[]),'frozen-MAT008','exec',dont_inherit=True),scope)\nvalidate=scope['validate_future_measurement_packet']\ndef fixture():\n rows=[]\n for campaign,lab,run,digest in [('C1','L1','R1','a'),('C2','L2','R2','b')]:\n  for phase in ('HE_I','HE_II'):\n   rows.append(dict(campaign_id=campaign,lab_family_id=lab,original_run_id=run,source_document_id='DOC_'+campaign,row_id=campaign+'_'+phase,phase=phase,source_type='ORIGINAL_EXPERIMENTAL_RECORD',measurement_value='1',measurement_sigma='0.1',diagnostic_sigma='0.1',diagnostic_basis='INDEPENDENT_NON_TEMPERATURE_DIAGNOSTIC',source_sha256=digest*64,pressure_condition='HE4_SVP'))\n return rows\ndef observe(name,value):\n try:return {'id':name,'return':validate(value)}\n except Exception as exc:return {'id':name,'exception':type(exc).__name__,'message':str(exc)}\nresults=[observe('ordinary_fixture',fixture()),observe('empty_list',[]),observe('none_top_level',None),observe('truthy_integer',1),observe('generator',(r for r in fixture()))]\nfor marker in (True,1,'true'):\n rows=fixture();rows[0]['synthetic_fixture']=marker\n results.append(observe('synthetic_'+repr(marker),rows))\nfor value in (None,'0'):\n rows=fixture();rows[0]['measurement_value']=value\n results.append(observe('measurement_'+repr(value),rows))\nrows=fixture()\nfor r in rows[2:]:r['original_run_id']='R1';r['lab_family_id']=None\nskipped=observe('raw_reuse_with_invalid_lab_skipped',rows)\nassert 'REUSED_ORIGINAL_RUN_ACROSS_CAMPAIGNS' not in skipped['return']['reasons']\nresults.append(skipped)\nclass SaltedStr(str):\n def __new__(cls,value,salt):\n  value=super().__new__(cls,value);value.salt=salt;return value\n def __hash__(self):return super().__hash__()+self.salt\nrows=fixture()\nfor i,r in enumerate(rows):r['original_run_id']=SaltedStr('SHARED_RUN',0 if i<2 else 1)\nleft,right=rows[0]['original_run_id'],rows[2]['original_run_id']\nassert left==right and hash(left)!=hash(right)\nassert scope['_identity'](left) is left\nsubclass=observe('equal_text_inconsistent_hash_subclass',rows)\nassert subclass['return']['status']=='STRUCTURAL_ONLY_UNAUTHENTICATED'\nresults.append(subclass)\ndecoded=observe('same_text_after_ordinary_json_decode',json.loads(json.dumps(rows)))\nassert 'REUSED_ORIGINAL_RUN_ACROSS_CAMPAIGNS' in decoded['return']['reasons']\nresults.append(decoded)\nclass BadDict(dict):\n def get(self,*args):raise RuntimeError('dict.get overridden')\nrows=fixture();rows[0]=BadDict(rows[0]);results.append(observe('dict_subclass',rows))\nclass BadList(list):\n def __iter__(self):raise RuntimeError('list iteration overridden')\nresults.append(observe('list_subclass',BadList(fixture())))\nlimit=sys.get_int_max_str_digits()\nif limit:\n rows=fixture();rows[0]['measurement_value']='1'*(limit+1)\n results.append(observe('decimal_digit_conversion_limit',rows))\nencoded=json.dumps(fixture()).replace('\"source_type\": \"ORIGINAL_EXPERIMENTAL_RECORD\"','\"source_type\":\"SYNTHETIC\",\"source_type\":\"ORIGINAL_EXPERIMENTAL_RECORD\"',1)\nresults.append(observe('json_duplicate_member_last_wins',json.loads(encoded)))\nprint(json.dumps({'python':sys.version,'integer_string_digit_limit':limit,'probe_count':len(results),'results':results,'class':'EXECUTABLE_SEMANTIC_PROBES_ONLY','formal_refinement':'OPEN'},sort_keys=True))\n"
+    ],
+    "executable": "/home/trent/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+    "executable_sha256": "1e4461092175d186c4bcdb19ee2849a45d6e4d8d1f6a871e45f63418d52a4e35",
+    "exit_code": 0,
+    "probe_count": 17,
+    "python": "3.12.13 (main, Jul 23 2026, 14:43:28) [Clang 22.1.3 ]",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_utf8": "",
+    "stdout_sha256": "3aa15b92a3f3fff9c424633b653528b79228b57d4a1452b820079dc6319f47e7",
+    "stdout_utf8": "{\"class\": \"EXECUTABLE_SEMANTIC_PROBES_ONLY\", \"formal_refinement\": \"OPEN\", \"integer_string_digit_limit\": 4300, \"probe_count\": 17, \"python\": \"3.12.13 (main, Jul 23 2026, 14:43:28) [Clang 22.1.3 ]\", \"results\": [{\"id\": \"ordinary_fixture\", \"return\": {\"candidate_rows\": 4, \"described_campaigns\": 2, \"described_labs\": 2, \"heldout_accuracy\": null, \"independence_authenticated\": false, \"note\": \"A structural pass never authenticates original run bytes or phase labels\", \"physical_evidence_admitted\": false, \"reasons\": [], \"status\": \"STRUCTURAL_ONLY_UNAUTHENTICATED\"}}, {\"id\": \"empty_list\", \"return\": {\"independence_authenticated\": false, \"physical_evidence_admitted\": false, \"reasons\": [\"EMPTY_MEASUREMENT_PACKET\"], \"status\": \"BLOCKED\"}}, {\"id\": \"none_top_level\", \"return\": {\"independence_authenticated\": false, \"physical_evidence_admitted\": false, \"reasons\": [\"EMPTY_MEASUREMENT_PACKET\"], \"status\": \"BLOCKED\"}}, {\"exception\": \"TypeError\", \"id\": \"truthy_integer\", \"message\": \"'int' object is not iterable\"}, {\"exception\": \"TypeError\", \"id\": \"generator\", \"message\": \"object of type 'generator' has no len()\"}, {\"id\": \"synthetic_True\", \"return\": {\"candidate_rows\": 4, \"described_campaigns\": 2, \"described_labs\": 2, \"heldout_accuracy\": null, \"independence_authenticated\": false, \"note\": \"A structural pass never authenticates original run bytes or phase labels\", \"physical_evidence_admitted\": false, \"reasons\": [\"SYNTHETIC_FIXTURE_NOT_PHYSICAL_MEASUREMENT\"], \"status\": \"BLOCKED\"}}, {\"id\": \"synthetic_1\", \"return\": {\"candidate_rows\": 4, \"described_campaigns\": 2, \"described_labs\": 2, \"heldout_accuracy\": null, \"independence_authenticated\": false, \"note\": \"A structural pass never authenticates original run bytes or phase labels\", \"physical_evidence_admitted\": false, \"reasons\": [], \"status\": \"STRUCTURAL_ONLY_UNAUTHENTICATED\"}}, {\"id\": \"synthetic_'true'\", \"return\": {\"candidate_rows\": 4, \"described_campaigns\": 2, \"described_labs\": 2, \"heldout_accuracy\": null, \"independence_authenticated\": false, \"note\": \"A structural pass never authenticates original run bytes or phase labels\", \"physical_evidence_admitted\": false, \"reasons\": [], \"status\": \"STRUCTURAL_ONLY_UNAUTHENTICATED\"}}, {\"id\": \"measurement_None\", \"return\": {\"candidate_rows\": 4, \"described_campaigns\": 2, \"described_labs\": 2, \"heldout_accuracy\": null, \"independence_authenticated\": false, \"note\": \"A structural pass never authenticates original run bytes or phase labels\", \"physical_evidence_admitted\": false, \"reasons\": [\"MISSING_CALIBRATED_MEASUREMENT_UNCERTAINTY\"], \"status\": \"BLOCKED\"}}, {\"id\": \"measurement_'0'\", \"return\": {\"candidate_rows\": 4, \"described_campaigns\": 2, \"described_labs\": 2, \"heldout_accuracy\": null, \"independence_authenticated\": false, \"note\": \"A structural pass never authenticates original run bytes or phase labels\", \"physical_evidence_admitted\": false, \"reasons\": [\"MISSING_CALIBRATED_MEASUREMENT_UNCERTAINTY\"], \"status\": \"BLOCKED\"}}, {\"id\": \"raw_reuse_with_invalid_lab_skipped\", \"return\": {\"candidate_rows\": 4, \"described_campaigns\": 1, \"described_labs\": 1, \"heldout_accuracy\": null, \"independence_authenticated\": false, \"note\": \"A structural pass never authenticates original run bytes or phase labels\", \"physical_evidence_admitted\": false, \"reasons\": [\"DISTINCT_ORIGINAL_RUNS_REQUIRED\", \"MISSING_OR_INVALID_SOURCE_IDENTITIES\", \"TWO_INDEPENDENT_CAMPAIGNS_AND_LABS_REQUIRED\"], \"status\": \"BLOCKED\"}}, {\"id\": \"equal_text_inconsistent_hash_subclass\", \"return\": {\"candidate_rows\": 4, \"described_campaigns\": 2, \"described_labs\": 2, \"heldout_accuracy\": null, \"independence_authenticated\": false, \"note\": \"A structural pass never authenticates original run bytes or phase labels\", \"physical_evidence_admitted\": false, \"reasons\": [], \"status\": \"STRUCTURAL_ONLY_UNAUTHENTICATED\"}}, {\"id\": \"same_text_after_ordinary_json_decode\", \"return\": {\"candidate_rows\": 4, \"described_campaigns\": 2, \"described_labs\": 2, \"heldout_accuracy\": null, \"independence_authenticated\": false, \"note\": \"A structural pass never authenticates original run bytes or phase labels\", \"physical_evidence_admitted\": false, \"reasons\": [\"REUSED_ORIGINAL_RUN_ACROSS_CAMPAIGNS\"], \"status\": \"BLOCKED\"}}, {\"exception\": \"RuntimeError\", \"id\": \"dict_subclass\", \"message\": \"dict.get overridden\"}, {\"exception\": \"RuntimeError\", \"id\": \"list_subclass\", \"message\": \"list iteration overridden\"}, {\"id\": \"decimal_digit_conversion_limit\", \"return\": {\"candidate_rows\": 4, \"described_campaigns\": 2, \"described_labs\": 2, \"heldout_accuracy\": null, \"independence_authenticated\": false, \"note\": \"A structural pass never authenticates original run bytes or phase labels\", \"physical_evidence_admitted\": false, \"reasons\": [\"MISSING_CALIBRATED_MEASUREMENT_UNCERTAINTY\"], \"status\": \"BLOCKED\"}}, {\"id\": \"json_duplicate_member_last_wins\", \"return\": {\"candidate_rows\": 4, \"described_campaigns\": 2, \"described_labs\": 2, \"heldout_accuracy\": null, \"independence_authenticated\": false, \"note\": \"A structural pass never authenticates original run bytes or phase labels\", \"physical_evidence_admitted\": false, \"reasons\": [], \"status\": \"STRUCTURAL_ONLY_UNAUTHENTICATED\"}}]}\n",
+    "timestamp_utc": "2026-11-09T23:55:48.170609+00:00",
+    "working_directory": "/home/trent/sonification-formal-001-mat008-refinement"
+  },
+  "formalization_base_commit": "ac1408cf0c459d79c3d0552287812a15ce644f0d",
+  "helper_semantics": {
+    "_decimal": "isinstance(str), ASCII unsigned decimal grammar, Fraction conversion then strict positive check; no float conversion; ValueError paths caught by validator; other runtime errors can escape.",
+    "_identity": "isinstance(str), nonempty, length<=100, unchanged by strip, ASCII [A-Z0-9_]+; returns original object unchanged, including subclasses. No canonicalization or authenticated ownership."
+  },
+  "inspection_command_argv": [
+    [
+      "git",
+      "rev-parse",
+      "HEAD",
+      "origin/main",
+      "refs/tags/mat-spec-008-v0.1.0",
+      "mat-spec-008-v0.1.0^{}",
+      "mat-spec-008-v0.1.0^{tree}",
+      "b4247877dd471e2e9d4986c86bdc1f11b14e43f8:materials/mat_spec_008.py"
+    ],
+    [
+      "git",
+      "show",
+      "b4247877dd471e2e9d4986c86bdc1f11b14e43f8:materials/mat_spec_008.py"
+    ],
+    [
+      "git",
+      "grep",
+      "-n",
+      "validate_future_measurement_packet",
+      "ac1408cf0c459d79c3d0552287812a15ce644f0d",
+      "--",
+      "materials",
+      "tests",
+      "scripts",
+      "sonification",
+      "src",
+      "APP",
+      "formal/sonification/mat008"
+    ]
+  ],
+  "inspection_outcomes": [
+    "HEAD and origin/main matched ac1408cf0c459d79c3d0552287812a15ce644f0d; frozen identities matched requested baseline.",
+    "Complete three target function bodies and selected caller code inspected.",
+    "Probe command exit zero with asserted subclass evasion and JSON-roundtrip blocking; original stdout/stderr retained inline."
+  ],
+  "mission": "MAT-008-REFINE-001",
+  "review_status": "PENDING_INDEPENDENT_ACCEPTANCE",
+  "role": "INDEPENDENT_SOURCE_INSPECTION",
+  "schema": "sonification-mat008-python-semantics-v1",
+  "source_refinement_bridge": {
+    "accepted_row_projection": "Filter the iterated row sequence by exact-dict representation and successful five-identity prefix. Owner obligations quantify over this processed projection, not arbitrary raw rows.",
+    "next_obligations": [
+      "Formalize actual AST operational semantics for continue, try/except, short-circuit evaluation and ordered calls.",
+      "Connect built-in str equality/hash and dict/set updates to mathematical finite maps/sets; prove source translation or independent checker correctness.",
+      "Prove identity helper representation and original-object return; establish exact type premise at a trusted boundary or state it as a conditional assumption.",
+      "Prove accepted-row owner-step invariant and sticky-reason preservation, then composition through all remaining body statements and both returns.",
+      "Account for Fraction parsing and resource/rejection semantics if claiming complete validator refinement."
+    ],
+    "status": "OPEN"
+  },
+  "supplemental_executions": [
+    {
+      "asserted_observations": [
+        "Distinct campaign texts C1/C2 with NeverUnequal.__ne__ returning False; run identifiers remain exact built-in SHARED_RUN.",
+        "_identity preserves campaign subclass unchanged.",
+        "Frozen source returns STRUCTURAL_ONLY_UNAUTHENTICATED with empty reasons.",
+        "Ordinary JSON roundtrip restores exact campaign strings and BLOCKED with reused-run reason."
+      ],
+      "claim_limit": "An exact built-in campaign-string or separately verified ordinary equality/inequality premise is material even if all run keys are exact built-ins. No universal Python refinement claim.",
+      "command_argv": [
+        "/home/trent/.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/bin/python3.12",
+        "-c",
+        "\nimport ast,hashlib,json,re,subprocess,sys\nfrom fractions import Fraction\nraw=subprocess.check_output(['git','show','b4247877dd471e2e9d4986c86bdc1f11b14e43f8:materials/mat_spec_008.py'])\nassert hashlib.sha256(raw).hexdigest()=='e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08'\nnodes=[n for n in ast.parse(raw).body if isinstance(n,ast.FunctionDef) and n.name in ('_identity','_decimal','validate_future_measurement_packet')]\nassert len(nodes)==3\nscope={'Fraction':Fraction,'re':re}\nexec(compile(ast.Module(body=nodes,type_ignores=[]),'frozen-MAT008-campaign-ne-probe','exec',dont_inherit=True),scope)\nvalidate=scope['validate_future_measurement_packet']\nclass NeverUnequal(str):\n def __ne__(self,other):\n  return False\nrows=[]\nfor campaign,lab,digest in [('C1','L1','a'),('C2','L2','b')]:\n for phase in ('HE_I','HE_II'):\n  rows.append(dict(campaign_id=NeverUnequal(campaign),lab_family_id=lab,original_run_id='SHARED_RUN',source_document_id='DOC_'+campaign,row_id=campaign+'_'+phase,phase=phase,source_type='ORIGINAL_EXPERIMENTAL_RECORD',measurement_value='1',measurement_sigma='0.1',diagnostic_sigma='0.1',diagnostic_basis='INDEPENDENT_NON_TEMPERATURE_DIAGNOSTIC',source_sha256=digest*64,pressure_condition='HE4_SVP'))\nleft,right=rows[0]['campaign_id'],rows[2]['campaign_id']\nassert str(left)!=str(right)\nassert (left!=right) is False\nassert type(rows[0]['original_run_id']) is str\nassert scope['_identity'](left) is left\nobserved=validate(rows)\nassert observed['status']=='STRUCTURAL_ONLY_UNAUTHENTICATED'\nassert observed['reasons']==[]\ndecoded=json.loads(json.dumps(rows))\nassert all(type(row['campaign_id']) is str for row in decoded)\nnormal=validate(decoded)\nassert normal['status']=='BLOCKED'\nassert 'REUSED_ORIGINAL_RUN_ACROSS_CAMPAIGNS' in normal['reasons']\nprint(json.dumps({'id':'CAMPAIGN_STR_SUBCLASS_NE_EVASION','python':sys.version,'source_sha256':hashlib.sha256(raw).hexdigest(),'exact_input_data':json.loads(json.dumps(rows)),'input_python_types':{'campaign_id':'NeverUnequal(str), __ne__ always False','all_run_ids':'exact built-in str SHARED_RUN'},'campaign_texts_distinct':str(left)!=str(right),'python_campaign_not_equal':left!=right,'identity_preserves_campaign_subclass':scope['_identity'](left) is left,'observed_source_result':observed,'ordinary_json_roundtrip_result':normal,'classification':'EXECUTABLE_COUNTEREXAMPLE_ONLY','REFINEMENT_PROVED':'OPEN'},sort_keys=True))\n"
+      ],
+      "executable": "/home/trent/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+      "executable_sha256": "1e4461092175d186c4bcdb19ee2849a45d6e4d8d1f6a871e45f63418d52a4e35",
+      "exit_code": 0,
+      "id": "CAMPAIGN_STR_SUBCLASS_NE_EVASION",
+      "origin": "Independently reproduced after auditor report; new execution, not a relabeling of the original 17 probes.",
+      "python": "3.12.13 (main, Jul 23 2026, 14:43:28) [Clang 22.1.3 ]",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_utf8": "",
+      "stdout_sha256": "1d134b07cd39ca583e4ebe88c8bac27ebc6ca5b2e50c53412e28f67adc2ed3dc",
+      "stdout_utf8": "{\"REFINEMENT_PROVED\": \"OPEN\", \"campaign_texts_distinct\": true, \"classification\": \"EXECUTABLE_COUNTEREXAMPLE_ONLY\", \"exact_input_data\": [{\"campaign_id\": \"C1\", \"diagnostic_basis\": \"INDEPENDENT_NON_TEMPERATURE_DIAGNOSTIC\", \"diagnostic_sigma\": \"0.1\", \"lab_family_id\": \"L1\", \"measurement_sigma\": \"0.1\", \"measurement_value\": \"1\", \"original_run_id\": \"SHARED_RUN\", \"phase\": \"HE_I\", \"pressure_condition\": \"HE4_SVP\", \"row_id\": \"C1_HE_I\", \"source_document_id\": \"DOC_C1\", \"source_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"source_type\": \"ORIGINAL_EXPERIMENTAL_RECORD\"}, {\"campaign_id\": \"C1\", \"diagnostic_basis\": \"INDEPENDENT_NON_TEMPERATURE_DIAGNOSTIC\", \"diagnostic_sigma\": \"0.1\", \"lab_family_id\": \"L1\", \"measurement_sigma\": \"0.1\", \"measurement_value\": \"1\", \"original_run_id\": \"SHARED_RUN\", \"phase\": \"HE_II\", \"pressure_condition\": \"HE4_SVP\", \"row_id\": \"C1_HE_II\", \"source_document_id\": \"DOC_C1\", \"source_sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"source_type\": \"ORIGINAL_EXPERIMENTAL_RECORD\"}, {\"campaign_id\": \"C2\", \"diagnostic_basis\": \"INDEPENDENT_NON_TEMPERATURE_DIAGNOSTIC\", \"diagnostic_sigma\": \"0.1\", \"lab_family_id\": \"L2\", \"measurement_sigma\": \"0.1\", \"measurement_value\": \"1\", \"original_run_id\": \"SHARED_RUN\", \"phase\": \"HE_I\", \"pressure_condition\": \"HE4_SVP\", \"row_id\": \"C2_HE_I\", \"source_document_id\": \"DOC_C2\", \"source_sha256\": \"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"source_type\": \"ORIGINAL_EXPERIMENTAL_RECORD\"}, {\"campaign_id\": \"C2\", \"diagnostic_basis\": \"INDEPENDENT_NON_TEMPERATURE_DIAGNOSTIC\", \"diagnostic_sigma\": \"0.1\", \"lab_family_id\": \"L2\", \"measurement_sigma\": \"0.1\", \"measurement_value\": \"1\", \"original_run_id\": \"SHARED_RUN\", \"phase\": \"HE_II\", \"pressure_condition\": \"HE4_SVP\", \"row_id\": \"C2_HE_II\", \"source_document_id\": \"DOC_C2\", \"source_sha256\": \"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"source_type\": \"ORIGINAL_EXPERIMENTAL_RECORD\"}], \"id\": \"CAMPAIGN_STR_SUBCLASS_NE_EVASION\", \"identity_preserves_campaign_subclass\": true, \"input_python_types\": {\"all_run_ids\": \"exact built-in str SHARED_RUN\", \"campaign_id\": \"NeverUnequal(str), __ne__ always False\"}, \"observed_source_result\": {\"candidate_rows\": 4, \"described_campaigns\": 2, \"described_labs\": 2, \"heldout_accuracy\": null, \"independence_authenticated\": false, \"note\": \"A structural pass never authenticates original run bytes or phase labels\", \"physical_evidence_admitted\": false, \"reasons\": [], \"status\": \"STRUCTURAL_ONLY_UNAUTHENTICATED\"}, \"ordinary_json_roundtrip_result\": {\"candidate_rows\": 4, \"described_campaigns\": 2, \"described_labs\": 2, \"heldout_accuracy\": null, \"independence_authenticated\": false, \"note\": \"A structural pass never authenticates original run bytes or phase labels\", \"physical_evidence_admitted\": false, \"reasons\": [\"REUSED_ORIGINAL_RUN_ACROSS_CAMPAIGNS\"], \"status\": \"BLOCKED\"}, \"python\": \"3.12.13 (main, Jul 23 2026, 14:43:28) [Clang 22.1.3 ]\", \"python_campaign_not_equal\": false, \"source_sha256\": \"e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08\"}\n",
+      "timestamp_utc": "2026-11-09T23:59:30.813077+00:00",
+      "working_directory": "/home/trent/sonification-formal-001-mat008-refinement"
+    }
+  ],
+  "target": {
+    "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+    "functions": {
+      "_decimal": {
+        "ast_sha256": "398977bc841940ebf84af0f9d1be9612981771724ba3344e6b9c6f58cacba728",
+        "end_line": 225,
+        "inclusive_source_sha256": "1813ff6c9f9be7b57199c94a325546466a3e038cf981a74e1b65171b1ccc0096",
+        "start_line": 217
+      },
+      "_identity": {
+        "ast_sha256": "1f66d639d96b3a4e497532b3b33e785279ed26db0a6e600a9d8156b0606ea411",
+        "end_line": 75,
+        "inclusive_source_sha256": "8de0558da5d5324814881904302133e65ff1ba0fcb82f261d68744b5b3d445dc",
+        "start_line": 69
+      },
+      "validate_future_measurement_packet": {
+        "ast_sha256": "1349fd625c3da17f8b962dd77e63983805a8411ba0968128b3b3d1e33f38b8b3",
+        "end_line": 332,
+        "inclusive_source_sha256": "72c86ad19a4637dec04e05120786b001b2aefe9e3ff0e08f4f861e699959b247",
+        "start_line": 228
+      }
+    },
+    "git_blob": "3117adbc3739c834f8203d5d2dd2b80d6caf862b",
+    "module_sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08",
+    "path": "materials/mat_spec_008.py",
+    "repository": "https://github.com/QSOLKCB/SONIFICATION",
+    "tag": "mat-spec-008-v0.1.0",
+    "tag_object": "a02088e3c68addb41c9c7145694c0f566e84f87f",
+    "tree": "eb19f2e06a502442f621a73be1e5696c2fa25a65"
+  }
+}

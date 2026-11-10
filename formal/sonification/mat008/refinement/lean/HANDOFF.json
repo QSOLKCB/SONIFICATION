@@ -1,0 +1,515 @@
+{
+  "REFINEMENT_PROVED": "OPEN",
+  "accepted_model": {
+    "module": "Mat008.RunOwnership",
+    "path": "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/lean/Mat008/RunOwnership.lean",
+    "sha256": "653f4638568e4e461176cca7659360737f3ac2632152163602c789fd65ead201",
+    "source_commit": "ac1408cf0c459d79c3d0552287812a15ce644f0d"
+  },
+  "assumption_inventory": {
+    "allowed_logical_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "logical_axioms_observed": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "model_domain": [
+      "Lean String equality and Option lookup, no CPython equality/hash implementation theorem.",
+      "Characteristic reason-set function, not CPython set semantics.",
+      "Abstract noncomputable logical definitions, not compiled implementations.",
+      "Accepted rows are given; no JSON/CSV/raw Python parser modeled."
+    ],
+    "prohibited_axioms": [
+      "sorryAx",
+      "lcProof",
+      "lcUnreachable",
+      "any other undisclosed or project axiom"
+    ],
+    "theorem_premises": [
+      "R2/R3/R4/R6 require explicit Related prestate for arbitrary starting states.",
+      "new_reason_iff_mismatch additionally requires prior reuse reason false.",
+      "R5 assumes prior reuse reason true.",
+      "R7 starts from empty, with two universally quantified members having equal run and distinct campaign.",
+      "skip_frame requires pointwise owner equality and unchanged reuse reason."
+    ],
+    "trusted_execution": [
+      "Lean 4.19.0 kernel and pinned standard-library/toolchain distribution",
+      "OS/subprocess execution and file hashing",
+      "Source-sensitive Python checker and Lean audit metaprogram (not self-verified)",
+      "Accepted mathematical module at the recorded exact bytes"
+    ]
+  },
+  "assurance_dimensions": {
+    "executable_python_conformance": "Parent-owned; none claimed by this subtree.",
+    "frozen_python_refinement": "OPEN",
+    "mathematical_specification": "Executed conditional abstract-map/reason to accepted-association-list correspondence; all 26 pinned statements have typed consumers. Independent review pending.",
+    "scientific_or_physical_claims": "OUTSIDE_MODEL"
+  },
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "formal/sonification/mat008/refinement/lean/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "formal/sonification/mat008/refinement/lean/attempts/013-checked"
+      ],
+      "exit_code": 0,
+      "receipt": "attempts/013-checked/result.json"
+    },
+    {
+      "argv": [
+        "python3",
+        "formal/sonification/mat008/refinement/lean/negative.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative"
+      ],
+      "exit_code": 0,
+      "receipt": "attempts/014-negative/result.json"
+    }
+  ],
+  "commit_binding": "Development evidence hashes exact files. Root must commit reviewed inputs and replay check.py with --baseline-commit FULL_SHA; no commit or push performed by this agent.",
+  "evidence_manifest": "EVIDENCE_MANIFEST.json",
+  "failed_attempt_policy": "All original source snapshots, raw logs and actual exit statuses retained; no compiler-axiom exceptions added.",
+  "failed_attempts": [
+    {
+      "cause": "Initial proof simplification/congruence details rejected.",
+      "directory": "attempts/001"
+    },
+    {
+      "cause": "Audit Name.toString inference rejected.",
+      "directory": "attempts/004"
+    },
+    {
+      "cause": "Generated List.mapTR specialization axiom rejected.",
+      "directory": "attempts/005"
+    },
+    {
+      "cause": "Generated instruction-enum lcUnreachable rejected.",
+      "directory": "attempts/006"
+    },
+    {
+      "cause": "Generated numeric-pattern decoder lcProof rejected.",
+      "directory": "attempts/007"
+    }
+  ],
+  "input_sha256": {
+    "Audit.lean": "74bca9222a6d73b0778f3d9e64e63b2237a6726164073eb27219cc8c9c0e1b51",
+    "Refine.lean": "57f158ca7fdee1e49e6b645edbae19668542eda7090a1b98fba0154635607371",
+    "Refine/MapReason.lean": "f1ce54798c837d020c1fdfacddaf0a5e9b85c7aaf608c21ad64e64ac4521d2ea",
+    "check.py": "1c8307e80fd1a38fecf4be86ac1ba13e34926505a5b89606f8ce33461a749b80",
+    "expected-declarations.json": "b7c45c77356cd7c5210bc93f6cd61274eb5941c145d7c7d60b43966bd30536a4",
+    "expected-theorems.json": "da0625a11aa3bfbf9604016001929f52d0c7e33070cb722abdcf669e99972518",
+    "lakefile.toml": "02a2983a17a99f99dc62f134a3658dd54ff37fc4071d428c12338a8697e2f7fc",
+    "lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+    "negative.py": "8a254d34e5ddff515acee19e4bf576a0a7dc02bb8f9e2c7a9aeb45a73217107e",
+    "theorem-statements.json": "1d039b94c4eb18aa341dd1ad33bdfa9c97825d2884521446a9d973b97d81a1c2"
+  },
+  "instruction_program": {
+    "correctness_theorem": "Sonification.Mat008.AbstractPy.instruction_program_correspondence",
+    "frozen_python_instruction_extraction": "OPEN",
+    "instructions": [
+      {
+        "effect": "Compute mismatch from pre-overwrite owner; reset arbitrary prior flag.",
+        "name": "testExistingOwner",
+        "opcode": 0
+      },
+      {
+        "effect": "If flag is true, insert reuseReason into characteristic reason set.",
+        "name": "insertReasonIfMismatch",
+        "opcode": 1
+      },
+      {
+        "effect": "Overwrite originalRun owner with campaign.",
+        "name": "overwriteOwner",
+        "opcode": 2
+      }
+    ],
+    "other_opcodes": "Mathematical no-op",
+    "path": "Refine/MapReason.lean"
+  },
+  "lean_commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Mat008/RunOwnership.olean",
+        "Mat008/RunOwnership.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "/tmp/sonification-lean-zogi7gd6"
+      },
+      "exit_code": 0,
+      "stderr_path": "00.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "00.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "working_directory": "/tmp/sonification-lean-zogi7gd6"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Refine/MapReason.olean",
+        "Refine/MapReason.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "/tmp/sonification-lean-zogi7gd6"
+      },
+      "exit_code": 0,
+      "stderr_path": "01.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "01.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "working_directory": "/tmp/sonification-lean-zogi7gd6"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Refine.olean",
+        "Refine.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "/tmp/sonification-lean-zogi7gd6"
+      },
+      "exit_code": 0,
+      "stderr_path": "02.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "02.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "working_directory": "/tmp/sonification-lean-zogi7gd6"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Audit.olean",
+        "Audit.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "/tmp/sonification-lean-zogi7gd6"
+      },
+      "exit_code": 0,
+      "stderr_path": "03.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "03.stdout",
+      "stdout_sha256": "99ed941874b051a9d5d57d162f788e4dfcb5726655d39b5b824f11168379668d",
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "working_directory": "/tmp/sonification-lean-zogi7gd6"
+    }
+  ],
+  "math_result": {
+    "all_declarations": "attempts/013-checked/declarations.json",
+    "all_origin_declaration_count": 253,
+    "exact_statements_and_per_theorem_axioms": "theorem-statements.json",
+    "module_origins": [
+      "Audit",
+      "Mat008.RunOwnership",
+      "Refine",
+      "Refine.MapReason"
+    ],
+    "named_theorem_count": 26,
+    "primary_requirements": {
+      "R1": [
+        {
+          "axioms": [],
+          "declaration": "Sonification.Mat008.AbstractPy.r1_empty_related",
+          "kind": "theorem",
+          "origin": "Refine.MapReason",
+          "type": "Sonification.Mat008.AbstractPy.Related Sonification.Mat008.AbstractPy.empty Sonification.Mat008.initial",
+          "unsafe_definition": false
+        }
+      ],
+      "R2": [
+        {
+          "axioms": [],
+          "declaration": "Sonification.Mat008.AbstractPy.r2_lookup",
+          "kind": "theorem",
+          "origin": "Refine.MapReason",
+          "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State),\n  Sonification.Mat008.AbstractPy.Related s m \u2192 \u2200 (key : String), s.owners key = Sonification.Mat008.lookup m.owner key",
+          "unsafe_definition": false
+        },
+        {
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "declaration": "Sonification.Mat008.AbstractPy.r2_finite_support",
+          "kind": "theorem",
+          "origin": "Refine.MapReason",
+          "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State),\n  Sonification.Mat008.AbstractPy.Related s m \u2192 Sonification.Mat008.AbstractPy.FiniteSupport s.owners",
+          "unsafe_definition": false
+        }
+      ],
+      "R3": [
+        {
+          "axioms": [],
+          "declaration": "Sonification.Mat008.AbstractPy.r3_overwrite",
+          "kind": "theorem",
+          "origin": "Refine.MapReason",
+          "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.OwnersRelated (Sonification.Mat008.AbstractPy.pyStep s row).owners\n      (Sonification.Mat008.step m (Sonification.Mat008.AbstractPy.projectRow row)).owner",
+          "unsafe_definition": false
+        },
+        {
+          "axioms": [
+            "propext"
+          ],
+          "declaration": "Sonification.Mat008.AbstractPy.r3_latest_campaign",
+          "kind": "theorem",
+          "origin": "Refine.MapReason",
+          "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  (Sonification.Mat008.AbstractPy.pyStep s row).owners row.originalRun = some row.campaign",
+          "unsafe_definition": false
+        },
+        {
+          "axioms": [
+            "propext"
+          ],
+          "declaration": "Sonification.Mat008.AbstractPy.step_related",
+          "kind": "theorem",
+          "origin": "Refine.MapReason",
+          "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.Related (Sonification.Mat008.AbstractPy.pyStep s row)\n      (Sonification.Mat008.step m (Sonification.Mat008.AbstractPy.projectRow row))",
+          "unsafe_definition": false
+        }
+      ],
+      "R4": [
+        {
+          "axioms": [
+            "propext"
+          ],
+          "declaration": "Sonification.Mat008.AbstractPy.r4_reason_iff",
+          "kind": "theorem",
+          "origin": "Refine.MapReason",
+          "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    ((Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason = true \u2194\n      (Sonification.Mat008.step m (Sonification.Mat008.AbstractPy.projectRow row)).conflict = true)",
+          "unsafe_definition": false
+        },
+        {
+          "axioms": [
+            "propext"
+          ],
+          "declaration": "Sonification.Mat008.AbstractPy.new_reason_iff_mismatch",
+          "kind": "theorem",
+          "origin": "Refine.MapReason",
+          "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  s.reasons Sonification.Mat008.AbstractPy.reuseReason = false \u2192\n    ((Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason = true \u2194\n      Sonification.Mat008.AbstractPy.mismatch s row = true)",
+          "unsafe_definition": false
+        }
+      ],
+      "R5": [
+        {
+          "axioms": [
+            "propext"
+          ],
+          "declaration": "Sonification.Mat008.AbstractPy.r5_reason_sticky",
+          "kind": "theorem",
+          "origin": "Refine.MapReason",
+          "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  s.reasons Sonification.Mat008.AbstractPy.reuseReason = true \u2192\n    (Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason = true",
+          "unsafe_definition": false
+        },
+        {
+          "axioms": [
+            "propext"
+          ],
+          "declaration": "Sonification.Mat008.AbstractPy.r5_sequence_sticky",
+          "kind": "theorem",
+          "origin": "Refine.MapReason",
+          "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (rows : List Sonification.Mat008.AbstractPy.AcceptedRow),\n  s.reasons Sonification.Mat008.AbstractPy.reuseReason = true \u2192\n    (Sonification.Mat008.AbstractPy.pyScanFrom s rows).reasons Sonification.Mat008.AbstractPy.reuseReason = true",
+          "unsafe_definition": false
+        }
+      ],
+      "R6": [
+        {
+          "axioms": [
+            "propext"
+          ],
+          "declaration": "Sonification.Mat008.AbstractPy.r6_sequence_related",
+          "kind": "theorem",
+          "origin": "Refine.MapReason",
+          "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (rows : List Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.Related (Sonification.Mat008.AbstractPy.pyScanFrom s rows)\n      (Sonification.Mat008.scanFrom m (Sonification.Mat008.AbstractPy.project rows))",
+          "unsafe_definition": false
+        },
+        {
+          "axioms": [],
+          "declaration": "Sonification.Mat008.AbstractPy.event_projection",
+          "kind": "theorem",
+          "origin": "Refine.MapReason",
+          "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)),\n  Sonification.Mat008.AbstractPy.eventScanFrom s events =\n    Sonification.Mat008.AbstractPy.pyScanFrom s (Sonification.Mat008.AbstractPy.acceptedProjection events)",
+          "unsafe_definition": false
+        },
+        {
+          "axioms": [
+            "propext"
+          ],
+          "declaration": "Sonification.Mat008.AbstractPy.r6_accepted_projection",
+          "kind": "theorem",
+          "origin": "Refine.MapReason",
+          "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.Related (Sonification.Mat008.AbstractPy.eventScanFrom s events)\n      (Sonification.Mat008.scanFrom m\n        (Sonification.Mat008.AbstractPy.project (Sonification.Mat008.AbstractPy.acceptedProjection events)))",
+          "unsafe_definition": false
+        },
+        {
+          "axioms": [],
+          "declaration": "Sonification.Mat008.AbstractPy.skip_frame",
+          "kind": "theorem",
+          "origin": "Refine.MapReason",
+          "type": "\u2200 (before after : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State),\n  Sonification.Mat008.AbstractPy.Related before m \u2192\n    (\u2200 (key : String), after.owners key = before.owners key) \u2192\n      after.reasons Sonification.Mat008.AbstractPy.reuseReason =\n          before.reasons Sonification.Mat008.AbstractPy.reuseReason \u2192\n        Sonification.Mat008.AbstractPy.Related after m",
+          "unsafe_definition": false
+        }
+      ],
+      "R7": [
+        {
+          "axioms": [
+            "propext",
+            "Quot.sound",
+            "Classical.choice"
+          ],
+          "declaration": "Sonification.Mat008.AbstractPy.r7_collision_reason",
+          "kind": "theorem",
+          "origin": "Refine.MapReason",
+          "type": "\u2200 (rows : List Sonification.Mat008.AbstractPy.AcceptedRow) (a b : Sonification.Mat008.AbstractPy.AcceptedRow),\n  a \u2208 rows \u2192\n    b \u2208 rows \u2192\n      a.originalRun = b.originalRun \u2192\n        a.campaign \u2260 b.campaign \u2192\n          (Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty rows).reasons\n              Sonification.Mat008.AbstractPy.reuseReason =\n            true",
+          "unsafe_definition": false
+        }
+      ],
+      "anti_vacuity": [
+        {
+          "axioms": [],
+          "declaration": "Sonification.Mat008.AbstractPy.nonvacuity",
+          "kind": "theorem",
+          "origin": "Refine.MapReason",
+          "type": "(Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty\n          [{ campaign := \"A\", originalRun := \"RUN\" }, { campaign := \"B\", originalRun := \"RUN\" },\n            { campaign := \"B\", originalRun := \"OTHER\" }]).reasons\n      Sonification.Mat008.AbstractPy.reuseReason =\n    true \u2227\n  (Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty\n          [{ campaign := \"A\", originalRun := \"RUN_A\" }, { campaign := \"B\", originalRun := \"RUN_B\" }]).reasons\n      Sonification.Mat008.AbstractPy.reuseReason =\n    false",
+          "unsafe_definition": false
+        },
+        {
+          "axioms": [],
+          "declaration": "Sonification.Mat008.AbstractPy.preexisting_reason_counterexample",
+          "kind": "theorem",
+          "origin": "Refine.MapReason",
+          "type": "let s := { owners := fun x => none, reasons := fun x => true };\nSonification.Mat008.AbstractPy.mismatch s { campaign := \"CAMPAIGN\", originalRun := \"RUN\" } = false \u2227\n  (Sonification.Mat008.AbstractPy.pyStep s { campaign := \"CAMPAIGN\", originalRun := \"RUN\" }).reasons\n      Sonification.Mat008.AbstractPy.reuseReason =\n    true",
+          "unsafe_definition": false
+        }
+      ],
+      "instruction_semantics": [
+        {
+          "axioms": [
+            "propext"
+          ],
+          "declaration": "Sonification.Mat008.AbstractPy.instruction_program_correspondence",
+          "kind": "theorem",
+          "origin": "Refine.MapReason",
+          "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow)\n  (arbitraryPriorFlag : Bool),\n  (Sonification.Mat008.AbstractPy.executeInstructions { state := s, row := row, mismatchFlag := arbitraryPriorFlag }\n        Sonification.Mat008.AbstractPy.runGateProgram).state =\n    Sonification.Mat008.AbstractPy.pyStep s row",
+          "unsafe_definition": false
+        }
+      ]
+    },
+    "status": "PASS",
+    "typed_consumers": "Audit.lean"
+  },
+  "mission": "MAT-008-REFINE-001",
+  "negative_controls": {
+    "cases": [
+      {
+        "detected": true,
+        "exit_code": 1,
+        "expected_error": "Lean rejected Refine.MapReason",
+        "mutation": "update_before_test",
+        "observed_error": "Lean rejected Refine.MapReason; see original logs"
+      },
+      {
+        "detected": true,
+        "exit_code": 1,
+        "expected_error": "Lean rejected Refine.MapReason",
+        "mutation": "reason_erasure",
+        "observed_error": "Lean rejected Refine.MapReason; see original logs"
+      },
+      {
+        "detected": true,
+        "exit_code": 1,
+        "expected_error": "Lean rejected Audit",
+        "mutation": "weaker_r4_theorem",
+        "observed_error": "Lean rejected Audit; see original logs"
+      },
+      {
+        "detected": true,
+        "exit_code": 1,
+        "expected_error": "Lean rejected Audit",
+        "mutation": "weaker_r7_theorem",
+        "observed_error": "Lean rejected Audit; see original logs"
+      },
+      {
+        "detected": true,
+        "exit_code": 1,
+        "expected_error": "Lean rejected Audit",
+        "mutation": "prohibited_data_assumption",
+        "observed_error": "Lean rejected Audit; see original logs"
+      },
+      {
+        "detected": true,
+        "exit_code": 1,
+        "expected_error": "module coverage mismatch",
+        "mutation": "unimported_module",
+        "observed_error": "module coverage mismatch: ['Audit.lean', 'Refine.lean', 'Refine/MapReason.lean', 'Unimported.lean']"
+      },
+      {
+        "detected": true,
+        "exit_code": 1,
+        "expected_error": "accepted mathematical dependency source mismatch",
+        "mutation": "changed_accepted_model",
+        "observed_error": "accepted mathematical dependency source mismatch"
+      }
+    ],
+    "counterexample": "attempts/014-negative/reason_erasure/Counterexample.lean",
+    "counterexample_note": "Kernel-checks mutant reason erasure; see original counterexample commands and logs in receipt.",
+    "detected": 7,
+    "receipt": "attempts/014-negative/result.json",
+    "status": "PASS",
+    "total": 7
+  },
+  "next_action": "Root integrates source-sensitive bridge obligations and contracts, then independently audits and replays commit-bound evidence without changing the accepted historical receipts.",
+  "open_obligations": [
+    "Review the independently authored intended abstraction and exact theorem statements.",
+    "Bind committed proof/checker inputs by immutable Git SHA and independently replay.",
+    "Prove or explicitly trust frozen-source to instruction extraction; AST identity alone does not establish execution semantics.",
+    "Establish exact built-in str equality/inequality, dictionary membership/lookup, short-circuit, overwrite, set insertion, alias/frame and exception semantics.",
+    "Establish raw-row acceptance/projection and rejected-row frame from actual source including reason propagation.",
+    "Do not infer coverage of other MAT008 gates or other SONIFICATION functions."
+  ],
+  "owned_subtree": "formal/sonification/mat008/refinement/lean",
+  "production_source": {
+    "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+    "path": "materials/mat_spec_008.py",
+    "relationship_to_this_model": "OPEN; source extraction and Python operational correspondence are not Lean theorems",
+    "sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08"
+  },
+  "proof_input_commit": null,
+  "representation": {
+    "overwrite": "Functional write vs first-match association list with shadowed entries",
+    "owner_map": "String -> Option String; related maps have finite support derived by r2_finite_support",
+    "reason_set": "String -> Bool; relation observes one exact reason literal",
+    "relation": "(forall key, functional lookup equals accepted association-list lookup) and reason membership equals conflict bit",
+    "row": "Independently defined AcceptedRow(campaign, originalRun)",
+    "sequence_domain": "All finite lists of accepted mathematical rows; explicit Option row skips only"
+  },
+  "schema": "sonification-mat008-abstract-refinement-handoff-v1",
+  "status": "EXECUTED_ABSTRACT_MODEL_CORRESPONDENCE_REVIEW_PENDING",
+  "toolchain": {
+    "imported_olean_count": 1303,
+    "imported_olean_inventory": "attempts/013-checked/toolchain-imports.json",
+    "path": "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "version_exit_code": 0
+  },
+  "working_directory": "/home/trent/sonification-formal-001-mat008-refinement"
+}

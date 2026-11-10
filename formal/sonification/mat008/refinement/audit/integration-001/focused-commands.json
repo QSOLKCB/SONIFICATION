@@ -1,0 +1,32 @@
+[
+  {
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat008/refinement/source_bind.py",
+      "--check-worktree"
+    ],
+    "cwd": "/home/trent/sonification-formal-001-mat008-refinement",
+    "exit_code": 0,
+    "stdout_path": "source-binding.stdout",
+    "stderr_path": "source-binding.stderr"
+  },
+  {
+    "argv": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_sonification_formal_mat008_refinement.py",
+      "-v"
+    ],
+    "cwd": "/home/trent/sonification-formal-001-mat008-refinement",
+    "exit_code": 0,
+    "stdout_path": "focused-tests.stdout",
+    "stderr_path": "focused-tests.stderr"
+  }
+]

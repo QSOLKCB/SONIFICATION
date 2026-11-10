@@ -1,0 +1,166 @@
+{
+  "schema": "sonification-mat008-refinement-handoff-v1",
+  "mission": "MAT-008-REFINE-001",
+  "branch": "research/sonification-formal-001-mat008-refinement",
+  "source_input_commit": "3be17be4c3b2812c5a610ef646cb4487f150dc52",
+  "evidence_commit": "6006584679ead734e22197174d52a821bda62a7c",
+  "frozen_implementation": {
+    "release": "mat-spec-008-v0.1.0",
+    "tag_object": "a02088e3c68addb41c9c7145694c0f566e84f87f",
+    "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+    "tree": "eb19f2e06a502442f621a73be1e5696c2fa25a65",
+    "path": "materials/mat_spec_008.py",
+    "blob": "3117adbc3739c834f8203d5d2dd2b80d6caf862b",
+    "sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08",
+    "symbol": "validate_future_measurement_packet"
+  },
+  "context_protocol_commit": "a1f74e8d1847d218d6b68c125fac9522e2ffc2fb",
+  "context_packet": {
+    "path": "/home/trent/sonification-formal-001-mat008-refinement-context-frozen",
+    "validation": "CONSISTENT_FOR_PLANNING_ONLY",
+    "obligation_bundle": "bundles/O-SOURCE.json",
+    "disclosure": "Private packet retained outside the public repository."
+  },
+  "assurance_by_target": {
+    "abstract_state_correspondence": {
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "AUDIT_ACCEPTED": "PASS"
+    },
+    "focused_python_boundary_cases": {
+      "MODEL_PROVED": "OPEN",
+      "REFINEMENT_PROVED": "OPEN",
+      "DIFFERENTIAL_TESTED": "PASS",
+      "AUDIT_ACCEPTED": "PASS"
+    }
+  },
+  "machine_checked_scope": {
+    "accepted_mathematical_dependency": "formal/sonification/mat008/lean/Mat008/RunOwnership.lean",
+    "new_definition": "formal/sonification/mat008/refinement/lean/Refine/MapReason.lean",
+    "exact_theorem_types": "formal/sonification/mat008/refinement/lean/theorem-statements.json",
+    "typed_consumer": "formal/sonification/mat008/refinement/lean/Audit.lean",
+    "intended_theorems": 26,
+    "audited_declarations": 253,
+    "permitted_logical_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "new_claim": "For every finite ordered list of already processed Lean-string rows, the abstract functional map and reason bit preserve the accepted association-list ownership relation; two rows with the same run and different campaigns force the abstract reason bit.",
+    "production_correspondence": "OPEN"
+  },
+  "caller_domain": {
+    "source_evidence": "formal/sonification/mat008/refinement/CALLER_DOMAIN.md",
+    "semantic_probes": "formal/sonification/mat008/refinement/PYTHON_SEMANTICS.json",
+    "caller_guarantees_exact_builtins": false,
+    "ordinary_exact_builtin_domain": "ASSUMED_ONLY_FOR_CONDITIONAL_ABSTRACTION",
+    "unrestricted_python_claim": "FAILED_BY_COUNTEREXAMPLE"
+  },
+  "retained_counterexamples": [
+    "Equal-text run str subclasses with inconsistent hashes evade the frozen dictionary gate.",
+    "Campaign str subclasses overriding __ne__ suppress the frozen owner inequality branch.",
+    "An invalid identity row between valid rows is skipped before the run gate."
+  ],
+  "evidence": {
+    "source_binding": "formal/sonification/mat008/refinement/SOURCE_BINDING.json",
+    "commit_bound_lean": "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound/result.json",
+    "initial_lean_and_mutations": [
+      "formal/sonification/mat008/refinement/lean/attempts/013-checked/result.json",
+      "formal/sonification/mat008/refinement/lean/attempts/014-negative/result.json"
+    ],
+    "retained_integrity_and_tamper": [
+      "formal/sonification/mat008/refinement/lean/attempts/019-retained-check/result.json",
+      "formal/sonification/mat008/refinement/lean/attempts/020-retained-tamper/result.json"
+    ],
+    "finite_receipt": "formal/sonification/mat008/refinement/receipts/conformance-001/result.json",
+    "independent_audits": [
+      "formal/sonification/mat008/refinement/audit/LEAN_AUDIT.json",
+      "formal/sonification/mat008/refinement/audit/INTEGRATION_REVIEW.json",
+      "formal/sonification/mat008/refinement/audit/EVIDENCE_COMMIT_REVIEW.json"
+    ],
+    "postcommit_supporting_replay": "formal/sonification/mat008/refinement/lean/attempts/023-postcommit-retained/result.json"
+  },
+  "executed_commands": [
+    {
+      "argv": [
+        "python3",
+        "formal/sonification/mat008/refinement/lean/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--baseline-commit",
+        "3be17be4c3b2812c5a610ef646cb4487f150dc52",
+        "--out",
+        "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound"
+      ],
+      "exit_code": 0,
+      "evidence": "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound/result.json"
+    },
+    {
+      "argv": [
+        "python3",
+        "formal/sonification/mat008/refinement/evidence.py",
+        "run",
+        "--baseline-commit",
+        "3be17be4c3b2812c5a610ef646cb4487f150dc52",
+        "--out",
+        "formal/sonification/mat008/refinement/receipts/conformance-001"
+      ],
+      "exit_code": 0,
+      "evidence": "formal/sonification/mat008/refinement/receipts/conformance-001/result.json"
+    },
+    {
+      "argv": [
+        "python3",
+        "formal/sonification/mat008/refinement/evidence.py",
+        "verify",
+        "formal/sonification/mat008/refinement/receipts/conformance-001",
+        "--receipt-commit",
+        "6006584679ead734e22197174d52a821bda62a7c"
+      ],
+      "exit_code": 0,
+      "observation": "EXECUTION_RECEIPT_MATCH"
+    },
+    {
+      "argv": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0,
+      "observation": "291 passed, 190 subtests passed in 119.68s",
+      "retained_log": null
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--no-project",
+        "--offline",
+        "--with",
+        "ruff",
+        "ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0,
+      "observation": "All checks passed!",
+      "retained_log": null
+    }
+  ],
+  "tool_versions_observed": {
+    "python": "3.14.4",
+    "lean": "4.19.0 (commit 6caaee842e94)",
+    "uv": "0.12.1",
+    "ruff": "0.17.4"
+  },
+  "open_obligations": [
+    "Source-sensitive formal semantics and extraction for the frozen Python AST gate.",
+    "Exact built-in CPython str/dict/set equality, hash, membership, update and exception bridge.",
+    "Raw input to processed-row projection, early continues and later reason-set framing.",
+    "Actual normal-return sorted-reasons observation and exceptional exits.",
+    "General production caller guarantee for the exact built-in domain."
+  ],
+  "next_action": "Define a small operational semantics for the frozen gate AST and prove its instruction extraction for exact built-in row identities, with CPython runtime behavior held as an explicit trust assumption."
+}

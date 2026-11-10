@@ -1,0 +1,11 @@
+Refine/MapReason.lean:285:2: error: tactic 'decide' proved that the proposition
+  (pyScanFrom empty
+            [{ campaign := "A", originalRun := "RUN" }, { campaign := "B", originalRun := "RUN" },
+              { campaign := "B", originalRun := "OTHER" }]).reasons
+        reuseReason =
+      false ∧
+    (pyScanFrom empty
+            [{ campaign := "A", originalRun := "RUN_A" }, { campaign := "B", originalRun := "RUN_B" }]).reasons
+        reuseReason =
+      false
+is false

@@ -1,0 +1,9 @@
+{
+  "assurance": "ABSTRACT_STATE_CORRESPONDENCE_ONLY",
+  "baseline_commit": null,
+  "commands": [],
+  "error": "accepted mathematical dependency source mismatch",
+  "python_refinement": "OPEN",
+  "started_utc": "2026-11-10T00:08:10.862075+00:00",
+  "status": "FAIL"
+}

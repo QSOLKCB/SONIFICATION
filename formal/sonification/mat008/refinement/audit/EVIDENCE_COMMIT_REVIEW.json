@@ -1,0 +1,317 @@
+{
+  "assurance_by_target": {
+    "abstract_state_correspondence": {
+      "AUDIT_ACCEPTED": "PASS",
+      "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+      "MODEL_PROVED": "PASS",
+      "REFINEMENT_PROVED": "OPEN"
+    },
+    "focused_python_boundary_cases_at_source_and_evidence_commits": {
+      "AUDIT_ACCEPTED": "PASS",
+      "DIFFERENTIAL_TESTED": "PASS",
+      "MODEL_PROVED": "OPEN",
+      "REFINEMENT_PROVED": "OPEN"
+    }
+  },
+  "canonical_status_observation": {
+    "assurance_by_target": {
+      "abstract_state_correspondence": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "focused_python_boundary_cases": {
+        "AUDIT_ACCEPTED": "OPEN",
+        "DIFFERENTIAL_TESTED": "PASS",
+        "MODEL_PROVED": "OPEN",
+        "REFINEMENT_PROVED": "OPEN"
+      }
+    },
+    "finding": "Current canonical files still conservatively leave finite AUDIT_ACCEPTED OPEN pending incorporation of this exact commit-bound review. No assurance overstatement. Mathematical acceptance remains scoped and every production/source-semantic obligation remains OPEN.",
+    "status_sha256": "3e0fbc8dded5b7dea00857b3fe28b70c519400343493f09f711b2ac46a84e9d7",
+    "theorem_map_sha256": "9e109f5cb65fc456c5474a0af3b3b8a87220f757e21167ea7b94a38ab0acf55b"
+  },
+  "claims": [
+    {
+      "id": "final.source_to_evidence_ancestry",
+      "statement": "Source commit3be17be4c3b2812c5a610ef646cb4487f150dc52 is an ancestor of evidence commit6006584679ead734e22197174d52a821bda62a7c; merge-base --is-ancestor exited0.",
+      "status": "PASS"
+    },
+    {
+      "id": "final.actual_finite_receipt_git_binding",
+      "statement": "evidence.py verify on the actual conformance-001 directory with explicit evidence commit exited0 and reported EXECUTION_RECEIPT_MATCH. Exact7 receipt/log files agree with600658 Git blobs; eight source inputs agree with3be17 Git blobs per prior source-bound review. Independent source-bound execution already reproduced4 passing focused methods.",
+      "status": "PASS"
+    },
+    {
+      "id": "final.actual_lean_022_git_binding",
+      "statement": "All13 actual022-commit-bound files agree with600658 Git blobs. Its10 proof/checker inputs agree with3be17. Independent source-bound Lean replay from the prior review reproduced exact253 declarations,26 intended types, and1303 imported .olean digests.",
+      "status": "PASS"
+    },
+    {
+      "id": "final.accepted_lean_evidence_013_014",
+      "statement": "All13 nominal013 files and76 negative014 files agree with600658 Git blobs. Current fixed-manifest Lean verifier rerun independently exits0; declarations/module/types/axioms/import closure and seven mathematical negative controls retain the previously reviewed scope.",
+      "status": "PASS"
+    },
+    {
+      "id": "final.postcommit_023_observation",
+      "statement": "Observed023-postcommit-retained result and local-version logs agree with the independently executed current verifier. Result bytes exactly match fresh replay, SHA2562f9c13704a28b036e5d44205e0ed54072d67925e921e83475af5ce70ef370555. This is byte-integrity verification, not fresh kernel checking; fresh source-bound kernel replay is covered separately.",
+      "status": "PASS"
+    },
+    {
+      "id": "final.postcommit_023_archival_git_binding",
+      "statement": "023-postcommit-retained/result.json is absent from600658, as expected for a postcommit execution. This report does not falsely attribute that receipt to the earlier Git object; its own later archival commit remains pending.",
+      "status": "OPEN"
+    },
+    {
+      "id": "final.source_or_cpython_refinement",
+      "statement": "No result here proves source-to-instruction translation, actual CPython string/dict/set/exception semantics, accepted raw-row projection or final returned-reason correspondence.",
+      "status": "OPEN"
+    }
+  ],
+  "closes_prior_open_items": [
+    "Actual source-input commit binding for the initial mathematical/focused finite executions.",
+    "Final Git byte binding of actual finite001 and Lean022 receipts to the supplied600658 evidence commit, with source-to-evidence ancestry."
+  ],
+  "code_binding_method": "For each listed code file, actual working bytes matched git show at both full source and evidence commits. Earlier mutation controls apply to these exact reviewed code bytes, not an unpinned moving branch.",
+  "created_utc": "2026-11-10T00:20:14.239389+00:00",
+  "evidence_commit": "6006584679ead734e22197174d52a821bda62a7c",
+  "executed_git_blob_comparisons": {
+    "argv_template": [
+      "git",
+      "show",
+      "{evidence_commit}:{path}"
+    ],
+    "committed_file_hashes": {
+      "lean/attempts/013-checked": {
+        "formal/sonification/mat008/refinement/lean/attempts/013-checked/00.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/013-checked/00.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/013-checked/01.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/013-checked/01.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/013-checked/02.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/013-checked/02.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/013-checked/03.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/013-checked/03.stdout": "99ed941874b051a9d5d57d162f788e4dfcb5726655d39b5b824f11168379668d",
+        "formal/sonification/mat008/refinement/lean/attempts/013-checked/declarations.json": "84abc683f6819bd3aa7f0a76166aafeb3ab355704b55a5d2c11ccca7ea8571af",
+        "formal/sonification/mat008/refinement/lean/attempts/013-checked/result.json": "2fe92ab7e2bd37304b2b3dee28508d907f0c920f1cc159f74261ead9735ca388",
+        "formal/sonification/mat008/refinement/lean/attempts/013-checked/toolchain-imports.json": "8ffe3ac72c6480936ba701e02ca4e848f8aed9e0fcf5439fb909ede3898138cb",
+        "formal/sonification/mat008/refinement/lean/attempts/013-checked/version.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/013-checked/version.stdout": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+      },
+      "lean/attempts/014-negative": {
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/changed_accepted_model/MapReason.lean": "f1ce54798c837d020c1fdfacddaf0a5e9b85c7aaf608c21ad64e64ac4521d2ea",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/changed_accepted_model/runner.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/changed_accepted_model/runner.stdout": "9ee3adb8e090c95d49fcf252380a7d1b4909168dc20dd65bfe3b1c08e3f033fe",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/changed_accepted_model/verification/result.json": "03743607a6aaa2103d0d4bc0bd36ce753d7c85f2c033f24fcc416037a2e978d3",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/prohibited_data_assumption/MapReason.lean": "f0d8fcca57a4a6af87055dc1bef57145101470aa43e3356ff29a0bdd03fd7b6d",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/prohibited_data_assumption/runner.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/prohibited_data_assumption/runner.stdout": "7323fded218a63c30c20e3f7da39e35b1366ecbc353b23af55aaa102cfe5992b",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/prohibited_data_assumption/verification/00.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/prohibited_data_assumption/verification/00.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/prohibited_data_assumption/verification/01.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/prohibited_data_assumption/verification/01.stdout": "d8dedc62cd8ad2d25c04c60acd0c92ca9da7357e1a115050314e42f8019c4f0d",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/prohibited_data_assumption/verification/02.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/prohibited_data_assumption/verification/02.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/prohibited_data_assumption/verification/03.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/prohibited_data_assumption/verification/03.stdout": "0338332a03649f80dd6f72fb2a5ba16ed1fdffa5a5e2d0ef2db63df8d6cc54e9",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/prohibited_data_assumption/verification/result.json": "e8ffc562bbec8d2b4833484c8315965dc62af1c8374864fd5e18df38cc283f47",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/prohibited_data_assumption/verification/version.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/prohibited_data_assumption/verification/version.stdout": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/reason_erasure/Counterexample.lean": "0578527f8c15c39cc0ca611b5f455cfe60465c32b10d2ea783f6fae90a4f1b1b",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/reason_erasure/MapReason.lean": "321b4678305fa6de5031cb20a818c8829e83b3fd91fa945eb57db4f8d44e3aa7",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/reason_erasure/counterexample-0.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/reason_erasure/counterexample-0.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/reason_erasure/counterexample-1.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/reason_erasure/counterexample-1.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/reason_erasure/runner.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/reason_erasure/runner.stdout": "d9254f9a9ac763d238618311a3a3632f8179fbe820266f4022feb9f89e365be2",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/reason_erasure/verification/00.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/reason_erasure/verification/00.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/reason_erasure/verification/01.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/reason_erasure/verification/01.stdout": "198755cb38004b045006353df05b0fc5070b35ca15f85df380676fbdbb255d3d",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/reason_erasure/verification/result.json": "9ddcd3556088cb037039121634fcceb635d2c28b6ac96a5f0f463b9052990aff",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/reason_erasure/verification/version.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/reason_erasure/verification/version.stdout": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/result.json": "6bb14ba720aa2d3c4bc9a51e1b21c383f928a2fca2c142876202a17bd64162b2",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/unimported_module/MapReason.lean": "f1ce54798c837d020c1fdfacddaf0a5e9b85c7aaf608c21ad64e64ac4521d2ea",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/unimported_module/runner.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/unimported_module/runner.stdout": "bd5a628ddc7928c68aacc22518e6c74de7c7c92d4295c36edb40300c716abd48",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/unimported_module/verification/result.json": "b6cbf846ac6259dd560ee1516d6ebef3bd4d8dcbe6f824076f1c3d1b5aa3fec7",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/update_before_test/MapReason.lean": "b2112b1231009a7f6cc7cb3f23c9ece7bddb681da10921aa00ab00c795287485",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/update_before_test/runner.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/update_before_test/runner.stdout": "a20ebf079c68466d8390baa8920874609922dd5c1a4d1e9fd45f21dc38c1a0e8",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/update_before_test/verification/00.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/update_before_test/verification/00.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/update_before_test/verification/01.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/update_before_test/verification/01.stdout": "31373cea99a57d28d124c0ec762b6550aca23154847570e13160f998d6e930ac",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/update_before_test/verification/result.json": "0c7e7682fc5479aa8cd8b30dcff0ff58a3d7df10b3b4ec54a7e5da6ed3e1bff1",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/update_before_test/verification/version.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/update_before_test/verification/version.stdout": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r4_theorem/MapReason.lean": "b29ecdc931d4419e4d896a147dd338a1c889e823dcc4b87b7ae0ee0ae81d599c",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r4_theorem/runner.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r4_theorem/runner.stdout": "0fb473905517f3cf38fc7c0409069b2ab95f912a35b57a87cf59a75d10218cd8",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r4_theorem/verification/00.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r4_theorem/verification/00.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r4_theorem/verification/01.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r4_theorem/verification/01.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r4_theorem/verification/02.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r4_theorem/verification/02.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r4_theorem/verification/03.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r4_theorem/verification/03.stdout": "820caa84486260b0d1cd5e777022790e77767d8f498c3a7c5a156c80f95e4777",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r4_theorem/verification/result.json": "2beb1ee84be371d55d046fdf8ff93b76813785c3bcf758633dbb1e2807a9b3dd",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r4_theorem/verification/version.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r4_theorem/verification/version.stdout": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r7_theorem/MapReason.lean": "9c787febd1592cb103bc929af396502e249a90800a6cc7eb92188addcc2c8da3",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r7_theorem/runner.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r7_theorem/runner.stdout": "2b3dec146c7efa594e7cbe09c433e482927522d43b9901fce4612b0afdfc05f7",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r7_theorem/verification/00.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r7_theorem/verification/00.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r7_theorem/verification/01.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r7_theorem/verification/01.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r7_theorem/verification/02.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r7_theorem/verification/02.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r7_theorem/verification/03.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r7_theorem/verification/03.stdout": "beba2a3c87cf4fa22fd882f5c77a0cc17cc4d76c8cf20576299cf5bdee9c6ef9",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r7_theorem/verification/result.json": "e64fa79ca72d4ed7fa51eecb215fdf33e5f35b3d0af9826d3958c043e1a0a47e",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r7_theorem/verification/version.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/014-negative/weaker_r7_theorem/verification/version.stdout": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+      },
+      "lean/attempts/022-commit-bound": {
+        "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound/00.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound/00.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound/01.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound/01.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound/02.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound/02.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound/03.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound/03.stdout": "99ed941874b051a9d5d57d162f788e4dfcb5726655d39b5b824f11168379668d",
+        "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound/declarations.json": "84abc683f6819bd3aa7f0a76166aafeb3ab355704b55a5d2c11ccca7ea8571af",
+        "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound/result.json": "92c60ba81e87d7500f05a9739a8401f000e0e033e3e1e1e6da2e50f47b330d63",
+        "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound/toolchain-imports.json": "8ffe3ac72c6480936ba701e02ca4e848f8aed9e0fcf5439fb909ede3898138cb",
+        "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound/version.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound/version.stdout": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+      },
+      "receipts/conformance-001": {
+        "formal/sonification/mat008/refinement/receipts/conformance-001/00.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/receipts/conformance-001/00.stdout": "63990b3ee50c49ab28d70e29c0f967f0c71330e39243ffeb4d3a8d5878c8a978",
+        "formal/sonification/mat008/refinement/receipts/conformance-001/01.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/receipts/conformance-001/01.stdout": "0c4163b56737fa2f3974ad3907fcd0e93299934d1c09bb0f8bca03974b15319b",
+        "formal/sonification/mat008/refinement/receipts/conformance-001/02.stderr": "4d70698840dfb143d900d8a13c6f09a2d40d975fc8dc85bcd8c2238205457787",
+        "formal/sonification/mat008/refinement/receipts/conformance-001/02.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "formal/sonification/mat008/refinement/receipts/conformance-001/result.json": "41468f5a783b0096e9866fbecad02d55573b14f10a102f9e622716a8c27d311a"
+      }
+    },
+    "file_count": 109,
+    "working_directory": "/home/trent/sonification-formal-001-mat008-refinement"
+  },
+  "independent_commands": [
+    {
+      "argv": [
+        "git",
+        "merge-base",
+        "--is-ancestor",
+        "3be17be4c3b2812c5a610ef646cb4487f150dc52",
+        "6006584679ead734e22197174d52a821bda62a7c"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat008-refinement",
+      "exit_code": 0,
+      "stderr_utf8": "",
+      "stdout_utf8": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "formal/sonification/mat008/refinement/evidence.py",
+        "verify",
+        "formal/sonification/mat008/refinement/receipts/conformance-001",
+        "--receipt-commit",
+        "6006584679ead734e22197174d52a821bda62a7c"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat008-refinement",
+      "exit_code": 0,
+      "stderr_utf8": "",
+      "stdout_utf8": "{\"status\": \"EXECUTION_RECEIPT_MATCH\", \"out\": \"/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/receipts/conformance-001\", \"receipt_commit\": \"6006584679ead734e22197174d52a821bda62a7c\"}\n"
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--out",
+        "/tmp/independent-mat008-evidence-commit-iap4jupn/retained-lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat008-refinement",
+      "exit_code": 0,
+      "stderr_utf8": "",
+      "stdout_utf8": "{\"status\": \"PASS\", \"error\": null, \"out\": \"/tmp/independent-mat008-evidence-commit-iap4jupn/retained-lean\"}\n"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "-e",
+        "6006584679ead734e22197174d52a821bda62a7c:formal/sonification/mat008/refinement/lean/attempts/023-postcommit-retained/result.json"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat008-refinement",
+      "exit_code": 128,
+      "stderr_utf8": "fatal: path 'formal/sonification/mat008/refinement/lean/attempts/023-postcommit-retained/result.json' exists on disk, but not in '6006584679ead734e22197174d52a821bda62a7c'\n",
+      "stdout_utf8": ""
+    }
+  ],
+  "independent_retained_verifier_logs": {
+    "retained-lean/local-version.stderr": {
+      "absolute_path": "/tmp/independent-mat008-evidence-commit-iap4jupn/retained-lean/local-version.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "retained-lean/local-version.stdout": {
+      "absolute_path": "/tmp/independent-mat008-evidence-commit-iap4jupn/retained-lean/local-version.stdout",
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "size": 78
+    },
+    "retained-lean/result.json": {
+      "absolute_path": "/tmp/independent-mat008-evidence-commit-iap4jupn/retained-lean/result.json",
+      "sha256": "2f9c13704a28b036e5d44205e0ed54072d67925e921e83475af5ce70ef370555",
+      "size": 1194
+    }
+  },
+  "limitations": [
+    "Acceptance applies only to the exact abstract mathematical statements and declared finite cases; it does not establish complete SONIFICATION formalization or implementation refinement.",
+    "Authenticity of original executions, Lean/compiler/standard-library distribution, CPython/stdlib semantics, OS execution, hashing and Git remain stated trust assumptions; digest agreement is not an experimental authenticity proof.",
+    "Current verifier023 is a postcommit local observation, not a receipt archived at600658. A later owner-approved evidence commit may preserve it.",
+    "Only this new supplemental JSON was written. No existing source, receipts, prior audits, datasets or release artifacts were edited.",
+    "Independent command logs remain at the exact hashed local /tmp paths; original109 receipt files are immutable through the full evidence commit."
+  ],
+  "prior_review_links": {
+    "COMMIT_BOUND_REVIEW.json": {
+      "path": "formal/sonification/mat008/refinement/audit/COMMIT_BOUND_REVIEW.json",
+      "sha256": "8eaa93f36229cbe9f5d00e8313af462d121cdb6e676c70c44cd213b507448535"
+    },
+    "INTEGRATION_REVIEW.json": {
+      "path": "formal/sonification/mat008/refinement/audit/INTEGRATION_REVIEW.json",
+      "sha256": "c68f040dab6f9999a5654a9ab31b9a6312996ec3b1df785b853883af961f9445"
+    },
+    "LEAN_AUDIT.json": {
+      "path": "formal/sonification/mat008/refinement/audit/LEAN_AUDIT.json",
+      "sha256": "032718758a0ab1967d750599b4ab9db8fca299541b3edbe9ea30f330b323e34a"
+    }
+  },
+  "raw_independent_execution_record": {
+    "path": "/tmp/independent-mat008-evidence-commit-iap4jupn/summary.json",
+    "scope": "Exact per-file git-show argv/status/outputs and independent direct verifier commands retained locally.",
+    "sha256": "c81ec590050d14372c16b870207f49de24fb437f36e9ca5b9937bc84a0c2bc4d"
+  },
+  "result": "PASS_EXACT_MODEL_AND_FINITE_RECEIPT_SCOPES_WITH_CPYTHON_REFINEMENT_OPEN",
+  "reviewer": "independent_auditor",
+  "schema": "sonification-mat008-independent-evidence-commit-review-v1",
+  "source_and_evidence_code_hashes": {
+    "formal/sonification/mat008/refinement/evidence.py": "031a9ff243b973fd9b95dd39dbc1aa824296d092e363d8872708ef75e919186c",
+    "formal/sonification/mat008/refinement/lean/check.py": "1c8307e80fd1a38fecf4be86ac1ba13e34926505a5b89606f8ce33461a749b80",
+    "formal/sonification/mat008/refinement/lean/verify.py": "1ad561f88287e0b039338cf6102905f757118ff0171a7b3d2d31c56f5d984c23",
+    "tests/test_sonification_formal_mat008_refinement.py": "e539128eede0258c5febf8b9302bdb5b5bb1364437c7de02639a38fd60c562cd"
+  },
+  "source_commit": "3be17be4c3b2812c5a610ef646cb4487f150dc52"
+}

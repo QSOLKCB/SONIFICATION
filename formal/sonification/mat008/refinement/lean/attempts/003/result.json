@@ -1,0 +1,35 @@
+[
+  {
+    "argv": [
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "-o",
+      "Mat008/RunOwnership.olean",
+      "Mat008/RunOwnership.lean"
+    ],
+    "cwd": "/tmp/mat008-refine-q7r94z3z",
+    "exit_code": 0,
+    "source_sha256": "653f4638568e4e461176cca7659360737f3ac2632152163602c789fd65ead201"
+  },
+  {
+    "argv": [
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "-o",
+      "Refine/MapReason.olean",
+      "Refine/MapReason.lean"
+    ],
+    "cwd": "/tmp/mat008-refine-q7r94z3z",
+    "exit_code": 0,
+    "source_sha256": "b1c7ba8aec7e83676233d7403035555ba8c1c8cbe1f3272fcb784f5dbb7568a5"
+  },
+  {
+    "argv": [
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "-o",
+      "Refine.olean",
+      "Refine.lean"
+    ],
+    "cwd": "/tmp/mat008-refine-q7r94z3z",
+    "exit_code": 0,
+    "source_sha256": "57f158ca7fdee1e49e6b645edbae19668542eda7090a1b98fba0154635607371"
+  }
+]

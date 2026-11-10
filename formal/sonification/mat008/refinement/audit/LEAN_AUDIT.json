@@ -1,0 +1,1652 @@
+{
+  "accepted_dependency": {
+    "commit": "ac1408cf0c459d79c3d0552287812a15ce644f0d",
+    "git_show_exit_code": 0,
+    "path": "formal/sonification/mat008/lean/Mat008/RunOwnership.lean",
+    "sha256": "653f4638568e4e461176cca7659360737f3ac2632152163602c789fd65ead201"
+  },
+  "assurance_dimensions": {
+    "AUDIT_ACCEPTED": "PASS",
+    "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+    "MODEL_PROVED": "PASS",
+    "REFINEMENT_PROVED": "OPEN"
+  },
+  "auditor": "independent_auditor",
+  "claims": [
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.event_projection",
+      "statement_and_axioms": {
+        "axioms": [],
+        "declaration": "Sonification.Mat008.AbstractPy.event_projection",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)),\n  Sonification.Mat008.AbstractPy.eventScanFrom s events =\n    Sonification.Mat008.AbstractPy.pyScanFrom s (Sonification.Mat008.AbstractPy.acceptedProjection events)",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.instruction_program_correspondence",
+      "statement_and_axioms": {
+        "axioms": [
+          "propext"
+        ],
+        "declaration": "Sonification.Mat008.AbstractPy.instruction_program_correspondence",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow)\n  (arbitraryPriorFlag : Bool),\n  (Sonification.Mat008.AbstractPy.executeInstructions { state := s, row := row, mismatchFlag := arbitraryPriorFlag }\n        Sonification.Mat008.AbstractPy.runGateProgram).state =\n    Sonification.Mat008.AbstractPy.pyStep s row",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.lookup_support",
+      "statement_and_axioms": {
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "declaration": "Sonification.Mat008.AbstractPy.lookup_support",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (table : List (String \u00d7 String)) (key : String),\n  Sonification.Mat008.lookup table key \u2260 none \u2192 key \u2208 List.map Prod.fst table",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.mismatch_iff",
+      "statement_and_axioms": {
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "declaration": "Sonification.Mat008.AbstractPy.mismatch_iff",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.mismatch s row = true \u2194\n    \u2203 oldCampaign, s.owners row.originalRun = some oldCampaign \u2227 oldCampaign \u2260 row.campaign",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.mismatch_related",
+      "statement_and_axioms": {
+        "axioms": [],
+        "declaration": "Sonification.Mat008.AbstractPy.mismatch_related",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.mismatch s row =\n      Sonification.Mat008.differentOwner m (Sonification.Mat008.AbstractPy.projectRow row)",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.new_reason_iff_mismatch",
+      "statement_and_axioms": {
+        "axioms": [
+          "propext"
+        ],
+        "declaration": "Sonification.Mat008.AbstractPy.new_reason_iff_mismatch",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  s.reasons Sonification.Mat008.AbstractPy.reuseReason = false \u2192\n    ((Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason = true \u2194\n      Sonification.Mat008.AbstractPy.mismatch s row = true)",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.nonvacuity",
+      "statement_and_axioms": {
+        "axioms": [],
+        "declaration": "Sonification.Mat008.AbstractPy.nonvacuity",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "(Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty\n          [{ campaign := \"A\", originalRun := \"RUN\" }, { campaign := \"B\", originalRun := \"RUN\" },\n            { campaign := \"B\", originalRun := \"OTHER\" }]).reasons\n      Sonification.Mat008.AbstractPy.reuseReason =\n    true \u2227\n  (Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty\n          [{ campaign := \"A\", originalRun := \"RUN_A\" }, { campaign := \"B\", originalRun := \"RUN_B\" }]).reasons\n      Sonification.Mat008.AbstractPy.reuseReason =\n    false",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.preexisting_reason_counterexample",
+      "statement_and_axioms": {
+        "axioms": [],
+        "declaration": "Sonification.Mat008.AbstractPy.preexisting_reason_counterexample",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "let s := { owners := fun x => none, reasons := fun x => true };\nSonification.Mat008.AbstractPy.mismatch s { campaign := \"CAMPAIGN\", originalRun := \"RUN\" } = false \u2227\n  (Sonification.Mat008.AbstractPy.pyStep s { campaign := \"CAMPAIGN\", originalRun := \"RUN\" }).reasons\n      Sonification.Mat008.AbstractPy.reuseReason =\n    true",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.r1_empty_related",
+      "statement_and_axioms": {
+        "axioms": [],
+        "declaration": "Sonification.Mat008.AbstractPy.r1_empty_related",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "Sonification.Mat008.AbstractPy.Related Sonification.Mat008.AbstractPy.empty Sonification.Mat008.initial",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.r2_finite_support",
+      "statement_and_axioms": {
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "declaration": "Sonification.Mat008.AbstractPy.r2_finite_support",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State),\n  Sonification.Mat008.AbstractPy.Related s m \u2192 Sonification.Mat008.AbstractPy.FiniteSupport s.owners",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.r2_lookup",
+      "statement_and_axioms": {
+        "axioms": [],
+        "declaration": "Sonification.Mat008.AbstractPy.r2_lookup",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State),\n  Sonification.Mat008.AbstractPy.Related s m \u2192 \u2200 (key : String), s.owners key = Sonification.Mat008.lookup m.owner key",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.r3_latest_campaign",
+      "statement_and_axioms": {
+        "axioms": [
+          "propext"
+        ],
+        "declaration": "Sonification.Mat008.AbstractPy.r3_latest_campaign",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  (Sonification.Mat008.AbstractPy.pyStep s row).owners row.originalRun = some row.campaign",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.r3_overwrite",
+      "statement_and_axioms": {
+        "axioms": [],
+        "declaration": "Sonification.Mat008.AbstractPy.r3_overwrite",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.OwnersRelated (Sonification.Mat008.AbstractPy.pyStep s row).owners\n      (Sonification.Mat008.step m (Sonification.Mat008.AbstractPy.projectRow row)).owner",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.r4_reason_iff",
+      "statement_and_axioms": {
+        "axioms": [
+          "propext"
+        ],
+        "declaration": "Sonification.Mat008.AbstractPy.r4_reason_iff",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    ((Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason = true \u2194\n      (Sonification.Mat008.step m (Sonification.Mat008.AbstractPy.projectRow row)).conflict = true)",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.r5_reason_sticky",
+      "statement_and_axioms": {
+        "axioms": [
+          "propext"
+        ],
+        "declaration": "Sonification.Mat008.AbstractPy.r5_reason_sticky",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  s.reasons Sonification.Mat008.AbstractPy.reuseReason = true \u2192\n    (Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason = true",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.r5_sequence_sticky",
+      "statement_and_axioms": {
+        "axioms": [
+          "propext"
+        ],
+        "declaration": "Sonification.Mat008.AbstractPy.r5_sequence_sticky",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (rows : List Sonification.Mat008.AbstractPy.AcceptedRow),\n  s.reasons Sonification.Mat008.AbstractPy.reuseReason = true \u2192\n    (Sonification.Mat008.AbstractPy.pyScanFrom s rows).reasons Sonification.Mat008.AbstractPy.reuseReason = true",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.r6_accepted_projection",
+      "statement_and_axioms": {
+        "axioms": [
+          "propext"
+        ],
+        "declaration": "Sonification.Mat008.AbstractPy.r6_accepted_projection",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.Related (Sonification.Mat008.AbstractPy.eventScanFrom s events)\n      (Sonification.Mat008.scanFrom m\n        (Sonification.Mat008.AbstractPy.project (Sonification.Mat008.AbstractPy.acceptedProjection events)))",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.r6_sequence_related",
+      "statement_and_axioms": {
+        "axioms": [
+          "propext"
+        ],
+        "declaration": "Sonification.Mat008.AbstractPy.r6_sequence_related",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (rows : List Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.Related (Sonification.Mat008.AbstractPy.pyScanFrom s rows)\n      (Sonification.Mat008.scanFrom m (Sonification.Mat008.AbstractPy.project rows))",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.r7_collision_reason",
+      "statement_and_axioms": {
+        "axioms": [
+          "propext",
+          "Quot.sound",
+          "Classical.choice"
+        ],
+        "declaration": "Sonification.Mat008.AbstractPy.r7_collision_reason",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (rows : List Sonification.Mat008.AbstractPy.AcceptedRow) (a b : Sonification.Mat008.AbstractPy.AcceptedRow),\n  a \u2208 rows \u2192\n    b \u2208 rows \u2192\n      a.originalRun = b.originalRun \u2192\n        a.campaign \u2260 b.campaign \u2192\n          (Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty rows).reasons\n              Sonification.Mat008.AbstractPy.reuseReason =\n            true",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.reason_frame",
+      "statement_and_axioms": {
+        "axioms": [
+          "propext"
+        ],
+        "declaration": "Sonification.Mat008.AbstractPy.reason_frame",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow) (reason : String),\n  reason \u2260 Sonification.Mat008.AbstractPy.reuseReason \u2192\n    (Sonification.Mat008.AbstractPy.pyStep s row).reasons reason = s.reasons reason",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.reason_step",
+      "statement_and_axioms": {
+        "axioms": [
+          "propext"
+        ],
+        "declaration": "Sonification.Mat008.AbstractPy.reason_step",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  (Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason =\n    (s.reasons Sonification.Mat008.AbstractPy.reuseReason || Sonification.Mat008.AbstractPy.mismatch s row)",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.skip_frame",
+      "statement_and_axioms": {
+        "axioms": [],
+        "declaration": "Sonification.Mat008.AbstractPy.skip_frame",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (before after : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State),\n  Sonification.Mat008.AbstractPy.Related before m \u2192\n    (\u2200 (key : String), after.owners key = before.owners key) \u2192\n      after.reasons Sonification.Mat008.AbstractPy.reuseReason =\n          before.reasons Sonification.Mat008.AbstractPy.reuseReason \u2192\n        Sonification.Mat008.AbstractPy.Related after m",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.step_related",
+      "statement_and_axioms": {
+        "axioms": [
+          "propext"
+        ],
+        "declaration": "Sonification.Mat008.AbstractPy.step_related",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.Related (Sonification.Mat008.AbstractPy.pyStep s row)\n      (Sonification.Mat008.step m (Sonification.Mat008.AbstractPy.projectRow row))",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.write_other",
+      "statement_and_axioms": {
+        "axioms": [
+          "propext"
+        ],
+        "declaration": "Sonification.Mat008.AbstractPy.write_other",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (owners : Sonification.Mat008.AbstractPy.OwnerMap) (key value query : String),\n  query \u2260 key \u2192 Sonification.Mat008.AbstractPy.write owners key value query = owners query",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.write_related",
+      "statement_and_axioms": {
+        "axioms": [],
+        "declaration": "Sonification.Mat008.AbstractPy.write_related",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (owners : Sonification.Mat008.AbstractPy.OwnerMap) (table : List (String \u00d7 String)) (key value : String),\n  Sonification.Mat008.AbstractPy.OwnersRelated owners table \u2192\n    Sonification.Mat008.AbstractPy.OwnersRelated (Sonification.Mat008.AbstractPy.write owners key value)\n      ((key, value) :: table)",
+        "unsafe_definition": false
+      }
+    },
+    {
+      "assurance_dimensions": {
+        "AUDIT_ACCEPTED": "PASS",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN"
+      },
+      "declaration": "Sonification.Mat008.AbstractPy.write_same",
+      "statement_and_axioms": {
+        "axioms": [
+          "propext"
+        ],
+        "declaration": "Sonification.Mat008.AbstractPy.write_same",
+        "kind": "theorem",
+        "origin": "Refine.MapReason",
+        "type": "\u2200 (owners : Sonification.Mat008.AbstractPy.OwnerMap) (key value : String),\n  Sonification.Mat008.AbstractPy.write owners key value key = some value",
+        "unsafe_definition": false
+      }
+    }
+  ],
+  "created_utc": "2026-11-10T00:10:05.166097+00:00",
+  "evidence_files": {
+    "independent-001/additional/empty_declaration_inventory/project/Audit.lean": {
+      "sha256": "74bca9222a6d73b0778f3d9e64e63b2237a6726164073eb27219cc8c9c0e1b51",
+      "size": 9249
+    },
+    "independent-001/additional/empty_declaration_inventory/project/Refine.lean": {
+      "sha256": "57f158ca7fdee1e49e6b645edbae19668542eda7090a1b98fba0154635607371",
+      "size": 24
+    },
+    "independent-001/additional/empty_declaration_inventory/project/Refine/MapReason.lean": {
+      "sha256": "f1ce54798c837d020c1fdfacddaf0a5e9b85c7aaf608c21ad64e64ac4521d2ea",
+      "size": 11674
+    },
+    "independent-001/additional/empty_declaration_inventory/project/check.py": {
+      "sha256": "1c8307e80fd1a38fecf4be86ac1ba13e34926505a5b89606f8ce33461a749b80",
+      "size": 10529
+    },
+    "independent-001/additional/empty_declaration_inventory/project/expected-declarations.json": {
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "size": 3
+    },
+    "independent-001/additional/empty_declaration_inventory/project/expected-theorems.json": {
+      "sha256": "da0625a11aa3bfbf9604016001929f52d0c7e33070cb722abdcf669e99972518",
+      "size": 1381
+    },
+    "independent-001/additional/empty_declaration_inventory/project/lakefile.toml": {
+      "sha256": "02a2983a17a99f99dc62f134a3658dd54ff37fc4071d428c12338a8697e2f7fc",
+      "size": 160
+    },
+    "independent-001/additional/empty_declaration_inventory/project/lean-toolchain": {
+      "sha256": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+      "size": 25
+    },
+    "independent-001/additional/empty_declaration_inventory/project/negative.py": {
+      "sha256": "8a254d34e5ddff515acee19e4bf576a0a7dc02bb8f9e2c7a9aeb45a73217107e",
+      "size": 8845
+    },
+    "independent-001/additional/empty_declaration_inventory/project/theorem-statements.json": {
+      "sha256": "1d039b94c4eb18aa341dd1ad33bdfa9c97825d2884521446a9d973b97d81a1c2",
+      "size": 13774
+    },
+    "independent-001/additional/empty_declaration_inventory/receipt/00.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/empty_declaration_inventory/receipt/00.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/empty_declaration_inventory/receipt/01.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/empty_declaration_inventory/receipt/01.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/empty_declaration_inventory/receipt/02.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/empty_declaration_inventory/receipt/02.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/empty_declaration_inventory/receipt/03.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/empty_declaration_inventory/receipt/03.stdout": {
+      "sha256": "99ed941874b051a9d5d57d162f788e4dfcb5726655d39b5b824f11168379668d",
+      "size": 157826
+    },
+    "independent-001/additional/empty_declaration_inventory/receipt/result.json": {
+      "sha256": "a34cf3091641bbe0710bbc21af829a5055e93544d885f7b763cc88ba189fd0e8",
+      "size": 4544
+    },
+    "independent-001/additional/empty_declaration_inventory/receipt/version.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/empty_declaration_inventory/receipt/version.stdout": {
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "size": 78
+    },
+    "independent-001/additional/empty_declaration_inventory/runner.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/empty_declaration_inventory/runner.stdout": {
+      "sha256": "8cfcf2bde8416ee81cfd31b47785fd052c8fd431f13f46280255f530bdf2d9d3",
+      "size": 163
+    },
+    "independent-001/additional/empty_intended_inventory/project/Audit.lean": {
+      "sha256": "74bca9222a6d73b0778f3d9e64e63b2237a6726164073eb27219cc8c9c0e1b51",
+      "size": 9249
+    },
+    "independent-001/additional/empty_intended_inventory/project/Refine.lean": {
+      "sha256": "57f158ca7fdee1e49e6b645edbae19668542eda7090a1b98fba0154635607371",
+      "size": 24
+    },
+    "independent-001/additional/empty_intended_inventory/project/Refine/MapReason.lean": {
+      "sha256": "f1ce54798c837d020c1fdfacddaf0a5e9b85c7aaf608c21ad64e64ac4521d2ea",
+      "size": 11674
+    },
+    "independent-001/additional/empty_intended_inventory/project/check.py": {
+      "sha256": "1c8307e80fd1a38fecf4be86ac1ba13e34926505a5b89606f8ce33461a749b80",
+      "size": 10529
+    },
+    "independent-001/additional/empty_intended_inventory/project/expected-declarations.json": {
+      "sha256": "b7c45c77356cd7c5210bc93f6cd61274eb5941c145d7c7d60b43966bd30536a4",
+      "size": 13833
+    },
+    "independent-001/additional/empty_intended_inventory/project/expected-theorems.json": {
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "size": 3
+    },
+    "independent-001/additional/empty_intended_inventory/project/lakefile.toml": {
+      "sha256": "02a2983a17a99f99dc62f134a3658dd54ff37fc4071d428c12338a8697e2f7fc",
+      "size": 160
+    },
+    "independent-001/additional/empty_intended_inventory/project/lean-toolchain": {
+      "sha256": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+      "size": 25
+    },
+    "independent-001/additional/empty_intended_inventory/project/negative.py": {
+      "sha256": "8a254d34e5ddff515acee19e4bf576a0a7dc02bb8f9e2c7a9aeb45a73217107e",
+      "size": 8845
+    },
+    "independent-001/additional/empty_intended_inventory/project/theorem-statements.json": {
+      "sha256": "1d039b94c4eb18aa341dd1ad33bdfa9c97825d2884521446a9d973b97d81a1c2",
+      "size": 13774
+    },
+    "independent-001/additional/empty_intended_inventory/receipt/result.json": {
+      "sha256": "97876b2e1fd1aed1e34cdbfa58a3bb946568c53510e580d46e648983906d613e",
+      "size": 265
+    },
+    "independent-001/additional/empty_intended_inventory/runner.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/empty_intended_inventory/runner.stdout": {
+      "sha256": "34665195dce41bad97e6e2c988d183c7194017f8caf58df77a8f437381d8425d",
+      "size": 169
+    },
+    "independent-001/additional/explicit_data_axiom/project/Audit.lean": {
+      "sha256": "74bca9222a6d73b0778f3d9e64e63b2237a6726164073eb27219cc8c9c0e1b51",
+      "size": 9249
+    },
+    "independent-001/additional/explicit_data_axiom/project/Refine.lean": {
+      "sha256": "57f158ca7fdee1e49e6b645edbae19668542eda7090a1b98fba0154635607371",
+      "size": 24
+    },
+    "independent-001/additional/explicit_data_axiom/project/Refine/MapReason.lean": {
+      "sha256": "134064feff582497e3eb4abc6b295113947823dafb918a1581c1c742135342dc",
+      "size": 11696
+    },
+    "independent-001/additional/explicit_data_axiom/project/check.py": {
+      "sha256": "1c8307e80fd1a38fecf4be86ac1ba13e34926505a5b89606f8ce33461a749b80",
+      "size": 10529
+    },
+    "independent-001/additional/explicit_data_axiom/project/expected-declarations.json": {
+      "sha256": "b7c45c77356cd7c5210bc93f6cd61274eb5941c145d7c7d60b43966bd30536a4",
+      "size": 13833
+    },
+    "independent-001/additional/explicit_data_axiom/project/expected-theorems.json": {
+      "sha256": "da0625a11aa3bfbf9604016001929f52d0c7e33070cb722abdcf669e99972518",
+      "size": 1381
+    },
+    "independent-001/additional/explicit_data_axiom/project/lakefile.toml": {
+      "sha256": "02a2983a17a99f99dc62f134a3658dd54ff37fc4071d428c12338a8697e2f7fc",
+      "size": 160
+    },
+    "independent-001/additional/explicit_data_axiom/project/lean-toolchain": {
+      "sha256": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+      "size": 25
+    },
+    "independent-001/additional/explicit_data_axiom/project/negative.py": {
+      "sha256": "8a254d34e5ddff515acee19e4bf576a0a7dc02bb8f9e2c7a9aeb45a73217107e",
+      "size": 8845
+    },
+    "independent-001/additional/explicit_data_axiom/project/theorem-statements.json": {
+      "sha256": "1d039b94c4eb18aa341dd1ad33bdfa9c97825d2884521446a9d973b97d81a1c2",
+      "size": 13774
+    },
+    "independent-001/additional/explicit_data_axiom/receipt/00.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/explicit_data_axiom/receipt/00.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/explicit_data_axiom/receipt/01.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/explicit_data_axiom/receipt/01.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/explicit_data_axiom/receipt/02.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/explicit_data_axiom/receipt/02.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/explicit_data_axiom/receipt/03.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/explicit_data_axiom/receipt/03.stdout": {
+      "sha256": "deaf28db67aa08f8a082a5892ab8ba6c4c7c9d4495ae5651f42abd71923e5d36",
+      "size": 100875
+    },
+    "independent-001/additional/explicit_data_axiom/receipt/result.json": {
+      "sha256": "db4d742cf56a54709ff68fd47b07ae7b54184138e19c2528f5aa2ff19f84a834",
+      "size": 4546
+    },
+    "independent-001/additional/explicit_data_axiom/receipt/version.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/explicit_data_axiom/receipt/version.stdout": {
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "size": 78
+    },
+    "independent-001/additional/explicit_data_axiom/runner.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/explicit_data_axiom/runner.stdout": {
+      "sha256": "83923af646549be6777414f74890f6d3169685fe498d3c587f15058b719211ea",
+      "size": 157
+    },
+    "independent-001/additional/missing_aggregate_import/project/Audit.lean": {
+      "sha256": "74bca9222a6d73b0778f3d9e64e63b2237a6726164073eb27219cc8c9c0e1b51",
+      "size": 9249
+    },
+    "independent-001/additional/missing_aggregate_import/project/Refine.lean": {
+      "sha256": "6cef5e8a16047ee84e1ba7392d5877f339adce04e8977f07809655bb8fdf3086",
+      "size": 11
+    },
+    "independent-001/additional/missing_aggregate_import/project/Refine/MapReason.lean": {
+      "sha256": "f1ce54798c837d020c1fdfacddaf0a5e9b85c7aaf608c21ad64e64ac4521d2ea",
+      "size": 11674
+    },
+    "independent-001/additional/missing_aggregate_import/project/check.py": {
+      "sha256": "1c8307e80fd1a38fecf4be86ac1ba13e34926505a5b89606f8ce33461a749b80",
+      "size": 10529
+    },
+    "independent-001/additional/missing_aggregate_import/project/expected-declarations.json": {
+      "sha256": "b7c45c77356cd7c5210bc93f6cd61274eb5941c145d7c7d60b43966bd30536a4",
+      "size": 13833
+    },
+    "independent-001/additional/missing_aggregate_import/project/expected-theorems.json": {
+      "sha256": "da0625a11aa3bfbf9604016001929f52d0c7e33070cb722abdcf669e99972518",
+      "size": 1381
+    },
+    "independent-001/additional/missing_aggregate_import/project/lakefile.toml": {
+      "sha256": "02a2983a17a99f99dc62f134a3658dd54ff37fc4071d428c12338a8697e2f7fc",
+      "size": 160
+    },
+    "independent-001/additional/missing_aggregate_import/project/lean-toolchain": {
+      "sha256": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+      "size": 25
+    },
+    "independent-001/additional/missing_aggregate_import/project/negative.py": {
+      "sha256": "8a254d34e5ddff515acee19e4bf576a0a7dc02bb8f9e2c7a9aeb45a73217107e",
+      "size": 8845
+    },
+    "independent-001/additional/missing_aggregate_import/project/theorem-statements.json": {
+      "sha256": "1d039b94c4eb18aa341dd1ad33bdfa9c97825d2884521446a9d973b97d81a1c2",
+      "size": 13774
+    },
+    "independent-001/additional/missing_aggregate_import/receipt/00.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/missing_aggregate_import/receipt/00.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/missing_aggregate_import/receipt/01.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/missing_aggregate_import/receipt/01.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/missing_aggregate_import/receipt/02.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/missing_aggregate_import/receipt/02.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/missing_aggregate_import/receipt/03.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/missing_aggregate_import/receipt/03.stdout": {
+      "sha256": "d172ad290e0ec7c52387dd86cf48185d11a32caad9d17fcb64fa13bc715ec03b",
+      "size": 8476
+    },
+    "independent-001/additional/missing_aggregate_import/receipt/result.json": {
+      "sha256": "d56f754b9ef0c9b506feb0537f728a117190d372889a5d15e4ad718346d9e53d",
+      "size": 4546
+    },
+    "independent-001/additional/missing_aggregate_import/receipt/version.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/missing_aggregate_import/receipt/version.stdout": {
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "size": 78
+    },
+    "independent-001/additional/missing_aggregate_import/runner.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/missing_aggregate_import/runner.stdout": {
+      "sha256": "6ce568403d03145498e0253458a8f48d2d477e2839b66bdd6ac9f0faafc7355a",
+      "size": 162
+    },
+    "independent-001/additional/results.json": {
+      "sha256": "8fff272b8aa15144e02f43641c19b6e95bcc6ce55203199a8a4c602b21b6defe",
+      "size": 3315
+    },
+    "independent-001/additional/wrong_numerical_witness/project/Audit.lean": {
+      "sha256": "74bca9222a6d73b0778f3d9e64e63b2237a6726164073eb27219cc8c9c0e1b51",
+      "size": 9249
+    },
+    "independent-001/additional/wrong_numerical_witness/project/Refine.lean": {
+      "sha256": "57f158ca7fdee1e49e6b645edbae19668542eda7090a1b98fba0154635607371",
+      "size": 24
+    },
+    "independent-001/additional/wrong_numerical_witness/project/Refine/MapReason.lean": {
+      "sha256": "8437d28ee40da69926f73a32b22e490cae0dd1395f2e671a8dbdf2a3ecd01780",
+      "size": 11675
+    },
+    "independent-001/additional/wrong_numerical_witness/project/check.py": {
+      "sha256": "1c8307e80fd1a38fecf4be86ac1ba13e34926505a5b89606f8ce33461a749b80",
+      "size": 10529
+    },
+    "independent-001/additional/wrong_numerical_witness/project/expected-declarations.json": {
+      "sha256": "b7c45c77356cd7c5210bc93f6cd61274eb5941c145d7c7d60b43966bd30536a4",
+      "size": 13833
+    },
+    "independent-001/additional/wrong_numerical_witness/project/expected-theorems.json": {
+      "sha256": "da0625a11aa3bfbf9604016001929f52d0c7e33070cb722abdcf669e99972518",
+      "size": 1381
+    },
+    "independent-001/additional/wrong_numerical_witness/project/lakefile.toml": {
+      "sha256": "02a2983a17a99f99dc62f134a3658dd54ff37fc4071d428c12338a8697e2f7fc",
+      "size": 160
+    },
+    "independent-001/additional/wrong_numerical_witness/project/lean-toolchain": {
+      "sha256": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+      "size": 25
+    },
+    "independent-001/additional/wrong_numerical_witness/project/negative.py": {
+      "sha256": "8a254d34e5ddff515acee19e4bf576a0a7dc02bb8f9e2c7a9aeb45a73217107e",
+      "size": 8845
+    },
+    "independent-001/additional/wrong_numerical_witness/project/theorem-statements.json": {
+      "sha256": "1d039b94c4eb18aa341dd1ad33bdfa9c97825d2884521446a9d973b97d81a1c2",
+      "size": 13774
+    },
+    "independent-001/additional/wrong_numerical_witness/receipt/00.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/wrong_numerical_witness/receipt/00.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/wrong_numerical_witness/receipt/01.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/wrong_numerical_witness/receipt/01.stdout": {
+      "sha256": "d33d909ff787960309bdf2a9c838450c19dff2b16d796a6593fd15e788b7407c",
+      "size": 482
+    },
+    "independent-001/additional/wrong_numerical_witness/receipt/result.json": {
+      "sha256": "7eac8a9f040b7259b568189c2461874e95c8ab9affa1e07b7105cdf3eee20cf5",
+      "size": 3257
+    },
+    "independent-001/additional/wrong_numerical_witness/receipt/version.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/wrong_numerical_witness/receipt/version.stdout": {
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "size": 78
+    },
+    "independent-001/additional/wrong_numerical_witness/runner.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/additional/wrong_numerical_witness/runner.stdout": {
+      "sha256": "c58f1ee454c43f26266fb4556394dad151dc948d19e07bded62d226ed7bbee75",
+      "size": 172
+    },
+    "independent-001/negative.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative.stdout": {
+      "sha256": "9c9a4a6d07169d486681620c1b9255a6fbb5127680536e0ba50c2e9b91555386",
+      "size": 46
+    },
+    "independent-001/negative/changed_accepted_model/MapReason.lean": {
+      "sha256": "f1ce54798c837d020c1fdfacddaf0a5e9b85c7aaf608c21ad64e64ac4521d2ea",
+      "size": 11674
+    },
+    "independent-001/negative/changed_accepted_model/runner.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/changed_accepted_model/runner.stdout": {
+      "sha256": "c77b620defea45044e75f6f802ce8ee251d6a90d8e9c1e5e2050576190651388",
+      "size": 173
+    },
+    "independent-001/negative/changed_accepted_model/verification/result.json": {
+      "sha256": "83064f8f9bd3b38837189c0ae8f8d23a70e849006fb009d94e127f91789bbe0f",
+      "size": 268
+    },
+    "independent-001/negative/prohibited_data_assumption/MapReason.lean": {
+      "sha256": "f0d8fcca57a4a6af87055dc1bef57145101470aa43e3356ff29a0bdd03fd7b6d",
+      "size": 11726
+    },
+    "independent-001/negative/prohibited_data_assumption/runner.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/prohibited_data_assumption/runner.stdout": {
+      "sha256": "7cfd694f5fd24192b314296a16e4978c1b3bdfb3f8c6335d00f120cfa45f35db",
+      "size": 167
+    },
+    "independent-001/negative/prohibited_data_assumption/verification/00.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/prohibited_data_assumption/verification/00.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/prohibited_data_assumption/verification/01.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/prohibited_data_assumption/verification/01.stdout": {
+      "sha256": "d8dedc62cd8ad2d25c04c60acd0c92ca9da7357e1a115050314e42f8019c4f0d",
+      "size": 64
+    },
+    "independent-001/negative/prohibited_data_assumption/verification/02.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/prohibited_data_assumption/verification/02.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/prohibited_data_assumption/verification/03.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/prohibited_data_assumption/verification/03.stdout": {
+      "sha256": "0338332a03649f80dd6f72fb2a5ba16ed1fdffa5a5e2d0ef2db63df8d6cc54e9",
+      "size": 106242
+    },
+    "independent-001/negative/prohibited_data_assumption/verification/result.json": {
+      "sha256": "2bd630e0f28aca9d69dc1bd3faf3f21ff3f142e051c14ae67426c6c8e20fff69",
+      "size": 4490
+    },
+    "independent-001/negative/prohibited_data_assumption/verification/version.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/prohibited_data_assumption/verification/version.stdout": {
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "size": 78
+    },
+    "independent-001/negative/reason_erasure/Counterexample.lean": {
+      "sha256": "0578527f8c15c39cc0ca611b5f455cfe60465c32b10d2ea783f6fae90a4f1b1b",
+      "size": 4026
+    },
+    "independent-001/negative/reason_erasure/MapReason.lean": {
+      "sha256": "321b4678305fa6de5031cb20a818c8829e83b3fd91fa945eb57db4f8d44e3aa7",
+      "size": 11681
+    },
+    "independent-001/negative/reason_erasure/counterexample-0.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/reason_erasure/counterexample-0.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/reason_erasure/counterexample-1.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/reason_erasure/counterexample-1.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/reason_erasure/runner.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/reason_erasure/runner.stdout": {
+      "sha256": "78974c339df245876c528bc91e836c05e6360b4c2658f18b74eccd36bd69471e",
+      "size": 166
+    },
+    "independent-001/negative/reason_erasure/verification/00.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/reason_erasure/verification/00.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/reason_erasure/verification/01.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/reason_erasure/verification/01.stdout": {
+      "sha256": "198755cb38004b045006353df05b0fc5070b35ca15f85df380676fbdbb255d3d",
+      "size": 1334
+    },
+    "independent-001/negative/reason_erasure/verification/result.json": {
+      "sha256": "f5c7c9eae9b16134d7a34a4c315d50c63ec95700273ffe1b4d8a2c8cf768830c",
+      "size": 3201
+    },
+    "independent-001/negative/reason_erasure/verification/version.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/reason_erasure/verification/version.stdout": {
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "size": 78
+    },
+    "independent-001/negative/result.json": {
+      "sha256": "11b71fd40a74cd227e243dbdd68d9e010db10e360a517e030afef0f30a95f486",
+      "size": 6225
+    },
+    "independent-001/negative/unimported_module/MapReason.lean": {
+      "sha256": "f1ce54798c837d020c1fdfacddaf0a5e9b85c7aaf608c21ad64e64ac4521d2ea",
+      "size": 11674
+    },
+    "independent-001/negative/unimported_module/runner.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/unimported_module/runner.stdout": {
+      "sha256": "ea11e86049177e9c90c4f84ae08dd18c7e2e556fc6a2509d8fa19f16eac0ec6a",
+      "size": 219
+    },
+    "independent-001/negative/unimported_module/verification/result.json": {
+      "sha256": "e1dc21e1859415d6820f2642c9cef3b8ef9e48ac78d289a5e67ed5df63d170bd",
+      "size": 319
+    },
+    "independent-001/negative/update_before_test/MapReason.lean": {
+      "sha256": "b2112b1231009a7f6cc7cb3f23c9ece7bddb681da10921aa00ab00c795287485",
+      "size": 11674
+    },
+    "independent-001/negative/update_before_test/runner.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/update_before_test/runner.stdout": {
+      "sha256": "696f3dc55f70c696afe0271e38d8650f7895b2262ce069dc2a56af3f2b9d1bc4",
+      "size": 170
+    },
+    "independent-001/negative/update_before_test/verification/00.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/update_before_test/verification/00.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/update_before_test/verification/01.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/update_before_test/verification/01.stdout": {
+      "sha256": "31373cea99a57d28d124c0ec762b6550aca23154847570e13160f998d6e930ac",
+      "size": 1707
+    },
+    "independent-001/negative/update_before_test/verification/result.json": {
+      "sha256": "6400c83a4ea4bb04e98661d77d31d71e7974c3f8a9d3d373b6242e20cab8c0d6",
+      "size": 3201
+    },
+    "independent-001/negative/update_before_test/verification/version.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/update_before_test/verification/version.stdout": {
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "size": 78
+    },
+    "independent-001/negative/weaker_r4_theorem/MapReason.lean": {
+      "sha256": "b29ecdc931d4419e4d896a147dd338a1c889e823dcc4b87b7ae0ee0ae81d599c",
+      "size": 11487
+    },
+    "independent-001/negative/weaker_r4_theorem/runner.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/weaker_r4_theorem/runner.stdout": {
+      "sha256": "fb77860ee95cca1a688e522d49482d6aaff364db87532b07b40d5ba1c762f8a5",
+      "size": 158
+    },
+    "independent-001/negative/weaker_r4_theorem/verification/00.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/weaker_r4_theorem/verification/00.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/weaker_r4_theorem/verification/01.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/weaker_r4_theorem/verification/01.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/weaker_r4_theorem/verification/02.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/weaker_r4_theorem/verification/02.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/weaker_r4_theorem/verification/03.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/weaker_r4_theorem/verification/03.stdout": {
+      "sha256": "820caa84486260b0d1cd5e777022790e77767d8f498c3a7c5a156c80f95e4777",
+      "size": 68806
+    },
+    "independent-001/negative/weaker_r4_theorem/verification/result.json": {
+      "sha256": "bb0a07bb2580a1d55eaf9f66aacf2b6913ea5a3c52315980dca68730a9dcbba4",
+      "size": 4490
+    },
+    "independent-001/negative/weaker_r4_theorem/verification/version.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/weaker_r4_theorem/verification/version.stdout": {
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "size": 78
+    },
+    "independent-001/negative/weaker_r7_theorem/MapReason.lean": {
+      "sha256": "9c787febd1592cb103bc929af396502e249a90800a6cc7eb92188addcc2c8da3",
+      "size": 11106
+    },
+    "independent-001/negative/weaker_r7_theorem/runner.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/weaker_r7_theorem/runner.stdout": {
+      "sha256": "ac0835f523e81b0854fdbb6b4c0cf0161002a3efefff78a117b02ddf5a4edf3b",
+      "size": 158
+    },
+    "independent-001/negative/weaker_r7_theorem/verification/00.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/weaker_r7_theorem/verification/00.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/weaker_r7_theorem/verification/01.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/weaker_r7_theorem/verification/01.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/weaker_r7_theorem/verification/02.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/weaker_r7_theorem/verification/02.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/weaker_r7_theorem/verification/03.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/weaker_r7_theorem/verification/03.stdout": {
+      "sha256": "beba2a3c87cf4fa22fd882f5c77a0cc17cc4d76c8cf20576299cf5bdee9c6ef9",
+      "size": 71498
+    },
+    "independent-001/negative/weaker_r7_theorem/verification/result.json": {
+      "sha256": "49f35b2923303611ad0be9e8512380b5b49b33e0da1984ff5a6b9aa07aed961a",
+      "size": 4490
+    },
+    "independent-001/negative/weaker_r7_theorem/verification/version.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/negative/weaker_r7_theorem/verification/version.stdout": {
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "size": 78
+    },
+    "independent-001/nominal.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/nominal.stdout": {
+      "sha256": "69867b47874cc56acfe6cca149398201f908d6eb4a4cfb6c26091f5ca108ef07",
+      "size": 90
+    },
+    "independent-001/nominal/00.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/nominal/00.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/nominal/01.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/nominal/01.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/nominal/02.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/nominal/02.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/nominal/03.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/nominal/03.stdout": {
+      "sha256": "99ed941874b051a9d5d57d162f788e4dfcb5726655d39b5b824f11168379668d",
+      "size": 157826
+    },
+    "independent-001/nominal/declarations.json": {
+      "sha256": "84abc683f6819bd3aa7f0a76166aafeb3ab355704b55a5d2c11ccca7ea8571af",
+      "size": 103939
+    },
+    "independent-001/nominal/result.json": {
+      "sha256": "861804be357335c0eb5ee8269d9722e60a119ac76ab92a89f106bb5d74ab6d36",
+      "size": 7714
+    },
+    "independent-001/nominal/toolchain-imports.json": {
+      "sha256": "8ffe3ac72c6480936ba701e02ca4e848f8aed9e0fcf5439fb909ede3898138cb",
+      "size": 304533
+    },
+    "independent-001/nominal/version.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "independent-001/nominal/version.stdout": {
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "size": 78
+    }
+  },
+  "fresh_execution": {
+    "declarations_equal_retained_013": true,
+    "import_closure_equal_retained_013": true,
+    "nominal_exit_code": 0,
+    "nominal_receipt": "independent-001/nominal/result.json",
+    "nominal_status": "PASS",
+    "top_level_commands": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/check.py",
+          "--lean",
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "--out",
+          "/tmp/independent-mat008-lean-kc9n2w3v/nominal"
+        ],
+        "exit_code": 0,
+        "stderr": "independent-001/nominal.stderr",
+        "stdout": "independent-001/nominal.stdout"
+      },
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/negative.py",
+          "--lean",
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "--out",
+          "/tmp/independent-mat008-lean-kc9n2w3v/negative"
+        ],
+        "exit_code": 0,
+        "stderr": "independent-001/negative.stderr",
+        "stdout": "independent-001/negative.stdout"
+      }
+    ]
+  },
+  "input_sha256": {
+    "Audit.lean": "74bca9222a6d73b0778f3d9e64e63b2237a6726164073eb27219cc8c9c0e1b51",
+    "Refine.lean": "57f158ca7fdee1e49e6b645edbae19668542eda7090a1b98fba0154635607371",
+    "Refine/MapReason.lean": "f1ce54798c837d020c1fdfacddaf0a5e9b85c7aaf608c21ad64e64ac4521d2ea",
+    "check.py": "1c8307e80fd1a38fecf4be86ac1ba13e34926505a5b89606f8ce33461a749b80",
+    "expected-declarations.json": "b7c45c77356cd7c5210bc93f6cd61274eb5941c145d7c7d60b43966bd30536a4",
+    "expected-theorems.json": "da0625a11aa3bfbf9604016001929f52d0c7e33070cb722abdcf669e99972518",
+    "lakefile.toml": "02a2983a17a99f99dc62f134a3658dd54ff37fc4071d428c12338a8697e2f7fc",
+    "lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+    "negative.py": "8a254d34e5ddff515acee19e4bf576a0a7dc02bb8f9e2c7a9aeb45a73217107e",
+    "theorem-statements.json": "1d039b94c4eb18aa341dd1ad33bdfa9c97825d2884521446a9d973b97d81a1c2"
+  },
+  "negative_controls": {
+    "additional_source_inputs": "independent-001/additional/*/project",
+    "all_twelve_rejected_at_expected_stages": true,
+    "explicit_axiom_diagnostic": "unapproved transitive axiom Sonification.Mat008.AbstractPy.hiddenNat in Sonification.Mat008.AbstractPy.hiddenNat",
+    "independent_additional": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "/tmp/independent-mat008-lean-kc9n2w3v/additional/explicit_data_axiom/project/check.py",
+          "--lean",
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "--accepted-model",
+          "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/lean/Mat008/RunOwnership.lean",
+          "--out",
+          "/tmp/independent-mat008-lean-kc9n2w3v/additional/explicit_data_axiom/receipt"
+        ],
+        "command_count": 4,
+        "error": "Lean rejected Audit; see original logs",
+        "exit_code": 1,
+        "name": "explicit_data_axiom",
+        "status": "FAIL"
+      },
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "/tmp/independent-mat008-lean-kc9n2w3v/additional/empty_intended_inventory/project/check.py",
+          "--lean",
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "--accepted-model",
+          "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/lean/Mat008/RunOwnership.lean",
+          "--out",
+          "/tmp/independent-mat008-lean-kc9n2w3v/additional/empty_intended_inventory/receipt"
+        ],
+        "command_count": 0,
+        "error": "empty or duplicate intended theorem inventory",
+        "exit_code": 1,
+        "name": "empty_intended_inventory",
+        "status": "FAIL"
+      },
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "/tmp/independent-mat008-lean-kc9n2w3v/additional/empty_declaration_inventory/project/check.py",
+          "--lean",
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "--accepted-model",
+          "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/lean/Mat008/RunOwnership.lean",
+          "--out",
+          "/tmp/independent-mat008-lean-kc9n2w3v/additional/empty_declaration_inventory/receipt"
+        ],
+        "command_count": 4,
+        "error": "exact declaration inventory mismatch",
+        "exit_code": 1,
+        "name": "empty_declaration_inventory",
+        "status": "FAIL"
+      },
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "/tmp/independent-mat008-lean-kc9n2w3v/additional/wrong_numerical_witness/project/check.py",
+          "--lean",
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "--accepted-model",
+          "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/lean/Mat008/RunOwnership.lean",
+          "--out",
+          "/tmp/independent-mat008-lean-kc9n2w3v/additional/wrong_numerical_witness/receipt"
+        ],
+        "command_count": 2,
+        "error": "Lean rejected Refine.MapReason; see original logs",
+        "exit_code": 1,
+        "name": "wrong_numerical_witness",
+        "status": "FAIL"
+      },
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "/tmp/independent-mat008-lean-kc9n2w3v/additional/missing_aggregate_import/project/check.py",
+          "--lean",
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "--accepted-model",
+          "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/lean/Mat008/RunOwnership.lean",
+          "--out",
+          "/tmp/independent-mat008-lean-kc9n2w3v/additional/missing_aggregate_import/receipt"
+        ],
+        "command_count": 4,
+        "error": "Lean rejected Audit; see original logs",
+        "exit_code": 1,
+        "name": "missing_aggregate_import",
+        "status": "FAIL"
+      }
+    ],
+    "reason_erasure_counterexample": "independent-001/negative/reason_erasure/Counterexample.lean; two recorded Lean commands exited0",
+    "retained_suite_replayed": [
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "/tmp/mat008-refine-mutant-r1pjhvv_/project/check.py",
+          "--lean",
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "--accepted-model",
+          "/tmp/mat008-refine-mutant-r1pjhvv_/accepted-model.lean",
+          "--out",
+          "/tmp/independent-mat008-lean-kc9n2w3v/negative/update_before_test/verification"
+        ],
+        "detected": true,
+        "exit_code": 1,
+        "expected_error": "Lean rejected Refine.MapReason",
+        "mutation": "update_before_test",
+        "observed_error": "Lean rejected Refine.MapReason; see original logs",
+        "source_sha256": "b2112b1231009a7f6cc7cb3f23c9ece7bddb681da10921aa00ab00c795287485"
+      },
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "/tmp/mat008-refine-mutant-zcqd3amx/project/check.py",
+          "--lean",
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "--accepted-model",
+          "/tmp/mat008-refine-mutant-zcqd3amx/accepted-model.lean",
+          "--out",
+          "/tmp/independent-mat008-lean-kc9n2w3v/negative/reason_erasure/verification"
+        ],
+        "counterexample": {
+          "commands": [
+            {
+              "argv": [
+                "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+                "-o",
+                "Mat008/RunOwnership.olean",
+                "Mat008/RunOwnership.lean"
+              ],
+              "exit_code": 0,
+              "working_directory": "/tmp/mat008-refine-mutant-zcqd3amx/counterexample"
+            },
+            {
+              "argv": [
+                "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+                "-o",
+                "Counterexample.olean",
+                "Counterexample.lean"
+              ],
+              "exit_code": 0,
+              "working_directory": "/tmp/mat008-refine-mutant-zcqd3amx/counterexample"
+            }
+          ],
+          "source_sha256": "0578527f8c15c39cc0ca611b5f455cfe60465c32b10d2ea783f6fae90a4f1b1b",
+          "statement": "Mutant removes a preexisting reason on a collision-free row."
+        },
+        "detected": true,
+        "exit_code": 1,
+        "expected_error": "Lean rejected Refine.MapReason",
+        "mutation": "reason_erasure",
+        "observed_error": "Lean rejected Refine.MapReason; see original logs",
+        "source_sha256": "321b4678305fa6de5031cb20a818c8829e83b3fd91fa945eb57db4f8d44e3aa7"
+      },
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "/tmp/mat008-refine-mutant-0qh519ej/project/check.py",
+          "--lean",
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "--accepted-model",
+          "/tmp/mat008-refine-mutant-0qh519ej/accepted-model.lean",
+          "--out",
+          "/tmp/independent-mat008-lean-kc9n2w3v/negative/weaker_r4_theorem/verification"
+        ],
+        "detected": true,
+        "exit_code": 1,
+        "expected_error": "Lean rejected Audit",
+        "mutation": "weaker_r4_theorem",
+        "observed_error": "Lean rejected Audit; see original logs",
+        "source_sha256": "b29ecdc931d4419e4d896a147dd338a1c889e823dcc4b87b7ae0ee0ae81d599c"
+      },
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "/tmp/mat008-refine-mutant-fa0nv378/project/check.py",
+          "--lean",
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "--accepted-model",
+          "/tmp/mat008-refine-mutant-fa0nv378/accepted-model.lean",
+          "--out",
+          "/tmp/independent-mat008-lean-kc9n2w3v/negative/weaker_r7_theorem/verification"
+        ],
+        "detected": true,
+        "exit_code": 1,
+        "expected_error": "Lean rejected Audit",
+        "mutation": "weaker_r7_theorem",
+        "observed_error": "Lean rejected Audit; see original logs",
+        "source_sha256": "9c787febd1592cb103bc929af396502e249a90800a6cc7eb92188addcc2c8da3"
+      },
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "/tmp/mat008-refine-mutant-m008egr7/project/check.py",
+          "--lean",
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "--accepted-model",
+          "/tmp/mat008-refine-mutant-m008egr7/accepted-model.lean",
+          "--out",
+          "/tmp/independent-mat008-lean-kc9n2w3v/negative/prohibited_data_assumption/verification"
+        ],
+        "detected": true,
+        "exit_code": 1,
+        "expected_error": "Lean rejected Audit",
+        "mutation": "prohibited_data_assumption",
+        "observed_error": "Lean rejected Audit; see original logs",
+        "source_sha256": "f0d8fcca57a4a6af87055dc1bef57145101470aa43e3356ff29a0bdd03fd7b6d"
+      },
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "/tmp/mat008-refine-mutant-b_0y7ygb/project/check.py",
+          "--lean",
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "--accepted-model",
+          "/tmp/mat008-refine-mutant-b_0y7ygb/accepted-model.lean",
+          "--out",
+          "/tmp/independent-mat008-lean-kc9n2w3v/negative/unimported_module/verification"
+        ],
+        "detected": true,
+        "exit_code": 1,
+        "expected_error": "module coverage mismatch",
+        "mutation": "unimported_module",
+        "observed_error": "module coverage mismatch: ['Audit.lean', 'Refine.lean', 'Refine/MapReason.lean', 'Unimported.lean']",
+        "source_sha256": "f1ce54798c837d020c1fdfacddaf0a5e9b85c7aaf608c21ad64e64ac4521d2ea"
+      },
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "/tmp/mat008-refine-mutant-d0banplc/project/check.py",
+          "--lean",
+          "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+          "--accepted-model",
+          "/tmp/mat008-refine-mutant-d0banplc/accepted-model.lean",
+          "--out",
+          "/tmp/independent-mat008-lean-kc9n2w3v/negative/changed_accepted_model/verification"
+        ],
+        "detected": true,
+        "exit_code": 1,
+        "expected_error": "accepted mathematical dependency source mismatch",
+        "mutation": "changed_accepted_model",
+        "observed_error": "accepted mathematical dependency source mismatch",
+        "source_sha256": "f1ce54798c837d020c1fdfacddaf0a5e9b85c7aaf608c21ad64e64ac4521d2ea"
+      }
+    ],
+    "status": "PASS"
+  },
+  "new_proof_input_commit": null,
+  "open_obligations": [
+    "Commit-bound replay of the new proof/checker inputs; development receipts intentionally have baseline_commit:null.",
+    "Frozen-source-to-instruction extraction correctness and actual CPython built-in string/dictionary/set/short-circuit/overwrite/exception/alias semantics.",
+    "Actual raw-row accepted/skip projection, frame properties and final returned-reason observation.",
+    "No arbitrary Python str/dict subclass guarantee; known hashing/inequality counterexamples remain relevant.",
+    "No finite production differential testing performed as part of this Lean-only audit; prior separate finite observations cannot promote refinement.",
+    "No claim beyond this run-ownership slice or about other validator gates or physical evidence.",
+    "This report binds its exact retained evidence inventory by hashes; it is not an independently authenticated execution attestation or a proof of the audit checker."
+  ],
+  "production_source": {
+    "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+    "git_show_exit_code": 0,
+    "path": "materials/mat_spec_008.py",
+    "semantic_correspondence": "OPEN",
+    "sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08"
+  },
+  "recorded_receipt_checks": {
+    "all_recorded_manifest_hashes_match": true,
+    "full_current_membership": "OPEN: root append-only015+replays were concurrently added outside the373-file manifest; refresh after integration.",
+    "manifest_files_verified": 373,
+    "manifest_sha256": "0fcc2432d35fe2c1a93e49da83ef9a5bfd031a41e36f23b74d4e0c66f7997159",
+    "new_inputs_match_recorded_013": true,
+    "scope": "Observed013/014 streams and current373-file manifest only; not an installed future receipt acceptance gate.",
+    "status": "PASS",
+    "verified_command_stream_records": 108
+  },
+  "reviewed_checkout_head": "ac1408cf0c459d79c3d0552287812a15ce644f0d",
+  "schema": "sonification-mat008-independent-lean-audit-v1",
+  "scope": "Independent source/type/trust audit and executed replay of abstract R1-R7 model correspondence. No CPython/source execution refinement or scientific claim.",
+  "source_review": {
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "declarations": 253,
+    "intended_theorems": 26,
+    "module_coverage": [
+      "Audit",
+      "Mat008.RunOwnership",
+      "Refine",
+      "Refine.MapReason"
+    ],
+    "no_project_axioms_or_sorry": "Inspected origin-wide audit scans all kernel checked constants, including data helpers and typed consumers; prohibited transitive axioms are rejected for every declaration.",
+    "nonvacuity": "Initial Related witness is proved. Kernel-checked examples include a real same-run/different-campaign collision and a collision-free sequence; preexisting reason counterexample prevents an incorrect unconditional mismatch equivalence.",
+    "r1_to_r7": "Exact quantifiers and propositions match REFINEMENT_CONTRACT.md/REPRESENTATION_RELATION.md as reviewed; all finite accepted-row lists and String fields, arbitrary related states where stated. R2 lookup is conditional on the explicit representation relation, not Python dictionary semantics. R4 includes prior conflicts; new_reason_iff_mismatch alone requires prior false. R7 starts from empty and uses member/equal-run/distinct-campaign premises.",
+    "status": "PASS",
+    "theorem_declarations": 81,
+    "typed_consumers": "Audit.lean has26 independent exact-type consumers; weakening R4/R7 rejected by those consumers.",
+    "unsafe_compiler_declarations": 35
+  },
+  "toolchain": {
+    "closure_sha256": "8ffe3ac72c6480936ba701e02ca4e848f8aed9e0fcf5439fb909ede3898138cb",
+    "current_library_hashes_rechecked": true,
+    "executable": {
+      "path": "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023"
+    },
+    "imported_olean_count": 1303,
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "version_exit_code": 0
+  },
+  "trust": [
+    "Lean4.19.0 kernel and byte-pinned executable",
+    "1303 observed imported toolchain .olean files with exact rechecked digests; their authenticity is external",
+    "Lean audit metaprogram and Python runner, OS execution, hashing and Git object access",
+    "propext, Quot.sound and Classical.choice, disclosed per declaration"
+  ]
+}

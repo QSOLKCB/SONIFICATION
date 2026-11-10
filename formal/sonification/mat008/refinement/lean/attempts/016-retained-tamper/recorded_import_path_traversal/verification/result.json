@@ -1,0 +1,8 @@
+{
+  "REFINEMENT_PROVED": "OPEN",
+  "assurance": "RETAINED_ABSTRACT_MODEL_EVIDENCE_INTEGRITY_ONLY",
+  "commands": [],
+  "error": "recorded import path mismatch",
+  "status": "FAIL",
+  "verifier_sha256": "fe116981844e33118015ab01fe544aa2f59b576cee37fbb5a923f3fce62804db"
+}

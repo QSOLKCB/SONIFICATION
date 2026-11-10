@@ -1,0 +1,9 @@
+{
+  "REFINEMENT_PROVED": "OPEN",
+  "assurance": "RETAINED_ABSTRACT_MODEL_EVIDENCE_INTEGRITY_ONLY",
+  "commands": [],
+  "error": "missing retained file: lib/lean/Init.olean",
+  "status": "FAIL",
+  "trust": "Reviewed verifier and fixed manifest pin; hashing/OS execution. This does not authenticate the original execution or rerun proof checking.",
+  "verifier_sha256": "1ad561f88287e0b039338cf6102905f757118ff0171a7b3d2d31c56f5d984c23"
+}

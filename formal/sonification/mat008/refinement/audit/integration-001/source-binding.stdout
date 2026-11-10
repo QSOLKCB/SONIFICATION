@@ -1,0 +1,1 @@
+{"accepted_identity_fields": 5, "frozen_commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8", "frozen_source_sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08", "gate_iterations": 2, "scope": "source bytes and selected AST shape only; no CPython refinement", "source_slices": 8, "status": "SOURCE_SYNTAX_BINDING_MATCH", "worktree_source_checked": true}

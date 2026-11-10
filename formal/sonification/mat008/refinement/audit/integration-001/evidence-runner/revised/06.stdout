@@ -1,0 +1,9 @@
+[research/sonification-formal-001-mat008-refinement e7ba83c] Temporary observed execution receipt
+ 7 files changed, 83 insertions(+)
+ create mode 100644 formal/sonification/mat008/refinement/receipts/conformance-independent/00.stderr
+ create mode 100644 formal/sonification/mat008/refinement/receipts/conformance-independent/00.stdout
+ create mode 100644 formal/sonification/mat008/refinement/receipts/conformance-independent/01.stderr
+ create mode 100644 formal/sonification/mat008/refinement/receipts/conformance-independent/01.stdout
+ create mode 100644 formal/sonification/mat008/refinement/receipts/conformance-independent/02.stderr
+ create mode 100644 formal/sonification/mat008/refinement/receipts/conformance-independent/02.stdout
+ create mode 100644 formal/sonification/mat008/refinement/receipts/conformance-independent/result.json

@@ -1,0 +1,43 @@
+Refine/MapReason.lean:97:94: error: unsolved goals
+case false
+s : PyState
+row : AcceptedRow
+arbitraryPriorFlag : Bool
+hg : mismatch s row = false
+⊢ s.reasons = fun x => false
+Refine/MapReason.lean:177:51: error: unsolved goals
+case false
+s : PyState
+row : AcceptedRow
+hg : mismatch s row = false
+⊢ s.reasons reuseReason = false
+Refine/MapReason.lean:215:56: error: unsolved goals
+case false
+s : PyState
+row : AcceptedRow
+reason : String
+h : reason ≠ reuseReason
+hg : mismatch s row = false
+⊢ s.reasons reason = false
+Refine/MapReason.lean:280:14: error: application type mismatch
+  ⟨rfl, rfl⟩
+argument
+  rfl
+has type
+  ?m.3396 = ?m.3396 : Prop
+but is expected to have type
+  (pyStep { owners := fun x => none, reasons := fun x => true }
+          { campaign := "CAMPAIGN", originalRun := "RUN" }).reasons
+      reuseReason =
+    true : Prop
+Refine/MapReason.lean:285:2: error: tactic 'decide' proved that the proposition
+  (pyScanFrom empty
+            [{ campaign := "A", originalRun := "RUN" }, { campaign := "B", originalRun := "RUN" },
+              { campaign := "B", originalRun := "OTHER" }]).reasons
+        reuseReason =
+      true ∧
+    (pyScanFrom empty
+            [{ campaign := "A", originalRun := "RUN_A" }, { campaign := "B", originalRun := "RUN_B" }]).reasons
+        reuseReason =
+      false
+is false

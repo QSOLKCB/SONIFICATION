@@ -1,0 +1,278 @@
+Audit.lean:6:5: error: unknown namespace 'Sonification.Mat008'
+Audit.lean:10:5: error: function expected at
+  executeInstructions
+term has type
+  ?m.20
+Audit.lean:10:78: error: function expected at
+  pyStep
+term has type
+  ?m.40
+Audit.lean:11:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.instruction_program_correspondence'
+Audit.lean:14:9: error: function expected at
+  lookup
+term has type
+  ?m.128
+Audit.lean:15:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.lookup_support'
+Audit.lean:17:73: error: function expected at
+  Related
+term has type
+  ?m.255
+Audit.lean:18:4: error: function expected at
+  FiniteSupport
+term has type
+  ?m.266
+Audit.lean:19:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.r2_finite_support'
+Audit.lean:21:43: error: function expected at
+  Related
+term has type
+  ?m.350
+Audit.lean:22:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.r1_empty_related'
+Audit.lean:25:4: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  s
+has type
+  PyState
+Audit.lean:24:65: error: function expected at
+  Related
+term has type
+  ?m.395
+Audit.lean:25:19: error: function expected at
+  lookup
+term has type
+  ?m.412
+Audit.lean:26:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.r2_lookup'
+Audit.lean:29:4: error: function expected at
+  write
+term has type
+  ?m.490
+Audit.lean:30:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.write_same'
+Audit.lean:33:35: error: function expected at
+  owners
+term has type
+  OwnerMap
+Audit.lean:33:4: error: function expected at
+  write
+term has type
+  ?m.551
+Audit.lean:34:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.write_other'
+Audit.lean:37:30: error: function expected at
+  OwnersRelated
+term has type
+  ?m.626
+Audit.lean:38:4: error: function expected at
+  OwnersRelated
+term has type
+  ?m.626
+Audit.lean:39:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.write_related'
+Audit.lean:42:9: error: function expected at
+  Related
+term has type
+  ?m.736
+Audit.lean:43:4: error: function expected at
+  OwnersRelated
+term has type
+  ?m.749
+Audit.lean:44:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.r3_overwrite'
+Audit.lean:47:49: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  row
+has type
+  AcceptedRow
+Audit.lean:47:5: error: function expected at
+  pyStep
+term has type
+  ?m.860
+Audit.lean:48:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.r3_latest_campaign'
+Audit.lean:51:9: error: function expected at
+  Related
+term has type
+  ?m.947
+Audit.lean:51:24: error: function expected at
+  mismatch
+term has type
+  ?m.961
+Audit.lean:51:41: error: function expected at
+  differentOwner
+term has type
+  ?m.978
+Audit.lean:52:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.mismatch_related'
+Audit.lean:56:21: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  s
+has type
+  PyState
+Audit.lean:57:22: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  row
+has type
+  AcceptedRow
+Audit.lean:55:4: error: function expected at
+  mismatch
+term has type
+  ?m.1075
+Audit.lean:58:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.mismatch_iff'
+Audit.lean:62:7: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  s
+has type
+  PyState
+Audit.lean:61:5: error: function expected at
+  pyStep
+term has type
+  ?m.1151
+Audit.lean:62:32: error: function expected at
+  mismatch
+term has type
+  ?m.1170
+Audit.lean:63:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.reason_step'
+Audit.lean:66:9: error: function expected at
+  Related
+term has type
+  ?m.1263
+Audit.lean:66:24: error: function expected at
+  Related
+term has type
+  ?m.1263
+Audit.lean:67:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.step_related'
+Audit.lean:70:9: error: function expected at
+  Related
+term has type
+  ?m.1373
+Audit.lean:71:5: error: function expected at
+  pyStep
+term has type
+  ?m.1387
+Audit.lean:72:7: error: function expected at
+  step
+term has type
+  ?m.1418
+Audit.lean:73:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.r4_reason_iff'
+Audit.lean:76:9: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  s
+has type
+  PyState
+Audit.lean:77:5: error: function expected at
+  pyStep
+term has type
+  ?m.1557
+Audit.lean:77:48: error: function expected at
+  mismatch
+term has type
+  ?m.1590
+Audit.lean:78:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.new_reason_iff_mismatch'
+Audit.lean:81:9: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  s
+has type
+  PyState
+Audit.lean:82:5: error: function expected at
+  pyStep
+term has type
+  ?m.1696
+Audit.lean:83:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.r5_reason_sticky'
+Audit.lean:86:9: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  s
+has type
+  PyState
+Audit.lean:87:5: error: function expected at
+  pyScanFrom
+term has type
+  ?m.1787
+Audit.lean:88:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.r5_sequence_sticky'
+Audit.lean:92:36: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  s
+has type
+  PyState
+Audit.lean:92:5: error: function expected at
+  pyStep
+term has type
+  ?m.1888
+Audit.lean:93:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.reason_frame'
+Audit.lean:96:9: error: function expected at
+  Related
+term has type
+  ?m.1988
+Audit.lean:97:4: error: function expected at
+  Related
+term has type
+  ?m.1988
+Audit.lean:98:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.r6_sequence_related'
+Audit.lean:101:4: error: function expected at
+  eventScanFrom
+term has type
+  ?m.2094
+Audit.lean:101:29: error: function expected at
+  pyScanFrom
+term has type
+  ?m.2108
+Audit.lean:102:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.event_projection'
+Audit.lean:105:46: error: function expected at
+  Related
+term has type
+  ?m.2195
+Audit.lean:106:4: error: function expected at
+  Related
+term has type
+  ?m.2195
+Audit.lean:107:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.r6_accepted_projection'
+Audit.lean:111:22: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  after
+has type
+  PyState
+Audit.lean:111:41: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  before
+has type
+  PyState
+Audit.lean:112:15: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  after
+has type
+  PyState
+Audit.lean:112:43: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  before
+has type
+  PyState
+Audit.lean:110:9: error: function expected at
+  Related
+term has type
+  ?m.2301
+Audit.lean:113:4: error: function expected at
+  Related
+term has type
+  ?m.2301
+Audit.lean:114:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.skip_frame'
+Audit.lean:118:10: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  a
+has type
+  AcceptedRow
+Audit.lean:118:26: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  b
+has type
+  AcceptedRow
+Audit.lean:118:47: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  a
+has type
+  AcceptedRow
+Audit.lean:118:60: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  b
+has type
+  AcceptedRow
+Audit.lean:119:5: error: function expected at
+  pyScanFrom
+term has type
+  ?m.2517
+Audit.lean:120:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.r7_collision_reason'
+Audit.lean:123:23: error: invalid constructor ⟨...⟩, expected type must be an inductive type 
+  PyState
+Audit.lean:124:4: error: function expected at
+  mismatch
+term has type
+  ?m.2700
+Audit.lean:125:5: error: function expected at
+  pyStep
+term has type
+  ?m.2713
+Audit.lean:126:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.preexisting_reason_counterexample'
+Audit.lean:129:5: error: function expected at
+  pyScanFrom
+term has type
+  ?m.2793
+Audit.lean:130:5: error: function expected at
+  pyScanFrom
+term has type
+  ?m.2793
+Audit.lean:131:8: error: unknown identifier 'Sonification.Mat008.AbstractPy.nonvacuity'
+Audit.lean:137:0: error: missing required imported module Mat008.RunOwnership
