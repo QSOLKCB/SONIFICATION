@@ -109,7 +109,9 @@
       "independent_specification_review": "PENDING",
       "partial_results": [
         "MAT008.run_ownership.model",
-        "MAT008.run_ownership.finite_builtin_rows"
+        "MAT008.run_ownership.finite_builtin_rows",
+        "MAT008.run_ownership.abstract_state_correspondence",
+        "MAT008.run_ownership.refinement_boundary_finite"
       ]
     },
     {
@@ -693,6 +695,162 @@
       },
       "independent_specification_review": "PENDING",
       "audit_scope": "Finite run-ownership observation only; no universal Python or full packet result"
+    },
+    {
+      "id": "MAT008.run_ownership.abstract_state_correspondence",
+      "release": "mat-spec-008-v0.1.0",
+      "source_tag_object": "a02088e3c68addb41c9c7145694c0f566e84f87f",
+      "source_commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "source_tree": "eb19f2e06a502442f621a73be1e5696c2fa25a65",
+      "source_blob": "3117adbc3739c834f8203d5d2dd2b80d6caf862b",
+      "source_sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08",
+      "source_binding": "formal/sonification/mat008/refinement/SOURCE_BINDING.json",
+      "implementation": {
+        "path": "materials/mat_spec_008.py",
+        "symbol": "validate_future_measurement_packet",
+        "relevant_helpers": [
+          "_identity",
+          "_decimal"
+        ]
+      },
+      "intended_property": "For every related abstract map/reason state and every finite ordered processed-row sequence, the abstract transition preserves the accepted association-list ownership relation; two processed rows with the same run and different campaigns force the abstract reason bit.",
+      "model_scope": "Lean String and exact functional-map/reason membership abstractions on processed rows only; no actual Python dictionary, raw packet or return observation is proved.",
+      "formal_definition": "Sonification.Mat008.AbstractPy.Related, pyStep, pyScanFrom, runGateProgram, project; accepted Sonification.Mat008.lookup, step and scanFrom.",
+      "proof_path": "formal/sonification/mat008/refinement/lean/Refine/MapReason.lean",
+      "typed_consumer": "formal/sonification/mat008/refinement/lean/Audit.lean",
+      "theorem_statement_source": "formal/sonification/mat008/refinement/lean/theorem-statements.json",
+      "main_theorem": "Sonification.Mat008.AbstractPy.r7_collision_reason",
+      "main_theorem_exact_type": "\u2200 (rows : List Sonification.Mat008.AbstractPy.AcceptedRow) (a b : Sonification.Mat008.AbstractPy.AcceptedRow),\n  a \u2208 rows \u2192\n    b \u2208 rows \u2192\n      a.originalRun = b.originalRun \u2192\n        a.campaign \u2260 b.campaign \u2192\n          (Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty rows).reasons\n              Sonification.Mat008.AbstractPy.reuseReason =\n            true",
+      "theorems": [
+        "Sonification.Mat008.AbstractPy.event_projection",
+        "Sonification.Mat008.AbstractPy.instruction_program_correspondence",
+        "Sonification.Mat008.AbstractPy.lookup_support",
+        "Sonification.Mat008.AbstractPy.mismatch_iff",
+        "Sonification.Mat008.AbstractPy.mismatch_related",
+        "Sonification.Mat008.AbstractPy.new_reason_iff_mismatch",
+        "Sonification.Mat008.AbstractPy.nonvacuity",
+        "Sonification.Mat008.AbstractPy.preexisting_reason_counterexample",
+        "Sonification.Mat008.AbstractPy.r1_empty_related",
+        "Sonification.Mat008.AbstractPy.r2_finite_support",
+        "Sonification.Mat008.AbstractPy.r2_lookup",
+        "Sonification.Mat008.AbstractPy.r3_latest_campaign",
+        "Sonification.Mat008.AbstractPy.r3_overwrite",
+        "Sonification.Mat008.AbstractPy.r4_reason_iff",
+        "Sonification.Mat008.AbstractPy.r5_reason_sticky",
+        "Sonification.Mat008.AbstractPy.r5_sequence_sticky",
+        "Sonification.Mat008.AbstractPy.r6_accepted_projection",
+        "Sonification.Mat008.AbstractPy.r6_sequence_related",
+        "Sonification.Mat008.AbstractPy.r7_collision_reason",
+        "Sonification.Mat008.AbstractPy.reason_frame",
+        "Sonification.Mat008.AbstractPy.reason_step",
+        "Sonification.Mat008.AbstractPy.skip_frame",
+        "Sonification.Mat008.AbstractPy.step_related",
+        "Sonification.Mat008.AbstractPy.write_other",
+        "Sonification.Mat008.AbstractPy.write_related",
+        "Sonification.Mat008.AbstractPy.write_same"
+      ],
+      "proof_dependencies": [
+        "Accepted MAT008 RunOwnership.lean exact SHA-256 653f4638568e4e461176cca7659360737f3ac2632152163602c789fd65ead201",
+        "Lean 4.19.0 bundled Std and Init",
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "assumptions": [
+        "Related prestate is an explicit premise where stated; r1 proves its initial instance.",
+        "Processed rows are already supplied as Lean Strings; abstract skip events do not establish raw Python parsing.",
+        "The AbstractPy functional map and reason membership function are mathematical definitions, not CPython semantics.",
+        "Lean kernel/distribution, source-sensitive checker, OS execution and SHA-256 collision resistance are trusted."
+      ],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "Frozen-source AST-to-instruction correctness and CPython exact built-in dict/string/set semantics",
+        "Raw-to-processed row projection and five ordered _identity calls, including exceptions and continue",
+        "Reason-set frame through later statements and final sorted Python output",
+        "Caller guarantee for exact built-in input domain; unrestricted API counterexamples retained"
+      ],
+      "executable_tests": [],
+      "assurance": {
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+        "AUDIT_ACCEPTED": "PASS"
+      },
+      "evidence": {
+        "MODEL_PROVED": [
+          "formal/sonification/mat008/refinement/lean/attempts/013-checked/result.json",
+          "formal/sonification/mat008/refinement/lean/attempts/015-root-replay/result.json"
+        ],
+        "NEGATIVE_CONTROLS": [
+          "formal/sonification/mat008/refinement/lean/attempts/014-negative/result.json",
+          "formal/sonification/mat008/refinement/lean/attempts/016-root-negative/result.json"
+        ],
+        "AUDIT_ACCEPTED": [
+          "formal/sonification/mat008/refinement/audit/LEAN_AUDIT.json"
+        ],
+        "RETAINED_EVIDENCE_VERIFIED": [
+          "formal/sonification/mat008/refinement/lean/attempts/019-retained-check/result.json"
+        ],
+        "RECEIPT_TAMPER_CONTROLS": [
+          "formal/sonification/mat008/refinement/lean/attempts/020-retained-tamper/result.json"
+        ],
+        "MACHINE_READABLE_HANDOFF": [
+          "formal/sonification/mat008/refinement/lean/attempts/021-retained-handoff/handoff.json"
+        ]
+      },
+      "independent_specification_review": "PASS for this abstract mathematical relation only; see scoped independent audit.",
+      "audit_scope": "26 exact abstract mathematical statements with R1\u2013R7 and 253-declaration origin closure; source/CPython refinement OPEN"
+    },
+    {
+      "id": "MAT008.run_ownership.refinement_boundary_finite",
+      "release": "mat-spec-008-v0.1.0",
+      "source_tag_object": "a02088e3c68addb41c9c7145694c0f566e84f87f",
+      "source_commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+      "source_tree": "eb19f2e06a502442f621a73be1e5696c2fa25a65",
+      "source_blob": "3117adbc3739c834f8203d5d2dd2b80d6caf862b",
+      "source_sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08",
+      "source_binding": "formal/sonification/mat008/refinement/SOURCE_BINDING.json",
+      "implementation": {
+        "path": "materials/mat_spec_008.py",
+        "symbol": "validate_future_measurement_packet",
+        "relevant_helpers": [
+          "_identity",
+          "_decimal"
+        ]
+      },
+      "intended_property": "On recorded exact built-in processed-row cases, the frozen Python body emits the run-reuse reason precisely when the independent pairwise oracle finds cross-campaign reuse; adversarial subclass cases refute the unrestricted textual claim.",
+      "finite_scope": "Focused standard-library unittest cases for skip paths, repeated updates, variable sequence lengths, order and two subclass counterexamples; prior 1,296-case corpus remains separate.",
+      "formal_definition": null,
+      "theorems": [],
+      "proof_dependencies": [],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "Prove source-to-CPython gate semantics, dict/string/set behavior and raw-row projection",
+        "Prove final returned reason corresponds to abstract bit under stated domain",
+        "Prove a caller guarantee for exact built-in input objects or retain conditional scope"
+      ],
+      "executable_tests": [
+        {
+          "path": "tests/test_sonification_formal_mat008_refinement.py",
+          "symbol": "Mat008RefinementBoundaryTests"
+        }
+      ],
+      "assurance": {
+        "MODEL_PROVED": "OPEN",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "PASS",
+        "AUDIT_ACCEPTED": "OPEN"
+      },
+      "evidence": {
+        "DIFFERENTIAL_TESTED": [
+          "formal/sonification/mat008/refinement/receipts/conformance-001/result.json"
+        ],
+        "SOURCE_SYNTAX_BINDING": [
+          "formal/sonification/mat008/refinement/SOURCE_BINDING.json"
+        ]
+      },
+      "independent_specification_review": "PENDING for focused finite oracle and final commit-bound receipt.",
+      "audit_scope": "Recorded finite Python executions and counterexamples only; no universal implementation result"
     }
   ]
 }
