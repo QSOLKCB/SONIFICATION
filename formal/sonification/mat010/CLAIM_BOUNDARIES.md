@@ -8,7 +8,7 @@ establish CPython semantics or the authenticity of external physical data.
 
 | Target | MODEL_PROVED | REFINEMENT_PROVED | DIFFERENTIAL_TESTED | AUDIT_ACCEPTED |
 | --- | --- | --- | --- | --- |
-| Archive membership, Phase A | OPEN until final Lean gate | OPEN | PASS for declared exact built-in finite cases | OPEN |
+| Archive membership, Phase A | PASS for scoped finite-list model at proof-002 | OPEN | PASS for declared exact built-in finite cases | PENDING independent audit |
 | Parent integrity, Phase B | OPEN | OPEN | NOT_EXECUTED | OPEN |
 | Scientific closure, Phase C | OPEN | OPEN | NOT_EXECUTED | OPEN |
 
@@ -33,6 +33,16 @@ Python subclasses: duplicate textual commit identity, hidden evidence during
 `items()` iteration, and an overridden `.endswith()` MIDI check. Direct malformed
 inputs may raise incidental exceptions. These observations do not prove
 arbitrary-input CPython refinement.
+
+The accepted Phase A Lean receipt is `receipts/proof-002`, bound to proof-input
+commit `2f2ea6d3deffebc7a552ec79f42ea829b9812d3e`. It records the seven
+typed A1–A7 statements, 333 project declarations, complete transitive axiom
+results, and 1,303 hashed external toolchain imports. `negative-002` rejects
+six controls, including both compiler-suffix `False` axioms. The first negative
+run remains `FAIL`: it expected a `sorry` rejection at compilation, while the
+actual transitive axiom audit rejected `sorryAx`; this expectation was corrected
+without changing the gate. These are nominal and adversarial local results;
+independent audit is a separate dimension.
 
 ## Parent and closure
 

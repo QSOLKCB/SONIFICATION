@@ -1,0 +1,39 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat010-negative-weaken_named_theorem-x7xje8nv/ArchiveModel.olean",
+        "ArchiveModel.lean"
+      ],
+      "cwd": "/tmp/mat010-negative-weaken_named_theorem-x7xje8nv",
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat010-negative-weaken_named_theorem-x7xje8nv/ArchiveConsumer.olean",
+        "ArchiveConsumer.lean"
+      ],
+      "cwd": "/tmp/mat010-negative-weaken_named_theorem-x7xje8nv",
+      "exit_code": 1,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "41f003a6a59447f1d8fbfef0709a734ab6868fff992766a48267ff2ae17e139e",
+      "timed_out": false
+    }
+  ],
+  "detected": true,
+  "expected_diagnostic_text": "M010_A4_unique_logical_paths",
+  "expected_failure_module": "ArchiveConsumer",
+  "mutant_sha256": "27d22560283855d224c635e889c7df13214d164ea8ecc169f764808ba33c1d55",
+  "mutation": "weaken_named_theorem",
+  "observed_failure_module": "ArchiveConsumer",
+  "target_module": "ArchiveModel"
+}
