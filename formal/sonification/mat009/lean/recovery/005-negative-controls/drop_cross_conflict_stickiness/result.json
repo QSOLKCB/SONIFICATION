@@ -1,0 +1,24 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat009-drop_cross_conflict_stickiness-8ilsmbh7/SplitModel.olean",
+        "SplitModel.lean"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "deccbc1b2ad894ddda5e402e572b633b6905679296db9b634bedb5079b7cd9ae",
+      "timed_out": false
+    }
+  ],
+  "detected": true,
+  "expected_diagnostic_text": "application type mismatch",
+  "expected_failure_module": "SplitModel",
+  "mutant_sha256": "5be10a071b0334819e1254d756de487f062d07e57df833421947aa4ce32e2c88",
+  "mutation": "drop_cross_conflict_stickiness",
+  "observed_failure_module": "SplitModel",
+  "target_module": "SplitModel"
+}

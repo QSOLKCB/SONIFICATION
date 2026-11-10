@@ -1,0 +1,76 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat009-prohibited_sorry-4_wftjo9/SplitModel.olean",
+        "SplitModel.lean"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "17a2ead30f158ef7cfe7c4aded34b5dcec132b3edd441efe9d9fdff448093fca",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat009-prohibited_sorry-4_wftjo9/DiagnosticFirstOwner.olean",
+        "DiagnosticFirstOwner.lean"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat009-prohibited_sorry-4_wftjo9/TypedConsumer.olean",
+        "TypedConsumer.lean"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "9078e77bdd2580d1ce506f685136b42d01255a0ebd4177589a7d493b4ad06522",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat009-prohibited_sorry-4_wftjo9/ExactTypes.olean",
+        "ExactTypes.lean"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat009-prohibited_sorry-4_wftjo9/LeanAudit.olean",
+        "LeanAudit.lean"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "4a95308c27fc61eaeea5f4bf90d867f213ecd1d227185c3845104ac72e7ebc76",
+      "timed_out": false
+    }
+  ],
+  "detected": true,
+  "expected_diagnostic_text": "sorryAx",
+  "expected_failure_module": "LeanAudit",
+  "mutant_sha256": "adfc58d6db8b119e29bfe2dafcae69cd21b59988853464716084fa9eafbe9fd5",
+  "mutation": "prohibited_sorry",
+  "observed_failure_module": "LeanAudit",
+  "target_module": "SplitModel"
+}
