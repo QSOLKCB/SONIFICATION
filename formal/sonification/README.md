@@ -15,13 +15,19 @@ Review stages:
   and axiom audit, preserved attempts and negative mutation controls.
 - PR C: source-sensitive Python refinement investigation and independent
   conformance tests; retain OPEN wherever semantic correspondence is unproved.
-- Later increments: MAT-SPEC-008–010 admission, provenance and archive gates;
+- Later increments: MAT-SPEC-008–009 admission and provenance gates;
   MAT-SPEC-001–006; D4-TIA; ETQ; remaining dependencies and operations.
+  MAT-SPEC-010 remains deferred.
 
 Use Python standard library commands from the repository root. Each stage's
 receipt identifies actual argv, working directory, tool bytes and version,
 input hashes, expected/observed obligations and original stdout/stderr.
 No result is accepted merely because a process exits zero.
+
+The MAT-009 [scoped verification](mat009/README.md) now has a repaired Lean
+axiom gate and a fresh independent PASS for the mathematical models. The
+original independent FAIL is retained. Production Python refinement and the
+general `MAT009.partition` target remain OPEN.
 
 Historical releases and proof receipts are read-only inputs. The private
 protocol workspace is deliberately outside the public repository. Its
