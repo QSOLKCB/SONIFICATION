@@ -4,6 +4,7 @@
   "result": "PARTIAL_CONDITIONAL_MODEL_CORRESPONDENCE",
   "main_baseline": "ac1408cf0c459d79c3d0552287812a15ce644f0d",
   "source_input_commit": "3be17be4c3b2812c5a610ef646cb4487f150dc52",
+  "evidence_commit": "6006584679ead734e22197174d52a821bda62a7c",
   "frozen_production_commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
   "frozen_production_sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08",
   "scope": "The ordered rows that reach the original-run gate, represented as exact Lean Strings. Source syntax is pinned; CPython semantics and raw-input projection are not proved.",
@@ -11,7 +12,7 @@
     "MODEL_PROVED": "PASS",
     "REFINEMENT_PROVED": "OPEN",
     "DIFFERENTIAL_TESTED": "PASS",
-    "AUDIT_ACCEPTED": "OPEN"
+    "AUDIT_ACCEPTED": "PASS"
   },
   "assurance_by_target": {
     "abstract_state_correspondence": {
@@ -24,14 +25,14 @@
       "MODEL_PROVED": "OPEN",
       "REFINEMENT_PROVED": "OPEN",
       "DIFFERENTIAL_TESTED": "PASS",
-      "AUDIT_ACCEPTED": "OPEN"
+      "AUDIT_ACCEPTED": "PASS"
     }
   },
   "assurance_scope": {
     "MODEL_PROVED": "Conditional mathematical correspondence between a functional owner map plus reason bit and the accepted association-list ownership model; not production Python.",
     "REFINEMENT_PROVED": "No theorem connects frozen source execution and CPython operations to the abstract state; unrestricted API has retained counterexamples.",
     "DIFFERENTIAL_TESTED": "Existing 1,296-case corpus plus focused accepted-row, skip, order and subclass cases under the recorded Python interpreters; finite observations only.",
-    "AUDIT_ACCEPTED": "The independent audit accepted the new abstract mathematical scope only. The focused finite receipt and final commit-bound replay remain pending. Prior PR #44 acceptance applies only to its own model and finite corpus."
+    "AUDIT_ACCEPTED": "Independent audits accepted the exact abstract mathematical statements and the focused finite cases at the recorded source and evidence commits. This does not accept CPython refinement. Prior PR #44 acceptance applies only to its own model and finite corpus."
   },
   "source_binding": {
     "path": "formal/sonification/mat008/refinement/SOURCE_BINDING.json",
@@ -134,11 +135,13 @@
     "independent_root_replay": "formal/sonification/mat008/refinement/lean/attempts/015-root-replay/result.json",
     "independent_root_mutations": "formal/sonification/mat008/refinement/lean/attempts/016-root-negative/result.json",
     "commit_bound_lean_build": "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound/result.json",
+    "postcommit_retained_verifier": "formal/sonification/mat008/refinement/lean/attempts/023-postcommit-retained/result.json",
     "retained_lean_evidence_verifier": "formal/sonification/mat008/refinement/lean/attempts/019-retained-check/result.json",
     "retained_lean_tamper_controls": "formal/sonification/mat008/refinement/lean/attempts/020-retained-tamper/result.json",
     "retained_lean_handoff": "formal/sonification/mat008/refinement/lean/attempts/021-retained-handoff/handoff.json",
     "independent_lean_audit": "formal/sonification/mat008/refinement/audit/LEAN_AUDIT.json",
     "independent_integration_review": "formal/sonification/mat008/refinement/audit/INTEGRATION_REVIEW.json",
+    "independent_commit_bound_review": "formal/sonification/mat008/refinement/audit/EVIDENCE_COMMIT_REVIEW.json",
     "commit_bound_finite_receipt": "formal/sonification/mat008/refinement/receipts/conformance-001/result.json",
     "prior_mat008_model": "formal/sonification/mat008/lean/attempts/commit-bound-001/result.json",
     "prior_mat008_conformance": "formal/sonification/mat008/receipts/conformance-002/result/receipt.json"

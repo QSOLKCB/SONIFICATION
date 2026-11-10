@@ -16,6 +16,9 @@ The annotated release tag object is
 The formalization starts from main commit
 `ac1408cf0c459d79c3d0552287812a15ce644f0d`. Historical source, accepted
 proofs, receipts and release artifacts are unchanged.
+New proof/test inputs were committed at
+`3be17be4c3b2812c5a610ef646cb4487f150dc52`; their executed evidence was
+committed at `6006584679ead734e22197174d52a821bda62a7c`.
 
 ## What the checked result says
 
@@ -107,6 +110,20 @@ attempts, including rejected proofs, are preserved under `lean/attempts/`.
 The retained-evidence verifier maps recorded Lean imports onto the supplied
 local toolchain root and checks their pinned digests; the auditor's absolute
 installation path is only historical metadata.
+The recorded finite receipt can be checked directly with:
+
+```sh
+python3 formal/sonification/mat008/refinement/evidence.py verify \
+  formal/sonification/mat008/refinement/receipts/conformance-001 \
+  --receipt-commit 6006584679ead734e22197174d52a821bda62a7c
+```
+
+The independent [Lean audit](audit/LEAN_AUDIT.json),
+[integration review](audit/INTEGRATION_REVIEW.json) and
+[commit-bound review](audit/EVIDENCE_COMMIT_REVIEW.json) accept the exact
+mathematical and finite scopes stated in their reports. The later local Lean
+verifier replay `lean/attempts/023-postcommit-retained` supports inspection;
+the commit-bound review did not use that postcommit receipt as a premise.
 
 The private formalization-context protocol was read at
 `a1f74e8d1847d218d6b68c125fac9522e2ffc2fb`. Its focused planning packet

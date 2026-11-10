@@ -797,11 +797,15 @@
         ],
         "MACHINE_READABLE_HANDOFF": [
           "formal/sonification/mat008/refinement/lean/attempts/021-retained-handoff/handoff.json"
+        ],
+        "COMMIT_BOUND_REVIEW": [
+          "formal/sonification/mat008/refinement/audit/EVIDENCE_COMMIT_REVIEW.json"
         ]
       },
       "independent_specification_review": "PASS for this abstract mathematical relation only; see scoped independent audit.",
       "audit_scope": "26 exact abstract mathematical statements with R1\u2013R7 and 253-declaration origin closure; source/CPython refinement OPEN",
-      "proof_input_commit": "3be17be4c3b2812c5a610ef646cb4487f150dc52"
+      "proof_input_commit": "3be17be4c3b2812c5a610ef646cb4487f150dc52",
+      "evidence_commit": "6006584679ead734e22197174d52a821bda62a7c"
     },
     {
       "id": "MAT008.run_ownership.refinement_boundary_finite",
@@ -841,7 +845,7 @@
         "MODEL_PROVED": "OPEN",
         "REFINEMENT_PROVED": "OPEN",
         "DIFFERENTIAL_TESTED": "PASS",
-        "AUDIT_ACCEPTED": "OPEN"
+        "AUDIT_ACCEPTED": "PASS"
       },
       "evidence": {
         "DIFFERENTIAL_TESTED": [
@@ -852,11 +856,15 @@
         ],
         "INDEPENDENT_SNAPSHOT_REVIEW": [
           "formal/sonification/mat008/refinement/audit/INTEGRATION_REVIEW.json"
+        ],
+        "AUDIT_ACCEPTED": [
+          "formal/sonification/mat008/refinement/audit/EVIDENCE_COMMIT_REVIEW.json"
         ]
       },
-      "independent_specification_review": "PENDING for focused finite oracle and final commit-bound receipt.",
-      "audit_scope": "Recorded finite Python executions and counterexamples only; no universal implementation result",
-      "test_input_commit": "3be17be4c3b2812c5a610ef646cb4487f150dc52"
+      "independent_specification_review": "PASS for the exact recorded finite corpus and input/evidence commits only; no universal Python statement.",
+      "audit_scope": "Four focused unittest methods, declared subtests/counterexamples, source and receipt Git bindings; no universal implementation result",
+      "test_input_commit": "3be17be4c3b2812c5a610ef646cb4487f150dc52",
+      "evidence_commit": "6006584679ead734e22197174d52a821bda62a7c"
     }
   ]
 }
