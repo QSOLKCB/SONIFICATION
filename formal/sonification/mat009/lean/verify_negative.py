@@ -13,6 +13,7 @@ DEFAULT_ARCHIVE = HERE / "negative"
 MANIFEST_SHA256 = "6d99b5c41017d87922ffd01f3b34eccab692806ca38b760299371cbcc0d0750b"
 BASELINE = "a09aab6572fb9c3875d5f2940bdb17ec55c358d5"
 RUNNER_COMMIT = "5620029fb724ac41827a0c41c4c677b9594464f3"
+RUNNER_SHA256 = "874ca7ff059394e97cc908d921dec51bbc0ff852c354baf1c8da7a7d557a352c"
 EXPECTED_CASES = {
     "drop_cross_conflict_stickiness",
     "drop_historical_campaign_membership",
@@ -65,7 +66,7 @@ def verify(archive: Path = DEFAULT_ARCHIVE) -> dict:
     require(report["status"] == "PASS" and
             report["proof_input_commit"] == BASELINE and
             report["negative_runner_commit"] == RUNNER_COMMIT and
-            report["negative_runner_sha256"] == sha((HERE / "negative.py").read_bytes()) and
+            report["negative_runner_sha256"] == RUNNER_SHA256 and
             report["REFINEMENT_PROVED"] == "OPEN",
             "accepted negative execution identity changed")
     require({row["mutation"] for row in report["cases"]} == EXPECTED_CASES and

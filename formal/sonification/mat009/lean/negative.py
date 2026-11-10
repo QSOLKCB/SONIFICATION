@@ -36,6 +36,16 @@ def variants() -> dict[str, tuple[str, str, str, str]]:
     weak = (split[:weak_start] +
             "theorem M009_R6_final_leakage_iff : True := by trivial\n" +
             split[weak_end:])
+    suffix_axiom = replace_once(
+        split, "\nend MAT009\n",
+        "\naxiom auditor_false_cstage1 : False\n"
+        "theorem auditor_false_proof_cstage1 : False := auditor_false_cstage1\n\n"
+        "end MAT009\n",
+    )
+    if sha(suffix_axiom.encode()) != (
+        "1b2e633163118f65974db85be1416ea44af7126d303f5864d5d1f993dc547b71"
+    ):
+        raise ValueError("retained auditor suffix-axiom mutant changed")
     return {
         "drop_cross_conflict_stickiness": (
             "SplitModel",
@@ -66,6 +76,10 @@ def variants() -> dict[str, tuple[str, str, str, str]]:
             replace_once(split, "\nend MAT009\n",
                          "\naxiom fabricated_physical_admission : False\n\nend MAT009\n"),
             "LeanAudit", "project axiom declaration",
+        ),
+        "compiler_suffix_false_axiom": (
+            "SplitModel", suffix_axiom, "LeanAudit",
+            "project axiom declaration MAT009.auditor_false_cstage1",
         ),
         "prohibited_sorry": (
             "SplitModel",

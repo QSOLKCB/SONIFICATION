@@ -64,6 +64,14 @@ PRINTED_AXIOMS = {
     "MAT009.Diagnostic.first_owner_not_last_writer",
 }
 ALLOWED_LOGICAL_AXIOMS = {"propext", "Quot.sound", "Classical.choice"}
+TRUSTED_COMPILER_AXIOM_TYPES = {
+    "MAT009.initial._elambda_1": "String → Option MAT009.Role",
+    "MAT009.step._elambda_1":
+        "MAT009.State → MAT009.Row → String → Option MAT009.Role",
+}
+TRUSTED_COMPILER_AXIOMS = set(TRUSTED_COMPILER_AXIOM_TYPES) | {
+    "lcProof", "lcUnreachable",
+}
 VERSION = "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)"
 PROHIBITED = re.compile(r"\b(?:sorry|admit|axiom|opaque|unsafe|partial)\b")
 AXIOM_LINE = re.compile(
@@ -154,14 +162,36 @@ def audit_output(raw: bytes, lean: Path, out: Path) -> dict:
              if row["kind"] == "theorem" and row["declaration"] in NAMED_THEOREMS}
     if named != NAMED_THEOREMS:
         raise ValueError(f"named intended theorem missing: {sorted(NAMED_THEOREMS - named)}")
+    if {row["declaration"] for row in declarations if row["is_axiom"]} != set(
+        TRUSTED_COMPILER_AXIOM_TYPES
+    ):
+        raise ValueError("project compiler axiom inventory changed")
     for row in declarations:
         if row["origin"] not in MODULES:
             raise ValueError(f"unexpected proof declaration origin: {row['origin']}")
-        if row["kind"] != "compiler_auxiliary":
-            if row["is_axiom"] or row["unsafe_definition"]:
-                raise ValueError(f"logical declaration contains trusted code: {row['declaration']}")
-            if not set(row["axioms"]) <= ALLOWED_LOGICAL_AXIOMS:
-                raise ValueError(f"unapproved logical axiom: {row['declaration']}")
+        if row["kind"] not in {"theorem", "non_theorem", "compiler_auxiliary"}:
+            raise ValueError(f"unknown proof declaration kind: {row['declaration']}")
+        compiler_aux = row["kind"] == "compiler_auxiliary"
+        if row["is_axiom"]:
+            if (not compiler_aux or not row["unsafe_axiom"] or
+                    row["has_source_range"] or
+                    TRUSTED_COMPILER_AXIOM_TYPES.get(row["declaration"]) != row["type"]):
+                raise ValueError(f"unapproved project axiom: {row['declaration']}")
+        elif row["unsafe_axiom"]:
+            raise ValueError(f"inconsistent axiom metadata: {row['declaration']}")
+        if row["unsafe_definition"]:
+            if not compiler_aux or row["has_source_range"]:
+                raise ValueError(f"unsafe project definition: {row['declaration']}")
+        elif compiler_aux and not row["is_axiom"]:
+            raise ValueError(f"unclassified compiler auxiliary: {row['declaration']}")
+        allowed = ALLOWED_LOGICAL_AXIOMS | (
+            TRUSTED_COMPILER_AXIOMS if compiler_aux else set()
+        )
+        if not set(row["axioms"]) <= allowed:
+            raise ValueError(f"unapproved transitive axiom: {row['declaration']}")
+    if (sum(row["kind"] == "compiler_auxiliary" for row in declarations) != 146 or
+            sum(row["unsafe_definition"] for row in declarations) != 144):
+        raise ValueError("compiler auxiliary inventory changed")
     (out / "declarations.json").write_text(
         json.dumps(declarations, indent=2, sort_keys=True) + "\n"
     )

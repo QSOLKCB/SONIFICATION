@@ -1,0 +1,5 @@
+AXIOM MAT009.initial._elambda_1 unsafe=true type=String → Option MAT009.Role
+AXIOM MAT009.step._elambda_1 unsafe=true type=MAT009.State → MAT009.Row → String → Option MAT009.Role
+AXIOM MAT009.auditor_false_cstage1 unsafe=false type=False
+AXIOM lcProof unsafe=true type=∀ {α : Prop}, α
+AXIOM lcUnreachable unsafe=true type={α : Sort u} → α

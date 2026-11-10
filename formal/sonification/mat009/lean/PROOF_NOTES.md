@@ -39,6 +39,26 @@ Python source or CPython execution.
 - `Diagnostic.first_owner_not_last_writer`: a later different diagnostic
   claimant does not overwrite the first owner.
 
+## Lean audit trust boundary
+
+The audit enumerates every declaration from the five proof modules, including
+compiler output. The only permitted logical axioms are `propext`, `Quot.sound`,
+and `Classical.choice`. All safe declarations are checked transitively against
+that set. The two project axioms `MAT009.initial._elambda_1` and
+`MAT009.step._elambda_1` are accepted only with their recorded types, Lean's
+unsafe-axiom flag, and no source declaration range. The unsafe compiler
+axioms `lcProof` and `lcUnreachable` may occur only in the transitive closure
+of unsafe compiler auxiliaries. The 144 unsafe generated definitions are
+enumerated and disclosed; they are not logical proof dependencies.
+
+The retained `MAT009-AUDIT-001` counterexample appended a user axiom and a
+theorem of `False`, both ending `_cstage1`. The former audit exempted them by
+name. The corrected gate does not grant axiom trust from a suffix, and the
+permanent `compiler_suffix_false_axiom` mutation uses the exact retained
+counterexample. This gate still depends on the pinned Lean executable and
+hashed imports for compiler behavior. Source-to-model and CPython refinement
+remain open.
+
 ## Open boundary
 
 The child eligibility guards, other child checks (phases, receipts, units,

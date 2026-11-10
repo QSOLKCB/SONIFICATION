@@ -25,6 +25,14 @@ MODULES = (
 )
 INPUTS = {*(f"{m}.lean" for m in MODULES), "PROOF_NOTES.md", "lean-toolchain", "check.py"}
 ALLOWED_AXIOMS = {"propext", "Quot.sound", "Classical.choice"}
+TRUSTED_COMPILER_AXIOM_TYPES = {
+    "MAT009.initial._elambda_1": "String → Option MAT009.Role",
+    "MAT009.step._elambda_1":
+        "MAT009.State → MAT009.Row → String → Option MAT009.Role",
+}
+TRUSTED_COMPILER_AXIOMS = set(TRUSTED_COMPILER_AXIOM_TYPES) | {
+    "lcProof", "lcUnreachable",
+}
 VERSION = "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)"
 AXIOM_LINE = re.compile(
     r"^'([^']+)' (?:depends on axioms: \[([^]]*)\]|does not depend on any axioms)$"
@@ -127,12 +135,34 @@ def verify(attempt: Path = DEFAULT_ATTEMPT, lean: Path | None = None) -> dict:
     require(named == json.loads((attempt / "theorem-types.json").read_text()) and
             set(named) == set(result["named_intended_theorems"]),
             "retained theorem statements changed")
+    require({row["declaration"] for row in declarations if row["is_axiom"]} ==
+            set(TRUSTED_COMPILER_AXIOM_TYPES),
+            "project compiler axiom inventory changed")
     for row in declarations:
         require(row["origin"] in MODULES, "declaration from unexpected module")
-        if row["kind"] != "compiler_auxiliary":
-            require(not row["is_axiom"] and not row["unsafe_definition"] and
-                    set(row["axioms"]) <= ALLOWED_AXIOMS,
-                    f"unapproved logical assumption: {row['declaration']}")
+        require(row["kind"] in {"theorem", "non_theorem", "compiler_auxiliary"},
+                f"unknown declaration kind: {row['declaration']}")
+        compiler_aux = row["kind"] == "compiler_auxiliary"
+        if row["is_axiom"]:
+            require(compiler_aux and row["unsafe_axiom"] and
+                    not row["has_source_range"] and
+                    TRUSTED_COMPILER_AXIOM_TYPES.get(row["declaration"]) == row["type"],
+                    f"unapproved project axiom: {row['declaration']}")
+        else:
+            require(not row["unsafe_axiom"],
+                    f"inconsistent axiom metadata: {row['declaration']}")
+        if row["unsafe_definition"]:
+            require(compiler_aux and not row["has_source_range"],
+                    f"unsafe project definition: {row['declaration']}")
+        elif compiler_aux:
+            require(row["is_axiom"],
+                    f"unclassified compiler auxiliary: {row['declaration']}")
+        allowed = ALLOWED_AXIOMS | (TRUSTED_COMPILER_AXIOMS if compiler_aux else set())
+        require(set(row["axioms"]) <= allowed,
+                f"unapproved transitive axiom: {row['declaration']}")
+    require(sum(row["kind"] == "compiler_auxiliary" for row in declarations) == 146 and
+            sum(row["unsafe_definition"] for row in declarations) == 144,
+            "compiler auxiliary inventory changed")
 
     printed = {}
     for line in (attempt / "build-02-TypedConsumer.stdout").read_text().splitlines():

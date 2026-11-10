@@ -1,0 +1,6 @@
+RANGE MAT009.initial._elambda_1 false
+RANGE MAT009.step._elambda_1 false
+RANGE MAT009.auditor_false_cstage1 true
+RANGE MAT009.auditor_false_proof_cstage1 true
+RANGE MAT009.initial._cstage1 false
+RANGE MAT009.initial true

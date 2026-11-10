@@ -21,9 +21,15 @@ run_cmd do
     logInfo m!"MAT009_MODULE {mod}"
   for mod in env.header.moduleNames do
     logInfo m!"MAT009_IMPORT {mod}"
-  let allowed := #[`propext, `Quot.sound, `Classical.choice]
+  let allowedLogical := #[`propext, `Quot.sound, `Classical.choice]
+  /- These unsafe axioms are emitted by Lean's compiler for the two recursive
+     model functions. `lcProof` and `lcUnreachable` are compiler mechanisms used
+     only by unsafe generated definitions, never by logical theorems. -/
+  let allowedCompiler := #[`lcProof, `lcUnreachable,
+    `MAT009.initial._elambda_1, `MAT009.step._elambda_1]
   let mut seen : Nat := 0
   let mut theorems : Nat := 0
+  let mut compilerAxioms : Nat := 0
   let declarations := env.checked.get.constants.toList.mergeSort fun a b =>
     decide (a.1.toString ≤ b.1.toString)
   for (name, info) in declarations do
@@ -34,33 +40,50 @@ run_cmd do
       seen := seen + 1
       if info matches .thmInfo _ then
         theorems := theorems + 1
-      let generated := name.toString.endsWith "_cstage1" ||
+      let generatedName := name.toString.endsWith "_cstage1" ||
         name.toString.endsWith "_cstage2" ||
         (name.toString.splitOn "._closed_").length > 1 ||
         (name.toString.splitOn "._elambda_").length > 1
-      if info matches .axiomInfo _ then
-        unless generated do
-          throwError "project axiom declaration {name}"
-      let axioms ← collectAxioms name
       let unsafeDef : Bool := match info with
         | .defnInfo d => d.safety == DefinitionSafety.unsafe
         | _ => false
-      for ax in axioms do
-        unless allowed.contains ax || generated do
-          throwError "unapproved transitive axiom {ax} in {name} (origin {origin})"
-      if unsafeDef && !generated then
+      let unsafeAxiom : Bool := match info with
+        | .axiomInfo a => a.isUnsafe
+        | _ => false
+      let hasSourceRange := (← findDeclarationRangesCore? name).isSome
+      let compilerAux := (unsafeDef || unsafeAxiom) && !hasSourceRange
+      let typeStr ← liftTermElabM do
+        pure (← Lean.Meta.ppExpr info.type).pretty
+      if info matches .axiomInfo _ then
+        let expectedType : Option String :=
+          if name == `MAT009.initial._elambda_1 then
+            some "String → Option MAT009.Role"
+          else if name == `MAT009.step._elambda_1 then
+            some "MAT009.State → MAT009.Row → String → Option MAT009.Role"
+          else
+            none
+        unless compilerAux && expectedType == some typeStr do
+          throwError "project axiom declaration {name}"
+        compilerAxioms := compilerAxioms + 1
+      if unsafeDef && !(compilerAux && generatedName) then
         throwError "unsafe project definition {name}"
+      let axioms ← collectAxioms name
+      for ax in axioms do
+        unless allowedLogical.contains ax ||
+            (compilerAux && allowedCompiler.contains ax) do
+          throwError "unapproved transitive axiom {ax} in {name} (origin {origin})"
       let row := Json.mkObj [
         ("origin", toJson origin.toString),
         ("declaration", toJson name.toString),
-        ("kind", toJson (if generated then "compiler_auxiliary" else
+        ("kind", toJson (if compilerAux then "compiler_auxiliary" else
           if info matches .thmInfo _ then "theorem" else "non_theorem")),
         ("is_axiom", toJson (info matches .axiomInfo _)),
+        ("unsafe_axiom", toJson unsafeAxiom),
         ("unsafe_definition", toJson unsafeDef),
-        ("type", toJson (← liftTermElabM do
-          pure (← Lean.Meta.ppExpr info.type).pretty)),
+        ("has_source_range", toJson hasSourceRange),
+        ("type", toJson typeStr),
         ("axioms", toJson (axioms.map Name.toString))]
       logInfo m!"MAT009_DECL {row.compress}"
-  if seen == 0 || theorems == 0 then
-    throwError "empty proof inventory"
+  if seen == 0 || theorems == 0 || compilerAxioms != 2 then
+    throwError "incomplete proof inventory"
   logInfo m!"MAT009_AUDIT declarations={seen} theorems={theorems}"
