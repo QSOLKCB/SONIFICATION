@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="450" viewBox="0 0 1440 450" role="img" aria-labelledby="banner-title banner-description">
+  <title id="banner-title">SONIFICATION — ETQ, D4 Triality, Material Spectra and Formal Verification</title>
+  <desc id="banner-description">A dark, geometric research banner with luminous waveforms, concentric mathematical orbits, source nodes and a centered SONIFICATION title.</desc>
+  <defs>
+    <linearGradient id="backdrop" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#071523"/>
+      <stop offset=".49" stop-color="#0c1225"/>
+      <stop offset="1" stop-color="#101024"/>
+    </linearGradient>
+    <radialGradient id="left-glow">
+      <stop offset="0" stop-color="#16b9b9" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#16b9b9" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="right-glow">
+      <stop offset="0" stop-color="#a57dff" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#a57dff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="spectrum" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22dad0"/>
+      <stop offset=".49" stop-color="#dbeffe"/>
+      <stop offset="1" stop-color="#ac88ff"/>
+    </linearGradient>
+    <linearGradient id="bottom-wave" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#23d9ce" stop-opacity="0"/>
+      <stop offset=".25" stop-color="#23d9ce" stop-opacity=".7"/>
+      <stop offset=".66" stop-color="#9c8dfb" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#9c8dfb" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#82c5d3" stroke-width="1" opacity=".09"/>
+      <circle cx="0" cy="0" r="1" fill="#bedde7" opacity=".14"/>
+    </pattern>
+    <filter id="glow" x="-30%" y="-80%" width="160%" height="260%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="frame"><rect x="0" y="0" width="1440" height="450" rx="22"/></clipPath>
+  </defs>
+  <g clip-path="url(#frame)">
+    <rect width="1440" height="450" fill="url(#backdrop)"/>
+    <rect width="1440" height="450" fill="url(#grid)"/>
+    <circle cx="160" cy="200" r="350" fill="url(#left-glow)"/>
+    <circle cx="1280" cy="200" r="350" fill="url(#right-glow)"/>
+    <g fill="none" stroke-width="1.2">
+      <circle cx="187" cy="230" r="150" stroke="#30d6d4" opacity=".31"/>
+      <circle cx="187" cy="230" r="111" stroke="#30d6d4" stroke-dasharray="7 10" opacity=".32"/>
+      <circle cx="187" cy="230" r="65" stroke="#30d6d4" opacity=".42"/>
+      <path d="M 65 314 L 187 80 L 309 314 Z M 62 180 L 314 272 M 67 275 L 308 180" stroke="#47d5cd" opacity=".28"/>
+      <circle cx="1253" cy="230" r="150" stroke="#b49aff" opacity=".31"/>
+      <circle cx="1253" cy="230" r="111" stroke="#b49aff" stroke-dasharray="7 10" opacity=".32"/>
+      <circle cx="1253" cy="230" r="65" stroke="#b49aff" opacity=".42"/>
+      <path d="M 1131 314 L 1253 80 L 1375 314 Z M 1128 180 L 1380 272 M 1133 275 L 1374 180" stroke="#b49aff" opacity=".28"/>
+    </g>
+    <g fill="#9ff5ed">
+      <circle cx="187" cy="80" r="4"/><circle cx="65" cy="314" r="3"/><circle cx="309" cy="314" r="3"/>
+      <circle cx="187" cy="230" r="5" opacity=".65"/><circle cx="122" cy="230" r="2.5"/>
+    </g>
+    <g fill="#dbc5ff">
+      <circle cx="1253" cy="80" r="4"/><circle cx="1131" cy="314" r="3"/><circle cx="1375" cy="314" r="3"/>
+      <circle cx="1253" cy="230" r="5" opacity=".65"/><circle cx="1318" cy="230" r="2.5"/>
+    </g>
+    <g fill="none" stroke="url(#bottom-wave)" stroke-width="1.8">
+      <path d="M-20 362 C62 362 73 308 156 308 S254 402 346 362 S459 325 532 357 S647 395 719 360 S820 328 909 357 S1010 402 1105 359 S1245 315 1332 355 S1415 373 1460 345"/>
+      <path d="M-20 375 C80 375 94 342 157 342 S244 392 354 375 S449 348 538 375 S648 389 719 375 S816 350 902 375 S1016 390 1113 375 S1230 344 1332 375 S1403 394 1460 361" opacity=".45"/>
+      <path d="M-20 343 C62 343 90 385 158 385 S270 300 350 343 S462 396 532 342 S647 318 719 343 S821 391 910 343 S1005 320 1110 343 S1243 396 1335 343 S1418 332 1460 358" opacity=".25"/>
+    </g>
+    <rect x="355" y="99" width="730" height="249" rx="24" fill="#080f1f" fill-opacity=".77" stroke="#7dadd2" stroke-opacity=".2"/>
+    <path d="M413 112 H1027 M413 337 H1027" stroke="url(#spectrum)" opacity=".4" stroke-width="1"/>
+    <g font-family="'DejaVu Sans', Arial, sans-serif" text-anchor="middle">
+      <text x="720" y="151" font-size="14" letter-spacing="5" fill="#71dacf" font-weight="600">QSOL-IMC / RESEARCH &amp; VERIFICATION</text>
+      <text x="720" y="253" font-size="83" font-weight="800" letter-spacing="4.5" fill="#dbf9ff" filter="url(#glow)">SONIFICATION</text>
+      <text x="720" y="296" font-size="16" letter-spacing="2.25" fill="#c4b7fc">ETQ-303  /  D4 TRIALITY  /  MATERIAL SPECTRA</text>
+      <text x="720" y="323" font-size="11.5" letter-spacing="3.1" fill="#8ca8b9">EXACT CONSTRUCTIONS  ·  SYMBOLIC RECEIVERS  ·  SOURCE-PINNED PROOFS</text>
+    </g>
+    <g font-family="'DejaVu Sans', Arial, sans-serif" fill="#9ec7d3" opacity=".65" font-size="12" letter-spacing="2">
+      <text x="40" y="42">D4 / F4</text>
+      <text x="1311" y="42">S3 / E8</text>
+      <text x="37" y="423">FINITE / EXACT</text>
+      <text x="1179" y="423">RESEARCH / AUDIT</text>
+    </g>
+    <path d="M30 55 V27 H58 M1382 27 H1410 V55 M30 395 V423 H58 M1382 423 H1410 V395" fill="none" stroke="#b4cfda" stroke-width="2" opacity=".48"/>
+  </g>
+</svg>

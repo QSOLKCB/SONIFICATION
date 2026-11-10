@@ -1,14 +1,97 @@
-# SONIFICATION — ETQ-303, D4 Triality and Material Spectra
+<div align="center">
+  <img src="docs/assets/sonification-banner.svg" width="100%" alt="SONIFICATION — geometric research banner showing ETQ, D4 triality, material spectra and source-pinned formal verification">
 
-[![ETQ-303 v3.0.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21494678.svg)](https://doi.org/10.5281/zenodo.21494678) [![D4-TIA v2.0.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22831753.svg)](https://doi.org/10.5281/zenodo.22831753)
+  <p><strong>Exact mathematics. Measured materials. Declared mappings. Reproducible evidence.</strong><br>
+  <em>A set of separately versioned research systems — not an assertion that mathematics, software output or symbolic MIDI proves a new physical law.</em></p>
 
-This repository contains three separately versioned research lines:
+<p><strong>Foundational ETQ / D4 releases</strong><br>
+  <a href="https://doi.org/10.5281/zenodo.21432511"><img alt="ETQ-101 v2.0.0: DOI 10.5281/zenodo.21432511" src="https://zenodo.org/badge/DOI/10.5281/zenodo.21432511.svg"></a>
+  <a href="https://doi.org/10.5281/zenodo.21455181"><img alt="ETQ-303 v3.0.0: DOI 10.5281/zenodo.21455181" src="https://zenodo.org/badge/DOI/10.5281/zenodo.21455181.svg"></a>
+  <a href="https://doi.org/10.5281/zenodo.21494678"><img alt="ETQ-303 v3.0.1: DOI 10.5281/zenodo.21494678" src="https://zenodo.org/badge/DOI/10.5281/zenodo.21494678.svg"></a>
+  <a href="https://doi.org/10.5281/zenodo.22831753"><img alt="D4-TIA v2.0.0: DOI 10.5281/zenodo.22831753" src="https://zenodo.org/badge/DOI/10.5281/zenodo.22831753.svg"></a>
+</p>
 
-- **ETQ-303 v3.0.1** — the current documentation/publication release for the exact ETQ-303 protocol. The canonical runtime contract and deterministic outputs remain **v3.0.0**.
-- **D4-TIA** — exact D4 triality covariants, an exact S3 symmetry harness, and a symbolic sonification profile built on top of them.
-- **MAT-SPEC-001 v1.0.0** — attributed superfluid-helium measurements, an exact common-scale frequency mapping, and explicit comparisons with rank contours and quantized MIDI. Record DOI: [10.5281/zenodo.24062652](https://doi.org/10.5281/zenodo.24062652).
+<p><strong>Materials / SPARK / formal-verification archives</strong><br>
+  <a href="https://doi.org/10.5281/zenodo.24062652"><img alt="MAT-SPEC-001 v1.0.0: DOI 10.5281/zenodo.24062652" src="https://zenodo.org/badge/DOI/10.5281/zenodo.24062652.svg"></a>
+  <a href="https://doi.org/10.5281/zenodo.24089846"><img alt="MAT-SPEC-010 v0.1.0: DOI 10.5281/zenodo.24089846" src="https://zenodo.org/badge/DOI/10.5281/zenodo.24089846.svg"></a>
+  <a href="https://doi.org/10.5281/zenodo.24090762"><img alt="SPARK-001 v1.0.0: DOI 10.5281/zenodo.24090762" src="https://zenodo.org/badge/DOI/10.5281/zenodo.24090762.svg"></a>
+  <a href="https://doi.org/10.5281/zenodo.24097287"><img alt="FORMAL-001 research.1: DOI 10.5281/zenodo.24097287" src="https://zenodo.org/badge/DOI/10.5281/zenodo.24097287.svg"></a>
+</p>
 
-ETQ and D4-TIA share D4 triality context. MAT-SPEC-001 adds an independent physical-data profile. Neither extension changes ETQ-101 or ETQ-303 protocol identity.
+<p><strong>Live GitHub Actions · tests, native differential checks and historical receipt integrity</strong><br>
+  <a href="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/tests.yml"><img alt="Test matrix workflow status" src="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/tests.yml/badge.svg?branch=main"></a>
+  <a href="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-001.yml"><img alt="SPARK-001 native workflow status" src="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-001.yml/badge.svg?branch=main"></a>
+  <a href="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002.yml"><img alt="SPARK-002 Phase 1A native workflow status" src="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002.yml/badge.svg?branch=main"></a>
+  <a href="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002-phase-1b.yml"><img alt="SPARK-002 Phase 1B native workflow status" src="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002-phase-1b.yml/badge.svg?branch=main"></a>
+  <a href="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002-proof-receipts.yml"><img alt="SPARK-002 Phase 1A receipt integrity workflow status" src="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002-proof-receipts.yml/badge.svg?branch=main"></a>
+  <a href="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002-phase-1b-proof-receipts.yml"><img alt="SPARK-002 Phase 1B receipt integrity workflow status" src="https://github.com/QSOLKCB/SONIFICATION/actions/workflows/spark-002-phase-1b-proof-receipts.yml/badge.svg?branch=main"></a>
+</p>
+
+  <p>
+  <a href="LICENSE"><img alt="Licence: MPL-2.0" src="https://img.shields.io/badge/license-MPL--2.0-3e789e"></a>
+  <a href="https://www.python.org/"><img alt="MAT-SPEC: Python 3.11+" src="https://img.shields.io/badge/MAT--SPEC-Python%203.11%2B-2c8e90"></a>
+  <a href="https://github.com/QSOLKCB/SONIFICATION/releases/tag/sonification-formal-001-research.1"><img alt="Research milestone: FORMAL-001 research.1" src="https://img.shields.io/badge/research-FORMAL--001-8067b7"></a>
+  </p>
+</div>
+
+---
+
+**Explore:** [Research lines](#research-lines) · [Verification &amp; assurance](#verification--assurance) · [Reproduction](#reproduce-the-work) · [Materials profiles](#mat-spec-001-measured-materials-declared-mappings) · [Published DOIs](#published-records-and-dois) · [Scientific limits](#scientific-boundary) · [Roadmap](docs/ROADMAP.md)
+
+## Research lines
+
+SONIFICATION keeps the mathematical construction, authored receiver choices, source data and independent verification work **separate, traceable and versioned**.
+
+| Research track | What it actually provides | Start here |
+| --- | --- | --- |
+| **ETQ-101 / ETQ-303** | Exact 101-state selection, independent three-state factor, 303-address finite traversal and deterministic **symbolic** event documents | [ETQ-303 event protocol](docs/ETQ_V3_EVENT_PROTOCOL.md) |
+| **D4-TIA** | Published D4/F4 triality context, exact 15-generator covariant algebra, six-element equivariance checks and an **authored** symbolic MIDI receiver | [Exact algebra](docs/D4_TRIALITY_COVARIANT_ENGINE.md) · [Evaluated profile](docs/D4_TRIALITY_ALGEBRA_SONIFICATION_V2.md) |
+| **MAT-SPEC-001–010** | Attributed helium data, declared numerical mappings, uncertainty/missingness handling, source-admission controls and the final indexed evidence freeze | [MAT-SPEC-010](docs/MAT_SPEC_010.md) · [Scientific boundaries](docs/SCIENTIFIC_BOUNDARIES.md) |
+| **SPARK / Lean formalization** | Bounded Ada/SPARK kernels, source-pinned mathematical proofs, finite Python conformance and independently retained adversarial audits | [FORMAL-001](formal/sonification/README.md) · [Proof inventory](formal/sonification/PROOF_INVENTORY.md) |
+
+The root ETQ and D4-TIA protocols export **JSON, CSV and symbolic MIDI**, not rendered audio. The independent `APP/` and `sonification/` audio laboratories have their own policies and must never be confused with root protocol identity.
+
+## Verification & assurance
+
+The published [SONIFICATION-FORMAL-001 research milestone](https://doi.org/10.5281/zenodo.24097287) freezes a **source-pinned verification baseline**, rather than asserting completed formalization of the entire Python programme.
+
+| Verified or audited scope | Recorded result | Boundary |
+| --- | --- | --- |
+| SPARK-001 owner GNATprove receipt | **26/26** reported checks | Bounded numerical kernel, pinned source |
+| SPARK-002 Phase 1A owner receipt | **23/23** reported checks | Bounded interval/evidence-gate contracts |
+| SPARK-002 Phase 1B owner receipt | **9/9** reported checks | Campaign partition and missingness contracts |
+| MAT-SPEC-007 Lean model | **19** named mathematical statements | Integer/abstract model; not full `Fraction` semantics |
+| MAT-SPEC-008 Lean work | **10** run-ownership model theorems; **26** abstract correspondence theorem types | No complete Python-to-model refinement |
+| MAT-SPEC-009 independent axiom audit | Repaired, adversarially replayed; **22** named intended theorems | Scoped model gate, not physical authentication |
+| MAT-SPEC-010 archive membership | **Phase A** accepted; **7** named Lean statements | Phase B parent integrity and Phase C scientific closure **OPEN** |
+
+**58/58** is the sum of **three separate source- and contract-bound historical SPARK proof receipts**, not a unified whole-repository proof. GitHub CI badges above report native execution or historical receipt checks only; none asserts that the owner-only GNATprove procedure ran on that CI revision.
+
+The four assurance dimensions remain independent: `MODEL_PROVED`, `REFINEMENT_PROVED`, `DIFFERENTIAL_TESTED`, and `AUDIT_ACCEPTED`. Universal Python refinement remains **OPEN**. The separate VANILLAJS Q16-ECMA investigation has already delivered its bounded results; universal production ECMAScript refinement remains **OPEN in VANILLAJS**.
+
+**Scientific admission remains blocked:** no independently validated helium phase classifier, independent physical replication, demonstrated E8-in-helium result or listener discrimination study is claimed. [Detailed claim boundaries](formal/sonification/CLAIM_BOUNDARIES.md) · [Current roadmap](docs/ROADMAP.md).
+
+## Reproduce the work
+
+MAT-SPEC profiles use Python 3.11+ and the standard library, without project installation or network access. From a clean checkout:
+
+```bash
+uv run --no-project python -m unittest discover -s tests -p 'test_mat_spec*.py' -v
+uv run --no-project python scripts/build_mat_spec_010.py --out dist/mat-spec-010
+```
+
+The destination must be new. ETQ / D4-TIA's separate root JavaScript verifiers use Node.js 20+:
+
+```bash
+npm test
+npm run verify
+```
+
+Replaying these checks is **not** equivalent to rerunning historical Lean or GNATprove proofs; source-pinned receipts, toolchain requirements and independent audit procedures are documented under [`formal/sonification/`](formal/sonification/README.md). The owner's GNATprove workflow is intentionally restricted to authorised runs on reviewed `main`.
+
+**Current archive identity:** [GitHub release](https://github.com/QSOLKCB/SONIFICATION/releases/tag/sonification-formal-001-research.1) · [Zenodo DOI 10.5281/zenodo.24097287](https://doi.org/10.5281/zenodo.24097287) · frozen source commit `ef2851fd44894dd95a4c3184ff9e41aeb4d64d72`.
+
+---
 
 ## MAT-SPEC-001: measured materials, declared mappings
 
@@ -77,11 +160,11 @@ not evidence of audibility.
 **Scientific gate:** All published inputs are He-II model parameters, not
 independently phase-labelled measurements spanning the transition.
 MAT-SPEC-004 therefore explicitly reports
-\`BLOCKED_INSUFFICIENT_PHYSICAL_EVIDENCE\`: no classifier, critical exponent,
+`BLOCKED_INSUFFICIENT_PHYSICAL_EVIDENCE`: no classifier, critical exponent,
 temperature threshold or listener outcome is claimed. MAT-SPEC-003's
 pressure-dependent below-100-mK spectra are not matched to this new series.
 
-Reproduce: \`uv run --no-project python scripts/build_mat_spec_004.py --out dist/mat-spec-004\`.
+Reproduce: `uv run --no-project python scripts/build_mat_spec_004.py --out dist/mat-spec-004`.
 Read the [methods and evidence boundaries](docs/MAT_SPEC_004.md).
 The DOI 10.5281/zenodo.24062652 remains the MAT-SPEC-001 record.
 
@@ -101,7 +184,7 @@ symbolic 12-TET mappings while requiring frozen source/provenance receipts.
 the classifier/held-out scientific gate remains BLOCKED. Source is an
 experiment-derived reference compilation, not original raw measurements.
 
-Reproduce: \`uv run --no-project python scripts/build_mat_spec_005.py --out dist/mat-spec-005\`.
+Reproduce: `uv run --no-project python scripts/build_mat_spec_005.py --out dist/mat-spec-005`.
 [Methods and nonclaims](docs/MAT_SPEC_005.md). The MAT-SPEC-001 DOI
 10.5281/zenodo.24062652 remains assigned to the original record.
 
@@ -124,7 +207,7 @@ classifier or held-out accuracy** in this release: only one primary
 experimental campaign is admitted, per-row uncertainty is missing, and
 experimental overlap with the MAT-SPEC-005 compilation remains unverified.
 
-Reproduce: \`uv run --no-project python scripts/build_mat_spec_006.py --out dist/mat-spec-006\`.
+Reproduce: `uv run --no-project python scripts/build_mat_spec_006.py --out dist/mat-spec-006`.
 [Physical provenance and limits](docs/MAT_SPEC_006.md).
 The DOI 10.5281/zenodo.24062652 remains MAT-SPEC-001's record only.
 
@@ -156,8 +239,8 @@ has a verified original measurement packet**, so there are zero
 independently replicable source-pair comparisons and no classifier score.
 This is an explicit evidence-gate result, not a scientific falsification.
 
-Run \`uv run --no-project python scripts/build_mat_spec_008.py --out
-dist/mat-spec-008\`. See [full source admission audit](docs/MAT_SPEC_008.md).
+Run `uv run --no-project python scripts/build_mat_spec_008.py --out
+dist/mat-spec-008`. See [full source admission audit](docs/MAT_SPEC_008.md).
 
 The programme still **stops at MAT-SPEC-010**. The scoped SPARK/Ada
 and VANILLAJS Q16-ECMA follow-ups have been executed separately; see
@@ -174,7 +257,7 @@ missing errors, post hoc receiver changes and malformed preregistration
 receipts. Even a structural candidate pass never authenticates physics.
 
 Reproduce with
-\`uv run --no-project python scripts/build_mat_spec_009.py --out dist/mat-spec-009\`.
+`uv run --no-project python scripts/build_mat_spec_009.py --out dist/mat-spec-009`.
 See [scientific protocol and negative evidence](docs/MAT_SPEC_009.md).
 
 **MAT-SPEC-010 closes the numbered series.** Separate SPARK/Ada and
@@ -466,14 +549,26 @@ Where a mapping is authored rather than mathematically forced, the documentation
 - [Implementation roadmap](docs/ROADMAP.md)
 - [Formal ETQ-303 v3.0.1 paper](docs/etq-303/README.md)
 
-## Archived releases
+## Published records and DOIs
 
-- **ETQ-101 v2.0.0** — DOI `10.5281/zenodo.21432511`
-- **ETQ-303 v3.0.0** — DOI `10.5281/zenodo.21455181`
-- **ETQ-303 v3.0.1 documentation/publication release** — DOI `10.5281/zenodo.21494678`
-- **D4-TIA v2.0.0** — DOI `10.5281/zenodo.22831753`
+Each DOI identifies a particular publication/version and **does not confer scientific validity** on claims beyond that publication's declared scope. Earlier archives and their checksums are preserved independently.
+
+| Research archive | Version or scope | DOI |
+| --- | --- | --- |
+| ETQ-101 | Symbolic root profile v2.0.0 | [10.5281/zenodo.21432511](https://doi.org/10.5281/zenodo.21432511) |
+| ETQ-303 | Frozen runtime contract v3.0.0 | [10.5281/zenodo.21455181](https://doi.org/10.5281/zenodo.21455181) |
+| ETQ-303 | Documentation/publication v3.0.1; runtime unchanged | [10.5281/zenodo.21494678](https://doi.org/10.5281/zenodo.21494678) |
+| D4-TIA | Exact covariants, symmetry and symbolic receiver v2.0.0 | [10.5281/zenodo.22831753](https://doi.org/10.5281/zenodo.22831753) |
+| MAT-SPEC-001 | Measured helium-dispersion and symbolic mapping v1.0.0 | [10.5281/zenodo.24062652](https://doi.org/10.5281/zenodo.24062652) |
+| MAT-SPEC-010 | Final numbered evidence freeze / archived MAT-SPEC version | [10.5281/zenodo.24089846](https://doi.org/10.5281/zenodo.24089846) |
+| SPARK-001 | Bounded Ada/SPARK numerical kernel v1.0.0 | [10.5281/zenodo.24090762](https://doi.org/10.5281/zenodo.24090762) |
+| SONIFICATION-FORMAL-001 | Research milestone 1, frozen before MAT-010 B/C | [**10.5281/zenodo.24097287**](https://doi.org/10.5281/zenodo.24097287) |
+
+**Formal milestone evidence:** the Zenodo deposit includes a human-readable README, SHA-256 manifest and source-pinned archive. The verified archive receipt recorded **4,361 tracked source files**, **4,090 identified evidence files**, and a **49,469,191-byte ZIP**. These are packaging and provenance measures, not independent experimental evidence.
 
 D4-TIA v2.0.0 archives the frozen D4-TIA-COV v0.1.0, D4-TIA-S3-EQUIV v0.1.0, and D4-TIA-15 v2.0.0 research line. The immutable implementation tag `d4-tia-v2.0.0` points to commit `7aa6df165d0ad70297365dbf0d69072634ed4314`. Publication/citation metadata was finalized afterward on the documentation line without changing the frozen D4-TIA runtime identity or deterministic commitments. D4-TIA remains separately versioned from the preserved ETQ runtime contracts.
+
+MAT-SPEC-010 is the last numbered profile: **no MAT-SPEC-011**. Its ongoing Phase B/C formalization belongs to the follow-on verification programme, not a retroactive change to the frozen publication.
 
 ## Creator and licence
 
