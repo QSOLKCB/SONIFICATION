@@ -1,0 +1,144 @@
+{
+  "candidate": {
+    "branch": "research/sonification-formal-001-mat010-closure",
+    "commit": "7e1e415c6590d8bf7257b4cbcd80de58c83d808b",
+    "worktree": "/home/trent/sonification-formal-001-mat010-closure"
+  },
+  "evidence_sha256": {
+    "fresh_lean_audit_source": "b7511d361724728b04468c19170e7d72d6efe02042f5393729795f2bd4a3cfc5",
+    "fresh_nominal_result": "ba2dfac701521150c2dec517dbb31c1128a2ab447b34c45af1d09b45386edbd4",
+    "retained_negative_manifest": "4194411b7a448f4dbf647ef2fd8659cad59ac5841b71dceced87765d5b63cf84",
+    "retained_proof_manifest": "cb117a9335eb0eb3c68f238750749f6523938c9d95b67829cacab4aea1c71567",
+    "source_binding": "63ba2c981666a8854f01f43cceb0301a5e7d211d66738aa67b78457351eb38c7"
+  },
+  "findings": [],
+  "independent_executions": {
+    "fresh_nominal": {
+      "declarations_sha256": "2bd2e259f54ca1186ee3171a3fbeee05d049d77a59c2ce93738a6cdce32ece07",
+      "directory": "nominal-replay",
+      "status": "PASS"
+    },
+    "mutations": {
+      "compiler_suffix_false_axiom_cstage1": {
+        "build_exit_codes": [
+          0,
+          0,
+          1
+        ],
+        "detected": true,
+        "directory": "compiler_suffix_false_axiom_cstage1",
+        "expected_diagnostic": "project axiom declaration MAT010.Archive.independent_false_cstage1",
+        "mutant_sha256": "3486b6a556a994290ea229ea641961ba813f1c2409ad4252a81fae0181b8fa7b"
+      },
+      "compiler_suffix_false_axiom_cstage2": {
+        "build_exit_codes": [
+          0,
+          0,
+          1
+        ],
+        "detected": true,
+        "directory": "compiler_suffix_false_axiom_cstage2",
+        "expected_diagnostic": "project axiom declaration MAT010.Archive.independent_false_cstage2",
+        "mutant_sha256": "31e895dfeedb865713c942b89ebf14051b0c487f0f3a466fbb2190db1616b773"
+      },
+      "source_unsafe_suffix_definition": {
+        "build_exit_codes": [
+          0,
+          0,
+          1
+        ],
+        "detected": true,
+        "directory": "source_unsafe_suffix_definition",
+        "expected_diagnostic": "unsafe project definition MAT010.Archive.independent_unsafe_cstage1",
+        "mutant_sha256": "8bb2a3e6d42aa74fdc96be1fcb3a635ff4aaa156dba7f85cdb02c33ea851c33b"
+      }
+    },
+    "verification": {
+      "evidence_verifier": {
+        "exit_code": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "69c9f10f64d7f25715db91aa4d6a76ab64d0c6a3fe53a6985e9ba4edc5220d61"
+      },
+      "focused_tests": {
+        "exit_code": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "16371d7ddc80334da217ec46a898adc96a0e0f0abd99ef339bab460bb8abd473"
+      },
+      "source_binding": {
+        "exit_code": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "c4359b165f7dfa0f9c1fb07240a7483e6eaccb08271b9d5b1789f8c8ab49956d"
+      }
+    }
+  },
+  "proof_identity": {
+    "compiler_auxiliaries": 151,
+    "declarations": 333,
+    "hashed_external_imports": 1303,
+    "input_commit": "2f2ea6d3deffebc7a552ec79f42ea829b9812d3e",
+    "lean_version": "Lean 4.19.0",
+    "named_A1_A7_theorems": 7,
+    "ordinary_declaration_transitive_axioms": [
+      "Quot.sound",
+      "propext"
+    ],
+    "ordinary_non_theorem_declarations": 119,
+    "retained_and_fresh_compiler_trust_byte_identical": true,
+    "retained_and_fresh_declarations_byte_identical": true,
+    "retained_and_fresh_named_axioms_byte_identical": true,
+    "retained_and_fresh_proof_imports_byte_identical": true,
+    "retained_and_fresh_theorem_types_byte_identical": true,
+    "retained_and_fresh_toolchain_import_hashes_byte_identical": true,
+    "theorem_declarations": 63,
+    "unsafe_compiler_axioms": 15,
+    "unsafe_generated_definitions": 136
+  },
+  "remaining_gaps": [
+    "No source-to-model or CPython refinement theorem for arbitrary Python inputs or subclasses.",
+    "A6 is conditional on its stated malformed predicate; no claim that each malformed constructor is independently nonvacuous.",
+    "The frozen caller\u2019s exact 63-member archive inventory is not proved by the direct validator model.",
+    "The compiler and imported toolchain remain trusted; compiler axiom allowances are bound to the exact source, binary, declaration inventory and hashes.",
+    "Phase B verify_parent and Phase C science_closure remain OPEN.",
+    "No archive deposition, physical experimental replication, real classifier training, held-out accuracy, or scientific unification claim follows."
+  ],
+  "retained_evidence": {
+    "complete_verifier": "PASS: 9 execution receipts, 17 model development attempts, 5 audit development attempts",
+    "finite": "28 cases; 23 exact built-in passed; three subclass boundary counterexamples",
+    "full_repository_pytest": "340 passed, 202 subtests passed in retained receipt",
+    "full_repository_ruff": "PASS in retained receipt",
+    "negative_001": "FAIL retained: prohibited_sorry expected ArchiveModel, observed LeanAudit/sorryAx",
+    "negative_002": "PASS 6/6"
+  },
+  "schema": "sonification-mat010-phase-a-independent-audit/v1",
+  "source_identity": {
+    "annotated_tag_object": "b8e88a0a32db30558e00704669eeaafee3a8d5f5",
+    "immediate_mat009_predecessor": "0758a96360726aafbb07abed34620eda178407ae",
+    "module_blob": "180e44dc81a0ff59cb08bd87d6a87538c275b054",
+    "module_sha256": "e062474d4435e769f8c6c8407bc44ad89cfb2dfa04677b820c3a035d604a9056",
+    "peeled_commit": "9d12c6a5098f4edba972bb6b1067555d8f48f693",
+    "release_tag": "mat-spec-010-v0.1.0",
+    "source_binding": "SOURCE_SYNTAX_MATCH"
+  },
+  "statement_review": {
+    "A1": "For any successful finite-list model input, both stage sequences equal nine constants and both input lists have length nine.",
+    "A2": "Successful claims have distinct syntactically valid lowercase-hex 40-character merged commits.",
+    "A3": "Each emitted artifact has a stage in the nine constants, valid model name and 64-character digest, stage-001-only MIDI, and a paired claim/snapshot/member source with matching version.",
+    "A4": "Successful output has distinct logical paths and final stage MAT-SPEC-009.",
+    "A5": "Equal stage IDs and versions plus permutation of full member pairs and distinct names imply equal ordered emit and validate outputs for arbitrary finite lists.",
+    "A6": "Conditional fail-closed theorem for 13 explicit malformed model classes.",
+    "A7": "Constructed base and extra-member nine-stage cases succeed; empty snapshots fail.",
+    "additional_member_behavior": "Frozen direct Python validator accepts a well-formed extra member and omission of a non-evidence member; both observed in finite corpus and consistent with model.",
+    "scope_assumptions": [
+      "Exact String fields and finite List member maps",
+      "Distinct member names stand for built-in dict keys",
+      "Path.suffix and Python object semantics are not proved equivalent to model character-list operations"
+    ]
+  },
+  "verdict": {
+    "REFINEMENT_PROVED": "OPEN",
+    "phase_A": "PASS_FOR_SCOPED_MODEL_AND_AUDIT_GATE",
+    "phase_B_verify_parent": "OPEN",
+    "phase_C_science_closure": "OPEN",
+    "physical_experimental_validation": "NOT_CLAIMED"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat010-negative-prohibited_project_axiom-hfbvajzi/ArchiveModel.olean",
+        "ArchiveModel.lean"
+      ],
+      "cwd": "/tmp/mat010-negative-prohibited_project_axiom-hfbvajzi",
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat010-negative-prohibited_project_axiom-hfbvajzi/ArchiveConsumer.olean",
+        "ArchiveConsumer.lean"
+      ],
+      "cwd": "/tmp/mat010-negative-prohibited_project_axiom-hfbvajzi",
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "2b6861a6bb7afaa3cde34d34e8dea6e5d23d316ba7c406f1f8ed0cb3bc19b813",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat010-negative-prohibited_project_axiom-hfbvajzi/LeanAudit.olean",
+        "LeanAudit.lean"
+      ],
+      "cwd": "/tmp/mat010-negative-prohibited_project_axiom-hfbvajzi",
+      "exit_code": 1,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "eafc89c87693f670b8816017e25dcb9089179401dfa7631cf0c0e69f4ee5d696",
+      "timed_out": false
+    }
+  ],
+  "detected": true,
+  "expected_diagnostic_text": "project axiom declaration",
+  "expected_failure_module": "LeanAudit",
+  "mutant_sha256": "7c2ba76cdad31243773fc76366b9b3476b9c05929d3ac582f14b389d0aa1f02e",
+  "mutation": "prohibited_project_axiom",
+  "observed_failure_module": "LeanAudit",
+  "target_module": "ArchiveModel"
+}

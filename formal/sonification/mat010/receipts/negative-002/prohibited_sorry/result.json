@@ -1,0 +1,53 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat010-negative-prohibited_sorry-19gvjd9b/ArchiveModel.olean",
+        "ArchiveModel.lean"
+      ],
+      "cwd": "/tmp/mat010-negative-prohibited_sorry-19gvjd9b",
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "4dcc6316b7f25ee92f0ccdddbd49a31f04f826cca68fb514c0a11f873b01933b",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat010-negative-prohibited_sorry-19gvjd9b/ArchiveConsumer.olean",
+        "ArchiveConsumer.lean"
+      ],
+      "cwd": "/tmp/mat010-negative-prohibited_sorry-19gvjd9b",
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "2b6861a6bb7afaa3cde34d34e8dea6e5d23d316ba7c406f1f8ed0cb3bc19b813",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat010-negative-prohibited_sorry-19gvjd9b/LeanAudit.olean",
+        "LeanAudit.lean"
+      ],
+      "cwd": "/tmp/mat010-negative-prohibited_sorry-19gvjd9b",
+      "exit_code": 1,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "0c6e9feabb4c15cfd5b6ac7b5b9d834c1b07ea32e77777f8f5225d99416f6606",
+      "timed_out": false
+    }
+  ],
+  "detected": true,
+  "expected_diagnostic_text": "unapproved transitive axiom sorryAx",
+  "expected_failure_module": "LeanAudit",
+  "mutant_sha256": "c14e4873301e7c7c67275eee01141965bd77ecc5f2249899009dcedca4e6f3c8",
+  "mutation": "prohibited_sorry",
+  "observed_failure_module": "LeanAudit",
+  "target_module": "ArchiveModel"
+}

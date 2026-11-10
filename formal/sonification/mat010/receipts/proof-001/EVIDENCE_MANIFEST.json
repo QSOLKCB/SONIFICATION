@@ -1,0 +1,26 @@
+{
+  "files_sha256": {
+    "build-00-ArchiveModel.json": "c98f2f3dc9b5059a129804d9a41cbb65750b9c3e261e7118c6f9f913e56451be",
+    "build-00-ArchiveModel.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-00-ArchiveModel.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-01-ArchiveConsumer.json": "77f54dc2d607e4a5edf43e1a6d5500fbbd3c9dae1192a875d74759bbcb2c33cf",
+    "build-01-ArchiveConsumer.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-01-ArchiveConsumer.stdout": "2b6861a6bb7afaa3cde34d34e8dea6e5d23d316ba7c406f1f8ed0cb3bc19b813",
+    "build-02-LeanAudit.json": "374f59ea7b82b3247e76ef4a93437e91ba198268de9057b366714c41382ae85d",
+    "build-02-LeanAudit.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-02-LeanAudit.stdout": "45166f110401d4aefbe9704d7d00ef1e3c85d6dec2a2322030081ddaf32f2e0b",
+    "compiler-trust.json": "a642be3a975c18418982ff28dc61b7dd65fd094964e79aa5dbac8dabaadf96d0",
+    "declarations.json": "2bd2e259f54ca1186ee3171a3fbeee05d049d77a59c2ce93738a6cdce32ece07",
+    "lean-version.json": "23db1b4fe12f03a3bdb2204da3c5ba2e615124381710896fe1fef2be1f11eb41",
+    "lean-version.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "lean-version.stdout": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+    "named-axioms.json": "6e456578bbcf8c557a91ef5c12f7d7f44c0fc63a47e603c0ef3fd1f10e4c03f7",
+    "proof-imports.json": "7259514c4a8725d93cd7ab930f2412bf6c380aea293abf067fd6b550e7eed05d",
+    "result.json": "dc329abe01030f8371ef3bf4d41afc548117f491a771603c3f314d806b83f5af",
+    "theorem-types.json": "137004b89c1f83bb3bcc28d1860b22b3e0c7756d7af9cfcd6ba31191260b467c",
+    "toolchain-imports.json": "69c9e85cad9c3ec024130bd80dc3e1fa6351053f135304268741bf1f0fd1b2ad"
+  },
+  "input_commit": "dfb4afad4f326c45a9502b4825d08b06d48566c3",
+  "label": "proof-001",
+  "schema": "sonification-mat010-execution-files/v1"
+}

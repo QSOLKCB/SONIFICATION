@@ -1,0 +1,11 @@
+{
+  "files_sha256": {
+    "receipt.json": "f70095b435e84c094611d817fee6105922db9f0bbc0ed59b797a8c6054b080ec",
+    "result/result.json": "9a2db65ab4f068c3c4b84185ccf5210359ed3f60fc9345eeae5480fbcaf1f8ec",
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout.log": "262e9d45326ea70c0fbe57a23b076bf9d5f5c0e355bb7a500c937c7db1b854ae"
+  },
+  "input_commit": "1d07f94d03cd871c6d2a17c870f367b3e4d5a4a1",
+  "label": "finite-001",
+  "schema": "sonification-mat010-execution-files/v1"
+}

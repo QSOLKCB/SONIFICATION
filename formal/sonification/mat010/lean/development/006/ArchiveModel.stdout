@@ -1,0 +1,14 @@
+ArchiveModel.lean:612:2: error: tactic 'decide' failed for proposition
+  (validate MAT010.Archive.demoClaims MAT010.Archive.demoSnapshots).isSome = true ∧
+    (validate MAT010.Archive.demoClaims MAT010.Archive.demoSnapshotsExtra).isSome = true ∧
+      (validate MAT010.Archive.demoClaims []).isNone = true
+since its 'Decidable' instance
+  instDecidableAnd
+did not reduce to 'isTrue' or 'isFalse'.
+
+After unfolding the instances 'decEq', 'decidable_of_decidable_of_iff', 'instDecidableAnd', 'instDecidableEqBitVec', 'instDecidableEqBool', 'instDecidableEqChar', 'instDecidableEqFin', 'instDecidableEqList', 'instDecidableEqNat', 'instDecidableEqPos', 'instDecidableEqString', 'instDecidableEqUInt32', 'instDecidableLeBitVec', 'instDecidableLeUInt32', 'instDecidableNot', 'instDecidableOr', 'BitVec.decEq', 'Bool.decEq', 'List.decidableBAll', 'List.hasDecEq', 'List.instDecidableMemOfLawfulBEq', 'List.instDecidablePairwise', 'List.nodupDecidable', 'Nat.decEq', 'Nat.decLe', 'Nat.decLt', 'String.decEq', 'UInt32.decEq', 'UInt32.decLe', 'instDecidableValidInput', 'instDecidableValidMember' and 'instDecidableValidPair', reduction got stuck at the 'Decidable' instance
+  match (validate MAT010.Archive.demoClaims MAT010.Archive.demoSnapshots).isSome, true with
+  | false, false => isTrue ⋯
+  | false, true => isFalse ⋯
+  | true, false => isFalse ⋯
+  | true, true => isTrue ⋯

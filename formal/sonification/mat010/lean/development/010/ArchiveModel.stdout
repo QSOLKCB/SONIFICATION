@@ -1,0 +1,70 @@
+ArchiveModel.lean:615:78: error: tactic 'decide' failed for proposition
+  ValidMember firstStage { name := "audit.json", digest := MAT010.Archive.demoDigest }
+since its 'Decidable' instance
+  instDecidableValidMember firstStage { name := "audit.json", digest := MAT010.Archive.demoDigest }
+did not reduce to 'isTrue' or 'isFalse'.
+
+After unfolding the instances 'decEq', 'forall_prop_decidable', 'instDecidableAnd', 'instDecidableEqBitVec', 'instDecidableEqBool', 'instDecidableEqChar', 'instDecidableEqFin', 'instDecidableEqList', 'instDecidableEqNat', 'instDecidableEqPos', 'instDecidableEqString', 'instDecidableEqUInt32', 'instDecidableLeBitVec', 'instDecidableLeUInt32', 'instDecidableOr', 'BitVec.decEq', 'Bool.decEq', 'List.hasDecEq', 'Nat.decEq', 'Nat.decLe', 'Nat.decLt', 'String.decEq', 'UInt32.decEq', 'UInt32.decLe' and 'instDecidableValidMember', reduction got stuck at the 'Decidable' instance
+  match { name := "audit.json", digest := MAT010.Archive.demoDigest }.name.endsWith ".mid", true with
+  | false, false => isTrue ⋯
+  | false, true => isFalse ⋯
+  | true, false => isFalse ⋯
+  | true, true => isTrue ⋯
+ArchiveModel.lean:621:72: error: tactic 'decide' failed for proposition
+  ValidPair
+    { profile := firstStage, version := "v", mergedCommit := MAT010.Archive.demoCommitPrefix ++ "001",
+      evidenceFile := "audit.json" }
+    { identifier := firstStage, version := "v",
+      members := [{ name := "audit.json", digest := MAT010.Archive.demoDigest }] }
+since its 'Decidable' instance
+  instDecidableValidPair
+    { profile := firstStage, version := "v", mergedCommit := MAT010.Archive.demoCommitPrefix ++ "001",
+      evidenceFile := "audit.json" }
+    { identifier := firstStage, version := "v",
+      members := [{ name := "audit.json", digest := MAT010.Archive.demoDigest }] }
+did not reduce to 'isTrue' or 'isFalse'.
+
+After unfolding the instances 'decEq', 'decidable_of_decidable_of_iff', 'forall_prop_decidable', 'instDecidableAnd', 'instDecidableEqBitVec', 'instDecidableEqBool', 'instDecidableEqChar', 'instDecidableEqFin', 'instDecidableEqList', 'instDecidableEqNat', 'instDecidableEqPos', 'instDecidableEqString', 'instDecidableEqUInt32', 'instDecidableLeBitVec', 'instDecidableLeUInt32', 'instDecidableNot', 'instDecidableOr', 'BitVec.decEq', 'Bool.decEq', 'List.decidableBAll', 'List.hasDecEq', 'List.instDecidableMemOfLawfulBEq', 'List.instDecidablePairwise', 'List.nodupDecidable', 'Nat.decEq', 'Nat.decLe', 'Nat.decLt', 'String.decEq', 'UInt32.decEq', 'UInt32.decLe', 'instDecidableValidMember' and 'instDecidableValidPair', reduction got stuck at the 'Decidable' instance
+  match
+    { identifier := firstStage, version := "v",
+            members := [{ name := "audit.json", digest := MAT010.Archive.demoDigest }] }.members.all
+      fun member =>
+      decide
+        (ValidMember
+          { identifier := firstStage, version := "v",
+              members := [{ name := "audit.json", digest := MAT010.Archive.demoDigest }] }.identifier
+          member),
+    true with
+  | false, false => isTrue ⋯
+  | false, true => isFalse ⋯
+  | true, false => isFalse ⋯
+  | true, true => isTrue ⋯
+ArchiveModel.lean:627:57: error: tactic 'decide' failed for proposition
+  ValidInput MAT010.Archive.demoClaims MAT010.Archive.demoSnapshots
+since its 'Decidable' instance
+  instDecidableValidInput MAT010.Archive.demoClaims MAT010.Archive.demoSnapshots
+did not reduce to 'isTrue' or 'isFalse'.
+
+After unfolding the instances 'decEq', 'decidable_of_decidable_of_iff', 'forall_prop_decidable', 'instDecidableAnd', 'instDecidableEqBitVec', 'instDecidableEqBool', 'instDecidableEqChar', 'instDecidableEqFin', 'instDecidableEqList', 'instDecidableEqNat', 'instDecidableEqPos', 'instDecidableEqString', 'instDecidableEqUInt32', 'instDecidableLeBitVec', 'instDecidableLeUInt32', 'instDecidableNot', 'instDecidableOr', 'BitVec.decEq', 'Bool.decEq', 'List.decidableBAll', 'List.hasDecEq', 'List.instDecidableMemOfLawfulBEq', 'List.instDecidablePairwise', 'List.nodupDecidable', 'Nat.decEq', 'Nat.decLe', 'Nat.decLt', 'String.decEq', 'UInt32.decEq', 'UInt32.decLe', 'instDecidableValidInput', 'instDecidableValidMember' and 'instDecidableValidPair', reduction got stuck at the 'Decidable' instance
+  match
+    (MAT010.Archive.demoClaims.zip MAT010.Archive.demoSnapshots).all fun pair => decide (ValidPair pair.fst pair.snd),
+    true with
+  | false, false => isTrue ⋯
+  | false, true => isFalse ⋯
+  | true, false => isFalse ⋯
+  | true, true => isTrue ⋯
+ArchiveModel.lean:628:63: error: tactic 'decide' failed for proposition
+  ValidInput MAT010.Archive.demoClaims MAT010.Archive.demoSnapshotsExtra
+since its 'Decidable' instance
+  instDecidableValidInput MAT010.Archive.demoClaims MAT010.Archive.demoSnapshotsExtra
+did not reduce to 'isTrue' or 'isFalse'.
+
+After unfolding the instances 'decEq', 'decidable_of_decidable_of_iff', 'forall_prop_decidable', 'instDecidableAnd', 'instDecidableEqBitVec', 'instDecidableEqBool', 'instDecidableEqChar', 'instDecidableEqFin', 'instDecidableEqList', 'instDecidableEqNat', 'instDecidableEqPos', 'instDecidableEqString', 'instDecidableEqUInt32', 'instDecidableLeBitVec', 'instDecidableLeUInt32', 'instDecidableNot', 'instDecidableOr', 'BitVec.decEq', 'Bool.decEq', 'List.decidableBAll', 'List.hasDecEq', 'List.instDecidableMemOfLawfulBEq', 'List.instDecidablePairwise', 'List.nodupDecidable', 'Nat.decEq', 'Nat.decLe', 'Nat.decLt', 'String.decEq', 'UInt32.decEq', 'UInt32.decLe', 'instDecidableValidInput', 'instDecidableValidMember' and 'instDecidableValidPair', reduction got stuck at the 'Decidable' instance
+  match
+    (MAT010.Archive.demoClaims.zip MAT010.Archive.demoSnapshotsExtra).all fun pair =>
+      decide (ValidPair pair.fst pair.snd),
+    true with
+  | false, false => isTrue ⋯
+  | false, true => isFalse ⋯
+  | true, false => isFalse ⋯
+  | true, true => isTrue ⋯

@@ -1,0 +1,50 @@
+{
+  "candidate_commit": "7e1e415c6590d8bf7257b4cbcd80de58c83d808b",
+  "case": "compiler_suffix_false_axiom_cstage2",
+  "detected": true,
+  "expected_diagnostic": "project axiom declaration MAT010.Archive.independent_false_cstage2",
+  "jobs": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat010-closure/formal/sonification/mat010/audit/independent-001/compiler_suffix_false_axiom_cstage2/work/ArchiveModel.olean",
+        "ArchiveModel.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat010-closure/formal/sonification/mat010/audit/independent-001/compiler_suffix_false_axiom_cstage2/work",
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat010-closure/formal/sonification/mat010/audit/independent-001/compiler_suffix_false_axiom_cstage2/work/ArchiveConsumer.olean",
+        "ArchiveConsumer.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat010-closure/formal/sonification/mat010/audit/independent-001/compiler_suffix_false_axiom_cstage2/work",
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "2b6861a6bb7afaa3cde34d34e8dea6e5d23d316ba7c406f1f8ed0cb3bc19b813"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat010-closure/formal/sonification/mat010/audit/independent-001/compiler_suffix_false_axiom_cstage2/work/LeanAudit.olean",
+        "LeanAudit.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat010-closure/formal/sonification/mat010/audit/independent-001/compiler_suffix_false_axiom_cstage2/work",
+      "exit_code": 1,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "af57d3ad8fc59ef7a0e2df8f6714e7951d2f92bf31ecc52e38a3c884df88636a"
+    }
+  ],
+  "lean_executable_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "mutant_sha256": "31e895dfeedb865713c942b89ebf14051b0c487f0f3a466fbb2190db1616b773",
+  "scanner_sha256": "b7511d361724728b04468c19170e7d72d6efe02042f5393729795f2bd4a3cfc5"
+}

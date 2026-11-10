@@ -1,0 +1,80 @@
+{
+  "base_main": "7be5ca176da5a1a044be507d817d6aa86399ddf2",
+  "branch": "research/sonification-formal-001-mat010-closure",
+  "frozen_source": {
+    "annotated_tag_object": "b8e88a0a32db30558e00704669eeaafee3a8d5f5",
+    "blob": "180e44dc81a0ff59cb08bd87d6a87538c275b054",
+    "commit": "9d12c6a5098f4edba972bb6b1067555d8f48f693",
+    "immediate_mat009_predecessor": "0758a96360726aafbb07abed34620eda178407ae",
+    "module": "materials/mat_spec_010.py",
+    "release": "mat-spec-010-v0.1.0",
+    "sha256": "e062474d4435e769f8c6c8407bc44ad89cfb2dfa04677b820c3a035d604a9056",
+    "tree": "646f1de532738feeb59336a427881d643cf32dc1"
+  },
+  "next": "focused Phase A PR against current main; Phase B parent and Phase C closure in separately scoped follow-up",
+  "phase_A": {
+    "AUDIT_ACCEPTED": "PASS_FOR_SCOPED_MODEL_AND_AUDIT_GATE",
+    "DIFFERENTIAL_TESTED": "PASS_FOR_23_DECLARED_EXACT_BUILTIN_CASES",
+    "MODEL_PROVED": "PASS_FOR_SCOPED_MODEL",
+    "REFINEMENT_PROVED": "OPEN",
+    "failed_negative_attempt": "receipts/negative-001",
+    "finite_cases": 28,
+    "independent_candidate_commit": "7e1e415c6590d8bf7257b4cbcd80de58c83d808b",
+    "independent_report": "audit/independent-001/report.json",
+    "named_theorems": [
+      "M010_A1_ordered_nine",
+      "M010_A2_commit_identities",
+      "M010_A3_valid_artifact_identity",
+      "M010_A4_unique_logical_paths",
+      "M010_A5_deterministic_enumeration",
+      "M010_A6_fail_closed_malformed",
+      "M010_A7_accepted_and_rejected_nonvacuity"
+    ],
+    "negative_receipt": "receipts/negative-002",
+    "proof_receipt": "receipts/proof-002",
+    "scope": "direct validate_archive_membership exact-string finite-list model",
+    "subclass_counterexamples": [
+      "subclass_duplicate_commit_text",
+      "subclass_hidden_evidence_iteration",
+      "subclass_mid_suffix_override"
+    ]
+  },
+  "phase_B": {
+    "AUDIT_ACCEPTED": "OPEN",
+    "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+    "MODEL_PROVED": "OPEN",
+    "REFINEMENT_PROVED": "OPEN",
+    "target": "verify_parent"
+  },
+  "phase_C": {
+    "AUDIT_ACCEPTED": "OPEN",
+    "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+    "MODEL_PROVED": "OPEN",
+    "REFINEMENT_PROVED": "OPEN",
+    "target": "science_closure"
+  },
+  "proof_input_commit": "2f2ea6d3deffebc7a552ec79f42ea829b9812d3e",
+  "schema": "sonification-mat010-phase-a-handoff/v1",
+  "scientific_status": {
+    "E8_or_unification": "NOT_CLAIMED",
+    "human_auditory_test": "NOT_PERFORMED",
+    "independent_experimental_replication": "NOT_DEMONSTRATED",
+    "mat_spec_011_allowed": false,
+    "new_critical_exponent": "NOT_FITTED",
+    "real_classifier_trained": false,
+    "real_heldout_accuracy": null
+  },
+  "verification": {
+    "ci_repair": "Original six .olean outputs force-tracked; verifier now checks Git membership of mandatory evidence files; repeat CI pending",
+    "failed_full_suite_attempt": "repo-tests-001: isolated uvx environment lacked NumPy; retained",
+    "focused_pytest": "9 passed",
+    "full_repository_pytest": "340 passed, 202 subtests passed",
+    "full_repository_ruff": "PASS",
+    "independent_audit": "PASS: nominal replay plus _cstage1, _cstage2, and unsafe-suffix mutations",
+    "initial_pr_ci": "FAIL: 3.11 job found six audit .olean manifest members absent from Git; see analysis/005-ci-failure.json",
+    "negative_controls": "negative-002 PASS: 6/6 including _cstage1 and _cstage2",
+    "proof_build": "proof-002 PASS: 7 typed named theorems, 333 declarations, 1303 external imports",
+    "retained_integrity": "PASS: 9 execution receipts; 17 model and 5 audit development attempts",
+    "source_binding": "PASS"
+  }
+}

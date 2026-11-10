@@ -1,0 +1,18 @@
+{
+  "excluded_cache_suffix": ".olean",
+  "files_sha256": {
+    "ArchiveConsumer.lean": "dfc0cf31167adcde7f6723d5e6fc9f349deb4a6886c1f1c4ae11959e51ad43a9",
+    "ArchiveConsumer.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ArchiveConsumer.stdout": "2b6861a6bb7afaa3cde34d34e8dea6e5d23d316ba7c406f1f8ed0cb3bc19b813",
+    "ArchiveModel.lean": "c22a45e0afdca8287fc88b5bf34e28077ca4cb5c678859231507b3be246006d9",
+    "ArchiveModel.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ArchiveModel.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "LeanAudit.lean": "9b18fd357579c79725329a5c5f46c1c224ec84195f9cc98971ec48c1bcd4263e",
+    "LeanAudit.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "LeanAudit.stdout": "03a422734fb678647136cdabf85b1f7f0f32b253970319dead69eec91e8e342e",
+    "exit.json": "c46bce52d3fdbe29d822f117fa3ffaef80c204af332c81e5731ae3b4419152d2",
+    "lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea"
+  },
+  "label": "003",
+  "schema": "sonification-mat010-development-files/v1"
+}

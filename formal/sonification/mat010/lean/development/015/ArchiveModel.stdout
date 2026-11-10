@@ -1,0 +1,68 @@
+ArchiveModel.lean:660:9: error: unsolved goals
+⊢ List.map
+        (Artifact.logicalPath ∘
+          artifactOf
+            { identifier := "MAT-SPEC-001", version := "v",
+              members :=
+                [{ name := "extra.json", digest := MAT010.Archive.demoDigest },
+                  { name := "audit.json", digest := MAT010.Archive.demoDigest }] })
+        ([{ name := "extra.json", digest := MAT010.Archive.demoDigest },
+              { name := "audit.json", digest := MAT010.Archive.demoDigest }].mergeSort
+          memberLE) ++
+      ["dist/mat-spec-002/audit.json", "dist/mat-spec-003/audit.json", "dist/mat-spec-004/audit.json",
+        "dist/mat-spec-005/audit.json", "dist/mat-spec-006/audit.json", "dist/mat-spec-007/audit.json",
+        "dist/mat-spec-008/audit.json", "dist/mat-spec-009/audit.json"] =
+    ["dist/mat-spec-001/audit.json", "dist/mat-spec-001/extra.json", "dist/mat-spec-002/audit.json",
+      "dist/mat-spec-003/audit.json", "dist/mat-spec-004/audit.json", "dist/mat-spec-005/audit.json",
+      "dist/mat-spec-006/audit.json", "dist/mat-spec-007/audit.json", "dist/mat-spec-008/audit.json",
+      "dist/mat-spec-009/audit.json"]
+ArchiveModel.lean:672:4: error: tactic 'decide' failed for proposition
+  List.map Claim.profile MAT010.Archive.demoClaims = stages ∧
+    List.map Snapshot.identifier MAT010.Archive.demoSnapshots = stages ∧
+      (List.map Claim.mergedCommit MAT010.Archive.demoClaims).Nodup ∧
+        (MAT010.Archive.demoClaims.all fun claim => validCommit claim.mergedCommit) = true ∧
+          ((MAT010.Archive.demoClaims.zip MAT010.Archive.demoSnapshots).all fun pair =>
+                decide (ValidPair pair.fst pair.snd)) =
+              true ∧
+            ["dist/mat-spec-001/audit.json", "dist/mat-spec-002/audit.json", "dist/mat-spec-003/audit.json",
+                  "dist/mat-spec-004/audit.json", "dist/mat-spec-005/audit.json", "dist/mat-spec-006/audit.json",
+                  "dist/mat-spec-007/audit.json", "dist/mat-spec-008/audit.json",
+                  "dist/mat-spec-009/audit.json"].Nodup ∧
+              Option.map Artifact.stage (emit MAT010.Archive.demoClaims MAT010.Archive.demoSnapshots).getLast? =
+                some lastStage
+since its 'Decidable' instance
+  instDecidableAnd
+did not reduce to 'isTrue' or 'isFalse'.
+
+After unfolding the instances 'Option.decEqOption✝', 'decEq', 'decidable_of_decidable_of_iff', 'forall_prop_decidable', 'instDecidableAnd', 'instDecidableEqBitVec', 'instDecidableEqBool', 'instDecidableEqChar', 'instDecidableEqFin', 'instDecidableEqList', 'instDecidableEqNat', 'instDecidableEqPos', 'instDecidableEqString', 'instDecidableEqUInt32', 'instDecidableLeBitVec', 'instDecidableLeUInt32', 'instDecidableNot', 'instDecidableOr', 'BitVec.decEq', 'Bool.decEq', 'List.decidableBAll', 'List.hasDecEq', 'List.instDecidableMemOfLawfulBEq', 'List.instDecidablePairwise', 'List.nodupDecidable', 'Nat.decEq', 'Nat.decLe', 'Nat.decLt', 'Option.instDecidableEq', 'String.decEq', 'UInt32.decEq', 'UInt32.decLe', 'instDecidableValidMember' and 'instDecidableValidPair', reduction got stuck at the 'Decidable' instance
+  match Option.map Artifact.stage (emit MAT010.Archive.demoClaims MAT010.Archive.demoSnapshots).getLast?,
+    some lastStage with
+  | none, none => isTrue ⋯
+  | none, some val => isFalse ⋯
+  | some val, none => isFalse ⋯
+  | some a, some b => if h : a = b then h ▸ isTrue ⋯ else isFalse ⋯
+ArchiveModel.lean:676:4: error: tactic 'decide' failed for proposition
+  List.map Claim.profile MAT010.Archive.demoClaims = stages ∧
+    List.map Snapshot.identifier MAT010.Archive.demoSnapshotsExtra = stages ∧
+      (List.map Claim.mergedCommit MAT010.Archive.demoClaims).Nodup ∧
+        (MAT010.Archive.demoClaims.all fun claim => validCommit claim.mergedCommit) = true ∧
+          ((MAT010.Archive.demoClaims.zip MAT010.Archive.demoSnapshotsExtra).all fun pair =>
+                decide (ValidPair pair.fst pair.snd)) =
+              true ∧
+            ["dist/mat-spec-001/audit.json", "dist/mat-spec-001/extra.json", "dist/mat-spec-002/audit.json",
+                  "dist/mat-spec-003/audit.json", "dist/mat-spec-004/audit.json", "dist/mat-spec-005/audit.json",
+                  "dist/mat-spec-006/audit.json", "dist/mat-spec-007/audit.json", "dist/mat-spec-008/audit.json",
+                  "dist/mat-spec-009/audit.json"].Nodup ∧
+              Option.map Artifact.stage (emit MAT010.Archive.demoClaims MAT010.Archive.demoSnapshotsExtra).getLast? =
+                some lastStage
+since its 'Decidable' instance
+  instDecidableAnd
+did not reduce to 'isTrue' or 'isFalse'.
+
+After unfolding the instances 'Option.decEqOption✝', 'decEq', 'decidable_of_decidable_of_iff', 'forall_prop_decidable', 'instDecidableAnd', 'instDecidableEqBitVec', 'instDecidableEqBool', 'instDecidableEqChar', 'instDecidableEqFin', 'instDecidableEqList', 'instDecidableEqNat', 'instDecidableEqPos', 'instDecidableEqString', 'instDecidableEqUInt32', 'instDecidableLeBitVec', 'instDecidableLeUInt32', 'instDecidableNot', 'instDecidableOr', 'BitVec.decEq', 'Bool.decEq', 'List.decidableBAll', 'List.hasDecEq', 'List.instDecidableMemOfLawfulBEq', 'List.instDecidablePairwise', 'List.nodupDecidable', 'Nat.decEq', 'Nat.decLe', 'Nat.decLt', 'Option.instDecidableEq', 'String.decEq', 'UInt32.decEq', 'UInt32.decLe', 'instDecidableValidMember' and 'instDecidableValidPair', reduction got stuck at the 'Decidable' instance
+  match Option.map Artifact.stage (emit MAT010.Archive.demoClaims MAT010.Archive.demoSnapshotsExtra).getLast?,
+    some lastStage with
+  | none, none => isTrue ⋯
+  | none, some val => isFalse ⋯
+  | some val, none => isFalse ⋯
+  | some a, some b => if h : a = b then h ▸ isTrue ⋯ else isFalse ⋯

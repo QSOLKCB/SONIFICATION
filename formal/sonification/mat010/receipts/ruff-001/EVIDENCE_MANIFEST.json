@@ -1,0 +1,10 @@
+{
+  "files_sha256": {
+    "receipt.json": "87a168cf948d5fac151a15951828c9d64f603f93ec2200bb009f3876a0c9a612",
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  },
+  "input_commit": "2792b1733b289f1e1a43b9c0d679b7afde182ad1",
+  "label": "ruff-001",
+  "schema": "sonification-mat010-execution-files/v1"
+}

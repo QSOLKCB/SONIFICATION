@@ -1,0 +1,53 @@
+{
+  "finding": "The `sorry` mutant was rejected by LeanAudit as a transitive sorryAx dependency, but the runner expected ArchiveModel to fail. This is a test expectation defect, not an accepted axiom bypass.",
+  "input_commit": "dfb4afad4f326c45a9502b4825d08b06d48566c3",
+  "negative_001_result": "FAIL",
+  "observed_cases": [
+    {
+      "detected": true,
+      "expected_failure_module": "ArchiveConsumer",
+      "mutant_sha256": "27d22560283855d224c635e889c7df13214d164ea8ecc169f764808ba33c1d55",
+      "mutation": "weaken_named_theorem",
+      "observed_failure_module": "ArchiveConsumer"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "LeanAudit",
+      "mutant_sha256": "7c2ba76cdad31243773fc76366b9b3476b9c05929d3ac582f14b389d0aa1f02e",
+      "mutation": "prohibited_project_axiom",
+      "observed_failure_module": "LeanAudit"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "LeanAudit",
+      "mutant_sha256": "bdff2dedbef5695b9d27d8b39bd6fc5fae62c15e292a366e6085083fc8bc50e7",
+      "mutation": "compiler_suffix_false_axiom_cstage1",
+      "observed_failure_module": "LeanAudit"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "LeanAudit",
+      "mutant_sha256": "81e70b8163423c37752ec2f46526f72272fa25d8cccaec2154242236b06a8907",
+      "mutation": "compiler_suffix_false_axiom_cstage2",
+      "observed_failure_module": "LeanAudit"
+    },
+    {
+      "detected": false,
+      "expected_failure_module": "ArchiveModel",
+      "mutant_sha256": "c14e4873301e7c7c67275eee01141965bd77ecc5f2249899009dcedca4e6f3c8",
+      "mutation": "prohibited_sorry",
+      "observed_failure_module": "LeanAudit"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "source_inventory",
+      "mutant_sha256": "36c064a869c5a9304c0fbedfc4009b353bccb32b80360a518f900a42c8ea669b",
+      "mutation": "unimported_failing_module",
+      "observed_failure_module": "source_inventory"
+    }
+  ],
+  "original_negative_result_sha256": "983ab68b6aa2697926f62acc00fb6e9d2f2c5cf25d5b89982a3175d6c42409d1",
+  "proof_001_result": "PASS; standalone scoped Lean gate passed; independent audit pending",
+  "remedy": "Update only the expected detector module/text in negative.py; retain negative-001; rerun all controls against a new proof-input commit.",
+  "schema": "sonification-mat010-negative-attempt-review/v1"
+}

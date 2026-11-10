@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "--error=warning",
+    "-o",
+    "/tmp/mat010-phase-a-lean-xx52wu94/ArchiveConsumer.olean",
+    "ArchiveConsumer.lean"
+  ],
+  "cwd": "/home/trent/sonification-formal-001-mat010-closure/formal/sonification/mat010/lean",
+  "exit_code": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "2b6861a6bb7afaa3cde34d34e8dea6e5d23d316ba7c406f1f8ed0cb3bc19b813",
+  "timed_out": false,
+  "timeout_seconds": 180
+}

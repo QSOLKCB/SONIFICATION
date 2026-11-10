@@ -1,0 +1,26 @@
+{
+  "REFINEMENT_PROVED": "OPEN",
+  "argv": [
+    "/usr/bin/python3",
+    "-m",
+    "formal.sonification.mat010.source_bind"
+  ],
+  "cwd": "/home/trent/sonification-formal-001-mat010-closure",
+  "exit_code": 0,
+  "frozen_source_sha256": "e062474d4435e769f8c6c8407bc44ad89cfb2dfa04677b820c3a035d604a9056",
+  "input_commit": "1d07f94d03cd871c6d2a17c870f367b3e4d5a4a1",
+  "inputs_sha256": {
+    "formal/sonification/mat010/SOURCE_BINDING.json": "63ba2c981666a8854f01f43cceb0301a5e7d211d66738aa67b78457351eb38c7",
+    "formal/sonification/mat010/conformance.py": "7a2b5bda01c6990c9f40ec0a08781e53c7b9be804aad552bd8f7c1376dc785b6",
+    "formal/sonification/mat010/source_bind.py": "a1662c8402e91da20928a7ed0d008ccbdda9ca2752428141d8580fc978293062",
+    "materials/mat_spec_010.py": "e062474d4435e769f8c6c8407bc44ad89cfb2dfa04677b820c3a035d604a9056",
+    "tests/test_sonification_formal_mat010_archive.py": "b85e8dc5630a9c59ff0dd68c7a7237a16feded1e9d523d41904191e1401c6299"
+  },
+  "label": "source-001",
+  "python_executable": "/usr/bin/python3.14",
+  "python_executable_sha256": "52e0a13e60a981d8c4b6478be2ba5176f69da07948a056bf49cf6f077e30cb41",
+  "python_version": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "schema": "sonification-mat010-execution-receipt/v1",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "c4359b165f7dfa0f9c1fb07240a7483e6eaccb08271b9d5b1789f8c8ab49956d"
+}

@@ -1,0 +1,90 @@
+
+==================================== ERRORS ====================================
+_____________________ ERROR collecting tests/test_audio.py _____________________
+ImportError while importing test module '/home/trent/sonification-formal-001-mat010-closure/tests/test_audio.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../.local/share/uv/python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_audio.py:7: in <module>
+    import numpy as np
+E   ModuleNotFoundError: No module named 'numpy'
+______________________ ERROR collecting tests/test_cli.py ______________________
+ImportError while importing test module '/home/trent/sonification-formal-001-mat010-closure/tests/test_cli.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../.local/share/uv/python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_cli.py:11: in <module>
+    from sonification.cli import main
+sonification/cli.py:22: in <module>
+    from .core.provenance import canonical_json_bytes, validate_manifest_integrity
+sonification/core/provenance.py:13: in <module>
+    import numpy as np
+E   ModuleNotFoundError: No module named 'numpy'
+_______________ ERROR collecting tests/test_prng_and_sources.py ________________
+ImportError while importing test module '/home/trent/sonification-formal-001-mat010-closure/tests/test_prng_and_sources.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../.local/share/uv/python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_prng_and_sources.py:5: in <module>
+    import numpy as np
+E   ModuleNotFoundError: No module named 'numpy'
+__________________ ERROR collecting tests/test_provenance.py ___________________
+ImportError while importing test module '/home/trent/sonification-formal-001-mat010-closure/tests/test_provenance.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../.local/share/uv/python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_provenance.py:8: in <module>
+    import numpy as np
+E   ModuleNotFoundError: No module named 'numpy'
+___________________ ERROR collecting tests/test_renderer.py ____________________
+ImportError while importing test module '/home/trent/sonification-formal-001-mat010-closure/tests/test_renderer.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../.local/share/uv/python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_renderer.py:7: in <module>
+    import numpy as np
+E   ModuleNotFoundError: No module named 'numpy'
+______________ ERROR collecting tests/test_security_hardening.py _______________
+ImportError while importing test module '/home/trent/sonification-formal-001-mat010-closure/tests/test_security_hardening.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../.local/share/uv/python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_security_hardening.py:10: in <module>
+    import sonification.cli as cli
+sonification/cli.py:22: in <module>
+    from .core.provenance import canonical_json_bytes, validate_manifest_integrity
+sonification/core/provenance.py:13: in <module>
+    import numpy as np
+E   ModuleNotFoundError: No module named 'numpy'
+___________________ ERROR collecting tests/test_synthesis.py ___________________
+ImportError while importing test module '/home/trent/sonification-formal-001-mat010-closure/tests/test_synthesis.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../.local/share/uv/python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_synthesis.py:5: in <module>
+    import numpy as np
+E   ModuleNotFoundError: No module named 'numpy'
+=========================== short test summary info ============================
+ERROR tests/test_audio.py
+ERROR tests/test_cli.py
+ERROR tests/test_prng_and_sources.py
+ERROR tests/test_provenance.py
+ERROR tests/test_renderer.py
+ERROR tests/test_security_hardening.py
+ERROR tests/test_synthesis.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 7 errors during collection !!!!!!!!!!!!!!!!!!!!
+7 errors in 0.27s

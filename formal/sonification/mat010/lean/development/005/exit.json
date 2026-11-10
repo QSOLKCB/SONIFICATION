@@ -1,0 +1,11 @@
+[
+  {
+    "argv": [
+      "lean",
+      "-o",
+      "ArchiveModel.olean",
+      "ArchiveModel.lean"
+    ],
+    "exit_code": 0
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "assurance": {
+    "REFINEMENT_PROVED": "OPEN",
+    "source": "SOURCE_SYNTAX_PINNED_ONLY"
+  },
+  "frozen_release": {
+    "peeled_commit": "9d12c6a5098f4edba972bb6b1067555d8f48f693",
+    "tag": "refs/tags/mat-spec-010-v0.1.0",
+    "tag_object": "b8e88a0a32db30558e00704669eeaafee3a8d5f5",
+    "tag_type": "tag",
+    "tree": "646f1de532738feeb59336a427881d643cf32dc1"
+  },
+  "function_spans": {
+    "ancestor_artifact_maps": {
+      "ast_source_segment_sha256": "68dd08f1fa381f01ed5663e8475c21ad142a2bef04b57a41bc655dd43b8f4078",
+      "end_line": 222,
+      "start_line": 210
+    },
+    "build_evidence": {
+      "ast_source_segment_sha256": "9bf1a9204d8c40a237e97f93348c3e9d300abe6d34b1207bb6e11975cd5fe9f4",
+      "end_line": 545,
+      "start_line": 443
+    },
+    "science_closure": {
+      "ast_source_segment_sha256": "aa3150e8460247d86ca05b945106fad8f176b978346cf5eac7d9d8f9e17c022c",
+      "end_line": 404,
+      "start_line": 373
+    },
+    "validate_archive_membership": {
+      "ast_source_segment_sha256": "1ef3a0051c924612f62162143d412e3126ca78996ef2b8c16c89ae736dc8cb4c",
+      "end_line": 274,
+      "start_line": 225
+    },
+    "verify_parent": {
+      "ast_source_segment_sha256": "822275fdc90981b40f1119ad93c1f398f71daec3ddb42e883d0044301ec8aae7",
+      "end_line": 370,
+      "start_line": 326
+    }
+  },
+  "immediate_predecessor": {
+    "commit": "0758a96360726aafbb07abed34620eda178407ae",
+    "release": "mat-spec-009-v0.1.0"
+  },
+  "module": {
+    "blob": "180e44dc81a0ff59cb08bd87d6a87538c275b054",
+    "path": "materials/mat_spec_010.py",
+    "sha256": "e062474d4435e769f8c6c8407bc44ad89cfb2dfa04677b820c3a035d604a9056"
+  },
+  "schema": "sonification-mat010-source-binding/v1"
+}

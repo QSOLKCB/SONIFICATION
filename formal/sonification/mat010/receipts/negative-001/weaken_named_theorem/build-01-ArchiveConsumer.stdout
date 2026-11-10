@@ -1,0 +1,13 @@
+ArchiveConsumer.lean:43:2: error: type mismatch
+  M010_A4_unique_logical_paths h
+has type
+  True : Prop
+but is expected to have type
+  (List.map Artifact.logicalPath out).Nodup ∧ Option.map Artifact.stage out.getLast? = some lastStage : Prop
+'MAT010.Archive.M010_A1_ordered_nine' depends on axioms: [propext, Quot.sound]
+'MAT010.Archive.M010_A2_commit_identities' depends on axioms: [propext, Quot.sound]
+'MAT010.Archive.M010_A3_valid_artifact_identity' depends on axioms: [propext, Quot.sound]
+'MAT010.Archive.M010_A4_unique_logical_paths' depends on axioms: [propext, Quot.sound]
+'MAT010.Archive.M010_A5_deterministic_enumeration' depends on axioms: [propext, Quot.sound]
+'MAT010.Archive.M010_A6_fail_closed_malformed' depends on axioms: [propext, Quot.sound]
+'MAT010.Archive.M010_A7_accepted_and_rejected_nonvacuity' depends on axioms: [propext, Quot.sound]

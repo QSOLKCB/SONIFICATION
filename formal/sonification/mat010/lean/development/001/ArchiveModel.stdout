@@ -1,0 +1,56 @@
+ArchiveModel.lean:66:16: error: unexpected token 'prefix'; expected term
+ArchiveModel.lean:66:23: error: unexpected token '=>'; expected ':'
+ArchiveModel.lean:86:6: error: failed to synthesize
+  Decidable (ValidMember snapshot.identifier member)
+
+Additional diagnostic information may be available using the `set_option diagnostics true` command.
+ArchiveModel.lean:89:2: error: unknown constant 'String.ofList'
+ArchiveModel.lean:121:6: error: failed to synthesize
+  Decidable (ValidPair pair.fst pair.snd)
+
+Additional diagnostic information may be available using the `set_option diagnostics true` command.
+ArchiveModel.lean:126:2: error: failed to synthesize
+  Decidable (ValidInput claims snapshots)
+
+Additional diagnostic information may be available using the `set_option diagnostics true` command.
+ArchiveModel.lean:134:2: error: unsolved goals
+case neg
+claims : List Claim
+snapshots : List Snapshot
+out : List Artifact
+h : sorry () = some out
+hv : ¬ValidInput claims snapshots
+⊢ ValidInput claims snapshots ∧ out = emit claims snapshots
+ArchiveModel.lean:132:4: warning: declaration uses 'sorry'
+ArchiveModel.lean:136:8: warning: declaration uses 'sorry'
+ArchiveModel.lean:150:8: warning: declaration uses 'sorry'
+ArchiveModel.lean:164:9: error: failed to synthesize
+  Decidable (ValidPair pair.fst pair.snd)
+
+Additional diagnostic information may be available using the `set_option diagnostics true` command.
+ArchiveModel.lean:161:62: error: unsolved goals
+case intro.intro.intro.intro.intro.intro.intro
+claims : List Claim
+snapshots : List Snapshot
+out : List Artifact
+h : validate claims snapshots = some out
+right✝¹ : out = emit claims snapshots
+left✝⁴ : List.map Claim.profile claims = stages
+left✝³ : List.map Snapshot.identifier snapshots = stages
+left✝² : (List.map Claim.mergedCommit claims).Nodup
+left✝¹ : (claims.all fun claim => validCommit claim.mergedCommit) = true
+hpairs : ((claims.zip snapshots).all fun pair => sorry) = true
+left✝ : (List.map Artifact.logicalPath (emit claims snapshots)).Nodup
+right✝ : Option.map Artifact.stage (emit claims snapshots).getLast? = some lastStage
+pair : Claim × Snapshot
+hmem : pair ∈ claims.zip snapshots
+⊢ ValidPair pair.fst pair.snd
+ArchiveModel.lean:184:11: error: failed to synthesize
+  Decidable (ValidMember snapshot.identifier member)
+
+Additional diagnostic information may be available using the `set_option diagnostics true` command.
+ArchiveModel.lean:204:10: error: invalid projection, structure has only 0 field(s)
+  decide_eq_true_eq
+has type
+  (decide ?m.10385 = true) = ?m.10385
+ArchiveModel.lean:223:8: warning: declaration uses 'sorry'

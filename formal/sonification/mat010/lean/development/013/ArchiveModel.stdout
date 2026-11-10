@@ -1,0 +1,17 @@
+ArchiveModel.lean:630:57: error: tactic 'decide' failed for proposition
+  ValidInput MAT010.Archive.demoClaims MAT010.Archive.demoSnapshots
+since its 'Decidable' instance
+  instDecidableValidInput MAT010.Archive.demoClaims MAT010.Archive.demoSnapshots
+did not reduce to 'isTrue' or 'isFalse'.
+
+Reduction got stuck at the 'Decidable' instance
+  (List.map Artifact.logicalPath (emit MAT010.Archive.demoClaims MAT010.Archive.demoSnapshots)).instDecidablePairwise
+ArchiveModel.lean:631:63: error: tactic 'decide' failed for proposition
+  ValidInput MAT010.Archive.demoClaims MAT010.Archive.demoSnapshotsExtra
+since its 'Decidable' instance
+  instDecidableValidInput MAT010.Archive.demoClaims MAT010.Archive.demoSnapshotsExtra
+did not reduce to 'isTrue' or 'isFalse'.
+
+Reduction got stuck at the 'Decidable' instance
+  (List.map Artifact.logicalPath
+      (emit MAT010.Archive.demoClaims MAT010.Archive.demoSnapshotsExtra)).instDecidablePairwise

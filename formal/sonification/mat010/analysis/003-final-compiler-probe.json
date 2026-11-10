@@ -1,0 +1,19 @@
+{
+  "assurance": "DEVELOPMENT_ONLY; accepted proof receipt and independent audit OPEN",
+  "default_deny_attempt": "audit-development/003",
+  "default_deny_exit": 1,
+  "default_deny_stdout_sha256": "03a422734fb678647136cdabf85b1f7f0f32b253970319dead69eec91e8e342e",
+  "has_source_range_on_compiler_auxiliary": false,
+  "input": "final ArchiveModel and ArchiveConsumer source before accepted proof-input commit",
+  "metadata_probe_attempt": "audit-development/004",
+  "metadata_probe_stdout_sha256": "515bc5427592ac03eee961f771c4becceb4eb6f4ca87236b5b06d59e6bc3fa64",
+  "observed_compiler_auxiliaries": 151,
+  "observed_declarations": 333,
+  "observed_project_compiler_axioms": 15,
+  "observed_theorems": 63,
+  "observed_unsafe_definitions": 136,
+  "schema": "sonification-mat010-final-phase-a-compiler-probe/v1",
+  "scoped_gate_development_attempt": "audit-development/005",
+  "scoped_gate_exit": 0,
+  "scoped_gate_stdout_sha256": "45166f110401d4aefbe9704d7d00ef1e3c85d6dec2a2322030081ddaf32f2e0b"
+}

@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "formal/sonification/mat010/lean/check.py",
+    "--lean",
+    "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "--baseline-commit",
+    "2f2ea6d3deffebc7a552ec79f42ea829b9812d3e",
+    "--out",
+    "/home/trent/sonification-formal-001-mat010-closure/formal/sonification/mat010/audit/independent-001/nominal-replay"
+  ],
+  "exit_code": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "831c7414a5b5306ea4644c5252c9f711812634e2228c6022bcbcdcb7beb2ca24"
+}

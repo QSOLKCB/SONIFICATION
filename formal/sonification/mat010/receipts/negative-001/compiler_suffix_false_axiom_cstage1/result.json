@@ -1,0 +1,53 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat010-negative-compiler_suffix_false_axiom_cstage1-umitc0qz/ArchiveModel.olean",
+        "ArchiveModel.lean"
+      ],
+      "cwd": "/tmp/mat010-negative-compiler_suffix_false_axiom_cstage1-umitc0qz",
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat010-negative-compiler_suffix_false_axiom_cstage1-umitc0qz/ArchiveConsumer.olean",
+        "ArchiveConsumer.lean"
+      ],
+      "cwd": "/tmp/mat010-negative-compiler_suffix_false_axiom_cstage1-umitc0qz",
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "2b6861a6bb7afaa3cde34d34e8dea6e5d23d316ba7c406f1f8ed0cb3bc19b813",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat010-negative-compiler_suffix_false_axiom_cstage1-umitc0qz/LeanAudit.olean",
+        "LeanAudit.lean"
+      ],
+      "cwd": "/tmp/mat010-negative-compiler_suffix_false_axiom_cstage1-umitc0qz",
+      "exit_code": 1,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "9207f8190a7f1ccf8b7251d205750c4c77de82dc8422fd9b347095ac6dc2d584",
+      "timed_out": false
+    }
+  ],
+  "detected": true,
+  "expected_diagnostic_text": "project axiom declaration MAT010.Archive.audit_false_cstage1",
+  "expected_failure_module": "LeanAudit",
+  "mutant_sha256": "bdff2dedbef5695b9d27d8b39bd6fc5fae62c15e292a366e6085083fc8bc50e7",
+  "mutation": "compiler_suffix_false_axiom_cstage1",
+  "observed_failure_module": "LeanAudit",
+  "target_module": "ArchiveModel"
+}

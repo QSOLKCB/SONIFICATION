@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "--version"
+  ],
+  "cwd": "/home/trent/sonification-formal-001-mat010-closure",
+  "exit_code": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+  "timed_out": false,
+  "timeout_seconds": 30
+}

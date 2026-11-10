@@ -1,0 +1,4 @@
+ArchiveModel.lean:217:10: error: invalid projection, structure has only 0 field(s)
+  decide_eq_true_eq
+has type
+  (decide ?m.11175 = true) = ?m.11175

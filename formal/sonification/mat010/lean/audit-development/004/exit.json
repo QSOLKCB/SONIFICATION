@@ -1,0 +1,32 @@
+[
+  {
+    "argv": [
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "--error=warning",
+      "-o",
+      "/home/trent/sonification-formal-001-mat010-closure/formal/sonification/mat010/lean/audit-development/004/ArchiveModel.olean",
+      "ArchiveModel.lean"
+    ],
+    "exit_code": 0
+  },
+  {
+    "argv": [
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "--error=warning",
+      "-o",
+      "/home/trent/sonification-formal-001-mat010-closure/formal/sonification/mat010/lean/audit-development/004/ArchiveConsumer.olean",
+      "ArchiveConsumer.lean"
+    ],
+    "exit_code": 0
+  },
+  {
+    "argv": [
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "--error=warning",
+      "-o",
+      "/home/trent/sonification-formal-001-mat010-closure/formal/sonification/mat010/lean/audit-development/004/AuditProbe.olean",
+      "AuditProbe.lean"
+    ],
+    "exit_code": 0
+  }
+]

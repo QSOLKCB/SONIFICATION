@@ -1,0 +1,9 @@
+{
+  "commands": [],
+  "detected": true,
+  "expected_diagnostic_text": "unexpected Lean module inventory",
+  "expected_failure_module": "source_inventory",
+  "mutant_sha256": "36c064a869c5a9304c0fbedfc4009b353bccb32b80360a518f900a42c8ea669b",
+  "mutation": "unimported_failing_module",
+  "observed_failure_module": "source_inventory"
+}
