@@ -77,7 +77,11 @@ def verify(attempt: Path = DEFAULT_ATTEMPT, lean: Path | None = None) -> dict:
             result["theorem_declaration_count_including_generated"] == 95 and
             len(result["named_intended_theorems"]) == 22,
             "proof declaration count changed")
-    actual_modules = {p.name for p in HERE.rglob("*.lean")}
+    # Recovery contains archived reproductions, not active proof modules.
+    actual_modules = {
+        p.name for p in HERE.rglob("*.lean")
+        if "recovery" not in p.relative_to(HERE).parts
+    }
     require(actual_modules == {f"{module}.lean" for module in MODULES},
             "current proof module coverage changed")
     for name, digest in result["input_sha256"].items():

@@ -128,9 +128,11 @@ def verify_baseline(commit: str) -> dict[str, str]:
         if raw != historical:
             raise ValueError(f"stale proof input: {name}")
         observed[name] = sha(raw)
+    # Recovery holds copied mutation inputs; only the five root files are proof modules.
     actual_modules = {
         str(p.relative_to(HERE)) for p in HERE.rglob("*.lean")
-        if ".lake" not in p.parts
+        if ".lake" not in p.parts and
+        "recovery" not in p.relative_to(HERE).parts
     }
     if actual_modules != {f"{module}.lean" for module in MODULES}:
         raise ValueError(f"Lean source module coverage changed: {sorted(actual_modules)}")
