@@ -1,0 +1,1 @@
+{"status": "FAIL", "error": "symlink forbidden: lib/lean/Init.olean", "out": "/tmp/independent-mat008-retained-lm1_kaai/controls/local_import_symlink_escape/verification"}

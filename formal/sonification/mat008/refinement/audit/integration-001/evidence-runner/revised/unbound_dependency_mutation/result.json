@@ -1,0 +1,15 @@
+{
+  "REFINEMENT_PROVED": "OPEN",
+  "assurance": "SOURCE_SYNTAX_AND_FINITE_CONFORMANCE_ONLY",
+  "baseline_commit": "e088c6654ce653e7341c073f15929110e3711316",
+  "commands": [],
+  "error": "working input differs from baseline commit: formal/sonification/mat008/conformance.py",
+  "python": {
+    "executable": "/usr/bin/python3",
+    "version": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]"
+  },
+  "schema": "sonification-mat008-refinement-execution-v1",
+  "started_utc": "2026-11-10T00:13:09.307115+00:00",
+  "status": "FAIL",
+  "working_directory": "/tmp/independent-mat008-integration-xebkca9h/checkout"
+}

@@ -1,0 +1,15 @@
+Refine/MapReason.lean:70:47: error: unsolved goals
+owners : OwnerMap
+key value : String
+⊢ (if True then some value else owners key) = some value
+Refine/MapReason.lean:92:78: error: unsolved goals
+s : PyState
+m : State
+row : AcceptedRow
+h : Related s m
+⊢ (match lookup m.owner row.originalRun with
+    | none => false
+    | some oldCampaign => decide (oldCampaign ≠ row.campaign)) =
+    match lookup m.owner row.originalRun with
+    | none => false
+    | some campaign => decide (campaign ≠ row.campaign)

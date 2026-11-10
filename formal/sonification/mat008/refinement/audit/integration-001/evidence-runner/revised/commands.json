@@ -1,0 +1,244 @@
+[
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "HEAD",
+      "--",
+      "formal/sonification/mat008/conformance.py"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 0,
+    "stdout_path": "00.stdout",
+    "stderr_path": "00.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "add",
+      "--",
+      "formal/sonification/mat008/refinement/evidence.py"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 0,
+    "stdout_path": "01.stdout",
+    "stderr_path": "01.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "user.name=Independent Auditor",
+      "-c",
+      "user.email=auditor@example.invalid",
+      "commit",
+      "-m",
+      "Temporary revised evidence audit inputs"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 0,
+    "stdout_path": "02.stdout",
+    "stderr_path": "02.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 0,
+    "stdout_path": "03.stdout",
+    "stderr_path": "03.stderr"
+  },
+  {
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat008/refinement/evidence.py",
+      "run",
+      "--out",
+      "/tmp/independent-mat008-integration-xebkca9h/revised/nominal",
+      "--baseline-commit",
+      "e088c6654ce653e7341c073f15929110e3711316"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 0,
+    "stdout_path": "04.stdout",
+    "stderr_path": "04.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "add",
+      "--",
+      "formal/sonification/mat008/refinement/receipts/conformance-independent"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 0,
+    "stdout_path": "05.stdout",
+    "stderr_path": "05.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "user.name=Independent Auditor",
+      "-c",
+      "user.email=auditor@example.invalid",
+      "commit",
+      "-m",
+      "Temporary observed execution receipt"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 0,
+    "stdout_path": "06.stdout",
+    "stderr_path": "06.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 0,
+    "stdout_path": "07.stdout",
+    "stderr_path": "07.stderr"
+  },
+  {
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat008/refinement/evidence.py",
+      "verify",
+      "/tmp/independent-mat008-integration-xebkca9h/revised/nominal",
+      "--receipt-commit",
+      "e7ba83cb59f02325e3351ab3fc2b567282b4ce87",
+      "--committed-path",
+      "formal/sonification/mat008/refinement/receipts/conformance-independent"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 0,
+    "stdout_path": "08.stdout",
+    "stderr_path": "08.stderr"
+  },
+  {
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat008/refinement/evidence.py",
+      "verify",
+      "/tmp/independent-mat008-integration-xebkca9h/revised/joint_test_log_hash",
+      "--receipt-commit",
+      "e7ba83cb59f02325e3351ab3fc2b567282b4ce87",
+      "--committed-path",
+      "formal/sonification/mat008/refinement/receipts/conformance-independent"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 1,
+    "stdout_path": "09.stdout",
+    "stderr_path": "09.stderr"
+  },
+  {
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat008/refinement/evidence.py",
+      "verify",
+      "/tmp/independent-mat008-integration-xebkca9h/revised/missing_one_log",
+      "--receipt-commit",
+      "e7ba83cb59f02325e3351ab3fc2b567282b4ce87",
+      "--committed-path",
+      "formal/sonification/mat008/refinement/receipts/conformance-independent"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 1,
+    "stdout_path": "10.stdout",
+    "stderr_path": "10.stderr"
+  },
+  {
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat008/refinement/evidence.py",
+      "verify",
+      "/tmp/independent-mat008-integration-xebkca9h/revised/deleted_all_logs",
+      "--receipt-commit",
+      "e7ba83cb59f02325e3351ab3fc2b567282b4ce87",
+      "--committed-path",
+      "formal/sonification/mat008/refinement/receipts/conformance-independent"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 1,
+    "stdout_path": "11.stdout",
+    "stderr_path": "11.stderr"
+  },
+  {
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat008/refinement/evidence.py",
+      "verify",
+      "/tmp/independent-mat008-integration-xebkca9h/revised/extra_file",
+      "--receipt-commit",
+      "e7ba83cb59f02325e3351ab3fc2b567282b4ce87",
+      "--committed-path",
+      "formal/sonification/mat008/refinement/receipts/conformance-independent"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 1,
+    "stdout_path": "12.stdout",
+    "stderr_path": "12.stderr"
+  },
+  {
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat008/refinement/evidence.py",
+      "verify",
+      "/tmp/independent-mat008-integration-xebkca9h/revised/extra_nested_file",
+      "--receipt-commit",
+      "e7ba83cb59f02325e3351ab3fc2b567282b4ce87",
+      "--committed-path",
+      "formal/sonification/mat008/refinement/receipts/conformance-independent"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 1,
+    "stdout_path": "13.stdout",
+    "stderr_path": "13.stderr"
+  },
+  {
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat008/refinement/evidence.py",
+      "verify",
+      "/tmp/independent-mat008-integration-xebkca9h/revised/symlink_log",
+      "--receipt-commit",
+      "e7ba83cb59f02325e3351ab3fc2b567282b4ce87",
+      "--committed-path",
+      "formal/sonification/mat008/refinement/receipts/conformance-independent"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 1,
+    "stdout_path": "14.stdout",
+    "stderr_path": "14.stderr"
+  },
+  {
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat008/refinement/evidence.py",
+      "run",
+      "--out",
+      "/tmp/independent-mat008-integration-xebkca9h/revised/unbound_dependency_mutation",
+      "--baseline-commit",
+      "e088c6654ce653e7341c073f15929110e3711316"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 1,
+    "stdout_path": "15.stdout",
+    "stderr_path": "15.stderr"
+  }
+]

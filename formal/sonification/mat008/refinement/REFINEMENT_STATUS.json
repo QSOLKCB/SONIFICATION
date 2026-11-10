@@ -3,6 +3,7 @@
   "milestone": "MAT-008-REFINE-001",
   "result": "PARTIAL_CONDITIONAL_MODEL_CORRESPONDENCE",
   "main_baseline": "ac1408cf0c459d79c3d0552287812a15ce644f0d",
+  "source_input_commit": "3be17be4c3b2812c5a610ef646cb4487f150dc52",
   "frozen_production_commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
   "frozen_production_sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08",
   "scope": "The ordered rows that reach the original-run gate, represented as exact Lean Strings. Source syntax is pinned; CPython semantics and raw-input projection are not proved.",
@@ -132,10 +133,13 @@
     "initial_negative_controls": "formal/sonification/mat008/refinement/lean/attempts/014-negative/result.json",
     "independent_root_replay": "formal/sonification/mat008/refinement/lean/attempts/015-root-replay/result.json",
     "independent_root_mutations": "formal/sonification/mat008/refinement/lean/attempts/016-root-negative/result.json",
+    "commit_bound_lean_build": "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound/result.json",
     "retained_lean_evidence_verifier": "formal/sonification/mat008/refinement/lean/attempts/019-retained-check/result.json",
     "retained_lean_tamper_controls": "formal/sonification/mat008/refinement/lean/attempts/020-retained-tamper/result.json",
     "retained_lean_handoff": "formal/sonification/mat008/refinement/lean/attempts/021-retained-handoff/handoff.json",
     "independent_lean_audit": "formal/sonification/mat008/refinement/audit/LEAN_AUDIT.json",
+    "independent_integration_review": "formal/sonification/mat008/refinement/audit/INTEGRATION_REVIEW.json",
+    "commit_bound_finite_receipt": "formal/sonification/mat008/refinement/receipts/conformance-001/result.json",
     "prior_mat008_model": "formal/sonification/mat008/lean/attempts/commit-bound-001/result.json",
     "prior_mat008_conformance": "formal/sonification/mat008/receipts/conformance-002/result/receipt.json"
   }

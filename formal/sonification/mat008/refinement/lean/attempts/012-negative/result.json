@@ -1,0 +1,158 @@
+{
+  "results": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/mat008-refine-mutant-82bxo685/project/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--accepted-model",
+        "/tmp/mat008-refine-mutant-82bxo685/accepted-model.lean",
+        "--out",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/attempts/012-negative/update_before_test/verification"
+      ],
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "Lean rejected Refine.MapReason",
+      "mutation": "update_before_test",
+      "observed_error": "Lean rejected Refine.MapReason; see original logs",
+      "source_sha256": "b2112b1231009a7f6cc7cb3f23c9ece7bddb681da10921aa00ab00c795287485"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/mat008-refine-mutant-6nx6tw7g/project/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--accepted-model",
+        "/tmp/mat008-refine-mutant-6nx6tw7g/accepted-model.lean",
+        "--out",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/attempts/012-negative/reason_erasure/verification"
+      ],
+      "counterexample": {
+        "commands": [
+          {
+            "argv": [
+              "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+              "-o",
+              "Mat008/RunOwnership.olean",
+              "Mat008/RunOwnership.lean"
+            ],
+            "exit_code": 0,
+            "working_directory": "/tmp/mat008-refine-mutant-6nx6tw7g/counterexample"
+          },
+          {
+            "argv": [
+              "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+              "-o",
+              "Counterexample.olean",
+              "Counterexample.lean"
+            ],
+            "exit_code": 0,
+            "working_directory": "/tmp/mat008-refine-mutant-6nx6tw7g/counterexample"
+          }
+        ],
+        "source_sha256": "0578527f8c15c39cc0ca611b5f455cfe60465c32b10d2ea783f6fae90a4f1b1b",
+        "statement": "Mutant removes a preexisting reason on a collision-free row."
+      },
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "Lean rejected Refine.MapReason",
+      "mutation": "reason_erasure",
+      "observed_error": "Lean rejected Refine.MapReason; see original logs",
+      "source_sha256": "321b4678305fa6de5031cb20a818c8829e83b3fd91fa945eb57db4f8d44e3aa7"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/mat008-refine-mutant-jdaaz23b/project/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--accepted-model",
+        "/tmp/mat008-refine-mutant-jdaaz23b/accepted-model.lean",
+        "--out",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/attempts/012-negative/weaker_r4_theorem/verification"
+      ],
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "Lean rejected Audit",
+      "mutation": "weaker_r4_theorem",
+      "observed_error": "Lean rejected Audit; see original logs",
+      "source_sha256": "b29ecdc931d4419e4d896a147dd338a1c889e823dcc4b87b7ae0ee0ae81d599c"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/mat008-refine-mutant-s2165i4l/project/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--accepted-model",
+        "/tmp/mat008-refine-mutant-s2165i4l/accepted-model.lean",
+        "--out",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/attempts/012-negative/weaker_r7_theorem/verification"
+      ],
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "Lean rejected Audit",
+      "mutation": "weaker_r7_theorem",
+      "observed_error": "Lean rejected Audit; see original logs",
+      "source_sha256": "9c787febd1592cb103bc929af396502e249a90800a6cc7eb92188addcc2c8da3"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/mat008-refine-mutant-k5nwuuro/project/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--accepted-model",
+        "/tmp/mat008-refine-mutant-k5nwuuro/accepted-model.lean",
+        "--out",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/attempts/012-negative/prohibited_data_assumption/verification"
+      ],
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "Lean rejected Audit",
+      "mutation": "prohibited_data_assumption",
+      "observed_error": "Lean rejected Audit; see original logs",
+      "source_sha256": "f0d8fcca57a4a6af87055dc1bef57145101470aa43e3356ff29a0bdd03fd7b6d"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/mat008-refine-mutant-m0oos32k/project/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--accepted-model",
+        "/tmp/mat008-refine-mutant-m0oos32k/accepted-model.lean",
+        "--out",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/attempts/012-negative/unimported_module/verification"
+      ],
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "module coverage mismatch",
+      "mutation": "unimported_module",
+      "observed_error": "module coverage mismatch: ['Audit.lean', 'Refine.lean', 'Refine/MapReason.lean', 'Unimported.lean']",
+      "source_sha256": "f1ce54798c837d020c1fdfacddaf0a5e9b85c7aaf608c21ad64e64ac4521d2ea"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/tmp/mat008-refine-mutant-7xmamfb6/project/check.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--accepted-model",
+        "/tmp/mat008-refine-mutant-7xmamfb6/accepted-model.lean",
+        "--out",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/attempts/012-negative/changed_accepted_model/verification"
+      ],
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "accepted mathematical dependency source mismatch",
+      "mutation": "changed_accepted_model",
+      "observed_error": "accepted mathematical dependency source mismatch",
+      "source_sha256": "f1ce54798c837d020c1fdfacddaf0a5e9b85c7aaf608c21ad64e64ac4521d2ea"
+    }
+  ],
+  "scope": "Abstract state correspondence only; CPython refinement OPEN.",
+  "status": "PASS"
+}

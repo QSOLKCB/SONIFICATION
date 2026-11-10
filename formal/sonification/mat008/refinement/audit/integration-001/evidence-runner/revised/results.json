@@ -1,0 +1,131 @@
+{
+  "source_commit": "e088c6654ce653e7341c073f15929110e3711316",
+  "receipt_commit": "e7ba83cb59f02325e3351ab3fc2b567282b4ce87",
+  "evidence_py_sha256": "031a9ff243b973fd9b95dd39dbc1aa824296d092e363d8872708ef75e919186c",
+  "results": [
+    {
+      "name": "baseline",
+      "argv": [
+        "python3",
+        "-B",
+        "formal/sonification/mat008/refinement/evidence.py",
+        "verify",
+        "/tmp/independent-mat008-integration-xebkca9h/revised/nominal",
+        "--receipt-commit",
+        "e7ba83cb59f02325e3351ab3fc2b567282b4ce87",
+        "--committed-path",
+        "formal/sonification/mat008/refinement/receipts/conformance-independent"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"EXECUTION_RECEIPT_MATCH\", \"out\": \"/tmp/independent-mat008-integration-xebkca9h/revised/nominal\", \"receipt_commit\": \"e7ba83cb59f02325e3351ab3fc2b567282b4ce87\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "joint_test_log_hash",
+      "argv": [
+        "python3",
+        "-B",
+        "formal/sonification/mat008/refinement/evidence.py",
+        "verify",
+        "/tmp/independent-mat008-integration-xebkca9h/revised/joint_test_log_hash",
+        "--receipt-commit",
+        "e7ba83cb59f02325e3351ab3fc2b567282b4ce87",
+        "--committed-path",
+        "formal/sonification/mat008/refinement/receipts/conformance-independent"
+      ],
+      "exit_code": 1,
+      "stdout": "{\"status\": \"FAIL\", \"error\": \"retained execution file differs from commit: 02.stderr\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "missing_one_log",
+      "argv": [
+        "python3",
+        "-B",
+        "formal/sonification/mat008/refinement/evidence.py",
+        "verify",
+        "/tmp/independent-mat008-integration-xebkca9h/revised/missing_one_log",
+        "--receipt-commit",
+        "e7ba83cb59f02325e3351ab3fc2b567282b4ce87",
+        "--committed-path",
+        "formal/sonification/mat008/refinement/receipts/conformance-independent"
+      ],
+      "exit_code": 1,
+      "stdout": "{\"status\": \"FAIL\", \"error\": \"retained execution file inventory mismatch\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "deleted_all_logs",
+      "argv": [
+        "python3",
+        "-B",
+        "formal/sonification/mat008/refinement/evidence.py",
+        "verify",
+        "/tmp/independent-mat008-integration-xebkca9h/revised/deleted_all_logs",
+        "--receipt-commit",
+        "e7ba83cb59f02325e3351ab3fc2b567282b4ce87",
+        "--committed-path",
+        "formal/sonification/mat008/refinement/receipts/conformance-independent"
+      ],
+      "exit_code": 1,
+      "stdout": "{\"status\": \"FAIL\", \"error\": \"retained execution file inventory mismatch\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "extra_file",
+      "argv": [
+        "python3",
+        "-B",
+        "formal/sonification/mat008/refinement/evidence.py",
+        "verify",
+        "/tmp/independent-mat008-integration-xebkca9h/revised/extra_file",
+        "--receipt-commit",
+        "e7ba83cb59f02325e3351ab3fc2b567282b4ce87",
+        "--committed-path",
+        "formal/sonification/mat008/refinement/receipts/conformance-independent"
+      ],
+      "exit_code": 1,
+      "stdout": "{\"status\": \"FAIL\", \"error\": \"retained execution file inventory mismatch\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "extra_nested_file",
+      "argv": [
+        "python3",
+        "-B",
+        "formal/sonification/mat008/refinement/evidence.py",
+        "verify",
+        "/tmp/independent-mat008-integration-xebkca9h/revised/extra_nested_file",
+        "--receipt-commit",
+        "e7ba83cb59f02325e3351ab3fc2b567282b4ce87",
+        "--committed-path",
+        "formal/sonification/mat008/refinement/receipts/conformance-independent"
+      ],
+      "exit_code": 1,
+      "stdout": "{\"status\": \"FAIL\", \"error\": \"retained execution file inventory mismatch\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "symlink_log",
+      "argv": [
+        "python3",
+        "-B",
+        "formal/sonification/mat008/refinement/evidence.py",
+        "verify",
+        "/tmp/independent-mat008-integration-xebkca9h/revised/symlink_log",
+        "--receipt-commit",
+        "e7ba83cb59f02325e3351ab3fc2b567282b4ce87",
+        "--committed-path",
+        "formal/sonification/mat008/refinement/receipts/conformance-independent"
+      ],
+      "exit_code": 1,
+      "stdout": "{\"status\": \"FAIL\", \"error\": \"retained execution file inventory mismatch\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "uncommitted_conformance_dependency",
+      "exit_code": 1,
+      "stdout": "{\"status\": \"FAIL\", \"out\": \"/tmp/independent-mat008-integration-xebkca9h/revised/unbound_dependency_mutation\", \"error\": \"working input differs from baseline commit: formal/sonification/mat008/conformance.py\"}\n"
+    }
+  ]
+}

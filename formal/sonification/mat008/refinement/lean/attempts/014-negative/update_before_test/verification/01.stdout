@@ -1,0 +1,30 @@
+Refine/MapReason.lean:97:94: error: unsolved goals
+case false
+s : PyState
+row : AcceptedRow
+arbitraryPriorFlag : Bool
+hg : mismatch s row = false
+⊢ (if mismatch { owners := write s.owners row.originalRun row.campaign, reasons := s.reasons } row = true then
+        { state := { owners := write s.owners row.originalRun row.campaign, reasons := insert s.reasons reuseReason },
+          row := row,
+          mismatchFlag := mismatch { owners := write s.owners row.originalRun row.campaign, reasons := s.reasons } row }
+      else
+        { state := { owners := write s.owners row.originalRun row.campaign, reasons := s.reasons }, row := row,
+          mismatchFlag :=
+            mismatch { owners := write s.owners row.originalRun row.campaign, reasons := s.reasons } row }).state =
+    { owners := write s.owners row.originalRun row.campaign, reasons := s.reasons }
+
+case true
+s : PyState
+row : AcceptedRow
+arbitraryPriorFlag : Bool
+hg : mismatch s row = true
+⊢ (if mismatch { owners := write s.owners row.originalRun row.campaign, reasons := s.reasons } row = true then
+        { state := { owners := write s.owners row.originalRun row.campaign, reasons := insert s.reasons reuseReason },
+          row := row,
+          mismatchFlag := mismatch { owners := write s.owners row.originalRun row.campaign, reasons := s.reasons } row }
+      else
+        { state := { owners := write s.owners row.originalRun row.campaign, reasons := s.reasons }, row := row,
+          mismatchFlag :=
+            mismatch { owners := write s.owners row.originalRun row.campaign, reasons := s.reasons } row }).state =
+    { owners := write s.owners row.originalRun row.campaign, reasons := insert s.reasons reuseReason }

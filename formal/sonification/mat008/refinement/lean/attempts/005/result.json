@@ -1,0 +1,46 @@
+[
+  {
+    "argv": [
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "-o",
+      "Mat008/RunOwnership.olean",
+      "Mat008/RunOwnership.lean"
+    ],
+    "cwd": "/tmp/mat008-refine-dytp_3ab",
+    "exit_code": 0,
+    "source_sha256": "653f4638568e4e461176cca7659360737f3ac2632152163602c789fd65ead201"
+  },
+  {
+    "argv": [
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "-o",
+      "Refine/MapReason.olean",
+      "Refine/MapReason.lean"
+    ],
+    "cwd": "/tmp/mat008-refine-dytp_3ab",
+    "exit_code": 0,
+    "source_sha256": "b1c7ba8aec7e83676233d7403035555ba8c1c8cbe1f3272fcb784f5dbb7568a5"
+  },
+  {
+    "argv": [
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "-o",
+      "Refine.olean",
+      "Refine.lean"
+    ],
+    "cwd": "/tmp/mat008-refine-dytp_3ab",
+    "exit_code": 0,
+    "source_sha256": "57f158ca7fdee1e49e6b645edbae19668542eda7090a1b98fba0154635607371"
+  },
+  {
+    "argv": [
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "-o",
+      "Audit.olean",
+      "Audit.lean"
+    ],
+    "cwd": "/tmp/mat008-refine-dytp_3ab",
+    "exit_code": 1,
+    "source_sha256": "7ec93646c34a424b8d1567f188686cf3b7b032058c4b8fccd2a274e9374976c2"
+  }
+]

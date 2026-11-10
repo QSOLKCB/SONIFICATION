@@ -1,0 +1,1 @@
+{"status": "FAIL", "error": "symlink forbidden: lib/lean/Init.olean", "out": "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/attempts/016-retained-tamper/local_import_symlink_escape/verification"}

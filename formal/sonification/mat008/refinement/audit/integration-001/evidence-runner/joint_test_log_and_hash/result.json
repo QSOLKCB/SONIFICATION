@@ -1,0 +1,68 @@
+{
+  "REFINEMENT_PROVED": "OPEN",
+  "assurance": "SOURCE_SYNTAX_AND_FINITE_CONFORMANCE_ONLY",
+  "baseline_commit": "b56d29a15efcd44f0b384581aed54f9c147083b8",
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "--version"
+      ],
+      "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+      "exit_code": 0,
+      "stderr_path": "00.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "00.stdout",
+      "stdout_sha256": "63990b3ee50c49ab28d70e29c0f967f0c71330e39243ffeb4d3a8d5878c8a978",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "formal/sonification/mat008/refinement/source_bind.py",
+        "--check-worktree"
+      ],
+      "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+      "exit_code": 0,
+      "stderr_path": "01.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "01.stdout",
+      "stdout_sha256": "0c4163b56737fa2f3974ad3907fcd0e93299934d1c09bb0f8bca03974b15319b",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_sonification_formal_mat008_refinement.py",
+        "-v"
+      ],
+      "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+      "exit_code": 0,
+      "stderr_path": "02.stderr",
+      "stderr_sha256": "a5dede072586bdb001d5ea7f3d7bb7f28c1654a37c69eabcb53d7939bfb6307e",
+      "stdout_path": "02.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false
+    }
+  ],
+  "input_sha256": {
+    "formal/sonification/mat008/refinement/SOURCE_BINDING.json": "5c43bdf9247e92d50e67eadc4a1521235e9297d69beadeb580b0f83fd6044691",
+    "formal/sonification/mat008/refinement/evidence.py": "e88e66a25065627471ceba7da5011482d6802b2c061bcaec100e82536a84d168",
+    "formal/sonification/mat008/refinement/source_bind.py": "f7bab64e6b664afe52054090dc5f95d6cf43ad6ddca2031fe0393ebfaab14ea4",
+    "tests/test_sonification_formal_mat008_refinement.py": "e539128eede0258c5febf8b9302bdb5b5bb1364437c7de02639a38fd60c562cd"
+  },
+  "python": {
+    "executable": "/usr/bin/python3",
+    "version": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]"
+  },
+  "schema": "sonification-mat008-refinement-execution-v1",
+  "started_utc": "2026-11-10T00:11:56.060933+00:00",
+  "status": "PASS",
+  "working_directory": "/tmp/independent-mat008-integration-xebkca9h/checkout"
+}

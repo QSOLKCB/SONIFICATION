@@ -1,0 +1,8 @@
+{
+  "temporary_commit": "b56d29a15efcd44f0b384581aed54f9c147083b8",
+  "nominal_exit": 0,
+  "dependency_mutation_before": "645ae27fcf222eef613bf16c3c9c87820e11472c8cbbb324ce7d431d1f5c8962",
+  "dependency_mutation_after": "0d56a53e2aa85b37968bda33a73f8023ad76f556be7604c0b889685b84708d46",
+  "mutated_run_exit": 0,
+  "mutated_verify_exit": 0
+}

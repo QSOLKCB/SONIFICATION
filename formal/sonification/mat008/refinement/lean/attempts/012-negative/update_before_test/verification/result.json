@@ -1,0 +1,73 @@
+{
+  "REFINEMENT_PROVED": "OPEN",
+  "accepted_mathematical_dependency": {
+    "module": "Mat008.RunOwnership",
+    "path": "/tmp/mat008-refine-mutant-82bxo685/accepted-model.lean",
+    "sha256": "653f4638568e4e461176cca7659360737f3ac2632152163602c789fd65ead201",
+    "source_commit": "ac1408cf0c459d79c3d0552287812a15ce644f0d"
+  },
+  "assurance": "ABSTRACT_STATE_CORRESPONDENCE_ONLY",
+  "baseline_commit": null,
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Mat008/RunOwnership.olean",
+        "Mat008/RunOwnership.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "/tmp/sonification-lean-du7b7da1"
+      },
+      "exit_code": 0,
+      "stderr_path": "00.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "00.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "working_directory": "/tmp/sonification-lean-du7b7da1"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "-o",
+        "Refine/MapReason.olean",
+        "Refine/MapReason.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "/tmp/sonification-lean-du7b7da1"
+      },
+      "exit_code": 1,
+      "stderr_path": "01.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "01.stdout",
+      "stdout_sha256": "31373cea99a57d28d124c0ec762b6550aca23154847570e13160f998d6e930ac",
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "working_directory": "/tmp/sonification-lean-du7b7da1"
+    }
+  ],
+  "error": "Lean rejected Refine.MapReason; see original logs",
+  "input_sha256": {
+    "Audit.lean": "9774642820f7329f9a489a2ce58bbcb9a5f87f0c3ce420104da0b86795991b8b",
+    "Refine.lean": "57f158ca7fdee1e49e6b645edbae19668542eda7090a1b98fba0154635607371",
+    "Refine/MapReason.lean": "b2112b1231009a7f6cc7cb3f23c9ece7bddb681da10921aa00ab00c795287485",
+    "check.py": "5c69278cf02539483dedf904d2069d2cef040e48d3eafc19285c2cfda5a6ba8a",
+    "expected-declarations.json": "b7c45c77356cd7c5210bc93f6cd61274eb5941c145d7c7d60b43966bd30536a4",
+    "expected-theorems.json": "da0625a11aa3bfbf9604016001929f52d0c7e33070cb722abdcf669e99972518",
+    "lakefile.toml": "02a2983a17a99f99dc62f134a3658dd54ff37fc4071d428c12338a8697e2f7fc",
+    "lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+    "negative.py": "8a254d34e5ddff515acee19e4bf576a0a7dc02bb8f9e2c7a9aeb45a73217107e",
+    "theorem-statements.json": "1d039b94c4eb18aa341dd1ad33bdfa9c97825d2884521446a9d973b97d81a1c2"
+  },
+  "lean_executable": {
+    "path": "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023"
+  },
+  "python_refinement": "OPEN",
+  "started_utc": "2026-11-10T00:03:19.569832+00:00",
+  "status": "FAIL",
+  "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "version_exit_code": 0
+}

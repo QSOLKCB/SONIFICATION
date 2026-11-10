@@ -1,0 +1,9 @@
+test_exact_frozen_source_and_selected_ast (test_sonification_formal_mat008_refinement.Mat008RefinementBoundaryTests.test_exact_frozen_source_and_selected_ast) ... ok
+test_order_and_subclass_boundaries (test_sonification_formal_mat008_refinement.Mat008RefinementBoundaryTests.test_order_and_subclass_boundaries) ... ok
+test_ordered_sequences_at_multiple_lengths (test_sonification_formal_mat008_refinement.Mat008RefinementBoundaryTests.test_ordered_sequences_at_multiple_lengths) ... ok
+test_processed_projection_and_sticky_reason_on_builtin_rows (test_sonification_formal_mat008_refinement.Mat008RefinementBoundaryTests.test_processed_projection_and_sticky_reason_on_builtin_rows) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.014s
+
+OK

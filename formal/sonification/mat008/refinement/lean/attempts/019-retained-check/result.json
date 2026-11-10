@@ -1,0 +1,26 @@
+{
+  "REFINEMENT_PROVED": "OPEN",
+  "assurance": "RETAINED_ABSTRACT_MODEL_EVIDENCE_INTEGRITY_ONLY",
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    }
+  ],
+  "declaration_count": 253,
+  "imported_toolchain_files": 1303,
+  "intended_theorems": 26,
+  "lean_root": "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0",
+  "manifest_sha256": "0fcc2432d35fe2c1a93e49da83ef9a5bfd031a41e36f23b74d4e0c66f7997159",
+  "negative_controls": 7,
+  "negative_receipt_sha256": "6bb14ba720aa2d3c4bc9a51e1b21c383f928a2fca2c142876202a17bd64162b2",
+  "nominal_receipt_sha256": "2fe92ab7e2bd37304b2b3dee28508d907f0c920f1cc159f74261ead9735ca388",
+  "status": "PASS",
+  "trust": "Reviewed verifier and fixed manifest pin; hashing/OS execution. This does not authenticate the original execution or rerun proof checking.",
+  "verifier_sha256": "1ad561f88287e0b039338cf6102905f757118ff0171a7b3d2d31c56f5d984c23"
+}

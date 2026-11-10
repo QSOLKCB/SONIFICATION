@@ -1,0 +1,93 @@
+{
+  "schema": "sonification-mat008-run-refinement-source-binding-v1",
+  "assurance": "SOURCE_SYNTAX_PINNED_ONLY",
+  "main_baseline": "ac1408cf0c459d79c3d0552287812a15ce644f0d",
+  "formalization_context_commit": "a1f74e8d1847d218d6b68c125fac9522e2ffc2fb",
+  "frozen_source": {
+    "tag": "refs/tags/mat-spec-008-v0.1.0",
+    "tag_object": "a02088e3c68addb41c9c7145694c0f566e84f87f",
+    "commit": "b4247877dd471e2e9d4986c86bdc1f11b14e43f8",
+    "tree": "eb19f2e06a502442f621a73be1e5696c2fa25a65",
+    "path": "materials/mat_spec_008.py",
+    "blob": "3117adbc3739c834f8203d5d2dd2b80d6caf862b",
+    "sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08"
+  },
+  "prior_binding": {
+    "path": "formal/sonification/mat008/SOURCE_BINDING.json",
+    "sha256": "0745c4178e6c06e8e16f0028eddf2152c480088daa3c35b36d96b5053d7bd0d4",
+    "meaning": "Full-history tag, source span, and 14 context-file identity inventory; independently verified by the existing verifier"
+  },
+  "accepted_model": {
+    "path": "formal/sonification/mat008/lean/Mat008/RunOwnership.lean",
+    "sha256": "653f4638568e4e461176cca7659360737f3ac2632152163602c789fd65ead201"
+  },
+  "source_slices": {
+    "_identity": {
+      "start_line": 69,
+      "end_line": 75,
+      "bytes": 289,
+      "sha256": "1ba1775e7b8092aa1ca3addbf761247f5100f266a1d3726a9c1e360483d7f63f"
+    },
+    "_decimal": {
+      "start_line": 217,
+      "end_line": 225,
+      "bytes": 362,
+      "sha256": "f9628dab124e40d9812b05257559d5afa5dd88d8c20f833b20e6ca508a323598"
+    },
+    "validator": {
+      "start_line": 228,
+      "end_line": 332,
+      "bytes": 5047,
+      "sha256": "e514874f36bef4f416c4a0fc8c1ee8705e2a6fb8ed15e62fd53f76a1d665660e"
+    },
+    "row_loop": {
+      "start_line": 246,
+      "end_line": 314,
+      "bytes": 3366,
+      "sha256": "5776de65155c3411f804abf5c2e0174e6c8ce2f9e0da9d2181254da7e55fa287"
+    },
+    "non_dict_guard": {
+      "start_line": 247,
+      "end_line": 249,
+      "bytes": 104,
+      "sha256": "35c4a2a91b15519e6c4be2b4bb14a18636a8fe70fe16a096af0edc201b9be0de"
+    },
+    "identity_try": {
+      "start_line": 250,
+      "end_line": 258,
+      "bytes": 392,
+      "sha256": "e74ce8a1fd8e6b8be3ce9de5b3e2db09752c8c381e3661864ee8dcc60e0c1bc9"
+    },
+    "run_document_gate": {
+      "start_line": 273,
+      "end_line": 279,
+      "bytes": 320,
+      "sha256": "82e5d1730a5f2520da6fff6b0b1945603f8edd772329ce1f568c73951bc07214"
+    },
+    "return": {
+      "start_line": 322,
+      "end_line": 332,
+      "bytes": 469,
+      "sha256": "1c9c933f158360b001fb65d71f628882c50796eb299a1ce60c480ab22eb4b1c4"
+    }
+  },
+  "parsed_identity_order": [
+    ["camp", "campaign_id"],
+    ["lab", "lab_family_id"],
+    ["run", "original_run_id"],
+    ["doc", "source_document_id"],
+    ["identifier", "row_id"]
+  ],
+  "gate_ir": {
+    "row_source": "records",
+    "iterations": [
+      ["REUSED_ORIGINAL_RUN_ACROSS_CAMPAIGNS", "run_to_campaign", "run"],
+      ["REUSED_ORIGINAL_DOCUMENT_ACROSS_CAMPAIGNS", "document_to_campaign", "doc"]
+    ],
+    "condition": "prior in owner and owner[prior] != camp",
+    "conditional_effect": "reasons.add(key)",
+    "unconditional_effect": "owner[prior] = camp",
+    "normal_return_observation": "sorted(reasons)"
+  },
+  "boundary": "AST source matching and frozen byte identity only. The AST-to-abstract-operation interpretation and CPython-to-Lean semantics bridge remain independent obligations."
+}

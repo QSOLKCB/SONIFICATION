@@ -1,0 +1,58 @@
+[
+  {
+    "name": "joint_test_log_and_hash",
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat008/refinement/evidence.py",
+      "verify",
+      "/tmp/independent-mat008-integration-xebkca9h/joint_test_log_and_hash"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 0,
+    "stdout": "{\"status\": \"EXECUTION_RECEIPT_MATCH\", \"out\": \"/tmp/independent-mat008-integration-xebkca9h/joint_test_log_and_hash\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "changed_recorded_interpreter",
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat008/refinement/evidence.py",
+      "verify",
+      "/tmp/independent-mat008-integration-xebkca9h/changed_recorded_interpreter"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 0,
+    "stdout": "{\"status\": \"EXECUTION_RECEIPT_MATCH\", \"out\": \"/tmp/independent-mat008-integration-xebkca9h/changed_recorded_interpreter\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "missing_one_log",
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat008/refinement/evidence.py",
+      "verify",
+      "/tmp/independent-mat008-integration-xebkca9h/missing_one_log"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 1,
+    "stdout": "{\"status\": \"FAIL\", \"error\": \"[Errno 2] No such file or directory: '/tmp/independent-mat008-integration-xebkca9h/missing_one_log/02.stderr'\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "deleted_all_logs",
+    "argv": [
+      "python3",
+      "-B",
+      "formal/sonification/mat008/refinement/evidence.py",
+      "verify",
+      "/tmp/independent-mat008-integration-xebkca9h/deleted_all_logs"
+    ],
+    "cwd": "/tmp/independent-mat008-integration-xebkca9h/checkout",
+    "exit_code": 1,
+    "stdout": "{\"status\": \"FAIL\", \"error\": \"[Errno 2] No such file or directory: '/tmp/independent-mat008-integration-xebkca9h/deleted_all_logs/00.stdout'\"}\n",
+    "stderr": ""
+  }
+]

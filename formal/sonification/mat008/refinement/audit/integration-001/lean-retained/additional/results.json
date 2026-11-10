@@ -1,0 +1,86 @@
+[
+  {
+    "name": "joint_nominal_log_hash",
+    "argv": [
+      "python3",
+      "-B",
+      "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+      "--lean",
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "--project",
+      "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+      "--nominal",
+      "/tmp/independent-mat008-retained-lm1_kaai/additional/joint_nominal_log_hash/nominal",
+      "--negative",
+      "/tmp/independent-mat008-retained-lm1_kaai/additional/joint_nominal_log_hash/negative",
+      "--out",
+      "/tmp/independent-mat008-retained-lm1_kaai/additional/joint_nominal_log_hash/verification"
+    ],
+    "exit_code": 1,
+    "stdout": "{\"status\": \"FAIL\", \"error\": \"retained file hash mismatch: attempts/013-checked/01.stderr\", \"out\": \"/tmp/independent-mat008-retained-lm1_kaai/additional/joint_nominal_log_hash/verification\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "duplicate_json_key",
+    "argv": [
+      "python3",
+      "-B",
+      "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+      "--lean",
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "--project",
+      "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+      "--nominal",
+      "/tmp/independent-mat008-retained-lm1_kaai/additional/duplicate_json_key/nominal",
+      "--negative",
+      "/tmp/independent-mat008-retained-lm1_kaai/additional/duplicate_json_key/negative",
+      "--out",
+      "/tmp/independent-mat008-retained-lm1_kaai/additional/duplicate_json_key/verification"
+    ],
+    "exit_code": 1,
+    "stdout": "{\"status\": \"FAIL\", \"error\": \"duplicate JSON key: status\", \"out\": \"/tmp/independent-mat008-retained-lm1_kaai/additional/duplicate_json_key/verification\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "changed_manifest_anchor",
+    "argv": [
+      "python3",
+      "-B",
+      "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+      "--lean",
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "--project",
+      "/tmp/independent-mat008-retained-lm1_kaai/additional/changed_manifest_anchor/project",
+      "--nominal",
+      "/tmp/independent-mat008-retained-lm1_kaai/additional/changed_manifest_anchor/nominal",
+      "--negative",
+      "/tmp/independent-mat008-retained-lm1_kaai/additional/changed_manifest_anchor/negative",
+      "--out",
+      "/tmp/independent-mat008-retained-lm1_kaai/additional/changed_manifest_anchor/verification"
+    ],
+    "exit_code": 1,
+    "stdout": "{\"status\": \"FAIL\", \"error\": \"retained evidence manifest anchor changed\", \"out\": \"/tmp/independent-mat008-retained-lm1_kaai/additional/changed_manifest_anchor/verification\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "deleted_negative_tree",
+    "argv": [
+      "python3",
+      "-B",
+      "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+      "--lean",
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "--project",
+      "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+      "--nominal",
+      "/tmp/independent-mat008-retained-lm1_kaai/additional/deleted_negative_tree/nominal",
+      "--negative",
+      "/tmp/independent-mat008-retained-lm1_kaai/additional/deleted_negative_tree/negative",
+      "--out",
+      "/tmp/independent-mat008-retained-lm1_kaai/additional/deleted_negative_tree/verification"
+    ],
+    "exit_code": 1,
+    "stdout": "{\"status\": \"FAIL\", \"error\": \"[Errno 2] No such file or directory: '/tmp/independent-mat008-retained-lm1_kaai/additional/deleted_negative_tree/negative'\", \"out\": \"/tmp/independent-mat008-retained-lm1_kaai/additional/deleted_negative_tree/verification\"}\n",
+    "stderr": ""
+  }
+]

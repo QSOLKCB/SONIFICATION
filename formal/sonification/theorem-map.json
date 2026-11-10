@@ -779,7 +779,8 @@
       "evidence": {
         "MODEL_PROVED": [
           "formal/sonification/mat008/refinement/lean/attempts/013-checked/result.json",
-          "formal/sonification/mat008/refinement/lean/attempts/015-root-replay/result.json"
+          "formal/sonification/mat008/refinement/lean/attempts/015-root-replay/result.json",
+          "formal/sonification/mat008/refinement/lean/attempts/022-commit-bound/result.json"
         ],
         "NEGATIVE_CONTROLS": [
           "formal/sonification/mat008/refinement/lean/attempts/014-negative/result.json",
@@ -799,7 +800,8 @@
         ]
       },
       "independent_specification_review": "PASS for this abstract mathematical relation only; see scoped independent audit.",
-      "audit_scope": "26 exact abstract mathematical statements with R1\u2013R7 and 253-declaration origin closure; source/CPython refinement OPEN"
+      "audit_scope": "26 exact abstract mathematical statements with R1\u2013R7 and 253-declaration origin closure; source/CPython refinement OPEN",
+      "proof_input_commit": "3be17be4c3b2812c5a610ef646cb4487f150dc52"
     },
     {
       "id": "MAT008.run_ownership.refinement_boundary_finite",
@@ -847,10 +849,14 @@
         ],
         "SOURCE_SYNTAX_BINDING": [
           "formal/sonification/mat008/refinement/SOURCE_BINDING.json"
+        ],
+        "INDEPENDENT_SNAPSHOT_REVIEW": [
+          "formal/sonification/mat008/refinement/audit/INTEGRATION_REVIEW.json"
         ]
       },
       "independent_specification_review": "PENDING for focused finite oracle and final commit-bound receipt.",
-      "audit_scope": "Recorded finite Python executions and counterexamples only; no universal implementation result"
+      "audit_scope": "Recorded finite Python executions and counterexamples only; no universal implementation result",
+      "test_input_commit": "3be17be4c3b2812c5a610ef646cb4487f150dc52"
     }
   ]
 }

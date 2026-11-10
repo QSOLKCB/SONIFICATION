@@ -1,0 +1,30 @@
+[
+  {
+    "argv": [
+      "python3",
+      "-B",
+      "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+      "--lean",
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "--out",
+      "/tmp/independent-mat008-retained-lm1_kaai/nominal"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"status\": \"PASS\", \"error\": null, \"out\": \"/tmp/independent-mat008-retained-lm1_kaai/nominal\"}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "python3",
+      "-B",
+      "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify_negative.py",
+      "--lean",
+      "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+      "--out",
+      "/tmp/independent-mat008-retained-lm1_kaai/controls"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"status\": \"PASS\", \"detected\": 18, \"total\": 18}\n",
+    "stderr": ""
+  }
+]

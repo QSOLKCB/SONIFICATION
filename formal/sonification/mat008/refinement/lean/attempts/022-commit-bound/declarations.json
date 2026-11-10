@@ -1,0 +1,2138 @@
+[
+  {
+    "axioms": [],
+    "declaration": "RefineStatementChecks.check_event_projection",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)),\n  Sonification.Mat008.AbstractPy.eventScanFrom s events =\n    Sonification.Mat008.AbstractPy.pyScanFrom s (Sonification.Mat008.AbstractPy.acceptedProjection events)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "RefineStatementChecks.check_instruction_program_correspondence",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow)\n  (arbitraryPriorFlag : Bool),\n  (Sonification.Mat008.AbstractPy.executeInstructions { state := s, row := row, mismatchFlag := arbitraryPriorFlag }\n        Sonification.Mat008.AbstractPy.runGateProgram).state =\n    Sonification.Mat008.AbstractPy.pyStep s row",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "RefineStatementChecks.check_lookup_support",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (table : List (String \u00d7 String)) (key : String),\n  Sonification.Mat008.lookup table key \u2260 none \u2192 key \u2208 List.map Prod.fst table",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "RefineStatementChecks.check_mismatch_iff",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.mismatch s row = true \u2194\n    \u2203 oldCampaign, s.owners row.originalRun = some oldCampaign \u2227 oldCampaign \u2260 row.campaign",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "RefineStatementChecks.check_mismatch_related",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.mismatch s row =\n      Sonification.Mat008.differentOwner m (Sonification.Mat008.AbstractPy.projectRow row)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "RefineStatementChecks.check_new_reason_iff_mismatch",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  s.reasons Sonification.Mat008.AbstractPy.reuseReason = false \u2192\n    ((Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason = true \u2194\n      Sonification.Mat008.AbstractPy.mismatch s row = true)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "RefineStatementChecks.check_nonvacuity",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "(Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty\n          [{ campaign := \"A\", originalRun := \"RUN\" }, { campaign := \"B\", originalRun := \"RUN\" },\n            { campaign := \"B\", originalRun := \"OTHER\" }]).reasons\n      Sonification.Mat008.AbstractPy.reuseReason =\n    true \u2227\n  (Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty\n          [{ campaign := \"A\", originalRun := \"RUN_A\" }, { campaign := \"B\", originalRun := \"RUN_B\" }]).reasons\n      Sonification.Mat008.AbstractPy.reuseReason =\n    false",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "RefineStatementChecks.check_preexisting_reason_counterexample",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "let s := { owners := fun x => none, reasons := fun x => true };\nSonification.Mat008.AbstractPy.mismatch s { campaign := \"CAMPAIGN\", originalRun := \"RUN\" } = false \u2227\n  (Sonification.Mat008.AbstractPy.pyStep s { campaign := \"CAMPAIGN\", originalRun := \"RUN\" }).reasons\n      Sonification.Mat008.AbstractPy.reuseReason =\n    true",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "RefineStatementChecks.check_r1_empty_related",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "Sonification.Mat008.AbstractPy.Related Sonification.Mat008.AbstractPy.empty Sonification.Mat008.initial",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "RefineStatementChecks.check_r2_finite_support",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State),\n  Sonification.Mat008.AbstractPy.Related s m \u2192 Sonification.Mat008.AbstractPy.FiniteSupport s.owners",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "RefineStatementChecks.check_r2_lookup",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State),\n  Sonification.Mat008.AbstractPy.Related s m \u2192 \u2200 (key : String), s.owners key = Sonification.Mat008.lookup m.owner key",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "RefineStatementChecks.check_r3_latest_campaign",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  (Sonification.Mat008.AbstractPy.pyStep s row).owners row.originalRun = some row.campaign",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "RefineStatementChecks.check_r3_overwrite",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.OwnersRelated (Sonification.Mat008.AbstractPy.pyStep s row).owners\n      (Sonification.Mat008.step m (Sonification.Mat008.AbstractPy.projectRow row)).owner",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "RefineStatementChecks.check_r4_reason_iff",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    ((Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason = true \u2194\n      (Sonification.Mat008.step m (Sonification.Mat008.AbstractPy.projectRow row)).conflict = true)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "RefineStatementChecks.check_r5_reason_sticky",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  s.reasons Sonification.Mat008.AbstractPy.reuseReason = true \u2192\n    (Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason = true",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "RefineStatementChecks.check_r5_sequence_sticky",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (rows : List Sonification.Mat008.AbstractPy.AcceptedRow),\n  s.reasons Sonification.Mat008.AbstractPy.reuseReason = true \u2192\n    (Sonification.Mat008.AbstractPy.pyScanFrom s rows).reasons Sonification.Mat008.AbstractPy.reuseReason = true",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "RefineStatementChecks.check_r6_accepted_projection",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.Related (Sonification.Mat008.AbstractPy.eventScanFrom s events)\n      (Sonification.Mat008.scanFrom m\n        (Sonification.Mat008.AbstractPy.project (Sonification.Mat008.AbstractPy.acceptedProjection events)))",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "RefineStatementChecks.check_r6_sequence_related",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (rows : List Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.Related (Sonification.Mat008.AbstractPy.pyScanFrom s rows)\n      (Sonification.Mat008.scanFrom m (Sonification.Mat008.AbstractPy.project rows))",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "declaration": "RefineStatementChecks.check_r7_collision_reason",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (rows : List Sonification.Mat008.AbstractPy.AcceptedRow) (a b : Sonification.Mat008.AbstractPy.AcceptedRow),\n  a \u2208 rows \u2192\n    b \u2208 rows \u2192\n      a.originalRun = b.originalRun \u2192\n        a.campaign \u2260 b.campaign \u2192\n          (Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty rows).reasons\n              Sonification.Mat008.AbstractPy.reuseReason =\n            true",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "RefineStatementChecks.check_reason_frame",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow) (reason : String),\n  reason \u2260 Sonification.Mat008.AbstractPy.reuseReason \u2192\n    (Sonification.Mat008.AbstractPy.pyStep s row).reasons reason = s.reasons reason",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "RefineStatementChecks.check_reason_step",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  (Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason =\n    (s.reasons Sonification.Mat008.AbstractPy.reuseReason || Sonification.Mat008.AbstractPy.mismatch s row)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "RefineStatementChecks.check_skip_frame",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (before after : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State),\n  Sonification.Mat008.AbstractPy.Related before m \u2192\n    (\u2200 (key : String), after.owners key = before.owners key) \u2192\n      after.reasons Sonification.Mat008.AbstractPy.reuseReason =\n          before.reasons Sonification.Mat008.AbstractPy.reuseReason \u2192\n        Sonification.Mat008.AbstractPy.Related after m",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "RefineStatementChecks.check_step_related",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.Related (Sonification.Mat008.AbstractPy.pyStep s row)\n      (Sonification.Mat008.step m (Sonification.Mat008.AbstractPy.projectRow row))",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "RefineStatementChecks.check_write_other",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (owners : Sonification.Mat008.AbstractPy.OwnerMap) (key value query : String),\n  query \u2260 key \u2192 Sonification.Mat008.AbstractPy.write owners key value query = owners query",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "RefineStatementChecks.check_write_related",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (owners : Sonification.Mat008.AbstractPy.OwnerMap) (table : List (String \u00d7 String)) (key value : String),\n  Sonification.Mat008.AbstractPy.OwnersRelated owners table \u2192\n    Sonification.Mat008.AbstractPy.OwnersRelated (Sonification.Mat008.AbstractPy.write owners key value)\n      ((key, value) :: table)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "RefineStatementChecks.check_write_same",
+    "kind": "non_theorem",
+    "origin": "Audit",
+    "type": "\u2200 (owners : Sonification.Mat008.AbstractPy.OwnerMap) (key value : String),\n  Sonification.Mat008.AbstractPy.write owners key value key = some value",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.AcceptedRow",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.AcceptedRow._sizeOf_1",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.AcceptedRow \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.AcceptedRow._sizeOf_inst",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "SizeOf Sonification.Mat008.AbstractPy.AcceptedRow",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.AcceptedRow.campaign",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.AcceptedRow \u2192 String",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.AcceptedRow.casesOn",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "{motive : Sonification.Mat008.AbstractPy.AcceptedRow \u2192 Sort u} \u2192\n  (t : Sonification.Mat008.AbstractPy.AcceptedRow) \u2192\n    ((campaign originalRun : String) \u2192 motive { campaign := campaign, originalRun := originalRun }) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.AcceptedRow.mk",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "String \u2192 String \u2192 Sonification.Mat008.AbstractPy.AcceptedRow",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.AcceptedRow.mk._flat_ctor",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "String \u2192 String \u2192 Sonification.Mat008.AbstractPy.AcceptedRow",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.AcceptedRow.mk.inj",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 {campaign originalRun campaign_1 originalRun_1 : String},\n  { campaign := campaign, originalRun := originalRun } = { campaign := campaign_1, originalRun := originalRun_1 } \u2192\n    campaign = campaign_1 \u2227 originalRun = originalRun_1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.AcceptedRow.mk.injEq",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (campaign originalRun campaign_1 originalRun_1 : String),\n  ({ campaign := campaign, originalRun := originalRun } = { campaign := campaign_1, originalRun := originalRun_1 }) =\n    (campaign = campaign_1 \u2227 originalRun = originalRun_1)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.AcceptedRow.mk.sizeOf_spec",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (campaign originalRun : String),\n  sizeOf { campaign := campaign, originalRun := originalRun } = 1 + sizeOf campaign + sizeOf originalRun",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.AcceptedRow.noConfusion",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "{P : Sort u} \u2192\n  {v1 v2 : Sonification.Mat008.AbstractPy.AcceptedRow} \u2192\n    v1 = v2 \u2192 Sonification.Mat008.AbstractPy.AcceptedRow.noConfusionType P v1 v2",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.AcceptedRow.noConfusionType",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sort u \u2192 Sonification.Mat008.AbstractPy.AcceptedRow \u2192 Sonification.Mat008.AbstractPy.AcceptedRow \u2192 Sort u",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.AcceptedRow.originalRun",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.AcceptedRow \u2192 String",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.AcceptedRow.rec",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "{motive : Sonification.Mat008.AbstractPy.AcceptedRow \u2192 Sort u} \u2192\n  ((campaign originalRun : String) \u2192 motive { campaign := campaign, originalRun := originalRun }) \u2192\n    (t : Sonification.Mat008.AbstractPy.AcceptedRow) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.AcceptedRow.recOn",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "{motive : Sonification.Mat008.AbstractPy.AcceptedRow \u2192 Sort u} \u2192\n  (t : Sonification.Mat008.AbstractPy.AcceptedRow) \u2192\n    ((campaign originalRun : String) \u2192 motive { campaign := campaign, originalRun := originalRun }) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.FiniteSupport",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.OwnerMap \u2192 Prop",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateFrame",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateFrame._sizeOf_1",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.GateFrame \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateFrame._sizeOf_inst",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "SizeOf Sonification.Mat008.AbstractPy.GateFrame",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateFrame.casesOn",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "{motive : Sonification.Mat008.AbstractPy.GateFrame \u2192 Sort u} \u2192\n  (t : Sonification.Mat008.AbstractPy.GateFrame) \u2192\n    ((state : Sonification.Mat008.AbstractPy.PyState) \u2192\n        (row : Sonification.Mat008.AbstractPy.AcceptedRow) \u2192\n          (mismatchFlag : Bool) \u2192 motive { state := state, row := row, mismatchFlag := mismatchFlag }) \u2192\n      motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateFrame.mismatchFlag",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.GateFrame \u2192 Bool",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateFrame.mk",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.PyState \u2192\n  Sonification.Mat008.AbstractPy.AcceptedRow \u2192 Bool \u2192 Sonification.Mat008.AbstractPy.GateFrame",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateFrame.mk._flat_ctor",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.PyState \u2192\n  Sonification.Mat008.AbstractPy.AcceptedRow \u2192 Bool \u2192 Sonification.Mat008.AbstractPy.GateFrame",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateFrame.mk.inj",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 {state : Sonification.Mat008.AbstractPy.PyState} {row : Sonification.Mat008.AbstractPy.AcceptedRow}\n  {mismatchFlag : Bool} {state_1 : Sonification.Mat008.AbstractPy.PyState}\n  {row_1 : Sonification.Mat008.AbstractPy.AcceptedRow} {mismatchFlag_1 : Bool},\n  { state := state, row := row, mismatchFlag := mismatchFlag } =\n      { state := state_1, row := row_1, mismatchFlag := mismatchFlag_1 } \u2192\n    state = state_1 \u2227 row = row_1 \u2227 mismatchFlag = mismatchFlag_1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.GateFrame.mk.injEq",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (state : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow)\n  (mismatchFlag : Bool) (state_1 : Sonification.Mat008.AbstractPy.PyState)\n  (row_1 : Sonification.Mat008.AbstractPy.AcceptedRow) (mismatchFlag_1 : Bool),\n  ({ state := state, row := row, mismatchFlag := mismatchFlag } =\n      { state := state_1, row := row_1, mismatchFlag := mismatchFlag_1 }) =\n    (state = state_1 \u2227 row = row_1 \u2227 mismatchFlag = mismatchFlag_1)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateFrame.mk.sizeOf_spec",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (state : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow)\n  (mismatchFlag : Bool),\n  sizeOf { state := state, row := row, mismatchFlag := mismatchFlag } =\n    1 + sizeOf state + sizeOf row + sizeOf mismatchFlag",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateFrame.noConfusion",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "{P : Sort u} \u2192\n  {v1 v2 : Sonification.Mat008.AbstractPy.GateFrame} \u2192\n    v1 = v2 \u2192 Sonification.Mat008.AbstractPy.GateFrame.noConfusionType P v1 v2",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateFrame.noConfusionType",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sort u \u2192 Sonification.Mat008.AbstractPy.GateFrame \u2192 Sonification.Mat008.AbstractPy.GateFrame \u2192 Sort u",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateFrame.rec",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "{motive : Sonification.Mat008.AbstractPy.GateFrame \u2192 Sort u} \u2192\n  ((state : Sonification.Mat008.AbstractPy.PyState) \u2192\n      (row : Sonification.Mat008.AbstractPy.AcceptedRow) \u2192\n        (mismatchFlag : Bool) \u2192 motive { state := state, row := row, mismatchFlag := mismatchFlag }) \u2192\n    (t : Sonification.Mat008.AbstractPy.GateFrame) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateFrame.recOn",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "{motive : Sonification.Mat008.AbstractPy.GateFrame \u2192 Sort u} \u2192\n  (t : Sonification.Mat008.AbstractPy.GateFrame) \u2192\n    ((state : Sonification.Mat008.AbstractPy.PyState) \u2192\n        (row : Sonification.Mat008.AbstractPy.AcceptedRow) \u2192\n          (mismatchFlag : Bool) \u2192 motive { state := state, row := row, mismatchFlag := mismatchFlag }) \u2192\n      motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateFrame.row",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.GateFrame \u2192 Sonification.Mat008.AbstractPy.AcceptedRow",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateFrame.state",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.GateFrame \u2192 Sonification.Mat008.AbstractPy.PyState",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateInstruction",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateInstruction.insertReasonIfMismatch",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.GateInstruction",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateInstruction.insertReasonIfMismatch.eq_1",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.GateInstruction.insertReasonIfMismatch = 1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateInstruction.overwriteOwner",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.GateInstruction",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateInstruction.overwriteOwner.eq_1",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.GateInstruction.overwriteOwner = 2",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateInstruction.testExistingOwner",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.GateInstruction",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.GateInstruction.testExistingOwner.eq_1",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.GateInstruction.testExistingOwner = 0",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.OwnerMap",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.OwnersRelated",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.OwnerMap \u2192 List (String \u00d7 String) \u2192 Prop",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.PyState",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.PyState._sizeOf_1",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.PyState \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.PyState._sizeOf_inst",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "SizeOf Sonification.Mat008.AbstractPy.PyState",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.PyState.casesOn",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "{motive : Sonification.Mat008.AbstractPy.PyState \u2192 Sort u} \u2192\n  (t : Sonification.Mat008.AbstractPy.PyState) \u2192\n    ((owners : Sonification.Mat008.AbstractPy.OwnerMap) \u2192\n        (reasons : Sonification.Mat008.AbstractPy.ReasonSet) \u2192 motive { owners := owners, reasons := reasons }) \u2192\n      motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.PyState.mk",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.OwnerMap \u2192\n  Sonification.Mat008.AbstractPy.ReasonSet \u2192 Sonification.Mat008.AbstractPy.PyState",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.PyState.mk._flat_ctor",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.OwnerMap \u2192\n  Sonification.Mat008.AbstractPy.ReasonSet \u2192 Sonification.Mat008.AbstractPy.PyState",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.PyState.mk.inj",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 {owners : Sonification.Mat008.AbstractPy.OwnerMap} {reasons : Sonification.Mat008.AbstractPy.ReasonSet}\n  {owners_1 : Sonification.Mat008.AbstractPy.OwnerMap} {reasons_1 : Sonification.Mat008.AbstractPy.ReasonSet},\n  { owners := owners, reasons := reasons } = { owners := owners_1, reasons := reasons_1 } \u2192\n    owners = owners_1 \u2227 reasons = reasons_1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.PyState.mk.injEq",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (owners : Sonification.Mat008.AbstractPy.OwnerMap) (reasons : Sonification.Mat008.AbstractPy.ReasonSet)\n  (owners_1 : Sonification.Mat008.AbstractPy.OwnerMap) (reasons_1 : Sonification.Mat008.AbstractPy.ReasonSet),\n  ({ owners := owners, reasons := reasons } = { owners := owners_1, reasons := reasons_1 }) =\n    (owners = owners_1 \u2227 reasons = reasons_1)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.PyState.mk.sizeOf_spec",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (owners : Sonification.Mat008.AbstractPy.OwnerMap) (reasons : Sonification.Mat008.AbstractPy.ReasonSet),\n  sizeOf { owners := owners, reasons := reasons } = 1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.PyState.noConfusion",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "{P : Sort u} \u2192\n  {v1 v2 : Sonification.Mat008.AbstractPy.PyState} \u2192\n    v1 = v2 \u2192 Sonification.Mat008.AbstractPy.PyState.noConfusionType P v1 v2",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.PyState.noConfusionType",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sort u \u2192 Sonification.Mat008.AbstractPy.PyState \u2192 Sonification.Mat008.AbstractPy.PyState \u2192 Sort u",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.PyState.owners",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.PyState \u2192 Sonification.Mat008.AbstractPy.OwnerMap",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.PyState.reasons",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.PyState \u2192 Sonification.Mat008.AbstractPy.ReasonSet",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.PyState.rec",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "{motive : Sonification.Mat008.AbstractPy.PyState \u2192 Sort u} \u2192\n  ((owners : Sonification.Mat008.AbstractPy.OwnerMap) \u2192\n      (reasons : Sonification.Mat008.AbstractPy.ReasonSet) \u2192 motive { owners := owners, reasons := reasons }) \u2192\n    (t : Sonification.Mat008.AbstractPy.PyState) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.PyState.recOn",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "{motive : Sonification.Mat008.AbstractPy.PyState \u2192 Sort u} \u2192\n  (t : Sonification.Mat008.AbstractPy.PyState) \u2192\n    ((owners : Sonification.Mat008.AbstractPy.OwnerMap) \u2192\n        (reasons : Sonification.Mat008.AbstractPy.ReasonSet) \u2192 motive { owners := owners, reasons := reasons }) \u2192\n      motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.ReasonSet",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.Related",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.PyState \u2192 Sonification.Mat008.State \u2192 Prop",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.acceptedProjection",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "List (Option Sonification.Mat008.AbstractPy.AcceptedRow) \u2192 List Sonification.Mat008.AbstractPy.AcceptedRow",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.acceptedProjection._sunfold",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "List (Option Sonification.Mat008.AbstractPy.AcceptedRow) \u2192 List Sonification.Mat008.AbstractPy.AcceptedRow",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.acceptedProjection.match_1",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "(motive : List (Option Sonification.Mat008.AbstractPy.AcceptedRow) \u2192 Sort u_1) \u2192\n  (x : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)) \u2192\n    (Unit \u2192 motive []) \u2192\n      ((events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)) \u2192 motive (none :: events)) \u2192\n        ((row : Sonification.Mat008.AbstractPy.AcceptedRow) \u2192\n            (events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)) \u2192 motive (some row :: events)) \u2192\n          motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.empty",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.PyState",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.eventScanFrom",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.PyState \u2192\n  List (Option Sonification.Mat008.AbstractPy.AcceptedRow) \u2192 Sonification.Mat008.AbstractPy.PyState",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.eventScanFrom._sunfold",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.PyState \u2192\n  List (Option Sonification.Mat008.AbstractPy.AcceptedRow) \u2192 Sonification.Mat008.AbstractPy.PyState",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.event_projection",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)),\n  Sonification.Mat008.AbstractPy.eventScanFrom s events =\n    Sonification.Mat008.AbstractPy.pyScanFrom s (Sonification.Mat008.AbstractPy.acceptedProjection events)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.executeInstruction",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.GateInstruction \u2192\n  Sonification.Mat008.AbstractPy.GateFrame \u2192 Sonification.Mat008.AbstractPy.GateFrame",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.executeInstruction.eq_1",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (instruction : Sonification.Mat008.AbstractPy.GateInstruction) (frame : Sonification.Mat008.AbstractPy.GateFrame),\n  Sonification.Mat008.AbstractPy.executeInstruction instruction frame =\n    if instruction = Sonification.Mat008.AbstractPy.GateInstruction.testExistingOwner then\n      { state := frame.state, row := frame.row,\n        mismatchFlag := Sonification.Mat008.AbstractPy.mismatch frame.state frame.row }\n    else\n      if instruction = Sonification.Mat008.AbstractPy.GateInstruction.insertReasonIfMismatch then\n        if frame.mismatchFlag = true then\n          {\n            state :=\n              { owners := frame.state.owners,\n                reasons :=\n                  Sonification.Mat008.AbstractPy.insert frame.state.reasons\n                    Sonification.Mat008.AbstractPy.reuseReason },\n            row := frame.row, mismatchFlag := frame.mismatchFlag }\n        else frame\n      else\n        if instruction = Sonification.Mat008.AbstractPy.GateInstruction.overwriteOwner then\n          {\n            state :=\n              {\n                owners :=\n                  Sonification.Mat008.AbstractPy.write frame.state.owners frame.row.originalRun frame.row.campaign,\n                reasons := frame.state.reasons },\n            row := frame.row, mismatchFlag := frame.mismatchFlag }\n        else frame",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.executeInstructions",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.GateFrame \u2192\n  List Sonification.Mat008.AbstractPy.GateInstruction \u2192 Sonification.Mat008.AbstractPy.GateFrame",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.executeInstructions._sunfold",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.GateFrame \u2192\n  List Sonification.Mat008.AbstractPy.GateInstruction \u2192 Sonification.Mat008.AbstractPy.GateFrame",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.executeInstructions.eq_1",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (frame : Sonification.Mat008.AbstractPy.GateFrame),\n  Sonification.Mat008.AbstractPy.executeInstructions frame [] = frame",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.executeInstructions.eq_2",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (frame : Sonification.Mat008.AbstractPy.GateFrame) (instruction : Sonification.Mat008.AbstractPy.GateInstruction)\n  (instructions : List Sonification.Mat008.AbstractPy.GateInstruction),\n  Sonification.Mat008.AbstractPy.executeInstructions frame (instruction :: instructions) =\n    Sonification.Mat008.AbstractPy.executeInstructions\n      (Sonification.Mat008.AbstractPy.executeInstruction instruction frame) instructions",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.executeInstructions.match_1",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "(motive : List Sonification.Mat008.AbstractPy.GateInstruction \u2192 Sort u_1) \u2192\n  (x : List Sonification.Mat008.AbstractPy.GateInstruction) \u2192\n    (Unit \u2192 motive []) \u2192\n      ((instruction : Sonification.Mat008.AbstractPy.GateInstruction) \u2192\n          (instructions : List Sonification.Mat008.AbstractPy.GateInstruction) \u2192 motive (instruction :: instructions)) \u2192\n        motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.insert",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.ReasonSet \u2192 String \u2192 Sonification.Mat008.AbstractPy.ReasonSet",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.insert.eq_1",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (reasons : Sonification.Mat008.AbstractPy.ReasonSet) (reason query : String),\n  Sonification.Mat008.AbstractPy.insert reasons reason query = if query = reason then true else reasons query",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.instruction_program_correspondence",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow)\n  (arbitraryPriorFlag : Bool),\n  (Sonification.Mat008.AbstractPy.executeInstructions { state := s, row := row, mismatchFlag := arbitraryPriorFlag }\n        Sonification.Mat008.AbstractPy.runGateProgram).state =\n    Sonification.Mat008.AbstractPy.pyStep s row",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.lookup_support",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (table : List (String \u00d7 String)) (key : String),\n  Sonification.Mat008.lookup table key \u2260 none \u2192 key \u2208 List.map Prod.fst table",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.mismatch",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.PyState \u2192 Sonification.Mat008.AbstractPy.AcceptedRow \u2192 Bool",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.mismatch.eq_1",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.mismatch s row =\n    match s.owners row.originalRun with\n    | none => false\n    | some oldCampaign => decide (oldCampaign \u2260 row.campaign)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.mismatch.match_1",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "(motive : Option String \u2192 Sort u_1) \u2192\n  (x : Option String) \u2192 (Unit \u2192 motive none) \u2192 ((oldCampaign : String) \u2192 motive (some oldCampaign)) \u2192 motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.mismatch_iff",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.mismatch s row = true \u2194\n    \u2203 oldCampaign, s.owners row.originalRun = some oldCampaign \u2227 oldCampaign \u2260 row.campaign",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.mismatch_related",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.mismatch s row =\n      Sonification.Mat008.differentOwner m (Sonification.Mat008.AbstractPy.projectRow row)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.new_reason_iff_mismatch",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  s.reasons Sonification.Mat008.AbstractPy.reuseReason = false \u2192\n    ((Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason = true \u2194\n      Sonification.Mat008.AbstractPy.mismatch s row = true)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.nonvacuity",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "(Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty\n          [{ campaign := \"A\", originalRun := \"RUN\" }, { campaign := \"B\", originalRun := \"RUN\" },\n            { campaign := \"B\", originalRun := \"OTHER\" }]).reasons\n      Sonification.Mat008.AbstractPy.reuseReason =\n    true \u2227\n  (Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty\n          [{ campaign := \"A\", originalRun := \"RUN_A\" }, { campaign := \"B\", originalRun := \"RUN_B\" }]).reasons\n      Sonification.Mat008.AbstractPy.reuseReason =\n    false",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.preexisting_reason_counterexample",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "let s := { owners := fun x => none, reasons := fun x => true };\nSonification.Mat008.AbstractPy.mismatch s { campaign := \"CAMPAIGN\", originalRun := \"RUN\" } = false \u2227\n  (Sonification.Mat008.AbstractPy.pyStep s { campaign := \"CAMPAIGN\", originalRun := \"RUN\" }).reasons\n      Sonification.Mat008.AbstractPy.reuseReason =\n    true",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.project",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "List Sonification.Mat008.AbstractPy.AcceptedRow \u2192 List Sonification.Mat008.ParsedRow",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.projectRow",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.AcceptedRow \u2192 Sonification.Mat008.ParsedRow",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.projectRow.eq_1",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.projectRow row = { campaign := row.campaign, originalRun := row.originalRun }",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.pyScanFrom",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.PyState \u2192\n  List Sonification.Mat008.AbstractPy.AcceptedRow \u2192 Sonification.Mat008.AbstractPy.PyState",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.pyScanFrom._sunfold",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.PyState \u2192\n  List Sonification.Mat008.AbstractPy.AcceptedRow \u2192 Sonification.Mat008.AbstractPy.PyState",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.pyScanFrom.match_1",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "(motive : List Sonification.Mat008.AbstractPy.AcceptedRow \u2192 Sort u_1) \u2192\n  (x : List Sonification.Mat008.AbstractPy.AcceptedRow) \u2192\n    (Unit \u2192 motive []) \u2192\n      ((row : Sonification.Mat008.AbstractPy.AcceptedRow) \u2192\n          (rows : List Sonification.Mat008.AbstractPy.AcceptedRow) \u2192 motive (row :: rows)) \u2192\n        motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.pyStep",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.PyState \u2192\n  Sonification.Mat008.AbstractPy.AcceptedRow \u2192 Sonification.Mat008.AbstractPy.PyState",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.pyStep.eq_1",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.pyStep s row =\n    { owners := Sonification.Mat008.AbstractPy.write s.owners row.originalRun row.campaign,\n      reasons :=\n        if Sonification.Mat008.AbstractPy.mismatch s row = true then\n          Sonification.Mat008.AbstractPy.insert s.reasons Sonification.Mat008.AbstractPy.reuseReason\n        else s.reasons }",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.r1_empty_related",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.Related Sonification.Mat008.AbstractPy.empty Sonification.Mat008.initial",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.r2_finite_support",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State),\n  Sonification.Mat008.AbstractPy.Related s m \u2192 Sonification.Mat008.AbstractPy.FiniteSupport s.owners",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.r2_lookup",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State),\n  Sonification.Mat008.AbstractPy.Related s m \u2192 \u2200 (key : String), s.owners key = Sonification.Mat008.lookup m.owner key",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.r3_latest_campaign",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  (Sonification.Mat008.AbstractPy.pyStep s row).owners row.originalRun = some row.campaign",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.r3_overwrite",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.OwnersRelated (Sonification.Mat008.AbstractPy.pyStep s row).owners\n      (Sonification.Mat008.step m (Sonification.Mat008.AbstractPy.projectRow row)).owner",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.r4_reason_iff",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    ((Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason = true \u2194\n      (Sonification.Mat008.step m (Sonification.Mat008.AbstractPy.projectRow row)).conflict = true)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.r5_reason_sticky",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  s.reasons Sonification.Mat008.AbstractPy.reuseReason = true \u2192\n    (Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason = true",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.r5_sequence_sticky",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (rows : List Sonification.Mat008.AbstractPy.AcceptedRow),\n  s.reasons Sonification.Mat008.AbstractPy.reuseReason = true \u2192\n    (Sonification.Mat008.AbstractPy.pyScanFrom s rows).reasons Sonification.Mat008.AbstractPy.reuseReason = true",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.r6_accepted_projection",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.Related (Sonification.Mat008.AbstractPy.eventScanFrom s events)\n      (Sonification.Mat008.scanFrom m\n        (Sonification.Mat008.AbstractPy.project (Sonification.Mat008.AbstractPy.acceptedProjection events)))",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.r6_sequence_related",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (rows : List Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.Related (Sonification.Mat008.AbstractPy.pyScanFrom s rows)\n      (Sonification.Mat008.scanFrom m (Sonification.Mat008.AbstractPy.project rows))",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.r7_collision_reason",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (rows : List Sonification.Mat008.AbstractPy.AcceptedRow) (a b : Sonification.Mat008.AbstractPy.AcceptedRow),\n  a \u2208 rows \u2192\n    b \u2208 rows \u2192\n      a.originalRun = b.originalRun \u2192\n        a.campaign \u2260 b.campaign \u2192\n          (Sonification.Mat008.AbstractPy.pyScanFrom Sonification.Mat008.AbstractPy.empty rows).reasons\n              Sonification.Mat008.AbstractPy.reuseReason =\n            true",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.reason_frame",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow) (reason : String),\n  reason \u2260 Sonification.Mat008.AbstractPy.reuseReason \u2192\n    (Sonification.Mat008.AbstractPy.pyStep s row).reasons reason = s.reasons reason",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.reason_step",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  (Sonification.Mat008.AbstractPy.pyStep s row).reasons Sonification.Mat008.AbstractPy.reuseReason =\n    (s.reasons Sonification.Mat008.AbstractPy.reuseReason || Sonification.Mat008.AbstractPy.mismatch s row)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.reuseReason",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "String",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.runGateProgram",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "List Sonification.Mat008.AbstractPy.GateInstruction",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.runGateProgram.eq_1",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.runGateProgram =\n  [Sonification.Mat008.AbstractPy.GateInstruction.testExistingOwner,\n    Sonification.Mat008.AbstractPy.GateInstruction.insertReasonIfMismatch,\n    Sonification.Mat008.AbstractPy.GateInstruction.overwriteOwner]",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.skip_frame",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (before after : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State),\n  Sonification.Mat008.AbstractPy.Related before m \u2192\n    (\u2200 (key : String), after.owners key = before.owners key) \u2192\n      after.reasons Sonification.Mat008.AbstractPy.reuseReason =\n          before.reasons Sonification.Mat008.AbstractPy.reuseReason \u2192\n        Sonification.Mat008.AbstractPy.Related after m",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.step_related",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (s : Sonification.Mat008.AbstractPy.PyState) (m : Sonification.Mat008.State)\n  (row : Sonification.Mat008.AbstractPy.AcceptedRow),\n  Sonification.Mat008.AbstractPy.Related s m \u2192\n    Sonification.Mat008.AbstractPy.Related (Sonification.Mat008.AbstractPy.pyStep s row)\n      (Sonification.Mat008.step m (Sonification.Mat008.AbstractPy.projectRow row))",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.write",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "Sonification.Mat008.AbstractPy.OwnerMap \u2192 String \u2192 String \u2192 Sonification.Mat008.AbstractPy.OwnerMap",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.write.eq_1",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (owners : Sonification.Mat008.AbstractPy.OwnerMap) (key value query : String),\n  Sonification.Mat008.AbstractPy.write owners key value query = if query = key then some value else owners query",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.write_other",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (owners : Sonification.Mat008.AbstractPy.OwnerMap) (key value query : String),\n  query \u2260 key \u2192 Sonification.Mat008.AbstractPy.write owners key value query = owners query",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.write_related",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (owners : Sonification.Mat008.AbstractPy.OwnerMap) (table : List (String \u00d7 String)) (key value : String),\n  Sonification.Mat008.AbstractPy.OwnersRelated owners table \u2192\n    Sonification.Mat008.AbstractPy.OwnersRelated (Sonification.Mat008.AbstractPy.write owners key value)\n      ((key, value) :: table)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.AbstractPy.write_same",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (owners : Sonification.Mat008.AbstractPy.OwnerMap) (key value : String),\n  Sonification.Mat008.AbstractPy.write owners key value key = some value",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.Covers",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sonification.Mat008.State \u2192 List Sonification.Mat008.ParsedRow \u2192 Prop",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.ParsedRow",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.ParsedRow._sizeOf_1",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sonification.Mat008.ParsedRow \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.ParsedRow._sizeOf_inst",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "SizeOf Sonification.Mat008.ParsedRow",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.ParsedRow.campaign",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sonification.Mat008.ParsedRow \u2192 String",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.ParsedRow.casesOn",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "{motive : Sonification.Mat008.ParsedRow \u2192 Sort u} \u2192\n  (t : Sonification.Mat008.ParsedRow) \u2192\n    ((campaign originalRun : String) \u2192 motive { campaign := campaign, originalRun := originalRun }) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.ParsedRow.mk",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "String \u2192 String \u2192 Sonification.Mat008.ParsedRow",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.ParsedRow.mk._flat_ctor",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "String \u2192 String \u2192 Sonification.Mat008.ParsedRow",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.ParsedRow.mk.inj",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 {campaign originalRun campaign_1 originalRun_1 : String},\n  { campaign := campaign, originalRun := originalRun } = { campaign := campaign_1, originalRun := originalRun_1 } \u2192\n    campaign = campaign_1 \u2227 originalRun = originalRun_1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.ParsedRow.mk.injEq",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (campaign originalRun campaign_1 originalRun_1 : String),\n  ({ campaign := campaign, originalRun := originalRun } = { campaign := campaign_1, originalRun := originalRun_1 }) =\n    (campaign = campaign_1 \u2227 originalRun = originalRun_1)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.ParsedRow.mk.sizeOf_spec",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (campaign originalRun : String),\n  sizeOf { campaign := campaign, originalRun := originalRun } = 1 + sizeOf campaign + sizeOf originalRun",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.ParsedRow.noConfusion",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "{P : Sort u} \u2192 {v1 v2 : Sonification.Mat008.ParsedRow} \u2192 v1 = v2 \u2192 Sonification.Mat008.ParsedRow.noConfusionType P v1 v2",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.ParsedRow.noConfusionType",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sort u \u2192 Sonification.Mat008.ParsedRow \u2192 Sonification.Mat008.ParsedRow \u2192 Sort u",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.ParsedRow.originalRun",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sonification.Mat008.ParsedRow \u2192 String",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.ParsedRow.rec",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "{motive : Sonification.Mat008.ParsedRow \u2192 Sort u} \u2192\n  ((campaign originalRun : String) \u2192 motive { campaign := campaign, originalRun := originalRun }) \u2192\n    (t : Sonification.Mat008.ParsedRow) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.ParsedRow.recOn",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "{motive : Sonification.Mat008.ParsedRow \u2192 Sort u} \u2192\n  (t : Sonification.Mat008.ParsedRow) \u2192\n    ((campaign originalRun : String) \u2192 motive { campaign := campaign, originalRun := originalRun }) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.State",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.State._sizeOf_1",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sonification.Mat008.State \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.State._sizeOf_inst",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "SizeOf Sonification.Mat008.State",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.State.casesOn",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "{motive : Sonification.Mat008.State \u2192 Sort u} \u2192\n  (t : Sonification.Mat008.State) \u2192\n    ((owner : List (String \u00d7 String)) \u2192 (conflict : Bool) \u2192 motive { owner := owner, conflict := conflict }) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.State.conflict",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sonification.Mat008.State \u2192 Bool",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.State.mk",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "List (String \u00d7 String) \u2192 Bool \u2192 Sonification.Mat008.State",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.State.mk._flat_ctor",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "List (String \u00d7 String) \u2192 Bool \u2192 Sonification.Mat008.State",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.State.mk.inj",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 {owner : List (String \u00d7 String)} {conflict : Bool} {owner_1 : List (String \u00d7 String)} {conflict_1 : Bool},\n  { owner := owner, conflict := conflict } = { owner := owner_1, conflict := conflict_1 } \u2192\n    owner = owner_1 \u2227 conflict = conflict_1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.State.mk.injEq",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (owner : List (String \u00d7 String)) (conflict : Bool) (owner_1 : List (String \u00d7 String)) (conflict_1 : Bool),\n  ({ owner := owner, conflict := conflict } = { owner := owner_1, conflict := conflict_1 }) =\n    (owner = owner_1 \u2227 conflict = conflict_1)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.State.mk.sizeOf_spec",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (owner : List (String \u00d7 String)) (conflict : Bool),\n  sizeOf { owner := owner, conflict := conflict } = 1 + sizeOf owner + sizeOf conflict",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.State.noConfusion",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "{P : Sort u} \u2192 {v1 v2 : Sonification.Mat008.State} \u2192 v1 = v2 \u2192 Sonification.Mat008.State.noConfusionType P v1 v2",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.State.noConfusionType",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sort u \u2192 Sonification.Mat008.State \u2192 Sonification.Mat008.State \u2192 Sort u",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.State.owner",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sonification.Mat008.State \u2192 List (String \u00d7 String)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.State.rec",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "{motive : Sonification.Mat008.State \u2192 Sort u} \u2192\n  ((owner : List (String \u00d7 String)) \u2192 (conflict : Bool) \u2192 motive { owner := owner, conflict := conflict }) \u2192\n    (t : Sonification.Mat008.State) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.State.recOn",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "{motive : Sonification.Mat008.State \u2192 Sort u} \u2192\n  (t : Sonification.Mat008.State) \u2192\n    ((owner : List (String \u00d7 String)) \u2192 (conflict : Bool) \u2192 motive { owner := owner, conflict := conflict }) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.differentOwner",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sonification.Mat008.State \u2192 Sonification.Mat008.ParsedRow \u2192 Bool",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.differentOwner.eq_1",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (s : Sonification.Mat008.State) (row : Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.differentOwner s row =\n    match Sonification.Mat008.lookup s.owner row.originalRun with\n    | none => false\n    | some campaign => decide (campaign \u2260 row.campaign)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.differentOwner.match_1",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "(motive : Option String \u2192 Sort u_1) \u2192\n  (x : Option String) \u2192 (Unit \u2192 motive none) \u2192 ((campaign : String) \u2192 motive (some campaign)) \u2192 motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.initial",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sonification.Mat008.State",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.lookup",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "List (String \u00d7 String) \u2192 String \u2192 Option String",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.lookup._sunfold",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "List (String \u00d7 String) \u2192 String \u2192 Option String",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.lookup._unsafe_rec",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "List (String \u00d7 String) \u2192 String \u2192 Option String",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.lookup.eq_1",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (x : String), Sonification.Mat008.lookup [] x = none",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.lookup.eq_2",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (x run campaign : String) (rest : List (String \u00d7 String)),\n  Sonification.Mat008.lookup ((run, campaign) :: rest) x =\n    if x = run then some campaign else Sonification.Mat008.lookup rest x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.lookup.match_1",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "(motive : List (String \u00d7 String) \u2192 String \u2192 Sort u_1) \u2192\n  (x : List (String \u00d7 String)) \u2192\n    (x_1 : String) \u2192\n      ((x : String) \u2192 motive [] x) \u2192\n        ((run campaign : String) \u2192\n            (rest : List (String \u00d7 String)) \u2192 (key : String) \u2192 motive ((run, campaign) :: rest) key) \u2192\n          motive x x_1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.nonvacuity",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "(Sonification.Mat008.scan\n        [{ campaign := \"A\", originalRun := \"RUN\" }, { campaign := \"B\", originalRun := \"RUN\" },\n          { campaign := \"B\", originalRun := \"OTHER\" }]).conflict =\n    true \u2227\n  (Sonification.Mat008.scan\n        [{ campaign := \"A\", originalRun := \"RUN_A\" }, { campaign := \"B\", originalRun := \"RUN_B\" }]).conflict =\n    false",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.Mat008.reused_run_blocks",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (rows : List Sonification.Mat008.ParsedRow) (a b : Sonification.Mat008.ParsedRow),\n  a \u2208 rows \u2192\n    b \u2208 rows \u2192 a.originalRun = b.originalRun \u2192 a.campaign \u2260 b.campaign \u2192 (Sonification.Mat008.scan rows).conflict = true",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.scan",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "List Sonification.Mat008.ParsedRow \u2192 Sonification.Mat008.State",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.scan.eq_1",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (rows : List Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.scan rows = Sonification.Mat008.scanFrom Sonification.Mat008.initial rows",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.scanFrom",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sonification.Mat008.State \u2192 List Sonification.Mat008.ParsedRow \u2192 Sonification.Mat008.State",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.scanFrom._sunfold",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sonification.Mat008.State \u2192 List Sonification.Mat008.ParsedRow \u2192 Sonification.Mat008.State",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.scanFrom._unsafe_rec",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sonification.Mat008.State \u2192 List Sonification.Mat008.ParsedRow \u2192 Sonification.Mat008.State",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.scanFrom.eq_1",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (s : Sonification.Mat008.State), Sonification.Mat008.scanFrom s [] = s",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.scanFrom.eq_2",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (s : Sonification.Mat008.State) (row : Sonification.Mat008.ParsedRow) (rows : List Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.scanFrom s (row :: rows) = Sonification.Mat008.scanFrom (Sonification.Mat008.step s row) rows",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.scanFrom.match_1",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "(motive : List Sonification.Mat008.ParsedRow \u2192 Sort u_1) \u2192\n  (x : List Sonification.Mat008.ParsedRow) \u2192\n    (Unit \u2192 motive []) \u2192\n      ((row : Sonification.Mat008.ParsedRow) \u2192 (rows : List Sonification.Mat008.ParsedRow) \u2192 motive (row :: rows)) \u2192\n        motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.scanFrom_append",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (s : Sonification.Mat008.State) (xs ys : List Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.scanFrom s (xs ++ ys) = Sonification.Mat008.scanFrom (Sonification.Mat008.scanFrom s xs) ys",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.scan_append",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (rows : List Sonification.Mat008.ParsedRow) (row : Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.scan (rows ++ [row]) = Sonification.Mat008.step (Sonification.Mat008.scan rows) row",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.Mat008.scan_clear_covers",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (rows : List Sonification.Mat008.ParsedRow),\n  (Sonification.Mat008.scan rows).conflict = false \u2192 Sonification.Mat008.Covers (Sonification.Mat008.scan rows) rows",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.snoc_induction",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 {\u03b1 : Type} (motive : List \u03b1 \u2192 Prop),\n  motive [] \u2192 (\u2200 (rows : List \u03b1) (row : \u03b1), motive rows \u2192 motive (rows ++ [row])) \u2192 \u2200 (rows : List \u03b1), motive rows",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.step",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sonification.Mat008.State \u2192 Sonification.Mat008.ParsedRow \u2192 Sonification.Mat008.State",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.step.eq_1",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (s : Sonification.Mat008.State) (row : Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.step s row =\n    { owner := (row.originalRun, row.campaign) :: s.owner,\n      conflict := s.conflict || Sonification.Mat008.differentOwner s row }",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.step_clear_before",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (s : Sonification.Mat008.State) (row : Sonification.Mat008.ParsedRow),\n  (Sonification.Mat008.step s row).conflict = false \u2192 s.conflict = false",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Classical.choice",
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.Mat008.step_clear_same_owner",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (s : Sonification.Mat008.State) (row : Sonification.Mat008.ParsedRow) (campaign : String),\n  (Sonification.Mat008.step s row).conflict = false \u2192\n    Sonification.Mat008.lookup s.owner row.originalRun = some campaign \u2192 campaign = row.campaign",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.step_clear_same_owner._proof_1",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 {p : Prop} {x : Decidable p}, (decide p = false) = \u00acp",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "Sonification.Mat008.step_conflict_sticky",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (s : Sonification.Mat008.State) (row : Sonification.Mat008.ParsedRow),\n  s.conflict = true \u2192 (Sonification.Mat008.step s row).conflict = true",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "Sonification.Mat008.step_covers",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (s : Sonification.Mat008.State) (rows : List Sonification.Mat008.ParsedRow) (row : Sonification.Mat008.ParsedRow),\n  Sonification.Mat008.Covers s rows \u2192\n    (Sonification.Mat008.step s row).conflict = false \u2192\n      Sonification.Mat008.Covers (Sonification.Mat008.step s row) (rows ++ [row])",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Mat008.RunOwnership.0.Sonification.Mat008.lookup.match_1.eq_1",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (motive : List (String \u00d7 String) \u2192 String \u2192 Sort u_1) (x : String) (h_1 : (x : String) \u2192 motive [] x)\n  (h_2 :\n    (run campaign : String) \u2192 (rest : List (String \u00d7 String)) \u2192 (key : String) \u2192 motive ((run, campaign) :: rest) key),\n  (match [], x with\n    | [], x => h_1 x\n    | (run, campaign) :: rest, key => h_2 run campaign rest key) =\n    h_1 x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Mat008.RunOwnership.0.Sonification.Mat008.lookup.match_1.eq_2",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (motive : List (String \u00d7 String) \u2192 String \u2192 Sort u_1) (run campaign : String) (rest : List (String \u00d7 String))\n  (key : String) (h_1 : (x : String) \u2192 motive [] x)\n  (h_2 :\n    (run campaign : String) \u2192 (rest : List (String \u00d7 String)) \u2192 (key : String) \u2192 motive ((run, campaign) :: rest) key),\n  (match (run, campaign) :: rest, key with\n    | [], x => h_1 x\n    | (run, campaign) :: rest, key => h_2 run campaign rest key) =\n    h_2 run campaign rest key",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Mat008.RunOwnership.0.Sonification.Mat008.lookup.match_1.splitter",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "(motive : List (String \u00d7 String) \u2192 String \u2192 Sort u_1) \u2192\n  (x : List (String \u00d7 String)) \u2192\n    (x_1 : String) \u2192\n      ((x : String) \u2192 motive [] x) \u2192\n        ((run campaign : String) \u2192\n            (rest : List (String \u00d7 String)) \u2192 (key : String) \u2192 motive ((run, campaign) :: rest) key) \u2192\n          motive x x_1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Mat008.RunOwnership.0.Sonification.Mat008.scanFrom.match_1.eq_1",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (motive : List Sonification.Mat008.ParsedRow \u2192 Sort u_1) (h_1 : Unit \u2192 motive [])\n  (h_2 : (row : Sonification.Mat008.ParsedRow) \u2192 (rows : List Sonification.Mat008.ParsedRow) \u2192 motive (row :: rows)),\n  (match [] with\n    | [] => h_1 ()\n    | row :: rows => h_2 row rows) =\n    h_1 ()",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Mat008.RunOwnership.0.Sonification.Mat008.scanFrom.match_1.eq_2",
+    "kind": "theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "\u2200 (motive : List Sonification.Mat008.ParsedRow \u2192 Sort u_1) (row : Sonification.Mat008.ParsedRow)\n  (rows : List Sonification.Mat008.ParsedRow) (h_1 : Unit \u2192 motive [])\n  (h_2 : (row : Sonification.Mat008.ParsedRow) \u2192 (rows : List Sonification.Mat008.ParsedRow) \u2192 motive (row :: rows)),\n  (match row :: rows with\n    | [] => h_1 ()\n    | row :: rows => h_2 row rows) =\n    h_2 row rows",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Mat008.RunOwnership.0.Sonification.Mat008.scanFrom.match_1.splitter",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "(motive : List Sonification.Mat008.ParsedRow \u2192 Sort u_1) \u2192\n  (x : List Sonification.Mat008.ParsedRow) \u2192\n    motive [] \u2192\n      ((row : Sonification.Mat008.ParsedRow) \u2192 (rows : List Sonification.Mat008.ParsedRow) \u2192 motive (row :: rows)) \u2192\n        motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.executeInstructions.match_1.eq_1",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (motive : List Sonification.Mat008.AbstractPy.GateInstruction \u2192 Sort u_1) (h_1 : Unit \u2192 motive [])\n  (h_2 :\n    (instruction : Sonification.Mat008.AbstractPy.GateInstruction) \u2192\n      (instructions : List Sonification.Mat008.AbstractPy.GateInstruction) \u2192 motive (instruction :: instructions)),\n  (match [] with\n    | [] => h_1 ()\n    | instruction :: instructions => h_2 instruction instructions) =\n    h_1 ()",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.executeInstructions.match_1.eq_2",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (motive : List Sonification.Mat008.AbstractPy.GateInstruction \u2192 Sort u_1)\n  (instruction : Sonification.Mat008.AbstractPy.GateInstruction)\n  (instructions : List Sonification.Mat008.AbstractPy.GateInstruction) (h_1 : Unit \u2192 motive [])\n  (h_2 :\n    (instruction : Sonification.Mat008.AbstractPy.GateInstruction) \u2192\n      (instructions : List Sonification.Mat008.AbstractPy.GateInstruction) \u2192 motive (instruction :: instructions)),\n  (match instruction :: instructions with\n    | [] => h_1 ()\n    | instruction :: instructions => h_2 instruction instructions) =\n    h_2 instruction instructions",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.executeInstructions.match_1.splitter",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "(motive : List Sonification.Mat008.AbstractPy.GateInstruction \u2192 Sort u_1) \u2192\n  (x : List Sonification.Mat008.AbstractPy.GateInstruction) \u2192\n    motive [] \u2192\n      ((instruction : Sonification.Mat008.AbstractPy.GateInstruction) \u2192\n          (instructions : List Sonification.Mat008.AbstractPy.GateInstruction) \u2192 motive (instruction :: instructions)) \u2192\n        motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.mismatch.match_1.eq_1",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (motive : Option String \u2192 Sort u_1) (h_1 : Unit \u2192 motive none)\n  (h_2 : (oldCampaign : String) \u2192 motive (some oldCampaign)),\n  (match none with\n    | none => h_1 ()\n    | some oldCampaign => h_2 oldCampaign) =\n    h_1 ()",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.mismatch.match_1.eq_2",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (motive : Option String \u2192 Sort u_1) (oldCampaign : String) (h_1 : Unit \u2192 motive none)\n  (h_2 : (oldCampaign : String) \u2192 motive (some oldCampaign)),\n  (match some oldCampaign with\n    | none => h_1 ()\n    | some oldCampaign => h_2 oldCampaign) =\n    h_2 oldCampaign",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.mismatch.match_1.splitter",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "(motive : Option String \u2192 Sort u_1) \u2192\n  (x : Option String) \u2192 motive none \u2192 ((oldCampaign : String) \u2192 motive (some oldCampaign)) \u2192 motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Refine.MapReason.0.Sonification.Mat008.differentOwner.match_1.eq_1",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (motive : Option String \u2192 Sort u_1) (h_1 : Unit \u2192 motive none) (h_2 : (campaign : String) \u2192 motive (some campaign)),\n  (match none with\n    | none => h_1 ()\n    | some campaign => h_2 campaign) =\n    h_1 ()",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Refine.MapReason.0.Sonification.Mat008.differentOwner.match_1.eq_2",
+    "kind": "theorem",
+    "origin": "Refine.MapReason",
+    "type": "\u2200 (motive : Option String \u2192 Sort u_1) (campaign : String) (h_1 : Unit \u2192 motive none)\n  (h_2 : (campaign : String) \u2192 motive (some campaign)),\n  (match some campaign with\n    | none => h_1 ()\n    | some campaign => h_2 campaign) =\n    h_2 campaign",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Refine.MapReason.0.Sonification.Mat008.differentOwner.match_1.splitter",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "(motive : Option String \u2192 Sort u_1) \u2192\n  (x : Option String) \u2192 motive none \u2192 ((campaign : String) \u2192 motive (some campaign)) \u2192 motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.acceptedProjection.match_1._cstage1",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "(motive : List (Option Sonification.Mat008.AbstractPy.AcceptedRow) \u2192 Sort u_1) \u2192\n  (x : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)) \u2192\n    (Unit \u2192 motive []) \u2192\n      ((events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)) \u2192 motive (none :: events)) \u2192\n        ((row : Sonification.Mat008.AbstractPy.AcceptedRow) \u2192\n            (events : List (Option Sonification.Mat008.AbstractPy.AcceptedRow)) \u2192 motive (some row :: events)) \u2192\n          motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.executeInstructions.match_1._cstage1",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "(motive : List Sonification.Mat008.AbstractPy.GateInstruction \u2192 Sort u_1) \u2192\n  (x : List Sonification.Mat008.AbstractPy.GateInstruction) \u2192\n    (Unit \u2192 motive []) \u2192\n      ((instruction : Sonification.Mat008.AbstractPy.GateInstruction) \u2192\n          (instructions : List Sonification.Mat008.AbstractPy.GateInstruction) \u2192 motive (instruction :: instructions)) \u2192\n        motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.mismatch.match_1._cstage1",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "(motive : Option String \u2192 Sort u_1) \u2192\n  (x : Option String) \u2192 (Unit \u2192 motive none) \u2192 ((oldCampaign : String) \u2192 motive (some oldCampaign)) \u2192 motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.AbstractPy.pyScanFrom.match_1._cstage1",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "(motive : List Sonification.Mat008.AbstractPy.AcceptedRow \u2192 Sort u_1) \u2192\n  (x : List Sonification.Mat008.AbstractPy.AcceptedRow) \u2192\n    (Unit \u2192 motive []) \u2192\n      ((row : Sonification.Mat008.AbstractPy.AcceptedRow) \u2192\n          (rows : List Sonification.Mat008.AbstractPy.AcceptedRow) \u2192 motive (row :: rows)) \u2192\n        motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.differentOwner._cstage1",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sonification.Mat008.State \u2192 Sonification.Mat008.ParsedRow \u2192 Bool",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.differentOwner._cstage2",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "_obj \u2192 _obj \u2192 UInt8",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.differentOwner.match_1._cstage1",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "(motive : Option String \u2192 Sort u_1) \u2192\n  (x : Option String) \u2192 (Unit \u2192 motive none) \u2192 ((campaign : String) \u2192 motive (some campaign)) \u2192 motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.initial._closed_1._cstage2",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.initial._cstage1",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sonification.Mat008.State",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.initial._cstage2",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.lookup._cstage1",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "List (String \u00d7 String) \u2192 String \u2192 Option String",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.lookup._cstage2",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.lookup.match_1._cstage1",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "(motive : List (String \u00d7 String) \u2192 String \u2192 Sort u_1) \u2192\n  (x : List (String \u00d7 String)) \u2192\n    (x_1 : String) \u2192\n      ((x : String) \u2192 motive [] x) \u2192\n        ((run campaign : String) \u2192\n            (rest : List (String \u00d7 String)) \u2192 (key : String) \u2192 motive ((run, campaign) :: rest) key) \u2192\n          motive x x_1",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.scan._cstage1",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "List Sonification.Mat008.ParsedRow \u2192 Sonification.Mat008.State",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.scan._cstage2",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "_obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.scanFrom._cstage1",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sonification.Mat008.State \u2192 List Sonification.Mat008.ParsedRow \u2192 Sonification.Mat008.State",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.scanFrom._cstage2",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.scanFrom.match_1._cstage1",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "(motive : List Sonification.Mat008.ParsedRow \u2192 Sort u_1) \u2192\n  (x : List Sonification.Mat008.ParsedRow) \u2192\n    (Unit \u2192 motive []) \u2192\n      ((row : Sonification.Mat008.ParsedRow) \u2192 (rows : List Sonification.Mat008.ParsedRow) \u2192 motive (row :: rows)) \u2192\n        motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.step._cstage1",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "Sonification.Mat008.State \u2192 Sonification.Mat008.ParsedRow \u2192 Sonification.Mat008.State",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "Sonification.Mat008.step._cstage2",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Mat008.RunOwnership.0.Sonification.Mat008.lookup.match_1.splitter._cstage1",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "(motive : List (String \u00d7 String) \u2192 String \u2192 Sort u_1) \u2192\n  (x : List (String \u00d7 String)) \u2192\n    (x_1 : String) \u2192\n      ((x : String) \u2192 motive [] x) \u2192\n        ((run campaign : String) \u2192\n            (rest : List (String \u00d7 String)) \u2192 (key : String) \u2192 motive ((run, campaign) :: rest) key) \u2192\n          motive x x_1",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Mat008.RunOwnership.0.Sonification.Mat008.lookup.match_1.splitter._cstage2",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "_neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Mat008.RunOwnership.0.Sonification.Mat008.lookup.match_1.splitter._rarg._cstage2",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "_obj \u2192 _obj \u2192 _obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Mat008.RunOwnership.0.Sonification.Mat008.scanFrom.match_1.splitter._cstage1",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "(motive : List Sonification.Mat008.ParsedRow \u2192 Sort u_1) \u2192\n  (x : List Sonification.Mat008.ParsedRow) \u2192\n    motive [] \u2192\n      ((row : Sonification.Mat008.ParsedRow) \u2192 (rows : List Sonification.Mat008.ParsedRow) \u2192 motive (row :: rows)) \u2192\n        motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Mat008.RunOwnership.0.Sonification.Mat008.scanFrom.match_1.splitter._cstage2",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "_neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Mat008.RunOwnership.0.Sonification.Mat008.scanFrom.match_1.splitter._rarg._cstage2",
+    "kind": "non_theorem",
+    "origin": "Mat008.RunOwnership",
+    "type": "_obj \u2192 _obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.executeInstructions.match_1.splitter._cstage1",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "(motive : List Sonification.Mat008.AbstractPy.GateInstruction \u2192 Sort u_1) \u2192\n  (x : List Sonification.Mat008.AbstractPy.GateInstruction) \u2192\n    motive [] \u2192\n      ((instruction : Sonification.Mat008.AbstractPy.GateInstruction) \u2192\n          (instructions : List Sonification.Mat008.AbstractPy.GateInstruction) \u2192 motive (instruction :: instructions)) \u2192\n        motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.executeInstructions.match_1.splitter._cstage2",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "_neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.executeInstructions.match_1.splitter._rarg._cstage2",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "_obj \u2192 _obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.mismatch.match_1.splitter._cstage1",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "(motive : Option String \u2192 Sort u_1) \u2192\n  (x : Option String) \u2192 motive none \u2192 ((oldCampaign : String) \u2192 motive (some oldCampaign)) \u2192 motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.mismatch.match_1.splitter._cstage2",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "_neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Refine.MapReason.0.Sonification.Mat008.AbstractPy.mismatch.match_1.splitter._rarg._cstage2",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "_obj \u2192 _obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Refine.MapReason.0.Sonification.Mat008.differentOwner.match_1.splitter._cstage1",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "(motive : Option String \u2192 Sort u_1) \u2192\n  (x : Option String) \u2192 motive none \u2192 ((campaign : String) \u2192 motive (some campaign)) \u2192 motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Refine.MapReason.0.Sonification.Mat008.differentOwner.match_1.splitter._cstage2",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "_neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.Refine.MapReason.0.Sonification.Mat008.differentOwner.match_1.splitter._rarg._cstage2",
+    "kind": "non_theorem",
+    "origin": "Refine.MapReason",
+    "type": "_obj \u2192 _obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  }
+]

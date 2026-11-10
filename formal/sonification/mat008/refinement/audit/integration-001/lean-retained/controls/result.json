@@ -1,0 +1,588 @@
+{
+  "REFINEMENT_PROVED": "OPEN",
+  "assurance": "EVIDENCE_INTEGRITY_CONTROLS_ONLY",
+  "control_runner_sha256": "bc25248f07785189ce4a36407462de8f8e84ab2f22caa8131bdd60312a007cb3",
+  "positive_controls": 2,
+  "results": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--lean-root",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0",
+        "--project",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+        "--nominal",
+        "/tmp/mat008-retained-tamper-d3r94dn_/nominal",
+        "--negative",
+        "/tmp/mat008-retained-tamper-d3r94dn_/negative",
+        "--out",
+        "/tmp/independent-mat008-retained-lm1_kaai/controls/unchanged_control/verification"
+      ],
+      "changes": [],
+      "control": "unchanged_control",
+      "detected": true,
+      "exit_code": 0,
+      "expected_error": null,
+      "observed_error": null,
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runner_stdout_sha256": "20792df617d15041bb1cd40a6d244afe189198ecfa3ef2460840819edb5780bf"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/tmp/mat008-retained-tamper-3zqp90vj/different-installation-prefix/bin/lean",
+        "--lean-root",
+        "/tmp/mat008-retained-tamper-3zqp90vj/different-installation-prefix",
+        "--project",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+        "--nominal",
+        "/tmp/mat008-retained-tamper-3zqp90vj/nominal",
+        "--negative",
+        "/tmp/mat008-retained-tamper-3zqp90vj/negative",
+        "--out",
+        "/tmp/independent-mat008-retained-lm1_kaai/controls/relocated_toolchain_control/verification"
+      ],
+      "changes": [],
+      "control": "relocated_toolchain_control",
+      "detected": true,
+      "exit_code": 0,
+      "expected_error": null,
+      "observed_error": null,
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runner_stdout_sha256": "42d247025d259f0ad3a9208fd4eae01881eddeee081d7d9bdd44222b3aa468a7"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--lean-root",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0",
+        "--project",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+        "--nominal",
+        "/tmp/mat008-retained-tamper-y06ywmn9/nominal",
+        "--negative",
+        "/tmp/mat008-retained-tamper-y06ywmn9/negative",
+        "--out",
+        "/tmp/independent-mat008-retained-lm1_kaai/controls/deleted_theorem_declaration/verification"
+      ],
+      "changes": [
+        {
+          "after_sha256": "deb640ed7d352aa1b60c611f0280d55dd86113d549417f78963a63e5661fb519",
+          "before_sha256": "84abc683f6819bd3aa7f0a76166aafeb3ab355704b55a5d2c11ccca7ea8571af",
+          "operation": "delete_r7_declaration",
+          "path": "nominal/declarations.json"
+        }
+      ],
+      "control": "deleted_theorem_declaration",
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "declaration receipt differs from raw audit",
+      "observed_error": "declaration receipt differs from raw audit",
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runner_stdout_sha256": "640c219f0ad4e5076d23c62d783225cb2b159832437bb73aad4b5570948bdad5"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--lean-root",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0",
+        "--project",
+        "/tmp/mat008-retained-tamper-h25vnhel/project",
+        "--nominal",
+        "/tmp/mat008-retained-tamper-h25vnhel/nominal",
+        "--negative",
+        "/tmp/mat008-retained-tamper-h25vnhel/negative",
+        "--out",
+        "/tmp/independent-mat008-retained-lm1_kaai/controls/deleted_source_theorem/verification"
+      ],
+      "changes": [
+        {
+          "after_sha256": "5b0aa303e387836459e34f387c7465b82be6593a08deefed9838aa2e38feca04",
+          "before_sha256": "f1ce54798c837d020c1fdfacddaf0a5e9b85c7aaf608c21ad64e64ac4521d2ea",
+          "operation": "delete_r7_source_theorem",
+          "path": "project/Refine/MapReason.lean"
+        }
+      ],
+      "control": "deleted_source_theorem",
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "nominal source hashes differ",
+      "observed_error": "nominal source hashes differ",
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runner_stdout_sha256": "76cca302dff80818c4459762a42c9c7cb6e90dc19f57982f9f4340094702b4c8"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--lean-root",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0",
+        "--project",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+        "--nominal",
+        "/tmp/mat008-retained-tamper-3q3t3ipa/nominal",
+        "--negative",
+        "/tmp/mat008-retained-tamper-3q3t3ipa/negative",
+        "--out",
+        "/tmp/independent-mat008-retained-lm1_kaai/controls/deleted_command_receipt/verification"
+      ],
+      "changes": [
+        {
+          "after_sha256": "cae19e267877be2c00b39608a7ec6037a263d9a97c82a4d7197722450ba06cd1",
+          "before_sha256": "2fe92ab7e2bd37304b2b3dee28508d907f0c920f1cc159f74261ead9735ca388",
+          "operation": "delete_audit_execution_receipt",
+          "path": "nominal/result.json"
+        }
+      ],
+      "control": "deleted_command_receipt",
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "execution receipt count mismatch",
+      "observed_error": "execution receipt count mismatch",
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runner_stdout_sha256": "4e7dd0050fca27007b42331d1a22aa87015ab4a40e9a069eb3026ae6d1a8ce30"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--lean-root",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0",
+        "--project",
+        "/tmp/mat008-retained-tamper-urjnsopi/project",
+        "--nominal",
+        "/tmp/mat008-retained-tamper-urjnsopi/nominal",
+        "--negative",
+        "/tmp/mat008-retained-tamper-urjnsopi/negative",
+        "--out",
+        "/tmp/independent-mat008-retained-lm1_kaai/controls/unimported_source_module/verification"
+      ],
+      "changes": [
+        {
+          "after_sha256": "923efee1bf29c9f8bd89af6012b10e9d83e672453b477ec7bb7e3ec31f8f9a95",
+          "operation": "add_unimported_module",
+          "path": "project/Unimported.lean"
+        }
+      ],
+      "control": "unimported_source_module",
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "active source module coverage mismatch",
+      "observed_error": "active source module coverage mismatch",
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runner_stdout_sha256": "bc07c3bfbfc682612cdd527e98f418b861fc9e40edd25b1209897c18158eb39b"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--lean-root",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0",
+        "--project",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+        "--nominal",
+        "/tmp/mat008-retained-tamper-y2ty5lb7/nominal",
+        "--negative",
+        "/tmp/mat008-retained-tamper-y2ty5lb7/negative",
+        "--out",
+        "/tmp/independent-mat008-retained-lm1_kaai/controls/missing_execution_receipt/verification"
+      ],
+      "changes": [
+        {
+          "after_sha256": null,
+          "before_sha256": "2beb1ee84be371d55d046fdf8ff93b76813785c3bcf758633dbb1e2807a9b3dd",
+          "operation": "unlink",
+          "path": "negative/weaker_r4_theorem/verification/result.json"
+        }
+      ],
+      "control": "missing_execution_receipt",
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "missing retained file: verification/result.json",
+      "observed_error": "missing retained file: verification/result.json",
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runner_stdout_sha256": "77557b484872e6a194bbb864f95e07a0e4ee8ce7e064307cfa32fc3c1c6920b9"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--lean-root",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0",
+        "--project",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+        "--nominal",
+        "/tmp/mat008-retained-tamper-oa89hiqx/nominal",
+        "--negative",
+        "/tmp/mat008-retained-tamper-oa89hiqx/negative",
+        "--out",
+        "/tmp/independent-mat008-retained-lm1_kaai/controls/missing_execution_log/verification"
+      ],
+      "changes": [
+        {
+          "after_sha256": null,
+          "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "operation": "unlink",
+          "path": "nominal/01.stdout"
+        }
+      ],
+      "control": "missing_execution_log",
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "missing retained file: 01.stdout",
+      "observed_error": "missing retained file: 01.stdout",
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runner_stdout_sha256": "1b3eb1114e717212256219d5fc468b6628862f32f4b0103b964c348ee3feeb97"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--lean-root",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0",
+        "--project",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+        "--nominal",
+        "/tmp/mat008-retained-tamper-47g9crm2/nominal",
+        "--negative",
+        "/tmp/mat008-retained-tamper-47g9crm2/negative",
+        "--out",
+        "/tmp/independent-mat008-retained-lm1_kaai/controls/altered_stdout/verification"
+      ],
+      "changes": [
+        {
+          "after_sha256": "bcb5ed9571b63b7eedf41088c27489d7d543a017cddf8be51a60b4b2b170e23c",
+          "before_sha256": "99ed941874b051a9d5d57d162f788e4dfcb5726655d39b5b824f11168379668d",
+          "operation": "append",
+          "path": "nominal/03.stdout"
+        }
+      ],
+      "control": "altered_stdout",
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "execution stdout hash mismatch",
+      "observed_error": "execution stdout hash mismatch",
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runner_stdout_sha256": "786e94c8e68e8a52e332007b19072d56cfbf9e97a05df23490f886ebebfa0286"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--lean-root",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0",
+        "--project",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+        "--nominal",
+        "/tmp/mat008-retained-tamper-gkeb54r6/nominal",
+        "--negative",
+        "/tmp/mat008-retained-tamper-gkeb54r6/negative",
+        "--out",
+        "/tmp/independent-mat008-retained-lm1_kaai/controls/altered_stderr/verification"
+      ],
+      "changes": [
+        {
+          "after_sha256": "f199d7a8950b5c5ba1c1c9918e565535ccc84d1841b798d5d3f107ab37920868",
+          "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "operation": "append",
+          "path": "nominal/01.stderr"
+        }
+      ],
+      "control": "altered_stderr",
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "execution stderr hash mismatch",
+      "observed_error": "execution stderr hash mismatch",
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runner_stdout_sha256": "ea5e8d355222e991a298779547444772ed353ffd5a3b6053234258d60d341ac6"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--lean-root",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0",
+        "--project",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+        "--nominal",
+        "/tmp/mat008-retained-tamper-40qm6j2m/nominal",
+        "--negative",
+        "/tmp/mat008-retained-tamper-40qm6j2m/negative",
+        "--out",
+        "/tmp/independent-mat008-retained-lm1_kaai/controls/missing_import_membership/verification"
+      ],
+      "changes": [
+        {
+          "after_sha256": "b285919eeb830cc66536766b7fe40fd8c88fd3e15d87d58c7c593c28b5c22bd8",
+          "before_sha256": "8ffe3ac72c6480936ba701e02ca4e848f8aed9e0fcf5439fb909ede3898138cb",
+          "operation": "delete_import_membership",
+          "path": "nominal/toolchain-imports.json"
+        }
+      ],
+      "control": "missing_import_membership",
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "toolchain import membership mismatch",
+      "observed_error": "toolchain import membership mismatch",
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runner_stdout_sha256": "0d4f1029a5f31617e68a885ee6abad2450ff86caeb5e774f074aa7d5d3ab5e29"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/tmp/mat008-retained-tamper-mejr_rmf/different-installation-prefix/bin/lean",
+        "--lean-root",
+        "/tmp/mat008-retained-tamper-mejr_rmf/different-installation-prefix",
+        "--project",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+        "--nominal",
+        "/tmp/mat008-retained-tamper-mejr_rmf/nominal",
+        "--negative",
+        "/tmp/mat008-retained-tamper-mejr_rmf/negative",
+        "--out",
+        "/tmp/independent-mat008-retained-lm1_kaai/controls/missing_local_import/verification"
+      ],
+      "changes": [
+        {
+          "before_sha256": "f14f6c9ea0d9eb2a6fe7bdad84a6610657db3d006805708c1a62ac72b676e944",
+          "operation": "unlink",
+          "path": "different-installation-prefix/lib/lean/Init.olean"
+        }
+      ],
+      "control": "missing_local_import",
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "missing retained file: lib/lean/Init.olean",
+      "observed_error": "missing retained file: lib/lean/Init.olean",
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runner_stdout_sha256": "011f748c62b6b334e41289267cdf662bca4bede71aa94485e1d131976b46d8c1"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--lean-root",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0",
+        "--project",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+        "--nominal",
+        "/tmp/mat008-retained-tamper-y7vim9fb/nominal",
+        "--negative",
+        "/tmp/mat008-retained-tamper-y7vim9fb/negative",
+        "--out",
+        "/tmp/independent-mat008-retained-lm1_kaai/controls/recorded_import_path_traversal/verification"
+      ],
+      "changes": [
+        {
+          "after_sha256": "e74eb5d434111a5a7cf2f403a235acaa9b8126699e8b8dd8063600f371353b5e",
+          "before_sha256": "8ffe3ac72c6480936ba701e02ca4e848f8aed9e0fcf5439fb909ede3898138cb",
+          "operation": "traverse_recorded_path",
+          "path": "nominal/toolchain-imports.json"
+        }
+      ],
+      "control": "recorded_import_path_traversal",
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "recorded import path mismatch",
+      "observed_error": "recorded import path mismatch",
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runner_stdout_sha256": "0ecf4b405058ba3b491bf6e1e0f51b68ce1533c3995249c1c832153dd8fc77b5"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/tmp/mat008-retained-tamper-c9rpuk2w/different-installation-prefix/bin/lean",
+        "--lean-root",
+        "/tmp/mat008-retained-tamper-c9rpuk2w/different-installation-prefix",
+        "--project",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+        "--nominal",
+        "/tmp/mat008-retained-tamper-c9rpuk2w/nominal",
+        "--negative",
+        "/tmp/mat008-retained-tamper-c9rpuk2w/negative",
+        "--out",
+        "/tmp/independent-mat008-retained-lm1_kaai/controls/local_import_symlink_escape/verification"
+      ],
+      "changes": [
+        {
+          "before_sha256": "f14f6c9ea0d9eb2a6fe7bdad84a6610657db3d006805708c1a62ac72b676e944",
+          "operation": "replace_with_external_symlink",
+          "path": "different-installation-prefix/lib/lean/Init.olean"
+        }
+      ],
+      "control": "local_import_symlink_escape",
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "symlink forbidden: lib/lean/Init.olean",
+      "observed_error": "symlink forbidden: lib/lean/Init.olean",
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runner_stdout_sha256": "b0cb440d8a9d848e24d00e8a341e338947441fde3240cbf168d51835827bbddf"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--lean-root",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0",
+        "--project",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+        "--nominal",
+        "/tmp/mat008-retained-tamper-gez9n384/nominal",
+        "--negative",
+        "/tmp/mat008-retained-tamper-gez9n384/negative",
+        "--out",
+        "/tmp/independent-mat008-retained-lm1_kaai/controls/missing_negative_receipt/verification"
+      ],
+      "changes": [
+        {
+          "after_sha256": null,
+          "before_sha256": "6bb14ba720aa2d3c4bc9a51e1b21c383f928a2fca2c142876202a17bd64162b2",
+          "operation": "unlink",
+          "path": "negative/result.json"
+        }
+      ],
+      "control": "missing_negative_receipt",
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "missing retained file: result.json",
+      "observed_error": "missing retained file: result.json",
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runner_stdout_sha256": "bdcae2b633d2a484706f903cedae4587e9cfd94dbddff97ea2765e46880d53dc"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--lean-root",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0",
+        "--project",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+        "--nominal",
+        "/tmp/mat008-retained-tamper-qguamdla/nominal",
+        "--negative",
+        "/tmp/mat008-retained-tamper-qguamdla/negative",
+        "--out",
+        "/tmp/independent-mat008-retained-lm1_kaai/controls/altered_negative_stdout/verification"
+      ],
+      "changes": [
+        {
+          "after_sha256": "55cc9a370815f1bbe41ae54501d30735954ed90cf90464e85cdf557fe524e05c",
+          "before_sha256": "820caa84486260b0d1cd5e777022790e77767d8f498c3a7c5a156c80f95e4777",
+          "operation": "append",
+          "path": "negative/weaker_r4_theorem/verification/03.stdout"
+        }
+      ],
+      "control": "altered_negative_stdout",
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "execution stdout hash mismatch",
+      "observed_error": "execution stdout hash mismatch",
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runner_stdout_sha256": "807756d05e27b4432948735108a864eaa8a0855085f3c0fdd65ed05c504354a9"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--lean-root",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0",
+        "--project",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+        "--nominal",
+        "/tmp/mat008-retained-tamper-jnfmldtf/nominal",
+        "--negative",
+        "/tmp/mat008-retained-tamper-jnfmldtf/negative",
+        "--out",
+        "/tmp/independent-mat008-retained-lm1_kaai/controls/missing_counterexample_log/verification"
+      ],
+      "changes": [
+        {
+          "after_sha256": null,
+          "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "operation": "unlink",
+          "path": "negative/reason_erasure/counterexample-0.stdout"
+        }
+      ],
+      "control": "missing_counterexample_log",
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "missing retained file: counterexample-0.stdout",
+      "observed_error": "missing retained file: counterexample-0.stdout",
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runner_stdout_sha256": "e922b6ccb47970659a14b77bd1c029bb75e2df2921b35cc48f61c7de5e200ff5"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean/verify.py",
+        "--lean",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--lean-root",
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0",
+        "--project",
+        "/home/trent/sonification-formal-001-mat008-refinement/formal/sonification/mat008/refinement/lean",
+        "--nominal",
+        "/tmp/mat008-retained-tamper-1d15zn67/nominal",
+        "--negative",
+        "/tmp/mat008-retained-tamper-1d15zn67/negative",
+        "--out",
+        "/tmp/independent-mat008-retained-lm1_kaai/controls/altered_counterexample_stderr/verification"
+      ],
+      "changes": [
+        {
+          "after_sha256": "dc463ae2717955450a24bd4526c9f89cbe19f2c36b57998eb8393479f70bbc4a",
+          "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "operation": "append",
+          "path": "negative/reason_erasure/counterexample-1.stderr"
+        }
+      ],
+      "control": "altered_counterexample_stderr",
+      "detected": true,
+      "exit_code": 1,
+      "expected_error": "counterexample stderr changed",
+      "observed_error": "counterexample stderr changed",
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runner_stdout_sha256": "c639340dd283934debc59fc66a864d092b3c3663fbd4567616fa5f49883bec96"
+    }
+  ],
+  "status": "PASS",
+  "tamper_controls": 16,
+  "verifier_sha256": "1ad561f88287e0b039338cf6102905f757118ff0171a7b3d2d31c56f5d984c23"
+}

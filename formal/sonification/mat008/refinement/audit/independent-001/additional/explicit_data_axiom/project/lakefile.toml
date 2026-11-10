@@ -1,0 +1,9 @@
+name = "mat008_abstract_state_correspondence"
+version = "0.1.0"
+defaultTargets = ["Refine", "Audit"]
+
+[[lean_lib]]
+name = "Refine"
+
+[[lean_lib]]
+name = "Audit"
