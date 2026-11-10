@@ -68,6 +68,20 @@ def require(condition: bool, message: str) -> None:
         raise ValueError(message)
 
 
+def require_git_tracked(folder: Path, members: set[str]) -> None:
+    """Catch evidence present only in the local worktree, absent from a PR."""
+    if not folder.is_relative_to(ROOT):
+        return
+    relative = folder.relative_to(ROOT)
+    raw = subprocess.check_output(
+        ["git", "ls-files", "-z", "--", str(relative)], cwd=ROOT, timeout=30,
+    )
+    tracked = {name.decode() for name in raw.split(b"\0") if name}
+    expected = {str(relative / name) for name in members}
+    require(tracked == expected,
+            f"Git-tracked evidence inventory changed: {relative}")
+
+
 def check_manifest(folder: Path, expected_sha: str, label: str,
                    input_commit: str) -> None:
     require(folder.is_dir() and not folder.is_symlink(),
@@ -85,6 +99,7 @@ def check_manifest(folder: Path, expected_sha: str, label: str,
     observed = {str(p.relative_to(folder)) for p in folder.rglob("*") if p.is_file()}
     require(observed == set(files) | {path.name},
             f"receipt file inventory changed: {label}")
+    require_git_tracked(folder, set(files) | {path.name})
     for relative, digest in files.items():
         member_path = Path(relative)
         require(not member_path.is_absolute() and ".." not in member_path.parts,
@@ -119,6 +134,7 @@ def verify_proof_receipts(base: Path) -> dict:
     require({p.name for p in dev.iterdir() if p.is_file()} ==
             set(dev_files) | {dev_manifest.name},
             "finite development receipt coverage changed")
+    require_git_tracked(dev, set(dev_files) | {dev_manifest.name})
     for name, digest in dev_files.items():
         require(sha((dev / name).read_bytes()) == digest,
                 f"finite development file changed: {name}")
@@ -256,6 +272,7 @@ def verify_development(base_dir: Path = HERE) -> dict:
                         if p.is_file() and p.suffix != ".olean"}
             require(observed == set(files) | {manifest_path.name},
                     f"development file coverage changed: {category}/{label}")
+            require_git_tracked(folder, set(files) | {manifest_path.name})
             for name, file_sha in files.items():
                 file = folder / name
                 require(file.is_file() and not file.is_symlink() and
@@ -284,6 +301,7 @@ def verify_independent_audit(base_dir: Path = HERE) -> dict:
     observed = {str(p.relative_to(folder)) for p in folder.rglob("*") if p.is_file()}
     require(observed == set(files) | {manifest_path.name},
             "independent audit file coverage changed")
+    require_git_tracked(folder, set(files) | {manifest_path.name})
     for relative, file_sha in files.items():
         path = Path(relative)
         require(not path.is_absolute() and ".." not in path.parts,
@@ -336,6 +354,7 @@ def verify(base: Path = RECEIPTS) -> dict:
         observed = {str(p.relative_to(folder)) for p in folder.rglob("*") if p.is_file()}
         require(observed == set(files) | {manifest_file.name},
                 f"receipt file inventory changed: {name}")
+        require_git_tracked(folder, set(files) | {manifest_file.name})
         for relative, digest in files.items():
             path = Path(relative)
             require(not path.is_absolute() and ".." not in path.parts,

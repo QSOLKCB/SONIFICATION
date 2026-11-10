@@ -32,3 +32,9 @@ The full repository suite at the checkpoint passed with 340 tests and 202
 subtests; full Ruff passed. The original failed isolated test attempt is
 preserved as `repo-tests-001`; the complete successful run is
 `repo-tests-002`.
+
+The first PR CI run exposed six audit `.olean` files present locally and named
+in the independent manifest but absent from Git. Its failure is recorded in
+`analysis/005-ci-failure.json`. The original audit manifest and report are
+unchanged; those exact outputs are now tracked, and the integrity verifier
+checks Git membership so a local-only evidence file cannot pass.

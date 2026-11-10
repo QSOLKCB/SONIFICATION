@@ -65,11 +65,13 @@
     "real_heldout_accuracy": null
   },
   "verification": {
+    "ci_repair": "Original six .olean outputs force-tracked; verifier now checks Git membership of mandatory evidence files; repeat CI pending",
     "failed_full_suite_attempt": "repo-tests-001: isolated uvx environment lacked NumPy; retained",
     "focused_pytest": "9 passed",
     "full_repository_pytest": "340 passed, 202 subtests passed",
     "full_repository_ruff": "PASS",
     "independent_audit": "PASS: nominal replay plus _cstage1, _cstage2, and unsafe-suffix mutations",
+    "initial_pr_ci": "FAIL: 3.11 job found six audit .olean manifest members absent from Git; see analysis/005-ci-failure.json",
     "negative_controls": "negative-002 PASS: 6/6 including _cstage1 and _cstage2",
     "proof_build": "proof-002 PASS: 7 typed named theorems, 333 declarations, 1303 external imports",
     "retained_integrity": "PASS: 9 execution receipts; 17 model and 5 audit development attempts",

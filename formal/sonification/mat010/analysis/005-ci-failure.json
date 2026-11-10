@@ -1,0 +1,26 @@
+{
+  "actual": "Six .olean manifest members were missing from the first PR commit.",
+  "assurance": "The first CI run remains a failed execution; subsequent CI must be checked independently.",
+  "expected": "All 66 manifest members and MANIFEST.json must exist in a clean Git checkout.",
+  "missing_members": [
+    "compiler_suffix_false_axiom_cstage1/work/ArchiveConsumer.olean",
+    "compiler_suffix_false_axiom_cstage1/work/ArchiveModel.olean",
+    "compiler_suffix_false_axiom_cstage2/work/ArchiveConsumer.olean",
+    "compiler_suffix_false_axiom_cstage2/work/ArchiveModel.olean",
+    "source_unsafe_suffix_definition/work/ArchiveConsumer.olean",
+    "source_unsafe_suffix_definition/work/ArchiveModel.olean"
+  ],
+  "observed_job": {
+    "conclusion": "failure",
+    "failure": "independent audit file coverage changed in test_intact_receipts and test_missing_independent_audit_file",
+    "id": 129607218189,
+    "name": "test (3.11)",
+    "pytest_summary": "2 failed, 339 passed in 117.89s"
+  },
+  "original_pr_head": "3ef1b7929d20391cfd2b0b41d7697b36e1710973",
+  "repair": "Force-add the exact six original outputs without altering the audit manifest or report; require every manifest member to be Git tracked before accepting local evidence.",
+  "root_cause": "The independent audit manifest covered six compiled .olean outputs that were present locally but ignored by Git; the first PR commit omitted them. The local integrity verifier lacked a Git-tracked-file check.",
+  "schema": "sonification-mat010-ci-failure-repair/v1",
+  "workflow_run": 42748802981,
+  "workflow_url": "https://github.com/QSOLKCB/SONIFICATION/actions/runs/42748802981"
+}
