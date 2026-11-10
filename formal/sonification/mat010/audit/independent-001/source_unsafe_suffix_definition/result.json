@@ -1,0 +1,48 @@
+{
+  "candidate_commit": "7e1e415c6590d8bf7257b4cbcd80de58c83d808b",
+  "case": "source_unsafe_suffix_definition",
+  "detected": true,
+  "expected_diagnostic": "unsafe project definition MAT010.Archive.independent_unsafe_cstage1",
+  "jobs": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat010-closure/formal/sonification/mat010/audit/independent-001/source_unsafe_suffix_definition/work/ArchiveModel.olean",
+        "ArchiveModel.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat010-closure/formal/sonification/mat010/audit/independent-001/source_unsafe_suffix_definition/work",
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat010-closure/formal/sonification/mat010/audit/independent-001/source_unsafe_suffix_definition/work/ArchiveConsumer.olean",
+        "ArchiveConsumer.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat010-closure/formal/sonification/mat010/audit/independent-001/source_unsafe_suffix_definition/work",
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "2b6861a6bb7afaa3cde34d34e8dea6e5d23d316ba7c406f1f8ed0cb3bc19b813"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat010-closure/formal/sonification/mat010/audit/independent-001/source_unsafe_suffix_definition/work/LeanAudit.olean",
+        "LeanAudit.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat010-closure/formal/sonification/mat010/audit/independent-001/source_unsafe_suffix_definition/work",
+      "exit_code": 1,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "744598cf582899dd9913818665e94219af72e337b89094e355cefd2cc3165a87"
+    }
+  ],
+  "mutant_sha256": "8bb2a3e6d42aa74fdc96be1fcb3a635ff4aaa156dba7f85cdb02c33ea851c33b"
+}

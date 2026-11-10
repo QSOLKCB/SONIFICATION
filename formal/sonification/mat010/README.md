@@ -22,7 +22,9 @@ commit rather than replacing historical runs when verification code changes.
 
 The Lean model and declaration gate are in `lean/`. Every development attempt
 is retained in numbered, append-only subdirectories. `proof-002` is the latest
-nominal accepted local proof receipt; independent audit is still pending. The
+nominal accepted local proof receipt. The independent adversarial audit passed
+for the exact scoped Phase A candidate and is retained in
+`audit/independent-001`. The
 mathematical proof scope, Python conformance scope, and scientific limits are
 listed in [CLAIM_BOUNDARIES.md](CLAIM_BOUNDARIES.md).
 

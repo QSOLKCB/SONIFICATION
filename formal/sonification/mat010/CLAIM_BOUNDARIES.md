@@ -8,7 +8,7 @@ establish CPython semantics or the authenticity of external physical data.
 
 | Target | MODEL_PROVED | REFINEMENT_PROVED | DIFFERENTIAL_TESTED | AUDIT_ACCEPTED |
 | --- | --- | --- | --- | --- |
-| Archive membership, Phase A | PASS for scoped finite-list model at proof-002 | OPEN | PASS for declared exact built-in finite cases | PENDING independent audit |
+| Archive membership, Phase A | PASS for scoped finite-list model at proof-002 | OPEN | PASS for declared exact built-in finite cases | PASS for scoped gate at independent-001 |
 | Parent integrity, Phase B | OPEN | OPEN | NOT_EXECUTED | OPEN |
 | Scientific closure, Phase C | OPEN | OPEN | NOT_EXECUTED | OPEN |
 
@@ -43,6 +43,14 @@ run remains `FAIL`: it expected a `sorry` rejection at compilation, while the
 actual transitive axiom audit rejected `sorryAx`; this expectation was corrected
 without changing the gate. These are nominal and adversarial local results;
 independent audit is a separate dimension.
+
+The independent auditor reviewed exact candidate
+`7e1e415c6590d8bf7257b4cbcd80de58c83d808b`, reran the nominal Lean
+proof, compared all declaration, theorem-type, axiom, proof-import and 1,303
+toolchain-import identities byte for byte, and rejected fresh `_cstage1`,
+`_cstage2` and source-level unsafe-suffix mutations. The audit verdict is PASS
+for this Phase A scope; its [report](audit/independent-001/report.json) retains
+the original streams and OPEN findings.
 
 ## Parent and closure
 

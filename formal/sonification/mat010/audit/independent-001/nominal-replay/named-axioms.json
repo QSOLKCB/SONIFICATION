@@ -1,0 +1,30 @@
+{
+  "MAT010.Archive.M010_A1_ordered_nine": [
+    "Quot.sound",
+    "propext"
+  ],
+  "MAT010.Archive.M010_A2_commit_identities": [
+    "Quot.sound",
+    "propext"
+  ],
+  "MAT010.Archive.M010_A3_valid_artifact_identity": [
+    "Quot.sound",
+    "propext"
+  ],
+  "MAT010.Archive.M010_A4_unique_logical_paths": [
+    "Quot.sound",
+    "propext"
+  ],
+  "MAT010.Archive.M010_A5_deterministic_enumeration": [
+    "Quot.sound",
+    "propext"
+  ],
+  "MAT010.Archive.M010_A6_fail_closed_malformed": [
+    "Quot.sound",
+    "propext"
+  ],
+  "MAT010.Archive.M010_A7_accepted_and_rejected_nonvacuity": [
+    "Quot.sound",
+    "propext"
+  ]
+}

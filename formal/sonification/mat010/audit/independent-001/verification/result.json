@@ -1,0 +1,37 @@
+{
+  "evidence_verifier": {
+    "argv": [
+      "python3",
+      "-B",
+      "-m",
+      "formal.sonification.mat010.verify_evidence"
+    ],
+    "exit_code": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "69c9f10f64d7f25715db91aa4d6a76ab64d0c6a3fe53a6985e9ba4edc5220d61"
+  },
+  "focused_tests": {
+    "argv": [
+      "python3",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/test_sonification_formal_mat010_archive.py",
+      "tests/test_sonification_formal_mat010_receipts.py"
+    ],
+    "exit_code": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "16371d7ddc80334da217ec46a898adc96a0e0f0abd99ef339bab460bb8abd473"
+  },
+  "source_binding": {
+    "argv": [
+      "python3",
+      "-B",
+      "-m",
+      "formal.sonification.mat010.source_bind"
+    ],
+    "exit_code": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "c4359b165f7dfa0f9c1fb07240a7483e6eaccb08271b9d5b1789f8c8ab49956d"
+  }
+}

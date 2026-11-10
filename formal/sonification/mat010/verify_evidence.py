@@ -45,6 +45,13 @@ LEAN_SHA256 = "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023"
 FINITE_DEV_MANIFEST_SHA256 = (
     "6ede1d3480bd3cd592960f66a854497dc4cf6f6febcf1e354be5cadf0c3e3ee6"
 )
+INDEPENDENT_AUDIT_MANIFEST_SHA256 = (
+    "d44ed47a4a8b8573b00f6fec13103ad98e01350c9c08a6bc506ca10fdb8822d9"
+)
+INDEPENDENT_AUDIT_REPORT_SHA256 = (
+    "10d5617f4aa9d6e6bfeda5eb7e83e5eafaa3f7929fbadc397e5c20aae1b4d713"
+)
+AUDITED_CANDIDATE = "7e1e415c6590d8bf7257b4cbcd80de58c83d808b"
 COUNTEREXAMPLES = {
     "subclass_duplicate_commit_text",
     "subclass_hidden_evidence_iteration",
@@ -260,6 +267,54 @@ def verify_development(base_dir: Path = HERE) -> dict:
     return counts
 
 
+def verify_independent_audit(base_dir: Path = HERE) -> dict:
+    root = base_dir / "audit"
+    require({p.name for p in root.iterdir() if p.is_dir()} ==
+            {"independent-001"}, "independent audit attempt coverage changed")
+    folder = root / "independent-001"
+    manifest_path = folder / "MANIFEST.json"
+    require(manifest_path.is_file() and not manifest_path.is_symlink() and
+            sha(manifest_path.read_bytes()) == INDEPENDENT_AUDIT_MANIFEST_SHA256,
+            "independent audit manifest changed")
+    manifest = json.loads(manifest_path.read_text())
+    require(manifest["candidate_commit"] == AUDITED_CANDIDATE and
+            len(manifest["files_sha256"]) == 66,
+            "independent audit scope changed")
+    files = manifest["files_sha256"]
+    observed = {str(p.relative_to(folder)) for p in folder.rglob("*") if p.is_file()}
+    require(observed == set(files) | {manifest_path.name},
+            "independent audit file coverage changed")
+    for relative, file_sha in files.items():
+        path = Path(relative)
+        require(not path.is_absolute() and ".." not in path.parts,
+                f"invalid independent audit member: {relative}")
+        member = folder / path
+        require(member.is_file() and not member.is_symlink() and
+                sha(member.read_bytes()) == file_sha,
+                f"altered independent audit file: {relative}")
+    report_path = folder / "report.json"
+    require(sha(report_path.read_bytes()) == INDEPENDENT_AUDIT_REPORT_SHA256,
+            "independent audit report changed")
+    report = json.loads(report_path.read_text())
+    verdict = report["verdict"]
+    require(report["candidate"]["commit"] == AUDITED_CANDIDATE and
+            verdict["phase_A"] == "PASS_FOR_SCOPED_MODEL_AND_AUDIT_GATE" and
+            verdict["phase_B_verify_parent"] == "OPEN" and
+            verdict["phase_C_science_closure"] == "OPEN" and
+            verdict["REFINEMENT_PROVED"] == "OPEN" and
+            report["independent_executions"]["fresh_nominal"]["status"] ==
+            "PASS" and
+            all(row["detected"] for row in
+                report["independent_executions"]["mutations"].values()),
+            "independent audit verdict changed")
+    return {
+        "status": verdict["phase_A"], "candidate_commit": AUDITED_CANDIDATE,
+        "files": len(files), "mutation_count": len(
+            report["independent_executions"]["mutations"]
+        ),
+    }
+
+
 def verify(base: Path = RECEIPTS) -> dict:
     subprocess.run(["git", "merge-base", "--is-ancestor", INPUT_COMMIT, "HEAD"],
                    cwd=ROOT, check=True, capture_output=True, timeout=30)
@@ -335,13 +390,14 @@ def verify(base: Path = RECEIPTS) -> dict:
     proof = verify_proof_receipts(base)
     tests = verify_test_receipts(base)
     development = verify_development()
+    audit = verify_independent_audit()
     return {
         "status": "MAT010_ALL_RETAINED_RECEIPTS_BOUND",
         "receipt_count": len(reports) + len(proof) + len(tests),
         "finite_cases": finite["case_count"],
         "boundary_counterexamples": sorted(COUNTEREXAMPLES),
         "proof_receipts": proof, "test_receipts": tests,
-        "development_attempts": development,
+        "development_attempts": development, "independent_audit": audit,
         "REFINEMENT_PROVED": "OPEN",
     }
 

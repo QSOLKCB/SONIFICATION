@@ -11,14 +11,16 @@
     "sha256": "e062474d4435e769f8c6c8407bc44ad89cfb2dfa04677b820c3a035d604a9056",
     "tree": "646f1de532738feeb59336a427881d643cf32dc1"
   },
-  "next": "independent audit of exact committed Phase A candidate, then focused PR; parent and closure in separately scoped follow-up",
+  "next": "focused Phase A PR against current main; Phase B parent and Phase C closure in separately scoped follow-up",
   "phase_A": {
-    "AUDIT_ACCEPTED": "PENDING_INDEPENDENT_REVIEW",
+    "AUDIT_ACCEPTED": "PASS_FOR_SCOPED_MODEL_AND_AUDIT_GATE",
     "DIFFERENTIAL_TESTED": "PASS_FOR_23_DECLARED_EXACT_BUILTIN_CASES",
     "MODEL_PROVED": "PASS_FOR_SCOPED_MODEL",
     "REFINEMENT_PROVED": "OPEN",
     "failed_negative_attempt": "receipts/negative-001",
     "finite_cases": 28,
+    "independent_candidate_commit": "7e1e415c6590d8bf7257b4cbcd80de58c83d808b",
+    "independent_report": "audit/independent-001/report.json",
     "named_theorems": [
       "M010_A1_ordered_nine",
       "M010_A2_commit_identities",
@@ -67,6 +69,7 @@
     "focused_pytest": "9 passed",
     "full_repository_pytest": "340 passed, 202 subtests passed",
     "full_repository_ruff": "PASS",
+    "independent_audit": "PASS: nominal replay plus _cstage1, _cstage2, and unsafe-suffix mutations",
     "negative_controls": "negative-002 PASS: 6/6 including _cstage1 and _cstage2",
     "proof_build": "proof-002 PASS: 7 typed named theorems, 333 declarations, 1303 external imports",
     "retained_integrity": "PASS: 9 execution receipts; 17 model and 5 audit development attempts",

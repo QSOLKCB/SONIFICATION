@@ -12,6 +12,7 @@ from formal.sonification.mat010.verify_evidence import (
     RECEIPTS,
     verify,
     verify_development,
+    verify_independent_audit,
 )
 
 
@@ -65,6 +66,14 @@ class Mat010ReceiptTests(unittest.TestCase):
         (lean / "development/001/ArchiveModel.stdout").unlink()
         with self.assertRaisesRegex(ValueError, "development file coverage changed"):
             verify_development(self.root)
+
+    def test_missing_independent_audit_file(self) -> None:
+        folder = self.root / "audit/independent-001"
+        shutil.copytree(HERE / "audit/independent-001", folder)
+        verify_independent_audit(self.root)
+        (folder / "report.json").unlink()
+        with self.assertRaisesRegex(ValueError, "independent audit file coverage changed"):
+            verify_independent_audit(self.root)
 
 
 if __name__ == "__main__":
