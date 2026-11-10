@@ -1,0 +1,6 @@
+# Retained MAT-010 execution evidence is generated and integrity checked.
+# Reviewable model and verifier sources remain visible in pull-request diffs.
+formal/sonification/mat010/lean/development/** linguist-generated=true
+formal/sonification/mat010/lean/audit-development/** linguist-generated=true
+formal/sonification/mat010/receipts/** linguist-generated=true
+formal/sonification/mat010/audit/** linguist-generated=true
