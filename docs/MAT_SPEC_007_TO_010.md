@@ -31,37 +31,33 @@ verify every earlier source-pinned artifact, document each scientific
 claim versus limitation, record source and toolchain identities, close
 the planned series and publish its immutable archive. No MAT-SPEC-011.
 
-## After 010: verification, not extra material profiles
+## After 010: separately executed software verification
 
-**SPARK/Ada:** Build a separately versioned, bounded kernel for signed
-decimal-to-rational conversion, exact interval comparisons, missingness
-semantics and pairwise source-lineage auditing. Define overflow, bounds,
-preconditions and postconditions precisely. Run GNATprove and independently
-executed Python/Ada differential tests with saved toolchain and CI receipts.
-Do not infer physical accuracy from software proofs. QSOLKCB/QEC-ADA
-is an engineering reference, not a preexisting proof of these kernels.
+The numbered MAT-SPEC programme ends at 010; no new material profiles.
+Proof and finite-test receipts retain their independent source identities.
 
-**ECMAScript/Lean corrective work:** The open proof obligation lives
-in **QSOLKCB/VANILLAJS**, not in the SONIFICATION source. The existing
-VANILLAJS docs/Q16_FORMAL_001.md explicitly records REFINEMENT_OPEN.
-Q16-FORMAL-002's frozen original and corrective receipts establish
-mathematical statements and bounded execution evidence, **not universal
-refinement of production JavaScript**.
+**SPARK/Ada:** SPARK-001 v1.0.0 has an executed 26/26 GNATprove
+receipt. SPARK-002 Phase 1A and Phase 1B have executed 23/23 and 9/9
+reported checks. These verify bounded Ada contracts, not Python
+production semantics or experimental physics.
 
-A later dedicated VANILLAJS PR must freeze original source blobs, model
-ECMAScript Number (IEEE-754), signed 32-bit coercion ToInt32/ToUint32,
-truncation, negative zero, NaN/infinities, overflow, loops, exception
-conditions and the supported input domain. Prove *scoped* Lean-to-JS
-refinement with axiom-footprint verification, or present a concrete
-counterexample and corrected implementation. Execute source-constrained
-JavaScript differential tests independently. Preserve historical seals,
-and never claim an unexecuted universal proof.
+**VANILLAJS:** Q16-FORMAL-001, sealed Q16-FORMAL-002 evidence, and
+merged [Q16-ECMA-001 PR #60](https://github.com/QSOLKCB/VANILLAJS/pull/60)
+already deliver the scoped Q16 integer/ECMAScript corrective work,
+including mathematical theorems, source-pinned finite tests and
+counterexamples. It is **not** an unstarted future SONIFICATION task.
+VANILLAJS still explicitly marks *universal* Lean-to-production
+JavaScript refinement as `REFINEMENT_OPEN`; scoped integer theorems
+must not be promoted into unrestricted IEEE-754/runtime correctness.
 
-The ToInt32/ToUint32 abstract operation reference is ECMA-262 2025:
-https://262.ecma-international.org/16.0/
+**SONIFICATION-FORMAL-001:** MAT-010 archive membership Phase A
+was merged in PR #47. Parent-integrity Phase B, scientific-closure
+Phase C, source-sensitive Python refinement and independent physics
+admission remain OPEN. After those bounded checks, prepare an
+owner-reviewed formalization supplement to the main research record.
 
-No Ada/SPARK proof has been executed in MAT-SPEC-007. No Q16 production
-JavaScript refinement has been established by this programme.
+The original MAT-SPEC-007 profile itself asserted no Ada/SPARK
+proof; subsequent executed results cannot be backdated to it.
 
 ## Global invariants
 

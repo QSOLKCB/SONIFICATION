@@ -139,9 +139,10 @@ parameters**, not raw independent measurements or verified phase labels.
 Reproduce: uv run --no-project python scripts/build_mat_spec_007.py
 --out dist/mat-spec-007. See docs/MAT_SPEC_007.md.
 
-**Stop at MAT-SPEC-010**, then separately perform SPARK/Ada proof work and
-repair the outstanding VANILLAJS Lean-to-ECMAScript refinement obligation.
-See docs/MAT_SPEC_007_TO_010.md for explicit acceptance gates.
+**Stop at MAT-SPEC-010** for numbered profiles. Separate SPARK/Ada proof
+work and the VANILLAJS Q16-ECMA corrective investigation have already been
+executed. See [verification status](docs/ROADMAP.md) and
+[acceptance gates](docs/MAT_SPEC_007_TO_010.md).
 
 ## MAT-SPEC-008 — Measurement-level independence admission
 
@@ -158,8 +159,9 @@ This is an explicit evidence-gate result, not a scientific falsification.
 Run \`uv run --no-project python scripts/build_mat_spec_008.py --out
 dist/mat-spec-008\`. See [full source admission audit](docs/MAT_SPEC_008.md).
 
-The programme still **stops at MAT-SPEC-010**, then moves to the separate
-SPARK/Ada verification and VANILLAJS Lean-to-ECMAScript repair plan.
+The programme still **stops at MAT-SPEC-010**. The scoped SPARK/Ada
+and VANILLAJS Q16-ECMA follow-ups have been executed separately; see
+[current verification status](docs/ROADMAP.md).
 
 ## MAT-SPEC-009 — Prospective physical challenge, synthetic controls
 
@@ -175,9 +177,9 @@ Reproduce with
 \`uv run --no-project python scripts/build_mat_spec_009.py --out dist/mat-spec-009\`.
 See [scientific protocol and negative evidence](docs/MAT_SPEC_009.md).
 
-**MAT-SPEC-010 closes the numbered series.** After that, SPARK/Ada
-verification and the separate VANILLAJS Lean-to-ECMAScript refinement
-repair follow.
+**MAT-SPEC-010 closes the numbered series.** Separate SPARK/Ada and
+VANILLAJS Q16-ECMA corrective work has already been performed. Its
+precise proof limits are in the [roadmap](docs/ROADMAP.md).
 
 ## MAT-SPEC-010 — Final evidence freeze (no MAT-SPEC-011)
 
@@ -196,8 +198,10 @@ Run: uv run --no-project python scripts/build_mat_spec_010.py
 --out dist/mat-spec-010.
 
 See docs/MAT_SPEC_010.md and docs/MAT_SPEC_010_HANDOFF.md.
-After 010: SPARK/Ada verification, then the separate VANILLAJS
-Lean-to-ECMAScript refinement repair. No MAT-SPEC-011.
+The post-010 scoped SPARK/Ada and VANILLAJS Q16-ECMA milestones are
+already documented; universal production-JS refinement remains open
+in VANILLAJS, not as a future SONIFICATION repair phase.
+No MAT-SPEC-011.
 
 ## SPARK-001 — Numerical verification after MAT-SPEC-010
 
@@ -213,8 +217,10 @@ GNATprove is a separate **owner-authorized local main-only workflow**:
 execution on the QSOL self-hosted runner. A completed compiler/differential
 job does not mean proof obligations are discharged.
 
-See [SPARK-001 method and limits](docs/SPARK_001.md).
-Next separately: the outstanding VANILLAJS Lean-to-ECMAScript refinement.
+See [SPARK-001 method and limits](docs/SPARK_001.md) and the
+[updated roadmap](docs/ROADMAP.md). VANILLAJS Q16-ECMA-001 is merged
+(PR #60); a broader universal ECMAScript refinement is still OPEN
+within VANILLAJS.
 
 ## The short version
 

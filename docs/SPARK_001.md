@@ -83,9 +83,17 @@ Capture the exact compiler/prover versions, proof logs, and full source SHA.
 The module does not create or buffer PCM, WAV, audio waveforms or synth output.
 The root ETQ audio prohibition stays unchanged.
 
-## After this pilot
+## After this pilot — updated follow-up
 
-Next: actual GNATprove execution and proof hardening, then a separate
-QSOLKCB/VANILLAJS Lean-to-ECMAScript refinement repair. The latter
-must retain the Q16-FORMAL-002 historical seals and the existing
-REFINEMENT_OPEN status until scoped proof is executed.
+The owner subsequently executed GNATprove for SPARK-001 v1.0.0
+(26/26 checks), and SPARK-002 Phase 1A (23/23) and Phase 1B
+(9/9), with distinct source-pinned receipts. Historical pilot
+evidence was not relabelled.
+
+The separate VANILLAJS Q16-ECMA corrective implementation was
+also merged ([PR #60](https://github.com/QSOLKCB/VANILLAJS/pull/60)).
+It covers scoped mathematical integer theorems, finite JS
+conformance and counterexamples. Universal source-level
+ECMAScript refinement remains `REFINEMENT_OPEN` within VANILLAJS,
+rather than being an unstarted SONIFICATION phase.
+See [current roadmap](ROADMAP.md).
