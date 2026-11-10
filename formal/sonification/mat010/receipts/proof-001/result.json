@@ -1,0 +1,38 @@
+{
+  "AUDIT_ACCEPTED": "PENDING_INDEPENDENT_REVIEW",
+  "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+  "MODEL_PROVED": "PASS_FOR_SCOPED_PHASE_A_MODEL",
+  "REFINEMENT_PROVED": "OPEN",
+  "compiler_auxiliary_count": 151,
+  "completed_utc": "2026-11-10T03:02:33.550604+00:00",
+  "declaration_count": 333,
+  "declarations_sha256": "2bd2e259f54ca1186ee3171a3fbeee05d049d77a59c2ce93738a6cdce32ece07",
+  "external_import_count": 1303,
+  "frozen_source_sha256": "e062474d4435e769f8c6c8407bc44ad89cfb2dfa04677b820c3a035d604a9056",
+  "lean_executable_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "lean_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "named_intended_theorems": [
+    "MAT010.Archive.M010_A1_ordered_nine",
+    "MAT010.Archive.M010_A2_commit_identities",
+    "MAT010.Archive.M010_A3_valid_artifact_identity",
+    "MAT010.Archive.M010_A4_unique_logical_paths",
+    "MAT010.Archive.M010_A5_deterministic_enumeration",
+    "MAT010.Archive.M010_A6_fail_closed_malformed",
+    "MAT010.Archive.M010_A7_accepted_and_rejected_nonvacuity"
+  ],
+  "project_compiler_axiom_count": 15,
+  "proof_input_commit": "dfb4afad4f326c45a9502b4825d08b06d48566c3",
+  "proof_input_sha256": {
+    "ArchiveConsumer.lean": "dfc0cf31167adcde7f6723d5e6fc9f349deb4a6886c1f1c4ae11959e51ad43a9",
+    "ArchiveModel.lean": "c22a45e0afdca8287fc88b5bf34e28077ca4cb5c678859231507b3be246006d9",
+    "LeanAudit.lean": "b7511d361724728b04468c19170e7d72d6efe02042f5393729795f2bd4a3cfc5",
+    "PROOF_NOTES.md": "0f9af6516c178325ba1a19e215c99af7805753596ddb3b19619a6bacb849398c",
+    "TRUSTED_COMPILER.md": "d2bad3ceba537ee228996a3362adb7d82040bf093d2e274e2880fd0c31ff7a02",
+    "check.py": "6f035789c7028c8844d18324f81a4cbb5ca5c879ab813fdd795523469b281a3e",
+    "lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+    "negative.py": "3b0b9d21c13401d13cbcded258932555084135da76ff92c489c05a9c907aab59"
+  },
+  "started_utc": "2026-11-10T03:02:12.344668+00:00",
+  "status": "PASS",
+  "theorem_declaration_count_including_generated": 63
+}

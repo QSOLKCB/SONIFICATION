@@ -1,0 +1,75 @@
+{
+  "imported_compiler_axioms": [
+    "List.elem._at.System.FilePath.normalize._spec_1",
+    "_private.Init.Data.Option.Basic.0.Option.decEqOption.\u00ab_@\u00bb.Init.Data.Option.Basic._hyg.4._at.Std.Time.Database.TZdb.idFromPath._spec_1",
+    "lcProof"
+  ],
+  "ordinary_logical_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "project_compiler_axioms": [
+    {
+      "name": "List.flatMapTR.go._at.MAT010.Archive.emit._spec_1",
+      "type": "(x : List (MAT010.Archive.Claim \u00d7 MAT010.Archive.Snapshot)) \u2192\n  (x_1 : Array MAT010.Archive.Artifact) \u2192 (fun x => (fun x x => List MAT010.Archive.Artifact) x x_1) x"
+    },
+    {
+      "name": "List.foldl._at.MAT010.Archive.stageSuffix._spec_1",
+      "type": "(x : String) \u2192 (x_1 : List Char) \u2192 (fun x_2 => (fun x x => String) x x_2) x_1"
+    },
+    {
+      "name": "List.hasDecEq._at.MAT010.Archive.instDecidableValidInput._spec_2",
+      "type": "(x x_1 : List String) \u2192 (fun x => (fun x x_2 => Decidable (x = x_2)) x x_1) x"
+    },
+    {
+      "name": "List.hasDecEq._at.MAT010.Archive.instDecidableValidPair._spec_1",
+      "type": "(x x_1 : List MAT010.Archive.Member) \u2192 (fun x => (fun x x_2 => Decidable (x = x_2)) x x_1) x"
+    },
+    {
+      "name": "List.isPrefixOf._at._private.ArchiveModel.0.MAT010.Archive.suffixCase._spec_1",
+      "type": "(x x_1 : List Char) \u2192 (fun x => (fun x x => Bool) x x_1) x"
+    },
+    {
+      "name": "List.isSuffixOf._at.MAT010.Archive.hasMidiSuffix._spec_1",
+      "type": "List Char \u2192 List Char \u2192 Bool"
+    },
+    {
+      "name": "List.mapTR.loop._at.MAT010.Archive.demoClaims._spec_1",
+      "type": "(x : List String) \u2192 (x_1 : List MAT010.Archive.Claim) \u2192 (fun x => (fun x x => List MAT010.Archive.Claim) x x_1) x"
+    },
+    {
+      "name": "List.mapTR.loop._at.MAT010.Archive.demoSnapshots._spec_1",
+      "type": "(x : List String) \u2192 (x_1 : List MAT010.Archive.Snapshot) \u2192 (fun x => (fun x x => List MAT010.Archive.Snapshot) x x_1) x"
+    },
+    {
+      "name": "List.mapTR.loop._at.MAT010.Archive.demoSnapshotsExtra._spec_1",
+      "type": "(x : List String) \u2192 (x_1 : List MAT010.Archive.Snapshot) \u2192 (fun x => (fun x x => List MAT010.Archive.Snapshot) x x_1) x"
+    },
+    {
+      "name": "List.mapTR.loop._at.MAT010.Archive.emitFor._spec_1",
+      "type": "MAT010.Archive.Snapshot \u2192\n  (x : List MAT010.Archive.Member) \u2192\n    (x_1 : List MAT010.Archive.Artifact) \u2192 (fun x => (fun x x => List MAT010.Archive.Artifact) x x_1) x"
+    },
+    {
+      "name": "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_1",
+      "type": "(x : List MAT010.Archive.Claim) \u2192 (x_1 : List String) \u2192 (fun x => (fun x x => List String) x x_1) x"
+    },
+    {
+      "name": "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_3",
+      "type": "(x : List MAT010.Archive.Snapshot) \u2192 (x_1 : List String) \u2192 (fun x => (fun x x => List String) x x_1) x"
+    },
+    {
+      "name": "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_4",
+      "type": "(x : List MAT010.Archive.Claim) \u2192 (x_1 : List String) \u2192 (fun x => (fun x x => List String) x x_1) x"
+    },
+    {
+      "name": "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_5",
+      "type": "(x : List MAT010.Archive.Artifact) \u2192 (x_1 : List String) \u2192 (fun x => (fun x x => List String) x x_1) x"
+    },
+    {
+      "name": "List.mapTR.loop._at.MAT010.Archive.instDecidableValidPair._spec_2",
+      "type": "(x : List MAT010.Archive.Member) \u2192 (x_1 : List String) \u2192 (fun x => (fun x x => List String) x x_1) x"
+    }
+  ],
+  "unsafe_generated_definition_count": 136
+}

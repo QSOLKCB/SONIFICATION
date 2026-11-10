@@ -62,7 +62,7 @@ def variants() -> dict[str, tuple[str, str, str, str]]:
             replace_once(model, "\nend MAT010.Archive\n",
                          "\ndef hidden_unproved : Nat := by sorry\n\n"
                          "end MAT010.Archive\n"),
-            "ArchiveModel", "sorry",
+            "LeanAudit", "unapproved transitive axiom sorryAx",
         ),
     }
 

@@ -1,0 +1,3974 @@
+[
+  {
+    "axioms": [
+      "List.flatMapTR.go._at.MAT010.Archive.emit._spec_1"
+    ],
+    "declaration": "List.flatMapTR.go._at.MAT010.Archive.emit._spec_1",
+    "has_source_range": false,
+    "is_axiom": true,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "(x : List (MAT010.Archive.Claim \u00d7 MAT010.Archive.Snapshot)) \u2192\n  (x_1 : Array MAT010.Archive.Artifact) \u2192 (fun x => (fun x x => List MAT010.Archive.Artifact) x x_1) x",
+    "unsafe_axiom": true,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound",
+      "List.flatMapTR.go._at.MAT010.Archive.emit._spec_1"
+    ],
+    "declaration": "List.flatMapTR.go._at.MAT010.Archive.emit._spec_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.foldl._at.MAT010.Archive.stageSuffix._spec_1"
+    ],
+    "declaration": "List.foldl._at.MAT010.Archive.stageSuffix._spec_1",
+    "has_source_range": false,
+    "is_axiom": true,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "(x : String) \u2192 (x_1 : List Char) \u2192 (fun x_2 => (fun x x => String) x x_2) x_1",
+    "unsafe_axiom": true,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "List.foldl._at.MAT010.Archive.stageSuffix._spec_1"
+    ],
+    "declaration": "List.foldl._at.MAT010.Archive.stageSuffix._spec_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.hasDecEq._at.MAT010.Archive.instDecidableValidInput._spec_2"
+    ],
+    "declaration": "List.hasDecEq._at.MAT010.Archive.instDecidableValidInput._spec_2",
+    "has_source_range": false,
+    "is_axiom": true,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "(x x_1 : List String) \u2192 (fun x => (fun x x_2 => Decidable (x = x_2)) x x_1) x",
+    "unsafe_axiom": true,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "List.hasDecEq._at.MAT010.Archive.instDecidableValidInput._spec_2"
+    ],
+    "declaration": "List.hasDecEq._at.MAT010.Archive.instDecidableValidInput._spec_2._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.hasDecEq._at.MAT010.Archive.instDecidableValidPair._spec_1"
+    ],
+    "declaration": "List.hasDecEq._at.MAT010.Archive.instDecidableValidPair._spec_1",
+    "has_source_range": false,
+    "is_axiom": true,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "(x x_1 : List MAT010.Archive.Member) \u2192 (fun x => (fun x x_2 => Decidable (x = x_2)) x x_1) x",
+    "unsafe_axiom": true,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "List.hasDecEq._at.MAT010.Archive.instDecidableValidPair._spec_1"
+    ],
+    "declaration": "List.hasDecEq._at.MAT010.Archive.instDecidableValidPair._spec_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.isPrefixOf._at._private.ArchiveModel.0.MAT010.Archive.suffixCase._spec_1"
+    ],
+    "declaration": "List.isPrefixOf._at._private.ArchiveModel.0.MAT010.Archive.suffixCase._spec_1",
+    "has_source_range": false,
+    "is_axiom": true,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "(x x_1 : List Char) \u2192 (fun x => (fun x x => Bool) x x_1) x",
+    "unsafe_axiom": true,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "List.isPrefixOf._at._private.ArchiveModel.0.MAT010.Archive.suffixCase._spec_1"
+    ],
+    "declaration": "List.isPrefixOf._at._private.ArchiveModel.0.MAT010.Archive.suffixCase._spec_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.isSuffixOf._at.MAT010.Archive.hasMidiSuffix._spec_1"
+    ],
+    "declaration": "List.isSuffixOf._at.MAT010.Archive.hasMidiSuffix._spec_1",
+    "has_source_range": false,
+    "is_axiom": true,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "List Char \u2192 List Char \u2192 Bool",
+    "unsafe_axiom": true,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "List.isPrefixOf._at._private.ArchiveModel.0.MAT010.Archive.suffixCase._spec_1"
+    ],
+    "declaration": "List.isSuffixOf._at.MAT010.Archive.hasMidiSuffix._spec_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.demoClaims._spec_1"
+    ],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.demoClaims._spec_1",
+    "has_source_range": false,
+    "is_axiom": true,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "(x : List String) \u2192 (x_1 : List MAT010.Archive.Claim) \u2192 (fun x => (fun x x => List MAT010.Archive.Claim) x x_1) x",
+    "unsafe_axiom": true,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.demoClaims._spec_1._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.demoClaims._spec_1"
+    ],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.demoClaims._spec_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.demoSnapshots._spec_1"
+    ],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.demoSnapshots._spec_1",
+    "has_source_range": false,
+    "is_axiom": true,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "(x : List String) \u2192 (x_1 : List MAT010.Archive.Snapshot) \u2192 (fun x => (fun x x => List MAT010.Archive.Snapshot) x x_1) x",
+    "unsafe_axiom": true,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.demoSnapshots._spec_1._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.demoSnapshots._spec_1"
+    ],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.demoSnapshots._spec_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.demoSnapshotsExtra._spec_1"
+    ],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.demoSnapshotsExtra._spec_1",
+    "has_source_range": false,
+    "is_axiom": true,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "(x : List String) \u2192 (x_1 : List MAT010.Archive.Snapshot) \u2192 (fun x => (fun x x => List MAT010.Archive.Snapshot) x x_1) x",
+    "unsafe_axiom": true,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.demoSnapshotsExtra._spec_1._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.demoSnapshotsExtra._spec_1"
+    ],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.demoSnapshotsExtra._spec_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.emitFor._spec_1"
+    ],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.emitFor._spec_1",
+    "has_source_range": false,
+    "is_axiom": true,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Snapshot \u2192\n  (x : List MAT010.Archive.Member) \u2192\n    (x_1 : List MAT010.Archive.Artifact) \u2192 (fun x => (fun x x => List MAT010.Archive.Artifact) x x_1) x",
+    "unsafe_axiom": true,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.emitFor._spec_1"
+    ],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.emitFor._spec_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 _obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_1"
+    ],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_1",
+    "has_source_range": false,
+    "is_axiom": true,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "(x : List MAT010.Archive.Claim) \u2192 (x_1 : List String) \u2192 (fun x => (fun x x => List String) x x_1) x",
+    "unsafe_axiom": true,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_1"
+    ],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_3"
+    ],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_3",
+    "has_source_range": false,
+    "is_axiom": true,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "(x : List MAT010.Archive.Snapshot) \u2192 (x_1 : List String) \u2192 (fun x => (fun x x => List String) x x_1) x",
+    "unsafe_axiom": true,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_3"
+    ],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_3._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_4"
+    ],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_4",
+    "has_source_range": false,
+    "is_axiom": true,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "(x : List MAT010.Archive.Claim) \u2192 (x_1 : List String) \u2192 (fun x => (fun x x => List String) x x_1) x",
+    "unsafe_axiom": true,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_4"
+    ],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_4._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_5"
+    ],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_5",
+    "has_source_range": false,
+    "is_axiom": true,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "(x : List MAT010.Archive.Artifact) \u2192 (x_1 : List String) \u2192 (fun x => (fun x x => List String) x x_1) x",
+    "unsafe_axiom": true,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_5"
+    ],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_5._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.instDecidableValidPair._spec_2"
+    ],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.instDecidableValidPair._spec_2",
+    "has_source_range": false,
+    "is_axiom": true,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "(x : List MAT010.Archive.Member) \u2192 (x_1 : List String) \u2192 (fun x => (fun x x => List String) x x_1) x",
+    "unsafe_axiom": true,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.instDecidableValidPair._spec_2"
+    ],
+    "declaration": "List.mapTR.loop._at.MAT010.Archive.instDecidableValidPair._spec_2._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "Type",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact._sizeOf_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Artifact \u2192 Nat",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact._sizeOf_inst",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "SizeOf MAT010.Archive.Artifact",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact.audioRendered",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Artifact \u2192 Bool",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact.casesOn",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "{motive : MAT010.Archive.Artifact \u2192 Sort u} \u2192\n  (t : MAT010.Archive.Artifact) \u2192\n    ((stage version name logicalPath sha256 contentInThisManifest : String) \u2192\n        (audioRendered : Bool) \u2192\n          motive\n            { stage := stage, version := version, name := name, logicalPath := logicalPath, sha256 := sha256,\n              contentInThisManifest := contentInThisManifest, audioRendered := audioRendered }) \u2192\n      motive t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact.contentInThisManifest",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Artifact \u2192 String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact.logicalPath",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Artifact \u2192 String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact.mk",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 String \u2192 String \u2192 String \u2192 String \u2192 String \u2192 Bool \u2192 MAT010.Archive.Artifact",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact.mk._flat_ctor",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 String \u2192 String \u2192 String \u2192 String \u2192 String \u2192 Bool \u2192 MAT010.Archive.Artifact",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact.mk.inj",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {stage version name logicalPath sha256 contentInThisManifest : String} {audioRendered : Bool}\n  {stage_1 version_1 name_1 logicalPath_1 sha256_1 contentInThisManifest_1 : String} {audioRendered_1 : Bool},\n  { stage := stage, version := version, name := name, logicalPath := logicalPath, sha256 := sha256,\n        contentInThisManifest := contentInThisManifest, audioRendered := audioRendered } =\n      { stage := stage_1, version := version_1, name := name_1, logicalPath := logicalPath_1, sha256 := sha256_1,\n        contentInThisManifest := contentInThisManifest_1, audioRendered := audioRendered_1 } \u2192\n    stage = stage_1 \u2227\n      version = version_1 \u2227\n        name = name_1 \u2227\n          logicalPath = logicalPath_1 \u2227\n            sha256 = sha256_1 \u2227 contentInThisManifest = contentInThisManifest_1 \u2227 audioRendered = audioRendered_1",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT010.Archive.Artifact.mk.injEq",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (stage version name logicalPath sha256 contentInThisManifest : String) (audioRendered : Bool)\n  (stage_1 version_1 name_1 logicalPath_1 sha256_1 contentInThisManifest_1 : String) (audioRendered_1 : Bool),\n  ({ stage := stage, version := version, name := name, logicalPath := logicalPath, sha256 := sha256,\n        contentInThisManifest := contentInThisManifest, audioRendered := audioRendered } =\n      { stage := stage_1, version := version_1, name := name_1, logicalPath := logicalPath_1, sha256 := sha256_1,\n        contentInThisManifest := contentInThisManifest_1, audioRendered := audioRendered_1 }) =\n    (stage = stage_1 \u2227\n      version = version_1 \u2227\n        name = name_1 \u2227\n          logicalPath = logicalPath_1 \u2227\n            sha256 = sha256_1 \u2227 contentInThisManifest = contentInThisManifest_1 \u2227 audioRendered = audioRendered_1)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact.mk.sizeOf_spec",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (stage version name logicalPath sha256 contentInThisManifest : String) (audioRendered : Bool),\n  sizeOf\n      { stage := stage, version := version, name := name, logicalPath := logicalPath, sha256 := sha256,\n        contentInThisManifest := contentInThisManifest, audioRendered := audioRendered } =\n    1 + sizeOf stage + sizeOf version + sizeOf name + sizeOf logicalPath + sizeOf sha256 +\n        sizeOf contentInThisManifest +\n      sizeOf audioRendered",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact.name",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Artifact \u2192 String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact.noConfusion",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "{P : Sort u} \u2192 {v1 v2 : MAT010.Archive.Artifact} \u2192 v1 = v2 \u2192 MAT010.Archive.Artifact.noConfusionType P v1 v2",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact.noConfusionType",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "Sort u \u2192 MAT010.Archive.Artifact \u2192 MAT010.Archive.Artifact \u2192 Sort u",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact.rec",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "{motive : MAT010.Archive.Artifact \u2192 Sort u} \u2192\n  ((stage version name logicalPath sha256 contentInThisManifest : String) \u2192\n      (audioRendered : Bool) \u2192\n        motive\n          { stage := stage, version := version, name := name, logicalPath := logicalPath, sha256 := sha256,\n            contentInThisManifest := contentInThisManifest, audioRendered := audioRendered }) \u2192\n    (t : MAT010.Archive.Artifact) \u2192 motive t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact.recOn",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "{motive : MAT010.Archive.Artifact \u2192 Sort u} \u2192\n  (t : MAT010.Archive.Artifact) \u2192\n    ((stage version name logicalPath sha256 contentInThisManifest : String) \u2192\n        (audioRendered : Bool) \u2192\n          motive\n            { stage := stage, version := version, name := name, logicalPath := logicalPath, sha256 := sha256,\n              contentInThisManifest := contentInThisManifest, audioRendered := audioRendered }) \u2192\n      motive t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact.sha256",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Artifact \u2192 String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact.stage",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Artifact \u2192 String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Artifact.version",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Artifact \u2192 String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Claim",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "Type",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Claim._sizeOf_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Claim \u2192 Nat",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Claim._sizeOf_inst",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "SizeOf MAT010.Archive.Claim",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Claim.casesOn",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "{motive : MAT010.Archive.Claim \u2192 Sort u} \u2192\n  (t : MAT010.Archive.Claim) \u2192\n    ((profile version mergedCommit evidenceFile : String) \u2192\n        motive { profile := profile, version := version, mergedCommit := mergedCommit, evidenceFile := evidenceFile }) \u2192\n      motive t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Claim.evidenceFile",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Claim \u2192 String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Claim.mergedCommit",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Claim \u2192 String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Claim.mk",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 String \u2192 String \u2192 String \u2192 MAT010.Archive.Claim",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Claim.mk._flat_ctor",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 String \u2192 String \u2192 String \u2192 MAT010.Archive.Claim",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Claim.mk.inj",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {profile version mergedCommit evidenceFile profile_1 version_1 mergedCommit_1 evidenceFile_1 : String},\n  { profile := profile, version := version, mergedCommit := mergedCommit, evidenceFile := evidenceFile } =\n      { profile := profile_1, version := version_1, mergedCommit := mergedCommit_1, evidenceFile := evidenceFile_1 } \u2192\n    profile = profile_1 \u2227 version = version_1 \u2227 mergedCommit = mergedCommit_1 \u2227 evidenceFile = evidenceFile_1",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT010.Archive.Claim.mk.injEq",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (profile version mergedCommit evidenceFile profile_1 version_1 mergedCommit_1 evidenceFile_1 : String),\n  ({ profile := profile, version := version, mergedCommit := mergedCommit, evidenceFile := evidenceFile } =\n      { profile := profile_1, version := version_1, mergedCommit := mergedCommit_1, evidenceFile := evidenceFile_1 }) =\n    (profile = profile_1 \u2227 version = version_1 \u2227 mergedCommit = mergedCommit_1 \u2227 evidenceFile = evidenceFile_1)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Claim.mk.sizeOf_spec",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (profile version mergedCommit evidenceFile : String),\n  sizeOf { profile := profile, version := version, mergedCommit := mergedCommit, evidenceFile := evidenceFile } =\n    1 + sizeOf profile + sizeOf version + sizeOf mergedCommit + sizeOf evidenceFile",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Claim.noConfusion",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "{P : Sort u} \u2192 {v1 v2 : MAT010.Archive.Claim} \u2192 v1 = v2 \u2192 MAT010.Archive.Claim.noConfusionType P v1 v2",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Claim.noConfusionType",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "Sort u \u2192 MAT010.Archive.Claim \u2192 MAT010.Archive.Claim \u2192 Sort u",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Claim.profile",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Claim \u2192 String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Claim.rec",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "{motive : MAT010.Archive.Claim \u2192 Sort u} \u2192\n  ((profile version mergedCommit evidenceFile : String) \u2192\n      motive { profile := profile, version := version, mergedCommit := mergedCommit, evidenceFile := evidenceFile }) \u2192\n    (t : MAT010.Archive.Claim) \u2192 motive t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Claim.recOn",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "{motive : MAT010.Archive.Claim \u2192 Sort u} \u2192\n  (t : MAT010.Archive.Claim) \u2192\n    ((profile version mergedCommit evidenceFile : String) \u2192\n        motive { profile := profile, version := version, mergedCommit := mergedCommit, evidenceFile := evidenceFile }) \u2192\n      motive t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Claim.version",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Claim \u2192 String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.M010_A1_ordered_nine",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} {out : List MAT010.Archive.Artifact},\n  MAT010.Archive.validate claims snapshots = some out \u2192\n    List.map MAT010.Archive.Claim.profile claims = MAT010.Archive.stages \u2227\n      List.map MAT010.Archive.Snapshot.identifier snapshots = MAT010.Archive.stages \u2227\n        claims.length = 9 \u2227 snapshots.length = 9",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.M010_A2_commit_identities",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} {out : List MAT010.Archive.Artifact},\n  MAT010.Archive.validate claims snapshots = some out \u2192\n    (List.map MAT010.Archive.Claim.mergedCommit claims).Nodup \u2227\n      \u2200 (claim : MAT010.Archive.Claim), claim \u2208 claims \u2192 MAT010.Archive.validCommit claim.mergedCommit = true",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.M010_A3_valid_artifact_identity",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} {out : List MAT010.Archive.Artifact},\n  MAT010.Archive.validate claims snapshots = some out \u2192\n    \u2200 (artifact : MAT010.Archive.Artifact),\n      artifact \u2208 out \u2192\n        artifact.stage \u2208 MAT010.Archive.stages \u2227\n          MAT010.Archive.validName artifact.name = true \u2227\n            MAT010.Archive.validDigest artifact.sha256 = true \u2227\n              (MAT010.Archive.hasMidiSuffix artifact.name = true \u2192 artifact.stage = MAT010.Archive.firstStage) \u2227\n                \u2203 claim snapshot member,\n                  (claim, snapshot) \u2208 claims.zip snapshots \u2227\n                    member \u2208 snapshot.members \u2227\n                      claim.version = artifact.version \u2227 artifact = MAT010.Archive.artifactOf snapshot member",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.M010_A4_unique_logical_paths",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} {out : List MAT010.Archive.Artifact},\n  MAT010.Archive.validate claims snapshots = some out \u2192\n    (List.map MAT010.Archive.Artifact.logicalPath out).Nodup \u2227\n      Option.map MAT010.Archive.Artifact.stage out.getLast? = some MAT010.Archive.lastStage",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.M010_A5_deterministic_enumeration",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (claims : List MAT010.Archive.Claim) {left right : List MAT010.Archive.Snapshot},\n  MAT010.Archive.SameMaps left right \u2192\n    (\u2200 (snapshot : MAT010.Archive.Snapshot),\n        snapshot \u2208 left \u2192 (List.map MAT010.Archive.Member.name snapshot.members).Nodup) \u2192\n      MAT010.Archive.emit claims left = MAT010.Archive.emit claims right \u2227\n        MAT010.Archive.validate claims left = MAT010.Archive.validate claims right",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.M010_A6_fail_closed_malformed",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (claims : List MAT010.Archive.Claim) (snapshots : List MAT010.Archive.Snapshot),\n  MAT010.Archive.Malformed claims snapshots \u2192 MAT010.Archive.validate claims snapshots = none",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.M010_A7_accepted_and_rejected_nonvacuity",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "(MAT010.Archive.validate MAT010.Archive.demoClaims MAT010.Archive.demoSnapshots).isSome = true \u2227\n  (MAT010.Archive.validate MAT010.Archive.demoClaims MAT010.Archive.demoSnapshotsExtra).isSome = true \u2227\n    (MAT010.Archive.validate MAT010.Archive.demoClaims []).isNone = true",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.Malformed",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "List MAT010.Archive.Claim \u2192 List MAT010.Archive.Snapshot \u2192 Prop",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.Malformed.badCommit",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} (claim : MAT010.Archive.Claim),\n  claim \u2208 claims \u2192 MAT010.Archive.validCommit claim.mergedCommit \u2260 true \u2192 MAT010.Archive.Malformed claims snapshots",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.Malformed.badDigest",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} (claim : MAT010.Archive.Claim)\n  (snapshot : MAT010.Archive.Snapshot) (member : MAT010.Archive.Member),\n  (claim, snapshot) \u2208 claims.zip snapshots \u2192\n    member \u2208 snapshot.members \u2192\n      MAT010.Archive.validDigest member.digest \u2260 true \u2192 MAT010.Archive.Malformed claims snapshots",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.Malformed.badName",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} (claim : MAT010.Archive.Claim)\n  (snapshot : MAT010.Archive.Snapshot) (member : MAT010.Archive.Member),\n  (claim, snapshot) \u2208 claims.zip snapshots \u2192\n    member \u2208 snapshot.members \u2192 MAT010.Archive.validName member.name \u2260 true \u2192 MAT010.Archive.Malformed claims snapshots",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.Malformed.casesOn",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot}\n  {motive : MAT010.Archive.Malformed claims snapshots \u2192 Prop} (t : MAT010.Archive.Malformed claims snapshots),\n  (\u2200 (h : List.map MAT010.Archive.Claim.profile claims \u2260 MAT010.Archive.stages), motive \u22ef) \u2192\n    (\u2200 (h : List.map MAT010.Archive.Snapshot.identifier snapshots \u2260 MAT010.Archive.stages), motive \u22ef) \u2192\n      (\u2200 (h : \u00ac(List.map MAT010.Archive.Claim.mergedCommit claims).Nodup), motive \u22ef) \u2192\n        (\u2200 (claim : MAT010.Archive.Claim) (hmem : claim \u2208 claims)\n            (h : MAT010.Archive.validCommit claim.mergedCommit \u2260 true), motive \u22ef) \u2192\n          (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n              (hpair : (claim, snapshot) \u2208 claims.zip snapshots) (h : claim.version \u2260 snapshot.version), motive \u22ef) \u2192\n            (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n                (hpair : (claim, snapshot) \u2208 claims.zip snapshots) (h : snapshot.members = []), motive \u22ef) \u2192\n              (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n                  (hpair : (claim, snapshot) \u2208 claims.zip snapshots)\n                  (h : \u00acclaim.evidenceFile \u2208 List.map MAT010.Archive.Member.name snapshot.members), motive \u22ef) \u2192\n                (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n                    (hpair : (claim, snapshot) \u2208 claims.zip snapshots)\n                    (h : \u00ac(List.map MAT010.Archive.Member.name snapshot.members).Nodup), motive \u22ef) \u2192\n                  (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n                      (member : MAT010.Archive.Member) (hpair : (claim, snapshot) \u2208 claims.zip snapshots)\n                      (hmember : member \u2208 snapshot.members) (h : MAT010.Archive.validName member.name \u2260 true),\n                      motive \u22ef) \u2192\n                    (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n                        (member : MAT010.Archive.Member) (hpair : (claim, snapshot) \u2208 claims.zip snapshots)\n                        (hmember : member \u2208 snapshot.members) (h : MAT010.Archive.validDigest member.digest \u2260 true),\n                        motive \u22ef) \u2192\n                      (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n                          (member : MAT010.Archive.Member) (hpair : (claim, snapshot) \u2208 claims.zip snapshots)\n                          (hmember : member \u2208 snapshot.members) (hmid : MAT010.Archive.hasMidiSuffix member.name = true)\n                          (hstage : snapshot.identifier \u2260 MAT010.Archive.firstStage), motive \u22ef) \u2192\n                        (\u2200\n                            (h :\n                              \u00ac(List.map MAT010.Archive.Artifact.logicalPath\n                                    (MAT010.Archive.emit claims snapshots)).Nodup),\n                            motive \u22ef) \u2192\n                          (\u2200\n                              (h :\n                                Option.map MAT010.Archive.Artifact.stage\n                                    (MAT010.Archive.emit claims snapshots).getLast? \u2260\n                                  some MAT010.Archive.lastStage),\n                              motive \u22ef) \u2192\n                            motive t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.Malformed.claimStageOrder",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot},\n  List.map MAT010.Archive.Claim.profile claims \u2260 MAT010.Archive.stages \u2192 MAT010.Archive.Malformed claims snapshots",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.Malformed.emptyMembers",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} (claim : MAT010.Archive.Claim)\n  (snapshot : MAT010.Archive.Snapshot),\n  (claim, snapshot) \u2208 claims.zip snapshots \u2192 snapshot.members = [] \u2192 MAT010.Archive.Malformed claims snapshots",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.Malformed.forbiddenMidi",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} (claim : MAT010.Archive.Claim)\n  (snapshot : MAT010.Archive.Snapshot) (member : MAT010.Archive.Member),\n  (claim, snapshot) \u2208 claims.zip snapshots \u2192\n    member \u2208 snapshot.members \u2192\n      MAT010.Archive.hasMidiSuffix member.name = true \u2192\n        snapshot.identifier \u2260 MAT010.Archive.firstStage \u2192 MAT010.Archive.Malformed claims snapshots",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.Malformed.missingEvidence",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} (claim : MAT010.Archive.Claim)\n  (snapshot : MAT010.Archive.Snapshot),\n  (claim, snapshot) \u2208 claims.zip snapshots \u2192\n    \u00acclaim.evidenceFile \u2208 List.map MAT010.Archive.Member.name snapshot.members \u2192\n      MAT010.Archive.Malformed claims snapshots",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.Malformed.rec",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot}\n  {motive : MAT010.Archive.Malformed claims snapshots \u2192 Prop},\n  (\u2200 (h : List.map MAT010.Archive.Claim.profile claims \u2260 MAT010.Archive.stages), motive \u22ef) \u2192\n    (\u2200 (h : List.map MAT010.Archive.Snapshot.identifier snapshots \u2260 MAT010.Archive.stages), motive \u22ef) \u2192\n      (\u2200 (h : \u00ac(List.map MAT010.Archive.Claim.mergedCommit claims).Nodup), motive \u22ef) \u2192\n        (\u2200 (claim : MAT010.Archive.Claim) (hmem : claim \u2208 claims)\n            (h : MAT010.Archive.validCommit claim.mergedCommit \u2260 true), motive \u22ef) \u2192\n          (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n              (hpair : (claim, snapshot) \u2208 claims.zip snapshots) (h : claim.version \u2260 snapshot.version), motive \u22ef) \u2192\n            (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n                (hpair : (claim, snapshot) \u2208 claims.zip snapshots) (h : snapshot.members = []), motive \u22ef) \u2192\n              (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n                  (hpair : (claim, snapshot) \u2208 claims.zip snapshots)\n                  (h : \u00acclaim.evidenceFile \u2208 List.map MAT010.Archive.Member.name snapshot.members), motive \u22ef) \u2192\n                (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n                    (hpair : (claim, snapshot) \u2208 claims.zip snapshots)\n                    (h : \u00ac(List.map MAT010.Archive.Member.name snapshot.members).Nodup), motive \u22ef) \u2192\n                  (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n                      (member : MAT010.Archive.Member) (hpair : (claim, snapshot) \u2208 claims.zip snapshots)\n                      (hmember : member \u2208 snapshot.members) (h : MAT010.Archive.validName member.name \u2260 true),\n                      motive \u22ef) \u2192\n                    (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n                        (member : MAT010.Archive.Member) (hpair : (claim, snapshot) \u2208 claims.zip snapshots)\n                        (hmember : member \u2208 snapshot.members) (h : MAT010.Archive.validDigest member.digest \u2260 true),\n                        motive \u22ef) \u2192\n                      (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n                          (member : MAT010.Archive.Member) (hpair : (claim, snapshot) \u2208 claims.zip snapshots)\n                          (hmember : member \u2208 snapshot.members) (hmid : MAT010.Archive.hasMidiSuffix member.name = true)\n                          (hstage : snapshot.identifier \u2260 MAT010.Archive.firstStage), motive \u22ef) \u2192\n                        (\u2200\n                            (h :\n                              \u00ac(List.map MAT010.Archive.Artifact.logicalPath\n                                    (MAT010.Archive.emit claims snapshots)).Nodup),\n                            motive \u22ef) \u2192\n                          (\u2200\n                              (h :\n                                Option.map MAT010.Archive.Artifact.stage\n                                    (MAT010.Archive.emit claims snapshots).getLast? \u2260\n                                  some MAT010.Archive.lastStage),\n                              motive \u22ef) \u2192\n                            \u2200 (t : MAT010.Archive.Malformed claims snapshots), motive t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.Malformed.recOn",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot}\n  {motive : MAT010.Archive.Malformed claims snapshots \u2192 Prop} (t : MAT010.Archive.Malformed claims snapshots),\n  (\u2200 (h : List.map MAT010.Archive.Claim.profile claims \u2260 MAT010.Archive.stages), motive \u22ef) \u2192\n    (\u2200 (h : List.map MAT010.Archive.Snapshot.identifier snapshots \u2260 MAT010.Archive.stages), motive \u22ef) \u2192\n      (\u2200 (h : \u00ac(List.map MAT010.Archive.Claim.mergedCommit claims).Nodup), motive \u22ef) \u2192\n        (\u2200 (claim : MAT010.Archive.Claim) (hmem : claim \u2208 claims)\n            (h : MAT010.Archive.validCommit claim.mergedCommit \u2260 true), motive \u22ef) \u2192\n          (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n              (hpair : (claim, snapshot) \u2208 claims.zip snapshots) (h : claim.version \u2260 snapshot.version), motive \u22ef) \u2192\n            (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n                (hpair : (claim, snapshot) \u2208 claims.zip snapshots) (h : snapshot.members = []), motive \u22ef) \u2192\n              (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n                  (hpair : (claim, snapshot) \u2208 claims.zip snapshots)\n                  (h : \u00acclaim.evidenceFile \u2208 List.map MAT010.Archive.Member.name snapshot.members), motive \u22ef) \u2192\n                (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n                    (hpair : (claim, snapshot) \u2208 claims.zip snapshots)\n                    (h : \u00ac(List.map MAT010.Archive.Member.name snapshot.members).Nodup), motive \u22ef) \u2192\n                  (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n                      (member : MAT010.Archive.Member) (hpair : (claim, snapshot) \u2208 claims.zip snapshots)\n                      (hmember : member \u2208 snapshot.members) (h : MAT010.Archive.validName member.name \u2260 true),\n                      motive \u22ef) \u2192\n                    (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n                        (member : MAT010.Archive.Member) (hpair : (claim, snapshot) \u2208 claims.zip snapshots)\n                        (hmember : member \u2208 snapshot.members) (h : MAT010.Archive.validDigest member.digest \u2260 true),\n                        motive \u22ef) \u2192\n                      (\u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot)\n                          (member : MAT010.Archive.Member) (hpair : (claim, snapshot) \u2208 claims.zip snapshots)\n                          (hmember : member \u2208 snapshot.members) (hmid : MAT010.Archive.hasMidiSuffix member.name = true)\n                          (hstage : snapshot.identifier \u2260 MAT010.Archive.firstStage), motive \u22ef) \u2192\n                        (\u2200\n                            (h :\n                              \u00ac(List.map MAT010.Archive.Artifact.logicalPath\n                                    (MAT010.Archive.emit claims snapshots)).Nodup),\n                            motive \u22ef) \u2192\n                          (\u2200\n                              (h :\n                                Option.map MAT010.Archive.Artifact.stage\n                                    (MAT010.Archive.emit claims snapshots).getLast? \u2260\n                                  some MAT010.Archive.lastStage),\n                              motive \u22ef) \u2192\n                            motive t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.Malformed.repeatedCommit",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot},\n  \u00ac(List.map MAT010.Archive.Claim.mergedCommit claims).Nodup \u2192 MAT010.Archive.Malformed claims snapshots",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.Malformed.repeatedLogicalPath",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot},\n  \u00ac(List.map MAT010.Archive.Artifact.logicalPath (MAT010.Archive.emit claims snapshots)).Nodup \u2192\n    MAT010.Archive.Malformed claims snapshots",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.Malformed.repeatedMemberName",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} (claim : MAT010.Archive.Claim)\n  (snapshot : MAT010.Archive.Snapshot),\n  (claim, snapshot) \u2208 claims.zip snapshots \u2192\n    \u00ac(List.map MAT010.Archive.Member.name snapshot.members).Nodup \u2192 MAT010.Archive.Malformed claims snapshots",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.Malformed.snapshotStageOrder",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot},\n  List.map MAT010.Archive.Snapshot.identifier snapshots \u2260 MAT010.Archive.stages \u2192\n    MAT010.Archive.Malformed claims snapshots",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.Malformed.versionMismatch",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} (claim : MAT010.Archive.Claim)\n  (snapshot : MAT010.Archive.Snapshot),\n  (claim, snapshot) \u2208 claims.zip snapshots \u2192\n    claim.version \u2260 snapshot.version \u2192 MAT010.Archive.Malformed claims snapshots",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.Malformed.wrongFinalStage",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot},\n  Option.map MAT010.Archive.Artifact.stage (MAT010.Archive.emit claims snapshots).getLast? \u2260\n      some MAT010.Archive.lastStage \u2192\n    MAT010.Archive.Malformed claims snapshots",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Member",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "Type",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Member._sizeOf_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Member \u2192 Nat",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Member._sizeOf_inst",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "SizeOf MAT010.Archive.Member",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Member.casesOn",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "{motive : MAT010.Archive.Member \u2192 Sort u} \u2192\n  (t : MAT010.Archive.Member) \u2192 ((name digest : String) \u2192 motive { name := name, digest := digest }) \u2192 motive t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Member.digest",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Member \u2192 String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Member.mk",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 String \u2192 MAT010.Archive.Member",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Member.mk._flat_ctor",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 String \u2192 MAT010.Archive.Member",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Member.mk.inj",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {name digest name_1 digest_1 : String},\n  { name := name, digest := digest } = { name := name_1, digest := digest_1 } \u2192 name = name_1 \u2227 digest = digest_1",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT010.Archive.Member.mk.injEq",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (name digest name_1 digest_1 : String),\n  ({ name := name, digest := digest } = { name := name_1, digest := digest_1 }) = (name = name_1 \u2227 digest = digest_1)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Member.mk.sizeOf_spec",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (name digest : String), sizeOf { name := name, digest := digest } = 1 + sizeOf name + sizeOf digest",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Member.name",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Member \u2192 String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Member.noConfusion",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "{P : Sort u} \u2192 {v1 v2 : MAT010.Archive.Member} \u2192 v1 = v2 \u2192 MAT010.Archive.Member.noConfusionType P v1 v2",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Member.noConfusionType",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "Sort u \u2192 MAT010.Archive.Member \u2192 MAT010.Archive.Member \u2192 Sort u",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Member.rec",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "{motive : MAT010.Archive.Member \u2192 Sort u} \u2192\n  ((name digest : String) \u2192 motive { name := name, digest := digest }) \u2192 (t : MAT010.Archive.Member) \u2192 motive t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Member.recOn",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "{motive : MAT010.Archive.Member \u2192 Sort u} \u2192\n  (t : MAT010.Archive.Member) \u2192 ((name digest : String) \u2192 motive { name := name, digest := digest }) \u2192 motive t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.SameMaps",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "List MAT010.Archive.Snapshot \u2192 List MAT010.Archive.Snapshot \u2192 Prop",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.SameMaps.below",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "{motive : (a a_1 : List MAT010.Archive.Snapshot) \u2192 MAT010.Archive.SameMaps a a_1 \u2192 Prop} \u2192\n  {a a_1 : List MAT010.Archive.Snapshot} \u2192 MAT010.Archive.SameMaps a a_1 \u2192 Prop",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.SameMaps.below.casesOn",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {motive : (a a_1 : List MAT010.Archive.Snapshot) \u2192 MAT010.Archive.SameMaps a a_1 \u2192 Prop}\n  {motive_1 : {a a_1 : List MAT010.Archive.Snapshot} \u2192 (x : MAT010.Archive.SameMaps a a_1) \u2192 x.below \u2192 Prop}\n  {a a_1 : List MAT010.Archive.Snapshot} {x : MAT010.Archive.SameMaps a a_1} (t : x.below),\n  motive_1 MAT010.Archive.SameMaps.nil \u22ef \u2192\n    (\u2200 {left right : MAT010.Archive.Snapshot} {lefts rights : List MAT010.Archive.Snapshot}\n        (identifiers : left.identifier = right.identifier) (versions : left.version = right.version)\n        (members : left.members.Perm right.members) {tail : MAT010.Archive.SameMaps lefts rights} (tail_1 : tail.below)\n        (tail_2 : motive lefts rights tail), motive_1 \u22ef \u22ef) \u2192\n      motive_1 x t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.SameMaps.below.cons",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {motive : (a a_1 : List MAT010.Archive.Snapshot) \u2192 MAT010.Archive.SameMaps a a_1 \u2192 Prop}\n  {left right : MAT010.Archive.Snapshot} {lefts rights : List MAT010.Archive.Snapshot}\n  (identifiers : left.identifier = right.identifier) (versions : left.version = right.version)\n  (members : left.members.Perm right.members) {tail : MAT010.Archive.SameMaps lefts rights},\n  tail.below \u2192 motive lefts rights tail \u2192 \u22ef.below",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.SameMaps.below.nil",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {motive : (a a_1 : List MAT010.Archive.Snapshot) \u2192 MAT010.Archive.SameMaps a a_1 \u2192 Prop},\n  MAT010.Archive.SameMaps.nil.below",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.SameMaps.below.rec",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {motive : (a a_1 : List MAT010.Archive.Snapshot) \u2192 MAT010.Archive.SameMaps a a_1 \u2192 Prop}\n  {motive_1 : {a a_1 : List MAT010.Archive.Snapshot} \u2192 (x : MAT010.Archive.SameMaps a a_1) \u2192 x.below \u2192 Prop},\n  motive_1 MAT010.Archive.SameMaps.nil \u22ef \u2192\n    (\u2200 {left right : MAT010.Archive.Snapshot} {lefts rights : List MAT010.Archive.Snapshot}\n        (identifiers : left.identifier = right.identifier) (versions : left.version = right.version)\n        (members : left.members.Perm right.members) {tail : MAT010.Archive.SameMaps lefts rights} (tail_1 : tail.below)\n        (tail_2 : motive lefts rights tail), motive_1 tail tail_1 \u2192 motive_1 \u22ef \u22ef) \u2192\n      \u2200 {a a_1 : List MAT010.Archive.Snapshot} {x : MAT010.Archive.SameMaps a a_1} (t : x.below), motive_1 x t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.SameMaps.brecOn",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {motive : (a a_1 : List MAT010.Archive.Snapshot) \u2192 MAT010.Archive.SameMaps a a_1 \u2192 Prop}\n  {a a_1 : List MAT010.Archive.Snapshot} (x : MAT010.Archive.SameMaps a a_1),\n  (\u2200 (a a_2 : List MAT010.Archive.Snapshot) (x : MAT010.Archive.SameMaps a a_2), x.below \u2192 motive a a_2 x) \u2192\n    motive a a_1 x",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.SameMaps.casesOn",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {motive : (a a_1 : List MAT010.Archive.Snapshot) \u2192 MAT010.Archive.SameMaps a a_1 \u2192 Prop}\n  {a a_1 : List MAT010.Archive.Snapshot} (t : MAT010.Archive.SameMaps a a_1),\n  motive [] [] MAT010.Archive.SameMaps.nil \u2192\n    (\u2200 {left right : MAT010.Archive.Snapshot} {lefts rights : List MAT010.Archive.Snapshot}\n        (identifiers : left.identifier = right.identifier) (versions : left.version = right.version)\n        (members : left.members.Perm right.members) (tail : MAT010.Archive.SameMaps lefts rights),\n        motive (left :: lefts) (right :: rights) \u22ef) \u2192\n      motive a a_1 t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.SameMaps.cons",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {left right : MAT010.Archive.Snapshot} {lefts rights : List MAT010.Archive.Snapshot},\n  left.identifier = right.identifier \u2192\n    left.version = right.version \u2192\n      left.members.Perm right.members \u2192\n        MAT010.Archive.SameMaps lefts rights \u2192 MAT010.Archive.SameMaps (left :: lefts) (right :: rights)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.SameMaps.nil",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.SameMaps [] []",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.SameMaps.rec",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {motive : (a a_1 : List MAT010.Archive.Snapshot) \u2192 MAT010.Archive.SameMaps a a_1 \u2192 Prop},\n  motive [] [] MAT010.Archive.SameMaps.nil \u2192\n    (\u2200 {left right : MAT010.Archive.Snapshot} {lefts rights : List MAT010.Archive.Snapshot}\n        (identifiers : left.identifier = right.identifier) (versions : left.version = right.version)\n        (members : left.members.Perm right.members) (tail : MAT010.Archive.SameMaps lefts rights),\n        motive lefts rights tail \u2192 motive (left :: lefts) (right :: rights) \u22ef) \u2192\n      \u2200 {a a_1 : List MAT010.Archive.Snapshot} (t : MAT010.Archive.SameMaps a a_1), motive a a_1 t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.SameMaps.recOn",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {motive : (a a_1 : List MAT010.Archive.Snapshot) \u2192 MAT010.Archive.SameMaps a a_1 \u2192 Prop}\n  {a a_1 : List MAT010.Archive.Snapshot} (t : MAT010.Archive.SameMaps a a_1),\n  motive [] [] MAT010.Archive.SameMaps.nil \u2192\n    (\u2200 {left right : MAT010.Archive.Snapshot} {lefts rights : List MAT010.Archive.Snapshot}\n        (identifiers : left.identifier = right.identifier) (versions : left.version = right.version)\n        (members : left.members.Perm right.members) (tail : MAT010.Archive.SameMaps lefts rights),\n        motive lefts rights tail \u2192 motive (left :: lefts) (right :: rights) \u22ef) \u2192\n      motive a a_1 t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Snapshot",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "Type",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Snapshot._sizeOf_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Snapshot \u2192 Nat",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Snapshot._sizeOf_inst",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "SizeOf MAT010.Archive.Snapshot",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Snapshot.casesOn",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "{motive : MAT010.Archive.Snapshot \u2192 Sort u} \u2192\n  (t : MAT010.Archive.Snapshot) \u2192\n    ((identifier version : String) \u2192\n        (members : List MAT010.Archive.Member) \u2192\n          motive { identifier := identifier, version := version, members := members }) \u2192\n      motive t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Snapshot.identifier",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Snapshot \u2192 String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Snapshot.members",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Snapshot \u2192 List MAT010.Archive.Member",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Snapshot.mk",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 String \u2192 List MAT010.Archive.Member \u2192 MAT010.Archive.Snapshot",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Snapshot.mk._flat_ctor",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 String \u2192 List MAT010.Archive.Member \u2192 MAT010.Archive.Snapshot",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Snapshot.mk.inj",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {identifier version : String} {members : List MAT010.Archive.Member} {identifier_1 version_1 : String}\n  {members_1 : List MAT010.Archive.Member},\n  { identifier := identifier, version := version, members := members } =\n      { identifier := identifier_1, version := version_1, members := members_1 } \u2192\n    identifier = identifier_1 \u2227 version = version_1 \u2227 members = members_1",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT010.Archive.Snapshot.mk.injEq",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (identifier version : String) (members : List MAT010.Archive.Member) (identifier_1 version_1 : String)\n  (members_1 : List MAT010.Archive.Member),\n  ({ identifier := identifier, version := version, members := members } =\n      { identifier := identifier_1, version := version_1, members := members_1 }) =\n    (identifier = identifier_1 \u2227 version = version_1 \u2227 members = members_1)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Snapshot.mk.sizeOf_spec",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (identifier version : String) (members : List MAT010.Archive.Member),\n  sizeOf { identifier := identifier, version := version, members := members } =\n    1 + sizeOf identifier + sizeOf version + sizeOf members",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Snapshot.noConfusion",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "{P : Sort u} \u2192 {v1 v2 : MAT010.Archive.Snapshot} \u2192 v1 = v2 \u2192 MAT010.Archive.Snapshot.noConfusionType P v1 v2",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Snapshot.noConfusionType",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "Sort u \u2192 MAT010.Archive.Snapshot \u2192 MAT010.Archive.Snapshot \u2192 Sort u",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Snapshot.rec",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "{motive : MAT010.Archive.Snapshot \u2192 Sort u} \u2192\n  ((identifier version : String) \u2192\n      (members : List MAT010.Archive.Member) \u2192\n        motive { identifier := identifier, version := version, members := members }) \u2192\n    (t : MAT010.Archive.Snapshot) \u2192 motive t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Snapshot.recOn",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "{motive : MAT010.Archive.Snapshot \u2192 Sort u} \u2192\n  (t : MAT010.Archive.Snapshot) \u2192\n    ((identifier version : String) \u2192\n        (members : List MAT010.Archive.Member) \u2192\n          motive { identifier := identifier, version := version, members := members }) \u2192\n      motive t",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.Snapshot.version",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Snapshot \u2192 String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.ValidInput",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "List MAT010.Archive.Claim \u2192 List MAT010.Archive.Snapshot \u2192 Prop",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.ValidMember",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 MAT010.Archive.Member \u2192 Prop",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.ValidPair",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Claim \u2192 MAT010.Archive.Snapshot \u2192 Prop",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.allowedSuffix",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 Bool",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.allowedSuffix._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.allowedSuffix._closed_2._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.allowedSuffix._closed_3._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.allowedSuffix._closed_4._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.allowedSuffix._closed_5._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.allowedSuffix._closed_6._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.allowedSuffix._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 Bool",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.allowedSuffix._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.artifactOf",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Snapshot \u2192 MAT010.Archive.Member \u2192 MAT010.Archive.Artifact",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.artifactOf._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Snapshot \u2192 MAT010.Archive.Member \u2192 MAT010.Archive.Artifact",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.artifactOf._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.artifactOf.eq_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (snapshot : MAT010.Archive.Snapshot) (member : MAT010.Archive.Member),\n  MAT010.Archive.artifactOf snapshot member =\n    { stage := snapshot.identifier, version := snapshot.version, name := member.name,\n      logicalPath := MAT010.Archive.logicalPath snapshot.identifier member.name, sha256 := member.digest,\n      contentInThisManifest := MAT010.Archive.hashOnly, audioRendered := false }",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.artifact_identities",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} {out : List MAT010.Archive.Artifact},\n  MAT010.Archive.validate claims snapshots = some out \u2192\n    \u2200 (artifact : MAT010.Archive.Artifact),\n      artifact \u2208 out \u2192\n        MAT010.Archive.validName artifact.name = true \u2227\n          MAT010.Archive.validDigest artifact.sha256 = true \u2227\n            (MAT010.Archive.hasMidiSuffix artifact.name = true \u2192 artifact.stage = MAT010.Archive.firstStage)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.demoClaims",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "List MAT010.Archive.Claim",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.demoClaims._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "List MAT010.Archive.Claim",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.demoClaims._spec_1"
+    ],
+    "declaration": "MAT010.Archive.demoClaims._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.demoClaims.eq_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.demoClaims =\n  List.map\n    (fun stage =>\n      { profile := stage, version := \"v\", mergedCommit := MAT010.Archive.demoCommitPrefix\u271d ++ stage.takeRight 3,\n        evidenceFile := \"audit.json\" })\n    MAT010.Archive.stages",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.demoSnapshots",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "List MAT010.Archive.Snapshot",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.demoSnapshots._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "List MAT010.Archive.Snapshot",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.demoSnapshots._spec_1"
+    ],
+    "declaration": "MAT010.Archive.demoSnapshots._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.demoSnapshots.eq_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.demoSnapshots =\n  List.map (fun stage => { identifier := stage, version := \"v\", members := [MAT010.Archive.demoAudit\u271d] })\n    MAT010.Archive.stages",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.demoSnapshotsExtra",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "List MAT010.Archive.Snapshot",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.demoSnapshotsExtra._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "List MAT010.Archive.Snapshot",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.demoSnapshotsExtra._spec_1"
+    ],
+    "declaration": "MAT010.Archive.demoSnapshotsExtra._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.demoSnapshotsExtra.eq_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.demoSnapshotsExtra =\n  List.map\n    (fun stage =>\n      { identifier := stage, version := \"v\",\n        members :=\n          if stage = MAT010.Archive.firstStage then [MAT010.Archive.demoExtra\u271d, MAT010.Archive.demoAudit\u271d]\n          else [MAT010.Archive.demoAudit\u271d] })\n    MAT010.Archive.stages",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.emit",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "List MAT010.Archive.Claim \u2192 List MAT010.Archive.Snapshot \u2192 List MAT010.Archive.Artifact",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.emit._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "List MAT010.Archive.Claim \u2192 List MAT010.Archive.Snapshot \u2192 List MAT010.Archive.Artifact",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.flatMapTR.go._at.MAT010.Archive.emit._spec_1"
+    ],
+    "declaration": "MAT010.Archive.emit._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.emit.eq_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (claims : List MAT010.Archive.Claim) (snapshots : List MAT010.Archive.Snapshot),\n  MAT010.Archive.emit claims snapshots =\n    List.flatMap (fun pair => MAT010.Archive.emitFor pair.snd) (claims.zip snapshots)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.emitFor",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Snapshot \u2192 List MAT010.Archive.Artifact",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.emitFor._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Snapshot \u2192 List MAT010.Archive.Artifact",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.emitFor._spec_1"
+    ],
+    "declaration": "MAT010.Archive.emitFor._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.emitFor.eq_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (snapshot : MAT010.Archive.Snapshot),\n  MAT010.Archive.emitFor snapshot =\n    List.map (MAT010.Archive.artifactOf snapshot) (MAT010.Archive.sortMembers snapshot.members)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.firstStage",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.firstStage._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "String",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.firstStage._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.firstStage.eq_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.firstStage = \"MAT-SPEC-001\"",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.hasMidiSuffix",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 Bool",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.hasMidiSuffix._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.hasMidiSuffix._closed_2._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.hasMidiSuffix._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 Bool",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.isSuffixOf._at.MAT010.Archive.hasMidiSuffix._spec_1"
+    ],
+    "declaration": "MAT010.Archive.hasMidiSuffix._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.hashOnly",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.hashOnly._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.hashOnly._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "String",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.hashOnly._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.instDecidableEqMember",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "DecidableEq MAT010.Archive.Member",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.instDecidableEqMember._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "DecidableEq MAT010.Archive.Member",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.instDecidableEqMember._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.instDecidableValidInput",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "(claims : List MAT010.Archive.Claim) \u2192\n  (snapshots : List MAT010.Archive.Snapshot) \u2192 Decidable (MAT010.Archive.ValidInput claims snapshots)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.instDecidableValidInput._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.instDecidableValidInput._closed_2._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.instDecidableValidInput._closed_3._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "_private.Init.Data.Option.Basic.0.Option.decEqOption.\u00ab_@\u00bb.Init.Data.Option.Basic._hyg.4._at.Std.Time.Database.TZdb.idFromPath._spec_1"
+    ],
+    "declaration": "MAT010.Archive.instDecidableValidInput._closed_4._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound",
+      "lcProof"
+    ],
+    "declaration": "MAT010.Archive.instDecidableValidInput._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "(claims : List MAT010.Archive.Claim) \u2192\n  (snapshots : List MAT010.Archive.Snapshot) \u2192 Decidable (MAT010.Archive.ValidInput claims snapshots)",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_1",
+      "List.hasDecEq._at.MAT010.Archive.instDecidableValidInput._spec_2",
+      "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_3",
+      "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_4",
+      "propext",
+      "Quot.sound",
+      "List.mapTR.loop._at.MAT010.Archive.instDecidableValidInput._spec_5",
+      "_private.Init.Data.Option.Basic.0.Option.decEqOption.\u00ab_@\u00bb.Init.Data.Option.Basic._hyg.4._at.Std.Time.Database.TZdb.idFromPath._spec_1"
+    ],
+    "declaration": "MAT010.Archive.instDecidableValidInput._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.instDecidableValidInput._lambda_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT010.Archive.instDecidableValidInput._lambda_2._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.instDecidableValidMember",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "(stage : String) \u2192 (member : MAT010.Archive.Member) \u2192 Decidable (MAT010.Archive.ValidMember stage member)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "lcProof"
+    ],
+    "declaration": "MAT010.Archive.instDecidableValidMember._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "(stage : String) \u2192 (member : MAT010.Archive.Member) \u2192 Decidable (MAT010.Archive.ValidMember stage member)",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.instDecidableValidMember._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.instDecidableValidMember._lambda_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _neutral \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT010.Archive.instDecidableValidPair",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "(claim : MAT010.Archive.Claim) \u2192\n  (snapshot : MAT010.Archive.Snapshot) \u2192 Decidable (MAT010.Archive.ValidPair claim snapshot)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.instDecidableValidPair._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.instDecidableValidPair._closed_2._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "lcProof",
+      "propext"
+    ],
+    "declaration": "MAT010.Archive.instDecidableValidPair._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "(claim : MAT010.Archive.Claim) \u2192\n  (snapshot : MAT010.Archive.Snapshot) \u2192 Decidable (MAT010.Archive.ValidPair claim snapshot)",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.hasDecEq._at.MAT010.Archive.instDecidableValidPair._spec_1",
+      "List.mapTR.loop._at.MAT010.Archive.instDecidableValidPair._spec_2"
+    ],
+    "declaration": "MAT010.Archive.instDecidableValidPair._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.instDecidableValidPair._lambda_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.lastStage",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.lastStage._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "String",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.lastStage._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.lastStage.eq_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.lastStage = \"MAT-SPEC-009\"",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.logicalPath",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 String \u2192 String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.logicalPath._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.logicalPath._closed_2._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.logicalPath._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 String \u2192 String",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.logicalPath._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.logicalPath.eq_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (stage name : String),\n  MAT010.Archive.logicalPath stage name = \"dist/mat-spec-\" ++ MAT010.Archive.stageSuffix stage ++ \"/\" ++ name",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.lowerHex",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "Char \u2192 Bool",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.lowerHex._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.lowerHex._closed_2._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.lowerHex._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "Char \u2192 Bool",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.elem._at.System.FilePath.normalize._spec_1"
+    ],
+    "declaration": "MAT010.Archive.lowerHex._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "UInt32 \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.memberLE",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Member \u2192 MAT010.Archive.Member \u2192 Bool",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.memberLE._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Member \u2192 MAT010.Archive.Member \u2192 Bool",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.memberLE._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.memberLE.eq_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (left right : MAT010.Archive.Member), MAT010.Archive.memberLE left right = decide (left.name \u2264 right.name)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.pair_coverage",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} {out : List MAT010.Archive.Artifact},\n  MAT010.Archive.validate claims snapshots = some out \u2192\n    \u2200 (pair : MAT010.Archive.Claim \u00d7 MAT010.Archive.Snapshot),\n      pair \u2208 claims.zip snapshots \u2192 MAT010.Archive.ValidPair pair.fst pair.snd",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.per_stage_sorted",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} {out : List MAT010.Archive.Artifact},\n  MAT010.Archive.validate claims snapshots = some out \u2192\n    \u2200 (pair : MAT010.Archive.Claim \u00d7 MAT010.Archive.Snapshot),\n      pair \u2208 claims.zip snapshots \u2192\n        List.Pairwise (fun left right => left.name \u2264 right.name) (MAT010.Archive.sortMembers pair.snd.members)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.provenance_and_labels",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} {out : List MAT010.Archive.Artifact},\n  MAT010.Archive.validate claims snapshots = some out \u2192\n    \u2200 (artifact : MAT010.Archive.Artifact),\n      artifact \u2208 out \u2192\n        artifact.logicalPath = MAT010.Archive.logicalPath artifact.stage artifact.name \u2227\n          artifact.contentInThisManifest = MAT010.Archive.hashOnly \u2227\n            artifact.audioRendered = false \u2227\n              \u2203 snapshot,\n                snapshot \u2208 snapshots \u2227\n                  \u2203 member, member \u2208 snapshot.members \u2227 artifact = MAT010.Archive.artifactOf snapshot member",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT010.Archive.same_name_same_member._proof_4",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {\u03b1 : Type u_1} {a : \u03b1} {l : List \u03b1}, (a :: l).Nodup = (\u00aca \u2208 l \u2227 l.Nodup)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT010.Archive.same_name_same_member._proof_5",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {\u03b1 : Type u_1} {b : \u03b1} {l : List \u03b1} {a : \u03b1}, (a \u2208 b :: l) = (a = b \u2228 a \u2208 l)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.sortMembers",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "List MAT010.Archive.Member \u2192 List MAT010.Archive.Member",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.sortMembers._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.sortMembers._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "List MAT010.Archive.Member \u2192 List MAT010.Archive.Member",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.sortMembers._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.sortMembers.eq_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (members : List MAT010.Archive.Member), MAT010.Archive.sortMembers members = members.mergeSort MAT010.Archive.memberLE",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stageSuffix",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stageSuffix._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stageSuffix._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 String",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "List.foldl._at.MAT010.Archive.stageSuffix._spec_1"
+    ],
+    "declaration": "MAT010.Archive.stageSuffix._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stageSuffix.eq_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (stage : String),\n  MAT010.Archive.stageSuffix stage = List.foldl String.push \"\" (List.take 3 stage.toList.reverse).reverse",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "List String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._closed_10._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._closed_11._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._closed_12._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._closed_13._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._closed_14._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._closed_15._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._closed_16._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._closed_17._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._closed_18._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._closed_2._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._closed_3._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._closed_4._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._closed_5._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._closed_6._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._closed_7._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._closed_8._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._closed_9._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "List String",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.stages.eq_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.stages =\n  [\"MAT-SPEC-001\", \"MAT-SPEC-002\", \"MAT-SPEC-003\", \"MAT-SPEC-004\", \"MAT-SPEC-005\", \"MAT-SPEC-006\", \"MAT-SPEC-007\",\n    \"MAT-SPEC-008\", \"MAT-SPEC-009\"]",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.validCommit",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 Bool",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.validCommit._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.validCommit._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 Bool",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.validCommit._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.validDigest",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 Bool",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.validDigest._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 Bool",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.validDigest._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.validName",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 Bool",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.validName._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.validName._closed_2._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.validName._closed_3._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT010.Archive.validName._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "String \u2192 Bool",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "List.elem._at.System.FilePath.normalize._spec_1"
+    ],
+    "declaration": "MAT010.Archive.validName._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.validPair_equiv._proof_4",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {\u03b1 : Type u_1} {p : \u03b1 \u2192 Bool} {l : List \u03b1}, (l.all p = true) = \u2200 (x : \u03b1), x \u2208 l \u2192 p x = true",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.validate",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "List MAT010.Archive.Claim \u2192 List MAT010.Archive.Snapshot \u2192 Option (List MAT010.Archive.Artifact)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.validate._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "List MAT010.Archive.Claim \u2192 List MAT010.Archive.Snapshot \u2192 Option (List MAT010.Archive.Artifact)",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.validate._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT010.Archive.validate.eq_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (claims : List MAT010.Archive.Claim) (snapshots : List MAT010.Archive.Snapshot),\n  MAT010.Archive.validate claims snapshots =\n    if MAT010.Archive.ValidInput claims snapshots then some (MAT010.Archive.emit claims snapshots) else none",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.SameMaps.emit_equal",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (claims : List MAT010.Archive.Claim) {left right : List MAT010.Archive.Snapshot},\n  MAT010.Archive.SameMaps left right \u2192\n    (\u2200 (snapshot : MAT010.Archive.Snapshot),\n        snapshot \u2208 left \u2192 (List.map MAT010.Archive.Member.name snapshot.members).Nodup) \u2192\n      MAT010.Archive.emit claims left = MAT010.Archive.emit claims right",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.SameMaps.identifiers_equal",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {left right : List MAT010.Archive.Snapshot},\n  MAT010.Archive.SameMaps left right \u2192\n    List.map MAT010.Archive.Snapshot.identifier left = List.map MAT010.Archive.Snapshot.identifier right",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.SameMaps.pair_checks_equal",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (claims : List MAT010.Archive.Claim) {left right : List MAT010.Archive.Snapshot},\n  MAT010.Archive.SameMaps left right \u2192\n    ((claims.zip left).all fun pair => decide (MAT010.Archive.ValidPair pair.fst pair.snd)) =\n      (claims.zip right).all fun pair => decide (MAT010.Archive.ValidPair pair.fst pair.snd)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.decEqMember._@.ArchiveModel._hyg.97",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "(x x_1 : MAT010.Archive.Member) \u2192 Decidable (x = x_1)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.decEqMember._proof_1._@.ArchiveModel._hyg.97",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (a a_1 : String), { name := a, digest := a_1 } = { name := a, digest := a_1 }",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.decEqMember._proof_2._@.ArchiveModel._hyg.97",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (a a_1 b : String), \u00aca_1 = b \u2192 { name := a, digest := a_1 } = { name := a, digest := b } \u2192 False",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.decEqMember._proof_3._@.ArchiveModel._hyg.97",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (a a_1 b b_1 : String), \u00aca = b \u2192 { name := a, digest := a_1 } = { name := b, digest := b_1 } \u2192 False",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.decEqMember.match_1._@.ArchiveModel._hyg.97",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "(motive : MAT010.Archive.Member \u2192 MAT010.Archive.Member \u2192 Sort u_1) \u2192\n  (x x_1 : MAT010.Archive.Member) \u2192\n    ((a a_1 b b_1 : String) \u2192 motive { name := a, digest := a_1 } { name := b, digest := b_1 }) \u2192 motive x x_1",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.decEqMember.match_1.\u00ab_@\u00bb.ArchiveModel._hyg.97._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "(motive : MAT010.Archive.Member \u2192 MAT010.Archive.Member \u2192 Sort u_1) \u2192\n  (x x_1 : MAT010.Archive.Member) \u2192\n    ((a a_1 b b_1 : String) \u2192 motive { name := a, digest := a_1 } { name := b, digest := b_1 }) \u2192 motive x x_1",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "lcProof"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.decEqMember.\u00ab_@\u00bb.ArchiveModel._hyg.97._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "(x x_1 : MAT010.Archive.Member) \u2192 Decidable (x = x_1)",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.decEqMember.\u00ab_@\u00bb.ArchiveModel._hyg.97._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoAudit",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Member",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoAudit._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoAudit._closed_2._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoAudit._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Member",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoAudit._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoAudit.eq_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.demoAudit\u271d = { name := \"audit.json\", digest := MAT010.Archive.demoDigest\u271d }",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoCommitPrefix",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoCommitPrefix._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoCommitPrefix._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "String",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoCommitPrefix._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoDigest",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "String",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoDigest._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoDigest._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "String",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoDigest._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoExtra",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Member",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoExtra._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoExtra._closed_2._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoExtra._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.Member",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoExtra._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demoExtra.eq_1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.demoExtra\u271d = { name := \"extra.json\", digest := MAT010.Archive.demoDigest\u271d }",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demo_last_base",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "Option.map MAT010.Archive.Artifact.stage\n    (MAT010.Archive.emit MAT010.Archive.demoClaims MAT010.Archive.demoSnapshots).getLast? =\n  some MAT010.Archive.lastStage",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demo_last_extra",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "Option.map MAT010.Archive.Artifact.stage\n    (MAT010.Archive.emit MAT010.Archive.demoClaims MAT010.Archive.demoSnapshotsExtra).getLast? =\n  some MAT010.Archive.lastStage",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demo_paths_base",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "List.map MAT010.Archive.Artifact.logicalPath\n    (MAT010.Archive.emit MAT010.Archive.demoClaims MAT010.Archive.demoSnapshots) =\n  [\"dist/mat-spec-001/audit.json\", \"dist/mat-spec-002/audit.json\", \"dist/mat-spec-003/audit.json\",\n    \"dist/mat-spec-004/audit.json\", \"dist/mat-spec-005/audit.json\", \"dist/mat-spec-006/audit.json\",\n    \"dist/mat-spec-007/audit.json\", \"dist/mat-spec-008/audit.json\", \"dist/mat-spec-009/audit.json\"]",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demo_paths_extra",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "List.map MAT010.Archive.Artifact.logicalPath\n    (MAT010.Archive.emit MAT010.Archive.demoClaims MAT010.Archive.demoSnapshotsExtra) =\n  [\"dist/mat-spec-001/audit.json\", \"dist/mat-spec-001/extra.json\", \"dist/mat-spec-002/audit.json\",\n    \"dist/mat-spec-003/audit.json\", \"dist/mat-spec-004/audit.json\", \"dist/mat-spec-005/audit.json\",\n    \"dist/mat-spec-006/audit.json\", \"dist/mat-spec-007/audit.json\", \"dist/mat-spec-008/audit.json\",\n    \"dist/mat-spec-009/audit.json\"]",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.demo_two_sorted",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "MAT010.Archive.sortMembers [MAT010.Archive.demoExtra\u271d, MAT010.Archive.demoAudit\u271d] =\n  [MAT010.Archive.demoAudit\u271d, MAT010.Archive.demoExtra\u271d]",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.emitted_pair_source",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} {out : List MAT010.Archive.Artifact},\n  MAT010.Archive.validate claims snapshots = some out \u2192\n    \u2200 {artifact : MAT010.Archive.Artifact},\n      artifact \u2208 out \u2192\n        \u2203 claim snapshot member,\n          (claim, snapshot) \u2208 claims.zip snapshots \u2227\n            member \u2208 snapshot.members \u2227\n              artifact = MAT010.Archive.artifactOf snapshot member \u2227\n                MAT010.Archive.ValidMember snapshot.identifier member",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.emitted_source",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} {out : List MAT010.Archive.Artifact},\n  MAT010.Archive.validate claims snapshots = some out \u2192\n    \u2200 {artifact : MAT010.Archive.Artifact},\n      artifact \u2208 out \u2192\n        \u2203 snapshot,\n          snapshot \u2208 snapshots \u2227\n            \u2203 member,\n              member \u2208 snapshot.members \u2227\n                artifact = MAT010.Archive.artifactOf snapshot member \u2227\n                  MAT010.Archive.ValidMember snapshot.identifier member",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.member_valid_of_input",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot},\n  MAT010.Archive.ValidInput claims snapshots \u2192\n    \u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot) (member : MAT010.Archive.Member),\n      (claim, snapshot) \u2208 claims.zip snapshots \u2192\n        member \u2208 snapshot.members \u2192 MAT010.Archive.ValidMember snapshot.identifier member",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.pair_valid_of_input",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot},\n  MAT010.Archive.ValidInput claims snapshots \u2192\n    \u2200 (claim : MAT010.Archive.Claim) (snapshot : MAT010.Archive.Snapshot),\n      (claim, snapshot) \u2208 claims.zip snapshots \u2192 MAT010.Archive.ValidPair claim snapshot",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.same_name_same_member",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (members : List MAT010.Archive.Member),\n  (List.map MAT010.Archive.Member.name members).Nodup \u2192\n    \u2200 {left right : MAT010.Archive.Member}, left \u2208 members \u2192 right \u2208 members \u2192 left.name = right.name \u2192 left = right",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.sortMembers_perm_eq",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (left right : List MAT010.Archive.Member),\n  left.Perm right \u2192\n    (List.map MAT010.Archive.Member.name left).Nodup \u2192\n      MAT010.Archive.sortMembers left = MAT010.Archive.sortMembers right",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.sortMembers_sorted",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (members : List MAT010.Archive.Member),\n  List.Pairwise (fun left right => left.name \u2264 right.name) (MAT010.Archive.sortMembers members)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.success_conditions",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 {claims : List MAT010.Archive.Claim} {snapshots : List MAT010.Archive.Snapshot} {out : List MAT010.Archive.Artifact},\n  MAT010.Archive.validate claims snapshots = some out \u2192\n    MAT010.Archive.ValidInput claims snapshots \u2227 out = MAT010.Archive.emit claims snapshots",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.suffixCase",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "ArchiveModel",
+    "type": "List Char \u2192 List Char \u2192 Bool",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.suffixCase._closed_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.suffixCase._cstage1",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "List Char \u2192 List Char \u2192 Bool",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "List.isPrefixOf._at._private.ArchiveModel.0.MAT010.Archive.suffixCase._spec_1"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.suffixCase._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "_obj \u2192 _obj \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.suffixCase._lambda_1._cstage2",
+    "has_source_range": false,
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "ArchiveModel",
+    "type": "UInt32 \u2192 UInt32 \u2192 UInt8",
+    "unsafe_axiom": false,
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "_private.ArchiveModel.0.MAT010.Archive.validPair_equiv",
+    "has_source_range": true,
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "ArchiveModel",
+    "type": "\u2200 (claim : MAT010.Archive.Claim) (left right : MAT010.Archive.Snapshot),\n  left.identifier = right.identifier \u2192\n    left.version = right.version \u2192\n      left.members.Perm right.members \u2192 (MAT010.Archive.ValidPair claim left \u2194 MAT010.Archive.ValidPair claim right)",
+    "unsafe_axiom": false,
+    "unsafe_definition": false
+  }
+]

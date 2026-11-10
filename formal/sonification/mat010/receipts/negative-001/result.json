@@ -1,0 +1,61 @@
+{
+  "REFINEMENT_PROVED": "OPEN",
+  "cases": [
+    {
+      "detected": true,
+      "expected_failure_module": "ArchiveConsumer",
+      "mutant_sha256": "27d22560283855d224c635e889c7df13214d164ea8ecc169f764808ba33c1d55",
+      "mutation": "weaken_named_theorem",
+      "observed_failure_module": "ArchiveConsumer"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "LeanAudit",
+      "mutant_sha256": "7c2ba76cdad31243773fc76366b9b3476b9c05929d3ac582f14b389d0aa1f02e",
+      "mutation": "prohibited_project_axiom",
+      "observed_failure_module": "LeanAudit"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "LeanAudit",
+      "mutant_sha256": "bdff2dedbef5695b9d27d8b39bd6fc5fae62c15e292a366e6085083fc8bc50e7",
+      "mutation": "compiler_suffix_false_axiom_cstage1",
+      "observed_failure_module": "LeanAudit"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "LeanAudit",
+      "mutant_sha256": "81e70b8163423c37752ec2f46526f72272fa25d8cccaec2154242236b06a8907",
+      "mutation": "compiler_suffix_false_axiom_cstage2",
+      "observed_failure_module": "LeanAudit"
+    },
+    {
+      "detected": false,
+      "expected_failure_module": "ArchiveModel",
+      "mutant_sha256": "c14e4873301e7c7c67275eee01141965bd77ecc5f2249899009dcedca4e6f3c8",
+      "mutation": "prohibited_sorry",
+      "observed_failure_module": "LeanAudit"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "source_inventory",
+      "mutant_sha256": "36c064a869c5a9304c0fbedfc4009b353bccb32b80360a518f900a42c8ea669b",
+      "mutation": "unimported_failing_module",
+      "observed_failure_module": "source_inventory"
+    }
+  ],
+  "lean_executable_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "negative_runner_sha256": "3b0b9d21c13401d13cbcded258932555084135da76ff92c489c05a9c907aab59",
+  "proof_input_commit": "dfb4afad4f326c45a9502b4825d08b06d48566c3",
+  "proof_input_sha256": {
+    "ArchiveConsumer.lean": "dfc0cf31167adcde7f6723d5e6fc9f349deb4a6886c1f1c4ae11959e51ad43a9",
+    "ArchiveModel.lean": "c22a45e0afdca8287fc88b5bf34e28077ca4cb5c678859231507b3be246006d9",
+    "LeanAudit.lean": "b7511d361724728b04468c19170e7d72d6efe02042f5393729795f2bd4a3cfc5",
+    "PROOF_NOTES.md": "0f9af6516c178325ba1a19e215c99af7805753596ddb3b19619a6bacb849398c",
+    "TRUSTED_COMPILER.md": "d2bad3ceba537ee228996a3362adb7d82040bf093d2e274e2880fd0c31ff7a02",
+    "check.py": "6f035789c7028c8844d18324f81a4cbb5ca5c879ab813fdd795523469b281a3e",
+    "lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+    "negative.py": "3b0b9d21c13401d13cbcded258932555084135da76ff92c489c05a9c907aab59"
+  },
+  "status": "FAIL"
+}
