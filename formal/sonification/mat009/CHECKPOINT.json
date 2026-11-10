@@ -1,0 +1,94 @@
+{
+  "schema": "sonification-formal-001.mat009-budget-checkpoint/v1",
+  "created_utc": "2026-11-10 01:24:05 UTC",
+  "repository": "QSOLKCB/SONIFICATION",
+  "worktree": "/home/trent/sonification-formal-001-mat009",
+  "branch": "research/sonification-formal-001-mat009-verify",
+  "head_at_handoff_write": "49cf9575c648f3c1aedaa59b1bae852a196d5d29",
+  "main_baseline": "d80f1a09b6f9fd60188148ab20745de5b91462fc",
+  "private_context_commit": "a1f74e8d1847d218d6b68c125fac9522e2ffc2fb",
+  "private_packet": "/home/trent/sonification-formal-001-mat009-context",
+  "source_identity": {
+    "tag": "mat-spec-009-v0.1.0",
+    "tag_object": "ad99d9e52f9ede423a4fb9d6a622624e32955263",
+    "peeled_commit": "0758a96360726aafbb07abed34620eda178407ae",
+    "source_tree": "a6a03e1227e666680d656b886201ee9dde9de32d",
+    "module": "materials/mat_spec_009.py",
+    "module_blob": "c447f0ce76b91acf458221390ac4261166145a0b",
+    "module_sha256": "a68089df7d1901fb7c17ffc2889b844b3573024aec4b66348f9c2ef71930c690",
+    "direct_parent_module_sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08"
+  },
+  "proof": {
+    "proof_input_commit": "a09aab6572fb9c3875d5f2940bdb17ec55c358d5",
+    "lean_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "nominal_attempt": "formal/sonification/mat009/lean/attempts/002",
+    "nominal_result_sha256": "74ed460c20a7ddc98d53891fc3a34de63404169f40405fe08fbcac2e4b6d85b1",
+    "nominal_manifest_sha256": "c068cb09fa08737a25bf49c17fa7cbca1e31dbbaa5ab388532b5529e1e41c817",
+    "scope": "Eligible-row mathematical split model and separate validated diagnostic first-owner registry",
+    "primary_named_model_theorems": 14,
+    "diagnostic_named_model_theorems": 6,
+    "derived_consumer_theorems": 2,
+    "all_declarations_including_generated": 351,
+    "toolchain_imports_hashed": 1303,
+    "logical_axioms_observed": ["propext", "Quot.sound", "Classical.choice"],
+    "compiler_auxiliary_assumptions_disclosed_in": "formal/sonification/mat009/lean/attempts/002/declarations.json",
+    "failed_nominal_attempt": "formal/sonification/mat009/lean/attempts/001"
+  },
+  "execution": {
+    "source_binder": "SOURCE_SYNTAX_MATCH",
+    "finite_exact_builtin_role_campaign_lab_cases": 4096,
+    "focused_finite_unittest_methods": 18,
+    "targeted_pytest": "35 passed, 36 subtests passed",
+    "integrity_tests": "38 passed",
+    "full_repository_pytest": "329 passed, 202 subtests passed in 120.37s",
+    "full_repository_receipt": "formal/sonification/evidence/mat009-full-pytest-001/receipt.json",
+    "full_repository_receipt_sha256": "e2cb426b7ce15ccac76a5959dc9997c30fbb573fa5b17f1dd96f4a5adc0d0d3e",
+    "detected_lean_mutations": "6 of 6 in negative/003",
+    "negative_manifest_sha256": "6d99b5c41017d87922ffd01f3b34eccab692806ca38b760299371cbcc0d0750b",
+    "prior_failed_mutation_attempts": ["negative/001", "negative/002"],
+    "all_new_python_ruff": "PASS"
+  },
+  "assurance": {
+    "MODEL_PROVED": "PASS_FOR_SCOPED_MODEL_ONLY",
+    "REFINEMENT_PROVED": "OPEN",
+    "DIFFERENTIAL_TESTED": "PASS_FOR_DECLARED_FINITE_CASES_ONLY",
+    "AUDIT_ACCEPTED": "FAILED"
+  },
+  "independent_audit": {
+    "report": "formal/sonification/mat009/audit/report.json",
+    "report_sha256": "70ddf22c27e43059c069565c7e99b7095c29f348142407f307ba92833f7eed8f",
+    "candidate_commit": "94a357284408e6bc24cfb9b2d49e9d4144791042",
+    "verdict": "FAIL",
+    "finding_id": "MAT009-AUDIT-001",
+    "finding": "Standalone LeanAudit accepts a user-named False axiom and theorem ending _cstage1 as compiler auxiliaries. The integrated checker rejected the altered proof input via its baseline and fixed declaration count. Audit acceptance remains failed until repaired and independently rechecked."
+  },
+  "open_obligations": [
+    "Fix MAT009-AUDIT-001 without silently weakening proof statements; preserve and rerun a targeted suffix-axiom negative control.",
+    "Rebuild and retain proof evidence after changing proof inputs, then obtain a fresh independent audit.",
+    "Prove source-to-model and CPython correspondence for the frozen MAT009 child gate and direct MAT008 parent; currently OPEN.",
+    "Formalize skipped/raw Python records, all child reasons, diagnostic conflict reasons and observable status before making wider claims.",
+    "Review whether the retained source-receipt verifier detects later working-tree production-module drift; this specific probe is NOT_EXECUTED.",
+    "Update canonical theorem-map.json and MAT009 README after accepted audit; current general MAT009.partition target remains conservatively OPEN.",
+    "MAT-SPEC-010 milestone deferred under the owner budget checkpoint."
+  ],
+  "github_delivery": {
+    "branch_pushed": false,
+    "pull_request_opened": false,
+    "gh_auth_status": "invalid token observed for EmergentMonk; recheck authentication before delivery",
+    "merge_or_publication": "NONE"
+  },
+  "resume_commands": [
+    "git -C /home/trent/sonification-formal-001-mat009 status --short --branch",
+    "git -C /home/trent/sonification-formal-001-mat009 rev-parse HEAD",
+    "python3 formal/sonification/mat009/source/source_bind.py",
+    "python3 formal/sonification/mat009/verify_evidence.py",
+    "python3 formal/sonification/mat009/lean/verify.py --lean /home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "python3 formal/sonification/mat009/lean/verify_negative.py"
+  ],
+  "resume_order": [
+    "Inspect audit/report.json and its isolated suffix-axiom reproduction, then repair the standalone trust gate.",
+    "Commit changed proof inputs and obtain their full new SHA before a fresh append-only Lean build.",
+    "Run targeted controls, update receipt binders, and commission one independent auditor only after the new evidence checkpoint.",
+    "Integrate truthful assurance into theorem-map.json, prepare focused PR, and only then start MAT-SPEC-010."
+  ]
+}
