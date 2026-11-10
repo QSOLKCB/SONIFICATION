@@ -1,0 +1,28 @@
+{
+  "schema": "qsol.sonification-formal-001.execution/v1",
+  "argv": [
+    "python3",
+    "-m",
+    "pytest",
+    "-q"
+  ],
+  "cwd": "/home/trent/sonification-formal-001-mat009",
+  "started_utc": "2026-11-10T01:10:21.151479+00:00",
+  "ended_utc": "2026-11-10T01:12:21.837382+00:00",
+  "exit_code": 0,
+  "checkout_commit": "94a357284408e6bc24cfb9b2d49e9d4144791042",
+  "worktree_status": "CLEAN",
+  "inputs": {},
+  "environment": "Linux-7.0.0-42-generic-x86_64-with-glibc2.43",
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "python_executable_sha256": "52e0a13e60a981d8c4b6478be2ba5176f69da07948a056bf49cf6f077e30cb41",
+  "command_executable": "/usr/bin/python3.14",
+  "command_executable_sha256": "52e0a13e60a981d8c4b6478be2ba5176f69da07948a056bf49cf6f077e30cb41",
+  "stdout_sha256": "31f40469e07bb9d0da2a4e7c18cce59ee83d4b1e5243095535d76f212c6d4c8a",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "limits": [
+    "Locally observed execution; no author or external execution attestation",
+    "Input list is explicit; dependency closure requires separate review",
+    "A zero exit status does not establish theorem or coverage acceptance"
+  ]
+}
