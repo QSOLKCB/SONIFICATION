@@ -16,9 +16,9 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[3]
-DEFAULT_ATTEMPT = HERE / "attempts/002"
-BASELINE = "a09aab6572fb9c3875d5f2940bdb17ec55c358d5"
-MANIFEST_SHA256 = "c068cb09fa08737a25bf49c17fa7cbca1e31dbbaa5ab388532b5529e1e41c817"
+DEFAULT_ATTEMPT = HERE / "attempts/003"
+BASELINE = "c562377308ebbb4694685076af12e79eefe0a479"
+MANIFEST_SHA256 = "575f9996a160db4ff01b69a155f2210046ce7a40b4d2ffdd78ca7c13afeb73be"
 MODULES = (
     "SplitModel", "DiagnosticFirstOwner", "TypedConsumer", "ExactTypes",
     "LeanAudit",

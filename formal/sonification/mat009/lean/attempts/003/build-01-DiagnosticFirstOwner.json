@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "--error=warning",
+    "-o",
+    "/tmp/mat009-lean-build-bb16ogk2/DiagnosticFirstOwner.olean",
+    "DiagnosticFirstOwner.lean"
+  ],
+  "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/lean",
+  "exit_code": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "timed_out": false,
+  "timeout_seconds": 180
+}

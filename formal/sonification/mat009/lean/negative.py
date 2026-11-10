@@ -14,7 +14,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[3]
-BASELINE = "a09aab6572fb9c3875d5f2940bdb17ec55c358d5"
+BASELINE = "c562377308ebbb4694685076af12e79eefe0a479"
 MODULES = ("SplitModel", "DiagnosticFirstOwner", "TypedConsumer", "ExactTypes", "LeanAudit")
 
 
