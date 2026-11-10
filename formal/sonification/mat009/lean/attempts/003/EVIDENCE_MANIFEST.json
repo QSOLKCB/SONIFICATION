@@ -1,0 +1,30 @@
+{
+  "files_sha256": {
+    "build-00-SplitModel.json": "1fd04d47db0ceac9c351eb2c14445f25dbb00b5347305274b8fabb8bff0bc340",
+    "build-00-SplitModel.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-00-SplitModel.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-01-DiagnosticFirstOwner.json": "32a5119ca458d3acaf7ac1bd9545e9ae7fbd514a512342cff70af239ec809f0e",
+    "build-01-DiagnosticFirstOwner.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-01-DiagnosticFirstOwner.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-02-TypedConsumer.json": "2b0d9d7a2cdeb9840264a69023ecbb701d094b5aefa73c7e7430f00d76f42fc0",
+    "build-02-TypedConsumer.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-02-TypedConsumer.stdout": "9078e77bdd2580d1ce506f685136b42d01255a0ebd4177589a7d493b4ad06522",
+    "build-03-ExactTypes.json": "df1cdf37e609c57cc448e14ac4ef5a549f2e60009ac246558deb5113442c8172",
+    "build-03-ExactTypes.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-03-ExactTypes.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-04-LeanAudit.json": "579587fff4684d4d8227a0e7d7e3baa578da5bc1af8d7241acee488d09fd073c",
+    "build-04-LeanAudit.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-04-LeanAudit.stdout": "fe581a6c34d4db092d539a74d23a263951dbc7c2c65b646962d62e5a1b3b7029",
+    "declarations.json": "b5ee7aff6fe16daa458cad083485b90a1a6c42073d7b588e4a32c99ed459742d",
+    "lean-version.json": "891fd7e9d7ca7393779b1eafec93925d0eb39390da8bb66ed47d2d72a5bd8d5b",
+    "lean-version.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "lean-version.stdout": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+    "named-axioms.json": "d726df048cf1d5d7528afe2838eaa8a05b31b6a10c3b2a34109380b4bf779b1f",
+    "result.json": "9394ea8329d2447d97a07285c7bc7c757cf1723d2ef863332215d09675101112",
+    "theorem-types.json": "8ebc9839c12845f0410085754b475d7dd0ebf6c218869eebe39f2484104ddf5b",
+    "toolchain-imports.json": "69c9e85cad9c3ec024130bd80dc3e1fa6351053f135304268741bf1f0fd1b2ad"
+  },
+  "proof_input_commit": "c562377308ebbb4694685076af12e79eefe0a479",
+  "schema": "sonification-mat009-lean-evidence-v1",
+  "scope": "checked eligible-row mathematical models; CPython refinement OPEN; compiler-suffix axiom gate repaired"
+}

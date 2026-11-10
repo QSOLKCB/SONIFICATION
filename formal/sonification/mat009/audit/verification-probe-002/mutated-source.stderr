@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/source_drift_driver.py", line 32, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/source_drift_driver.py", line 27, in main
+    source_bind.verify()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/source/source_bind.py", line 207, in verify
+    require((ROOT / path).read_bytes() == frozen_raw,
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            f"working-tree {label} differs from frozen release")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/source/source_bind.py", line 36, in require
+    raise ValueError(message)
+ValueError: working-tree target differs from frozen release

@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/lean/verify.py", line 176, in <module>
+    print(json.dumps(verify(args.attempt, args.lean), sort_keys=True))
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/lean/verify.py", line 54, in verify
+    require({p.name for p in attempt.iterdir()} == set(files) | {manifest_path.name},
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "retained evidence file inventory changed")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/lean/verify.py", line 40, in require
+    raise ValueError(message)
+ValueError: retained evidence file inventory changed

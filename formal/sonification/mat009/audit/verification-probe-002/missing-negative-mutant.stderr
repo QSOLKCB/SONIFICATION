@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/lean/verify_negative.py", line 112, in <module>
+    print(json.dumps(verify(args.archive), sort_keys=True))
+                     ~~~~~~^^^^^^^^^^^^^^
+  File "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/lean/verify_negative.py", line 49, in verify
+    require(observed == set(files) | {"ARCHIVE_MANIFEST.json"},
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "negative archive file inventory changed")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/lean/verify_negative.py", line 32, in require
+    raise ValueError(message)
+ValueError: negative archive file inventory changed

@@ -1,0 +1,11 @@
+{
+  "AUDIT_ACCEPTED": "OPEN",
+  "DIFFERENTIAL_TESTED": "NOT_EXECUTED",
+  "MODEL_PROVED": "NOT_EXECUTED",
+  "REFINEMENT_PROVED": "OPEN",
+  "baseline_commit": "a09aab6572fb9c3875d5f2940bdb17ec55c358d5",
+  "completed_utc": "2026-11-10T01:13:44.036729+00:00",
+  "error": "stale proof input: SplitModel.lean",
+  "started_utc": "2026-11-10T01:13:44.032184+00:00",
+  "status": "FAIL"
+}

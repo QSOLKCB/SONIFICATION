@@ -1,0 +1,22 @@
+'MAT009.M009_R1_initial' depends on axioms: [propext]
+'MAT009.M009_R2_assignment_overwrite' depends on axioms: [propext]
+'MAT009.M009_R3_cross_role_trigger' does not depend on any axioms
+'MAT009.M009_R4_stickiness' does not depend on any axioms
+'MAT009.M009_R5_final_set_intersection' depends on axioms: [propext]
+'MAT009.M009_R5_parent_union' depends on axioms: [propext]
+'MAT009.M009_R6_cross_trigger_in_finite_scan' depends on axioms: [propext]
+'MAT009.M009_R6_arbitrary_finite_scan' depends on axioms: [propext, Quot.sound]
+'MAT009.M009_R6_latest_owner' depends on axioms: [propext]
+'MAT009.M009_R6_parent_reason_survives' does not depend on any axioms
+'MAT009.M009_R6_final_leakage_iff' depends on axioms: [propext, Quot.sound]
+'MAT009.M009_R7_accepted_example' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MAT009.M009_R7_rejected_example' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MAT009.M009_R7_nonvacuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MAT009.Consumer.parent_reason_blocks_any_scan' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MAT009.Consumer.shared_campaign_blocks_any_scan' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MAT009.Diagnostic.register_first_owner' depends on axioms: [propext]
+'MAT009.Diagnostic.register_new_owner' depends on axioms: [propext]
+'MAT009.Diagnostic.register_other_identity' depends on axioms: [propext]
+'MAT009.Diagnostic.register_preserves_existing' depends on axioms: [propext]
+'MAT009.Diagnostic.scan_first_owner_sticky' depends on axioms: [propext]
+'MAT009.Diagnostic.first_owner_not_last_writer' depends on axioms: [propext]

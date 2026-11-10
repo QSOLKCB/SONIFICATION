@@ -1,0 +1,37 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat009-change_diagnostic_first_owner_update-dqncars1/SplitModel.olean",
+        "SplitModel.lean"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/tmp/mat009-change_diagnostic_first_owner_update-dqncars1/DiagnosticFirstOwner.olean",
+        "DiagnosticFirstOwner.lean"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "fbe0315c2d7a3bd1dfd7c80f221a1966bab1f771a443d3aa7322a3577f9719e6",
+      "timed_out": false
+    }
+  ],
+  "detected": true,
+  "expected_diagnostic_text": "unsolved goals",
+  "expected_failure_module": "DiagnosticFirstOwner",
+  "mutant_sha256": "1b9a3cb9293f8f56506676d481053f28c46c79896e7be2f80774a7740339a146",
+  "mutation": "change_diagnostic_first_owner_update",
+  "observed_failure_module": "DiagnosticFirstOwner",
+  "target_module": "DiagnosticFirstOwner"
+}

@@ -1,0 +1,128 @@
+{
+  "allowed_logical_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--version"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/independent-replay-001/work",
+      "exit_code": 0,
+      "label": "lean-version",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/independent-replay-001/work/SplitModel.olean",
+        "SplitModel.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/independent-replay-001/work",
+      "exit_code": 0,
+      "label": "build-00-SplitModel",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/independent-replay-001/work/DiagnosticFirstOwner.olean",
+        "DiagnosticFirstOwner.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/independent-replay-001/work",
+      "exit_code": 0,
+      "label": "build-01-DiagnosticFirstOwner",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/independent-replay-001/work/TypedConsumer.olean",
+        "TypedConsumer.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/independent-replay-001/work",
+      "exit_code": 0,
+      "label": "build-02-TypedConsumer",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "9078e77bdd2580d1ce506f685136b42d01255a0ebd4177589a7d493b4ad06522"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/independent-replay-001/work/ExactTypes.olean",
+        "ExactTypes.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/independent-replay-001/work",
+      "exit_code": 0,
+      "label": "build-03-ExactTypes",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/independent-replay-001/work/LeanAudit.olean",
+        "LeanAudit.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/independent-replay-001/work",
+      "exit_code": 0,
+      "label": "build-04-LeanAudit",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "21d9dcb639ded4b2c3047045038ff0d3a3c216f2c1f57554d0832fb81e7042cc"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "IndependentAxioms.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/independent-replay-001/work",
+      "exit_code": 0,
+      "label": "independent-axioms",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "18eddea3912a9320626a48d5eb5e2a91dec2c04c371fb9914479feabc8f1ee0d"
+    }
+  ],
+  "compiler_auxiliary_axioms": [
+    "MAT009.initial._elambda_1",
+    "MAT009.step._elambda_1"
+  ],
+  "compiler_auxiliary_count": 146,
+  "cpython_refinement": "OPEN",
+  "declaration_count": 351,
+  "independently_queried_named_theorems": 22,
+  "lean_executable_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "logical_violations": [],
+  "module_count": 5,
+  "proof_commit": "a09aab6572fb9c3875d5f2940bdb17ec55c358d5",
+  "proof_sha256": {
+    "formal/sonification/mat009/lean/DiagnosticFirstOwner.lean": "7658fa0dc0b223e69a6f145a3ac68a3f7852c597fb9c2a83a0c6870023ca4d05",
+    "formal/sonification/mat009/lean/ExactTypes.lean": "ec371e7a14ad106fc52ecd31ca95fbc7b9aee124b7463e3f08811f215aec9fb6",
+    "formal/sonification/mat009/lean/LeanAudit.lean": "7aeabffbd65357e4ea41d773950bc7b52c892c5347b259f51d6a3831296aced8",
+    "formal/sonification/mat009/lean/SplitModel.lean": "2d6f80e9749e846db5f7c54bcc189c1ae3f345e19677842c002c2bea69790795",
+    "formal/sonification/mat009/lean/TypedConsumer.lean": "422315ea1451327d960ddd81b9d8fdc2189d25b02406b44c9b1786d34c70b5fa"
+  },
+  "source_commit": "0758a96360726aafbb07abed34620eda178407ae",
+  "source_sha256": {
+    "materials/mat_spec_008.py": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08",
+    "materials/mat_spec_009.py": "a68089df7d1901fb7c17ffc2889b844b3573024aec4b66348f9c2ef71930c690"
+  },
+  "status": "PASS",
+  "theorem_count_including_generated": 95
+}

@@ -1,0 +1,5 @@
+{
+  "exit_code": 0,
+  "stdout": "RANGE MAT009.initial._elambda_1 false\nRANGE MAT009.step._elambda_1 false\nRANGE MAT009.auditor_false_cstage1 true\nRANGE MAT009.auditor_false_proof_cstage1 true\nRANGE MAT009.initial._cstage1 false\nRANGE MAT009.initial true\n",
+  "stderr": ""
+}

@@ -1,0 +1,53 @@
+{
+  "REFINEMENT_PROVED": "OPEN",
+  "cases": [
+    {
+      "detected": true,
+      "expected_failure_module": "SplitModel",
+      "mutation": "drop_cross_conflict_stickiness",
+      "observed_failure_module": "SplitModel"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "SplitModel",
+      "mutation": "drop_historical_campaign_membership",
+      "observed_failure_module": "SplitModel"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "TypedConsumer",
+      "mutation": "weaken_final_leakage_theorem",
+      "observed_failure_module": "TypedConsumer"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "DiagnosticFirstOwner",
+      "mutation": "change_diagnostic_first_owner_update",
+      "observed_failure_module": "DiagnosticFirstOwner"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "LeanAudit",
+      "mutation": "prohibited_project_axiom",
+      "observed_failure_module": "LeanAudit"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "LeanAudit",
+      "mutation": "compiler_suffix_false_axiom",
+      "observed_failure_module": "LeanAudit"
+    },
+    {
+      "detected": true,
+      "expected_failure_module": "LeanAudit",
+      "mutation": "prohibited_sorry",
+      "observed_failure_module": "LeanAudit"
+    }
+  ],
+  "lean_executable_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "negative_runner_commit": "e1091de3bce9502ad333c530c1d7b12eb143f6da",
+  "negative_runner_sha256": "9ee63fda2cd0a6e045c85a99ce28e20ea6f2d6d800e38ed5088ce9432acfeb48",
+  "proof_input_commit": "c562377308ebbb4694685076af12e79eefe0a479",
+  "scope": "negative controls for mathematical proof and trust checker only",
+  "status": "PASS"
+}

@@ -1,0 +1,19 @@
+{
+  "candidate_commit": "b07942c77bebb15c99d8a70f52397d4077694ea0",
+  "jobs": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/repair-audit-001/compiler-axiom-leak/work/SplitModel.olean",
+        "SplitModel.lean"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "3061c0d5e518c47bf8bce304265bba661fc22d822327e45e5a87082d13902589"
+    }
+  ],
+  "mutant_sha256": "ff885b6e20f693ae6d588e086ebbe659d7f3c9f604909583b7a3a5a466b1ca6e",
+  "scanner_detected": false
+}

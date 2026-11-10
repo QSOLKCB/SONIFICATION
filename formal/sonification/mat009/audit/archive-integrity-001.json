@@ -1,0 +1,64 @@
+{
+  "cpython_refinement": "OPEN",
+  "failed_development_attempts_retained": 2,
+  "full_pytest_exit_code": 0,
+  "full_pytest_inputs_explicitly_listed": 0,
+  "full_pytest_receipt_sha256": "e2cb426b7ce15ccac76a5959dc9997c30fbb573fa5b17f1dd96f4a5adc0d0d3e",
+  "full_pytest_reported": "329 passed, 202 subtests passed",
+  "full_pytest_stdout_sha256": "31f40469e07bb9d0da2a4e7c18cce59ee83d4b1e5243095535d76f212c6d4c8a",
+  "negative_cases": {
+    "change_diagnostic_first_owner_update": {
+      "exit_code": 1,
+      "module": "DiagnosticFirstOwner"
+    },
+    "drop_cross_conflict_stickiness": {
+      "exit_code": 1,
+      "module": "SplitModel"
+    },
+    "drop_historical_campaign_membership": {
+      "exit_code": 1,
+      "module": "SplitModel"
+    },
+    "prohibited_project_axiom": {
+      "exit_code": 1,
+      "module": "LeanAudit"
+    },
+    "prohibited_sorry": {
+      "exit_code": 1,
+      "module": "LeanAudit"
+    },
+    "weaken_final_leakage_theorem": {
+      "exit_code": 1,
+      "module": "TypedConsumer"
+    }
+  },
+  "negative_file_count": 97,
+  "negative_manifest_sha256": "6d99b5c41017d87922ffd01f3b34eccab692806ca38b760299371cbcc0d0750b",
+  "nominal_audit_stdout_matches_independent_replay": true,
+  "nominal_file_count": 23,
+  "nominal_manifest_sha256": "c068cb09fa08737a25bf49c17fa7cbca1e31dbbaa5ab388532b5529e1e41c817",
+  "source_receipts": {
+    "mat009-finite-001": {
+      "exit_code": 0,
+      "input_count": 2,
+      "receipt_sha256": "b86b0b4ee2119ff0afffbd6ec575d9f2f3304fe6aaaa90cf3d6c43cae50f05e9"
+    },
+    "mat009-pytest-001": {
+      "exit_code": 0,
+      "input_count": 3,
+      "receipt_sha256": "cd00d1ebda66b847432194d9b53ffa22060bfa518c6c6b99dc9e63ea1fe0996f"
+    },
+    "mat009-ruff-source-001": {
+      "exit_code": 0,
+      "input_count": 2,
+      "receipt_sha256": "efe30f79371ca762ac498a06e7e49c7b330b644d6b8bcb2cfbc37a7e60c0b4fd"
+    },
+    "mat009-source-bind-001": {
+      "exit_code": 0,
+      "input_count": 2,
+      "receipt_sha256": "e3c3793f25532f540ba20b79729c5f20ede2398470ed2ffa8d75705cb93c5606"
+    }
+  },
+  "status": "PASS",
+  "toolchain_import_count": 1303
+}

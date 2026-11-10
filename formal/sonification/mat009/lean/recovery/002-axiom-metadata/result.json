@@ -1,0 +1,5 @@
+{
+  "exit_code": 0,
+  "stdout": "AXIOM MAT009.initial._elambda_1 unsafe=true type=String \u2192 Option MAT009.Role\nAXIOM MAT009.step._elambda_1 unsafe=true type=MAT009.State \u2192 MAT009.Row \u2192 String \u2192 Option MAT009.Role\nAXIOM MAT009.auditor_false_cstage1 unsafe=false type=False\nAXIOM lcProof unsafe=true type=\u2200 {\u03b1 : Prop}, \u03b1\nAXIOM lcUnreachable unsafe=true type={\u03b1 : Sort u} \u2192 \u03b1\n",
+  "stderr": ""
+}

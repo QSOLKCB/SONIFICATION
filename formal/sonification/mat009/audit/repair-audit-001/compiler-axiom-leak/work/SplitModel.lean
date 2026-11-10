@@ -1,0 +1,381 @@
+import Std
+
+/-!
+An abstract model of the MAT009 child split check after the campaign, role,
+and lab eligibility guards have succeeded. A `Row` is already eligible; this
+file does not model Python values, skipped rows, or the MAT008 implementation.
+Parent reason IDs are supplied as a predicate and remain present throughout
+the child scan. The source-family intersection check is performed by
+`finalize`, after all row steps.
+-/
+
+namespace MAT009
+
+inductive Role where
+  | train
+  | holdout
+  deriving DecidableEq, Repr
+
+structure Row where
+  campaign : String
+  lab : String
+  role : Role
+  deriving Repr
+
+abbrev ReasonSet := String → Prop
+
+def crossReason : String := "CAMPAIGN_CROSSES_TRAIN_HOLDOUT"
+def leakageReason : String := "SOURCE_FAMILY_LEAKAGE_ACROSS_SPLITS"
+
+structure State where
+  -- The most recently processed role for each campaign.
+  owner : String → Option Role
+  -- Historical membership is never deleted when `owner` is overwritten.
+  campaigns : Role → String → Prop
+  labs : Role → String → Prop
+  crossed : Prop
+  parent : ReasonSet
+
+def initial (parent : ReasonSet) : State where
+  owner := fun _ => none
+  campaigns := fun _ _ => False
+  labs := fun _ _ => False
+  crossed := False
+  parent := parent
+
+def step (s : State) (row : Row) : State where
+  owner := fun key => if key = row.campaign then some row.role else s.owner key
+  campaigns := fun role key =>
+    s.campaigns role key ∨ (role = row.role ∧ key = row.campaign)
+  labs := fun role key =>
+    s.labs role key ∨ (role = row.role ∧ key = row.lab)
+  crossed := s.crossed ∨
+    ∃ previous : Role,
+      s.owner row.campaign = some previous ∧ previous ≠ row.role
+  parent := s.parent
+
+def scan (s : State) : List Row → State
+  | [] => s
+  | row :: rest => scan (step s row) rest
+
+-- Search from the end: the first matching row there is the latest owner.
+def lastRole : List Row → String → Option Role
+  | [], _ => none
+  | row :: rest, key =>
+      match lastRole rest key with
+      | some role => some role
+      | none => if row.campaign = key then some row.role else none
+
+def splitIntersection (members : Role → String → Prop) : Prop :=
+  ∃ key, members .train key ∧ members .holdout key
+
+def familyLeakage (s : State) : Prop :=
+  splitIntersection s.campaigns ∨ splitIntersection s.labs
+
+theorem familyLeakage_step_sticky (s : State) (row : Row) :
+    familyLeakage s → familyLeakage (step s row) := by
+  intro h
+  rcases h with ⟨key, htrain, hholdout⟩ | ⟨key, htrain, hholdout⟩
+  · exact Or.inl ⟨key, Or.inl htrain, Or.inl hholdout⟩
+  · exact Or.inr ⟨key, Or.inl htrain, Or.inl hholdout⟩
+
+structure Final where
+  parent : ReasonSet
+  crossed : Prop
+  leakage : Prop
+
+def finalize (s : State) : Final where
+  parent := s.parent
+  crossed := s.crossed
+  leakage := familyLeakage s
+
+def Final.childReason (f : Final) (reason : String) : Prop :=
+  (reason = crossReason ∧ f.crossed) ∨
+  (reason = leakageReason ∧ f.leakage)
+
+def Final.hasReason (f : Final) (reason : String) : Prop :=
+  f.parent reason ∨ f.childReason reason
+
+inductive Status where
+  | blocked
+  | structuralOnlyUnauthenticated
+  deriving DecidableEq, Repr
+
+noncomputable def Final.status (f : Final) : Status := by
+  classical
+  exact if (∃ reason, f.hasReason reason) then
+    .blocked
+  else
+    .structuralOnlyUnauthenticated
+
+theorem Final.status_blocked_iff (f : Final) :
+    f.status = .blocked ↔ ∃ reason, f.hasReason reason := by
+  classical
+  simp [Final.status]
+
+theorem Final.status_structural_iff (f : Final) :
+    f.status = .structuralOnlyUnauthenticated ↔
+      ∀ reason, ¬ f.hasReason reason := by
+  classical
+  simp [Final.status, not_exists]
+
+-- M009-R1: the child scan starts empty, with exactly the supplied parent set.
+theorem M009_R1_initial (parent : ReasonSet) (role : Role)
+    (campaign lab reason : String) :
+    (initial parent).owner campaign = none ∧
+    ¬ (initial parent).campaigns role campaign ∧
+    ¬ (initial parent).labs role lab ∧
+    ¬ (initial parent).crossed ∧
+    ((initial parent).parent reason ↔ parent reason) := by
+  simp [initial]
+
+-- M009-R2: assignment is last writer wins; both historical sets only grow.
+theorem M009_R2_assignment_overwrite (s : State) (row : Row) :
+    (step s row).owner row.campaign = some row.role ∧
+    (∀ key, key ≠ row.campaign → (step s row).owner key = s.owner key) ∧
+    (∀ role key,
+      (step s row).campaigns role key ↔
+        s.campaigns role key ∨ (role = row.role ∧ key = row.campaign)) ∧
+    (∀ role key,
+      (step s row).labs role key ↔
+        s.labs role key ∨ (role = row.role ∧ key = row.lab)) := by
+  refine ⟨?_, ?_, ?_, ?_⟩
+  · simp [step]
+  · intro key h
+    simp [step, h]
+  · intro role key
+    rfl
+  · intro role key
+    rfl
+
+-- M009-R3: the row-step trigger is the prior owner having the other role.
+theorem M009_R3_cross_role_trigger (s : State) (row : Row) :
+    (step s row).crossed ↔
+      s.crossed ∨
+        ∃ previous : Role,
+          s.owner row.campaign = some previous ∧ previous ≠ row.role := by
+  rfl
+
+-- M009-R4: a later row cannot remove split membership or an earlier reason.
+theorem M009_R4_stickiness (s : State) (row : Row)
+    (role : Role) (campaign lab reason : String) :
+    (s.campaigns role campaign → (step s row).campaigns role campaign) ∧
+    (s.labs role lab → (step s row).labs role lab) ∧
+    (s.crossed → (step s row).crossed) ∧
+    (familyLeakage s → familyLeakage (step s row)) ∧
+    ((step s row).parent reason ↔ s.parent reason) := by
+  refine ⟨?_, ?_, ?_, ?_, ?_⟩
+  · intro h
+    exact Or.inl h
+  · intro h
+    exact Or.inl h
+  · intro h
+    exact Or.inl h
+  · exact familyLeakage_step_sticky s row
+  · rfl
+
+-- M009-R5: source-family leakage is computed only at finalization.
+theorem M009_R5_final_set_intersection (s : State) :
+    (finalize s).childReason leakageReason ↔
+      (∃ key, s.campaigns .train key ∧ s.campaigns .holdout key) ∨
+      (∃ key, s.labs .train key ∧ s.labs .holdout key) := by
+  simp [Final.childReason, finalize, familyLeakage,
+    splitIntersection, crossReason, leakageReason]
+
+theorem M009_R5_parent_union (s : State) :
+    (finalize s).hasReason leakageReason ↔
+      s.parent leakageReason ∨ familyLeakage s := by
+  simp [Final.hasReason, Final.childReason, finalize,
+    crossReason, leakageReason]
+
+theorem parent_reason_survives_finalization (s : State)
+    (reason : String) :
+    s.parent reason → (finalize s).hasReason reason := by
+  intro h
+  exact Or.inl h
+
+theorem scan_owner_last (s : State) (rows : List Row) (key : String) :
+    (scan s rows).owner key =
+      match lastRole rows key with
+      | some role => some role
+      | none => s.owner key := by
+  induction rows generalizing s with
+  | nil => rfl
+  | cons row rest ih =>
+      rw [scan, ih]
+      cases hlast : lastRole rest key with
+      | none =>
+          by_cases hkey : row.campaign = key
+          · subst key
+            simp [lastRole, hlast, step]
+          · simp [lastRole, hlast, step, hkey, Ne.symm hkey]
+      | some role =>
+          simp [lastRole, hlast]
+
+theorem scan_campaigns_iff (s : State) (rows : List Row)
+    (role : Role) (key : String) :
+    (scan s rows).campaigns role key ↔
+      s.campaigns role key ∨
+        ∃ row ∈ rows, row.role = role ∧ row.campaign = key := by
+  induction rows generalizing s with
+  | nil => simp [scan]
+  | cons row rest ih =>
+      have hhead :
+          (∃ r ∈ row :: rest, r.role = role ∧ r.campaign = key) ↔
+            (row.role = role ∧ row.campaign = key) ∨
+              ∃ r ∈ rest, r.role = role ∧ r.campaign = key := by
+        simp
+      rw [scan, ih, hhead]
+      simp [step, eq_comm, or_assoc, or_left_comm, or_comm]
+
+theorem scan_labs_iff (s : State) (rows : List Row)
+    (role : Role) (key : String) :
+    (scan s rows).labs role key ↔
+      s.labs role key ∨
+        ∃ row ∈ rows, row.role = role ∧ row.lab = key := by
+  induction rows generalizing s with
+  | nil => simp [scan]
+  | cons row rest ih =>
+      have hhead :
+          (∃ r ∈ row :: rest, r.role = role ∧ r.lab = key) ↔
+            (row.role = role ∧ row.lab = key) ∨
+              ∃ r ∈ rest, r.role = role ∧ r.lab = key := by
+        simp
+      rw [scan, ih, hhead]
+      simp [step, eq_comm, or_assoc, or_left_comm, or_comm]
+
+theorem scan_parent (s : State) (rows : List Row) (reason : String) :
+    (scan s rows).parent reason ↔ s.parent reason := by
+  induction rows generalizing s with
+  | nil => rfl
+  | cons row rest ih =>
+      simpa [scan, step] using (ih (s := step s row))
+
+theorem scan_crossed_sticky (s : State) (rows : List Row) :
+    s.crossed → (scan s rows).crossed := by
+  induction rows generalizing s with
+  | nil => simp [scan]
+  | cons row rest ih =>
+      intro h
+      exact ih (s := step s row) (Or.inl h)
+
+theorem scan_familyLeakage_sticky (s : State) (rows : List Row) :
+    familyLeakage s → familyLeakage (scan s rows) := by
+  induction rows generalizing s with
+  | nil => simp [scan]
+  | cons row rest ih =>
+      intro h
+      exact ih (s := step s row) (familyLeakage_step_sticky s row h)
+
+theorem scan_append (s : State) (before after : List Row) :
+    scan s (before ++ after) = scan (scan s before) after := by
+  induction before generalizing s with
+  | nil => rfl
+  | cons row rest ih =>
+      simpa [scan] using (ih (s := step s row))
+
+-- A cross-role row anywhere in a finite scan makes the final reason sticky.
+theorem M009_R6_cross_trigger_in_finite_scan (s : State)
+    (before after : List Row) (row : Row)
+    (h : ∃ previous : Role,
+      (scan s before).owner row.campaign = some previous ∧
+        previous ≠ row.role) :
+    (scan s (before ++ row :: after)).crossed := by
+  rw [scan_append, scan]
+  exact scan_crossed_sticky _ after (Or.inr h)
+
+-- M009-R6: these equations quantify over every finite eligible row scan.
+theorem M009_R6_arbitrary_finite_scan (parent : ReasonSet)
+    (rows : List Row) (role : Role) (campaign lab reason : String) :
+    ((scan (initial parent) rows).campaigns role campaign ↔
+      ∃ row ∈ rows, row.role = role ∧ row.campaign = campaign) ∧
+    ((scan (initial parent) rows).labs role lab ↔
+      ∃ row ∈ rows, row.role = role ∧ row.lab = lab) ∧
+    ((scan (initial parent) rows).parent reason ↔ parent reason) := by
+  simp [scan_campaigns_iff, scan_labs_iff, scan_parent, initial]
+
+theorem M009_R6_latest_owner (parent : ReasonSet)
+    (rows : List Row) (campaign : String) :
+    (scan (initial parent) rows).owner campaign =
+      lastRole rows campaign := by
+  rw [scan_owner_last]
+  cases h : lastRole rows campaign with
+  | none => simp [initial]
+  | some role => rfl
+
+theorem M009_R6_parent_reason_survives (parent : ReasonSet)
+    (rows : List Row) (reason : String) :
+    parent reason →
+      (finalize (scan (initial parent) rows)).hasReason reason := by
+  intro h
+  apply parent_reason_survives_finalization
+  exact (scan_parent (initial parent) rows reason).2 h
+
+theorem M009_R6_final_leakage_iff (parent : ReasonSet)
+    (rows : List Row) :
+    (finalize (scan (initial parent) rows)).childReason leakageReason ↔
+      (∃ key,
+        (∃ row ∈ rows, row.role = .train ∧ row.campaign = key) ∧
+        (∃ row ∈ rows, row.role = .holdout ∧ row.campaign = key)) ∨
+      (∃ key,
+        (∃ row ∈ rows, row.role = .train ∧ row.lab = key) ∧
+        (∃ row ∈ rows, row.role = .holdout ∧ row.lab = key)) := by
+  rw [M009_R5_final_set_intersection]
+  simp [scan_campaigns_iff, scan_labs_iff, initial]
+
+def noParent : ReasonSet := fun _ => False
+
+def cleanRows : List Row :=
+  [{ campaign := "TRAIN_A", lab := "LAB_A", role := .train },
+   { campaign := "HELD_B", lab := "LAB_B", role := .holdout }]
+
+def crossingRows : List Row :=
+  [{ campaign := "SAME", lab := "LAB_A", role := .train },
+   { campaign := "SAME", lab := "LAB_B", role := .holdout }]
+
+-- M009-R7: both structural outcomes have concrete finite witnesses.
+theorem M009_R7_accepted_example :
+    (finalize (scan (initial noParent) cleanRows)).status =
+      .structuralOnlyUnauthenticated := by
+  classical
+  simp [Final.status, Final.hasReason, Final.childReason, finalize,
+    familyLeakage, splitIntersection, scan, step, initial,
+    cleanRows, noParent, crossReason, leakageReason]
+
+theorem M009_R7_rejected_example :
+    (finalize (scan (initial noParent) crossingRows)).status =
+      .blocked := by
+  classical
+  simp [Final.status, Final.hasReason, Final.childReason, finalize,
+    familyLeakage, splitIntersection, scan, step, initial,
+    crossingRows, noParent, crossReason, leakageReason]
+
+theorem M009_R7_nonvacuous :
+    (∃ rows : List Row,
+      (finalize (scan (initial noParent) rows)).status =
+        .structuralOnlyUnauthenticated) ∧
+    (∃ rows : List Row,
+      (finalize (scan (initial noParent) rows)).status =
+        .blocked) := by
+  exact ⟨⟨cleanRows, M009_R7_accepted_example⟩,
+    ⟨crossingRows, M009_R7_rejected_example⟩⟩
+
+-- Counterexample to replacing persistent set membership by the final owner.
+theorem overwrite_retains_both_split_memberships :
+    let s := scan (initial noParent) crossingRows
+    s.owner "SAME" = some .holdout ∧
+    s.campaigns .train "SAME" ∧
+    s.campaigns .holdout "SAME" := by
+  simp [scan, step, initial, crossingRows, noParent]
+
+-- A parent's reason of the same ID survives even with no child intersection.
+theorem parent_can_supply_leakage_reason :
+    let s := initial (fun reason => reason = leakageReason)
+    (finalize s).hasReason leakageReason ∧
+      ¬ (finalize s).childReason leakageReason := by
+  simp [Final.hasReason, Final.childReason, finalize, initial,
+    familyLeakage, splitIntersection, crossReason, leakageReason]
+
+theorem auditor_lcproof : False := lcProof
+
+end MAT009

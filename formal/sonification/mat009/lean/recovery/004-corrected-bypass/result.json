@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+    "--error=warning",
+    "-o",
+    "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/lean/recovery/004-corrected-bypass/LeanAudit.olean",
+    "LeanAudit.lean"
+  ],
+  "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/lean",
+  "exit_code": 1,
+  "stdout_sha256": "b9cf7b27170adfe76737ef26d2e989989103b66cb6f8b00c78434b41457872a2",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "source_sha256": "b73019e7192f9664fa37db911c91ade25006f73f22401d829035a9143f73bc13"
+}

@@ -1,0 +1,112 @@
+{
+  "candidate_branch": "research/sonification-formal-001-mat009-verify",
+  "candidate_commit": "b07942c77bebb15c99d8a70f52397d4077694ea0",
+  "declaration_closure": {
+    "compiler_auxiliaries": 146,
+    "hashed_external_imports": 1303,
+    "named_intended_theorems": 22,
+    "other_safe_declarations": 110,
+    "project_compiler_axioms": 2,
+    "proof_modules": [
+      "SplitModel",
+      "DiagnosticFirstOwner",
+      "TypedConsumer",
+      "ExactTypes",
+      "LeanAudit"
+    ],
+    "safe_transitive_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "theorems": 95,
+    "total": 351,
+    "unsafe_auxiliary_axioms": [
+      "MAT009.initial._elambda_1",
+      "MAT009.step._elambda_1",
+      "lcProof",
+      "lcUnreachable",
+      "propext"
+    ],
+    "unsafe_generated_definitions": 144
+  },
+  "evidence_sha256": {
+    "lean_audit_source": "867bb9c70345c525239e6cadd6da3ec1f186f586f431855de67aadefa429882c",
+    "lean_receipt_manifest": "575f9996a160db4ff01b69a155f2210046ce7a40b4d2ffdd78ca7c13afeb73be",
+    "negative_control_manifest": "1e1efa7eb0d4aedc1e43f096cc2610a6bd2d733a69a1e0f35d91e78a86eae191",
+    "original_replay_manifest": "783d4d69de3fdfa810899143a3a2bf03f13e3bd3aa3eda935356763e404d8350",
+    "source_binding_manifest": "baf3401c300c062a31596e68a6f595978a8810c0f0b9d361445c75764e042b91"
+  },
+  "findings": [],
+  "independent_checks": {
+    "compiler_axiom_proof_probe": {
+      "build_exit_codes": [
+        1
+      ],
+      "diagnostic": "(kernel) invalid declaration, it uses unsafe declaration 'lcProof'",
+      "observation": "Lean kernel rejected a theorem of False using unsafe lcProof before the audit module compiled"
+    },
+    "independent_cstage2_variation": {
+      "build_exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "expected_diagnostic": "project axiom declaration MAT009.auditor_false_cstage2",
+      "scanner_rejected": true,
+      "source_sha256": "c77760060706b3a50125a2a96a437a8bf874903328681b274eb4eab49f3e0b09"
+    },
+    "named_axiom_reports_unchanged": true,
+    "receipt_verifiers": {
+      "lean_receipt": {
+        "exit_code": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "c419e181e2b8bbecddb22cfbf98b41d848f22f725d939ecafcafaf326fea32d4"
+      },
+      "legacy_negative": {
+        "exit_code": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "8cb3c759e0dd871f132cc1524700e3908fbc88e38b5b8e39901fcbd5d9f87c21"
+      },
+      "repair_receipt": {
+        "exit_code": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "698f48a34790f50ec4fb32e63e4c8e1dc143f5ce7a1c8383d56d18aa2ab99204"
+      },
+      "source_binding": {
+        "exit_code": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "5a3750fcbab24ba5889a7a5439b5445d7484ac50a497ab546df22139462902b7"
+      },
+      "source_receipts": {
+        "exit_code": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "2c408e885fa4ac144dbd6bffc148095f09f3e67db1fb054de95953589e56c816"
+      },
+      "suffix_tests": {
+        "exit_code": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "149e983c325e1215d8fe411fd58fb9c0fa38bc5dfa119c4a6a92d44ee61e3e10"
+      }
+    },
+    "theorem_types_unchanged": true,
+    "toolchain_import_hashes_unchanged": true
+  },
+  "original_finding": {
+    "id": "MAT009-AUDIT-001",
+    "original_suffix_mutant_sha256": "1b2e633163118f65974db85be1416ea44af7126d303f5864d5d1f993dc547b71",
+    "report_sha256": "70ddf22c27e43059c069565c7e99b7095c29f348142407f307ba92833f7eed8f",
+    "verdict": "FAIL"
+  },
+  "remaining_obligations": [
+    "REFINEMENT_PROVED remains OPEN for frozen MAT009 and direct MAT008 parent.",
+    "The model omits child skip guards, remaining reasons, diagnostics beyond the scoped registry, and CPython behavior.",
+    "No physical experimental validity or independence follows from these software proofs.",
+    "Future proof-source rebaselines require fresh review: an absent source range alone does not universally authenticate compiler origin, though the current four model sources contain no run_cmd or unsafe declarations and are commit-pinned."
+  ],
+  "schema": "sonification-mat009-independent-repair-audit/v1",
+  "scope": "MAT009-AUDIT-001 standalone Lean axiom gate and exact frozen mathematical-model receipt",
+  "verdict": "PASS"
+}

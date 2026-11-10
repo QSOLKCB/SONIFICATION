@@ -1,0 +1,31 @@
+{
+  "schema": "qsol.sonification-formal-001.execution/v1",
+  "argv": [
+    "python3",
+    "formal/sonification/mat009/lean/verify.py",
+    "--lean",
+    "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean"
+  ],
+  "cwd": "/home/trent/sonification-formal-001-mat009",
+  "started_utc": "2026-11-10T01:07:59.545117+00:00",
+  "ended_utc": "2026-11-10T01:08:00.163980+00:00",
+  "exit_code": 0,
+  "checkout_commit": "b9a828695b56b9caf73acbee0a5c35c2e66b4bef",
+  "worktree_status": "DIRTY",
+  "inputs": {
+    "formal/sonification/mat009/lean/verify.py": "d6239ba0a2bc2af1beedc7ea88e6a64a5af0a086e898427ebe9aaaffb96357ed",
+    "formal/sonification/mat009/lean/attempts/002/EVIDENCE_MANIFEST.json": "c068cb09fa08737a25bf49c17fa7cbca1e31dbbaa5ab388532b5529e1e41c817"
+  },
+  "environment": "Linux-7.0.0-42-generic-x86_64-with-glibc2.43",
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "python_executable_sha256": "52e0a13e60a981d8c4b6478be2ba5176f69da07948a056bf49cf6f077e30cb41",
+  "command_executable": "/usr/bin/python3.14",
+  "command_executable_sha256": "52e0a13e60a981d8c4b6478be2ba5176f69da07948a056bf49cf6f077e30cb41",
+  "stdout_sha256": "c419e181e2b8bbecddb22cfbf98b41d848f22f725d939ecafcafaf326fea32d4",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "limits": [
+    "Locally observed execution; no author or external execution attestation",
+    "Input list is explicit; dependency closure requires separate review",
+    "A zero exit status does not establish theorem or coverage acceptance"
+  ]
+}

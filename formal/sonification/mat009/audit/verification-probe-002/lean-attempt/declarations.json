@@ -1,0 +1,3321 @@
+[
+  {
+    "axioms": [
+      "Classical.choice",
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT009.Consumer.parent_reason_blocks_any_scan",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "TypedConsumer",
+    "type": "\u2200 (parent : MAT009.ReasonSet) (rows : List MAT009.Row) (reason : String),\n  parent reason \u2192 (MAT009.finalize (MAT009.scan (MAT009.initial parent) rows)).status = MAT009.Status.blocked",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Classical.choice",
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT009.Consumer.shared_campaign_blocks_any_scan",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "TypedConsumer",
+    "type": "\u2200 (parent : MAT009.ReasonSet) (rows : List MAT009.Row) (campaign : String),\n  (\u2203 row, row \u2208 rows \u2227 row.role = MAT009.Role.train \u2227 row.campaign = campaign) \u2192\n    (\u2203 row, row \u2208 rows \u2227 row.role = MAT009.Role.holdout \u2227 row.campaign = campaign) \u2192\n      (MAT009.finalize (MAT009.scan (MAT009.initial parent) rows)).status = MAT009.Status.blocked",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.Owner",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.Registry",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.empty",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "MAT009.Diagnostic.Registry",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.empty._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "DiagnosticFirstOwner",
+    "type": "MAT009.Diagnostic.Registry",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.empty._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "DiagnosticFirstOwner",
+    "type": "_obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.empty.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "\u2200 (x : String), MAT009.Diagnostic.empty x = none",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.Diagnostic.first_owner_not_last_writer",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "MAT009.Diagnostic.scan MAT009.Diagnostic.empty [(\"D\", \"CAMPAIGN_A\", \"TRAIN\"), (\"D\", \"CAMPAIGN_B\", \"HOLDOUT\")] \"D\" =\n  some (\"CAMPAIGN_A\", \"TRAIN\")",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.register",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "MAT009.Diagnostic.Registry \u2192 String \u2192 MAT009.Diagnostic.Owner \u2192 MAT009.Diagnostic.Registry",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.register._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "DiagnosticFirstOwner",
+    "type": "MAT009.Diagnostic.Registry \u2192 String \u2192 MAT009.Diagnostic.Owner \u2192 MAT009.Diagnostic.Registry",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.register._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "DiagnosticFirstOwner",
+    "type": "_obj \u2192 _obj \u2192 _obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.register.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "\u2200 (registry : MAT009.Diagnostic.Registry) (identity : String) (candidate : MAT009.Diagnostic.Owner) (key : String),\n  MAT009.Diagnostic.register registry identity candidate key =\n    if key = identity then\n      match registry key with\n      | none => some candidate\n      | some first => some first\n    else registry key",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.register.match_1",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "(motive : Option MAT009.Diagnostic.Owner \u2192 Sort u_1) \u2192\n  (x : Option MAT009.Diagnostic.Owner) \u2192\n    (Unit \u2192 motive none) \u2192 ((first : MAT009.Diagnostic.Owner) \u2192 motive (some first)) \u2192 motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.register.match_1._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "DiagnosticFirstOwner",
+    "type": "(motive : Option MAT009.Diagnostic.Owner \u2192 Sort u_1) \u2192\n  (x : Option MAT009.Diagnostic.Owner) \u2192\n    (Unit \u2192 motive none) \u2192 ((first : MAT009.Diagnostic.Owner) \u2192 motive (some first)) \u2192 motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.Diagnostic.register_first_owner",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "\u2200 (registry : MAT009.Diagnostic.Registry) (identity : String) (candidate first : MAT009.Diagnostic.Owner),\n  registry identity = some first \u2192 MAT009.Diagnostic.register registry identity candidate identity = some first",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.Diagnostic.register_new_owner",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "\u2200 (registry : MAT009.Diagnostic.Registry) (identity : String) (candidate : MAT009.Diagnostic.Owner),\n  registry identity = none \u2192 MAT009.Diagnostic.register registry identity candidate identity = some candidate",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.Diagnostic.register_other_identity",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "\u2200 (registry : MAT009.Diagnostic.Registry) (identity key : String) (candidate : MAT009.Diagnostic.Owner),\n  key \u2260 identity \u2192 MAT009.Diagnostic.register registry identity candidate key = registry key",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.Diagnostic.register_preserves_existing",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "\u2200 (registry : MAT009.Diagnostic.Registry) (identity key : String) (candidate first : MAT009.Diagnostic.Owner),\n  registry key = some first \u2192 MAT009.Diagnostic.register registry identity candidate key = some first",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.scan",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "MAT009.Diagnostic.Registry \u2192 List (String \u00d7 MAT009.Diagnostic.Owner) \u2192 MAT009.Diagnostic.Registry",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.scan._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "DiagnosticFirstOwner",
+    "type": "MAT009.Diagnostic.Registry \u2192 List (String \u00d7 MAT009.Diagnostic.Owner) \u2192 MAT009.Diagnostic.Registry",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.scan._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "DiagnosticFirstOwner",
+    "type": "_obj \u2192 _obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.scan._sunfold",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "MAT009.Diagnostic.Registry \u2192 List (String \u00d7 MAT009.Diagnostic.Owner) \u2192 MAT009.Diagnostic.Registry",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.scan._unsafe_rec",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "MAT009.Diagnostic.Registry \u2192 List (String \u00d7 MAT009.Diagnostic.Owner) \u2192 MAT009.Diagnostic.Registry",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.scan.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "\u2200 (registry : MAT009.Diagnostic.Registry), MAT009.Diagnostic.scan registry [] = registry",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.scan.eq_2",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "\u2200 (registry : MAT009.Diagnostic.Registry) (identity : String) (candidate : MAT009.Diagnostic.Owner)\n  (rest : List (String \u00d7 MAT009.Diagnostic.Owner)),\n  MAT009.Diagnostic.scan registry ((identity, candidate) :: rest) =\n    MAT009.Diagnostic.scan (MAT009.Diagnostic.register registry identity candidate) rest",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.scan.match_1",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "(motive : List (String \u00d7 MAT009.Diagnostic.Owner) \u2192 Sort u_1) \u2192\n  (x : List (String \u00d7 MAT009.Diagnostic.Owner)) \u2192\n    (Unit \u2192 motive []) \u2192\n      ((identity : String) \u2192\n          (candidate : MAT009.Diagnostic.Owner) \u2192\n            (rest : List (String \u00d7 MAT009.Diagnostic.Owner)) \u2192 motive ((identity, candidate) :: rest)) \u2192\n        motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Diagnostic.scan.match_1._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "DiagnosticFirstOwner",
+    "type": "(motive : List (String \u00d7 MAT009.Diagnostic.Owner) \u2192 Sort u_1) \u2192\n  (x : List (String \u00d7 MAT009.Diagnostic.Owner)) \u2192\n    (Unit \u2192 motive []) \u2192\n      ((identity : String) \u2192\n          (candidate : MAT009.Diagnostic.Owner) \u2192\n            (rest : List (String \u00d7 MAT009.Diagnostic.Owner)) \u2192 motive ((identity, candidate) :: rest)) \u2192\n        motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.Diagnostic.scan_first_owner_sticky",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "\u2200 (registry : MAT009.Diagnostic.Registry) (updates : List (String \u00d7 MAT009.Diagnostic.Owner)) (key : String)\n  (first : MAT009.Diagnostic.Owner),\n  registry key = some first \u2192 MAT009.Diagnostic.scan registry updates key = some first",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final._sizeOf_1",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Final \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final._sizeOf_inst",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "SizeOf MAT009.Final",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final.casesOn",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{motive : MAT009.Final \u2192 Sort u} \u2192\n  (t : MAT009.Final) \u2192\n    ((parent : MAT009.ReasonSet) \u2192\n        (crossed leakage : Prop) \u2192 motive { parent := parent, crossed := crossed, leakage := leakage }) \u2192\n      motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final.childReason",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Final \u2192 String \u2192 Prop",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final.childReason.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (f : MAT009.Final) (reason : String),\n  f.childReason reason = (reason = MAT009.crossReason \u2227 f.crossed \u2228 reason = MAT009.leakageReason \u2227 f.leakage)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final.crossed",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Final \u2192 Prop",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final.hasReason",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Final \u2192 String \u2192 Prop",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final.hasReason.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (f : MAT009.Final) (reason : String), f.hasReason reason = (f.parent reason \u2228 f.childReason reason)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final.leakage",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Final \u2192 Prop",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final.mk",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.ReasonSet \u2192 Prop \u2192 Prop \u2192 MAT009.Final",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final.mk._flat_ctor",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.ReasonSet \u2192 Prop \u2192 Prop \u2192 MAT009.Final",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final.mk.inj",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 {parent : MAT009.ReasonSet} {crossed leakage : Prop} {parent_1 : MAT009.ReasonSet} {crossed_1 leakage_1 : Prop},\n  { parent := parent, crossed := crossed, leakage := leakage } =\n      { parent := parent_1, crossed := crossed_1, leakage := leakage_1 } \u2192\n    parent = parent_1 \u2227 crossed = crossed_1 \u2227 leakage = leakage_1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.Final.mk.injEq",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (parent : MAT009.ReasonSet) (crossed leakage : Prop) (parent_1 : MAT009.ReasonSet) (crossed_1 leakage_1 : Prop),\n  ({ parent := parent, crossed := crossed, leakage := leakage } =\n      { parent := parent_1, crossed := crossed_1, leakage := leakage_1 }) =\n    (parent = parent_1 \u2227 crossed = crossed_1 \u2227 leakage = leakage_1)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final.mk.sizeOf_spec",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (parent : MAT009.ReasonSet) (crossed leakage : Prop),\n  sizeOf { parent := parent, crossed := crossed, leakage := leakage } = 1 + sizeOf crossed + sizeOf leakage",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final.noConfusion",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{P : Sort u} \u2192 {v1 v2 : MAT009.Final} \u2192 v1 = v2 \u2192 MAT009.Final.noConfusionType P v1 v2",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final.noConfusionType",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "Sort u \u2192 MAT009.Final \u2192 MAT009.Final \u2192 Sort u",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final.parent",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Final \u2192 MAT009.ReasonSet",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final.rec",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{motive : MAT009.Final \u2192 Sort u} \u2192\n  ((parent : MAT009.ReasonSet) \u2192\n      (crossed leakage : Prop) \u2192 motive { parent := parent, crossed := crossed, leakage := leakage }) \u2192\n    (t : MAT009.Final) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Final.recOn",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{motive : MAT009.Final \u2192 Sort u} \u2192\n  (t : MAT009.Final) \u2192\n    ((parent : MAT009.ReasonSet) \u2192\n        (crossed leakage : Prop) \u2192 motive { parent := parent, crossed := crossed, leakage := leakage }) \u2192\n      motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Classical.choice",
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT009.Final.status",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Final \u2192 MAT009.Status",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Classical.choice",
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT009.Final.status.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (f : MAT009.Final),\n  f.status = if \u2203 reason, f.hasReason reason then MAT009.Status.blocked else MAT009.Status.structuralOnlyUnauthenticated",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Classical.choice",
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT009.Final.status_blocked_iff",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (f : MAT009.Final), f.status = MAT009.Status.blocked \u2194 \u2203 reason, f.hasReason reason",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Classical.choice",
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT009.Final.status_structural_iff",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (f : MAT009.Final), f.status = MAT009.Status.structuralOnlyUnauthenticated \u2194 \u2200 (reason : String), \u00acf.hasReason reason",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.Final.status_structural_iff._proof_5",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 {\u03b1 : Sort u_1} {p : \u03b1 \u2192 Prop}, (\u00ac\u2203 x, p x) = \u2200 (x : \u03b1), \u00acp x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.M009_R1_initial",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (parent : MAT009.ReasonSet) (role : MAT009.Role) (campaign lab reason : String),\n  (MAT009.initial parent).owner campaign = none \u2227\n    \u00ac(MAT009.initial parent).campaigns role campaign \u2227\n      \u00ac(MAT009.initial parent).labs role lab \u2227\n        \u00ac(MAT009.initial parent).crossed \u2227 ((MAT009.initial parent).parent reason \u2194 parent reason)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.M009_R2_assignment_overwrite",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (row : MAT009.Row),\n  (MAT009.step s row).owner row.campaign = some row.role \u2227\n    (\u2200 (key : String), key \u2260 row.campaign \u2192 (MAT009.step s row).owner key = s.owner key) \u2227\n      (\u2200 (role : MAT009.Role) (key : String),\n          (MAT009.step s row).campaigns role key \u2194 s.campaigns role key \u2228 role = row.role \u2227 key = row.campaign) \u2227\n        \u2200 (role : MAT009.Role) (key : String),\n          (MAT009.step s row).labs role key \u2194 s.labs role key \u2228 role = row.role \u2227 key = row.lab",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.M009_R3_cross_role_trigger",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (row : MAT009.Row),\n  (MAT009.step s row).crossed \u2194 s.crossed \u2228 \u2203 previous, s.owner row.campaign = some previous \u2227 previous \u2260 row.role",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.M009_R4_stickiness",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (row : MAT009.Row) (role : MAT009.Role) (campaign lab reason : String),\n  (s.campaigns role campaign \u2192 (MAT009.step s row).campaigns role campaign) \u2227\n    (s.labs role lab \u2192 (MAT009.step s row).labs role lab) \u2227\n      (s.crossed \u2192 (MAT009.step s row).crossed) \u2227\n        (MAT009.familyLeakage s \u2192 MAT009.familyLeakage (MAT009.step s row)) \u2227\n          ((MAT009.step s row).parent reason \u2194 s.parent reason)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.M009_R5_final_set_intersection",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State),\n  (MAT009.finalize s).childReason MAT009.leakageReason \u2194\n    (\u2203 key, s.campaigns MAT009.Role.train key \u2227 s.campaigns MAT009.Role.holdout key) \u2228\n      \u2203 key, s.labs MAT009.Role.train key \u2227 s.labs MAT009.Role.holdout key",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.M009_R5_parent_union",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State),\n  (MAT009.finalize s).hasReason MAT009.leakageReason \u2194 s.parent MAT009.leakageReason \u2228 MAT009.familyLeakage s",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT009.M009_R6_arbitrary_finite_scan",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (parent : MAT009.ReasonSet) (rows : List MAT009.Row) (role : MAT009.Role) (campaign lab reason : String),\n  ((MAT009.scan (MAT009.initial parent) rows).campaigns role campaign \u2194\n      \u2203 row, row \u2208 rows \u2227 row.role = role \u2227 row.campaign = campaign) \u2227\n    ((MAT009.scan (MAT009.initial parent) rows).labs role lab \u2194 \u2203 row, row \u2208 rows \u2227 row.role = role \u2227 row.lab = lab) \u2227\n      ((MAT009.scan (MAT009.initial parent) rows).parent reason \u2194 parent reason)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT009.M009_R6_arbitrary_finite_scan._proof_5",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (rows : List MAT009.Row) (role : MAT009.Role) (key : String),\n  (MAT009.scan s rows).campaigns role key =\n    (s.campaigns role key \u2228 \u2203 row, row \u2208 rows \u2227 row.role = role \u2227 row.campaign = key)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT009.M009_R6_arbitrary_finite_scan._proof_6",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (rows : List MAT009.Row) (role : MAT009.Role) (key : String),\n  (MAT009.scan s rows).labs role key = (s.labs role key \u2228 \u2203 row, row \u2208 rows \u2227 row.role = role \u2227 row.lab = key)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.M009_R6_arbitrary_finite_scan._proof_7",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (rows : List MAT009.Row) (reason : String), (MAT009.scan s rows).parent reason = s.parent reason",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.M009_R6_cross_trigger_in_finite_scan",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (before after : List MAT009.Row) (row : MAT009.Row),\n  (\u2203 previous, (MAT009.scan s before).owner row.campaign = some previous \u2227 previous \u2260 row.role) \u2192\n    (MAT009.scan s (before ++ row :: after)).crossed",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT009.M009_R6_final_leakage_iff",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (parent : MAT009.ReasonSet) (rows : List MAT009.Row),\n  (MAT009.finalize (MAT009.scan (MAT009.initial parent) rows)).childReason MAT009.leakageReason \u2194\n    (\u2203 key,\n        (\u2203 row, row \u2208 rows \u2227 row.role = MAT009.Role.train \u2227 row.campaign = key) \u2227\n          \u2203 row, row \u2208 rows \u2227 row.role = MAT009.Role.holdout \u2227 row.campaign = key) \u2228\n      \u2203 key,\n        (\u2203 row, row \u2208 rows \u2227 row.role = MAT009.Role.train \u2227 row.lab = key) \u2227\n          \u2203 row, row \u2208 rows \u2227 row.role = MAT009.Role.holdout \u2227 row.lab = key",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT009.M009_R6_final_leakage_iff._proof_5",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (rows : List MAT009.Row) (role : MAT009.Role) (key : String),\n  (MAT009.scan s rows).campaigns role key =\n    (s.campaigns role key \u2228 \u2203 row, row \u2208 rows \u2227 row.role = role \u2227 row.campaign = key)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT009.M009_R6_final_leakage_iff._proof_6",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (rows : List MAT009.Row) (role : MAT009.Role) (key : String),\n  (MAT009.scan s rows).labs role key = (s.labs role key \u2228 \u2203 row, row \u2208 rows \u2227 row.role = role \u2227 row.lab = key)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.M009_R6_latest_owner",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (parent : MAT009.ReasonSet) (rows : List MAT009.Row) (campaign : String),\n  (MAT009.scan (MAT009.initial parent) rows).owner campaign = MAT009.lastRole rows campaign",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.M009_R6_parent_reason_survives",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (parent : MAT009.ReasonSet) (rows : List MAT009.Row) (reason : String),\n  parent reason \u2192 (MAT009.finalize (MAT009.scan (MAT009.initial parent) rows)).hasReason reason",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Classical.choice",
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT009.M009_R7_accepted_example",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "(MAT009.finalize (MAT009.scan (MAT009.initial MAT009.noParent) MAT009.cleanRows)).status =\n  MAT009.Status.structuralOnlyUnauthenticated",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Classical.choice",
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT009.M009_R7_nonvacuous",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "(\u2203 rows,\n    (MAT009.finalize (MAT009.scan (MAT009.initial MAT009.noParent) rows)).status =\n      MAT009.Status.structuralOnlyUnauthenticated) \u2227\n  \u2203 rows, (MAT009.finalize (MAT009.scan (MAT009.initial MAT009.noParent) rows)).status = MAT009.Status.blocked",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Classical.choice",
+      "propext",
+      "Quot.sound"
+    ],
+    "declaration": "MAT009.M009_R7_rejected_example",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "(MAT009.finalize (MAT009.scan (MAT009.initial MAT009.noParent) MAT009.crossingRows)).status = MAT009.Status.blocked",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.ReasonSet",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role._sizeOf_1",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Role \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role._sizeOf_inst",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "SizeOf MAT009.Role",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.casesOn",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{motive : MAT009.Role \u2192 Sort u} \u2192 (t : MAT009.Role) \u2192 motive MAT009.Role.train \u2192 motive MAT009.Role.holdout \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.holdout",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Role",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.holdout.sizeOf_spec",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "sizeOf MAT009.Role.holdout = 1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.noConfusion",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{P : Sort v\u271d} \u2192 {x y : MAT009.Role} \u2192 x = y \u2192 MAT009.Role.noConfusionType P x y",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "lcUnreachable"
+    ],
+    "declaration": "MAT009.Role.noConfusion._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "{P : Sort v\u271d} \u2192 {x y : MAT009.Role} \u2192 x = y \u2192 MAT009.Role.noConfusionType P x y",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.noConfusion._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.noConfusion._rarg._closed_1._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.noConfusion._rarg._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "UInt8 \u2192 UInt8 \u2192 _neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.noConfusion._rarg._lambda_1._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.noConfusionType",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "Sort v\u271d \u2192 MAT009.Role \u2192 MAT009.Role \u2192 Sort v\u271d",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.ofNat",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "Nat \u2192 MAT009.Role",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.ofNat._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "Nat \u2192 MAT009.Role",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.ofNat._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj \u2192 UInt8",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.ofNat_toCtorIdx",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (x : MAT009.Role), MAT009.Role.ofNat x.toCtorIdx = x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.rec",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{motive : MAT009.Role \u2192 Sort u} \u2192 motive MAT009.Role.train \u2192 motive MAT009.Role.holdout \u2192 (t : MAT009.Role) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.recOn",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{motive : MAT009.Role \u2192 Sort u} \u2192 (t : MAT009.Role) \u2192 motive MAT009.Role.train \u2192 motive MAT009.Role.holdout \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.toCtorIdx",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Role \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.toCtorIdx._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "MAT009.Role \u2192 Nat",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.toCtorIdx._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "UInt8 \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.train",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Role",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Role.train.sizeOf_spec",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "sizeOf MAT009.Role.train = 1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Row",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Row._sizeOf_1",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Row \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Row._sizeOf_inst",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "SizeOf MAT009.Row",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Row.campaign",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Row \u2192 String",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Row.casesOn",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{motive : MAT009.Row \u2192 Sort u} \u2192\n  (t : MAT009.Row) \u2192\n    ((campaign lab : String) \u2192 (role : MAT009.Role) \u2192 motive { campaign := campaign, lab := lab, role := role }) \u2192\n      motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Row.lab",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Row \u2192 String",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Row.mk",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "String \u2192 String \u2192 MAT009.Role \u2192 MAT009.Row",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Row.mk._flat_ctor",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "String \u2192 String \u2192 MAT009.Role \u2192 MAT009.Row",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Row.mk.inj",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 {campaign lab : String} {role : MAT009.Role} {campaign_1 lab_1 : String} {role_1 : MAT009.Role},\n  { campaign := campaign, lab := lab, role := role } = { campaign := campaign_1, lab := lab_1, role := role_1 } \u2192\n    campaign = campaign_1 \u2227 lab = lab_1 \u2227 role = role_1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.Row.mk.injEq",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (campaign lab : String) (role : MAT009.Role) (campaign_1 lab_1 : String) (role_1 : MAT009.Role),\n  ({ campaign := campaign, lab := lab, role := role } = { campaign := campaign_1, lab := lab_1, role := role_1 }) =\n    (campaign = campaign_1 \u2227 lab = lab_1 \u2227 role = role_1)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Row.mk.sizeOf_spec",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (campaign lab : String) (role : MAT009.Role),\n  sizeOf { campaign := campaign, lab := lab, role := role } = 1 + sizeOf campaign + sizeOf lab + sizeOf role",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Row.noConfusion",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{P : Sort u} \u2192 {v1 v2 : MAT009.Row} \u2192 v1 = v2 \u2192 MAT009.Row.noConfusionType P v1 v2",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Row.noConfusionType",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "Sort u \u2192 MAT009.Row \u2192 MAT009.Row \u2192 Sort u",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Row.rec",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{motive : MAT009.Row \u2192 Sort u} \u2192\n  ((campaign lab : String) \u2192 (role : MAT009.Role) \u2192 motive { campaign := campaign, lab := lab, role := role }) \u2192\n    (t : MAT009.Row) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Row.recOn",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{motive : MAT009.Row \u2192 Sort u} \u2192\n  (t : MAT009.Row) \u2192\n    ((campaign lab : String) \u2192 (role : MAT009.Role) \u2192 motive { campaign := campaign, lab := lab, role := role }) \u2192\n      motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Row.role",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Row \u2192 MAT009.Role",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.State",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.State._sizeOf_1",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.State \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.State._sizeOf_inst",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "SizeOf MAT009.State",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.State.campaigns",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.State \u2192 MAT009.Role \u2192 String \u2192 Prop",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.State.casesOn",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{motive : MAT009.State \u2192 Sort u} \u2192\n  (t : MAT009.State) \u2192\n    ((owner : String \u2192 Option MAT009.Role) \u2192\n        (campaigns labs : MAT009.Role \u2192 String \u2192 Prop) \u2192\n          (crossed : Prop) \u2192\n            (parent : MAT009.ReasonSet) \u2192\n              motive { owner := owner, campaigns := campaigns, labs := labs, crossed := crossed, parent := parent }) \u2192\n      motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.State.crossed",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.State \u2192 Prop",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.State.labs",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.State \u2192 MAT009.Role \u2192 String \u2192 Prop",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.State.mk",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "(String \u2192 Option MAT009.Role) \u2192\n  (MAT009.Role \u2192 String \u2192 Prop) \u2192 (MAT009.Role \u2192 String \u2192 Prop) \u2192 Prop \u2192 MAT009.ReasonSet \u2192 MAT009.State",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.State.mk._flat_ctor",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "(String \u2192 Option MAT009.Role) \u2192\n  (MAT009.Role \u2192 String \u2192 Prop) \u2192 (MAT009.Role \u2192 String \u2192 Prop) \u2192 Prop \u2192 MAT009.ReasonSet \u2192 MAT009.State",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.State.mk.inj",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 {owner : String \u2192 Option MAT009.Role} {campaigns labs : MAT009.Role \u2192 String \u2192 Prop} {crossed : Prop}\n  {parent : MAT009.ReasonSet} {owner_1 : String \u2192 Option MAT009.Role} {campaigns_1 labs_1 : MAT009.Role \u2192 String \u2192 Prop}\n  {crossed_1 : Prop} {parent_1 : MAT009.ReasonSet},\n  { owner := owner, campaigns := campaigns, labs := labs, crossed := crossed, parent := parent } =\n      { owner := owner_1, campaigns := campaigns_1, labs := labs_1, crossed := crossed_1, parent := parent_1 } \u2192\n    owner = owner_1 \u2227 campaigns = campaigns_1 \u2227 labs = labs_1 \u2227 crossed = crossed_1 \u2227 parent = parent_1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.State.mk.injEq",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (owner : String \u2192 Option MAT009.Role) (campaigns labs : MAT009.Role \u2192 String \u2192 Prop) (crossed : Prop)\n  (parent : MAT009.ReasonSet) (owner_1 : String \u2192 Option MAT009.Role) (campaigns_1 labs_1 : MAT009.Role \u2192 String \u2192 Prop)\n  (crossed_1 : Prop) (parent_1 : MAT009.ReasonSet),\n  ({ owner := owner, campaigns := campaigns, labs := labs, crossed := crossed, parent := parent } =\n      { owner := owner_1, campaigns := campaigns_1, labs := labs_1, crossed := crossed_1, parent := parent_1 }) =\n    (owner = owner_1 \u2227 campaigns = campaigns_1 \u2227 labs = labs_1 \u2227 crossed = crossed_1 \u2227 parent = parent_1)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.State.mk.sizeOf_spec",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (owner : String \u2192 Option MAT009.Role) (campaigns labs : MAT009.Role \u2192 String \u2192 Prop) (crossed : Prop)\n  (parent : MAT009.ReasonSet),\n  sizeOf { owner := owner, campaigns := campaigns, labs := labs, crossed := crossed, parent := parent } =\n    1 + sizeOf crossed",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.State.noConfusion",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{P : Sort u} \u2192 {v1 v2 : MAT009.State} \u2192 v1 = v2 \u2192 MAT009.State.noConfusionType P v1 v2",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.State.noConfusionType",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "Sort u \u2192 MAT009.State \u2192 MAT009.State \u2192 Sort u",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.State.owner",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.State \u2192 String \u2192 Option MAT009.Role",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.State.parent",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.State \u2192 MAT009.ReasonSet",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.State.rec",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{motive : MAT009.State \u2192 Sort u} \u2192\n  ((owner : String \u2192 Option MAT009.Role) \u2192\n      (campaigns labs : MAT009.Role \u2192 String \u2192 Prop) \u2192\n        (crossed : Prop) \u2192\n          (parent : MAT009.ReasonSet) \u2192\n            motive { owner := owner, campaigns := campaigns, labs := labs, crossed := crossed, parent := parent }) \u2192\n    (t : MAT009.State) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.State.recOn",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{motive : MAT009.State \u2192 Sort u} \u2192\n  (t : MAT009.State) \u2192\n    ((owner : String \u2192 Option MAT009.Role) \u2192\n        (campaigns labs : MAT009.Role \u2192 String \u2192 Prop) \u2192\n          (crossed : Prop) \u2192\n            (parent : MAT009.ReasonSet) \u2192\n              motive { owner := owner, campaigns := campaigns, labs := labs, crossed := crossed, parent := parent }) \u2192\n      motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "Type",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status._sizeOf_1",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Status \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status._sizeOf_inst",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "SizeOf MAT009.Status",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status.blocked",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Status",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status.blocked.sizeOf_spec",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "sizeOf MAT009.Status.blocked = 1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status.casesOn",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{motive : MAT009.Status \u2192 Sort u} \u2192\n  (t : MAT009.Status) \u2192 motive MAT009.Status.blocked \u2192 motive MAT009.Status.structuralOnlyUnauthenticated \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status.noConfusion",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{P : Sort v\u271d} \u2192 {x y : MAT009.Status} \u2192 x = y \u2192 MAT009.Status.noConfusionType P x y",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "lcUnreachable"
+    ],
+    "declaration": "MAT009.Status.noConfusion._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "{P : Sort v\u271d} \u2192 {x y : MAT009.Status} \u2192 x = y \u2192 MAT009.Status.noConfusionType P x y",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status.noConfusion._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status.noConfusion._rarg._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "UInt8 \u2192 UInt8 \u2192 _neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status.noConfusionType",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "Sort v\u271d \u2192 MAT009.Status \u2192 MAT009.Status \u2192 Sort v\u271d",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status.ofNat",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "Nat \u2192 MAT009.Status",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status.ofNat._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "Nat \u2192 MAT009.Status",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status.ofNat._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj \u2192 UInt8",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status.ofNat_toCtorIdx",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (x : MAT009.Status), MAT009.Status.ofNat x.toCtorIdx = x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status.rec",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{motive : MAT009.Status \u2192 Sort u} \u2192\n  motive MAT009.Status.blocked \u2192 motive MAT009.Status.structuralOnlyUnauthenticated \u2192 (t : MAT009.Status) \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status.recOn",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "{motive : MAT009.Status \u2192 Sort u} \u2192\n  (t : MAT009.Status) \u2192 motive MAT009.Status.blocked \u2192 motive MAT009.Status.structuralOnlyUnauthenticated \u2192 motive t",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status.structuralOnlyUnauthenticated",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Status",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status.structuralOnlyUnauthenticated.sizeOf_spec",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "sizeOf MAT009.Status.structuralOnlyUnauthenticated = 1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status.toCtorIdx",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Status \u2192 Nat",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status.toCtorIdx._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "MAT009.Status \u2192 Nat",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.Status.toCtorIdx._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "UInt8 \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.cleanRows",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "List MAT009.Row",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.cleanRows._closed_1._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.cleanRows._closed_2._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.cleanRows._closed_3._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.cleanRows._closed_4._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.cleanRows._closed_5._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.cleanRows._closed_6._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.cleanRows._closed_7._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.cleanRows._closed_8._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.cleanRows._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "List MAT009.Row",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.cleanRows._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.cleanRows.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.cleanRows =\n  [{ campaign := \"TRAIN_A\", lab := \"LAB_A\", role := MAT009.Role.train },\n    { campaign := \"HELD_B\", lab := \"LAB_B\", role := MAT009.Role.holdout }]",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.crossReason",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "String",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.crossReason._closed_1._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.crossReason._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "String",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.crossReason._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.crossReason.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.crossReason = \"CAMPAIGN_CROSSES_TRAIN_HOLDOUT\"",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.crossingRows",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "List MAT009.Row",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.crossingRows._closed_1._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.crossingRows._closed_2._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.crossingRows._closed_3._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.crossingRows._closed_4._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.crossingRows._closed_5._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.crossingRows._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "List MAT009.Row",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.crossingRows._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.crossingRows.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.crossingRows =\n  [{ campaign := \"SAME\", lab := \"LAB_A\", role := MAT009.Role.train },\n    { campaign := \"SAME\", lab := \"LAB_B\", role := MAT009.Role.holdout }]",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.familyLeakage",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.State \u2192 Prop",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.familyLeakage.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State), MAT009.familyLeakage s = (MAT009.splitIntersection s.campaigns \u2228 MAT009.splitIntersection s.labs)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.familyLeakage_step_sticky",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (row : MAT009.Row), MAT009.familyLeakage s \u2192 MAT009.familyLeakage (MAT009.step s row)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.finalize",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.State \u2192 MAT009.Final",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.finalize._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "MAT009.State \u2192 MAT009.Final",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.finalize._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.finalize.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State),\n  MAT009.finalize s = { parent := s.parent, crossed := s.crossed, leakage := MAT009.familyLeakage s }",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.initial",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.ReasonSet \u2192 MAT009.State",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "MAT009.initial._elambda_1"
+    ],
+    "declaration": "MAT009.initial._closed_1._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "MAT009.initial._elambda_1"
+    ],
+    "declaration": "MAT009.initial._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "MAT009.ReasonSet \u2192 MAT009.State",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "MAT009.initial._elambda_1"
+    ],
+    "declaration": "MAT009.initial._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "MAT009.initial._elambda_1"
+    ],
+    "declaration": "MAT009.initial._elambda_1",
+    "is_axiom": true,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "String \u2192 Option MAT009.Role",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.initial._elambda_1._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "String \u2192 Option MAT009.Role",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.initial._elambda_1._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.initial.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (parent : MAT009.ReasonSet),\n  MAT009.initial parent =\n    { owner := fun x => none, campaigns := fun x x => False, labs := fun x x => False, crossed := False,\n      parent := parent }",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.instDecidableEqRole",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "DecidableEq MAT009.Role",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "lcProof"
+    ],
+    "declaration": "MAT009.instDecidableEqRole._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "DecidableEq MAT009.Role",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.instDecidableEqRole._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "UInt8 \u2192 UInt8 \u2192 UInt8",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.instDecidableEqRole._proof_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (x y : MAT009.Role), x.toCtorIdx = y.toCtorIdx \u2192 x = y",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.instDecidableEqRole._proof_2",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (x y : MAT009.Role), \u00acx.toCtorIdx = y.toCtorIdx \u2192 x = y \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.instDecidableEqStatus",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "DecidableEq MAT009.Status",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "lcProof"
+    ],
+    "declaration": "MAT009.instDecidableEqStatus._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "DecidableEq MAT009.Status",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.instDecidableEqStatus._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "UInt8 \u2192 UInt8 \u2192 UInt8",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.instDecidableEqStatus._proof_3",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (x y : MAT009.Status), x.toCtorIdx = y.toCtorIdx \u2192 x = y",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.instDecidableEqStatus._proof_4",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (x y : MAT009.Status), \u00acx.toCtorIdx = y.toCtorIdx \u2192 x = y \u2192 False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.instReprRole",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "Repr MAT009.Role",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.instReprRole._closed_1._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.instReprRole._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "Repr MAT009.Role",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.instReprRole._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.instReprRow",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "Repr MAT009.Row",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.instReprRow._closed_1._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.instReprRow._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "Repr MAT009.Row",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.instReprRow._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.instReprStatus",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "Repr MAT009.Status",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.instReprStatus._closed_1._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.instReprStatus._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "Repr MAT009.Status",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.instReprStatus._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.lastRole",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "List MAT009.Row \u2192 String \u2192 Option MAT009.Role",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.lastRole._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "List MAT009.Row \u2192 String \u2192 Option MAT009.Role",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.lastRole._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.lastRole._sunfold",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "List MAT009.Row \u2192 String \u2192 Option MAT009.Role",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.lastRole._unsafe_rec",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "List MAT009.Row \u2192 String \u2192 Option MAT009.Role",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.lastRole.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (x : String), MAT009.lastRole [] x = none",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.lastRole.eq_2",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (x : String) (row : MAT009.Row) (rest : List MAT009.Row),\n  MAT009.lastRole (row :: rest) x =\n    match MAT009.lastRole rest x with\n    | some role => some role\n    | none => if row.campaign = x then some row.role else none",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.lastRole.match_1",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "(motive : Option MAT009.Role \u2192 Sort u_1) \u2192\n  (x : Option MAT009.Role) \u2192 ((role : MAT009.Role) \u2192 motive (some role)) \u2192 (Unit \u2192 motive none) \u2192 motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.lastRole.match_1._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "(motive : Option MAT009.Role \u2192 Sort u_1) \u2192\n  (x : Option MAT009.Role) \u2192 ((role : MAT009.Role) \u2192 motive (some role)) \u2192 (Unit \u2192 motive none) \u2192 motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.lastRole.match_2",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "(motive : List MAT009.Row \u2192 String \u2192 Sort u_1) \u2192\n  (x : List MAT009.Row) \u2192\n    (x_1 : String) \u2192\n      ((x : String) \u2192 motive [] x) \u2192\n        ((row : MAT009.Row) \u2192 (rest : List MAT009.Row) \u2192 (key : String) \u2192 motive (row :: rest) key) \u2192 motive x x_1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.lastRole.match_2._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "(motive : List MAT009.Row \u2192 String \u2192 Sort u_1) \u2192\n  (x : List MAT009.Row) \u2192\n    (x_1 : String) \u2192\n      ((x : String) \u2192 motive [] x) \u2192\n        ((row : MAT009.Row) \u2192 (rest : List MAT009.Row) \u2192 (key : String) \u2192 motive (row :: rest) key) \u2192 motive x x_1",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.leakageReason",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "String",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.leakageReason._closed_1._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.leakageReason._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "String",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.leakageReason._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.leakageReason.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.leakageReason = \"SOURCE_FAMILY_LEAKAGE_ACROSS_SPLITS\"",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.noParent",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.ReasonSet",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.noParent._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "MAT009.ReasonSet",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.noParent._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_neutral",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.noParent.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (x : String), MAT009.noParent x = False",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Quot.sound",
+      "propext"
+    ],
+    "declaration": "MAT009.overwrite_retains_both_split_memberships",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "let s := MAT009.scan (MAT009.initial MAT009.noParent) MAT009.crossingRows;\ns.owner \"SAME\" = some MAT009.Role.holdout \u2227\n  s.campaigns MAT009.Role.train \"SAME\" \u2227 s.campaigns MAT009.Role.holdout \"SAME\"",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Quot.sound",
+      "propext"
+    ],
+    "declaration": "MAT009.parent_can_supply_leakage_reason",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "let s := MAT009.initial fun reason => reason = MAT009.leakageReason;\n(MAT009.finalize s).hasReason MAT009.leakageReason \u2227 \u00ac(MAT009.finalize s).childReason MAT009.leakageReason",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.parent_reason_survives_finalization",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (reason : String), s.parent reason \u2192 (MAT009.finalize s).hasReason reason",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.scan",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.State \u2192 List MAT009.Row \u2192 MAT009.State",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.scan._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "MAT009.State \u2192 List MAT009.Row \u2192 MAT009.State",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "MAT009.step._elambda_1"
+    ],
+    "declaration": "MAT009.scan._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.scan._sunfold",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.State \u2192 List MAT009.Row \u2192 MAT009.State",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.scan._unsafe_rec",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.State \u2192 List MAT009.Row \u2192 MAT009.State",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.scan.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State), MAT009.scan s [] = s",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.scan.eq_2",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (row : MAT009.Row) (rest : List MAT009.Row),\n  MAT009.scan s (row :: rest) = MAT009.scan (MAT009.step s row) rest",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.scan.match_1",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "(motive : List MAT009.Row \u2192 Sort u_1) \u2192\n  (x : List MAT009.Row) \u2192\n    (Unit \u2192 motive []) \u2192 ((row : MAT009.Row) \u2192 (rest : List MAT009.Row) \u2192 motive (row :: rest)) \u2192 motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.scan.match_1._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "(motive : List MAT009.Row \u2192 Sort u_1) \u2192\n  (x : List MAT009.Row) \u2192\n    (Unit \u2192 motive []) \u2192 ((row : MAT009.Row) \u2192 (rest : List MAT009.Row) \u2192 motive (row :: rest)) \u2192 motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.scan_append",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (before after : List MAT009.Row),\n  MAT009.scan s (before ++ after) = MAT009.scan (MAT009.scan s before) after",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Quot.sound",
+      "propext"
+    ],
+    "declaration": "MAT009.scan_campaigns_iff",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (rows : List MAT009.Row) (role : MAT009.Role) (key : String),\n  (MAT009.scan s rows).campaigns role key \u2194\n    s.campaigns role key \u2228 \u2203 row, row \u2208 rows \u2227 row.role = role \u2227 row.campaign = key",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.scan_campaigns_iff._proof_5",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 {\u03b1 : Sort u_1} {a b : \u03b1}, (a = b) = (b = a)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.scan_campaigns_iff._proof_6",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 {a b c : Prop}, ((a \u2228 b) \u2228 c) = (a \u2228 b \u2228 c)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.scan_campaigns_iff._proof_7",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 {a b c : Prop}, (a \u2228 b \u2228 c) = (b \u2228 a \u2228 c)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.scan_campaigns_iff._proof_8",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 {a b : Prop}, (a \u2228 b) = (b \u2228 a)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.scan_crossed_sticky",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (rows : List MAT009.Row), s.crossed \u2192 (MAT009.scan s rows).crossed",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.scan_familyLeakage_sticky",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (rows : List MAT009.Row), MAT009.familyLeakage s \u2192 MAT009.familyLeakage (MAT009.scan s rows)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "Quot.sound",
+      "propext"
+    ],
+    "declaration": "MAT009.scan_labs_iff",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (rows : List MAT009.Row) (role : MAT009.Role) (key : String),\n  (MAT009.scan s rows).labs role key \u2194 s.labs role key \u2228 \u2203 row, row \u2208 rows \u2227 row.role = role \u2227 row.lab = key",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.scan_labs_iff._proof_5",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 {\u03b1 : Sort u_1} {a b : \u03b1}, (a = b) = (b = a)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.scan_labs_iff._proof_6",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 {a b c : Prop}, ((a \u2228 b) \u2228 c) = (a \u2228 b \u2228 c)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.scan_labs_iff._proof_7",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 {a b c : Prop}, (a \u2228 b \u2228 c) = (b \u2228 a \u2228 c)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.scan_labs_iff._proof_8",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 {a b : Prop}, (a \u2228 b) = (b \u2228 a)",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "MAT009.scan_owner_last",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (rows : List MAT009.Row) (key : String),\n  (MAT009.scan s rows).owner key =\n    match MAT009.lastRole rows key with\n    | some role => some role\n    | none => s.owner key",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.scan_parent",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (rows : List MAT009.Row) (reason : String), (MAT009.scan s rows).parent reason \u2194 s.parent reason",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.splitIntersection",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "(MAT009.Role \u2192 String \u2192 Prop) \u2192 Prop",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.splitIntersection.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (members : MAT009.Role \u2192 String \u2192 Prop),\n  MAT009.splitIntersection members = \u2203 key, members MAT009.Role.train key \u2227 members MAT009.Role.holdout key",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.step",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.State \u2192 MAT009.Row \u2192 MAT009.State",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [
+      "MAT009.step._elambda_1"
+    ],
+    "declaration": "MAT009.step._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "MAT009.State \u2192 MAT009.Row \u2192 MAT009.State",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "MAT009.step._elambda_1"
+    ],
+    "declaration": "MAT009.step._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "MAT009.step._elambda_1"
+    ],
+    "declaration": "MAT009.step._elambda_1",
+    "is_axiom": true,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "MAT009.State \u2192 MAT009.Row \u2192 String \u2192 Option MAT009.Role",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.step._elambda_1._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "MAT009.State \u2192 MAT009.Row \u2192 String \u2192 Option MAT009.Role",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.step._elambda_1._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj \u2192 _obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "MAT009.step.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (s : MAT009.State) (row : MAT009.Row),\n  MAT009.step s row =\n    { owner := fun key => if key = row.campaign then some row.role else s.owner key,\n      campaigns := fun role key => s.campaigns role key \u2228 role = row.role \u2227 key = row.campaign,\n      labs := fun role key => s.labs role key \u2228 role = row.role \u2227 key = row.lab,\n      crossed := s.crossed \u2228 \u2203 previous, s.owner row.campaign = some previous \u2227 previous \u2260 row.role,\n      parent := s.parent }",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.DiagnosticFirstOwner.0.MAT009.Diagnostic.scan.match_1.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "\u2200 (motive : List (String \u00d7 MAT009.Diagnostic.Owner) \u2192 Sort u_1) (h_1 : Unit \u2192 motive [])\n  (h_2 :\n    (identity : String) \u2192\n      (candidate : MAT009.Diagnostic.Owner) \u2192\n        (rest : List (String \u00d7 MAT009.Diagnostic.Owner)) \u2192 motive ((identity, candidate) :: rest)),\n  (match [] with\n    | [] => h_1 ()\n    | (identity, candidate) :: rest => h_2 identity candidate rest) =\n    h_1 ()",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.DiagnosticFirstOwner.0.MAT009.Diagnostic.scan.match_1.eq_2",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "\u2200 (motive : List (String \u00d7 MAT009.Diagnostic.Owner) \u2192 Sort u_1) (identity : String)\n  (candidate : MAT009.Diagnostic.Owner) (rest : List (String \u00d7 MAT009.Diagnostic.Owner)) (h_1 : Unit \u2192 motive [])\n  (h_2 :\n    (identity : String) \u2192\n      (candidate : MAT009.Diagnostic.Owner) \u2192\n        (rest : List (String \u00d7 MAT009.Diagnostic.Owner)) \u2192 motive ((identity, candidate) :: rest)),\n  (match (identity, candidate) :: rest with\n    | [] => h_1 ()\n    | (identity, candidate) :: rest => h_2 identity candidate rest) =\n    h_2 identity candidate rest",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.DiagnosticFirstOwner.0.MAT009.Diagnostic.scan.match_1.splitter",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "DiagnosticFirstOwner",
+    "type": "(motive : List (String \u00d7 MAT009.Diagnostic.Owner) \u2192 Sort u_1) \u2192\n  (x : List (String \u00d7 MAT009.Diagnostic.Owner)) \u2192\n    motive [] \u2192\n      ((identity : String) \u2192\n          (candidate : MAT009.Diagnostic.Owner) \u2192\n            (rest : List (String \u00d7 MAT009.Diagnostic.Owner)) \u2192 motive ((identity, candidate) :: rest)) \u2192\n        motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.DiagnosticFirstOwner.0.MAT009.Diagnostic.scan.match_1.splitter._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "DiagnosticFirstOwner",
+    "type": "(motive : List (String \u00d7 MAT009.Diagnostic.Owner) \u2192 Sort u_1) \u2192\n  (x : List (String \u00d7 MAT009.Diagnostic.Owner)) \u2192\n    motive [] \u2192\n      ((identity : String) \u2192\n          (candidate : MAT009.Diagnostic.Owner) \u2192\n            (rest : List (String \u00d7 MAT009.Diagnostic.Owner)) \u2192 motive ((identity, candidate) :: rest)) \u2192\n        motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.DiagnosticFirstOwner.0.MAT009.Diagnostic.scan.match_1.splitter._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "DiagnosticFirstOwner",
+    "type": "_neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.DiagnosticFirstOwner.0.MAT009.Diagnostic.scan.match_1.splitter._rarg._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "DiagnosticFirstOwner",
+    "type": "_obj \u2192 _obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.lastRole.match_2.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (motive : List MAT009.Row \u2192 String \u2192 Sort u_1) (x : String) (h_1 : (x : String) \u2192 motive [] x)\n  (h_2 : (row : MAT009.Row) \u2192 (rest : List MAT009.Row) \u2192 (key : String) \u2192 motive (row :: rest) key),\n  (match [], x with\n    | [], x => h_1 x\n    | row :: rest, key => h_2 row rest key) =\n    h_1 x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.lastRole.match_2.eq_2",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (motive : List MAT009.Row \u2192 String \u2192 Sort u_1) (row : MAT009.Row) (rest : List MAT009.Row) (key : String)\n  (h_1 : (x : String) \u2192 motive [] x)\n  (h_2 : (row : MAT009.Row) \u2192 (rest : List MAT009.Row) \u2192 (key : String) \u2192 motive (row :: rest) key),\n  (match row :: rest, key with\n    | [], x => h_1 x\n    | row :: rest, key => h_2 row rest key) =\n    h_2 row rest key",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.lastRole.match_2.splitter",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "(motive : List MAT009.Row \u2192 String \u2192 Sort u_1) \u2192\n  (x : List MAT009.Row) \u2192\n    (x_1 : String) \u2192\n      ((x : String) \u2192 motive [] x) \u2192\n        ((row : MAT009.Row) \u2192 (rest : List MAT009.Row) \u2192 (key : String) \u2192 motive (row :: rest) key) \u2192 motive x x_1",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.lastRole.match_2.splitter._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "(motive : List MAT009.Row \u2192 String \u2192 Sort u_1) \u2192\n  (x : List MAT009.Row) \u2192\n    (x_1 : String) \u2192\n      ((x : String) \u2192 motive [] x) \u2192\n        ((row : MAT009.Row) \u2192 (rest : List MAT009.Row) \u2192 (key : String) \u2192 motive (row :: rest) key) \u2192 motive x x_1",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.lastRole.match_2.splitter._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.lastRole.match_2.splitter._rarg._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj \u2192 _obj \u2192 _obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole._@.SplitModel._hyg.109",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Role \u2192 Nat \u2192 Format",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole.match_1._@.SplitModel._hyg.109",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "(motive : MAT009.Role \u2192 Sort u_1) \u2192\n  (x : MAT009.Role) \u2192 (Unit \u2192 motive MAT009.Role.train) \u2192 (Unit \u2192 motive MAT009.Role.holdout) \u2192 motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole.match_1.\u00ab_@\u00bb.SplitModel._hyg.109._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "(motive : MAT009.Role \u2192 Sort u_1) \u2192\n  (x : MAT009.Role) \u2192 (Unit \u2192 motive MAT009.Role.train) \u2192 (Unit \u2192 motive MAT009.Role.holdout) \u2192 motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole.\u00ab_@\u00bb.SplitModel._hyg.109._closed_1._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole.\u00ab_@\u00bb.SplitModel._hyg.109._closed_10._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole.\u00ab_@\u00bb.SplitModel._hyg.109._closed_11._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole.\u00ab_@\u00bb.SplitModel._hyg.109._closed_12._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole.\u00ab_@\u00bb.SplitModel._hyg.109._closed_13._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole.\u00ab_@\u00bb.SplitModel._hyg.109._closed_14._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole.\u00ab_@\u00bb.SplitModel._hyg.109._closed_2._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole.\u00ab_@\u00bb.SplitModel._hyg.109._closed_3._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole.\u00ab_@\u00bb.SplitModel._hyg.109._closed_4._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole.\u00ab_@\u00bb.SplitModel._hyg.109._closed_5._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole.\u00ab_@\u00bb.SplitModel._hyg.109._closed_6._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole.\u00ab_@\u00bb.SplitModel._hyg.109._closed_7._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole.\u00ab_@\u00bb.SplitModel._hyg.109._closed_8._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole.\u00ab_@\u00bb.SplitModel._hyg.109._closed_9._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole.\u00ab_@\u00bb.SplitModel._hyg.109._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "MAT009.Role \u2192 Nat \u2192 Format",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRole.\u00ab_@\u00bb.SplitModel._hyg.109._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "UInt8 \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow._@.SplitModel._hyg.221",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Row \u2192 Nat \u2192 Format",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_1._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_10._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_11._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_12._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_13._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_14._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_15._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_16._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_17._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_18._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_19._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_2._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_20._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_21._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_3._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_4._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_5._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_6._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_7._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_8._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._closed_9._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "MAT009.Row \u2192 Nat \u2192 Format",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "declaration": "_private.SplitModel.0.MAT009.reprRow.\u00ab_@\u00bb.SplitModel._hyg.221._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprStatus._@.SplitModel._hyg.882",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "MAT009.Status \u2192 Nat \u2192 Format",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprStatus.match_1._@.SplitModel._hyg.882",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "(motive : MAT009.Status \u2192 Sort u_1) \u2192\n  (x : MAT009.Status) \u2192\n    (Unit \u2192 motive MAT009.Status.blocked) \u2192 (Unit \u2192 motive MAT009.Status.structuralOnlyUnauthenticated) \u2192 motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprStatus.match_1.\u00ab_@\u00bb.SplitModel._hyg.882._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "(motive : MAT009.Status \u2192 Sort u_1) \u2192\n  (x : MAT009.Status) \u2192\n    (Unit \u2192 motive MAT009.Status.blocked) \u2192 (Unit \u2192 motive MAT009.Status.structuralOnlyUnauthenticated) \u2192 motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprStatus.\u00ab_@\u00bb.SplitModel._hyg.882._closed_1._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprStatus.\u00ab_@\u00bb.SplitModel._hyg.882._closed_10._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprStatus.\u00ab_@\u00bb.SplitModel._hyg.882._closed_11._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprStatus.\u00ab_@\u00bb.SplitModel._hyg.882._closed_12._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprStatus.\u00ab_@\u00bb.SplitModel._hyg.882._closed_2._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprStatus.\u00ab_@\u00bb.SplitModel._hyg.882._closed_3._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprStatus.\u00ab_@\u00bb.SplitModel._hyg.882._closed_4._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprStatus.\u00ab_@\u00bb.SplitModel._hyg.882._closed_5._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprStatus.\u00ab_@\u00bb.SplitModel._hyg.882._closed_6._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprStatus.\u00ab_@\u00bb.SplitModel._hyg.882._closed_7._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprStatus.\u00ab_@\u00bb.SplitModel._hyg.882._closed_8._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprStatus.\u00ab_@\u00bb.SplitModel._hyg.882._closed_9._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprStatus.\u00ab_@\u00bb.SplitModel._hyg.882._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "MAT009.Status \u2192 Nat \u2192 Format",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.reprStatus.\u00ab_@\u00bb.SplitModel._hyg.882._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "UInt8 \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.scan.match_1.eq_1",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (motive : List MAT009.Row \u2192 Sort u_1) (h_1 : Unit \u2192 motive [])\n  (h_2 : (row : MAT009.Row) \u2192 (rest : List MAT009.Row) \u2192 motive (row :: rest)),\n  (match [] with\n    | [] => h_1 ()\n    | row :: rest => h_2 row rest) =\n    h_1 ()",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.scan.match_1.eq_2",
+    "is_axiom": false,
+    "kind": "theorem",
+    "origin": "SplitModel",
+    "type": "\u2200 (motive : List MAT009.Row \u2192 Sort u_1) (row : MAT009.Row) (rest : List MAT009.Row) (h_1 : Unit \u2192 motive [])\n  (h_2 : (row : MAT009.Row) \u2192 (rest : List MAT009.Row) \u2192 motive (row :: rest)),\n  (match row :: rest with\n    | [] => h_1 ()\n    | row :: rest => h_2 row rest) =\n    h_2 row rest",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.scan.match_1.splitter",
+    "is_axiom": false,
+    "kind": "non_theorem",
+    "origin": "SplitModel",
+    "type": "(motive : List MAT009.Row \u2192 Sort u_1) \u2192\n  (x : List MAT009.Row) \u2192 motive [] \u2192 ((row : MAT009.Row) \u2192 (rest : List MAT009.Row) \u2192 motive (row :: rest)) \u2192 motive x",
+    "unsafe_definition": false
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.scan.match_1.splitter._cstage1",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "(motive : List MAT009.Row \u2192 Sort u_1) \u2192\n  (x : List MAT009.Row) \u2192 motive [] \u2192 ((row : MAT009.Row) \u2192 (rest : List MAT009.Row) \u2192 motive (row :: rest)) \u2192 motive x",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.scan.match_1.splitter._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_neutral \u2192 _obj",
+    "unsafe_definition": true
+  },
+  {
+    "axioms": [],
+    "declaration": "_private.SplitModel.0.MAT009.scan.match_1.splitter._rarg._cstage2",
+    "is_axiom": false,
+    "kind": "compiler_auxiliary",
+    "origin": "SplitModel",
+    "type": "_obj \u2192 _obj \u2192 _obj \u2192 _obj",
+    "unsafe_definition": true
+  }
+]

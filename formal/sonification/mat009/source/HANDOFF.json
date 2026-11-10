@@ -1,0 +1,79 @@
+{
+  "schema": "sonification-mat009-source-handoff-v1",
+  "task": "MAT-009-VERIFY-001 source and finite conformance workstream",
+  "base_commit": "d80f1a09b6f9fd60188148ab20745de5b91462fc",
+  "branch": "research/sonification-formal-001-mat009-verify",
+  "source_identity": {
+    "tag": "mat-spec-009-v0.1.0",
+    "tag_object": "ad99d9e52f9ede423a4fb9d6a622624e32955263",
+    "peeled_commit": "0758a96360726aafbb07abed34620eda178407ae",
+    "tree": "a6a03e1227e666680d656b886201ee9dde9de32d",
+    "mat009_blob": "c447f0ce76b91acf458221390ac4261166145a0b",
+    "mat009_sha256": "a68089df7d1901fb7c17ffc2889b844b3573024aec4b66348f9c2ef71930c690",
+    "direct_mat008_blob": "3117adbc3739c834f8203d5d2dd2b80d6caf862b",
+    "direct_mat008_sha256": "e56563235d87da43293bc46661b077660538b476d2bb340a1d208cc59aaa5f08"
+  },
+  "assurance": {
+    "source_binding": "SOURCE_SYNTAX_PINNED_ONLY",
+    "finite_conformance": "PASS_FOR_LISTED_CASES_ONLY",
+    "cpython_refinement": "OPEN",
+    "physical_independence_authenticated": false,
+    "empirical_accuracy_claimed": false
+  },
+  "files_sha256": {
+    "formal/sonification/mat009/source/SOURCE_BINDING.json": "baf3401c300c062a31596e68a6f595978a8810c0f0b9d361445c75764e042b91",
+    "formal/sonification/mat009/source/source_bind.py": "575ab1ea12186419bc6dbae31e12ae1e45d46a3b3c4a630b63e0a53853433beb",
+    "formal/sonification/mat009/source/CONTRACT.md": "dc8b0eb3035eb36d706b0bdf10be11a6e4abe2170083a1ab389d6f9b26cf6c4d",
+    "formal/sonification/mat009/source/CALLER_DOMAIN.md": "b57d0eece370b1841f239e45fe989c31def911f2e82e4222b4fa52acb385c0ed",
+    "tests/test_sonification_formal_mat009_split.py": "beb02ce17f07807309e9cceba2a9e0dd6412dc578cc8362050890f38a5bdad73"
+  },
+  "commands": [
+    {
+      "cwd": "/home/trent/sonification-formal-001-mat009",
+      "command": "uv run --no-project --offline --with ruff ruff check formal/sonification/mat009/source/source_bind.py tests/test_sonification_formal_mat009_split.py",
+      "exit_code": 0,
+      "outcome": "All checks passed!"
+    },
+    {
+      "cwd": "/home/trent/sonification-formal-001-mat009",
+      "command": "python3 formal/sonification/mat009/source/source_bind.py",
+      "exit_code": 0,
+      "outcome": "SOURCE_SYNTAX_MATCH; selected_functions=8; refinement_to_cpython=OPEN"
+    },
+    {
+      "cwd": "/home/trent/sonification-formal-001-mat009",
+      "command": "python3 -m unittest discover -s tests -p test_sonification_formal_mat009_split.py -q",
+      "exit_code": 0,
+      "outcome": "Ran 18 tests; OK"
+    },
+    {
+      "cwd": "/home/trent/sonification-formal-001-mat009",
+      "command": "python3 -m pytest -q tests/test_sonification_formal_mat009_split.py tests/test_mat_spec_009.py",
+      "exit_code": 0,
+      "outcome": "35 passed, 36 subtests passed"
+    }
+  ],
+  "finite_inventory": {
+    "focused_test_methods": 18,
+    "exact_builtin_four_row_role_campaign_lab_assignments": 4096,
+    "pairwise_oracle_reason_ids": [
+      "CAMPAIGN_CROSSES_TRAIN_HOLDOUT",
+      "SOURCE_FAMILY_LEAKAGE_ACROSS_SPLITS"
+    ],
+    "frozen_synthetic_negative_controls": 14,
+    "note": "All finite rows and frozen negative controls are fabricated or self-declared metadata, never independent physical measurements."
+  },
+  "retained_counterexamples": [
+    "Equal-text str subclass campaign IDs with unequal hashes can return STRUCTURAL_ONLY_UNAUTHENTICATED across TRAIN and HOLDOUT.",
+    "A dict subclass overriding get can propagate RuntimeError through the MAT008 parent call.",
+    "An unhashable str subclass row ID can propagate TypeError in MAT008.",
+    "synthetic_fixture=1 is not synthetic_fixture is True; a structural-only result still admits no physical evidence."
+  ],
+  "open_bridge": [
+    "No source-to-model theorem proves frozen MAT009 plus direct MAT008 behavior for the exact built-in domain.",
+    "No theorem covers arbitrary Python subclasses, exceptions, mutation, or monkeypatching.",
+    "No physical source independence, prospective registration, phase classifier, or empirical holdout has been authenticated."
+  ],
+  "production_source_modified": false,
+  "committed_or_pushed": false
+}

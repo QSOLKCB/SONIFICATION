@@ -138,7 +138,215 @@
         "AUDIT_ACCEPTED": "OPEN"
       },
       "evidence": {},
-      "independent_specification_review": "PENDING"
+      "independent_specification_review": "PENDING",
+      "partial_results": [
+        "MAT009.eligible_split.model",
+        "MAT009.diagnostic_first_owner.model",
+        "MAT009.eligible_split.finite_builtin_rows"
+      ]
+    },
+    {
+      "release": "mat-spec-009-v0.1.0",
+      "source_tag_object": "ad99d9e52f9ede423a4fb9d6a622624e32955263",
+      "source_commit": "0758a96360726aafbb07abed34620eda178407ae",
+      "source_tree": "a6a03e1227e666680d656b886201ee9dde9de32d",
+      "source_blob": "c447f0ce76b91acf458221390ac4261166145a0b",
+      "source_sha256": "a68089df7d1901fb7c17ffc2889b844b3573024aec4b66348f9c2ef71930c690",
+      "source_binding": "formal/sonification/mat009/source/SOURCE_BINDING.json",
+      "implementation": {
+        "path": "materials/mat_spec_009.py",
+        "symbol": "check_future_challenge"
+      },
+      "id": "MAT009.eligible_split.model",
+      "intended_property": "Eligible-row TRAIN/HOLDOUT campaign and lab membership, sticky cross-role conflict, parent reason union, final intersection, and nonvacuous witnesses.",
+      "model_scope": "All finite Lean List Row values after child eligibility guards; parent reasons are arbitrary input sets. No raw Python rows or full packet semantics.",
+      "formal_definition": "MAT009.step, MAT009.scan and MAT009.finalize in SplitModel.lean",
+      "proof_path": "formal/sonification/mat009/lean/SplitModel.lean",
+      "typed_consumer": "formal/sonification/mat009/lean/TypedConsumer.lean",
+      "theorems": [
+        "MAT009.Consumer.parent_reason_blocks_any_scan",
+        "MAT009.Consumer.shared_campaign_blocks_any_scan",
+        "MAT009.M009_R1_initial",
+        "MAT009.M009_R2_assignment_overwrite",
+        "MAT009.M009_R3_cross_role_trigger",
+        "MAT009.M009_R4_stickiness",
+        "MAT009.M009_R5_final_set_intersection",
+        "MAT009.M009_R5_parent_union",
+        "MAT009.M009_R6_arbitrary_finite_scan",
+        "MAT009.M009_R6_cross_trigger_in_finite_scan",
+        "MAT009.M009_R6_final_leakage_iff",
+        "MAT009.M009_R6_latest_owner",
+        "MAT009.M009_R6_parent_reason_survives",
+        "MAT009.M009_R7_accepted_example",
+        "MAT009.M009_R7_nonvacuous",
+        "MAT009.M009_R7_rejected_example"
+      ],
+      "theorem_statement_source": "formal/sonification/mat009/lean/attempts/003/theorem-types.json",
+      "proof_dependencies": [
+        "Lean 4.19.0 bundled Std and Init",
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "trusted_compiler_mechanisms": [
+        "144 enumerated unsafe generated definitions",
+        "MAT009.initial._elambda_1",
+        "MAT009.step._elambda_1",
+        "lcProof",
+        "lcUnreachable"
+      ],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "Source-to-model and CPython correspondence for the frozen MAT009 child and direct MAT008 parent",
+        "Skipped/raw records, other child reasons, diagnostic conflicts and observable status",
+        "Representation, exceptions and production caller semantics"
+      ],
+      "executable_tests": [],
+      "assurance": {
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "OPEN",
+        "AUDIT_ACCEPTED": "PASS"
+      },
+      "evidence": {
+        "MODEL_PROVED": [
+          "formal/sonification/mat009/lean/attempts/003/result.json",
+          "formal/sonification/mat009/lean/attempts/003/theorem-types.json"
+        ],
+        "NEGATIVE_CONTROLS": [
+          "formal/sonification/mat009/lean/recovery/005-negative-controls/result.json"
+        ],
+        "AUDIT_ACCEPTED": [
+          "formal/sonification/mat009/audit/repair-audit-001/report.json"
+        ],
+        "PREVIOUS_AUDIT_FAILURE": [
+          "formal/sonification/mat009/audit/report.json"
+        ]
+      },
+      "independent_specification_review": "PENDING",
+      "audit_scope": "Exact Lean mathematical-model declarations only; prior MAT009-AUDIT-001 failure is retained; Python refinement and physical validation remain OPEN"
+    },
+    {
+      "release": "mat-spec-009-v0.1.0",
+      "source_tag_object": "ad99d9e52f9ede423a4fb9d6a622624e32955263",
+      "source_commit": "0758a96360726aafbb07abed34620eda178407ae",
+      "source_tree": "a6a03e1227e666680d656b886201ee9dde9de32d",
+      "source_blob": "c447f0ce76b91acf458221390ac4261166145a0b",
+      "source_sha256": "a68089df7d1901fb7c17ffc2889b844b3573024aec4b66348f9c2ef71930c690",
+      "source_binding": "formal/sonification/mat009/source/SOURCE_BINDING.json",
+      "implementation": {
+        "path": "materials/mat_spec_009.py",
+        "symbol": "check_future_challenge"
+      },
+      "id": "MAT009.diagnostic_first_owner.model",
+      "intended_property": "A separate validated diagnostic identity registry preserves the first owner and detects a later different claimant.",
+      "model_scope": "Lean registry and validated identity inputs only; no Python validation, exception, or full diagnostic reason set.",
+      "formal_definition": "MAT009.Diagnostic.register and MAT009.Diagnostic.scan in DiagnosticFirstOwner.lean",
+      "proof_path": "formal/sonification/mat009/lean/DiagnosticFirstOwner.lean",
+      "typed_consumer": "formal/sonification/mat009/lean/TypedConsumer.lean",
+      "theorems": [
+        "MAT009.Diagnostic.first_owner_not_last_writer",
+        "MAT009.Diagnostic.register_first_owner",
+        "MAT009.Diagnostic.register_new_owner",
+        "MAT009.Diagnostic.register_other_identity",
+        "MAT009.Diagnostic.register_preserves_existing",
+        "MAT009.Diagnostic.scan_first_owner_sticky"
+      ],
+      "theorem_statement_source": "formal/sonification/mat009/lean/attempts/003/theorem-types.json",
+      "proof_dependencies": [
+        "Lean 4.19.0 bundled Std and Init",
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "trusted_compiler_mechanisms": [
+        "144 enumerated unsafe generated definitions",
+        "MAT009.initial._elambda_1",
+        "MAT009.step._elambda_1",
+        "lcProof",
+        "lcUnreachable"
+      ],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "Source-to-model and CPython correspondence for the frozen MAT009 child and direct MAT008 parent",
+        "Skipped/raw records, other child reasons, diagnostic conflicts and observable status",
+        "Representation, exceptions and production caller semantics"
+      ],
+      "executable_tests": [],
+      "assurance": {
+        "MODEL_PROVED": "PASS",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "OPEN",
+        "AUDIT_ACCEPTED": "PASS"
+      },
+      "evidence": {
+        "MODEL_PROVED": [
+          "formal/sonification/mat009/lean/attempts/003/result.json",
+          "formal/sonification/mat009/lean/attempts/003/theorem-types.json"
+        ],
+        "NEGATIVE_CONTROLS": [
+          "formal/sonification/mat009/lean/recovery/005-negative-controls/result.json"
+        ],
+        "AUDIT_ACCEPTED": [
+          "formal/sonification/mat009/audit/repair-audit-001/report.json"
+        ],
+        "PREVIOUS_AUDIT_FAILURE": [
+          "formal/sonification/mat009/audit/report.json"
+        ]
+      },
+      "independent_specification_review": "PENDING",
+      "audit_scope": "Exact Lean mathematical-model declarations only; prior MAT009-AUDIT-001 failure is retained; Python refinement and physical validation remain OPEN"
+    },
+    {
+      "release": "mat-spec-009-v0.1.0",
+      "source_tag_object": "ad99d9e52f9ede423a4fb9d6a622624e32955263",
+      "source_commit": "0758a96360726aafbb07abed34620eda178407ae",
+      "source_tree": "a6a03e1227e666680d656b886201ee9dde9de32d",
+      "source_blob": "c447f0ce76b91acf458221390ac4261166145a0b",
+      "source_sha256": "a68089df7d1901fb7c17ffc2889b844b3573024aec4b66348f9c2ef71930c690",
+      "source_binding": "formal/sonification/mat009/source/SOURCE_BINDING.json",
+      "implementation": {
+        "path": "materials/mat_spec_009.py",
+        "symbol": "check_future_challenge"
+      },
+      "id": "MAT009.eligible_split.finite_builtin_rows",
+      "intended_property": "The frozen child and a separate finite oracle agree on declared exact built-in role, campaign and lab combinations and named boundary cases.",
+      "finite_scope": "4096 generated four-row role/campaign/lab combinations plus focused named cases; 18 unittest methods in the retained execution. No universal Python claim.",
+      "formal_definition": null,
+      "theorems": [],
+      "proof_dependencies": [],
+      "refinement_theorem": null,
+      "refinement_obligations": [
+        "Source-to-model and CPython correspondence for the frozen MAT009 child and direct MAT008 parent",
+        "Skipped/raw records, other child reasons, diagnostic conflicts and observable status",
+        "Representation, exceptions and production caller semantics"
+      ],
+      "executable_tests": [
+        {
+          "path": "tests/test_sonification_formal_mat009_split.py",
+          "symbol": "MAT009 finite oracle and named cases"
+        }
+      ],
+      "assurance": {
+        "MODEL_PROVED": "OPEN",
+        "REFINEMENT_PROVED": "OPEN",
+        "DIFFERENTIAL_TESTED": "PASS",
+        "AUDIT_ACCEPTED": "PASS"
+      },
+      "evidence": {
+        "DIFFERENTIAL_TESTED": [
+          "formal/sonification/evidence/mat009-finite-001/receipt.json"
+        ],
+        "AUDIT_ACCEPTED": [
+          "formal/sonification/mat009/audit/report.json",
+          "formal/sonification/mat009/audit/repair-audit-001/report.json"
+        ],
+        "PREVIOUS_AUDIT_FAILURE": [
+          "formal/sonification/mat009/audit/report.json"
+        ]
+      },
+      "independent_specification_review": "PENDING",
+      "audit_scope": "Finite source-pinned cases only; the repaired Lean gate audit does not extend finite coverage"
     },
     {
       "id": "MAT010.parent",

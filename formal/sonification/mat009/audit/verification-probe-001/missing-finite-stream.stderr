@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/verify_evidence.py", line 134, in <module>
+    print(json.dumps(verify(args.evidence), sort_keys=True))
+                     ~~~~~~^^^^^^^^^^^^^^^
+  File "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/verify_evidence.py", line 74, in verify
+    raise ValueError(f"receipt file inventory changed: {name}")
+ValueError: receipt file inventory changed: mat009-finite-001

@@ -1,0 +1,79 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/negative-probe-001/ordinary_false_axiom/work/SplitModel.olean",
+        "SplitModel.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/negative-probe-001/ordinary_false_axiom/work",
+      "exit_code": 0,
+      "label": "build-00-SplitModel",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/negative-probe-001/ordinary_false_axiom/work/DiagnosticFirstOwner.olean",
+        "DiagnosticFirstOwner.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/negative-probe-001/ordinary_false_axiom/work",
+      "exit_code": 0,
+      "label": "build-01-DiagnosticFirstOwner",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/negative-probe-001/ordinary_false_axiom/work/TypedConsumer.olean",
+        "TypedConsumer.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/negative-probe-001/ordinary_false_axiom/work",
+      "exit_code": 0,
+      "label": "build-02-TypedConsumer",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "9078e77bdd2580d1ce506f685136b42d01255a0ebd4177589a7d493b4ad06522"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/negative-probe-001/ordinary_false_axiom/work/ExactTypes.olean",
+        "ExactTypes.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/negative-probe-001/ordinary_false_axiom/work",
+      "exit_code": 0,
+      "label": "build-03-ExactTypes",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/home/trent/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean",
+        "--error=warning",
+        "-o",
+        "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/negative-probe-001/ordinary_false_axiom/work/LeanAudit.olean",
+        "LeanAudit.lean"
+      ],
+      "cwd": "/home/trent/sonification-formal-001-mat009/formal/sonification/mat009/audit/negative-probe-001/ordinary_false_axiom/work",
+      "exit_code": 1,
+      "label": "build-04-LeanAudit",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "4278f4c415257c90ba3e5597f4b4af78f41dc260b235a72f1455d297a003f54d"
+    }
+  ],
+  "expected_observation": true,
+  "mutant_sha256": "37a6f5c7d10db455c6dbdc5ad35119d4fb7821875d15f33f0ce50e80ee0c8ba8",
+  "mutation": "ordinary_false_axiom",
+  "observed_exit_code": 1,
+  "observed_last_job": "build-04-LeanAudit"
+}

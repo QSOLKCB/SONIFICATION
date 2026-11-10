@@ -1,0 +1,30 @@
+{
+  "files_sha256": {
+    "build-00-SplitModel.json": "34ce5cf3d1dc2c4f740ea0360be7eaeec34e619315b63cec306d04e58076115c",
+    "build-00-SplitModel.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-00-SplitModel.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-01-DiagnosticFirstOwner.json": "5fccb56c651f29766987206416ba9d02ea3b95b4bd43f0ee67d1d8a0854203fd",
+    "build-01-DiagnosticFirstOwner.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-01-DiagnosticFirstOwner.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-02-TypedConsumer.json": "d55c0693f763865b7ebc254fbd86ec266e650e93e146cea17407b465ecded54e",
+    "build-02-TypedConsumer.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-02-TypedConsumer.stdout": "9078e77bdd2580d1ce506f685136b42d01255a0ebd4177589a7d493b4ad06522",
+    "build-03-ExactTypes.json": "71ff2627b1b9224d97347d827e310a1c73d5f2ab9fa3113ec1e03ecb4e870780",
+    "build-03-ExactTypes.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-03-ExactTypes.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-04-LeanAudit.json": "50a6752ba2f65a5cea9a1cb436cef3fdda1b5ea8122cd9a15dd255e7b85cc392",
+    "build-04-LeanAudit.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-04-LeanAudit.stdout": "21d9dcb639ded4b2c3047045038ff0d3a3c216f2c1f57554d0832fb81e7042cc",
+    "declarations.json": "b3b5211e5edbbf49ac083f520bede6fef89ac3faccfa93b1d563e710f5f2537f",
+    "lean-version.json": "891fd7e9d7ca7393779b1eafec93925d0eb39390da8bb66ed47d2d72a5bd8d5b",
+    "lean-version.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "lean-version.stdout": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+    "named-axioms.json": "d726df048cf1d5d7528afe2838eaa8a05b31b6a10c3b2a34109380b4bf779b1f",
+    "result.json": "74ed460c20a7ddc98d53891fc3a34de63404169f40405fe08fbcac2e4b6d85b1",
+    "theorem-types.json": "8ebc9839c12845f0410085754b475d7dd0ebf6c218869eebe39f2484104ddf5b",
+    "toolchain-imports.json": "69c9e85cad9c3ec024130bd80dc3e1fa6351053f135304268741bf1f0fd1b2ad"
+  },
+  "proof_input_commit": "a09aab6572fb9c3875d5f2940bdb17ec55c358d5",
+  "schema": "sonification-mat009-lean-evidence-v1",
+  "scope": "checked eligible-row mathematical models; CPython refinement OPEN"
+}

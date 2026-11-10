@@ -1,0 +1,74 @@
+{
+  "MAT009.Consumer.parent_reason_blocks_any_scan": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "MAT009.Consumer.shared_campaign_blocks_any_scan": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "MAT009.Diagnostic.first_owner_not_last_writer": [
+    "propext"
+  ],
+  "MAT009.Diagnostic.register_first_owner": [
+    "propext"
+  ],
+  "MAT009.Diagnostic.register_new_owner": [
+    "propext"
+  ],
+  "MAT009.Diagnostic.register_other_identity": [
+    "propext"
+  ],
+  "MAT009.Diagnostic.register_preserves_existing": [
+    "propext"
+  ],
+  "MAT009.Diagnostic.scan_first_owner_sticky": [
+    "propext"
+  ],
+  "MAT009.M009_R1_initial": [
+    "propext"
+  ],
+  "MAT009.M009_R2_assignment_overwrite": [
+    "propext"
+  ],
+  "MAT009.M009_R3_cross_role_trigger": [],
+  "MAT009.M009_R4_stickiness": [],
+  "MAT009.M009_R5_final_set_intersection": [
+    "propext"
+  ],
+  "MAT009.M009_R5_parent_union": [
+    "propext"
+  ],
+  "MAT009.M009_R6_arbitrary_finite_scan": [
+    "Quot.sound",
+    "propext"
+  ],
+  "MAT009.M009_R6_cross_trigger_in_finite_scan": [
+    "propext"
+  ],
+  "MAT009.M009_R6_final_leakage_iff": [
+    "Quot.sound",
+    "propext"
+  ],
+  "MAT009.M009_R6_latest_owner": [
+    "propext"
+  ],
+  "MAT009.M009_R6_parent_reason_survives": [],
+  "MAT009.M009_R7_accepted_example": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "MAT009.M009_R7_nonvacuous": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "MAT009.M009_R7_rejected_example": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ]
+}

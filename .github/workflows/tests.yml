@@ -361,6 +361,13 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
+      - name: Install pinned Lean for formal receipt tests
+        run: |
+          curl -fsSL https://elan.lean-lang.org/elan-init.sh -o /tmp/elan-init.sh
+          sh /tmp/elan-init.sh -y --default-toolchain leanprover/lean4:v4.19.0
+          "$HOME/.elan/bin/elan" toolchain install leanprover/lean4:v4.19.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          "$HOME/.elan/toolchains/leanprover--lean4---v4.19.0/bin/lean" --version
       - run: python -m pip install --upgrade pip
       - run: python -m pip install -e .[dev]
       - run: python -m pytest

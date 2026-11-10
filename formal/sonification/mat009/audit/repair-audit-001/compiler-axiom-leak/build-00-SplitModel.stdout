@@ -1,0 +1,1 @@
+SplitModel.lean:379:8: error: (kernel) invalid declaration, it uses unsafe declaration 'lcProof'

@@ -1,0 +1,25 @@
+{
+  "files_sha256": {
+    "build-00-SplitModel.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-00-SplitModel.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-01-DiagnosticFirstOwner.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-01-DiagnosticFirstOwner.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-02-TypedConsumer.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-02-TypedConsumer.stdout": "9078e77bdd2580d1ce506f685136b42d01255a0ebd4177589a7d493b4ad06522",
+    "build-03-ExactTypes.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-03-ExactTypes.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-04-LeanAudit.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-04-LeanAudit.stdout": "1383254714bf4ce3d9cf3d50c98f8af57f86e59b1b0caf36a09ad6192b8a9167",
+    "result.json": "ffa09ef35737b0d257f41da6dfddba8add0d14ce86b77a313e7fc4689ecec44f",
+    "work/DiagnosticFirstOwner.lean": "7658fa0dc0b223e69a6f145a3ac68a3f7852c597fb9c2a83a0c6870023ca4d05",
+    "work/DiagnosticFirstOwner.olean": "08b4c6e3a902aab9b14d745d84e34195891f5e82b4aeb620c4c97924098c3dfe",
+    "work/ExactTypes.lean": "ec371e7a14ad106fc52ecd31ca95fbc7b9aee124b7463e3f08811f215aec9fb6",
+    "work/ExactTypes.olean": "b64b65124db21c2a2c958e45b5d199f08ac83b4c6ccb853c27dcf492c89b7525",
+    "work/LeanAudit.lean": "7aeabffbd65357e4ea41d773950bc7b52c892c5347b259f51d6a3831296aced8",
+    "work/LeanAudit.olean": "984a157afdad5b791a72af945e86c797d56f59927a2ad69c265651c5a0e8fa6f",
+    "work/SplitModel.lean": "1b2e633163118f65974db85be1416ea44af7126d303f5864d5d1f993dc547b71",
+    "work/SplitModel.olean": "f8578979fcf795ac9ac51bea1cb32e9a766e7a1ee32e9082ff3dafefd1b5c60c",
+    "work/TypedConsumer.lean": "422315ea1451327d960ddd81b9d8fdc2189d25b02406b44c9b1786d34c70b5fa",
+    "work/TypedConsumer.olean": "7dc3d93ec2f41312cca1fecb0969bb079a87ef62468260346e99a5364d8cb0fe"
+  }
+}
