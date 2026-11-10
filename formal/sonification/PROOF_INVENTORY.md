@@ -60,7 +60,7 @@ MAT-SPEC-001 and MAT-SPEC-002 have no corresponding repository tags. Their first
 | `materials/mat_spec_009.py::source_gate` | Parent source identities and admission prerequisites verified before challenge eligibility | OPEN | OPEN | NOT_RUN |
 | `materials/mat_spec_010.py::verify_parent` | Exact parent artifact membership and hashes, manifest identity and admission boundaries checked | OPEN | OPEN | NOT_RUN |
 | `materials/mat_spec_010.py::science_closure` | NUMBERED_SERIES_CLOSED_AT_010_WITH_OPEN_SCIENTIFIC_GATES; no classifier score from blocked evidence | OPEN | OPEN | NOT_RUN |
-| `materials/mat_spec_010.py::validate_archive_membership` | Exact deterministic archive membership; duplicate, extra, missing or unsafe paths rejected | OPEN | OPEN | NOT_RUN |
+| `materials/mat_spec_010.py::validate_archive_membership` | Validates nine ordered predecessor claims and declared artifact maps; direct calls accept extra well-formed artifacts and missing non-evidence artifacts | OPEN | OPEN | NOT_RUN |
 
 For every locator above, the release → commit → module/blob → source span mapping is in the two JSON inventories. Formal definitions, named theorems, theorem dependencies, representation relations, source-refinement evidence, regression test selection and evidence receipts must be added as work is executed; null fields are unresolved obligations. Existing tests in each frozen tree are identity-inventoried, but test selection and execution are not inferred.
 
